@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\UserDocument;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -55,6 +56,7 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
+            'password' => Hash::make(12345678),
             'dob' => $request->dob,
             'nationality' => $request->nationality,
             'religion' => $request->religion,

@@ -2,23 +2,14 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
-            <h4>Company Dashboard</h4>
+            @if (Auth::guard('company')->check())
+                <h4>Company Dashboard</h4>
+            @else
+                <h4>Employee Dashboard</h4>
+            @endif
             <p><span class="fa fa-lock"></span> - Privacy Policy</p>
             <div class="p-3 rounded light-box-shadow">
-                <p>some instances, use of the Clients on Demand Website and Services may require that you disclose certain
-                    personal information for identification, including a unique email address and demographic information
-                    (including, for example, ZIP code, age, sex, job industry, job title, and income) to register.</p>
-                <h6>Billing and Credit Card Information</h6>
-                <p>Our Services comprise, generally business coaching Webinars, Seminars and materials distributed on a
-                    subscription basis. To enable payment, we collect and store name, address, telephone number, email
-                    address, credit card information, and other billing information. This information will only be shared
-                    with third parties who facilitate completion of the purchase transaction, such as by fulfilling orders
-                    and processing credit card payments.</p>
-                <p>We will not disclose your billing and/or credit card information unless required by law or a court order,
-                    or unless disclosure is required to address an issue implicated by the financial transaction. For
-                    instance, if you claim that your billing and/or credit card information was used to make a purchase you
-                    did not authorize, details about the transaction may be disclosed to law enforcement and any party we
-                    deem necessary to address the matter.</p>
+                <p>{!! $data->description ??'' !!}</p>
             </div>
         </div>
     </div>

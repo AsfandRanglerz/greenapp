@@ -2,8 +2,8 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
-            <h4>Company Dashboard</h4>
-            <p><span class="fa fa-building"></span> - Company Profile</p>
+            <h4>Employee Dashboard</h4>
+            <p><span class="fa fa-building"></span> - Employee Profile</p>
             <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                 <div class="form-group col-12">
                     <div class="avatar-wrapper">

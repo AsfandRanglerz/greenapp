@@ -7,7 +7,7 @@
         <div class="dashboard-front-pg">
             <h4>Company Dashboard</h4>
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
-            <form action="{{ route('company-document.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('companyDocument.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div
@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_type" class="form-control">
+                        <select id="selectDocument" name="doc_name" class="form-control" required>
                             <option value=""></option>
                             <option value="Passport">Passport</option>
                             <option value="Identity Card">Identity Card</option>
@@ -27,15 +27,21 @@
                             <option value="Driving License">Driving License</option>
                             <option value="Other">Other</option>
                         </select>
+                        @error('doc_name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Select File<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="file" class="form-control" name="file" style="line-height: 1">
+                            <input type="file" class="form-control" name="file" style="line-height: 1" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                             </div>
                         </div>
+                        @error('file')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>

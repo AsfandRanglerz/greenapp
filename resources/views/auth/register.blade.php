@@ -3,7 +3,7 @@
     <div class="col-xl-5 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="images/logo.png"
+                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{asset('public/user/images/logo.png')}}"
                         alt="logo" class="logo-img"></a>
                 <p class="mb-2 text-white">Welcome</p>
                 <p class="mb-0 text-white">Please register your account</p>

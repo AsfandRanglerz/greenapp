@@ -27,7 +27,12 @@
                                 <td class="text-center">
                                     <a href=""><span class="fa fa-download text-success"></span></a>
                                     <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a>
-                                    <a href=""><span class="fa fa-trash text-danger"></span></a>
+                                    <form method="post" action="{{ route('companyDocument.destroy', $document->id) }}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="border" type="submit"><span
+                                                class="fa fa-trash text-danger"></span></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

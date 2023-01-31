@@ -29,13 +29,13 @@
                     <a href="{{ route('employee.index') }}" class="sidebar-links"><span
                             class="fa fa-users text-white pr-2 sidebar-link-icons"></span>Employees</a>
                 </li>
-            @endif
+            {{-- @endif
             <li class="position-relative">
                 <a href="{{route('employeeDocument.index')}}" class="sidebar-links"><span
                         class="fa fa-user text-white pr-2 sidebar-link-icons"></span>Add employee details and
                     Documents</a>
             </li>
-            @if (Auth::guard('company')->check())
+            @if (Auth::guard('company')->check()) --}}
                 <li class="position-relative">
                     <a href="{{ route('companyDocument.index') }}" class="sidebar-links"><span
                             class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>

@@ -13,27 +13,33 @@
                             <div class="upload-button">
                                 <span class="fa fa-plus profile-img-uploaded-icon"></span>
                             </div>
-                            <input class="file-upload" name="image" type="file" accept="image/*" />
+                            <input class="file-upload" name="image" type="file" accept="image/*" required />
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
                         <input id="userName" type="text" name="name" class="form-control"
-                            placeholder="Enter Employee Name">
+                            placeholder="Enter Employee Name" required>
+                        @error('name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="datePicker" name="dob" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth">
+                                class="form-control datepicker date-of-birth" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
                         </div>
+                        @error('dob')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" class="form-control">
+                        <select id="selectCountry" name="nationality" class="form-control" required>
                             <option value=""></option>
                             <option value="1">Pakistan</option>
                             <option value="1">Iran</option>
@@ -41,23 +47,35 @@
                             <option value="1">Afghanistan</option>
                             <option value="1">India</option>
                         </select>
+                        @error('nationality')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" placeholder="Enter Religion">
+                        <input type="text" class="form-control" name="religion" placeholder="Enter Religion" required>
+                        @error('religion')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userPhone">Phone Number</label>
+                        <label for="userPhone">Phone Number<span class="required"> *</span></label>
                         <input id="userPhone" type="number" name="phone" class="form-control"
-                            placeholder="Enter Phone Number">
+                            placeholder="Enter Phone Number" required>
+                        @error('phone')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userEmail">Email</label>
+                        <label for="userEmail">Email<span class="required"> *</span></label>
                         <input id="userEmail" type="email" name="email" class="form-control"
-                            placeholder="Enter Your Email">
+                            placeholder="Enter Your Email" required>
+                        @error('email')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
-                        <button type="submit" class="btn-bg">Next</button>
+                        <button type="submit" class="btn-bg">Save</button>
                     </div>
                 </div>
             </form>

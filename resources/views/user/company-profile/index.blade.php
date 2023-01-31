@@ -23,7 +23,7 @@
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
                             <input id="companyName" type="text" name="name" class="form-control pl-padding"
-                                value="{{ $company->name }}" placeholder="Enter Company Name">
+                                value="{{ $company->name }}" placeholder="Enter Company Name" required>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -31,7 +31,7 @@
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-phone input-field-left-icon"></span>
                             <input id="companyPhone" type="number" name="phone" value="{{ $company->phone }}"
-                                class="form-control pl-padding" placeholder="Enter Phone Number">
+                                class="form-control pl-padding" placeholder="Enter Phone Number" required>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -45,27 +45,27 @@
 
 
                     <div class="form-group col-md-6">
-                        <label>Trade License No</label>
+                        <label>Trade License No<span class="required"> *</span></label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="license_no"
-                                value="{{ $company->license_no }}" placeholder="Enter Trade License No">
+                                value="{{ $company->license_no }}" placeholder="Enter Trade License No" required>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Enter Establishment Card No</label>
+                        <label>Enter Establishment Card No<span class="required"> *</span></label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="establishment_no"
-                                value="{{ $company->establishment_no }}" placeholder="Enter Establishment Card No">
+                                value="{{ $company->establishment_no }}" placeholder="Enter Establishment Card No" required>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>MOHRE Company Code</label>
+                        <label>MOHRE Company Code<span class="required"> *</span></label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="mohre_no"
-                                value="{{ $company->mohre_no }}" placeholder="Enter MOHRE Company Code">
+                                value="{{ $company->mohre_no }}" placeholder="Enter MOHRE Company Code" required>
                         </div>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">

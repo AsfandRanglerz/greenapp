@@ -12,7 +12,7 @@ class Company extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $guarded = [];
 
-    protected $fillable = ['name','phone','image','email','password','establishment_no','license_no','mohre_no'];
+    protected $fillable = ['name', 'phone', 'image', 'email', 'password', 'establishment_no', 'license_no', 'mohre_no'];
 
     public function documents()
     {
@@ -22,6 +22,12 @@ class Company extends Authenticatable
     public function user()
     {
         return $this->hasMany(User::class, 'company_id');
+    }
+
+    /** has many throufh for coounting the employee documents against company */
+    public function empDocument()
+    {
+        return $this->hasManyThrough(UserDocument::class, User::class);
     }
 
     /**
