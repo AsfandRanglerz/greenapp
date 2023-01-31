@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/app.min.css') }}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/assets/bundles/jquery-selectric/selectric.css') }}">
+
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/components.css') }}">
     <!-- Custom style CSS -->
+
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/custom.css') }}">
     <link rel='shortcut icon' type='image/x-icon' href='{{ asset('public/admin/assets/img/logo2.png') }}' />
@@ -38,6 +41,8 @@
 <!-- Template JS File -->
 <script src="{{ asset('public/admin/assets/js/scripts.js')}}"></script>
 <!-- Custom JS File -->
+<script src="{{ asset('public/admin/assets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+
 <script src="{{ asset('public/admin/assets/js/custom.js')}}"></script>
 <script src="{{asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>
 <script src="{{ asset('public/admin/assets/js/datatables.js') }}"></scrip>

@@ -39,7 +39,7 @@
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
                                                     <label>Document Name</label>
-                                                    <input type="text" placeholder="document name" name="doc_name[]"
+                                                    <input type="text" placeholder="Document name" name="doc_name[]"
                                                         id="doc_name[]" value="{{ old('doc_name[]') }}"
                                                         class="form-control">
                                                     @error('doc_name.*')

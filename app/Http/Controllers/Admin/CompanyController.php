@@ -26,7 +26,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data = Company::with('documents')->select('id','name','email','phone','image','created_at')->orderBy('id', 'DESC')->get();
+        $data = Company::with('documents')->orderBy('id', 'DESC')->get();
         //dd($data);
         return view('admin.company.index',compact(['data']));
     }
@@ -53,11 +53,14 @@ class CompanyController extends Controller
             'name' => 'required',
             'email' => 'required|unique:companies,email|email',
             'phone' => 'required',
+            'establishment_no'=>'required',
+            'license_no' => 'required',
+            'mohre_no' => 'required',
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
         $password = random_int(10000000, 99999999);
-        $data = $request->only(['name', 'email', 'phone']);
+        $data = $request->only(['name', 'email', 'phone','establishment_no','license_no','mohre_no']);
         if($request->hasfile('image')){
             $file = $request->file('image');
             $extension=$file->getClientOriginalExtension();
@@ -66,7 +69,7 @@ class CompanyController extends Controller
            $data['image'] = $filename;
          }
         $data['password'] = hash::make($password);
-        
+
         $user = Company::create($data);
         $message['email'] = $request->email;
         $message['password']=$password;
@@ -117,12 +120,17 @@ class CompanyController extends Controller
             $request->validate([
                 'name' => 'required',
                 'phone' => 'required',
-                
-    
+                'establishment_no'=>'required',
+                'license_no' => 'required',
+                'mohre_no' => 'required',
+
             ]);
             $company = Company::find($id);
             $company->name = $request->input('name');
             $company->phone = $request->input('phone');
+            $company->establishment_no = $request->input('establishment_no');
+            $company->license_no = $request->input('license_no');
+            $company->mohre_no = $request->input('mohre_no');
             if($request->hasfile('image')){
                 $destination='public/admin/assets/img/users'.$company->image;
                 if(File::exists($destination))
@@ -138,7 +146,7 @@ class CompanyController extends Controller
             $company->update();
             return redirect()->route('company.index')->with(['status' => true, 'message' => 'Updated Successfully']);
         }
-    
+
     }
 
     /**

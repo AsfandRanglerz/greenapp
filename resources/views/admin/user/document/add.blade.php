@@ -27,9 +27,21 @@
                                         <div class="row mx-0 px-4">
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Document Name</label>
-                                                    <input type="text" placeholder="document name" name="doc_type[]"
-                                                        id="doc_type" value="{{ old('doc_type[]') }}" class="form-control">
+                                                    <label>Document Type</label>
+                                                    {{-- <input type="text" placeholder="document name" name="doc_type[]"
+                                                        id="doc_type" value="{{ old('doc_type[]') }}" class="form-control"> --}}
+                                                    <select class="form-control selectric category" name="doc_type[]"
+                                                        value="{{ old('doc_type[]') }}" required>
+
+                                                        <option selected disabled>Please Select a Document</option>
+                                                        <option value="Passport">Passport</option>
+                                                        <option value="Identitiy Card">Identitiy Card</option>
+                                                        <option value="Visa">Visa</option>
+                                                        <option value="Insurance Card">Insurance Card</option>
+                                                        <option value="Work Permit">Work Permit</option>
+                                                        <option value="Driving License">Driving License</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
                                                     @error('doc_type.*')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror

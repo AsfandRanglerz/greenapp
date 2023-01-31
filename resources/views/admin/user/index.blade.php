@@ -36,7 +36,7 @@
                                             <th>Religion</th>
                                             <th>Image</th>
                                             <th>Document</th>
-                                            <th scope="col">Actions</th>
+                                            <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
                                         </tr>
                                     </thead>

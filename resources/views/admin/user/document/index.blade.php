@@ -32,7 +32,7 @@
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
                                             <th>Comment</th>
-                                            <th scope="col">Actions</th>
+                                            <th scope="col">Action</th>
 
                                         </tr>
                                     </thead>
@@ -49,7 +49,7 @@
                                             @endphp
                                             <td>
                                                 <a target="_black"
-                                                    href="{{ asset('public/admin/assets/img/users' . '/' . $document->file) }}">
+                                                    href="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}">
                                                     @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
@@ -60,7 +60,7 @@
                                                         <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                     @else
-                                                        <img src="{{ asset('public/admin/assets/img/users' . '/' . $document->file) }}"
+                                                        <img src="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}"
                                                             style="height: 50px;width:50px">
                                                     @endif
                                                 </a>

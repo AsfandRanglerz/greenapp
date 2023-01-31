@@ -19,9 +19,31 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Document Name</label>
-                                                <input type="text" placeholder="document name" name="doc_type"
-                                                    id="doc_type" value="{{ $data['doc_type'] }}" class="form-control">
+                                                <label>Document Type</label>
+                                                <select class="form-control selectric category" name="doc_type[]"
+                                                    value="{{ $data['doc_type'] }}" required>
+
+                                                    <option selected disabled>Please Select a document</option>
+                                                    <option value="Passport"
+                                                        {{ $data['doc_type'] == 'Passport' ? 'selected' : '' }}>Passport
+                                                    </option>
+                                                    <option value="Identitiy Card"
+                                                        {{ $data['doc_type'] == 'Identitiy Card' ? 'selected' : '' }}>
+                                                        Identitiy Card</option>
+                                                    <option value="Visa"
+                                                        {{ $data['doc_type'] == 'Visa' ? 'selected' : '' }}>Visa</option>
+                                                    <option value="Insurance Card"
+                                                        {{ $data['doc_type'] == 'Insurance Card' ? 'selected' : '' }}>
+                                                        Insurance Card</option>
+                                                    <option value="Work Permit"
+                                                        {{ $data['doc_type'] == 'Work Permit' ? 'selected' : '' }}>Work
+                                                        Permit</option>
+                                                    <option value="Driving License"
+                                                        {{ $data['doc_type'] == 'Driving License' ? 'selected' : '' }}>
+                                                        Driving License</option>
+                                                    <option value="Other"
+                                                        {{ $data['doc_type'] == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
                                                 @error('doc_type')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

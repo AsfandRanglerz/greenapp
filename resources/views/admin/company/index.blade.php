@@ -29,9 +29,12 @@
                                             <th>Company Name</th>
                                             <th>Phone</th>
                                             <th>Email</th>
+                                            <th>Trade License No</th>
+                                            <th>Establishment Card No</th>
+                                            <th>MOHRE Company Code</th>
                                             <th>Image</th>
-                                            <th>Documents</th>
-                                            <th scope="col">Actions</th>
+                                            <th>Document</th>
+                                            <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
                                         </tr>
                                     </thead>
@@ -42,6 +45,9 @@
                                                 <td>{{ $company->name }}</td>
                                                 <td>{{ $company->phone }}</td>
                                                 <td>{{ $company->email }}</td>
+                                                <td>{{ $company->license_no }}</td>
+                                                <td>{{ $company->establishment_no }}</td>
+                                                <td>{{ $company->mohre_no }}</td>
                                                 <td> <a
                                                         href="{{ asset('public/admin/assets/img/users') . '/' . $company->image }}">
                                                         <img src="{{ asset('public/admin/assets/img/users') . '/' . $company->image }}"
