@@ -1,0 +1,73 @@
+.auth-form .auth-form-block-header {
+    background-color: var(--theme-clr);
+    border-radius: 8px 8px 0 0;
+}
+.auth-form .auth-form-block-header .PolygonRuler .PolygonRuler__SVG .PolygonRuler__Polygon {
+    fill: #fff;
+}
+.auth-form .auth-form-block-header .PolygonRuler {
+    display: flex;
+    height: 0;
+    padding-bottom: 3.90625%;
+    position: relative;
+    width: 100%;
+}
+.auth-form .auth-form-block-header .PolygonRuler .PolygonRuler__SVG {
+    bottom: -0.0625rem;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+.auth-form #authForm {
+    padding: 24px;
+    background-color: #FFF;
+    border-radius: 0 0 8px 8px;
+}
+.auth-form .auth-form-block-header .auth-form-block-header-inner {
+    padding: 16px 24px;
+}
+body .pl-pr-padding {
+    padding: 0 2.5rem;
+}
+body .pl-padding {
+    padding-left: 2.5rem;
+}
+.input-field-left-icon {
+    left: 16px;
+    color: var(--green-clr);
+}
+.fa-phone {
+    transform: rotate(90deg);
+}
+.logout-navbar {
+    background-color: var(--theme-clr);
+}
+.logo-img {
+    height: 60px;
+}
+.auth-centered-block {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(../images/auth-bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+/*OTP*/
+.verify-field {
+    height: 37px;
+    width: 37px;
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+}
+/*OTP*/
+@media (max-width: 575px) {
+    .auth-form #authForm {
+        padding: 16px;
+    }
+    .logo-img {
+        height: 50px;
+    }
+}
