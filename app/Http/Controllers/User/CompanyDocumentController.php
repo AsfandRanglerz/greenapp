@@ -7,6 +7,7 @@ use App\Models\CompanyDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class CompanyDocumentController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class CompanyDocumentController extends Controller
     public function index()
     {
         $authId = Auth::guard('company')->id();
-        $documents = CompanyDocument::whereCompany_id($authId)->get();
+        $documents = CompanyDocument::whereCompany_id($authId)->latest()->get();
         return view('user.company-document.index', compact('documents'));
     }
 
@@ -49,10 +50,12 @@ class CompanyDocumentController extends Controller
 
         CompanyDocument::create([
             'company_id' => Auth::guard('company')->id(),
+            // dd(Auth::guard('company')->id()),
             'doc_name' => $request->doc_name,
         ] + ['file' => $file]);
 
-        return redirect()->route('companyDocument.index');
+        // \Session::put('message','success');
+        return redirect()->route('companyDocument.index')->with('success','Created Successfully');
     }
 
     /**

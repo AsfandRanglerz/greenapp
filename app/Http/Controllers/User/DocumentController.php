@@ -17,7 +17,7 @@ class DocumentController extends Controller
     public function index()
     {
         $authId = Auth::guard('web')->id();
-        $documents = UserDocument::whereUser_id($authId)->get();
+        $documents = UserDocument::whereUser_id($authId)->latest()->get();
         return view('user.document.index', compact('documents'));
     }
 
@@ -28,7 +28,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.document.create');
     }
 
     /**
@@ -39,7 +39,26 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension(); // getting file extension
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('admin/assets/img/users/'), $filename);
+            $file = 'public/admin/assets/img/users/' . $filename;
+        } else {
+            $file = 'public/admin/assets/img/users/fdkdh.png';
+        }
+
+        UserDocument::create([
+            'user_id' => Auth::guard('web')->id(),
+            'doc_type' => $request->doc_type,
+            'issue_date' => $request->issue_date,
+            'expiry_date' => $request->expiry_date,
+            'comment' => $request->comment,
+        ] + ['file' => $file]);
+
+        return redirect()->route('document.index');
     }
 
     /**

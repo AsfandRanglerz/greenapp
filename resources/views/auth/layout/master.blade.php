@@ -21,6 +21,50 @@
         @yield('content')
     </div>
     @yield('script')
+
 </body>
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        width: '27rem',
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+        @if (Session()->has('message'))
+    var type = "{{ Session::get('alert') }}";
+    switch (type) {
+        case'info':
+            Toast.fire({
+                icon: 'info',
+                title: '{{ Session::get("message") }}'
+            })
+            break;
+        case 'success':
+            Toast.fire({
+                icon: 'success',
+                title: '{{ Session::get("message") }}'
+            })
+            break;
+        case 'warning':
+            Toast.fire({
+                icon: 'warning',
+                title: '{{ Session::get("message") }}'
+            })
+            break;
+        case'error':
+            Toast.fire({
+                icon: 'error',
+                title: '{{ Session::get("message") }}'
+            })
+            break;
+    }
+    @endif
+</script>
 
 </html>

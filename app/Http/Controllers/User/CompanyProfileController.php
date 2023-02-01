@@ -92,7 +92,7 @@ class CompanyProfileController extends Controller
             'mohre_no' => $request->mohre_no,
         ] + ['image' => $image]);
 
-        return redirect()->route('companyProfile.index');
+        return redirect()->route('companyProfile.index')->with(['status' => true, 'message' => 'Updated Successfully']);
     }
 
     /**

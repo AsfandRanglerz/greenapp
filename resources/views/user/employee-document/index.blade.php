@@ -2,13 +2,13 @@
 @section('content')
     <div class="mb-5 admin-main-content-inner">
         <h4>Company Dashboard</h4>
-        <p><span class="fa fa-user"></span> - Employee Details - <b>John Doe</b></p>
+        <p><span class="fa fa-user"></span> - Employee Details - <b>{{$user->name}}</b></p>
         <div class="text-right">
             <a href="{{route('employeeDocument.show',['employeeDocument'=>$empId])}}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add Document</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped mb-0 employees">
+                <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -23,13 +23,35 @@
                         @foreach ($documents as $document)
                         <tr>
                             <td>#{{ $loop->iteration }}</td>
-                            <td>{{$document->file}}</td>
+                            @php
+                                                $file_name = $document->file;
+                                                $ext = explode('.', $file_name);
+                                            @endphp
+                                            <td>
+                                                <a target="_black"
+                                                    href="{{ asset('' . '/' . $document->file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $document->file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                            </td>
                             <td>{{$document->doc_type}}</td>
+
                             <td>{{$document->issue_date}}</td>
                             <td>{{$document->expiry_date}}</td>
                             <td class="text-center">
                                 <a href=""><span class="fa fa-download text-success"></span></a>
-                                <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a>
+                                {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
                                 <form method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">

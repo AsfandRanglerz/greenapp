@@ -8,6 +8,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('put')
+                
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div class="form-group col-12">
                         <div class="avatar-wrapper">

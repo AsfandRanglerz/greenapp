@@ -27,8 +27,8 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="text" name="datePicker" name="dob" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth" required>
+                            <input type="text"  name="dob" placeholder="dd.mm.yyyy"
+                                class="form-control datepicker date-of-birth"  required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -40,12 +40,12 @@
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
                         <select id="selectCountry" name="nationality" class="form-control" required>
-                            <option value=""></option>
-                            <option value="1">Pakistan</option>
-                            <option value="1">Iran</option>
-                            <option value="1">Bangladesh</option>
-                            <option value="1">Afghanistan</option>
-                            <option value="1">India</option>
+                            <option disabled selected>Please Select a Country</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Iran">Iran</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="India">India</option>
                         </select>
                         @error('nationality')
                             <div class="text-danger p-2">{{ $message }}</div>

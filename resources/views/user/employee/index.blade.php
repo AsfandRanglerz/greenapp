@@ -9,7 +9,7 @@
         </div>
         <div class="p-4 rounded light-box-shadow">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped mb-0 employees">
+                <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -20,6 +20,7 @@
                             <th scope="col">Nationality</th>
                             <th scope="col">Religion</th>
                             <th scope="col">Data-Of-birth</th>
+                            <th scope="col">Document</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -28,15 +29,20 @@
                             <tr>
                                 <td>#{{ $loop->iteration }}</td>
                                 <td>{{ $employee->name }}</td>
-                                <td>{{ $employee->image }}</td>
+                                <td><a href="{{ asset(''). '/' .$employee->image }}">
+                                    <img src="{{ asset(''). '/' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
+                                    </td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->nationality }}</td>
                                 <td>{{ $employee->religion }}</td>
                                 <td>{{ $employee->dob }}</td>
+                                <td>
+                                    <a
+                                    href="{{ route('employee.show', ['employee' => $employee->id]) }}">View</a>
+                                    </td>
                                 <td class="text-center">
-                                    <a href="{{ route('employee.show', ['employee' => $employee->id]) }}"><span
-                                            class="fa fa-eye text-success"></span></a>
+                                    <a href="{{ route('employee.edit', $employee->id) }}" class="mx-2"><span class="fa fa-edit text-info"></span></a>
                                     <form method="post" action="{{ route('employee.destroy', $employee->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">

@@ -19,7 +19,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $authId = Auth::guard('company')->id();
-        $employees =   User::whereCompany_id($authId)->get();
+        $employees =   User::whereCompany_id($authId)->latest()->get();
 
         return view('user.employee.index',compact('employees'));
     }
@@ -58,12 +58,13 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => Hash::make(12345678),
             'dob' => $request->dob,
+            // dd($request->dob),
             'nationality' => $request->nationality,
             'religion' => $request->religion,
             'company_id' => Auth::guard('company')->id(),
         ] + ['image' => $image]);
 
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Created Successfully']);
     }
 
     /**
@@ -74,9 +75,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-         $documents = UserDocument::whereUser_id($id)->get();
+        $user = User::find($id);
+         $documents = UserDocument::whereUser_id($id)->latest()->get();
          $empId = $id;
-        return view('user.employee-document.index',compact('documents','empId'));
+        //  dd($user);
+        return view('user.employee-document.index',compact('user','documents','empId'));
     }
 
     /**
@@ -87,7 +90,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        return view('user.employee.edit');
+        $data = User::find($id);
+        //$data['usercompany'] = Company::select('id', 'name')->get();
+       // $data['company_id'] = $id;
+        return view('user.employee.edit', compact(['data']));
     }
 
     /**
@@ -120,7 +126,7 @@ class EmployeeController extends Controller
             'company_id' => Auth::guard('company')->id(),
         ] + ['image' => $image]);
 
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Updated Successfully']);
     }
 
     /**

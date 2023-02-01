@@ -52,6 +52,7 @@ class EmployeeDocumentController extends Controller
 
         UserDocument::create([
             'user_id' => $request->employee_id,
+            // dd($request->employee_id),
             'doc_type' => $request->doc_type,
             'issue_date' => $request->issue_date,
             'expiry_date' => $request->expiry_date,

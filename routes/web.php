@@ -83,26 +83,23 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
     Route::post('login', 'AuthController@login')->name('user.login');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
-    // Route::group(['middleware' => 'employee'], function () {
-    // });
+    Route::group(['middleware' => 'company'], function () {
 
-    // Route::group(['middleware' => 'company'], function () {
-    // });
+        Route::get('home', 'HomeController@index')->name('home');
+        /**Company routes */
+        Route::resource('companyProfile', 'CompanyProfileController');
+        Route::resource('employee', 'EmployeeController');
+        Route::resource('employeeDocument', 'EmployeeDocumentController');
+        Route::resource('companyDocument', 'CompanyDocumentController');
 
-    Route::get('home', 'HomeController@index')->name('home');
-    /**Company routes */
-    Route::resource('companyProfile', 'CompanyProfileController');
-    Route::resource('employee', 'EmployeeController');
-    Route::resource('employeeDocument', 'EmployeeDocumentController');
-    Route::resource('companyDocument', 'CompanyDocumentController');
+        /**Employee routes */
+        Route::resource('EmployeeProfile', 'EmployeeProfileController');
+        Route::resource('document', 'DocumentController');
 
-    /**Employee routes */
-    Route::resource('EmployeeProfile', 'EmployeeProfileController');
-    Route::resource('document', 'DocumentController');
-
-    /** All security routes */
-    Route::get('faqs', 'SecurityController@faq')->name('faqs');
-    Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
-    Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
-    Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
+        /** All security routes */
+        Route::get('faqs', 'SecurityController@faq')->name('faqs');
+        Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
+        Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
+        Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
+    });
 });
