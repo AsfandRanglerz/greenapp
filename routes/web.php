@@ -70,38 +70,39 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 });
 
 /**User & Company panel */
-// Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
-//     Route::get('/', function () {
-//         return view('auth.login');
-//     });
+Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
 
-//     /**Authentication route */
-//     Route::view('forget-password', 'auth.forget-password');
-//     Route::view('register', 'auth.register');
-//     Route::post('company/register', 'AuthController@register')->name('company.register');
-//     Route::view('login', 'auth.login')->name('login');
-//     Route::post('login', 'AuthController@login')->name('user.login');
-//     Route::get('logout', 'AuthController@logout')->name('logout');
+    /**Authentication route */
+    Route::view('forget-password', 'auth.forget-password');
+    Route::view('register', 'auth.register');
+    Route::post('company/register', 'AuthController@register')->name('company.register');
+    Route::view('login', 'auth.login')->name('login');
+    Route::post('login', 'AuthController@login')->name('user.login');
+    Route::get('logout', 'AuthController@logout')->name('logout');
 
-//     // Route::group(['middleware' => 'employee'], function () {
-//     // });
+    // Route::group(['middleware' => 'employee'], function () {
+    // });
 
-//     // Route::group(['middleware' => 'company'], function () {
-//     // });
+    // Route::group(['middleware' => 'company'], function () {
+    // });
 
-//     Route::get('home', 'HomeController@index')->name('home');
+    Route::get('home', 'HomeController@index')->name('home');
+    /**Company routes */
+    Route::resource('companyProfile', 'CompanyProfileController');
+    Route::resource('employee', 'EmployeeController');
+    Route::resource('employeeDocument', 'EmployeeDocumentController');
+    Route::resource('companyDocument', 'CompanyDocumentController');
 
-//     Route::resource('companyProfile', 'CompanyProfileController');
-//     Route::resource('EmployeeProfile', 'EmployeeProfileController');
-//     Route::resource('employee', 'EmployeeController');
+    /**Employee routes */
+    Route::resource('EmployeeProfile', 'EmployeeProfileController');
+    Route::resource('document', 'DocumentController');
 
-//     Route::resource('employeeDocument', 'EmployeeDocumentController');
-
-//     Route::resource('companyDocument', 'CompanyDocumentController');
-
-//     /** All security routes */
-//     Route::get('faqs', 'SecurityController@faq')->name('faqs');
-//     Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
-//     Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
-//     Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
-// });
+    /** All security routes */
+    Route::get('faqs', 'SecurityController@faq')->name('faqs');
+    Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
+    Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
+    Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
+});

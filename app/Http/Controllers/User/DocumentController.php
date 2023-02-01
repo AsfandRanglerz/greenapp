@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserDocument;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EmployeeProfileController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class EmployeeProfileController extends Controller
     public function index()
     {
         $authId = Auth::guard('web')->id();
-        $employee = User::find($authId);
-        return view('user.employee-profile.index', compact('employee'));
+        $documents = UserDocument::whereUser_id($authId)->get();
+        return view('user.document.index', compact('documents'));
     }
 
     /**

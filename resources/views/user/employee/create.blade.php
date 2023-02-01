@@ -13,7 +13,7 @@
                             <div class="upload-button">
                                 <span class="fa fa-plus profile-img-uploaded-icon"></span>
                             </div>
-                            <input class="file-upload" name="image" type="file" accept="image/*" required />
+                            <input class="file-upload" name="image" type="file" accept="image/*" />
                         </div>
                     </div>
                     <div class="form-group col-md-6">

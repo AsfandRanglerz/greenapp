@@ -4,67 +4,81 @@
         <div class="dashboard-front-pg">
             <h4>Employee Dashboard</h4>
             <p><span class="fa fa-building"></span> - Employee Profile</p>
-            <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
-                <div class="form-group col-12">
-                    <div class="avatar-wrapper">
-                        <img class="profile-pic" id="uploadedImage" src="" />
-                        <div class="upload-button">
-                            <span class="fa fa-plus profile-img-uploaded-icon"></span>
+            <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
+                    <div class="form-group col-12">
+                        <div class="avatar-wrapper">
+                            <img class="profile-pic" id="uploadedImage" src="{{asset($employee->image)}}" />
+                            <div class="upload-button">
+                                <span class="fa fa-plus profile-img-uploaded-icon"></span>
+                            </div>
+                            <input class="file-upload" name="image" type="file" accept="image/*" />
                         </div>
-                        <input class="file-upload" name="avatar" type="file" accept="image/*" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userName">Name<span class="required"> *</span></label>
+                        <input id="userName" type="text" name="name" value="{{$employee->name}}" class="form-control"
+                            placeholder="Enter Employee Name" required>
+                        @error('name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Date Of Birth<span class="required"> *</span></label>
+                        <div class="input-group">
+                            <input type="text" name="datePicker" name="dob" value="{{$employee->dob}}" placeholder="dd.mm.yyyy"
+                                class="form-control datepicker date-of-birth" required>
+                            <div class="input-group-prepend">
+                                <small class="input-group-text"><span class="fa fa-calendar"></span></small>
+                            </div>
+                        </div>
+                        @error('dob')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Nationality<span class="required"> *</span></label>
+                        <select id="selectCountry" name="nationality" class="form-control" required>
+                            <option value=""></option>
+                            <option value="Pakistan" {{$employee->nationality == "Pakistan" ? "selected" : ''}}>Pakistan</option>
+                            <option value="Iran" {{$employee->nationality == "Iran" ? "selected" : ''}}>Iran</option>
+                            <option value="Bangladesh" {{$employee->nationality == "Bangladesh" ? "selected" : ''}}>Bangladesh</option>
+                            <option value="Afghanistan" {{$employee->nationality == "Afghanistan" ? "selected" : ''}}>Afghanistan</option>
+                            <option value="India" {{$employee->nationality == "India" ? "selected" : ''}}>India</option>
+                        </select>
+                        @error('nationality')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Religion<span class="required"> *</span></label>
+                        <input type="text" class="form-control" name="religion" value="{{$employee->religion}}" placeholder="Enter Religion" required>
+                        @error('religion')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userPhone">Phone Number<span class="required"> *</span></label>
+                        <input id="userPhone" type="number" name="phone" value="{{$employee->phone}}" class="form-control"
+                            placeholder="Enter Phone Number" required>
+                        @error('phone')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userEmail">Email<span class="required"> *</span></label>
+                        <input id="userEmail" type="email" name="email" value="{{$employee->email}}" class="form-control"
+                            placeholder="Enter Your Email" required readonly>
+                        @error('email')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
+                        <button type="submit" class="btn-bg">Update</button>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="companyName">Company Name<span class="required"> *</span></label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
-                        <input id="companyName" type="text" class="form-control pl-padding"
-                            placeholder="Enter Company Name">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="companyPhone">Phone<span class="required"> *</span></label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-phone input-field-left-icon"></span>
-                        <input id="companyPhone" type="number" class="form-control pl-padding"
-                            placeholder="Enter Phone Number">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="companyEmail">Email<span class="required"> *</span></label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input id="companyEmail" type="email" class="form-control pl-padding"
-                            placeholder="Enter your email">
-                    </div>
-                </div>
-
-
-                <div class="form-group col-md-6">
-                    <label>Trade License No</label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input type="text" class="form-control pl-padding" placeholder="Enter Trade License No">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Enter Establishment Card No</label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input type="text" class="form-control pl-padding" placeholder="Enter Establishment Card No">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>MOHRE Company Code</label>
-                    <div class="position-relative d-flex align-items-center">
-                        <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input type="text" class="form-control pl-padding" placeholder="Enter MOHRE Company Code">
-                    </div>
-                </div>
-                <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
-                    <button type="submit" class="btn-bg">Update</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     </div>

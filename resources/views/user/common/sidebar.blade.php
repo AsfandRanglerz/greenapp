@@ -19,6 +19,10 @@
                     <a href="{{ route('EmployeeProfile.index') }}" class="sidebar-links"><span
                             class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Employee Profile</a>
                 </li>
+                <li class="position-relative">
+                    <a href="{{ route('document.index') }}" class="sidebar-links"><span
+                            class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Document</a>
+                </li>
             @endif
             @if (Auth::guard('company')->check())
                 <li class="position-relative">
@@ -29,13 +33,6 @@
                     <a href="{{ route('employee.index') }}" class="sidebar-links"><span
                             class="fa fa-users text-white pr-2 sidebar-link-icons"></span>Employees</a>
                 </li>
-            {{-- @endif
-            <li class="position-relative">
-                <a href="{{route('employeeDocument.index')}}" class="sidebar-links"><span
-                        class="fa fa-user text-white pr-2 sidebar-link-icons"></span>Add employee details and
-                    Documents</a>
-            </li>
-            @if (Auth::guard('company')->check()) --}}
                 <li class="position-relative">
                     <a href="{{ route('companyDocument.index') }}" class="sidebar-links"><span
                             class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
