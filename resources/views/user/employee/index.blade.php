@@ -29,8 +29,8 @@
                             <tr>
                                 <td>#{{ $loop->iteration }}</td>
                                 <td>{{ $employee->name }}</td>
-                                <td><a href="{{ asset(''). '/' .$employee->image }}">
-                                    <img src="{{ asset(''). '/' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
+                                <td><a href="{{ asset(''). '' .$employee->image }}">
+                                    <img src="{{ asset(''). '' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
                                     </td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
@@ -46,7 +46,7 @@
                                     <form method="post" action="{{ route('employee.destroy', $employee->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="border" type="submit"><span class="fa fa-trash text-danger"></span></button>
+                                        <button class="border" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></button>
                                     </form>
                                 </td>
                             </tr>
@@ -183,5 +183,25 @@
             }
         }
         toastrPopUp();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
     </script>
 @endsection

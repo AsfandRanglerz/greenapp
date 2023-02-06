@@ -59,14 +59,17 @@ class CompanyController extends Controller
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
-        $password = random_int(10000000, 99999999);
         $data = $request->only(['name', 'email', 'phone','establishment_no','license_no','mohre_no']);
+        $password = random_int(10000000, 99999999);
         if($request->hasfile('image')){
             $file = $request->file('image');
             $extension=$file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
            $file->move('public/admin/assets/img/users',$filename);
-           $data['image'] = $filename;
+           $data['image'] = 'public/admin/assets/img/users/' . $filename;
+         }
+         else{
+            $data['image'] = 'public/admin/assets/img/users/1675332882.jpg';
          }
         $data['password'] = hash::make($password);
 
@@ -141,7 +144,7 @@ class CompanyController extends Controller
             $extension=$file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
             $file->move('public/admin/assets/img/users',$filename);
-            $company->image=$filename;
+            $company->image='public/admin/assets/img/users/' . $filename;
             }
             $company->update();
             return redirect()->route('company.index')->with(['status' => true, 'message' => 'Updated Successfully']);

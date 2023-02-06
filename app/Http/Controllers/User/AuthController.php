@@ -33,7 +33,7 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-
+        // dd(Auth());
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('home')->with('success', "You've Login Successfully");
         }

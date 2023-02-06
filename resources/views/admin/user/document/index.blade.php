@@ -19,10 +19,9 @@
                             </div>
                             {{-- @dd($data) --}}
                             <div class="card-body table-striped table-bordered table-responsive">
-                                <a class="btn btn-primary mb-3"
-                                href="{{route('user.store')}}">Back</a>
+                                <a class="btn btn-primary mb-3" href="{{ route('user.store') }}">Back</a>
                                 <a class="btn btn-success mb-3"
-                                       href="{{route('user-document.create', $data['user_id'])}}">Add Document</a>
+                                    href="{{ route('user-document.create', $data['user_id']) }}">Add Document</a>
                                 <table class="table" id="table_id_events">
                                     <thead>
                                         <tr>
@@ -37,55 +36,58 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach($data['user'] as $document)
-
+                                        @foreach ($data['user'] as $document)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
 
                                                 <td>{{ $document->doc_type }}</td>
                                                 @php
-                                                $file_name = $document->file;
-                                                $ext = explode('.', $file_name);
-                                            @endphp
-                                            <td>
-                                                <a target="_black"
-                                                    href="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}">
-                                                    @if ($ext[1] == 'pdf')
-                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'docx')
-                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'pptx')
-                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @else
-                                                        <img src="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}"
-                                                            style="height: 50px;width:50px">
-                                                    @endif
-                                                </a>
-                                            </td>
-                                                <td>{{ $document->issue_date}}</td>
-                                                <td>{{ $document->expiry_date}}</td>
-                                                <td>{{ $document->comment}}</td>
+                                                    $file_name = $document->file;
+                                                    $ext = explode('.', $file_name);
+                                                @endphp
+                                                <td>
+                                                    <a target="_black" href="{{ asset('' . '/' . $document->file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @else
+                                                            <img src="{{ asset('' . '/' . $document->file) }}"
+                                                                style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                </td>
+                                                <td>{{ $document->issue_date }}</td>
+                                                <td>{{ $document->expiry_date }}</td>
+                                                <td>{{ $document->comment }}</td>
 
 
 
 
                                                 <td
-                                                style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                    style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
 
 
-                                                <a class="btn btn-info"
-                                               href="{{route('user-document.edit', $document->id)}}">Edit</a>
-                                                        <form method="get" action="{{route('user-document.destroy', $document->id)}}">
-                                                            @csrf
-                                                            <input name="_method" type="hidden" value="DELETE">
-                                                            <button type="submit" class="btn btn-danger btn-flat show_confirm" data-toggle="tooltip" >Delete</button>
-                                                        </form>
-                                                           </td>
-                                                        </tr>
-                                      @endforeach
+                                                    <a class="btn btn-info"
+                                                        href="{{ route('user-document.edit', $document->id) }}">Edit</a>
+                                                    <form method="get"
+                                                        action="{{ route('user-document.destroy', $document->id) }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                            data-toggle="tooltip">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -100,38 +102,36 @@
 
 @endsection
 
-@section ('js')
-@if (\Illuminate\Support\Facades\Session::has('message'))
-<script>
-    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
-</script>
-@endif
-<script>
-    $(document).ready(function(){
-        $('#table_id_events').DataTable()
+@section('js')
+    @if (\Illuminate\Support\Facades\Session::has('message'))
+        <script>
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+        </script>
+    @endif
+    <script>
+        $(document).ready(function() {
+            $('#table_id_events').DataTable()
 
-    })
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script type="text/javascript">
-
-$('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Are you sure you want to delete this record?`,
-              text: "If you delete this, it will be gone forever.",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            }
-          });
-      });
-
-</script>
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
 @endsection

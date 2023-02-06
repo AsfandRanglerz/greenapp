@@ -40,19 +40,21 @@
                                                     $ext = explode('.', $file_name);
                                                 @endphp
                                                 <td>
-                                                    <a target="_black"
-                                                        href="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}">
+                                                    <a target="_black" href="{{ asset('' . '/' . $document->file) }}">
                                                         @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'pptx')
                                                             <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                         @else
-                                                            <img src="{{ asset('public/admin/assets/img/documents' . '/' . $document->file) }}"
+                                                            <img src="{{ asset('' . '/' . $document->file) }}"
                                                                 style="height: 50px;width:50px">
                                                         @endif
                                                     </a>

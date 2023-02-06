@@ -23,6 +23,10 @@
                     <a href="{{ route('document.index') }}" class="sidebar-links"><span
                             class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Document</a>
                 </li>
+                <li class="position-relative">
+                    <a href="{{ route('EmployeeProfile.create') }}" class="sidebar-links"><span
+                            class="fa fa-lock text-white pr-2 sidebar-link-icons"></span>Change Password</a>
+                </li>
             @endif
             @if (Auth::guard('company')->check())
                 <li class="position-relative">
@@ -36,6 +40,10 @@
                 <li class="position-relative">
                     <a href="{{ route('companyDocument.index') }}" class="sidebar-links"><span
                             class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
+                </li>
+                <li class="position-relative">
+                    <a href="{{ route('companyProfile.create') }}" class="sidebar-links"><span
+                            class="fa fa-lock text-white pr-2 sidebar-link-icons"></span>Change Password</a>
                 </li>
             @endif
 

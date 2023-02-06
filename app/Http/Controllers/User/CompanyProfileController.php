@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CompanyProfileController extends Controller
 {
@@ -28,7 +29,8 @@ class CompanyProfileController extends Controller
      */
     public function create()
     {
-        //
+        // dd('ali');
+        return view('user.company-profile.changePassword');
     }
 
     /**
@@ -80,7 +82,7 @@ class CompanyProfileController extends Controller
             $filename = time() . '.' . $extension;
             $file->move(public_path('admin/assets/img/users/'), $filename);
             $image = 'public/admin/assets/img/users/' . $filename;
-        }else{
+        } else {
             $image = Auth::guard('company')->user()->image;
         }
 
@@ -104,5 +106,27 @@ class CompanyProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changePassword(Request $request)
+    {
+
+        // $this->validate($request, [
+        //     'oldPassword' => 'required',
+        //     'newPassword' => 'required|confirmed',
+        // ]);
+        // dd('ali');
+        $auth = Auth::guard('company')->user();
+        // dd($auth->password);
+        if (!Hash::check($request->oldPassword, $auth->password)) {
+            return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
+        } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
+            return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
+        } else {
+            $user = Company::find($auth->id);
+            $user->password = Hash::make($request->newPassword);
+            // dd($user->password);
+            $user->save();
+            return back()->with(['status' => true, 'message' => 'Password Updated Successfully']);
+        }
     }
 }

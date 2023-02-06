@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class EmployeeProfileController extends Controller
 {
@@ -28,7 +30,7 @@ class EmployeeProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.employee-profile.changePassword');
     }
 
     /**
@@ -85,5 +87,27 @@ class EmployeeProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changePassword(Request $request)
+    {
+
+        // $this->validate($request, [
+        //     'oldPassword' => 'required',
+        //     'newPassword' => 'required|confirmed',
+        // ]);
+        // dd('ali');
+        $auth = Auth::guard('web')->user();
+        // dd($auth->password);
+        if (!Hash::check($request->oldPassword, $auth->password)) {
+            return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
+        } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
+            return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
+        } else {
+            $user = User::find($auth->id);
+            $user->password = Hash::make($request->newPassword);
+            //  dd($user->password);
+            $user->save();
+            return back()->with(['status' => true, 'message' => 'Password Updated Successfully']);
+        }
     }
 }

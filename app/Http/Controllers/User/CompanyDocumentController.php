@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\CompanyDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class CompanyDocumentController extends Controller
 {
@@ -38,25 +39,60 @@ class CompanyDocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     if ($request->hasfile('file')) {
+    //         $file = $request->file('file');
+    //         $extension = $file->getClientOriginalExtension(); // getting file extension
+    //         $filename = time() . '.' . $extension;
+    //         $file->move(public_path('admin/assets/img/users/'), $filename);
+    //         $file = 'public/admin/assets/img/users/' . $filename;
+    //     }
+
+    //     CompanyDocument::create([
+    //         'company_id' => Auth::guard('company')->id(),
+    //         // dd(Auth::guard('company')->id()),
+    //         'doc_name' => $request->doc_name,
+    //     ] + ['file' => $file]);
+
+    //     // \Session::put('message','success');
+    //     return redirect()->route('companyDocument.index')->with('success','Created Successfully');
+    // }
     public function store(Request $request)
-    {
-        if ($request->hasfile('file')) {
-            $file = $request->file('file');
-            $extension = $file->getClientOriginalExtension(); // getting file extension
-            $filename = time() . '.' . $extension;
-            $file->move(public_path('admin/assets/img/users/'), $filename);
-            $file = 'public/admin/assets/img/users/' . $filename;
-        }
+{
+    // dd('ali');
+    // Validate the input data
+    $validator = Validator::make($request->all(), [
+        'doc_name.*' => 'required|string',
+        'file.*' => 'required|file',
+    ]);
 
-        CompanyDocument::create([
-            'company_id' => Auth::guard('company')->id(),
-            // dd(Auth::guard('company')->id()),
-            'doc_name' => $request->doc_name,
-        ] + ['file' => $file]);
-
-        // \Session::put('message','success');
-        return redirect()->route('companyDocument.index')->with('success','Created Successfully');
+    if ($validator->fails()) {
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
     }
+
+    $doc_names = $request->input('doc_name');
+    $files = $request->file('file');
+    // dd($doc_names);
+    for ($i = 0; $i < count($doc_names); $i++) {
+        $document = new CompanyDocument;
+        $document->doc_name = $doc_names[$i];
+        $document->company_id = Auth::guard('company')->id();
+
+        if ($request->hasFile('file.' . $i)) {
+            $file = $files[$i];
+            $file_name = time() . $i . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('admin/assets/img/users'), $file_name);
+            $document->file = 'public/admin/assets/img/users/' . $file_name;
+        }
+        $document->save();
+    }
+
+    return redirect()->route('companyDocument.index')->with('message', 'Created Successfully');
+}
+
 
     /**
      * Display the specified resource.
@@ -103,4 +139,10 @@ class CompanyDocumentController extends Controller
         CompanyDocument::destroy($id);
         return redirect()->route('companyDocument.index');
     }
+
+    public function download($id)
+{
+    $CompanyDocument = CompanyDocument::find($id);
+    return response()->download($CompanyDocument->file);
+}
 }

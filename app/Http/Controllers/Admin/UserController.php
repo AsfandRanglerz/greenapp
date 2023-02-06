@@ -60,14 +60,17 @@ class UserController extends Controller
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
-        $password = random_int(10000000, 99999999);
         $data = $request->only(['name', 'email','phone','dob','nationality','religion','company_id']);
+        $password = random_int(10000000, 99999999);
         if($request->hasfile('image')){
             $file = $request->file('image');
             $extension=$file->getClientOriginalExtension();
             $filename=time().'.'.$extension;
            $file->move('public/admin/assets/img/users',$filename);
-           $data['image'] = $filename;
+           $data['image'] = 'public/admin/assets/img/users/' . $filename;
+         }
+         else{
+            $data['image'] = 'public/admin/assets/img/users/1675332882.jpg';
          }
         $data['password'] = Hash::make($password);
         // dd($message);
@@ -147,7 +150,7 @@ class UserController extends Controller
         $extension=$file->getClientOriginalExtension();
         $filename=time().'.'.$extension;
         $file->move('public/admin/assets/img/users',$filename);
-        $user->image=$filename;
+        $user->image='public/admin/assets/img/users/' . $filename;
         }
         $user->update();
         return redirect()->route('user.index')->with(['status' => true, 'message' => 'Updated Successfully']);

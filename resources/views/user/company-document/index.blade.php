@@ -24,35 +24,38 @@
                                 <td>#{{ $loop->iteration }}</td>
                                 <td>{{ $document->doc_name }}</td>
                                 @php
-                                                    $file_name = $document->file;
-                                                    $ext = explode('.', $file_name);
-                                                @endphp
-                                                <td>
-                                                    <a target="_black"
-                                                        href="{{ asset('' . '/' . $document->file) }}">
-                                                        @if ($ext[1] == 'pdf')
-                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'docx')
-                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'pptx')
-                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @else
-                                                            <img src="{{ asset('' . '/' . $document->file) }}"
-                                                                style="height: 50px;width:50px">
-                                                        @endif
-                                                    </a>
-                                                </td>
+                                    $file_name = $document->file;
+                                    $ext = explode('.', $file_name);
+                                @endphp
+                                <td>
+                                    <a target="_black" href="{{ asset('' . '/' . $document->file) }}">
+                                        @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'docx')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @else
+                                            <img src="{{ asset('' . '/' . $document->file) }}"
+                                                style="height: 50px;width:50px">
+                                        @endif
+                                    </a>
+                                </td>
                                 <td class="text-center">
-                                    <a href=""><span class="fa fa-download text-success"></span></a>
+                                    <a href="{{ route('companyDocument.download', $document->id) }}"><span
+                                            class="fa fa-download text-success"></span></a>
                                     {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
                                     <form method="post" action="{{ route('companyDocument.destroy', $document->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button class="border" type="submit"><span
-                                                class="fa fa-trash text-danger"></span></button>
+                                                class="fa fa-trash text-danger show_confirm"></span></button>
                                     </form>
                                 </td>
                             </tr>
@@ -189,5 +192,25 @@
             }
         }
         toastrPopUp();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
     </script>
 @endsection

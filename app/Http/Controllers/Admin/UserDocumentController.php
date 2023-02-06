@@ -73,8 +73,8 @@ class UserDocumentController extends Controller
             if ($request->hasFile('file.' . $i)) {
                 $extension = $files[$i]->getClientOriginalExtension();
                 $file_name = time() . $i . '.' . $extension;
-                $path = $files[$i]->move('public/admin/assets/img/documents', $file_name);
-                $document->file = $file_name;
+                $path = $files[$i]->move('public/admin/assets/img/users', $file_name);
+                $document->file = 'public/admin/assets/img/users/' . $file_name;
             }
             // dd($document);
             $document->save();
@@ -132,15 +132,15 @@ class UserDocumentController extends Controller
             //$company['company_id'] = $id;
 
             if ($request->hasfile('file')) {
-                $destination = 'public/admin/assets/img/documents' . $company->file;
+                $destination = 'public/admin/assets/img/users' . $company->file;
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
                 $file = $request->file('file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
-                $file->move('public/admin/assets/img/documents', $filename);
-                $company->file = $filename;
+                $file->move('public/admin/assets/img/users', $filename);
+                $company->file = 'public/admin/assets/img/users/' . $filename;
 
             }
             //dd($company);

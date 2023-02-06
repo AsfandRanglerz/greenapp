@@ -4,7 +4,7 @@
         <h4>Employee Dashboard</h4>
         <p><span class="fa fa-user"></span> - Employee Details - <b>John Doe</b></p>
         <div class="text-right">
-            <a href="{{route('document.create')}}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
+            <a href="{{ route('document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
                 Document</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
@@ -22,43 +22,46 @@
                     </thead>
                     <tbody class="employees-body">
                         @foreach ($documents as $document)
-                        <tr>
-                            <td>#{{ $loop->iteration }}</td>
-                            @php
-                                                $file_name = $document->file;
-                                                $ext = explode('.', $file_name);
-                                            @endphp
-                                            <td>
-                                                <a target="_black"
-                                                    href="{{ asset('' . '/' . $document->file) }}">
-                                                    @if ($ext[1] == 'pdf')
-                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'docx')
-                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'pptx')
-                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                    @else
-                                                        <img src="{{ asset('' . '/' . $document->file) }}"
-                                                            style="height: 50px;width:50px">
-                                                    @endif
-                                                </a>
-                                            </td>
-                            <td>{{$document->doc_type}}</td>
-                            <td>{{$document->issue_date}}</td>
-                            <td>{{$document->expiry_date}}</td>
-                            <td class="text-center">
-                                <a href=""><span class="fa fa-download text-success"></span></a>
-                                {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
-                                <form method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
+                            <tr>
+                                <td>#{{ $loop->iteration }}</td>
+                                @php
+                                    $file_name = $document->file;
+                                    $ext = explode('.', $file_name);
+                                @endphp
+                                <td>
+                                    <a target="_black" href="{{ asset('' . '/' . $document->file) }}">
+                                        @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'docx')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @else
+                                            <img src="{{ asset('' . '/' . $document->file) }}"
+                                                style="height: 50px;width:50px">
+                                        @endif
+                                    </a>
+                                </td>
+                                <td>{{ $document->doc_type }}</td>
+                                <td>{{ $document->issue_date }}</td>
+                                <td>{{ $document->expiry_date }}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('document.download', $document->id) }}"><span
+                                            class="fa fa-download text-success"></span></a>
+                                    {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
+                                    {{-- <form method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button class="border" type="submit"><span class="fa fa-trash text-danger"></span></button>
-                                </form>
-                            </td>
-                        </tr>
+                                </form> --}}
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

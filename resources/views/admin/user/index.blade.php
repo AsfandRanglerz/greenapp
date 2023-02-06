@@ -52,8 +52,8 @@
                                                 <td>{{ $employee->dob}}</td>
                                                 <td>{{ $employee->nationality}}</td>
                                                 <td>{{ $employee->religion }}</td>
-                                                <td><a href="{{ asset('public/admin/assets/img/users'). '/' .$employee->image }}">
-                                                <img src="{{ asset('public/admin/assets/img/users'). '/' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
+                                                <td><a href="{{ asset(''). '/' .$employee->image }}">
+                                                <img src="{{ asset(''). '/' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
                                                 </td>
                                                 <td>
                                                <a

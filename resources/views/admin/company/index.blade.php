@@ -49,8 +49,8 @@
                                                 <td>{{ $company->establishment_no }}</td>
                                                 <td>{{ $company->mohre_no }}</td>
                                                 <td> <a
-                                                        href="{{ asset('public/admin/assets/img/users') . '/' . $company->image }}">
-                                                        <img src="{{ asset('public/admin/assets/img/users') . '/' . $company->image }}"
+                                                        href="{{ asset('') . '/' . $company->image }}">
+                                                        <img src="{{ asset('') . '/' . $company->image }}"
                                                             alt="" height="50" width="50" class="image"></a>
                                                 </td>
 

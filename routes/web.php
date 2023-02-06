@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserDocumentController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\User\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,13 +88,17 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         Route::get('home', 'HomeController@index')->name('home');
         /**Company routes */
         Route::resource('companyProfile', 'CompanyProfileController');
+        Route::post('companyProfile-password', 'CompanyProfileController@changePassword')->name('companyProfile.changePassword');
         Route::resource('employee', 'EmployeeController');
         Route::resource('employeeDocument', 'EmployeeDocumentController');
+        Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
         Route::resource('companyDocument', 'CompanyDocumentController');
-
+        Route::get('companyDownload/{id}', 'CompanyDocumentController@download')->name('companyDocument.download');
         /**Employee routes */
         Route::resource('EmployeeProfile', 'EmployeeProfileController');
+        Route::post('EmployeeProfile-password', 'EmployeeProfileController@changePassword')->name('EmployeeProfile.changePassword');
         Route::resource('document', 'DocumentController');
+        Route::get('documentDownload/{id}', [DocumentController::class, 'download'])->name('document.download');
 
         /** All security routes */
         Route::get('faqs', 'SecurityController@faq')->name('faqs');
