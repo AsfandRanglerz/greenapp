@@ -15,7 +15,7 @@
                     </polygon>
                 </svg></div>
         </div>
-        <form id="authForm" action="{{ route('user.login') }}" method="POST">
+        <form id="authForm" action="{{ route('login') }}" method="POST">
             @csrf
             <h3 class="text-center mb-4">Login</h3>
             <div class="form-group">

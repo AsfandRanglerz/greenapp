@@ -11,8 +11,9 @@ use App\Http\Controllers\Admin\SecurityController;
 use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserDocumentController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DocumentController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ use App\Http\Controllers\User\DocumentController;
 /*Admin routes
  * */
 Route::get('/admin', [AuthController::class, 'getLoginPage']);
-Route::post('/login', [AuthController::class, 'Login']);
+Route::post('admin/login', [AuthController::class, 'Login']);
 Route::get('/admin-forgot-password', [AdminController::class, 'forgetPassword']);
 Route::post('/admin-reset-password-link', [AdminController::class, 'adminResetPasswordLink']);
 Route::get('/change_password/{id}', [AdminController::class, 'change_password']);
@@ -69,21 +70,20 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('term-condition', TermConditionController::class);
 });
 
-/**User & Company panel */
+/**Employee & Company panel */
 Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
     Route::get('/', function () {
-        return view('auth.login');
+        return redirect('login');
     });
-
     /**Authentication route */
     Route::view('forget-password', 'auth.forget-password');
     Route::view('register', 'auth.register');
-    Route::post('company/register', 'AuthController@register')->name('company.register');
-    Route::view('login', 'auth.login')->name('login');
-    Route::post('login', 'AuthController@login')->name('user.login');
+    Route::post('company/register', 'AuthController@register')->name('register');
+    Route::view('login', 'auth.login');
+    Route::post('login', 'AuthController@login')->name('login');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
-    Route::group(['middleware' => 'company'], function () {
+    Route::group(['middleware' => 'user'], function () {
 
         Route::get('home', 'HomeController@index')->name('home');
         /**Company routes */
@@ -106,4 +106,5 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
         Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
     });
+    
 });

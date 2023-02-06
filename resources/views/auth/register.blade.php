@@ -15,7 +15,7 @@
                     </polygon>
                 </svg></div>
         </div>
-        <form id="authForm" action="{{ route('company.register') }}" method="POST">
+        <form id="authForm" action="{{ route('register') }}" method="POST">
             @csrf
             <h3 class="text-center mb-sm-4 mb-2">Register</h3>
             <div class="form-group">
@@ -84,7 +84,7 @@
             <div class="mt-xl-5 mb-xl-2 my-sm-3 mt-3">
                 <button type="submit" class="w-100 btn-bg">Register</button>
                 <p class="text-center text-dark font-weight-600 mt-2 mb-0">Already have an account? <a
-                        href="{{ route('login') }}" class="green-link">Login</a></p>
+                        href="{{ url('login') }}" class="green-link">Login</a></p>
             </div>
         </form>
     </div>
