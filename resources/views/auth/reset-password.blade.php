@@ -14,7 +14,9 @@
                     </polygon>
                 </svg></div>
         </div>
-        <form id="authForm" method="POST">
+        <form id="authForm" action="{{ route('resets-password') }}" method="POST">
+            @csrf
+            <input type="hidden" name="id" value="{{$id}}">
             <h3 class="text-center mb-4">Reset Password</h3>
             <p class="d-block mb-3">Please rest your password, thank you</p>
             <div class="form-group">
@@ -26,16 +28,22 @@
                     <span toggle="#userPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                         aria-hidden="true"></span>
                 </div>
+                @error('password')
+                    <div class="text-danger p-2">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password<span class="required"> *</span></label>
                 <div class="position-relative d-flex align-items-center">
                     <span class="position-absolute fa fa-lock input-field-left-icon"></span>
-                    <input id="confirmPassword" name="password" type="password" class="form-control pl-pr-padding"
+                    <input id="confirmPassword" name="confirmPassword" type="password" class="form-control pl-pr-padding"
                         placeholder="Confirm Password">
                     <span toggle="#confirmPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                         aria-hidden="true"></span>
                 </div>
+                @error('confirmPassword')
+                    <div class="text-danger p-2">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mt-xl-5 mb-xl-2 my-sm-3 mt-3">
                 <button type="submit" class="w-100 btn-bg">Send</button>

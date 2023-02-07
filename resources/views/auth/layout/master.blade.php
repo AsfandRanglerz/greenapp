@@ -20,6 +20,8 @@
 <body>
     <div class="auth-centered-block">
         @yield('content')
+        <script src="{{ asset('public/user/js/custom.js') }}"></script>
+        <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     </div>
     @yield('script')

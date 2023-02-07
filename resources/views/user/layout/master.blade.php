@@ -9,9 +9,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/user/css/inter.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/user/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/user/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
@@ -29,9 +30,9 @@
     <script src="{{ asset('public/user/js/bootstrap-4.5.3.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
     <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>
+    <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>
     <script src="{{ asset('public/user/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-    
+
      <script type="text/javascript">
         $(function() {
             /*dashboard right side content toggle*/

@@ -39,8 +39,8 @@
                         aria-hidden="true"></span>
                 </div>
                 @error('password')
-                        <div class="text-danger p-2">{{ $message }}</div>
-                    @enderror
+                    <div class="text-danger p-2">{{ $message }}</div>
+                @enderror
                 <div class="mt-2 text-right">
                     <a href="{{ url('forget-password') }}" class="text-dark font-weight-600">Forgot Password?</a>
                 </div>
@@ -53,13 +53,12 @@
         </form>
     </div>
 @endsection
-    <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('public/user/js/custom.js') }}"></script>
-    @section('script')
-@if (\Illuminate\Support\Facades\Session::has('message'))
+<script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('public/user/js/custom.js') }}"></script>
+@section('script')
+    @if (\Illuminate\Support\Facades\Session::has('message'))
         <script>
             toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
         </script>
     @endif
-
 @endsection

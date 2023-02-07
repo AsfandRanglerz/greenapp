@@ -2,9 +2,15 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
+            @if (Auth::guard('company')->check())
             <h4>Company Dashboard</h4>
+           @else
+            <h4>Employee Dashboard</h4>
+           @endif
+
             <p><span class="fa fa-home"></span> - Main Overview</p>
             <div class="row mb-sm-3">
+                @if (Auth::guard('company')->check())
                 <div class="col-sm-4 mb-sm-3 mb-1 wow fadeInUp" data-wow-duration="2s">
                     <p class="font-weight-bold small mb-0 text-center">Trade License No # {{ $company->license_no ?? '' }}
                     </p>
@@ -31,10 +37,11 @@
                         <span class="block-badge">{{ $companyDocument }}</span>
                     </a>
                 </div>
+                @endif
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
                     <a href="#"
                         class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
-                        <h5 class="text-center mb-4 theme-color">Employees Documents</h5>
+                        <h5 class="text-center mb-4 theme-color">Employee Documents</h5>
                         <span class="block-badge">{{ $employeeDocument }}</span>
                     </a>
                 </div>
@@ -48,5 +55,5 @@
     toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
 </script>
 @endif
-   
+
 @endsection

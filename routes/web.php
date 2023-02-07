@@ -77,8 +77,14 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
     });
     /**Authentication route */
     Route::view('forget-password', 'auth.forget-password');
+    //Route::view('reset-password', 'auth.reset-password');
     Route::view('register', 'auth.register');
+    Route::view('otp', 'auth.otp')->name('otp');
     Route::post('company/register', 'AuthController@register')->name('register');
+    Route::post('forget-password', 'AuthController@forgetPassword')->name('forget-password');
+    Route::post('confirm-token', 'AuthController@confirmToken')->name('confirmToken');
+    Route::get('reset-password/{id}', 'AuthController@resetPassword')->name('reset-password');
+    Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
     Route::view('login', 'auth.login');
     Route::post('login', 'AuthController@login')->name('login');
     Route::get('logout', 'AuthController@logout')->name('logout');
@@ -106,5 +112,5 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
         Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
     });
-    
+
 });

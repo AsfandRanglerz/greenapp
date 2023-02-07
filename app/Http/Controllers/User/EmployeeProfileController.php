@@ -74,14 +74,6 @@ class EmployeeProfileController extends Controller
      */
     public function update(Request $request, $id)
 {
-    // $request->validate([
-    //     'name' => 'required',
-    //     'dob' => 'required',
-    //     'nationality' => 'required',
-    //     'religion' => 'required',
-    //     'number' => 'required',
-    //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    // ]);
     $request->validate([
         'name' => 'required',
         'phone' => 'required',

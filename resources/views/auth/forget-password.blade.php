@@ -14,7 +14,8 @@
                     </polygon>
                 </svg></div>
         </div>
-        <form id="authForm" method="POST">
+        <form id="authForm" action="{{ route('forget-password') }}" method="POST">
+            @csrf
             <h3 class="text-center mb-4">Forget Password</h3>
             <p class="d-block mb-3">Please enter your Email or Phone Number to retrieve your password, thank you</p>
             <div class="form-group">
