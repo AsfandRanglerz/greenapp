@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/custom.css') }}">
     {{-- <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' /> --}}
     <link rel='shortcut icon' type='image/x-icon' href="{{ asset('public/admin/assets/img/logo2.png')}}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     @yield('style')
 </head>
 
@@ -31,9 +32,38 @@
 <script src="{{ asset('public/admin/assets/js/custom.js') }}"></script>
 <!-- Sweet Alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 </body>
+
 <!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
 @yield('script')
+<script>
+    /*toastr popup function*/
+    function toastrPopUp() {
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "3000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
+
+    /*toastr popup function*/
+    toastrPopUp();
+
+
+</script>
 <script>
     const Toast = Swal.mixin({
         toast: true,

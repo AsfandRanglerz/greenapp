@@ -20,7 +20,7 @@
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
                         <input id="userName" type="text" name="name" value="{{ $data['name'] }}" class="form-control"
-                            placeholder="Enter Employee Name" required>
+                            placeholder="Enter Employee Name" >
                         @error('name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -29,7 +29,7 @@
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="dob"value="{{ $data['dob'] }}" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth" required>
+                                class="form-control datepicker date-of-birth" >
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" class="form-control" required>
+                        <select id="selectCountry" name="nationality" class="form-control" >
 
                             <option value="Pakistan" {{ $data['nationality'] == 'Pakistan' ? 'selected' : '' }}>Pakistan
                             </option>
@@ -58,7 +58,7 @@
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="religion" value="{{ $data['religion'] }}"
-                            placeholder="Enter Religion" required>
+                            placeholder="Enter Religion">
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -66,7 +66,7 @@
                     <div class="form-group col-md-6">
                         <label for="userPhone">Phone Number<span class="required"> *</span></label>
                         <input id="userPhone" type="number" name="phone" value="{{ $data['phone'] }}"
-                            class="form-control" placeholder="Enter Phone Number" required>
+                            class="form-control" placeholder="Enter Phone Number">
                         @error('phone')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror

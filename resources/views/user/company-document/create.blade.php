@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_name[]" class="form-control" required>
+                        <select id="selectDocument" name="doc_name[]" class="form-control">
                             <option value=""></option>
                             <option value="Passport">Passport</option>
                             <option value="Identity Card">Identity Card</option>

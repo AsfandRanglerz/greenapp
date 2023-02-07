@@ -4,8 +4,9 @@
         <div class="dashboard-front-pg">
             <h4>Employee Dashboard</h4>
             <p><span class="fa fa-building"></span> - Employee Profile</p>
-            <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('EmployeeProfile.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div class="form-group col-12">
                         <div class="avatar-wrapper">
@@ -19,7 +20,7 @@
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
                         <input id="userName" type="text" name="name" value="{{$employee->name}}" class="form-control"
-                            placeholder="Enter Employee Name" required>
+                            placeholder="Enter Employee Name">
                         @error('name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -27,8 +28,8 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="text" name="datePicker" name="dob" value="{{$employee->dob}}" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth" required>
+                            <input type="text" name="dob"value="{{$employee->dob}}" placeholder="dd.mm.yyyy"
+                                class="form-control datepicker date-of-birth" >
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -53,7 +54,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" value="{{$employee->religion}}" placeholder="Enter Religion" required>
+                        <input type="text" class="form-control" name="religion" value="{{$employee->religion}}" placeholder="Enter Religion">
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -69,7 +70,7 @@
                     <div class="form-group col-md-6">
                         <label for="userEmail">Email<span class="required"> *</span></label>
                         <input id="userEmail" type="email" name="email" value="{{$employee->email}}" class="form-control"
-                            placeholder="Enter Your Email" required readonly>
+                            placeholder="Enter Your Email"readonly>
                         @error('email')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -85,6 +86,11 @@
     </div>
 @endsection
 @section('script')
+@if (\Illuminate\Support\Facades\Session::has('message'))
+<script>
+    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+</script>
+@endif
     <script type="text/javascript">
         $(function() {
             /*Avatar upload*/
@@ -111,110 +117,5 @@
         });
         /*Avatar upload*/
     </script>
-    <script type="text/javascript">
-        $(function() {
-            /*dashboard right side content toggle*/
-            $(document).on('click', '#menuToggle', function() {
-                $("#dashboardSidebarRightContent").toggleClass("toggled");
-                $("#dashboardSidebar").toggleClass("sidebar-toggle");
-            });
-
-            /*dashboard sidebar*/
-            $(".sidebar-links").each(function() {
-                var currentUrlBase = window.location.href.split('/').pop();
-                var activeUrlBase = $(this).attr("href").split('/').pop();
-                if (currentUrlBase == activeUrlBase && currentUrlBase != undefined && activeUrlBase !=
-                    undefined) {
-                    $(this).parent().addClass('active').parent().show().parent().addClass('opend');
-                }
-                if ($(this).parent().hasClass('active')) {
-                    $(this).parent().addClass('active').parent().show().parent().addClass('opend active');
-                }
-            });
-
-            $('#dashboardSidebar .side-nav .side-nav-links li').on('click', function() {
-
-                var $this = $(this);
-
-                $this.toggleClass('opend').siblings().removeClass('opend');
-
-                if ($this.hasClass('opend')) {
-                    $this.find('.side-nav-dropdown').slideToggle('fast');
-                    $this.siblings().find('.side-nav-dropdown').slideUp('fast');
-                    $this.tooltip('disable');
-                } else {
-                    $this.find('.side-nav-dropdown').slideUp('fast');
-                    $this.tooltip('enable');
-                }
-            });
-
-            $('#dashboardSidebar .side-nav .close-aside').on('click', function() {
-                $('#' + $(this).data('close')).addClass('show-side-nav');
-                contents.removeClass('margin');
-            });
-
-            /*dashboard right side content and sidebar toggle switching*/
-            sideBarToggleSwitch();
-
-            if ($(window).width() <= 991) {
-                /*Side-nav-overlay*/
-                sideNavOverlay();
-            }
-        });
-
-        $(window).resize(function() {
-            /*dashboard right side content and sidebar toggle switching*/
-            sideBarToggleSwitch();
-
-            /*Side-nav-overlay*/
-            sideNavOverlay();
-        });
-
-        /*Side-nav-overlay*/
-        function sideNavOverlay() {
-            $(document).on('click', '#menuToggle', function() {
-                $('#sideNavOverlay').removeClass('d-none');
-            });
-        }
-
-        /*dashboard right side content toggle*/
-        function sideBarToggleSwitch() {
-            $(document).on('click', function(event) {
-                if ($(window).width() <= 991 && !$(event.target).closest('#dashboardSidebar, #menuToggle').length) {
-                    $('#dashboardSidebar').addClass('sidebar-toggle');
-                    /*Side-nav-overlay*/
-                    $('#sideNavOverlay').addClass('d-none');
-                }
-            });
-
-            if ($(window).width() >= 992) {
-                $('#dashboardSidebar').removeClass('sidebar-toggle');
-                $('#dashboardSidebarRightContent').removeClass('toggled');
-            } else {
-                $('#dashboardSidebar').addClass('sidebar-toggle');
-                $('#sideNavOverlay').addClass('d-none');
-            }
-        }
-
-        /*toastr popup function*/
-        function toastrPopUp() {
-            toastr.options = {
-                "closeButton": true,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "3000",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-        }
-        toastrPopUp();
-    </script>
+    
 @endsection

@@ -70,6 +70,16 @@ class EmployeeController extends Controller
     // }
     public function store(Request $request)
     {
+        $validator = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email|email',
+            'phone' => 'required',
+            'dob' => 'required',
+            'nationality'=>'required',
+            'religion'=>'required',
+            // 'password'=>'required|confirmed',
+            // 'password_confirmation'=>'required'
+        ]);
         $image = 'public/admin/assets/img/users/1675332882.jpg';
         // dd($image);
         $password = random_int(10000000, 99999999);
@@ -147,6 +157,14 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'dob' => 'required',
+            'nationality'=>'required',
+            'religion'=>'required',
+
+        ]);
         $employee = User::find($id);
         if ($request->hasfile('image')) {
             $file = $request->file('image');

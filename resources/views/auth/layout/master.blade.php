@@ -14,15 +14,42 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 </head>
 
 <body>
     <div class="auth-centered-block">
         @yield('content')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     </div>
     @yield('script')
+    <script>
+        /*toastr popup function*/
+        function toastrPopUp() {
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "3000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+        /*toastr popup function*/
+        toastrPopUp();
 
+
+    </script>
 </body>
+
 <script>
     const Toast = Swal.mixin({
         toast: true,

@@ -8,7 +8,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                
+
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div class="form-group col-12">
                         <div class="avatar-wrapper">
@@ -80,6 +80,11 @@
     </div>
 @endsection
 @section('script')
+@if (\Illuminate\Support\Facades\Session::has('message'))
+<script>
+    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+</script>
+@endif
     <script type="text/javascript">
         $(function() {
             /*Avatar upload*/
@@ -192,24 +197,24 @@
         }
 
         /*toastr popup function*/
-        function toastrPopUp() {
-            toastr.options = {
-                "closeButton": true,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "3000",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-        }
-        toastrPopUp();
+        // function toastrPopUp() {
+        //     toastr.options = {
+        //         "closeButton": true,
+        //         "newestOnTop": false,
+        //         "progressBar": true,
+        //         "positionClass": "toast-top-right",
+        //         "preventDuplicates": false,
+        //         "onclick": null,
+        //         "showDuration": "3000",
+        //         "hideDuration": "1000",
+        //         "timeOut": "5000",
+        //         "extendedTimeOut": "1000",
+        //         "showEasing": "swing",
+        //         "hideEasing": "linear",
+        //         "showMethod": "fadeIn",
+        //         "hideMethod": "fadeOut"
+        //     }
+        // }
+        // toastrPopUp();
     </script>
 @endsection

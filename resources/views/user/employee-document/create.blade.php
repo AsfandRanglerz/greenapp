@@ -18,7 +18,7 @@
                     <input type="hidden" name="employee_id" value="{{ $empId }}">
                     <div class="form-group col-md-6">
                         <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_type[]" class="form-control" required>
+                        <select id="selectDocument" name="doc_type[]" class="form-control">
                             <option value=""></option>
                             <option value="Passport">Passport</option>
                             <option value="Identity Card">Identity Card</option>
@@ -48,7 +48,7 @@
                         <label>Issue Date<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="issue_date[]" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker issue-date" required>
+                                class="form-control datepicker issue-date">
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -61,7 +61,7 @@
                         <label>Expiry Date<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="expiry_date[]" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker expire-date" required>
+                                class="form-control datepicker expire-date">
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>

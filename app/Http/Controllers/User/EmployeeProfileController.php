@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 
 class EmployeeProfileController extends Controller
 {
@@ -74,9 +73,46 @@ class EmployeeProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+{
+    // $request->validate([
+    //     'name' => 'required',
+    //     'dob' => 'required',
+    //     'nationality' => 'required',
+    //     'religion' => 'required',
+    //     'number' => 'required',
+    //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    // ]);
+    $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'dob' => 'required',
+        'nationality'=>'required',
+        'religion'=>'required',
+
+    ]);
+
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $file->move(public_path('admin/assets/img/users/'), $filename);
+        $image = 'public/admin/assets/img/users/' . $filename;
+    } else {
+        $image = Auth::guard('web')->user()->image;
     }
+
+    User::find($id)->update([
+        'name' => $request->name,
+        'dob' => $request->dob,
+        'nationality' => $request->nationality,
+        'religion' => $request->religion,
+        'number' => $request->number,
+        'image' => $image
+    ]);
+
+    return redirect()->route('EmployeeProfile.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -91,10 +127,11 @@ class EmployeeProfileController extends Controller
     public function changePassword(Request $request)
     {
 
-        // $this->validate($request, [
-        //     'oldPassword' => 'required',
-        //     'newPassword' => 'required|confirmed',
-        // ]);
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required',
+            'confirm_password' => 'same:newPassword',
+        ]);
         // dd('ali');
         $auth = Auth::guard('web')->user();
         // dd($auth->password);

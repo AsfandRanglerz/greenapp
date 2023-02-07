@@ -110,14 +110,15 @@ class CompanyProfileController extends Controller
     public function changePassword(Request $request)
     {
 
-        // $this->validate($request, [
-        //     'oldPassword' => 'required',
-        //     'newPassword' => 'required|confirmed',
-        // ]);
         // dd('ali');
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required',
+            'confirm_password' => 'same:newPassword',
+        ]);
         $auth = Auth::guard('company')->user();
-        // dd($auth->password);
         if (!Hash::check($request->oldPassword, $auth->password)) {
+            // dd('ali');
             return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
         } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
             return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
