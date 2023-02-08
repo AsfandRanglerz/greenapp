@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/user/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/user/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
 </head>
