@@ -130,5 +130,5 @@
             /*Avatar upload*/
         });
     </script>
-   
+
 @endsection

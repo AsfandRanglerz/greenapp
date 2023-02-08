@@ -46,7 +46,7 @@
                                 <option value="Driving License">Driving License</option>
                                 <option value="Other">Other</option>
                             </select>
-                        </div>                        
+                        </div>
                         <div class="form-group col-md-6">
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
@@ -94,7 +94,7 @@
     <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="js/custom.js"></script>
     <script type="text/javascript">
-    $(function() {        
+    $(function() {
         /*datepicker*/
         $('.datepicker').datepicker({
             format: 'dd-mm-yyyy',

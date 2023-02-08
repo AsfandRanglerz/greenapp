@@ -9,39 +9,31 @@
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
             <form action="{{ route('companyDocument.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
-                    <div
-                        class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
+                <div class="col-lg-9 mx-auto py-3 rounded light-box-shadow">
+                    <div class="form-group d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         <h6><span class="fa fa-book"></span> - Company Documents</h6>
                         <a href="" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add Document</a>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_name[]" value="{{ old('doc_name[]') }}" class="form-control">
-                            <option value=""></option>
-                            <option value="Passport">Passport</option>
-                            <option value="Identity Card">Identity Card</option>
-                            <option value="Visa">Visa</option>
-                            <option value="Insurance Card">Insurance Card</option>
-                            <option value="Work Permit">Work Permit</option>
-                            <option value="Driving License">Driving License</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        @error('doc_name')
-                            <div class="text-danger p-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Select File<span class="required"> *</span></label>
-                        <div class="input-group">
-                            <input type="file" class="form-control" name="file[]"  value="{{ old('file[]') }}" style="line-height: 1" required>
-                            <div class="input-group-prepend">
-                                <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
-                            </div>
+                    <div class="form-row company-docs">
+                        <div class="form-group col-md-6">
+                            <label>Document Name<span class="required"> *</span></label>
+                            <input type="text" placeholder="Enter Document Name" class="form-control">
+                            @error('doc_name')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
                         </div>
-                        @error('file')
-                            <div class="text-danger p-2">{{ $message }}</div>
-                        @enderror
+                        <div class="form-group col-md-6">
+                            <label>Select File<span class="required"> *</span></label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" name="file[]"  value="{{ old('file[]') }}" style="line-height: 1" required>
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
+                                </div>
+                            </div>
+                            @error('file')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>
@@ -98,5 +90,5 @@
             /*Avatar upload*/
         });
     </script>
-   
+
 @endsection
