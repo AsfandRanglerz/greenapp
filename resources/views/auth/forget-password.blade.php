@@ -3,7 +3,7 @@
     <div class="col-xl-4 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="images/logo.png"
+                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{ asset('public/user/images/logo.png') }}"
                         alt="logo" class="logo-img"></a>
                 <p class="mt-3 mb-0 text-white">Forget Password</p>
                 <h5 class="text-white mb-0">Green App</h5>
@@ -25,6 +25,9 @@
                     <input id="userEmail" name="email" type="text" class="form-control pl-pr-padding"
                         placeholder="Enter Your Email or Mobile Number">
                 </div>
+                @error('email')
+                    <div class="text-danger p-2">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mt-xl-5 mb-xl-2 my-sm-3 mt-3">
                 <button type="submit" class="w-100 btn-bg">Send</button>
@@ -33,6 +36,11 @@
     </div>
 @endsection
 @section('script')
+@if (\Illuminate\Support\Facades\Session::has('message'))
+<script>
+    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+</script>
+@endif
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
 @endsection

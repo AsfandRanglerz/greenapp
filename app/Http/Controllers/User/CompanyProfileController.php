@@ -30,7 +30,7 @@ class CompanyProfileController extends Controller
     public function create()
     {
         // dd('ali');
-        return view('user.company-profile.changePassword');
+
     }
 
     /**
@@ -106,6 +106,9 @@ class CompanyProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changePassword_index(){
+        return view('user.company-profile.changePassword');
     }
     public function changePassword(Request $request)
     {

@@ -9,7 +9,7 @@
             <p><span class="fa fa-book"></span> - Change Password</p>
             <form action="{{ route('EmployeeProfile.changePassword') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
+                <div class="form-row col-md-5 mx-auto py-3 rounded light-box-shadow">
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         {{-- <h6><span class="fa fa-book"></span> - Company Documents</h6> --}}
@@ -48,7 +48,7 @@
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-lock input-field-left-icon"></span>
                             <input id="confirm_password" name="confirm_password" type="password" class="form-control pl-pr-padding"
-                                placeholder="Enter Old Password" >
+                                placeholder="Confirm Password" >
                             <span toggle="#oldPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                                 aria-hidden="true"></span>
 

@@ -3,7 +3,7 @@
     <div class="col-xl-4 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="images/logo.png"
+                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{ asset('public/user/images/logo.png') }}"
                         alt="logo" class="logo-img"></a>
                 <p class="mt-3 mb-0 text-white">Reset Password</p>
                 <h5 class="text-white mb-0">Green App</h5>
@@ -16,7 +16,9 @@
         </div>
         <form id="authForm" action="{{ route('resets-password') }}" method="POST">
             @csrf
-            <input type="hidden" name="id" value="{{$id}}">
+            <input type="hidden" name="email" value="{{$email}}">
+            <input type="hidden" name="guard" value="{{$guard}}">
+
             <h3 class="text-center mb-4">Reset Password</h3>
             <p class="d-block mb-3">Please rest your password, thank you</p>
             <div class="form-group">
@@ -52,6 +54,11 @@
     </div>
 @endsection
 @section('script')
+@if (\Illuminate\Support\Facades\Session::has('message'))
+<script>
+    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+</script>
+@endif
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
 @endsection

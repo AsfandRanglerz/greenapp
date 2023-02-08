@@ -137,7 +137,7 @@ class CompanyDocumentController extends Controller
     public function destroy($id)
     {
         CompanyDocument::destroy($id);
-        return redirect()->route('companyDocument.index');
+        return redirect()->route('companyDocument.index')->with(['status' => true, 'message' => 'Deleted Successfully']);
     }
 
     public function download($id)

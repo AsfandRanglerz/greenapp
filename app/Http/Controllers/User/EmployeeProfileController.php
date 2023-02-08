@@ -29,7 +29,7 @@ class EmployeeProfileController extends Controller
      */
     public function create()
     {
-        return view('user.employee-profile.changePassword');
+
     }
 
     /**
@@ -115,6 +115,10 @@ class EmployeeProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changePassword_index()
+    {
+        return view('user.employee-profile.changePassword');
     }
     public function changePassword(Request $request)
     {

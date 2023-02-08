@@ -3,7 +3,7 @@
     <div class="col-xl-4 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="images/logo.png"
+                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{ asset('public/user/images/logo.png') }}"
                         alt="logo" class="logo-img"></a>
                 <p class="mt-3 mb-0 text-white">OTP</p>
                 <h5 class="text-white mb-0">Green App</h5>
@@ -55,6 +55,11 @@
     </div>
 @endsection
 @section('script')
+@if (\Illuminate\Support\Facades\Session::has('message'))
+<script>
+    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+</script>
+@endif
     <script type="text/javascript">
         $(function() {
             /*OTP*/

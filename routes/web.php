@@ -76,17 +76,16 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         return redirect('login');
     });
     /**Authentication route */
-    Route::view('forget-password', 'auth.forget-password');
-    //Route::view('reset-password', 'auth.reset-password');
+    Route::view('login', 'auth.login');
     Route::view('register', 'auth.register');
+    Route::view('forget-password', 'auth.forget-password');
     Route::view('otp', 'auth.otp')->name('otp');
+    Route::post('login', 'AuthController@login')->name('login');
     Route::post('company/register', 'AuthController@register')->name('register');
     Route::post('forget-password', 'AuthController@forgetPassword')->name('forget-password');
     Route::post('confirm-token', 'AuthController@confirmToken')->name('confirmToken');
     Route::get('reset-password/{id}', 'AuthController@resetPassword')->name('reset-password');
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
-    Route::view('login', 'auth.login');
-    Route::post('login', 'AuthController@login')->name('login');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::group(['middleware' => 'user'], function () {
@@ -94,6 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         Route::get('home', 'HomeController@index')->name('home');
         /**Company routes */
         Route::resource('companyProfile', 'CompanyProfileController');
+        Route::get('companyChangePassword-index', 'CompanyProfileController@changePassword_index')->name('companyChangePassword.index');
         Route::post('companyProfile-password', 'CompanyProfileController@changePassword')->name('companyProfile.changePassword');
         Route::resource('employee', 'EmployeeController');
         Route::resource('employeeDocument', 'EmployeeDocumentController');
@@ -102,6 +102,7 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
         Route::get('companyDownload/{id}', 'CompanyDocumentController@download')->name('companyDocument.download');
         /**Employee routes */
         Route::resource('EmployeeProfile', 'EmployeeProfileController');
+        Route::get('employeeChangePassword-index', 'EmployeeProfileController@changePassword_index')->name('employeeChangePassword.index');
         Route::post('EmployeeProfile-password', 'EmployeeProfileController@changePassword')->name('EmployeeProfile.changePassword');
         Route::resource('document', 'DocumentController');
         Route::get('documentDownload/{id}', [DocumentController::class, 'download'])->name('document.download');

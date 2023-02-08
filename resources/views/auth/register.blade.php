@@ -22,7 +22,7 @@
                 <label for="companyName">Company Name<span class="required"> *</span></label>
                 <div class="position-relative d-flex align-items-center">
                     <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
-                    <input id="companyName" name="name" type="text" class="form-control pl-padding"
+                    <input id="companyName" name="name" type="text" value="{{ old('name') }}" class="form-control pl-padding"
                         placeholder="Enter Company Name">
                 </div>
                 @error('name')
@@ -34,7 +34,7 @@
                     <label for="companyEmail">Email<span class="required"> *</span></label>
                     <div class="position-relative d-flex align-items-center">
                         <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input id="companyEmail" type="email" name="email" class="form-control pl-padding"
+                        <input id="companyEmail" type="email" name="email" value="{{ old('email') }}" class="form-control pl-padding"
                             placeholder="Enter Your Email">
                     </div>
                     @error('email')
@@ -45,7 +45,7 @@
                     <label for="companyPhone">Phone<span class="required"> *</span></label>
                     <div class="position-relative d-flex align-items-center">
                         <span class="position-absolute fa fa-phone input-field-left-icon"></span>
-                        <input id="companyPhone" type="phone" name="phone" class="form-control pl-padding"
+                        <input id="companyPhone" type="phone" name="phone" value="{{ old('phone') }}" class="form-control pl-padding"
                             placeholder="Enter Phone Number">
                     </div>
                     @error('phone')

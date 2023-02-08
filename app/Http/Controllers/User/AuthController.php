@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPasswordUser;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Mail\ResetPasswordUser;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -34,6 +33,7 @@ class AuthController extends Controller
         $company->email = $request->email;
         $company->phone = $request->phone;
         $company->password = bcrypt($request->password);
+        $company->image = 'public/admin/assets/img/users/1675332882.jpg';
         $company->save();
         return redirect()->route('login')->with(['status' => true, 'message' => "Registered Successfully"]);
 
@@ -67,6 +67,11 @@ class AuthController extends Controller
 
     public function forgetPassword(Request $request)
     {
+        $request->validate([
+
+            'email' => 'required',
+        ]);
+
         $user = Company::where('email', $request->email)->first();
         $guard = 'company';
         if (!$user) {
@@ -77,8 +82,8 @@ class AuthController extends Controller
         if ($user) {
             $email = DB::table('password_resets')->where('email', $request->email)->first();
             if ($email) {
-                DB::table('password_resets')->where('email', $request->email)->delete();
-                return back()->with('message', 'An OTP has already been sent.');
+                $otp = random_int(100000, 999999);
+                DB::table('password_resets')->where('email', $request->email)->update(['otp' => $otp]);
             } else {
                 $token = Str::random(30);
                 $otp = random_int(100000, 999999);
@@ -89,13 +94,12 @@ class AuthController extends Controller
                     'created_at' => Carbon::now(),
                     'guard' => $guard,
                 ]);
-                $data['otp'] = $otp;
-                // dd($data);
-                Mail::to($request->email)->send(new ResetPasswordUser($data));
-                return redirect()->route('otp')->with(['status' => true, 'message' => 'An email with OTP has been sent successfully']);
             }
+            $data['otp'] = $otp;
+            Mail::to($request->email)->send(new ResetPasswordUser($data));
+            return redirect()->route('otp')->with(['status' => true, 'message' => 'We have emailed your forget  password otp!']);
         } else {
-            return back()->with('message', 'No account was found with this email address.');
+            return back()->with('message', "We can't find a user with that email address");
         }
     }
 
@@ -110,102 +114,38 @@ class AuthController extends Controller
 
         $otp = $digit1 . $digit2 . $digit3 . $digit4 . $digit5 . $digit6;
         $passwordReset = DB::table('password_resets')->where('otp', $otp)->first();
-        // DB::table('password_resets')->where('token', $request->token)->delete();
-        // dd($passwordReset);
+
         if ($passwordReset) {
-            if ($passwordReset->otp == $otp) {
-                $guard = $passwordReset->guard;
-                // dd($guard);
-                $user = null;
-                if ($guard == 'web') {
-                    $user = User::where('email', $passwordReset->email)->first();
-                } elseif ($guard == 'company') {
-                    $user = Company::where('email', $passwordReset->email)->first();
-                }
 
-                if ($user) {
+            $data['guard'] = $passwordReset->guard;
+            $data['email'] = $passwordReset->email;
 
-                    return redirect()->route('reset-password', ['id' => $user->id, 'token' => $request->token])->with(['user' => $user]);return redirect('reset-password')->with(['user' => $user, 'token' => $request->token]);
-                } else {
-                    return back()->with('message', 'User not found');
-                }
-            } else {
-                return back()->with('message', 'The OTP you entered is incorrect.');
-            }
+            return view('auth.reset-password', $data);
         } else {
-            return back()->with('message', 'Invalid token');
+            return back()->with('message', 'This forget password token is invalid');
         }
     }
-    public function resetPassword($id)
-{
-    // dd('ali');
-    // $data = User::find($id);
-    return view('auth.reset-password',compact('id'));
-    // $userId = $request->input('user');
-    // $token = $request->input('token');
-    // dd($token);
-    // $password = $request->input('password');
-    // $passwordConfirm = $request->input('confirmPassword');
 
-    // $validator = Validator::make($request->all(), [
-    //     'password' => 'required|min:6|confirmed',
-    //     'confirmPassword' => 'required|min:6|same:password',
-    // ]);
+    public function changePassword(Request $request)
+    {
+        $request->validate([
 
-    // if ($validator->fails()) {
-    //     return back()->withErrors($validator)->withInput();
-    // }
+            'password' => 'required',
+            'confirmPassword' => 'same:password',
+        ]);
 
-    // $passwordReset = DB::table('password_resets')->where('token', $token)->first();
-    // dd($passwordReset);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $passwordConfirm = $request->input('confirmPassword');
 
-    // if ($passwordReset) {
-    //     $guard = $passwordReset->guard;
-    //     if ($guard == 'web') {
-    //         $user = User::find($userId);
-    //     } else {
-    //         $user = Company::find($userId);
-    //     }
-
-    //     $user->password = Hash::make($password);
-    //     $user->save();
-
-    //     DB::table('password_resets')->where('token', $token)->delete();
-
-    //     return redirect('/login')->with('message', 'Password changed successfully.');
-    // } else {
-    //     return back()->with('message', 'Invalid token');
-    // }
-}
-public function changePassword(Request $request){
-    $request->validate([
-
-        'password' => 'required',
-        'confirmPassword' => 'same:password',
-    ]);
-    $userId = $request->input('id');
-    $password = $request->input('password');
-    $passwordConfirm = $request->input('confirmPassword');
-
-    $user = Company::where('id', $userId)->update(['password' => $password ]);
-
-        if (!$user) {
-            $user = User::where('id', $userId)->update(['password' => $passwordConfirm ]);
-
-        return redirect()->route('login')->with(['status' => true, 'message' => 'Password Changed Successfully']);
+        if ($request->guard == 'web') {
+            User::where('email', $email)->update(['password' => Hash::make($password)]);
+        } elseif ($request->guard == 'company') {
+            Company::where('email', $email)->update(['password' => Hash::make($password)]);
         }
-        else{
-            return redirect()->back()->with(['status' => false, 'message' => 'Password Changed Successfully']);
-        }
+        DB::table('password_resets')->where('email', $email)->delete();
 
-
-}
-
-
-
-
-
+        return redirect()->route('login')->with(['status' => true, 'message' => 'Password updated successfully']);
+    }
 
 }
-
-

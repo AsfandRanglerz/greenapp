@@ -98,7 +98,7 @@ class EmployeeDocumentController extends Controller
         }
         $document->save();
     }
-    return redirect()->route('employee.show', ['employee' => $request->employee_id])->with('message', 'Added Successfully');
+    return redirect()->route('employee.show', ['employee' => $request->employee_id])->with('message', 'Created Successfully');
 }
 
 
@@ -147,7 +147,7 @@ class EmployeeDocumentController extends Controller
     public function destroy($id)
     {
         UserDocument::destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
     }
 
     public function download($id)

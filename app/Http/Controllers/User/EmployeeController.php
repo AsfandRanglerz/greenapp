@@ -198,6 +198,6 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Deleted Successfully']);
     }
 }

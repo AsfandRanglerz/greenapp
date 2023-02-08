@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_name[]" class="form-control">
+                        <select id="selectDocument" name="doc_name[]" value="{{ old('doc_name[]') }}" class="form-control">
                             <option value=""></option>
                             <option value="Passport">Passport</option>
                             <option value="Identity Card">Identity Card</option>
@@ -34,7 +34,7 @@
                     <div class="form-group col-md-6">
                         <label>Select File<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="file" class="form-control" name="file[]" style="line-height: 1" required>
+                            <input type="file" class="form-control" name="file[]"  value="{{ old('file[]') }}" style="line-height: 1" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                             </div>

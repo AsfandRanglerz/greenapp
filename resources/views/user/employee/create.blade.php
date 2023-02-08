@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
-                        <input id="userName" type="text" name="name" class="form-control"
+                        <input id="userName" type="text" name="name" value="{{old('name')}}" class="form-control"
                             placeholder="Enter Employee Name">
                         @error('name')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -27,7 +27,7 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="text"  name="dob" placeholder="dd.mm.yyyy"
+                            <input type="text"  name="dob" value="{{old('dob')}}" placeholder="dd.mm.yyyy"
                                 class="form-control datepicker date-of-birth">
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" class="form-control">
+                        <select id="selectCountry" name="nationality" value="{{old('nationality')}}"class="form-control">
                             <option disabled selected>Please Select a Country</option>
                             <option value="Pakistan">Pakistan</option>
                             <option value="Iran">Iran</option>
@@ -53,14 +53,14 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" placeholder="Enter Religion">
+                        <input type="text" class="form-control" name="religion" value="{{old('religion')}}" placeholder="Enter Religion">
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userPhone">Phone Number<span class="required"> *</span></label>
-                        <input id="userPhone" type="number" name="phone" class="form-control"
+                        <input id="userPhone" type="number" name="phone" value="{{old('phone')}}" class="form-control"
                             placeholder="Enter Phone Number">
                         @error('phone')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userEmail">Email<span class="required"> *</span></label>
-                        <input id="userEmail" type="email" name="email" class="form-control"
+                        <input id="userEmail" type="email" name="email" value="{{old('email')}}" class="form-control"
                             placeholder="Enter Your Email">
                         @error('email')
                             <div class="text-danger p-2">{{ $message }}</div>

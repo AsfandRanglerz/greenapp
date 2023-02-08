@@ -18,7 +18,7 @@
 
                     <div class="form-group col-md-6">
                         <label>Select Document Type<span class="required"> *</span></label>
-                        <select id="selectDocument" name="doc_type[]" class="form-control" required>
+                        <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}" class="form-control" required>
                             <option value=""></option>
                             <option value="Passport">Passport</option>
                             <option value="Identity Card">Identity Card</option>
@@ -35,7 +35,7 @@
                     <div class="form-group col-md-6">
                         <label>Select File<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="file" class="form-control" name="file[]" style="line-height: 1" required>
+                            <input type="file" class="form-control" name="file[]" value="{{ old('file[]') }}" style="line-height: 1" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                             </div>
@@ -48,7 +48,7 @@
                         <label>Issue Date<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="issue_date[]" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker issue-date" required>
+                            value="{{ old('issue_date[]') }}" class="form-control datepicker issue-date" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -61,7 +61,7 @@
                         <label>Expiry Date<span class="required"> *</span></label>
                         <div class="input-group">
                             <input type="text" name="expiry_date[]" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker expire-date" required>
+                            value="{{ old('expiry_date[]') }}" class="form-control datepicker expire-date" required>
                             <div class="input-group-prepend">
                                 <small class="input-group-text"><span class="fa fa-calendar"></span></small>
                             </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="form-group w-100">
                         <label>Comments</label>
-                        <textarea type="text" name="comment[]" placeholder="Enter Your Comments ..." class="form-control" rows="5"></textarea>
+                        <textarea type="text" name="comment[]" placeholder="Enter Your Comments ..."  value="{{ old('comment[]') }}" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>

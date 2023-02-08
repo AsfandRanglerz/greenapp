@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
 </head>
 <body>
     @include('user.common.sidebar')
@@ -26,6 +27,7 @@
         </div>
     </div>
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('public/user/plugins/DataTables/datatables.js') }}"></script>
     <script src="{{ asset('public/user/js/popper.min.js') }}"></script>
     <script src="{{ asset('public/user/js/bootstrap-4.5.3.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
