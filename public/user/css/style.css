@@ -63,6 +63,11 @@ body .pl-padding {
     border-radius: 50%;
 }
 /*OTP*/
+.form-btn {
+    background: none;
+    border: none;
+    outline: none;
+}
 @media (max-width: 575px) {
     .auth-form #authForm {
         padding: 16px;

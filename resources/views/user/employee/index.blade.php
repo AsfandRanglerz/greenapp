@@ -43,10 +43,10 @@
                                     </td>
                                 <td class="text-center">
                                     <a href="{{ route('employee.edit', $employee->id) }}" class="mx-2"><span class="fa fa-edit text-info"></span></a>
-                                    <form method="post" action="{{ route('employee.destroy', $employee->id) }}">
+                                    <form class="d-inline" method="post" action="{{ route('employee.destroy', $employee->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="border" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></button>
+                                        <button class="form-btn" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></button>
                                     </form>
                                 </td>
                             </tr>
