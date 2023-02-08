@@ -94,7 +94,7 @@ class CompanyProfileController extends Controller
             'mohre_no' => $request->mohre_no,
         ] + ['image' => $image]);
 
-        return redirect()->route('companyProfile.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+        return redirect()->route('companyProfile.index')->with('success' , 'Updated Successfully');
     }
 
     /**
@@ -124,13 +124,13 @@ class CompanyProfileController extends Controller
             // dd('ali');
             return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
         } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
-            return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
+            return redirect()->back()->with->with('error' , "New Password cannot be same as your current password.");
         } else {
             $user = Company::find($auth->id);
             $user->password = Hash::make($request->newPassword);
             // dd($user->password);
             $user->save();
-            return back()->with(['status' => true, 'message' => 'Password Updated Successfully']);
+            return back()->with->with('success' , 'Password Updated Successfully');
         }
     }
 }

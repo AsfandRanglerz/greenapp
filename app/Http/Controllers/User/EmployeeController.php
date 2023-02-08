@@ -42,32 +42,6 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     if ($request->hasfile('image')) {
-    //         $file = $request->file('image');
-    //         $extension = $file->getClientOriginalExtension(); // getting image extension
-    //         $filename = time() . '.' . $extension;
-    //         $file->move(public_path('admin/assets/img/users/'), $filename);
-    //         $image = 'public/admin/assets/img/users/' . $filename;
-    //     }else{
-    //         $image = 'public/admin/assets/img/users/fdkdh.png';
-    //     }
-
-    //     User::create([
-    //         'name' => $request->name,
-    //         'phone' => $request->phone,
-    //         'email' => $request->email,
-    //         'password' => Hash::make(12345678),
-    //         'dob' => $request->dob,
-    //         // dd($request->dob),
-    //         'nationality' => $request->nationality,
-    //         'religion' => $request->religion,
-    //         'company_id' => Auth::guard('company')->id(),
-    //     ] + ['image' => $image]);
-
-    //     return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Created Successfully']);
-    // }
     public function store(Request $request)
     {
         $validator = $request->validate([
@@ -112,10 +86,10 @@ class EmployeeController extends Controller
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
             return redirect()->route('employee.index')
-                ->with(['status' => true, 'message' => 'Created Successfully']);
+            ->with('success' , 'Created Successfully');
         } catch (\Throwable $th) {
             return back()
-                ->with(['status' => false, 'message' => $th->getMessage()]);
+                ->with(['status' => false, 'error' => $th->getMessage()]);
         }
     }
 
@@ -186,7 +160,7 @@ class EmployeeController extends Controller
             'company_id' => Auth::guard('company')->id(),
         ] + ['image' => $image]);
 
-        return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+        return redirect()->route('employee.index')->with('success' , 'Updated Successfully');
     }
 
     /**
@@ -198,6 +172,6 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->route('employee.index')->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->route('employee.index')->with('success' , 'Deleted Successfully');
     }
 }

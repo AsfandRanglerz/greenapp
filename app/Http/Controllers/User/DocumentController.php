@@ -39,29 +39,7 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
 
-    //     if ($request->hasfile('file')) {
-    //         $file = $request->file('file');
-    //         $extension = $file->getClientOriginalExtension(); // getting file extension
-    //         $filename = time() . '.' . $extension;
-    //         $file->move(public_path('admin/assets/img/users/'), $filename);
-    //         $file = 'public/admin/assets/img/users/' . $filename;
-    //     } else {
-    //         $file = 'public/admin/assets/img/users/fdkdh.png';
-    //     }
-
-    //     UserDocument::create([
-    //         'user_id' => Auth::guard('web')->id(),
-    //         'doc_type' => $request->doc_type,
-    //         'issue_date' => $request->issue_date,
-    //         'expiry_date' => $request->expiry_date,
-    //         'comment' => $request->comment,
-    //     ] + ['file' => $file]);
-
-    //     return redirect()->route('document.index');
-    // }
     public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -96,7 +74,7 @@ class DocumentController extends Controller
         }
         $document->save();
     }
-    return redirect()->route('document.index')->with('message', 'Added Successfully');
+    return redirect()->route('document.index')->with('success' , 'Added Successfully');
 }
 
 

@@ -39,25 +39,6 @@ class CompanyDocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     if ($request->hasfile('file')) {
-    //         $file = $request->file('file');
-    //         $extension = $file->getClientOriginalExtension(); // getting file extension
-    //         $filename = time() . '.' . $extension;
-    //         $file->move(public_path('admin/assets/img/users/'), $filename);
-    //         $file = 'public/admin/assets/img/users/' . $filename;
-    //     }
-
-    //     CompanyDocument::create([
-    //         'company_id' => Auth::guard('company')->id(),
-    //         // dd(Auth::guard('company')->id()),
-    //         'doc_name' => $request->doc_name,
-    //     ] + ['file' => $file]);
-
-    //     // \Session::put('message','success');
-    //     return redirect()->route('companyDocument.index')->with('success','Created Successfully');
-    // }
     public function store(Request $request)
 {
     // dd('ali');
@@ -90,7 +71,7 @@ class CompanyDocumentController extends Controller
         $document->save();
     }
 
-    return redirect()->route('companyDocument.index')->with('message', 'Created Successfully');
+    return redirect()->route('companyDocument.index')->with('success' , 'Created Successfully');
 }
 
 
@@ -137,7 +118,7 @@ class CompanyDocumentController extends Controller
     public function destroy($id)
     {
         CompanyDocument::destroy($id);
-        return redirect()->route('companyDocument.index')->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->route('companyDocument.index')->with('success' , 'Deleted Successfully');
     }
 
     public function download($id)

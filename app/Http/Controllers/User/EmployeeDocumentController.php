@@ -39,30 +39,7 @@ class EmployeeDocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
 
-    //     if ($request->hasfile('file')) {
-    //         $file = $request->file('file');
-    //         $extension = $file->getClientOriginalExtension(); // getting file extension
-    //         $filename = time() . '.' . $extension;
-    //         $file->move(public_path('admin/assets/img/users/'), $filename);
-    //         $file = 'public/admin/assets/img/users/' . $filename;
-    //     } else {
-    //         $file = 'public/admin/assets/img/users/fdkdh.png';
-    //     }
-
-    //     UserDocument::create([
-    //         'user_id' => $request->employee_id,
-    //         // dd($request->employee_id),
-    //         'doc_type' => $request->doc_type,
-    //         'issue_date' => $request->issue_date,
-    //         'expiry_date' => $request->expiry_date,
-    //         'comment' => $request->comment,
-    //     ] + ['file' => $file]);
-
-    //     return redirect()->route('employee.show',['employee'=>$request->employee_id]);
-    // }
     public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -98,7 +75,7 @@ class EmployeeDocumentController extends Controller
         }
         $document->save();
     }
-    return redirect()->route('employee.show', ['employee' => $request->employee_id])->with('message', 'Created Successfully');
+    return redirect()->route('employee.show', ['employee' => $request->employee_id])->with('success' , 'Created Successfully');
 }
 
 
@@ -147,7 +124,7 @@ class EmployeeDocumentController extends Controller
     public function destroy($id)
     {
         UserDocument::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with('success' , 'Deleted Successfully');
     }
 
     public function download($id)

@@ -92,9 +92,13 @@
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
     @section('script')
-    @if (\Illuminate\Support\Facades\Session::has('message'))
-        <script>
-            toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
-        </script>
-    @endif
+    <script>
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
+
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+    </script>
 @endsection

@@ -35,7 +35,7 @@ class AuthController extends Controller
         $company->password = bcrypt($request->password);
         $company->image = 'public/admin/assets/img/users/1675332882.jpg';
         $company->save();
-        return redirect()->route('login')->with(['status' => true, 'message' => "Registered Successfully"]);
+        return redirect()->route('login')->with('success' , "Registered Successfully");
 
     }
 
@@ -47,12 +47,12 @@ class AuthController extends Controller
         ]);
         // dd(Auth());
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home')->with(['status' => true, 'message' => "You've Login Successfully"]);
+            return redirect()->route('home')->with('success' , "You've Login Successfully");
         }
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home')->with(['status' => true, 'message' => "You've Login Successfully"]);
+            return redirect()->route('home')->with('success' , "You've Login Successfully");
         }
-        return redirect()->back()->with(['status' => false, 'message' => "Your Email Or Password Invalid!"]);
+        return redirect()->back()->with('error' , "Your Email Or Password Invalid!");
     }
 
     public function logout()
@@ -97,9 +97,9 @@ class AuthController extends Controller
             }
             $data['otp'] = $otp;
             Mail::to($request->email)->send(new ResetPasswordUser($data));
-            return redirect()->route('otp')->with(['status' => true, 'message' => 'We have emailed your forget  password otp!']);
+            return redirect()->route('otp')->with( 'success' , 'We have emailed your forget  password otp!');
         } else {
-            return back()->with('message', "We can't find a user with that email address");
+            return back()->with('error', "We can't find a user with that email address");
         }
     }
 
@@ -122,7 +122,7 @@ class AuthController extends Controller
 
             return view('auth.reset-password', $data);
         } else {
-            return back()->with('message', 'This forget password token is invalid');
+            return back()->with('error', 'This forget password token is invalid');
         }
     }
 
@@ -145,7 +145,7 @@ class AuthController extends Controller
         }
         DB::table('password_resets')->where('email', $email)->delete();
 
-        return redirect()->route('login')->with(['status' => true, 'message' => 'Password updated successfully']);
+        return redirect()->route('login')->with('success' , 'Password updated successfully');
     }
 
 }

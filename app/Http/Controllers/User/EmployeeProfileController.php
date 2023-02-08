@@ -102,7 +102,7 @@ class EmployeeProfileController extends Controller
         'image' => $image
     ]);
 
-    return redirect()->route('EmployeeProfile.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+    return redirect()->route('EmployeeProfile.index')->with('success' , 'Updated Successfully');
 }
 
 
@@ -134,13 +134,13 @@ class EmployeeProfileController extends Controller
         if (!Hash::check($request->oldPassword, $auth->password)) {
             return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
         } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
-            return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
+            return redirect()->back()->with('error' , "New Password cannot be same as your current password.");
         } else {
             $user = User::find($auth->id);
             $user->password = Hash::make($request->newPassword);
             //  dd($user->password);
             $user->save();
-            return back()->with(['status' => true, 'message' => 'Password Updated Successfully']);
+            return back()->with('success' , 'Password Updated Successfully');
         }
     }
 }
