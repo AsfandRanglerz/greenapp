@@ -65,8 +65,13 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Nationality<span class="required"> *</span></label>
-                                                <input type="text" name="nationality" value="{{ old('nationality') }}"
-                                                    id="Nationality" class="form-control" placeholder="Nationality">
+
+                                                    <select name="nationality" id="nationality" class="form-control">
+                                                        <option value=""></option>
+                                                        @foreach($countries as $country)
+                                                        <option value="{{$country->name}}">{{$country->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 @error('nationality')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -143,6 +148,9 @@
     $(function() {
         $('#company_id').select2({
             placeholder: 'Select Company'
+        });
+        $('#nationality').select2({
+            placeholder: 'Select Country'
         });
     });
 </script>

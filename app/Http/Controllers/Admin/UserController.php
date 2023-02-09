@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Company;
+use App\Models\country;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +38,8 @@ class UserController extends Controller
     {
         //$data['company_id'] = $id;
         $data = Company::select('id', 'name')->get();
-        return view('admin.user.add', compact(['data']));
+        $countries = Country::all();
+        return view('admin.user.add', compact('data','countries'));
     }
 
     /**
@@ -65,6 +67,7 @@ class UserController extends Controller
             'company_id.required' => 'The company field is required.',
         ]);
         $data = $request->only(['name', 'email','phone','dob','nationality','religion','company_id']);
+
         $password = random_int(10000000, 99999999);
         if($request->hasfile('image')){
             $file = $request->file('image');
@@ -84,7 +87,7 @@ class UserController extends Controller
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
-            return redirect()->route('user.index')->with(['success','Created Successfully']);
+            return redirect()->route('user.index')->with('success','Created Successfully');
         } catch (\Throwable $th) {
             dd($th->getMessage());
             return back()
@@ -114,6 +117,7 @@ class UserController extends Controller
         // dd($data['company']);
         $data = User::with('usercompany')->find($id);
         $data['usercompany'] = Company::select('id', 'name')->get();
+        $data['countries'] = Country::all();
        // $data['company_id'] = $id;
         // dd($data);
         return view('admin.user.edit', compact(['data']));
@@ -157,7 +161,7 @@ class UserController extends Controller
         $user->image='public/admin/assets/img/users/' . $filename;
         }
         $user->update();
-        return redirect()->route('user.index')->with(['success','Updated Successfully']);
+        return redirect()->route('user.index')->with('success','Updated Successfully');
     }
 
 
@@ -170,6 +174,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->back()->with(['success','Deleted Successfully']);
+        return redirect()->back()->with('success','Deleted Successfully');
     }
 }

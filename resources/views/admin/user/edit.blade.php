@@ -68,7 +68,13 @@
                                                 <label>Nationality<span class="required"> *</span></label>
                                                 <input type="text" name="nationality" value="{{$data['nationality']}}"
                                                     id="Nationality" class="form-control" placeholder="Nationality">
-                                                @error('nationality')
+                                                    <select name="nationality" id="nationality" class="form-control">
+                                                        <option value=""></option>
+                                                        @foreach($data['countries'] as $company)
+                                                        <option value="{{ $company->id }}" {{ $data['company_id'] == $company->id ? 'selected' : ''}}>{{ $company->name }}</option>
+                                                     @endforeach
+                                                    </select>
+                                                    @error('nationality')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
