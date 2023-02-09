@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/app.min.css') }}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/admin/assets/bundles/jquery-selectric/selectric.css') }}">
 
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/components.css') }}">
     <!-- Custom style CSS -->
@@ -43,7 +42,6 @@
 <!-- Template JS File -->
 <script src="{{ asset('public/admin/assets/js/scripts.js')}}"></script>
 <!-- Custom JS File -->
-<script src="{{ asset('public/admin/assets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
 <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('public/admin/assets/js/custom.js')}}"></script>

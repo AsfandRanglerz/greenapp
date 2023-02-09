@@ -25,13 +25,13 @@
                                         <div class="row mx-0 px-4">
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Document Type</label>
+                                                    <label>Document Type<span class="required"> *</span></label>
                                                     {{-- <input type="text" placeholder="document name" name="doc_type[]"
                                                         id="doc_type" value="{{ old('doc_type[]') }}" class="form-control"> --}}
                                                     <select class="form-control category" name="doc_type[]"
                                                         value="{{ old('doc_type[]') }}" required>
 
-                                                        <option selected disabled>Please Select a Document</option>
+                                                        <option value="" selected disabled>Select Document</option>
                                                         <option value="Passport">Passport</option>
                                                         <option value="Identitiy Card">Identitiy Card</option>
                                                         <option value="Visa">Visa</option>
@@ -47,7 +47,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Choose File</label>
+                                                    <label>Select File<span class="required"> *</span></label>
                                                     <input type="file" name="file[]" id="file"
                                                         value="{{ old('file[]') }}" class="form-control" required>
                                                     @error('file.*')
@@ -59,7 +59,7 @@
                                         <div class="row mx-0 px-4">
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Issue Date</label>
+                                                    <label>Issue Date<span class="required"> *</span></label>
                                                     <input type="date" name="issue_date[]"
                                                         value="{{ old('issue_date[]') }}" id="issue_date"
                                                         class="form-control" placeholder="Issue Date">
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Expiry Date</label>
+                                                    <label>Expiry Date<span class="required"> *</span></label>
                                                     <input type="date" name="expiry_date[]"
                                                         value="{{ old('expiry_date[]') }}" id="expiry_date"
                                                         class="form-control" placeholder="Expiry Date">
@@ -83,8 +83,8 @@
                                         <div class="row mx-0 px-4">
                                             <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
-                                                    <label>Comment</label>
-                                                    <textarea name="comment[]" id="comment" value="{{ old('comment[]') }}" class="form-control"></textarea>
+                                                    <label>Comments</label>
+                                                    <textarea name="comment[]" placeholder="Enter Your Comments ..." id="comment" value="{{ old('comment[]') }}" class="form-control"></textarea>
                                                     @error('comment')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror

@@ -18,8 +18,8 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Company Name</label>
-                                                <input type="text" placeholder="Name" name="name" id="name"
+                                                <label>Company Name<span class="required"> *</span></label>
+                                                <input type="text" placeholder="Company Name" name="name" id="name"
                                                     value="{{ $company['name'] }}" class="form-control">
                                                 @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -27,31 +27,29 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
-                                            <div class="form-group mb-3">
-                                                <label>Email</label>
-                                                <input type="email" placeholder="Email" name="email" id="email"
+                                            <div class="form-group mb-2">
+                                                <label>Email<span class="required"> *</span></label>
+                                                <input type="email" placeholder="Enter Your Email" name="email" id="email"
                                                     value="{{ $company['email'] }}" class="form-control"readonly />
+                                                @error('email')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('email')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
-
-
                                     </div>
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Phone</label>
+                                                <label>Phone Number<span class="required"> *</span></label>
                                                 <input type="tel" name="phone" id="phone"
                                                     value="{{ $company['phone'] }}" class="form-control"
-                                                    placeholder="92 XXXXXXXXXX (Mobile Number)">
+                                                    placeholder="Enter Phone Number">
                                                 @error('phone')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Trade License No</label>
                                                 <input type="number" name="license_no" id="license_no" class="form-control"
@@ -74,7 +72,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>MOHRE Company Code</label>
                                                 <input type="number" name="mohre_no" id="mohre_no"

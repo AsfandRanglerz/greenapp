@@ -13,7 +13,7 @@
                     <div
                         class="form-group d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         <h6><span class="fa fa-book"></span> - Company Documents</h6>
-                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add Document</a>
+                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add More</a>
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">

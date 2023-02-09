@@ -19,11 +19,11 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Document Type</label>
-                                                <select class="form-control selectric category" name="doc_type[]"
+                                                <label>Document Type<span class="required"> *</span></label>
+                                                <select class="form-control category" name="doc_type[]"
                                                     value="{{ $data['doc_type'] }}" required>
 
-                                                    <option selected disabled>Please Select a document</option>
+                                                    <option value="" selected disabled>Select Document</option>
                                                     <option value="Passport"
                                                         {{ $data['doc_type'] == 'Passport' ? 'selected' : '' }}>Passport
                                                     </option>
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Choose File</label>
+                                                <label>Select File<span class="required"> *</span></label>
                                                 <input type="file" name="file" value="{{ $data['file'] }}"
                                                     class="form-control">
                                                 @error('file')
@@ -64,7 +64,7 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Issue Date</label>
+                                                <label>Issue Date<span class="required"> *</span></label>
                                                 <input type="date" name="issue_date" value="{{ $data['issue_date'] }}"
                                                     id="issue_date" class="form-control" placeholder="Issue Date">
                                                 @error('issue_date')
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Expiry Date</label>
+                                                <label>Expiry Date<span class="required"> *</span></label>
                                                 <input type="date" name="expiry_date" value="{{ $data['expiry_date'] }}"
                                                     id="expiry_date" class="form-control" placeholder="Expiry Date">
                                                 @error('expiry_date')
@@ -87,9 +87,8 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Comment</label>
-                                                <textarea name="comment" id="comment" value="{{ $data['comment'] }}" class="form-control">
-                                                        </textarea>
+                                                <label>Comments</label>
+                                                <textarea placeholder="Enter Your Comments ..." name="comment" id="comment" value="{{ $data['comment'] }}" class="form-control"></textarea>
                                                 @error('comment')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

@@ -13,7 +13,7 @@
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         <h6><span class="fa fa-book"></span> - Employee Documents</h6>
-                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add Document</a>
+                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add More</a>
                     </div>
                     <input type="hidden" name="employee_id" value="{{ $empId }}">
                     <div class="form-row position-relative doc-fields" id="docField1">

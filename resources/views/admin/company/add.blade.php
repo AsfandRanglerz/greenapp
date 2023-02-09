@@ -41,7 +41,7 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Phone<span class="required"> *</span></label>
+                                                <label>Phone Number<span class="required"> *</span></label>
                                                 <input type="tel" name="phone" id="phone"
                                                     value="{{ old('phone') }}" class="form-control"
                                                     placeholder="Enter Phone Number">

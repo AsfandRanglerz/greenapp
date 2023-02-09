@@ -19,7 +19,7 @@
                             </ul>
                             <div class="tab-content tab-bordered" id="myTab3Content">
                                 <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="home-tab2">
-                                    <div class="row">
+                                    <div class="row mx-0 pt-3">
                                         <div class="col-md-3 col-6 b-r">
                                             <strong>Full Name</strong>
                                             <br>
@@ -51,7 +51,7 @@
                                             <div class="row">
                                                 <div class="form-group col-md-6 col-12">
                                                     <label>Name</label>
-                                                    <input type="text" name="name" value="{{$data->name}}" class="form-control" >
+                                                    <input type="text" name="name" placeholder="Name" value="{{$data->name}}" class="form-control" >
                                                     @error('name')
                                                     <div class="text-danger">
                                                         Please fill in the  Name
@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6 col-12">
                                                     <label>Email</label>
-                                                    <input type="email" name="email" value="{{$data->email}}" class="form-control">
+                                                    <input type="email" name="email" placeholder="Enter Your Name" value="{{$data->email}}" class="form-control">
                                                     @error('email')
                                                     <div class="text-danger">
                                                         Please fill in the email
@@ -69,7 +69,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-md-7 col-12">
+                                                <div class="form-group col-md-6">
                                                     <label>Profile Image</label>
                                                     <div class="custom-file">
                                                         <input type="file" name="image" class="custom-file-input" id="customFile">
@@ -80,9 +80,9 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-md-5 col-12">
+                                                <div class="form-group col-md-6">
                                                     <label>Phone</label>
-                                                    <input type="tel" name="phone" value="{{$data->phone}}"  class="form-control" value="">
+                                                    <input type="tel" name="phone" value="{{$data->phone}}"  class="form-control" value="" placeholder="Enter Phone Number">
                                                     @error('phone')
                                                     <div class="text-danger">
                                                         Please fill in the email
@@ -92,7 +92,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            <button type="submit" class="btn btn-success">Save Changes</button>
                                         </div>
                                     </form>
                                     <form method="post" action="{{ route('profile.change-password',[$data->id,$data->slug]) }}" enctype="multipart/form-data">
@@ -101,7 +101,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-6 col-12">
                                                 <label>Old Password</label>
-                                                <input type="password" placeholder="old password" name="current_password" id="current_password" value="" class="form-control" >
+                                                <input type="password" placeholder="Old Password" name="current_password" id="current_password" value="" class="form-control" >
                                                 {{-- @error('current_password')
                                                 <div class="text-danger">
                                                     The old password is incorrect
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="form-group col-md-6 col-12">
                                                 <label>New Password</label>
-                                                <input type="password" name="new_password" placeholder="new password" id="new_password" value="" class="form-control">
+                                                <input type="password" name="new_password" placeholder="New Password" id="new_password" value="" class="form-control">
                                                 @error('new_password')
                                                 <div class="text-danger">
                                                     Please fill the new password
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-4 justify-content-center">
-                                        <button type="submit"  class="btn btn-primary">Update Password</button>
+                                        <button type="submit"  class="btn btn-success">Update Password</button>
                                     </div>
                                 </div>
                             </form>
