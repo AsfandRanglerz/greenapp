@@ -46,7 +46,7 @@ class AdminController extends Controller
             $data['image'] = 'public/admin/assets/img/' . $filename;
         }
         Admin::find(Auth::guard('admin')->id())->update($data);
-        return back()->with('success', 'Profile Updated Successfully');
+        return back()->with('success', 'Updated Successfully');
     }
     public function forgetPassword(){
         return view('admin.auth.forgetPassword');

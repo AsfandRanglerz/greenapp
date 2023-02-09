@@ -110,7 +110,7 @@ class AuthController extends Controller
             }
             $data['otp'] = $otp;
             Mail::to($request->email)->send(new ResetPasswordUser($data));
-            return redirect()->route('otp')->with('success', 'We have emailed your forget  password otp!');
+            return redirect()->route('otp')->with('success', 'We have sended you an OTP on email to retrieve your password');
         } else {
             return back()->with('error', "We can't find a user with that email address");
         }
@@ -152,7 +152,7 @@ class AuthController extends Controller
         }
         DB::table('password_resets')->where('email', $email)->delete();
 
-        return redirect()->route('login')->with('success', 'Updated successfully');
+        return redirect()->route('login')->with('success', 'Updated Successfully');
     }
 
 }
