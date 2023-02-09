@@ -44,7 +44,7 @@ class FaqController extends Controller
             ]);
             $data = $request->only(['question', 'answer']);
             $user = Faq::create($data);
-            return redirect()->route('faq.index')->with(['status' => true, 'message' => 'Created Successfully']);
+            return redirect()->route('faq.index')->with(['success' , 'Created Successfully']);
         }
     }
 
@@ -91,7 +91,7 @@ class FaqController extends Controller
         $data->question = $request->input('question');
         $data->answer = $request->input('answer');
         $data->update();
-        return redirect()->route('faq.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+        return redirect()->route('faq.index')->with(['success', 'Updated Successfully']);
     }
 
     /**
@@ -103,6 +103,6 @@ class FaqController extends Controller
     public function destroy($id)
     {
         Faq::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with(['success', 'Deleted Successfully']);
     }
 }

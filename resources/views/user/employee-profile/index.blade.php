@@ -97,6 +97,13 @@
 </script>
     <script type="text/javascript">
         $(function() {
+            $('.datepicker').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            });
+            $('.date-of-birth + .input-group-prepend').click(function() {
+                $(".date-of-birth").focus();
+            });
             /*Avatar upload*/
             var readURL = function(input) {
                 if (input.files && input.files[0]) {

@@ -76,9 +76,9 @@ class TermConditionController extends Controller
          // dd($request->time);
          $data = TermCondition::find($id);
          $data->description = $request->input('description');
-        
+
          $data->update();
-         return redirect()->route('term-condition.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+         return redirect()->route('term-condition.index')->with(['success','Updated Successfully']);
     }
 
     /**

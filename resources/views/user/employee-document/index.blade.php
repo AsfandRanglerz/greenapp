@@ -17,6 +17,7 @@
                             <th scope="col">Type</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
+                            <th scope="col">Comment</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -52,6 +53,7 @@
 
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
+                                <td>{{ $document->comment }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('employeeDocument.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>

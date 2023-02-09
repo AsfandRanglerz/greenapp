@@ -29,11 +29,11 @@
                                                 <textarea name="answer" id="task-textarea1" class="form-control">
                                                 </textarea>
                                             </div>
-                                           
+
                                         </div>
 
                                     </div>
-                                    
+
                                 <div class="card-footer text-center row">
                                     <div class="col">
                                         <button type="submit" class="btn btn-success mr-1 btn-bg"
@@ -51,11 +51,15 @@
 @endsection
 
 @section('js')
-    @if (\Illuminate\Support\Facades\Session::has('message'))
-        <script>
-            toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
-        </script>
+<script>
+    @if (\Illuminate\Support\Facades\Session::has('success'))
+        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
     @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('error'))
+        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+    @endif
+</script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
     <script>

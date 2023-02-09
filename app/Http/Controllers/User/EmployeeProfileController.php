@@ -98,7 +98,7 @@ class EmployeeProfileController extends Controller
         'dob' => $request->dob,
         'nationality' => $request->nationality,
         'religion' => $request->religion,
-        'number' => $request->number,
+        'phone' => $request->phone,
         'image' => $image
     ]);
 
@@ -132,7 +132,7 @@ class EmployeeProfileController extends Controller
         $auth = Auth::guard('web')->user();
         // dd($auth->password);
         if (!Hash::check($request->oldPassword, $auth->password)) {
-            return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
+            return back()->with( 'error',"Current Password is Invalid");
         } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
             return redirect()->back()->with('error' , "New Password cannot be same as your current password.");
         } else {

@@ -46,7 +46,7 @@ class AdminController extends Controller
             $data['image'] = 'public/admin/assets/img/' . $filename;
         }
         Admin::find(Auth::guard('admin')->id())->update($data);
-        return back()->with(['status'=>true, 'message' => 'Profile Updated Successfully']);
+        return back()->with('success', 'Profile Updated Successfully');
     }
     public function forgetPassword(){
         return view('admin.auth.forgetPassword');
@@ -57,7 +57,7 @@ class AdminController extends Controller
         ]);
         $exists = DB::table('password_resets')->where('email',$request->email)->first();
         if ($exists){
-            return back()->with('message','Reset Password link has been already sent');
+            return back()->with('error','Reset Password link has been already sent');
         }else{
             $token = Str::random(30);
             DB::table('password_resets')->insert([
@@ -67,7 +67,7 @@ class AdminController extends Controller
 
             $data['url'] = url('change_password',$token);
             Mail::to($request->email)->send(new ResetPasswordMail($data));
-            return back()->with('message','Reset Password Link Send Successfully');
+            return back()->with('success','Reset Password Link Send Successfully');
         }
     }
     public function change_password($id)
@@ -92,7 +92,7 @@ class AdminController extends Controller
        if ($request->password !=$request->confirmed)
        {
 
-           return back()->with(['error_message' => 'Password not matched']);
+           return back()->with(['error' => 'Password not matched']);
        }
         $password=bcrypt($request->password);
         $tags_data = [
@@ -118,14 +118,14 @@ class AdminController extends Controller
         ]);
         $auth = Auth::guard('admin')->user();
         if (!Hash::check($request->current_password, $auth->password)) {
-            return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
+            return back()->with(['error', "Current Password is Invalid"]);
         } else if (strcmp($request->current_password, $request->new_password) == 0) {
-            return redirect()->back()->with(['status' => false, 'message' => "New Password cannot be same as your current password."]);
+            return redirect()->back()->with(['error',"New Password cannot be same as your current password."]);
         } else {
             $user =  Admin::find($auth->id);
             $user->password =  Hash::make($request->new_password);
             $user->save();
-            return back()->with(['status' => true, 'message' => 'Password Updated Successfully']);
+            return back()->with(['success','Password Updated Successfully']);
         }
     }
 

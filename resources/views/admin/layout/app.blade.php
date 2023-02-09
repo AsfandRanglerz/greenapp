@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/components.css') }}">
     <!-- Custom style CSS -->
+    <link rel="stylesheet" href="{{ asset('public/user/plugins/select2/css/select2.min.css') }}">
+
 
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/custom.css') }}">
@@ -42,6 +44,7 @@
 <script src="{{ asset('public/admin/assets/js/scripts.js')}}"></script>
 <!-- Custom JS File -->
 <script src="{{ asset('public/admin/assets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('public/admin/assets/js/custom.js')}}"></script>
 <script src="{{asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>

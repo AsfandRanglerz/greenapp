@@ -2,7 +2,7 @@
 @section('content')
     <div class="mb-5 admin-main-content-inner">
         <h4>Employee Dashboard</h4>
-        <p><span class="fa fa-user"></span> - Employee Details - <b>John Doe</b></p>
+        <p><span class="fa fa-user"></span> - Employee Details </p>
         <div class="text-right">
             <a href="{{ route('document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
                 Document</a>
@@ -17,6 +17,7 @@
                             <th scope="col">Type</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
+                            <th scope="col">Comment</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -51,6 +52,7 @@
                                 <td>{{ $document->doc_type }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
+                                <td>{{ $document->comment}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('document.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>
@@ -99,5 +101,5 @@
             /*datatable search*/
         });
     </script>
-   
+
 @endsection
