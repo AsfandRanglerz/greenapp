@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ResetPasswordUser;
+use App\Mail\CompanyRegistered;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,7 +36,19 @@ class AuthController extends Controller
         $company->password = bcrypt($request->password);
         $company->image = 'public/admin/assets/img/users/1675332882.jpg';
         $company->save();
-        return redirect()->route('login')->with('success' , "Registered Successfully");
+
+        $message = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        try {
+            Mail::to($request->email)->send(new CompanyRegistered($message));
+            return redirect()->route('login')->with('success', "Registered Successfully");
+        } catch (\Throwable $th) {
+            return back()->with(['status' => false, 'error' => $th->getMessage()]);
+        }
 
     }
 
@@ -47,12 +60,12 @@ class AuthController extends Controller
         ]);
         // dd(Auth());
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home')->with('success' , "You've Login Successfully");
+            return redirect()->route('home')->with('success', "You've Login Successfully");
         }
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home')->with('success' , "You've Login Successfully");
+            return redirect()->route('home')->with('success', "You've Login Successfully");
         }
-        return redirect()->back()->with('error' , "Your Email Or Password Invalid!");
+        return redirect()->back()->with('error', "Your Email Or Password Invalid!");
     }
 
     public function logout()
@@ -97,7 +110,7 @@ class AuthController extends Controller
             }
             $data['otp'] = $otp;
             Mail::to($request->email)->send(new ResetPasswordUser($data));
-            return redirect()->route('otp')->with( 'success' , 'We have emailed your forget  password otp!');
+            return redirect()->route('otp')->with('success', 'We have emailed your forget  password otp!');
         } else {
             return back()->with('error', "We can't find a user with that email address");
         }
@@ -128,12 +141,6 @@ class AuthController extends Controller
 
     public function changePassword(Request $request)
     {
-        $request->validate([
-
-            'password' => 'required',
-            'confirmPassword' => 'same:password',
-        ]);
-
         $email = $request->input('email');
         $password = $request->input('password');
         $passwordConfirm = $request->input('confirmPassword');
@@ -145,7 +152,7 @@ class AuthController extends Controller
         }
         DB::table('password_resets')->where('email', $email)->delete();
 
-        return redirect()->route('login')->with('success' , 'Updated successfully');
+        return redirect()->route('login')->with('success', 'Updated successfully');
     }
 
 }

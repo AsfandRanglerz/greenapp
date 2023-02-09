@@ -57,7 +57,7 @@
                                 <td class="text-center">
                                     <a href="{{ route('employeeDocument.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>
-                                    {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
+                                    <a href="{{ route('employeeDocument.edit', $document->id) }}" class="mx-2"><span class="fa fa-edit text-info"></span></a>
                                     <form class="d-inline" method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">

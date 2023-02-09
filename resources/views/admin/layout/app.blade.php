@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Typing Center - Admin Dashboard</title>
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('public/user/images/logo.png') }}' />
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/app.min.css') }}">
     <!-- Template CSS -->
@@ -17,7 +18,6 @@
 
     <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/custom.css') }}">
-    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('public/admin/assets/img/logo2.png') }}' />
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/datatables.css') }}">
 
 </head>

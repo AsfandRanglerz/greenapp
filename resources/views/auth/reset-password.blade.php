@@ -3,8 +3,8 @@
     <div class="col-xl-4 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{ asset('public/user/images/logo.png') }}"
-                        alt="logo" class="logo-img"></a>
+                <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img
+                        src="{{ asset('public/user/images/logo.png') }}" alt="logo" class="logo-img"></a>
                 <p class="mt-3 mb-0 text-white">Reset Password</p>
                 <h5 class="text-white mb-0">Green App</h5>
             </div>
@@ -16,8 +16,8 @@
         </div>
         <form id="authForm" action="{{ route('resets-password') }}" method="POST">
             @csrf
-            <input type="hidden" name="email" value="{{$email}}">
-            <input type="hidden" name="guard" value="{{$guard}}">
+            <input type="hidden" name="email" value="{{ $email }}">
+            <input type="hidden" name="guard" value="{{ $guard }}">
 
             <h3 class="text-center mb-4">Reset Password</h3>
             <p class="d-block mb-3">Please rest your password, thank you</p>
@@ -25,8 +25,8 @@
                 <label for="userPassword">Password<span class="required"> *</span></label>
                 <div class="position-relative d-flex align-items-center">
                     <span class="position-absolute fa fa-lock input-field-left-icon"></span>
-                    <input id="userPassword" name="password" type="password" class="form-control pl-pr-padding"
-                        placeholder="Enter Password">
+                    <input id="password" name="password" type="password" class="form-control pl-pr-padding"
+                        placeholder="Enter Password" required>
                     <span toggle="#userPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                         aria-hidden="true"></span>
                 </div>
@@ -38,31 +38,44 @@
                 <label for="confirmPassword">Confirm Password<span class="required"> *</span></label>
                 <div class="position-relative d-flex align-items-center">
                     <span class="position-absolute fa fa-lock input-field-left-icon"></span>
-                    <input id="confirmPassword" name="confirmPassword" type="password" class="form-control pl-pr-padding"
-                        placeholder="Confirm Password">
+                    <input id="confirmPassword" name="confirm_password" type="password" class="form-control pl-pr-padding"
+                        placeholder="Confirm Password" required>
                     <span toggle="#Password" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                         aria-hidden="true"></span>
                 </div>
-                @error('confirmPassword')
-                    <div class="text-danger p-2">{{ $message }}</div>
-                @enderror
+
+                <div id="con_password" class="d-none text-danger p-2">Confirm Password Not Match</div>
             </div>
             <div class="mt-xl-5 mb-xl-2 my-sm-3 mt-3">
-                <button type="submit" class="w-100 btn-bg">Send</button>
+                <button type="submit" class="w-100 btn-bg">Update</button>
             </div>
         </form>
     </div>
 @endsection
 @section('script')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //option A
+            $("form").submit(function(e) {
+                var password = $('#password').val();
+                var con_password = $('#confirmPassword').val();
+                if (password != con_password) {
+                    $('#con_password').removeClass('d-none')
+                    e.preventDefault(e);
+                }
+            });
+        });
 
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
+
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
+
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+    </script>
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
 @endsection

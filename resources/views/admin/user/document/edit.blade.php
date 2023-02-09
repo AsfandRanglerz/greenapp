@@ -88,7 +88,7 @@
                                         <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Comments</label>
-                                                <textarea placeholder="Enter Your Comments ..." name="comment" id="comment" value="{{ $data['comment'] }}" class="form-control"></textarea>
+                                                <textarea placeholder="Enter Your Comments ..." name="comment" id="comment"  class="form-control">{{ $data['comment'] ?? '' }}</textarea>
                                                 @error('comment')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

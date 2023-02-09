@@ -84,7 +84,7 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
     Route::post('company/register', 'AuthController@register')->name('register');
     Route::post('forget-password', 'AuthController@forgetPassword')->name('forget-password');
     Route::post('confirm-token', 'AuthController@confirmToken')->name('confirmToken');
-    Route::get('reset-password/{id}', 'AuthController@resetPassword')->name('reset-password');
+    Route::get('reset-password', 'AuthController@resetPassword')->name('reset-password');
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
     Route::get('logout', 'AuthController@logout')->name('logout');
 

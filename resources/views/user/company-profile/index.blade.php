@@ -12,7 +12,7 @@
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div class="form-group col-12">
                         <div class="avatar-wrapper">
-                            <img class="profile-pic" id="uploadedImage" src="{{asset($company->image)}}" />
+                            <img class="profile-pic" id="uploadedImage" src="{{ asset($company->image) }}" />
                             <div class="upload-button">
                                 <span class="fa fa-plus profile-img-uploaded-icon"></span>
                             </div>
@@ -24,16 +24,24 @@
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
                             <input id="companyName" type="text" name="name" class="form-control pl-padding"
-                                value="{{ $company->name }}" placeholder="Enter Company Name" required>
+                                value="{{ $company->name }}" placeholder="Enter Company Name">
+
                         </div>
+                        @error('name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="companyPhone">Phone<span class="required"> *</span></label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-phone input-field-left-icon"></span>
                             <input id="companyPhone" type="number" name="phone" value="{{ $company->phone }}"
-                                class="form-control pl-padding" placeholder="Enter Phone Number" required>
+                                class="form-control pl-padding" placeholder="Enter Phone Number">
+
                         </div>
+                        @error('phone')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label for="companyEmail">Email<span class="required"> *</span></label>
@@ -46,28 +54,37 @@
 
 
                     <div class="form-group col-md-6">
-                        <label>Trade License No<span class="required"> *</span></label>
+                        <label>Trade License No</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="license_no"
-                                value="{{ $company->license_no }}" placeholder="Enter Trade License No" required>
+                                value="{{ $company->license_no }}" placeholder="Enter Trade License No">
                         </div>
+                        @error('license_no')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Enter Establishment Card No<span class="required"> *</span></label>
+                        <label>Enter Establishment Card No</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="establishment_no"
-                                value="{{ $company->establishment_no }}" placeholder="Enter Establishment Card No" required>
+                                value="{{ $company->establishment_no }}" placeholder="Enter Establishment Card No">
                         </div>
+                        @error('establishment_no')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label>MOHRE Company Code<span class="required"> *</span></label>
+                        <label>MOHRE Company Code</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
                             <input type="number" class="form-control pl-padding" name="mohre_no"
-                                value="{{ $company->mohre_no }}" placeholder="Enter MOHRE Company Code" required>
+                                value="{{ $company->mohre_no }}" placeholder="Enter MOHRE Company Code">
                         </div>
+                        @error('mohre_no')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
@@ -80,15 +97,15 @@
     </div>
 @endsection
 @section('script')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
+    <script>
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
 
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+    </script>
     <script type="text/javascript">
         $(function() {
             /*Avatar upload*/
@@ -115,5 +132,4 @@
         });
         /*Avatar upload*/
     </script>
-
 @endsection

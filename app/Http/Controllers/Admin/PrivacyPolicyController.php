@@ -78,7 +78,7 @@ class PrivacyPolicyController extends Controller
          $data->description = $request->input('description');
 
          $data->update();
-         return redirect()->route('privacy-policy.index')->with(['success','Updated Successfully']);
+         return redirect()->route('privacy-policy.index')->with('success','Updated Successfully');
     }
 
     /**

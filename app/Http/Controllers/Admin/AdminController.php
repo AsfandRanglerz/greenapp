@@ -92,7 +92,7 @@ class AdminController extends Controller
        if ($request->password !=$request->confirmed)
        {
 
-           return back()->with(['error' => 'Password not matched']);
+           return back()->with('error' , 'Password not matched');
        }
         $password=bcrypt($request->password);
         $tags_data = [
@@ -118,14 +118,14 @@ class AdminController extends Controller
         ]);
         $auth = Auth::guard('admin')->user();
         if (!Hash::check($request->current_password, $auth->password)) {
-            return back()->with(['error', "Current Password is Invalid"]);
+            return back()->with('error', "Current Password is Invalid");
         } else if (strcmp($request->current_password, $request->new_password) == 0) {
-            return redirect()->back()->with(['error',"New Password cannot be same as your current password."]);
+            return redirect()->back()->with('error',"New Password cannot be same as your current password.");
         } else {
             $user =  Admin::find($auth->id);
             $user->password =  Hash::make($request->new_password);
             $user->save();
-            return back()->with(['success','Updated Successfully']);
+            return back()->with('success','Updated Successfully');
         }
     }
 

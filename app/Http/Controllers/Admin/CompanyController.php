@@ -53,7 +53,7 @@ class CompanyController extends Controller
             'name' => 'required',
             'email' => 'required|unique:companies,email|email',
             'phone' => 'required',
-            
+
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
@@ -77,7 +77,7 @@ class CompanyController extends Controller
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
-            return redirect()->route('company.index')->with(['success', 'Created Successfully']);
+            return redirect()->route('company.index')->with('success', 'Created Successfully');
         } catch (\Throwable $th) {
             dd($th->getMessage());
             return back()
@@ -145,7 +145,7 @@ class CompanyController extends Controller
                 $company->image = 'public/admin/assets/img/users/1675332882.jpg';
             }
             $company->update();
-            return redirect()->route('company.index')->with(['success','Updated Successfully']);
+            return redirect()->route('company.index')->with('success','Updated Successfully');
         }
 
     }
@@ -159,6 +159,6 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         Company::destroy($id);
-        return redirect()->back()->with(['success', 'Deleted Successfully']);
+        return redirect()->back()->with('success', 'Deleted Successfully');
     }
 }

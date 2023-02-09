@@ -61,7 +61,7 @@
                     <div class="form-group col-md-6">
                         <label for="userPhone">Phone<span class="required"> *</span></label>
                         <input id="userPhone" type="number" name="phone" value="{{$employee->phone}}" class="form-control"
-                            placeholder="Enter Phone Number" required>
+                            placeholder="Enter Phone Number" >
                         @error('phone')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -96,6 +96,9 @@
 </script>
     <script type="text/javascript">
         $(function() {
+            $('#nationality').select2({
+                placeholder: 'Select Country'
+            });
             /*Avatar upload*/
             var readURL = function(input) {
                 if (input.files && input.files[0]) {
@@ -120,5 +123,4 @@
         });
         /*Avatar upload*/
     </script>
-
 @endsection

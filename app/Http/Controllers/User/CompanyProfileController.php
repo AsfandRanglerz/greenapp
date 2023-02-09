@@ -75,6 +75,10 @@ class CompanyProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+        ]);
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -130,7 +134,7 @@ class CompanyProfileController extends Controller
             $user->password = Hash::make($request->newPassword);
             // dd($user->password);
             $user->save();
-            return back()->with->with('success' , 'Updated Successfully');
+            return back()->with('success' , 'Updated Successfully');
         }
     }
 }

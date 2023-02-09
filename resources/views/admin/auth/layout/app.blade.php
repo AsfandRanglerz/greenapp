@@ -14,7 +14,7 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/custom.css') }}">
     {{-- <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' /> --}}
-    <link rel='shortcut icon' type='image/x-icon' href="{{ asset('public/admin/assets/img/logo2.png')}}" />
+    <link rel='shortcut icon' type='image/x-icon' href="{{ asset('public/user/images/logo.png') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     @yield('style')
 </head>

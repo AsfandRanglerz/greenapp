@@ -100,10 +100,10 @@
                                                     <option value="{{$company->id}}">{{$company->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('company_id')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('company_id')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
 
                                 <div class="col-sm-6 pl-sm-0 pr-sm-2">

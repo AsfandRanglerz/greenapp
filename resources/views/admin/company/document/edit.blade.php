@@ -19,15 +19,9 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-<<<<<<< HEAD
                                                 <label>Document Name<span class="required"> *</span></label>
                                                 <input type="text" placeholder="Document Name" name="doc_name"
                                                     id="doc_name" value="{{ $data['doc_name'] }}" class="form-control">
-=======
-                                                <label>Document Name</label>
-                                                <input type="text" placeholder="Document name" name="doc_name"
-                                                    id="doc_name" value="{{ $data['doc_name'] }}" class="form-control" required>
->>>>>>> d29290acef46d201556d4c78828ce3d52ae45fd6
                                                 @error('doc_name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -37,7 +31,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Select File<span class="required"> *</span></label>
                                                 <input type="file" name="file" value="{{ $data['file'] }}"
-                                                    class="form-control" required>
+                                                    class="form-control">
                                                 @error('file')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

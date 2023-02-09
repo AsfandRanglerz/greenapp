@@ -136,7 +136,7 @@ class CompanyDocumentController extends Controller
             }
             //dd($company);
             $company->update();
-            return redirect()->route('company-document.index', $company->company_id)->with(['success','Updated Successfully']);
+            return redirect()->route('company-document.index', $company->company_id)->with('success','Updated Successfully');
         }
     }
 
@@ -149,7 +149,7 @@ class CompanyDocumentController extends Controller
     public function destroy($id)
     {
         CompanyDocument::destroy($id);
-        return redirect()->back()->with(['success', 'Deleted Successfully']);
+        return redirect()->back()->with('success', 'Deleted Successfully');
     }
     // Download
     // public function download($id)

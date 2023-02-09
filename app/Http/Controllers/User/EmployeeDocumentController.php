@@ -100,7 +100,10 @@ class EmployeeDocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['user_id'] = $id;
+        $data = UserDocument::find($id);
+        //    dd($data);
+        return view('user.employee-document.edit', compact(['data']));
     }
 
     /**
@@ -112,7 +115,38 @@ class EmployeeDocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        {
+            $request->validate([
+                'doc_type' => 'required',
+                'issue_date' => 'required',
+                'expiry_date' => 'required',
+
+            ]);
+            $company = UserDocument::find($id);
+            $company->doc_type = $request->input('doc_type');
+            $company->issue_date = $request->input('issue_date');
+            $company->expiry_date = $request->input('expiry_date');
+            $company->comment = $request->input('comment');
+            //$company->company_id = $request->input('company_id');
+            //$company['company_id'] = $id;
+
+            if ($request->hasfile('file')) {
+                $destination = 'public/admin/assets/img/users' . $company->file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $company->file = 'public/admin/assets/img/users/' . $filename;
+
+            }
+
+            //dd($company);
+            $company->update();
+            return redirect()->route('employee.show', $company->user_id)->with('success','Updated Successfully');
+        }
     }
 
     /**

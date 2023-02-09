@@ -13,15 +13,14 @@
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         <h6><span class="fa fa-book"></span> - Employee Documents</h6>
-                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add
-                            Document</a>
+                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add More</a>
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">
                             <label>Select Document Type<span class="required"> *</span></label>
                             <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
-                                <option selected disabled>Select Document</option>
+                                <option value="" selected disabled>Select Document</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Identity Card">Identity Card</option>
                                 <option value="Visa">Visa</option>
@@ -72,6 +71,9 @@
                             <textarea type="text" name="comment[]" placeholder="Enter Your Comments ..." value="{{ old('comment[]') }}"
                                 class="form-control" rows="5"></textarea>
                         </div>
+                        <div class="form-group col-12">
+                            <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span class="fa fa-trash mr-2"></span>Remove</a>
+                        </div>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>
@@ -105,31 +107,6 @@
             $(document).on('click', '.remove-btn', function() {
                 $(this).closest('.doc-fields').remove();
             });
-            /*single-select-dropdowns*/
-
-            /*single-select-dropdowns*/
-            /*Avatar upload*/
-            var readURL = function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#uploadedImage').attr('src', e.target.result);
-                        $('.header-profile-pic').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $(".file-upload").on('change', function() {
-                readURL(this);
-            });
-
-            $(".upload-button").on('click', function() {
-                $(this).siblings('.file-upload').click();
-            });
-            /*Avatar upload*/
         });
     </script>
 @endsection

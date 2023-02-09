@@ -19,7 +19,7 @@ class CompanyDocumentController extends Controller
     public function index()
     {
         $authId = Auth::guard('company')->id();
-        $documents = CompanyDocument::whereCompany_id($authId)->latest()->get();
+        $documents = CompanyDocument::whereCompany_id($authId)->orderBy('id', 'DESC')->get();
         return view('user.company-document.index', compact('documents'));
     }
 

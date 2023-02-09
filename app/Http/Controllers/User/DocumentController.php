@@ -74,7 +74,7 @@ class DocumentController extends Controller
         }
         $document->save();
     }
-    return redirect()->route('document.index')->with('success' , 'Added Successfully');
+    return redirect()->route('document.index')->with('success' , 'Created Successfully');
 }
 
 

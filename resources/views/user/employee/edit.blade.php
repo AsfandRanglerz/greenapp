@@ -28,11 +28,8 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="text" name="dob"value="{{ $data['dob'] }}" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth" >
-                            <div class="input-group-prepend">
-                                <small class="input-group-text"><span class="fa fa-calendar"></span></small>
-                            </div>
+                            <input type="date" name="dob"value="{{ $data['dob'] }}" placeholder="dd.mm.yyyy"
+                                class="form-control date-of-birth">
                         </div>
                         @error('dob')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -92,15 +89,6 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
-            /*datepicker*/
-            $('.date-of-birth').datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-            });
-            $('.date-of-birth + .input-group-prepend').click(function() {
-                $(".date-of-birth").focus();
-            });
-            /*datepicker*/
             /*single-select-dropdowns*/
             $('#nationality').select2({
                 placeholder: 'Select Country'

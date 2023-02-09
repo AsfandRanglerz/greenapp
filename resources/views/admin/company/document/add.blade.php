@@ -4,7 +4,7 @@
 
     <body>
         <style>
-            #docField1 .remove-fields {
+            #docField1 .remove-btn {
                 display: none;
             }
         </style>
@@ -42,7 +42,7 @@
                                                     <input type="text" placeholder="Document Name" name="doc_name[]"
                                                         id="doc_name[]" value="{{ old('doc_name[]') }}"
                                                         class="form-control" required>
-                                                    @error('doc_name.*')
+                                                    @error('doc_name')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -52,7 +52,7 @@
 
                                                     <label>Select File<span class="required"> *</span></label>
                                                     <input type="file" name="file[]" id="file[]"
-                                                        value="{{ old('file[]') }}" class="form-control">
+                                                        value="{{ old('file[]') }}" class="form-control" required>
 
                                                     @error('file.*')
                                                         <div class="text-danger">{{ $message }}</div>
@@ -64,7 +64,7 @@
 
                                         </div>
                                         <div class="row mx-0 px-4 py-2">
-                                            <button type="button" class="btn btn-danger remove-fields"><span class="fa fa-trash mr-2"></span>Remove</button>
+                                            <button type="button" class="btn btn-danger remove-btn"><span class="fa fa-trash mr-2"></span>Remove</button>
                                         </div>
                                     </div>
                                         <div class="card-footer text-center row">
