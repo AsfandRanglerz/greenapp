@@ -30,21 +30,21 @@
                                             <th>Question</th>
                                             <th>Answer</th>
                                             <th scope="col">Actions</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                       @foreach($data as $fax)
-                                          
+
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                
+
                                                 <td>{!!$fax->question!!}</td>
                                                 <td>{!!$fax->answer!!}</td>
-                                            
+
                                                 <td
                                                 style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-                                                
+
 
                                                 <a class="btn btn-info"
                                                href="{{route('faq.edit', $fax->id)}}">Edit</a>
@@ -71,11 +71,15 @@
 @endsection
 
 @section ('js')
-@if (\Illuminate\Support\Facades\Session::has('message'))
 <script>
-    toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+    @if (\Illuminate\Support\Facades\Session::has('success'))
+        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+    @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('error'))
+        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+    @endif
 </script>
-@endif
 <script>
     $(document).ready(function(){
         $('#table_id_events').DataTable()

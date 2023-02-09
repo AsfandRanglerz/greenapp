@@ -73,13 +73,13 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         // dd($request->time);
         $data = AboutUs::find($id);
         $data->description = $request->input('description');
-       
+
         $data->update();
-        return redirect()->route('about-us.index')->with(['status' => true, 'message' => 'Updated Sucessfully']);
+        return redirect()->route('about-us.index')->with(['success' , 'Updated Sucessfully']);
     }
 
     /**

@@ -20,7 +20,7 @@
                         <div class="form-group col-md-6">
                             <label>Select Document Type<span class="required"> *</span></label>
                             <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}" class="form-control">
-                                <option value=""></option>
+                                <option  selected disabled>Select Document</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Identity Card">Identity Card</option>
                                 <option value="Visa">Visa</option>
@@ -123,11 +123,7 @@
                 $(".expire-date").focus();
             });
             /*datepicker*/
-            /*single-select-dropdowns*/
-            $('#selectDocument').select2({
-                placeholder: 'Select Document Type'
-            });
-            /*single-select-dropdowns*/
+
             /*Avatar upload*/
             var readURL = function(input) {
                 if (input.files && input.files[0]) {

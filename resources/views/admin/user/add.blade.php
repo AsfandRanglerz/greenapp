@@ -82,18 +82,15 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                       
+
 
                                 </div>
                                 <div class="row mx-0 px-4">
                                 <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-3">
-                                                <label>Company name</label>
-                                                <!-- <input type="text" name="name" id="name"
-                                                    class="form-control"
-                                                    placeholder="Enter name"> -->
+                                                <label>Company name<span class="required"></span></label>
                                                     <select name="company_id" id="company_id" class="form-control">
-                                                    <option value="">Please Select a Company</option>
+                                                    <option disabled selected>Please Select a Company</option>
 
                                                     @foreach($data as $company)
                                                     <option value="{{$company->id}}">{{$company->name}}</option>
@@ -104,7 +101,7 @@
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                
+
                                 <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                     <div class="form-group mb-2">
                                             <label>Choose Image</label>
@@ -133,9 +130,15 @@
 @endsection
 
 @section('js')
-    @if (\Illuminate\Support\Facades\Session::has('message'))
-        <script>
-            toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
-        </script>
+
+
+<script>
+    @if (\Illuminate\Support\Facades\Session::has('success'))
+        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
     @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('error'))
+        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+    @endif
+</script>
 @endsection

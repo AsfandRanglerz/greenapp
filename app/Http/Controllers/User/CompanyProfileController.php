@@ -122,7 +122,7 @@ class CompanyProfileController extends Controller
         $auth = Auth::guard('company')->user();
         if (!Hash::check($request->oldPassword, $auth->password)) {
             // dd('ali');
-            return back()->with(['status' => false, 'message' => "Current Password is Invalid"]);
+            return back()->with( 'error',"Current Password is Invalid");
         } else if (strcmp($request->oldPassword, $request->newPassword) == 0) {
             return redirect()->back()->with->with('error' , "New Password cannot be same as your current password.");
         } else {

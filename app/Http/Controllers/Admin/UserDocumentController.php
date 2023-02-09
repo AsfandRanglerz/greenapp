@@ -79,7 +79,7 @@ class UserDocumentController extends Controller
             // dd($document);
             $document->save();
         }
-        return redirect()->route('user-document.index', $id)->with('message', 'Added Successfully');
+        return redirect()->route('user-document.index', $id)->with('success', 'Added Successfully');
     }
 
     /**
@@ -145,7 +145,7 @@ class UserDocumentController extends Controller
             }
             //dd($company);
             $company->update();
-            return redirect()->route('user-document.index', $company->user_id)->with(['status' => true, 'message' => 'Updated Successfully']);
+            return redirect()->route('user-document.index', $company->user_id)->with(['success','Updated Successfully']);
         }
     }
 
@@ -158,6 +158,6 @@ class UserDocumentController extends Controller
     public function destroy($id)
     {
         UserDocument::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with(['success','Deleted Successfully']);
     }
 }

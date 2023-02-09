@@ -80,7 +80,7 @@ class UserController extends Controller
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
-            return redirect()->route('user.index')->with(['status' => true, 'message' => 'Created Successfully']);
+            return redirect()->route('user.index')->with(['success','Created Successfully']);
         } catch (\Throwable $th) {
             dd($th->getMessage());
             return back()
@@ -153,7 +153,7 @@ class UserController extends Controller
         $user->image='public/admin/assets/img/users/' . $filename;
         }
         $user->update();
-        return redirect()->route('user.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+        return redirect()->route('user.index')->with(['success','Updated Successfully']);
     }
 
 
@@ -166,6 +166,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with(['success','Deleted Successfully']);
     }
 }

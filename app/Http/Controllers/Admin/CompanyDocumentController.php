@@ -75,7 +75,7 @@ class CompanyDocumentController extends Controller
             // dd($document);
             $document->save();
         }
-        return redirect()->route('company-document.index', $id)->with('message', 'Added Successfully');
+        return redirect()->route('company-document.index', $id)->with('success', 'Added Successfully');
     }
 
     /**
@@ -136,7 +136,7 @@ class CompanyDocumentController extends Controller
             }
             //dd($company);
             $company->update();
-            return redirect()->route('company-document.index', $company->company_id)->with(['status' => true, 'message' => 'Updated Successfully']);
+            return redirect()->route('company-document.index', $company->company_id)->with(['success','Updated Successfully']);
         }
     }
 
@@ -149,24 +149,24 @@ class CompanyDocumentController extends Controller
     public function destroy($id)
     {
         CompanyDocument::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with(['success', 'Deleted Successfully']);
     }
     // Download
-    public function download($id)
-    {
-        $document = CompanyDocument::find($id);
-        if ($document) {
+    // public function download($id)
+    // {
+    //     $document = CompanyDocument::find($id);
+    //     if ($document) {
 
-            $path = asset('admin/' . $document->file);
-            dd($path);
-            if (file_exists($path)) {
-                return response()->download($path);
-            } else {
-                return back()->withErrors(['msg' => 'File does not exist']);
-            }
-        } else {
-            return back()->withErrors(['msg' => 'Document not found']);
-        }
-    }
+    //         $path = asset('admin/' . $document->file);
+    //         dd($path);
+    //         if (file_exists($path)) {
+    //             return response()->download($path);
+    //         } else {
+    //             return back()->withErrors(['msg' => 'File does not exist']);
+    //         }
+    //     } else {
+    //         return back()->withErrors(['msg' => 'Document not found']);
+    //     }
+    // }
 
 }

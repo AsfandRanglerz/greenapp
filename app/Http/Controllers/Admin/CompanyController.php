@@ -53,9 +53,7 @@ class CompanyController extends Controller
             'name' => 'required',
             'email' => 'required|unique:companies,email|email',
             'phone' => 'required',
-            'establishment_no'=>'required',
-            'license_no' => 'required',
-            'mohre_no' => 'required',
+            
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
@@ -79,7 +77,7 @@ class CompanyController extends Controller
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
-            return redirect()->route('company.index')->with(['status' => true, 'message' => 'Created Successfully']);
+            return redirect()->route('company.index')->with(['success', 'Created Successfully']);
         } catch (\Throwable $th) {
             dd($th->getMessage());
             return back()
@@ -123,9 +121,6 @@ class CompanyController extends Controller
             $request->validate([
                 'name' => 'required',
                 'phone' => 'required',
-                'establishment_no'=>'required',
-                'license_no' => 'required',
-                'mohre_no' => 'required',
 
             ]);
             $company = Company::find($id);
@@ -146,8 +141,11 @@ class CompanyController extends Controller
             $file->move('public/admin/assets/img/users',$filename);
             $company->image='public/admin/assets/img/users/' . $filename;
             }
+            else{
+                $company->image = 'public/admin/assets/img/users/1675332882.jpg';
+            }
             $company->update();
-            return redirect()->route('company.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+            return redirect()->route('company.index')->with(['success','Updated Successfully']);
         }
 
     }
@@ -161,6 +159,6 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         Company::destroy($id);
-        return redirect()->back()->with(['status' => true, 'message' => 'Deleted Successfully']);
+        return redirect()->back()->with(['success', 'Deleted Successfully']);
     }
 }

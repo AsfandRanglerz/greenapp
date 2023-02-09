@@ -76,9 +76,9 @@ class PrivacyPolicyController extends Controller
          // dd($request->time);
          $data = PrivacyPolicy::find($id);
          $data->description = $request->input('description');
-        
+
          $data->update();
-         return redirect()->route('privacy-policy.index')->with(['status' => true, 'message' => 'Updated Successfully']);
+         return redirect()->route('privacy-policy.index')->with(['success','Updated Successfully']);
     }
 
     /**
