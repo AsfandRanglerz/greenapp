@@ -21,7 +21,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Document Name</label>
                                                 <input type="text" placeholder="Document name" name="doc_name"
-                                                    id="doc_name" value="{{ $data['doc_name'] }}" class="form-control">
+                                                    id="doc_name" value="{{ $data['doc_name'] }}" class="form-control" required>
                                                 @error('doc_name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -31,7 +31,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Choose File</label>
                                                 <input type="file" name="file" value="{{ $data['file'] }}"
-                                                    class="form-control">
+                                                    class="form-control" required>
                                                 @error('file')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

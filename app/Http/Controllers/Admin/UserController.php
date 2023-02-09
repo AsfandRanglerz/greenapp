@@ -56,9 +56,13 @@ class UserController extends Controller
             'dob' => 'required',
             'nationality'=>'required',
             'religion'=>'required',
-            'company_id'=>'required'
+            'company_id' => 'required',
+            // 'company_id'=>'required'
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
+        ],
+        [
+            'company_id.required' => 'The company field is required.',
         ]);
         $data = $request->only(['name', 'email','phone','dob','nationality','religion','company_id']);
         $password = random_int(10000000, 99999999);

@@ -49,7 +49,7 @@
                             <label>Issue Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="issue_date[]" placeholder="dd.mm.yyyy"
-                                value="{{ old('issue_date[]') }}" class="form-control issue-date">
+                                value="{{ old('issue_date[]') }}" class="form-control issue-date" required>
                             </div>
                             @error('issue_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -59,7 +59,7 @@
                             <label>Expiry Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="expiry_date[]" placeholder="dd.mm.yyyy"
-                                value="{{ old('expiry_date[]') }}" class="form-control expire-date">
+                                value="{{ old('expiry_date[]') }}" class="form-control expire-date" required>
                             </div>
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
