@@ -41,7 +41,7 @@
                                                     <label>Document Name<span class="required"> *</span></label>
                                                     <input type="text" placeholder="Document Name" name="doc_name[]"
                                                         id="doc_name[]" value="{{ old('doc_name[]') }}"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                     @error('doc_name.*')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
