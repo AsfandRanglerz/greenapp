@@ -63,7 +63,7 @@ body .pl-padding {
     border-radius: 50%;
 }
 /*OTP*/
-.form-btn {
+.form-btn, .form-btn:focus {
     background: none;
     border: none;
     outline: none;
