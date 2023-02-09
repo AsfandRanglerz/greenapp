@@ -19,7 +19,7 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">
                             <label>Select Document Type<span class="required"> *</span></label>
-                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}" class="form-control">
+                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}" class="form-control" required>
                                 <option  selected disabled>Select Document</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Identity Card">Identity Card</option>

@@ -19,7 +19,7 @@
                         <div class="form-group col-md-6">
                             <label>Document Name<span class="required"> *</span></label>
                             <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
-                                placeholder="Enter Document Name" class="form-control">
+                                placeholder="Enter Document Name" class="form-control" required>
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -28,7 +28,7 @@
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="file" class="form-control" name="file[]" value="{{ old('file[]') }}"
-                                    style="line-height: 1">
+                                    style="line-height: 1" required>
                                 <div class="input-group-prepend">
                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                                 </div>
@@ -84,9 +84,7 @@
             });
             /*datepicker*/
             /*single-select-dropdowns*/
-            $('#selectDocument').select2({
-                placeholder: 'Select Document Type'
-            });
+
             /*single-select-dropdowns*/
             /*Avatar upload*/
             var readURL = function(input) {
