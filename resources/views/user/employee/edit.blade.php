@@ -40,16 +40,15 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" class="form-control" >
-                            <option value="" disabled selected>Select Country</option>
-                            <option value="Pakistan" {{ $data['nationality'] == 'Pakistan' ? 'selected' : '' }}>Pakistan
-                            </option>
-                            <option value="Iran" {{ $data['nationality'] == 'Iran' ? 'selected' : '' }}>Iran</option>
-                            <option value="Bangladesh" {{ $data['nationality'] == 'Bangladesh' ? 'selected' : '' }}>
-                                Bangladesh</option>
-                            <option value="Afghanistan" {{ $data['nationality'] == 'Afghanistan' ? 'selected' : '' }}>
-                                Afghanistan</option>
-                            <option value="India" {{ $data['nationality'] == 'India' ? 'selected' : '' }}>India</option>
+
+                        <select name="nationality" id="nationality" class="form-control">
+                            <option value=""></option>
+
+                            @foreach($data['countries'] as $country)
+
+                            <option value="{{ $country->name }}" {{ $data['nationality'] == $country->name ? 'selected' : ''}}>{{ $country->name }}</option>
+                         @endforeach
+
                         </select>
                         @error('nationality')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -103,7 +102,7 @@
             });
             /*datepicker*/
             /*single-select-dropdowns*/
-            $('#selectCountry').select2({
+            $('#nationality').select2({
                 placeholder: 'Select Country'
             });
             /*single-select-dropdowns*/

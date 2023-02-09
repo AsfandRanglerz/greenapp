@@ -66,12 +66,13 @@
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Nationality<span class="required"> *</span></label>
-                                                <input type="text" name="nationality" value="{{$data['nationality']}}"
-                                                    id="Nationality" class="form-control" placeholder="Nationality">
+
                                                     <select name="nationality" id="nationality" class="form-control">
                                                         <option value=""></option>
-                                                        @foreach($data['countries'] as $company)
-                                                        <option value="{{ $company->id }}" {{ $data['company_id'] == $company->id ? 'selected' : ''}}>{{ $company->name }}</option>
+
+                                                        @foreach($data['countries'] as $country)
+
+                                                        <option value="{{ $country->name }}" {{ $data['nationality'] == $country->name ? 'selected' : ''}}>{{ $country->name }}</option>
                                                      @endforeach
                                                     </select>
                                                     @error('nationality')
@@ -138,6 +139,9 @@
     <script>
         $(function() {
             $('#company_id').select2({
+                placeholder: 'Select Company'
+            });
+            $('#nationality').select2({
                 placeholder: 'Select Company'
             });
         });

@@ -37,13 +37,15 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" class="form-control" required>
-                            <option value="" disabled selected>Select Country</option>
-                            <option value="Pakistan" {{$employee->nationality == "Pakistan" ? "selected" : ''}}>Pakistan</option>
-                            <option value="Iran" {{$employee->nationality == "Iran" ? "selected" : ''}}>Iran</option>
-                            <option value="Bangladesh" {{$employee->nationality == "Bangladesh" ? "selected" : ''}}>Bangladesh</option>
-                            <option value="Afghanistan" {{$employee->nationality == "Afghanistan" ? "selected" : ''}}>Afghanistan</option>
-                            <option value="India" {{$employee->nationality == "India" ? "selected" : ''}}>India</option>
+
+                        <select name="nationality" id="nationality" class="form-control">
+                            <option value=""></option>
+
+                            @foreach($data['countries'] as $country)
+
+                            <option value="{{ $country->name }}" {{ $employee['nationality'] == $country->name ? 'selected' : ''}}>{{ $country->name }}</option>
+                         @endforeach
+
                         </select>
                         @error('nationality')
                             <div class="text-danger p-2">{{ $message }}</div>

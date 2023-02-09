@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Country;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('user.employee.create');
+        $countries = Country::all();
+        return view('user.employee.create', compact('countries'));
     }
 
     /**
@@ -104,6 +106,7 @@ class EmployeeController extends Controller
         $user = User::find($id);
         $documents = UserDocument::whereUser_id($id)->latest()->get();
         $empId = $id;
+
         //  dd($user);
         return view('user.employee-document.index', compact('user', 'documents', 'empId'));
     }
@@ -117,6 +120,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
+        $data['countries'] = Country::all();
         //$data['usercompany'] = Company::select('id', 'name')->get();
         // $data['company_id'] = $id;
         return view('user.employee.edit', compact(['data']));

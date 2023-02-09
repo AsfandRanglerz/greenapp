@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,8 @@ class EmployeeProfileController extends Controller
     {
         $authId = Auth::guard('web')->id();
         $employee = User::find($authId);
-        return view('user.employee-profile.index', compact('employee'));
+        $data['countries'] = Country::all();
+        return view('user.employee-profile.index', compact('employee','data'));
     }
 
     /**

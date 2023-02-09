@@ -36,13 +36,13 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select id="selectCountry" name="nationality" value="{{old('nationality')}}"class="form-control">
-                            <option value="" disabled selected>Select Country</option>
-                            <option value="Pakistan">Pakistan</option>
-                            <option value="Iran">Iran</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Afghanistan">Afghanistan</option>
-                            <option value="India">India</option>
+
+                        <select name="nationality" id="nationality" class="form-control">
+                            <option value=""></option>
+                            @foreach($countries as $country)
+                            <option value="{{$country->name}}">{{$country->name}}</option>
+                            @endforeach
+
                         </select>
                         @error('nationality')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -86,7 +86,7 @@
     <script type="text/javascript">
         $(function() {
             /*single-select-dropdowns*/
-            $('#selectCountry').select2({
+            $('#nationality').select2({
                 placeholder: 'Select Country'
             });
             /*single-select-dropdowns*/
