@@ -18,8 +18,8 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Name</label>
-                                                <input type="text" placeholder="Name" name="name" id="name"
+                                                <label>Name<span class="required"> *</span></label>
+                                                <input type="text" placeholder="Enter Employee Name" name="name" id="name"
                                                     value="{{ old('name') }}" class="form-control">
                                                 @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -27,21 +27,21 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
-                                            <div class="form-group mb-3">
-                                                <label>Email</label>
-                                                <input type="email" placeholder="Email" name="email" id="email"
+                                            <div class="form-group mb-2">
+                                                <label>Email<span class="required"> *</span></label>
+                                                <input type="email" placeholder="Enter Your Email" name="email" id="email"
                                                     value="{{ old('email') }}" class="form-control" />
+                                                @error('email')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            @error('email')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
 
                                     </div>
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Phone</label>
+                                                <label>Phone<span class="required"> *</span></label>
                                                 <input type="tel" name="phone" id="phone"
                                                     value="{{ old('phone') }}" class="form-control"
                                                     placeholder="92 XXXXXXXXXX (Mobile Number)">
@@ -50,9 +50,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
-                                                <label>Date Of Birth</label>
+                                                <label>Date Of Birth<span class="required"> *</span></label>
                                                 <input type="date" name="dob" value="{{ old('dob') }}"
                                                     id="dob" class="form-control" placeholder="DOB">
                                                 @error('dob')
@@ -64,7 +64,7 @@
                                     <div class="row mx-0 px-4">
                                     <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Nationality</label>
+                                                <label>Nationality<span class="required"> *</span></label>
                                                 <input type="text" name="nationality" value="{{ old('nationality') }}"
                                                     id="Nationality" class="form-control" placeholder="Nationality">
                                                 @error('nationality')
@@ -72,9 +72,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
-                                                <label>Religion</label>
+                                                <label>Religion<span class="required"> *</span></label>
                                                 <input type="text" name="religion" value="{{ old('religion') }}"
                                                     id="religion" class="form-control" placeholder="Religion">
                                                 @error('religion')
@@ -88,9 +88,9 @@
                                 <div class="row mx-0 px-4">
                                 <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-3">
-                                                <label>Company name<span class="required"></span></label>
+                                                <label>Company Name<span class="required"> *</span></label>
                                                     <select name="company_id" id="company_id" class="form-control">
-                                                    <option disabled selected>Please Select a Company</option>
+                                                    <option value="" disabled selected>Select Company</option>
 
                                                     @foreach($data as $company)
                                                     <option value="{{$company->id}}">{{$company->name}}</option>
@@ -102,7 +102,7 @@
                                             @enderror
                                         </div>
 
-                                <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                     <div class="form-group mb-2">
                                             <label>Choose Image</label>
                                             <input type="file" name="image"
@@ -116,7 +116,7 @@
                                 <div class="card-footer text-center row">
                                     <div class="col">
                                         <button type="submit" class="btn btn-success mr-1 btn-bg"
-                                            id="submit">Add</button>
+                                            id="submit">Save</button>
                                     </div>
                                 </div>
                             </div>

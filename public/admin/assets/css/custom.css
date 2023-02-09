@@ -213,3 +213,7 @@ table.dataTable {
 .toast-message{
     font-size:14px!important;
 }
+body .required {
+    color: #ff2800!important;
+    font-weight: 600;
+}
