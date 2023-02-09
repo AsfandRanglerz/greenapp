@@ -50,11 +50,8 @@
                         <div class="form-group col-md-6">
                             <label>Issue Date<span class="required"> *</span></label>
                             <div class="input-group">
-                                <input type="text" name="issue_date[]" placeholder="dd.mm.yyyy"
-                                    value="{{ old('issue_date[]') }}" class="form-control datepicker issue-date" required>
-                                <div class="input-group-prepend">
-                                    <small class="input-group-text"><span class="fa fa-calendar"></span></small>
-                                </div>
+                                <input type="date" name="issue_date[]" placeholder="dd.mm.yyyy"
+                                    value="{{ old('issue_date[]') }}" class="form-control issue-date" required>
                             </div>
                             @error('issue_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -63,11 +60,8 @@
                         <div class="form-group col-md-6">
                             <label>Expiry Date<span class="required"> *</span></label>
                             <div class="input-group">
-                                <input type="text" name="expiry_date[]" placeholder="dd.mm.yyyy"
-                                    value="{{ old('expiry_date[]') }}" class="form-control datepicker expire-date" required>
-                                <div class="input-group-prepend">
-                                    <small class="input-group-text"><span class="fa fa-calendar"></span></small>
-                                </div>
+                                <input type="date" name="expiry_date[]" placeholder="dd.mm.yyyy"
+                                    value="{{ old('expiry_date[]') }}" class="form-control expire-date" required>
                             </div>
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -111,20 +105,8 @@
             $(document).on('click', '.remove-btn', function() {
                 $(this).closest('.doc-fields').remove();
             });
-            /*datepicker*/
-            $('.datepicker').datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-            });
-            $('.issue-date + .input-group-prepend').click(function() {
-                $(".issue-date").focus();
-            });
-            $('.expire-date + .input-group-prepend').click(function() {
-                $(".expire-date").focus();
-            });
-            /*datepicker*/
             /*single-select-dropdowns*/
-           
+
             /*single-select-dropdowns*/
             /*Avatar upload*/
             var readURL = function(input) {
