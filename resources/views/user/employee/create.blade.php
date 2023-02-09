@@ -27,11 +27,8 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="text"  name="dob" value="{{old('dob')}}" placeholder="dd.mm.yyyy"
-                                class="form-control datepicker date-of-birth">
-                            <div class="input-group-prepend">
-                                <small class="input-group-text"><span class="fa fa-calendar"></span></small>
-                            </div>
+                            <input type="date"  name="dob" value="{{old('dob')}}" placeholder="dd.mm.yyyy"
+                                class="form-control date-of-birth">
                         </div>
                         @error('dob')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -59,7 +56,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userPhone">Phone Number<span class="required"> *</span></label>
+                        <label for="userPhone">Phone<span class="required"> *</span></label>
                         <input id="userPhone" type="number" name="phone" value="{{old('phone')}}" class="form-control"
                             placeholder="Enter Phone Number">
                         @error('phone')
@@ -88,15 +85,6 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
-            /*datepicker*/
-            $('.date-of-birth').datepicker({
-                format: 'dd-mm-yyyy',
-                autoclose: true,
-            });
-            $('.date-of-birth + .input-group-prepend').click(function() {
-                $(".date-of-birth").focus();
-            });
-            /*datepicker*/
             /*single-select-dropdowns*/
             $('#selectCountry').select2({
                 placeholder: 'Select Country'

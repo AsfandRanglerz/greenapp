@@ -21,7 +21,7 @@
                 </li>
                 <li class="position-relative {{ request()->is('document*') ? 'active' : '' }}">
                     <a href="{{ route('document.index') }}" class="sidebar-links"><span
-                            class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Document</a>
+                            class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
                 </li>
                 <li class="position-relative">
                     <a href="{{ route('employeeChangePassword.index') }}" class="sidebar-links"><span

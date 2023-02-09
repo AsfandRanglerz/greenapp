@@ -37,7 +37,7 @@
                                 <div class="card-footer text-center row">
                                     <div class="col">
                                         <button type="submit" class="btn btn-success mr-1 btn-bg"
-                                            id="submit">Add</button>
+                                            id="submit">Save</button>
                                     </div>
                                 </div>
                             </div>

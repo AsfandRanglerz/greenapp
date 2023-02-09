@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-primary mr-1" type="submit">Update</button>
+                                    <button type="submit" class="btn btn-success mr-1" type="submit">Update</button>
                                 </div>
                             </div>
                         </div>

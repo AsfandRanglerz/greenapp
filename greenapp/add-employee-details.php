@@ -28,7 +28,7 @@
             <div class="admin-main-content-inner">
                 <div class="dashboard-front-pg">
                     <h4>Company Dashboard</h4>
-                    <p><span class="fa fa-user"></span> - Add Employee Details</p>                  
+                    <p><span class="fa fa-user"></span> - Add Employee Details</p>
                     <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                         <div class="form-group col-12">
                             <div class="avatar-wrapper">
@@ -42,7 +42,7 @@
                         <div class="form-group col-md-6">
                             <label for="userName">Name<span class="required"> *</span></label>
                             <input id="userName" type="text" class="form-control" placeholder="Enter Employee Name">
-                        </div>                                                
+                        </div>
                         <div class="form-group col-md-6">
                             <label>Date Of Birth<span class="required"> *</span></label>
                             <div class="input-group">

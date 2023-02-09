@@ -40,7 +40,7 @@
                     <span class="position-absolute fa fa-lock input-field-left-icon"></span>
                     <input id="confirmPassword" name="confirmPassword" type="password" class="form-control pl-pr-padding"
                         placeholder="Confirm Password">
-                    <span toggle="#confirmPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
+                    <span toggle="#Password" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                         aria-hidden="true"></span>
                 </div>
                 @error('confirmPassword')

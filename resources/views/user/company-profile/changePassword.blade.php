@@ -49,7 +49,7 @@
                             <span class="position-absolute fa fa-lock input-field-left-icon"></span>
                             <input id="confirm_password" name="confirm_password" type="password" class="form-control pl-pr-padding"
                                 placeholder="Confirm Password" >
-                            <span toggle="#oldPassword" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
+                            <span toggle="#confirm_password" class="fa fa-fw fa-eye preview-eye-icon toggle-password"
                                 aria-hidden="true"></span>
 
                         </div>
