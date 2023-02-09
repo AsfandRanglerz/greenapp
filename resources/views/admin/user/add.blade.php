@@ -41,10 +41,10 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Phone<span class="required"> *</span></label>
+                                                <label>Phone Number<span class="required"> *</span></label>
                                                 <input type="tel" name="phone" id="phone"
                                                     value="{{ old('phone') }}" class="form-control"
-                                                    placeholder="92 XXXXXXXXXX (Mobile Number)">
+                                                    placeholder="Enter Phone Number">
                                                 @error('phone')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -88,14 +88,13 @@
                                 <div class="row mx-0 px-4">
                                 <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-3">
-                                                <label>Company Name<span class="required"> *</span></label>
-                                                    <select name="company_id" id="company_id" class="form-control">
-                                                    <option value="" disabled selected>Select Company</option>
-
+                                                <label>Select Company<span class="required"> *</span></label>
+                                                <select name="company_id" id="company_id" class="form-control">
+                                                    <option value=""></option>
                                                     @foreach($data as $company)
                                                     <option value="{{$company->id}}">{{$company->name}}</option>
                                                     @endforeach
-                                                    </select>
+                                                </select>
                                             </div>
                                             @error('category_id')
                                             <div class="text-danger">{{ $message }}</div>
@@ -140,5 +139,11 @@
     @if (\Illuminate\Support\Facades\Session::has('error'))
         toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
     @endif
+
+    $(function() {
+        $('#company_id').select2({
+            placeholder: 'Select Company'
+        });
+    });
 </script>
 @endsection
