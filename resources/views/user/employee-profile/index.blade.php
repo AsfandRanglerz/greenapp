@@ -38,7 +38,7 @@
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
                         <select id="selectCountry" name="nationality" class="form-control" required>
-                            <option value=""></option>
+                            <option value="" disabled selected>Select Country</option>
                             <option value="Pakistan" {{$employee->nationality == "Pakistan" ? "selected" : ''}}>Pakistan</option>
                             <option value="Iran" {{$employee->nationality == "Iran" ? "selected" : ''}}>Iran</option>
                             <option value="Bangladesh" {{$employee->nationality == "Bangladesh" ? "selected" : ''}}>Bangladesh</option>

@@ -140,7 +140,7 @@ class EmployeeProfileController extends Controller
             $user->password = Hash::make($request->newPassword);
             //  dd($user->password);
             $user->save();
-            return back()->with('success' , 'Password Updated Successfully');
+            return back()->with('success' , 'Updated Successfully');
         }
     }
 }

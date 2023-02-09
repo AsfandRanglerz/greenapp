@@ -145,7 +145,7 @@ class AuthController extends Controller
         }
         DB::table('password_resets')->where('email', $email)->delete();
 
-        return redirect()->route('login')->with('success' , 'Password updated successfully');
+        return redirect()->route('login')->with('success' , 'Updated successfully');
     }
 
 }

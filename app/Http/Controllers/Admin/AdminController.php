@@ -125,7 +125,7 @@ class AdminController extends Controller
             $user =  Admin::find($auth->id);
             $user->password =  Hash::make($request->new_password);
             $user->save();
-            return back()->with(['success','Password Updated Successfully']);
+            return back()->with(['success','Updated Successfully']);
         }
     }
 
