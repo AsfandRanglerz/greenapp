@@ -4,7 +4,7 @@
 
     <body>
         <style>
-            #docField1 .remove-fields {
+            #docField1 .remove-btn {
                 display: none;
             }
         </style>
@@ -12,16 +12,14 @@
             <section class="section">
                 <div class="section-body">
                     <a class="btn btn-primary mb-3" href="{{ route('user-document.index', $data['user_id']) }}">Back</a>
-
                     <form id="add_student" action="{{ route('user-document.store', $data['user_id']) }}" method="POST"
                         enctype="multipart/form-data">
-
                         @csrf
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12">
                                 <div class="card">
-                                    <h4 class="text-center my-4">Add Document<button type="button" class="btn btn-primary"
-                                            id="add_btn" style="position: absolute;right: 2.5rem"><span
+                                    <h4 class="text-center my-4">Add Document<button type="button" class="btn btn-success add-btn"
+                                            style="position: absolute;right: 2.5rem"><span
                                                 class="fa fa-plus mr-2"></span>Add More</button></h4>
                                     <div id="docField1" class="doc-fields">
                                         <div class="row mx-0 px-4">
@@ -30,7 +28,7 @@
                                                     <label>Document Type</label>
                                                     {{-- <input type="text" placeholder="document name" name="doc_type[]"
                                                         id="doc_type" value="{{ old('doc_type[]') }}" class="form-control"> --}}
-                                                    <select class="form-control selectric category" name="doc_type[]"
+                                                    <select class="form-control category" name="doc_type[]"
                                                         value="{{ old('doc_type[]') }}" required>
 
                                                         <option selected disabled>Please Select a Document</option>
@@ -86,8 +84,7 @@
                                             <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                                 <div class="form-group mb-2">
                                                     <label>Comment</label>
-                                                    <textarea name="comment[]" id="comment" value="{{ old('comment[]') }}" class="form-control">
-                                                            </textarea>
+                                                    <textarea name="comment[]" id="comment" value="{{ old('comment[]') }}" class="form-control"></textarea>
                                                     @error('comment')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
@@ -95,22 +92,17 @@
                                             </div>
                                         </div>
                                         <div class="row mx-0 px-4 py-4">
-                                            <button type="button" class="btn btn-danger remove-fields">Remove</button>
+                                            <button type="button" class="btn btn-danger remove-btn"><span class="fa fa-trash mr-2"></span>Remove</button>
                                         </div>
                                     </div>
-
                                     <div class="card-footer text-center row">
                                         <div class="col">
                                             <button type="submit" class="btn btn-success mr-1 btn-bg"
                                                 id="submit">Save</button>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -127,25 +119,21 @@
     @endif
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#add_btn').on('click', function() {
+            $(document).on('click', '.add-btn', function() {
                 // get the last DIV which ID starts with ^= "docField"
-                var $div = $('div[id^="docField"]:last');
+                var $div = $('div[id^="docField"]:first');
 
                 // Read the Number from that DIV's ID (i.e: 3 from "klon3")
                 // And increment that number by 1
                 var num = parseInt($div.prop("id").match(/\d+/g), 10) + 1;
 
                 // Clone it and assign the new ID (i.e: from num 4 to ID "klon4")
-                var html = $div.clone().prop('id', 'docField' + num);
+                var html = $div.clone().prop('id', 'docField' + num).find("input, textarea").val("").end().show();
 
-                $('.card-footer').before(html);
-
-                $('.remove-fields').on('click', function() {
-                    $(this).closest('.added-fields').remove();
-                });
+                $($div).before(html);
             });
 
-            $(document).on('click', '.remove-fields', function() {
+            $().on('click', '.remove-btn', function() {
                 $(this).closest('.doc-fields').remove();
             });
         });

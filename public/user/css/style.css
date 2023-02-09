@@ -68,6 +68,16 @@ body .pl-padding {
     border: none;
     outline: none;
 }
+.doc-fields .remove-btn {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#docField1 .remove-btn {
+    display: none;
+}
 @media (max-width: 575px) {
     .auth-form #authForm {
         padding: 16px;
