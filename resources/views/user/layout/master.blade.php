@@ -32,10 +32,10 @@
     <script src="{{ asset('public/user/plugins/DataTables/datatables.js') }}"></script>
     <script src="{{ asset('public/user/js/popper.min.js') }}"></script>
     <script src="{{ asset('public/user/js/bootstrap-4.5.3.min.js') }}"></script>
-    <script src="{{ asset('public/user/js/custom.js') }}"></script>
     <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>
     <script src="{{ asset('public/user/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('public/user/js/custom.js') }}"></script>
 
      <script type="text/javascript">
         $(function() {

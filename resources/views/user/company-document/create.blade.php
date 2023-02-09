@@ -17,7 +17,7 @@
                     <div class="form-row company-docs">
                         <div class="form-group col-md-6">
                             <label>Document Name<span class="required"> *</span></label>
-                            <input type="text" placeholder="Enter Document Name" class="form-control">
+                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}" placeholder="Enter Document Name" class="form-control">
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
