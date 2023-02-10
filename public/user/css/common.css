@@ -282,6 +282,10 @@ body .datepicker-dropdown.datepicker-orient-top:before {
     color: var(--green-clr);
 }
 
+.green-link:hover, .green-link:focus, .green-link:active {
+    color: var(--green-clr)!important;
+}
+
 .pagination .page-link {
     color: var(--theme-clr);
     border: none;

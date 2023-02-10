@@ -46,7 +46,15 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 other-show d-none">
+                            <label>Document Name<span class="required"> *</span></label>
+                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                placeholder="Enter Document Name" class="form-control">
+                            @error('doc_name')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6 other-none">
                             <label>Issue Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="issue_date[]" placeholder="dd.mm.yyyy"
@@ -56,7 +64,7 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 other-none">
                             <label>Expiry Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="expiry_date[]" placeholder="dd.mm.yyyy"
@@ -89,6 +97,18 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
+            $(document).on('change', '#selectDocument', function() {
+                if($(this).val()=='Other') {
+                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                } else {
+                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                }
+            });
+
             $(document).on('click', '.add-btn', function() {
                 // get the last DIV which ID starts with ^= "docField"
                 var $div = $('div[id^="docField"]:first');

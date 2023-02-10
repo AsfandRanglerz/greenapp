@@ -112,13 +112,13 @@
         $(function() {
             $(document).on('change', '#selectDocument', function() {
                 if($(this).val()=='Other') {
-                    $('.other-show').removeClass('d-none');
-                    $('.other-none').addClass('d-none');
-                    $('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
                 } else {
-                    $('.other-show').addClass('d-none');
-                    $('.other-none').removeClass('d-none');
-                    $('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
                 }
             });
 
