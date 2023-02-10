@@ -10,23 +10,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/inter.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="auth-centered-block">
         @yield('content')
-    <script src="{{ asset('public/user/plugins/DataTables/datatables.js') }}"></script>
-        <script src="{{ asset('public/user/js/custom.js') }}"></script>
-        <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     </div>
-    @yield('script')
+    <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="{{ asset('public/user/js/custom.js') }}"></script>
     <script type="text/javascript">
         $(function() {
             /*dashboard right side content toggle*/
@@ -133,50 +130,7 @@
         }
         toastrPopUp();
     </script>
+    @yield('script')
 </body>
-
-<script>
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        width: '27rem',
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-        @if (Session()->has('message'))
-    var type = "{{ Session::get('alert') }}";
-    switch (type) {
-        case'info':
-            Toast.fire({
-                icon: 'info',
-                title: '{{ Session::get("message") }}'
-            })
-            break;
-        case 'success':
-            Toast.fire({
-                icon: 'success',
-                title: '{{ Session::get("message") }}'
-            })
-            break;
-        case 'warning':
-            Toast.fire({
-                icon: 'warning',
-                title: '{{ Session::get("message") }}'
-            })
-            break;
-        case'error':
-            Toast.fire({
-                icon: 'error',
-                title: '{{ Session::get("message") }}'
-            })
-            break;
-    }
-    @endif
-</script>
 
 </html>

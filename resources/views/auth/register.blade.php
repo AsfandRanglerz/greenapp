@@ -89,8 +89,6 @@
         </form>
     </div>
 @endsection
-    <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('public/user/js/custom.js') }}"></script>
     @section('script')
     <script>
         @if (\Illuminate\Support\Facades\Session::has('success'))

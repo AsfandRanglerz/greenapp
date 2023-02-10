@@ -53,7 +53,6 @@
     </div>
 @endsection
 @section('script')
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             //option A
@@ -76,6 +75,5 @@
             toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
         @endif
     </script>
-    <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('public/user/js/custom.js') }}"></script>
+
 @endsection
