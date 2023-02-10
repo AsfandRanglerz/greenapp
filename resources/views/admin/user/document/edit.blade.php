@@ -20,7 +20,7 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Document Type<span class="required"> *</span></label>
-                                                <select class="form-control category" name="doc_type[]"
+                                                <select id="selectDocument" class="form-control category" name="doc_type[]"
                                                     value="{{ $data['doc_type'] }}" required>
 
                                                     <option value="" selected disabled>Select Document</option>
@@ -62,6 +62,16 @@
                                         </div>
                                     </div>
                                     <div class="row mx-0 px-4">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-3 other-show d-none">
+                                            <div class="form-group mb-2">
+                                                <label>Document Name<span class="required"> *</span></label>
+                                                <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                                    placeholder="Enter Document Name" class="form-control" required>
+                                                @error('doc_name')
+                                                    <div class="text-danger p-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Issue Date<span class="required"> *</span></label>
@@ -118,7 +128,19 @@
             toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
         </script>
     @endif
-
-
-
+    <script type="text/javascript">
+        $(function() {
+            $(document).on('change', '#selectDocument', function() {
+                if($(this).val()=='Other') {
+                    $('.other-show').removeClass('d-none');
+                    $('.other-none').addClass('d-none');
+                    $('.other-none').addClass('d-none');
+                } else {
+                    $('.other-show').addClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                }
+            });
+        });
+    </script>
 @endsection

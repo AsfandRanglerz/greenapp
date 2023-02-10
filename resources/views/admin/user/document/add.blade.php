@@ -28,7 +28,7 @@
                                                     <label>Document Type<span class="required"> *</span></label>
                                                     {{-- <input type="text" placeholder="document name" name="doc_type[]"
                                                         id="doc_type" value="{{ old('doc_type[]') }}" class="form-control"> --}}
-                                                    <select class="form-control category" name="doc_type[]"
+                                                    <select id="selectDocument" class="form-control category" name="doc_type[]"
                                                         value="{{ old('doc_type[]') }}" required>
 
                                                         <option value="" selected disabled>Select Document</option>
@@ -57,7 +57,17 @@
                                             </div>
                                         </div>
                                         <div class="row mx-0 px-4">
-                                            <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                            <div class="col-sm-6 pl-sm-0 pr-sm-3 other-show d-none">
+                                                <div class="form-group mb-2">
+                                                    <label>Document Name<span class="required"> *</span></label>
+                                                    <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                                        placeholder="Enter Document Name" class="form-control" required>
+                                                    @error('doc_name')
+                                                        <div class="text-danger p-2">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
                                                     <label>Issue Date<span class="required"> *</span></label>
                                                     <input type="date" name="issue_date[]"
@@ -68,7 +78,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                            <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
                                                     <label>Expiry Date<span class="required"> *</span></label>
                                                     <input type="date" name="expiry_date[]"
@@ -118,7 +128,19 @@
         </script>
     @endif
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(function() {
+            $(document).on('change', '#selectDocument', function() {
+                if($(this).val()=='Other') {
+                    $('.other-show').removeClass('d-none');
+                    $('.other-none').addClass('d-none');
+                    $('.other-none').addClass('d-none');
+                } else {
+                    $('.other-show').addClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                }
+            });
+
             $(document).on('click', '.add-btn', function() {
                 // get the last DIV which ID starts with ^= "docField"
                 var $div = $('div[id^="docField"]:first');

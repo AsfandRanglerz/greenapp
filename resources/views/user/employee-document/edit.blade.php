@@ -20,7 +20,7 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">
                             <label>Select Document Type<span class="required"> *</span></label>
-                            <select class="form-control category" name="doc_type"
+                            <select id="selectDocument" class="form-control category" name="doc_type"
                             value="{{ $data['doc_type'] }}" required>
 
                             <option value="" selected disabled>Select Document</option>
@@ -60,7 +60,15 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 other-show d-none">
+                            <label>Document Name<span class="required"> *</span></label>
+                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                placeholder="Enter Document Name" class="form-control" required>
+                            @error('doc_name')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6 other-none">
                             <label>Issue Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="issue_date" placeholder="dd.mm.yyyy"
@@ -70,7 +78,7 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 other-none">
                             <label>Expiry Date<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="date" name="expiry_date" placeholder="dd.mm.yyyy"
@@ -102,7 +110,17 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
-
+            $(document).on('change', '#selectDocument', function() {
+                if($(this).val()=='Other') {
+                    $('.other-show').removeClass('d-none');
+                    $('.other-none').addClass('d-none');
+                    $('.other-none').addClass('d-none');
+                } else {
+                    $('.other-show').addClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                    $('.other-none').removeClass('d-none');
+                }
+            });
 
             /*Avatar upload*/
             var readURL = function(input) {
