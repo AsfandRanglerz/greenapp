@@ -12,7 +12,7 @@
                 <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
                             <th scope="col">Issue Date</th>
@@ -24,7 +24,7 @@
                     <tbody class="employees-body">
                         @foreach ($documents as $document)
                             <tr>
-                                <td>#{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 @php
                                     $file_name = $document->file;
                                     $ext = explode('.', $file_name);

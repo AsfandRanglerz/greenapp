@@ -12,7 +12,7 @@
                 <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">image</th>
                             <th scope="col">Email</th>
@@ -27,7 +27,7 @@
                     <tbody class="employees-body">
                         @foreach ($employees as $employee)
                             <tr>
-                                <td>#{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $employee->name }}</td>
                                 <td><a href="{{ asset(''). '' .$employee->image }}">
                                     <img src="{{ asset(''). '' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
@@ -46,7 +46,7 @@
                                     <form class="d-inline" method="post" action="{{ route('employee.destroy', $employee->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="form-btn" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></button>
+                                        <a class="form-btn" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></a>
                                     </form>
                                 </td>
                             </tr>

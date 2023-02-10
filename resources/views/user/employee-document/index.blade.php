@@ -12,7 +12,7 @@
                 <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
                             <th scope="col">Issue Date</th>
@@ -24,7 +24,7 @@
                     <tbody class="employees-body">
                         @foreach ($documents as $document)
                             <tr>
-                                <td>#{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 @php
                                     $file_name = $document->file;
                                     $ext = explode('.', $file_name);
@@ -61,8 +61,8 @@
                                     <form class="d-inline" method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button class="form-btn" type="submit"><span
-                                                class="fa fa-trash text-danger show_confirm"></span></button>
+                                        <a class="form-btn" type="submit"><span
+                                                class="fa fa-trash text-danger show_confirm"></span></a>
                                     </form>
                                 </td>
                             </tr>
