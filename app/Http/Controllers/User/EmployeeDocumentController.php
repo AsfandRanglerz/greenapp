@@ -54,6 +54,7 @@ class EmployeeDocumentController extends Controller
     }
 
     $doc_type = $request->input('doc_type');
+    $doc_name = $request->input('doc_name');
     $issue_date = $request->input('issue_date');
     $expiry_date = $request->input('expiry_date');
     $comment = $request->input('comment');
@@ -62,6 +63,7 @@ class EmployeeDocumentController extends Controller
 
         $document = new UserDocument;
         $document->doc_type = $doc_type[$i];
+        $document->doc_name = $doc_name[$i];
         $document->issue_date = $issue_date[$i];
         $document->expiry_date = $expiry_date[$i];
         $document->comment = $comment[$i];
@@ -118,12 +120,12 @@ class EmployeeDocumentController extends Controller
         {
             $request->validate([
                 'doc_type' => 'required',
-                'issue_date' => 'required',
-                'expiry_date' => 'required',
+                
 
             ]);
             $company = UserDocument::find($id);
             $company->doc_type = $request->input('doc_type');
+            $company->doc_name = $request->input('doc_name');
             $company->issue_date = $request->input('issue_date');
             $company->expiry_date = $request->input('expiry_date');
             $company->comment = $request->input('comment');

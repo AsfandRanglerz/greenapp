@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
-                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                            <input type="text" name="doc_name" value="{{ $data['doc_name'] }}"
                                 placeholder="Enter Document Name" class="form-control" required>
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>

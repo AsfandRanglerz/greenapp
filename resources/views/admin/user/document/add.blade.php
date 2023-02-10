@@ -61,7 +61,7 @@
                                                 <div class="form-group mb-2">
                                                     <label>Document Name<span class="required"> *</span></label>
                                                     <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
-                                                        placeholder="Enter Document Name" class="form-control" required>
+                                                        placeholder="Enter Document Name" class="form-control">
                                                     @error('doc_name')
                                                         <div class="text-danger p-2">{{ $message }}</div>
                                                     @enderror
@@ -72,7 +72,7 @@
                                                     <label>Issue Date<span class="required"> *</span></label>
                                                     <input type="date" name="issue_date[]"
                                                         value="{{ old('issue_date[]') }}" id="issue_date"
-                                                        class="form-control" placeholder="Issue Date" required>
+                                                        class="form-control" placeholder="Issue Date" >
                                                     @error('issue_date')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
@@ -83,7 +83,7 @@
                                                     <label>Expiry Date<span class="required"> *</span></label>
                                                     <input type="date" name="expiry_date[]"
                                                         value="{{ old('expiry_date[]') }}" id="expiry_date"
-                                                        class="form-control" placeholder="Expiry Date" required>
+                                                        class="form-control" placeholder="Expiry Date" >
                                                     @error('expiry_date')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror

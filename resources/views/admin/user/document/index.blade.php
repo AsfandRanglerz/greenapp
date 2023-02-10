@@ -25,6 +25,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
+                                            <th>Document Type</th>
                                             <th>Document Name</th>
                                             <th>File</th>
                                             <th>Issue Date</th>
@@ -40,6 +41,7 @@
                                                 <td>{{ $loop->iteration }}</td>
 
                                                 <td>{{ $document->doc_type }}</td>
+                                                <td>{{ $document->doc_name }}</td>
                                                 @php
                                                     $file_name = $document->file;
                                                     $ext = explode('.', $file_name);

@@ -15,6 +15,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
                             <th scope="col">Comment</th>
@@ -50,6 +51,7 @@
                                     </a>
                                 </td>
                                 <td>{{ $document->doc_type }}</td>
+                                <td>{{ $document->doc_name }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
                                 <td>{{ $document->comment}}</td>

@@ -54,6 +54,7 @@ class DocumentController extends Controller
     }
 
     $doc_type = $request->input('doc_type');
+    $doc_name = $request->input('doc_name');
     $issue_date = $request->input('issue_date');
     $expiry_date = $request->input('expiry_date');
     $comment = $request->input('comment');
@@ -61,6 +62,7 @@ class DocumentController extends Controller
     for ($i = 0; $i < count($doc_type); $i++) {
         $document = new UserDocument;
         $document->doc_type = $doc_type[$i];
+        $document->doc_name = $doc_name[$i];
         $document->issue_date = $issue_date[$i];
         $document->expiry_date = $expiry_date[$i];
         $document->comment = $comment[$i];

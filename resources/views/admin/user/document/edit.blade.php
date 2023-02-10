@@ -59,14 +59,13 @@
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="row mx-0 px-4">
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3 other-show d-none">
                                                 <div class="form-group mb-2">
                                                     <label>Document Name<span class="required"> *</span></label>
-                                                    <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                                    <input type="text" name="doc_name" value="{{ $data['doc_name'] }}"
                                                         placeholder="Enter Document Name" class="form-control" required>
                                                     @error('doc_name')
                                                         <div class="text-danger p-2">{{ $message }}</div>
