@@ -317,7 +317,7 @@ body .datepicker-dropdown.datepicker-orient-top:before {
 
 .btn-success:hover, .btn-success:focus, .btn-success:active {
     background: #28a745!important;
-} 
+}
 
 .bg-danger, .btn-danger {
     background: #d9534f!important;
@@ -334,7 +334,7 @@ body .datepicker-dropdown.datepicker-orient-top:before {
 body .input-group .input-group-prepend .input-group-text {
     background-color: transparent;
     border: 2px solid #ced4da;
-    border-left: 0;    
+    border-left: 0;
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
 }
@@ -455,6 +455,50 @@ body .required {
     font-weight: 600;
 }
 
+.swal-icon--warning__body {
+    width: 3px;
+    height: 12px;
+    top: 3px;
+    border-radius: 2px;
+    margin-left: -1px;
+}
+
+.swal-title {
+    font-size: 16px;
+}
+
+.swal-icon {
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+    margin: 12px auto;
+}
+
+.swal-icon--warning__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-left: -3px;
+    bottom: -10px;
+}
+
+.swal-button {
+    font-size: 14px;
+}
+
+.swal-button--cancel {
+    border: none;
+}
+
+.swal-button--cancel:focus {
+    box-shadow: none;
+}
+
+.swal-button--danger {
+    background-color: #bb374c!important;
+    border-color: #bb374c!important;
+}
+
 body .badge-success, body label:not(.custom-control-label) {
     font-weight: 600;
 }
@@ -558,11 +602,11 @@ body h6, body .h6 {
     body .custom-control-label {
         font-size: 12px!important;
     }
-    
+
     body .form-group {
         margin-bottom: 0.2rem;
     }
-    
+
     body h1, body .h1 {
         font-size: 20px;
     }
