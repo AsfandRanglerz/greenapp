@@ -110,6 +110,18 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
+            $('#selectDocument').each(function() {
+                if($(this).val()=='Other') {
+                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                } else {
+                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                }
+            });
+
             $(document).on('change', '#selectDocument', function() {
                 if($(this).val()=='Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
