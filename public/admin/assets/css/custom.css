@@ -55,9 +55,15 @@ a.btn, button.btn {
 }
 table.dataTable {
     border-bottom: 1px solid #ddd !important;
-    border-top: 2px solid #ddd !important;
+    border-top: 1px solid #ddd !important;
     border-left: 1px solid #ddd !important;
     border-right: 1px solid #ddd !important;
+}
+table.dataTable th, table.dataTable td {
+    border-left-width: 0!important;
+}
+table.dataTable th:last-child, table.dataTable th:last-child, table.dataTable td:last-child, table.dataTable td:last-child {
+    border-right-width: 0!important;
 }
 th {
     white-space: nowrap;
