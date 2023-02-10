@@ -155,7 +155,7 @@
                 $($div).before(html);
             });
 
-            $().on('click', '.remove-btn', function() {
+            $(document).on('click', '.remove-btn', function() {
                 $(this).closest('.doc-fields').remove();
             });
         });
