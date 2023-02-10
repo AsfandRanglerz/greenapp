@@ -13,7 +13,6 @@
                             <div class="card-header">
                                 <div class="col-12">
                                     <h4>Documents</h4>
-
                                 </div>
                                 {{-- @dd($data) --}}
                             </div>
@@ -114,9 +113,8 @@
 </script>
     <script>
         $(document).ready(function() {
-            $('#table_id_events').DataTable()
-
-        })
+            $('#table_id_events').DataTable();
+        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">

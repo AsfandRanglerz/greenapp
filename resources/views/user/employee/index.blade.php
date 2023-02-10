@@ -72,21 +72,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function() {
-            /*datatable search*/
-            $('.employees').DataTable({
-                "pageLength": 10,
-                aaSorting: [
-                    [0, "asc"]
-                ],
-                "fnDrawCallback": function(oSettings) {
-                    if ($('.employees-body > tr').length < 4) {
-                        $('.dataTables_paginate').hide();
-                    }
-                },
-                /*"columnDefs": [{"type": "date", "targets": 0}]*/
-            });
-            /*datatable search*/
-
+        /*datatable search*/
+        $('.employees').DataTable({
+            "pageLength": 10,
+            aaSorting: [
+                [0, "asc"]
+            ]
+        });
+        /*datatable search*/
 
         $('.show_confirm').click(function(event) {
             var form = $(this).closest("form");

@@ -86,15 +86,10 @@
                 "pageLength": 10,
                 aaSorting: [
                     [0, "asc"]
-                ],
-                "fnDrawCallback": function(oSettings) {
-                    if ($('.employees-body > tr').length < 10) {
-                        $('.dataTables_paginate').hide();
-                    }
-                },
-                /*"columnDefs": [{"type": "date", "targets": 0}]*/
+                ]
             });
             /*datatable search*/
+            
             $('.show_confirm').click(function(event) {
                 var form = $(this).closest("form");
                 var name = $(this).data("name");
