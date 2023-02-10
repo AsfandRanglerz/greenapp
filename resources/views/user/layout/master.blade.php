@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
 </head>
 <body>
+    <div id="pgLoader">
+        <span id="pgLoaderGif"></span>
+    </div>
     @include('user.common.sidebar')
     <div id="dashboardSidebarRightContent" class="position-relative">
         @include('user.common.header')
