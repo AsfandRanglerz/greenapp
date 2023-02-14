@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+// use App\Mail\UserLoginPassword;
+use App\Mail\CompanyLoginPassword;
+use App\Mail\EmployeeEmailUpdated;
 use App\Models\Country;
+use App\Models\User;
+use App\Models\Company;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\UserLoginPassword;
+use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
@@ -51,8 +55,8 @@ class EmployeeController extends Controller
             'email' => 'required|unique:users,email|email',
             'phone' => 'required',
             'dob' => 'required',
-            'nationality'=>'required',
-            'religion'=>'required',
+            'nationality' => 'required',
+            'religion' => 'required',
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
         ]);
@@ -81,14 +85,16 @@ class EmployeeController extends Controller
 
         ]);
         // dd($user);
+        $company = Company::find(Auth::guard('company')->id());
 
         $message['email'] = $request->email;
+        $message['company_name'] = $company->name;
         $message['password'] = $password;
 
         try {
-            Mail::to($request->email)->send(new UserLoginPassword($message));
+            Mail::to($request->email)->send(new CompanyLoginPassword($message));
             return redirect()->route('employee.index')
-            ->with('success' , 'Created Successfully');
+                ->with('success', 'Created Successfully');
         } catch (\Throwable $th) {
             return back()
                 ->with(['status' => false, 'error' => $th->getMessage()]);
@@ -133,39 +139,68 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'nationality'=>'required',
-            'religion'=>'required',
 
-        ]);
-        $employee = User::find($id);
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move(public_path('admin/assets/img/users/'), $filename);
-            $image = 'public/admin/assets/img/users/' . $filename;
-        } else {
-            $image = $employee->image;
-        }
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'dob' => 'required',
+        'nationality' => 'required',
+        'religion' => 'required',
+        'email' => ['required', 'email', Rule::unique('users')->ignore($id)],
+    ]);
 
-        $employee->update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'dob' => $request->dob,
-            'nationality' => $request->nationality,
-            'religion' => $request->religion,
-            'company_id' => Auth::guard('company')->id(),
-        ] + ['image' => $image]);
+    $employee = User::find($id);
 
-        return redirect()->route('employee.index')->with('success' , 'Updated Successfully');
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $file->move(public_path('admin/assets/img/users/'), $filename);
+        $image = 'public/admin/assets/img/users/' . $filename;
+    } else {
+        $image = $employee->image;
     }
+
+    $updateData = [
+        'name' => $request->name,
+        'phone' => $request->phone,
+        'dob' => $request->dob,
+        'nationality' => $request->nationality,
+        'religion' => $request->religion,
+        'company_id' => Auth::guard('company')->id(),
+        // 'company_name' => Auth::guard('company')->name(),
+        'image' => $image,
+    ];
+
+    $company = Company::find(Auth::guard('company')->id());
+
+    // Check if the email address has changed
+    if ($request->email !== $employee->email) {
+        // Generate a new password
+        $password = random_int(10000000, 99999999);
+        $updateData['password'] = Hash::make($password);
+        $updateData['email'] = $request->email;
+
+        $message['name'] = $request->name;
+        $message['email'] = $request->email;
+        $message['company_name'] = $company->name;
+        $message['password'] = $password;
+
+        try {
+            Mail::to($request->email)->send(new EmployeeEmailUpdated($message));
+        } catch (\Throwable $th) {
+            return back()->with(['status' => false, 'error' => $th->getMessage()]);
+        }
+    } else {
+        $updateData['email'] = $employee->email;
+    }
+
+    $employee->update($updateData);
+
+    return redirect()->route('employee.index')->with('success', 'Updated Successfully');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -176,6 +211,6 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->route('employee.index')->with('success' , 'Deleted Successfully');
+        return redirect()->route('employee.index')->with('success', 'Deleted Successfully');
     }
 }

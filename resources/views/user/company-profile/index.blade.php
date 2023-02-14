@@ -57,7 +57,7 @@
                         <label>Trade License No</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                            <input type="number" class="form-control pl-padding" name="license_no"
+                            <input type="text" class="form-control pl-padding" name="license_no"
                                 value="{{ $company->license_no }}" placeholder="Enter Trade License No">
                         </div>
                         @error('license_no')
@@ -68,7 +68,7 @@
                         <label>Enter Establishment Card No</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                            <input type="number" class="form-control pl-padding" name="establishment_no"
+                            <input type="text" class="form-control pl-padding" name="establishment_no"
                                 value="{{ $company->establishment_no }}" placeholder="Enter Establishment Card No">
                         </div>
                         @error('establishment_no')
@@ -79,7 +79,7 @@
                         <label>MOHRE Company Code</label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                            <input type="number" class="form-control pl-padding" name="mohre_no"
+                            <input type="text" class="form-control pl-padding" name="mohre_no"
                                 value="{{ $company->mohre_no }}" placeholder="Enter MOHRE Company Code">
                         </div>
                         @error('mohre_no')

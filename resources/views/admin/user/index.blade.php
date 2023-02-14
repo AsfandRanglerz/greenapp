@@ -21,8 +21,7 @@
                             <div class="card-body table-striped table-bordered table-responsive">
                                 {{-- <a class="btn btn-primary mb-3"
                                 href="{{route('admin.user.index')}}">Back</a> --}}
-                                <a class="btn btn-success mb-3"
-                                       href="{{route('user.create')}}">Add Employee</a>
+                                <a class="btn btn-success mb-3" href="{{ route('user.create') }}">Add Employee</a>
                                 <table class="table text-center" id="table_id_events">
                                     <thead>
                                         <tr>
@@ -30,7 +29,9 @@
                                             <th>Employee Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Company Name</th>
+                                            @if (!isset($company))
+                                                <th>Company Name</th>
+                                            @endif
                                             <th>DOB</th>
                                             <th>Nationality</th>
                                             <th>Religion</th>
@@ -41,39 +42,42 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach($data as $employee)
-
+                                        @foreach ($users as $employee)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $employee->name}}</td>
-                                                <td>{{ $employee->email}}</td>
-                                                <td>{{ $employee->phone}}</td>
-                                                <td>{{ $employee->usercompany->name}}</td>
-                                                <td>{{ $employee->dob}}</td>
-                                                <td>{{ $employee->nationality}}</td>
+                                                <td>{{ $employee->name }}</td>
+                                                <td>{{ $employee->email }}</td>
+                                                <td>{{ $employee->phone }}</td>
+                                                @if (!isset($company))
+                                                    <td>{{ $employee->usercompany->name }}</td>
+                                                @endif
+                                                <td>{{ $employee->dob }}</td>
+                                                <td>{{ $employee->nationality }}</td>
                                                 <td>{{ $employee->religion }}</td>
-                                                <td><a href="{{ asset(''). '/' .$employee->image }}">
-                                                <img src="{{ asset(''). '/' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
+                                                <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
+                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
+                                                            height="50" width="50" class="image"></a>
                                                 </td>
                                                 <td>
-                                               <a
-                                               href="{{route('user-document.index',$employee->id)}}">View</a>
-                                               </td>
+                                                    <a href="{{ route('user-document.index', $employee->id) }}">View</a>
+                                                </td>
 
                                                 <td
-                                                style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                    style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
 
 
-                                                <a class="btn btn-info"
-                                               href="{{route('user.edit',$employee->id)}}">Edit</a>
-                                                        <form method="post" action="{{route('user.destroy',$employee->id)}}">
-                                                            @csrf
-                                                            <input name="_method" type="hidden" value="DELETE">
-                                                            <button type="submit" class="btn btn-danger btn-flat show_confirm" data-toggle="tooltip" >Delete</button>
-                                                        </form>
-                                                           </td>
-                                                        </tr>
-                                      @endforeach
+                                                    <a class="btn btn-info"
+                                                        href="{{ route('user.edit', $employee->id) }}">Edit</a>
+                                                    <form method="post"
+                                                        action="{{ route('user.destroy', $employee->id) }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                            data-toggle="tooltip">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -88,42 +92,40 @@
 
 @endsection
 
-@section ('js')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
+@section('js')
+    <script>
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
 
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+    </script>
 
-<script>
-    $(document).ready(function(){
-        $('#table_id_events').DataTable();
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script type="text/javascript">
-
-$('.show_confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-              title: `Are you sure you want to delete this record?`,
-              text: "If you delete this, it will be gone forever.",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            }
-          });
-      });
-
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id_events').DataTable();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
 @endsection

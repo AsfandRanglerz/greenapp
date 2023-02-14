@@ -70,7 +70,7 @@
                     <div class="form-group col-md-6">
                         <label for="userEmail">Email<span class="required"> *</span></label>
                         <input id="userEmail" type="email" name="email" value="{{ $data['email'] }}"
-                            class="form-control" placeholder="Enter Your Email" readonly>
+                            class="form-control" placeholder="Enter Your Email" >
                         @error('email')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror

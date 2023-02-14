@@ -5,7 +5,7 @@
                     src="{{ asset('public/admin/assets/img/logo2.png') }}" /></a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Main</li>
+
             <li class="dropdown {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/admin/dashboard') }}" class="nav-link"><i
                         class="fa fa-tachometer-alt"></i><span>Dashboard</span></a>

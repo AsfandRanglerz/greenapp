@@ -30,7 +30,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Email<span class="required"> *</span></label>
                                                 <input type="email" placeholder="Enter Your Email" name="email" id="email"
-                                                    value="{{ $company['email'] }}" class="form-control"readonly />
+                                                    value="{{ $company['email'] }}" class="form-control" />
                                                 @error('email')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -52,7 +52,7 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Trade License No</label>
-                                                <input type="number" name="license_no" id="license_no" class="form-control"
+                                                <input type="text" name="license_no" id="license_no" class="form-control"
                                                 value="{{ $company['license_no'] }}" placeholder="Enter Trade License No">
                                                 @error('license_no')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -64,7 +64,7 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Establishment Card No</label>
-                                                <input type="number" name="establishment_no" id="establishment_no"
+                                                <input type="text" name="establishment_no" id="establishment_no"
                                                     class="form-control" value="{{ $company['establishment_no'] }}"
                                                     placeholder="Enter Establishment Card No">
                                                 @error('establishment_no')
@@ -75,7 +75,7 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>MOHRE Company Code</label>
-                                                <input type="number" name="mohre_no" id="mohre_no"
+                                                <input type="text" name="mohre_no" id="mohre_no"
                                                 value="{{ $company['mohre_no'] }}" class="form-control" name="mohre_no"
                                                     placeholder="Enter MOHRE Company Code">
                                                 @error('mohre_no')

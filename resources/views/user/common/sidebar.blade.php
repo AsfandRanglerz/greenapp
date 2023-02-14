@@ -5,7 +5,10 @@
         @if (Auth::guard('company')->check())
             <h5 class="mt-3 text-white text-center">{{ Auth::guard('company')->user()->name }}</h5>
         @else
-            <h5 class="mt-3 text-white text-center">{{ Auth::guard('web')->user()->name }}</h5>
+            @php
+                $company = \App\Models\Company::find(auth()->user()->company_id);
+            @endphp
+            <h5 class="mt-3 text-white text-center">{{ $company->name }}</h5>
         @endif
     </div>
     <aside class="side-nav opend active">

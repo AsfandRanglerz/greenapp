@@ -27,8 +27,8 @@
                             <option value="Passport"
                                 {{ $data['doc_type'] == 'Passport' ? 'selected' : '' }}>Passport
                             </option>
-                            <option value="Identitiy Card"
-                                {{ $data['doc_type'] == 'Identitiy Card' ? 'selected' : '' }}>
+                            <option value="Identity Card"
+                                {{ $data['doc_type'] == 'Identity Card' ? 'selected' : '' }}>
                                 Identitiy Card</option>
                             <option value="Visa"
                                 {{ $data['doc_type'] == 'Visa' ? 'selected' : '' }}>Visa</option>

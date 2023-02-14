@@ -7,7 +7,8 @@
             <div class="row mb-3">
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="card">
-                        <div class="card-statistic-4">
+                        <a href="{{ route('company.index') }}">
+                        <div class="card-statistic-4" style="text-decoration: none">
                             <div class="align-items-center justify-content-between">
                                 <div class="row ">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
@@ -24,7 +25,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div></a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -51,7 +52,8 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="card">
-                        <div class="card-statistic-4">
+                        <a href="{{ route('user.index') }}">
+                        <div class="card-statistic-4" style="text-decoration: none">
                             <div class="align-items-center justify-content-between">
                                 <div class="row ">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
@@ -69,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div></a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">

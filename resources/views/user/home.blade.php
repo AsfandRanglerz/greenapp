@@ -24,14 +24,14 @@
                     </p>
                 </div>
                 <div class="col-sm-4 col-8 mx-auto mt-sm-0 my-3 wow fadeInUp" data-wow-duration="2s">
-                    <a href="#"
+                    <a href="{{route('employee.index')}}"
                         class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
                         <h5 class="text-center mb-4 theme-color">Total Employees</h5>
                         <span class="block-badge">{{ $employee }}</span>
                     </a>
                 </div>
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
-                    <a href="#"
+                    <a href="{{route('companyDocument.index')}}"
                         class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
                         <h5 class="text-center mb-4 theme-color">Company Documents</h5>
                         <span class="block-badge">{{ $companyDocument }}</span>
@@ -39,7 +39,7 @@
                 </div>
                 @endif
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
-                    <a href="#"
+                    <a href="{{route('document.index')}}"
                         class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
                         <h5 class="text-center mb-4 theme-color">Employee Documents</h5>
                         <span class="block-badge">{{ $employeeDocument }}</span>

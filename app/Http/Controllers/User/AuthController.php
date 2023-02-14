@@ -60,9 +60,11 @@ class AuthController extends Controller
         ]);
         // dd(Auth());
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            Auth::guard('web')->logout();
             return redirect()->route('home')->with('success', "You've Login Successfully");
         }
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            Auth::guard('company')->logout();
             return redirect()->route('home')->with('success', "You've Login Successfully");
         }
         return redirect()->back()->with('error', "Your Email Or Password Invalid!");

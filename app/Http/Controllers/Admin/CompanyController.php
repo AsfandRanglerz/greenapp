@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 //use Faker\Provider\ar_EG\Company;
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\User;
 use App\Models\CompanyDocument;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserLoginPassword;
+use App\Mail\CompanyEmailUpdated;
+use Illuminate\Validation\Rule;
 
 
 
@@ -27,7 +30,6 @@ class CompanyController extends Controller
     public function index()
     {
         $data = Company::with('documents')->orderBy('id', 'DESC')->get();
-        //dd($data);
         return view('admin.company.index',compact(['data']));
     }
 
@@ -93,8 +95,14 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        //dd('usman');
+        // $users['company_id'] = $id;
+        $users = User::where('company_id', $id)->orderby('id', 'DESC')->get();
+        $company = 'company';
+        return view('admin.user.index', compact('users','company'));
+        
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -117,14 +125,15 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        {
+
             $request->validate([
                 'name' => 'required',
                 'phone' => 'required',
-
+                'email' => ['required', 'email', Rule::unique('companies')->ignore($id)],
             ]);
             $company = Company::find($id);
             $company->name = $request->input('name');
+            $company->email = $request->input('email');
             $company->phone = $request->input('phone');
             $company->establishment_no = $request->input('establishment_no');
             $company->license_no = $request->input('license_no');
@@ -145,10 +154,22 @@ class CompanyController extends Controller
                 $company->image = 'public/admin/assets/img/users/1675332882.jpg';
             }
             $company->update();
+            $message['email'] = $company->email;
+            $message['name'] = $company->name;
+
+        try {
+            Mail::to($request->email)->send(new CompanyEmailUpdated($message));
             return redirect()->route('company.index')->with('success','Updated Successfully');
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            return back()
+                ->with(['status' => false, 'message' => $th->getMessage()]);
         }
 
+
+
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $employee->name }}</td>
-                                <td><a href="{{ asset(''). '' .$employee->image }}">
+                                <td><a target="_black" href="{{ asset(''). '' .$employee->image }}">
                                     <img src="{{ asset(''). '' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
                                     </td>
                                 <td>{{ $employee->email }}</td>

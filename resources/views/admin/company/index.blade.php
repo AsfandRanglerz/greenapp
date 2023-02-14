@@ -33,7 +33,8 @@
                                             <th>Establishment Card No</th>
                                             <th>MOHRE Company Code</th>
                                             <th>Image</th>
-                                            <th>Document</th>
+                                            <th>Documents</th>
+                                            <th>Employees</th>
                                             <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
                                         </tr>
@@ -48,8 +49,7 @@
                                                 <td>{{ $company->license_no }}</td>
                                                 <td>{{ $company->establishment_no }}</td>
                                                 <td>{{ $company->mohre_no }}</td>
-                                                <td> <a
-                                                        href="{{ asset('') . '/' . $company->image }}">
+                                                <td> <a target="_black" href="{{ asset('') . '/' . $company->image }}">
                                                         <img src="{{ asset('') . '/' . $company->image }}"
                                                             alt="" height="50" width="50" class="image"></a>
                                                 </td>
@@ -57,6 +57,10 @@
                                                 <td>
 
                                                     <a href="{{ route('company-document.index', $company->id) }}">View</a>
+                                                </td>
+                                                <td>
+
+                                                    <a href="{{route('company.show', $company->id)}}">View</a>
                                                 </td>
 
                                                 <td
