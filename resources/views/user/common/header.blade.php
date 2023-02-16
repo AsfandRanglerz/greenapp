@@ -2,6 +2,7 @@
     <div id="sideNavOverlay" class="position-fixed d-none"></div>
     <div class="col-6">
         <button class="btn p-0" id="menuToggle"><span class="fa fa-bars text-white"></span></button>
+        <button onclick="history.back()" class="btn btn-success ml-3 back-btn"><span class="fa fa-angle-left mr-2"></span>Back</button>
     </div>
     <div class="col-6">
         <div class="navbar p-0">

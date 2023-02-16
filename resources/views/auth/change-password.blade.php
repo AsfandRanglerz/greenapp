@@ -5,6 +5,7 @@
             <div class="position-relative auth-form-block-header-inner">
                 <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="images/logo.png"
                         alt="logo" class="logo-img"></a>
+                <button onclick="history.back()" class="py-0 px-2 btn btn-success mb-2 back-btn"><span class="fa fa-angle-left mr-2"></span>Back</button>
                 <p class="mt-3 mb-0 text-white">Change Password</p>
                 <h5 class="text-white mb-0">Green App</h5>
             </div>
@@ -54,5 +55,5 @@
     </div>
 @endsection
 @section('script')
-    
+
 @endsection

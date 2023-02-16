@@ -5,6 +5,7 @@
             <div class="position-relative auth-form-block-header-inner">
                 <a class="navbar-brand" href="#" style="position: absolute;right: 0"><img src="{{asset('public/user/images/logo.png')}}"
                         alt="logo" class="logo-img"></a>
+                <button onclick="history.back()" class="py-0 px-2 btn btn-success mb-2 back-btn"><span class="fa fa-angle-left mr-2"></span>Back</button>
                 <p class="mb-2 text-white">Welcome</p>
                 <p class="mb-0 text-white">Please register your account</p>
                 <h5 class="text-white mb-0">Green App</h5>

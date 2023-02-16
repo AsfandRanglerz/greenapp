@@ -78,6 +78,11 @@ body .pl-padding {
 #docField1 .remove-btn {
     display: none;
 }
+@media (min-width: 992px) {
+    .back-btn {
+        display: none;
+    }
+}
 @media (max-width: 575px) {
     .auth-form #authForm {
         padding: 16px;
