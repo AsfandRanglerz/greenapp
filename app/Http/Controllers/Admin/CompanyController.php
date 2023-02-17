@@ -74,6 +74,7 @@ class CompanyController extends Controller
         $data['password'] = hash::make($password);
 
         $user = Company::create($data);
+        $message['name'] = $request->name;
         $message['email'] = $request->email;
         $message['password']=$password;
 
@@ -100,7 +101,7 @@ class CompanyController extends Controller
         $users = User::where('company_id', $id)->orderby('id', 'DESC')->get();
         $company = 'company';
         return view('admin.user.index', compact('users','company'));
-        
+
     }
 
 
