@@ -1,7 +1,7 @@
 @component('mail::message')
 <h1 style="margin:0 auto 10px;width:145px">Registration</h1>
 
-<p>Congratulation Your Account has been Created Successfully By Admin,You can now log in with the following credentials:</p>
+<p>Congratulation {{$message['name']}} Your Account has been Created Successfully By Admin,You can now log in with the following credentials:</p>
 
 <p><strong>Email:</strong> {{ $message['email'] }}</p>
 <p><strong>Password:</strong> {{ $message['password'] }}</p>

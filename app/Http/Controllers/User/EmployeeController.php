@@ -87,6 +87,7 @@ class EmployeeController extends Controller
         // dd($user);
         $company = Company::find(Auth::guard('company')->id());
 
+        $message['name'] = $request->name;
         $message['email'] = $request->email;
         $message['company_name'] = $company->name;
         $message['password'] = $password;

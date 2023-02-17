@@ -23,7 +23,7 @@
                 <label for="userEmail">Email/Phone<span class="required"> *</span></label>
                 <div class="position-relative d-flex align-items-center">
                     <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                    <input id="userEmail" name="email" type="text" class="form-control pl-pr-padding"
+                    <input id="userEmail" name="email" type="text" value="{{ old('email') }}"class="form-control pl-pr-padding"
                         placeholder="Enter Your Email or Mobile Number">
                 </div>
                 @error('email')
