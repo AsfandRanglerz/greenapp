@@ -71,7 +71,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 });
 
 /**Employee & Company panel */
-Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Company'], function () {
     Route::get('/', function () {
         return redirect('login');
     });
@@ -87,6 +87,32 @@ Route::group(['namespace' => 'App\Http\Controllers\User'], function () {
     Route::get('reset-password', 'AuthController@resetPassword')->name('reset-password');
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
     Route::get('logout', 'AuthController@logout')->name('logout');
+
+    Route::group(['middleware' => 'company'], function () {
+
+        Route::get('home', 'HomeController@index')->name('home');
+        /**Company routes */
+        Route::resource('companyProfile', 'CompanyProfileController');
+        Route::get('companyChangePassword-index', 'CompanyProfileController@changePassword_index')->name('companyChangePassword.index');
+        Route::post('companyProfile-password', 'CompanyProfileController@changePassword')->name('companyProfile.changePassword');
+        Route::resource('employee', 'EmployeeController');
+        Route::resource('employeeDocument', 'EmployeeDocumentController');
+        Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
+        Route::resource('companyDocument', 'CompanyDocumentController');
+        Route::get('companyDownload/{id}', 'CompanyDocumentController@download')->name('companyDocument.download');
+        /**Employee routes */
+        Route::resource('EmployeeProfile', 'EmployeeProfileController');
+        Route::get('employeeChangePassword-index', 'EmployeeProfileController@changePassword_index')->name('employeeChangePassword.index');
+        Route::post('EmployeeProfile-password', 'EmployeeProfileController@changePassword')->name('EmployeeProfile.changePassword');
+        Route::resource('document', 'DocumentController');
+        Route::get('documentDownload/{id}', [DocumentController::class, 'download'])->name('document.download');
+
+        /** All security routes */
+        Route::get('faqs', 'SecurityController@faq')->name('faqs');
+        Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
+        Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
+        Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
+    });
 
     Route::group(['middleware' => 'user'], function () {
 
