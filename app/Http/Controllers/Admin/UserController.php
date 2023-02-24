@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Mail\UserLoginPassword;
 use App\Models\Company;
 use App\Models\Country;
-use App\Mail\UserLoginPassword;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('usercompany')->latest()->get();
+        $users = User::with('usercompany')->whereempType('company')->orderBy('id', 'desc')->get();
         return view('admin.user.index', compact('users'));
     }
 
@@ -55,13 +55,11 @@ class UserController extends Controller
             'nationality' => 'required',
             'religion' => 'required',
             'company_id' => 'required',
-            // 'company_id'=>'required'
-            // 'password'=>'required|confirmed',
-            // 'password_confirmation'=>'required'
         ],
-            [
-                'company_id.required' => 'The company field is required.',
-            ]);
+        [
+            'company_id.required' => 'The company field is required.',
+        ]);
+
         $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'company_id']);
 
         $password = random_int(10000000, 99999999);
@@ -77,7 +75,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($password);
         // dd($message);
         $user = User::create($data);
-        
+
         $message['name'] = $request->name;
         $message['email'] = $request->email;
         $message['password'] = $password;
@@ -111,12 +109,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // dd($data['company']);
         $data = User::with('usercompany')->find($id);
         $data['usercompany'] = Company::select('id', 'name')->get();
         $data['countries'] = Country::all();
-        // $data['company_id'] = $id;
-        // dd($data);
         return view('admin.user.edit', compact(['data']));
     }
 
@@ -144,7 +139,6 @@ class UserController extends Controller
         $user->nationality = $request->input('nationality');
         $user->religion = $request->input('religion');
         $user->company_id = $request->input('company_id');
-        //dd($user);
         if ($request->hasfile('image')) {
             $destination = 'public/admin/assets/img/users' . $user->image;
             if (File::exists($destination)) {

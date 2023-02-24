@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
@@ -13,23 +13,23 @@ class SecurityController extends Controller
 {
     public function faq(){
         $data = Faq::get();
-        return view('user.security.faqs',compact('data'));
+        return view('company.security.faqs',compact('data'));
     }
 
 
     public function aboutUs(){
         $data = AboutUs::first();
-        return view('user.security.about-us',compact('data'));
+        return view('company.security.about-us',compact('data'));
     }
     
     public function privacyPolicy(){
         $data = PrivacyPolicy::first();
-        return view('user.security.privacy-policy',compact('data'));
+        return view('company.security.privacy-policy',compact('data'));
     }
     
     
     public function termCondition(){
         $data = TermCondition::first();
-        return view('user.security.terms-conditions',compact('data'));
+        return view('company.security.terms-conditions',compact('data'));
     }
 }

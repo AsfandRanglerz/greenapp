@@ -6,12 +6,11 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-body">
-                    <a class="btn btn-primary mb-3" href="{{route('user.store')}}">Back</a>
+                    <a class="btn btn-primary mb-3" href="{{url()->previous()}}">Back</a>
                     <form id="add_student" action="{{route('user.update', $data->id)}}" method="POST"
                         enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
-
                         <div class="row">
                             <div class="col-12 col-md-12 col-lg-12">
                                 <div class="card">

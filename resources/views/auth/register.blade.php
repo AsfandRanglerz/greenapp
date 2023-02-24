@@ -3,9 +3,10 @@
     <div class="col-xl-5 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
-                <a class="navbar-brand" href="./" style="position: absolute;right: 0"><img src="{{asset('public/user/images/logo.png')}}"
-                        alt="logo" class="logo-img"></a>
-                <button onclick="history.back()" class="py-0 px-2 btn btn-success mb-2 back-btn"><span class="fa fa-angle-left mr-2"></span>Back</button>
+                <a class="navbar-brand" href="./" style="position: absolute;right: 0"><img
+                        src="{{ asset('public/user/images/logo.png') }}" alt="logo" class="logo-img"></a>
+                <button onclick="history.back()" class="py-0 px-2 btn btn-success mb-2 back-btn"><span
+                        class="fa fa-angle-left mr-2"></span>Back</button>
                 <p class="mb-2 text-white">Welcome</p>
                 <p class="mb-0 text-white">Please register your account</p>
                 <h5 class="text-white mb-0">Green App</h5>
@@ -19,24 +20,39 @@
         <form id="authForm" action="{{ route('register') }}" method="POST">
             @csrf
             <h3 class="text-center mb-sm-4 mb-2">Register</h3>
-            <div class="form-group">
-                <label for="companyName">Company Name<span class="required"> *</span></label>
-                <div class="position-relative d-flex align-items-center">
-                    <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
-                    <input id="companyName" name="name" type="text" value="{{ old('name') }}" class="form-control pl-padding"
-                        placeholder="Enter Company Name">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="companyName">Role<span class="required"> *</span></label>
+                    <div class="position-relative d-flex align-items-center">
+                        <select class="form-control" name="role" id="">
+                            <option selected disabled>Select Role</option>
+                            <option value="company">Company</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    </div>
+                    @error('role')
+                        <div class="text-danger p-2">{{ $message }}</div>
+                    @enderror
                 </div>
-                @error('name')
-                    <div class="text-danger p-2">{{ $message }}</div>
-                @enderror
+                <div class="form-group col-md-6">
+                    <label for="companyName">Name<span class="required"> *</span></label>
+                    <div class="position-relative d-flex align-items-center">
+                        <span class="position-absolute fa fa-users-cog input-field-left-icon"></span>
+                        <input id="companyName" name="name" type="text" value="{{ old('name') }}"
+                            class="form-control pl-padding" placeholder="Enter Your Name">
+                    </div>
+                    @error('name')
+                        <div class="text-danger p-2">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="companyEmail">Email<span class="required"> *</span></label>
                     <div class="position-relative d-flex align-items-center">
                         <span class="position-absolute fa fa-envelope input-field-left-icon"></span>
-                        <input id="companyEmail" type="email" name="email" value="{{ old('email') }}" class="form-control pl-padding"
-                            placeholder="Enter Your Email">
+                        <input id="companyEmail" type="email" name="email" value="{{ old('email') }}"
+                            class="form-control pl-padding" placeholder="Enter Your Email">
                     </div>
                     @error('email')
                         <div class="text-danger p-2">{{ $message }}</div>
@@ -46,8 +62,8 @@
                     <label for="companyPhone">Phone<span class="required"> *</span></label>
                     <div class="position-relative d-flex align-items-center">
                         <span class="position-absolute fa fa-phone input-field-left-icon"></span>
-                        <input id="companyPhone" type="phone" name="phone" value="{{ old('phone') }}" class="form-control pl-padding"
-                            placeholder="Enter Phone Number">
+                        <input id="companyPhone" type="phone" name="phone" value="{{ old('phone') }}"
+                            class="form-control pl-padding" placeholder="Enter Phone Number">
                     </div>
                     @error('phone')
                         <div class="text-danger p-2">{{ $message }}</div>
@@ -90,7 +106,7 @@
         </form>
     </div>
 @endsection
-    @section('script')
+@section('script')
     <script>
         @if (\Illuminate\Support\Facades\Session::has('success'))
             toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');

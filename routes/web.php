@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutUsController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\CompanyDocumentController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\SecurityController;
-use App\Http\Controllers\Admin\TermConditionController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\UserDocumentController;
-use App\Http\Controllers\User\DocumentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\SecurityController;
+use App\Http\Controllers\Admin\SelfUserController;
+use App\Http\Controllers\Admin\UserDocumentController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\TermConditionController;
+use App\Http\Controllers\Admin\CompanyDocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('term-condition-edit', [SecurityController::class, 'TermConditionEdit']);
     Route::post('term-condition-update', [SecurityController::class, 'TermConditionUpdate']);
     Route::get('logout', [AdminController::class, 'logout']);
-//    Company
+    /** Company routes  */
     Route::resource('company', CompanyController::class);
     Route::get('company-document-index/{id}', [CompanyDocumentController::class, 'index'])->name('company-document.index');
     Route::get('company-document-create/{id}', [CompanyDocumentController::class, 'create'])->name('company-document.create');
@@ -53,7 +54,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('company-document-edit/{id}', [CompanyDocumentController::class, 'edit'])->name('company-document.edit');
     Route::post('company-document-update/{id}', [CompanyDocumentController::class, 'update'])->name('company-document.update');
     Route::get('company-document-download/{id}', [CompanyDocumentController::class, 'download'])->name('company-document.download');
-    //  User
+    /** User routes  */
     Route::resource('user', UserController::class);
     Route::get('user-document-index/{id}', [UserDocumentController::class, 'index'])->name('user-document.index');
     Route::get('user-document-create/{id}', [UserDocumentController::class, 'create'])->name('user-document.create');
@@ -61,21 +62,19 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('user-document-destroy/{id}', [UserDocumentController::class, 'destroy'])->name('user-document.destroy');
     Route::get('user-document-edit/{id}', [UserDocumentController::class, 'edit'])->name('user-document.edit');
     Route::post('user-document-update/{id}', [UserDocumentController::class, 'update'])->name('user-document.update');
-    // Route::resource('company-document', CompanyDocumentController::class)->parameters([
-    //     'company-document' => 'company_id'
-    // ]);
     Route::resource('faq', FaqController::class);
+    Route::resource('inquiry', InquiryController::class);
+    Route::resource('selfemployee', SelfUserController::class);
     Route::resource('about-us', AboutUsController::class);
     Route::resource('privacy-policy', PrivacyPolicyController::class);
     Route::resource('term-condition', TermConditionController::class);
 });
 
-/**Employee & Company panel */
-Route::group(['namespace' => 'App\Http\Controllers\Company'], function () {
+/**Employee & Company panel Authentication routes*/
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/', function () {
         return redirect('login');
     });
-    /**Authentication route */
     Route::view('login', 'auth.login');
     Route::view('register', 'auth.register');
     Route::view('forget-password', 'auth.forget-password');
@@ -86,58 +85,44 @@ Route::group(['namespace' => 'App\Http\Controllers\Company'], function () {
     Route::post('confirm-token', 'AuthController@confirmToken')->name('confirmToken');
     Route::get('reset-password', 'AuthController@resetPassword')->name('reset-password');
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
-    Route::get('logout', 'AuthController@logout')->name('logout');
+});
 
-    Route::group(['middleware' => 'company'], function () {
+/** Company panel Routes*/
+Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'middleware' => 'company', 'as' => 'company.'], function () {
 
-        Route::get('home', 'HomeController@index')->name('home');
-        /**Company routes */
-        Route::resource('companyProfile', 'CompanyProfileController');
-        Route::get('companyChangePassword-index', 'CompanyProfileController@changePassword_index')->name('companyChangePassword.index');
-        Route::post('companyProfile-password', 'CompanyProfileController@changePassword')->name('companyProfile.changePassword');
-        Route::resource('employee', 'EmployeeController');
-        Route::resource('employeeDocument', 'EmployeeDocumentController');
-        Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
-        Route::resource('companyDocument', 'CompanyDocumentController');
-        Route::get('companyDownload/{id}', 'CompanyDocumentController@download')->name('companyDocument.download');
-        /**Employee routes */
-        Route::resource('EmployeeProfile', 'EmployeeProfileController');
-        Route::get('employeeChangePassword-index', 'EmployeeProfileController@changePassword_index')->name('employeeChangePassword.index');
-        Route::post('EmployeeProfile-password', 'EmployeeProfileController@changePassword')->name('EmployeeProfile.changePassword');
-        Route::resource('document', 'DocumentController');
-        Route::get('documentDownload/{id}', [DocumentController::class, 'download'])->name('document.download');
+    Route::get('logout', 'HomeController@logout')->name('logout');
+    Route::get('dashboard', 'HomeController@index')->name('dashboard');
+    Route::resource('profile', 'ProfileController');
 
-        /** All security routes */
-        Route::get('faqs', 'SecurityController@faq')->name('faqs');
-        Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
-        Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
-        Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
-    });
+    Route::resource('employee', 'EmployeeController');
+    Route::resource('employeeDocument', 'EmployeeDocumentController');
+    Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
 
-    Route::group(['middleware' => 'user'], function () {
+    Route::resource('document', 'DocumentController');
+    Route::get('download/{id}', 'DocumentController@download')->name('document.download');
+    Route::get('change-password', 'ProfileController@changePasswordIndex')->name('ChangePassword.index');
+    Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
+    /** All security routes */
+    Route::get('faqs', 'SecurityController@faq')->name('faqs');
+    Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
+    Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
+    Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
+});
 
-        Route::get('home', 'HomeController@index')->name('home');
-        /**Company routes */
-        Route::resource('companyProfile', 'CompanyProfileController');
-        Route::get('companyChangePassword-index', 'CompanyProfileController@changePassword_index')->name('companyChangePassword.index');
-        Route::post('companyProfile-password', 'CompanyProfileController@changePassword')->name('companyProfile.changePassword');
-        Route::resource('employee', 'EmployeeController');
-        Route::resource('employeeDocument', 'EmployeeDocumentController');
-        Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
-        Route::resource('companyDocument', 'CompanyDocumentController');
-        Route::get('companyDownload/{id}', 'CompanyDocumentController@download')->name('companyDocument.download');
-        /**Employee routes */
-        Route::resource('EmployeeProfile', 'EmployeeProfileController');
-        Route::get('employeeChangePassword-index', 'EmployeeProfileController@changePassword_index')->name('employeeChangePassword.index');
-        Route::post('EmployeeProfile-password', 'EmployeeProfileController@changePassword')->name('EmployeeProfile.changePassword');
-        Route::resource('document', 'DocumentController');
-        Route::get('documentDownload/{id}', [DocumentController::class, 'download'])->name('document.download');
+/**Employee panel Routes*/
+Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'middleware' => 'user', 'as' => 'user.'], function () {
 
-        /** All security routes */
-        Route::get('faqs', 'SecurityController@faq')->name('faqs');
-        Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
-        Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
-        Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
-    });
-
+    Route::get('logout', 'HomeController@logout')->name('logout');
+    Route::get('dashboard', 'HomeController@index')->name('dashboard');
+    Route::resource('profile', 'ProfileController');
+    Route::get('change-password', 'ProfileController@changePassword_index')->name('changePassword.index');
+    Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
+    Route::resource('document', 'DocumentController');
+    Route::get('documentDownload/{id}', 'DocumentController@download')->name('document.download');
+    Route::resource('inquiry', 'InquiryController');
+    /** All security routes */
+    Route::get('faqs', 'SecurityController@faq')->name('faqs');
+    Route::get('about-us', 'SecurityController@aboutUs')->name('about-us');
+    Route::get('privacy-policy', 'SecurityController@privacyPolicy')->name('privacy-policy');
+    Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
 });

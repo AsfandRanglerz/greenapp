@@ -1,10 +1,11 @@
-@extends('user.layout.master')
+@extends('company.layout.master')
 @section('content')
     <div class="mb-5 admin-main-content-inner">
         <h4>Company Dashboard</h4>
         <p><span class="fa fa-users"></span> - Employees</p>
         <div class="text-right">
-            <a href="{{ route('employee.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
+            <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
+                    class="fa fa-plus mr-2"></span>Add
                 Employee</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
@@ -29,24 +30,28 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $employee->name }}</td>
-                                <td><a target="_black" href="{{ asset(''). '' .$employee->image }}">
-                                    <img src="{{ asset(''). '' .$employee->image }}" alt="" height="50" width="50" class="image"></a>
-                                    </td>
+                                <td><a target="_black" href="{{ asset('') . '' . $employee->image }}">
+                                        <img src="{{ asset('') . '' . $employee->image }}" alt="" height="50"
+                                            width="50" class="image"></a>
+                                </td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->nationality }}</td>
                                 <td>{{ $employee->religion }}</td>
                                 <td>{{ $employee->dob }}</td>
                                 <td>
-                                    <a
-                                    href="{{ route('employee.show', ['employee' => $employee->id]) }}"><span class="fa fa-eye text-success"></span></a>
-                                    </td>
+                                    <a href="{{ route('company.employee.show', ['employee' => $employee->id]) }}"><span
+                                            class="fa fa-eye text-success"></span></a>
+                                </td>
                                 <td class="text-center">
-                                    <a href="{{ route('employee.edit', $employee->id) }}" class="mx-2"><span class="fa fa-edit text-info"></span></a>
-                                    <form class="d-inline" method="post" action="{{ route('employee.destroy', $employee->id) }}">
+                                    <a href="{{ route('company.employee.edit', $employee->id) }}" class="mx-2"><span
+                                            class="fa fa-edit text-info"></span></a>
+                                    <form class="d-inline" method="post"
+                                        action="{{ route('company.employee.destroy', $employee->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <a class="form-btn" type="submit"><span class="fa fa-trash text-danger show_confirm"></span></a>
+                                        <a class="form-btn" type="submit"><span
+                                                class="fa fa-trash text-danger show_confirm"></span></a>
                                     </form>
                                 </td>
                             </tr>
@@ -60,44 +65,35 @@
     </div>
 @endsection
 @section('script')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
-
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function() {
-        /*datatable search*/
-        $('.employees').DataTable({
-            "pageLength": 10,
-            aaSorting: [
-                [0, "asc"]
-            ]
-        });
-        /*datatable search*/
+            /*datatable search*/
+            $('.employees').DataTable({
+                "pageLength": 10,
+                aaSorting: [
+                    [0, "asc"]
+                ]
+            });
+            /*datatable search*/
 
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            swal({
-                    title: `Are you sure you want to delete this record?`,
-                    text: "If you delete this, it will be gone forever.",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
-                });
+            $('.show_confirm').click(function(event) {
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                swal({
+                        title: `Are you sure you want to delete this record?`,
+                        text: "If you delete this, it will be gone forever.",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        }
+                    });
+            });
         });
-    });
     </script>
 @endsection

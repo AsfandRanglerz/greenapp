@@ -76,7 +76,7 @@ class DocumentController extends Controller
         }
         $document->save();
     }
-    return redirect()->route('document.index')->with('success' , 'Created Successfully');
+    return redirect()->route('user.document.index')->with('success' , 'Created Successfully');
 }
 
 
@@ -99,7 +99,9 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $document  = UserDocument::find($id);
+        return view('user.document.edit',compact('document'));
+        
     }
 
     /**
@@ -111,7 +113,39 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'doc_type' => 'required',
+
+        ]);
+
+        $document = UserDocument::find($id);
+        $document->doc_type = $request->input('doc_type');
+        $document->comment = $request->input('comment');
+        if($request->doc_type =="Other"){
+            $document->issue_date = null;
+            $document->expiry_date = null;
+            $document->doc_name = $request->input('doc_name');
+        }else{
+            $document->issue_date = $request->input('issue_date');
+            $document->expiry_date = $request->input('expiry_date');
+            $document->doc_name = null;
+        }
+
+        if ($request->hasfile('file')) {
+            $destination = 'public/admin/assets/img/users' . $document->file;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/admin/assets/img/users', $filename);
+            $document->file = 'public/admin/assets/img/users/' . $filename;
+        }
+
+        $document->update();
+        return redirect()->route('user.document.index')->with('success', 'Updated Successfully');
+
     }
 
     /**
@@ -122,7 +156,8 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        UserDocument::destroy($id);
+        return redirect()->route('user.document.index')->with('success','Successfully Deleted');
     }
 
     public function download($id)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -19,8 +20,8 @@ class UserDocumentController extends Controller
     public function index($id)
     {
         $data['user_id'] = $id;
-        $data['user'] = UserDocument::where('user_id', $id)->orderby('id', 'DESC')->get();
-        return view('admin.user.document.index', compact(['data']));
+        $data['documents'] = UserDocument::where('user_id', $id)->orderby('id', 'DESC')->get();
+        return view('admin.user.document.index', $data);
     }
 
     /**
@@ -30,8 +31,8 @@ class UserDocumentController extends Controller
      */
     public function create($id)
     {
-        $data['user_id'] = $id;
-        return view('admin.user.document.add', compact(['data']));
+        $user = User::find($id);
+        return view('admin.user.document.add', compact('user'));
     }
 
     /**
@@ -44,9 +45,7 @@ class UserDocumentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "doc_type.*" => "required|string",
-            // "file"    => "required|array",
             "file.*" => "required",
-            // 'doc_type' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -103,10 +102,8 @@ class UserDocumentController extends Controller
      */
     public function edit($id)
     {
-        $data['user_id'] = $id;
-        $data = UserDocument::find($id);
-        //    dd($data);
-        return view('admin.user.document.edit', compact(['data']));
+        $document = UserDocument::find($id);
+        return view('admin.user.document.edit', compact(['document']));
     }
 
     /**
@@ -118,37 +115,37 @@ class UserDocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        {
-            $request->validate([
-                'doc_type' => 'required',
-                
+        $request->validate([
+            'doc_type' => 'required',
+        ]);
 
-            ]);
-            $company = UserDocument::find($id);
-            $company->doc_type = implode(',',$request->input('doc_type'));
-            $company->doc_name = $request->input('doc_name');
-            $company->issue_date = $request->input('issue_date');
-            $company->expiry_date = $request->input('expiry_date');
-            $company->comment = $request->input('comment');
-            //$company->company_id = $request->input('company_id');
-            //$company['company_id'] = $id;
-
-            if ($request->hasfile('file')) {
-                $destination = 'public/admin/assets/img/users' . $company->file;
-                if (File::exists($destination)) {
-                    File::delete($destination);
-                }
-                $file = $request->file('file');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('public/admin/assets/img/users', $filename);
-                $company->file = 'public/admin/assets/img/users/' . $filename;
-
-            }
-            //dd($company);
-            $company->update();
-            return redirect()->route('user-document.index', $company->user_id)->with('success','Updated Successfully');
+        $document = UserDocument::find($id);
+        $document->doc_type = $request->input('doc_type');
+        $document->comment = $request->input('comment');
+        if ($request->doc_type == "Other") {
+            $document->issue_date = null;
+            $document->expiry_date = null;
+            $document->doc_name = $request->input('doc_name');
+        } else {
+            $document->issue_date = $request->input('issue_date');
+            $document->expiry_date = $request->input('expiry_date');
+            $document->doc_name = null;
         }
+
+        if ($request->hasfile('file')) {
+            $destination = 'public/admin/assets/img/users' . $document->file;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/admin/assets/img/users', $filename);
+            $document->file = 'public/admin/assets/img/users/' . $filename;
+        }
+
+        $document->update();
+        return redirect()->route('user-document.index', $document->user_id)->with('success', 'Updated Successfully');
     }
 
     /**
@@ -160,6 +157,6 @@ class UserDocumentController extends Controller
     public function destroy($id)
     {
         UserDocument::destroy($id);
-        return redirect()->back()->with('success','Deleted Successfully');
+        return redirect()->back()->with('success', 'Deleted Successfully');
     }
 }

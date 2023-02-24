@@ -17,7 +17,7 @@ class User
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('company')->check() || Auth::guard('web')->check()) {
+        if (Auth::guard('web')->check()) {
             return $next($request);
         } else {
             return redirect()->route('login');

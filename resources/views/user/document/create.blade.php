@@ -7,32 +7,65 @@
         <div class="dashboard-front-pg">
             <h4>Employee Dashboard</h4>
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
-            <form action="{{ route('document.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.document.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         <h6><span class="fa fa-book"></span> - Employee Documents</h6>
-                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add More</a>
+                        <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add
+                            More</a>
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
-                        <div class="form-group col-md-6">
-                            <label>Select Document Type<span class="required"> *</span></label>
-                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
-                                class="form-control" required>
-                                <option value="" selected disabled>Select Document</option>
-                                <option value="Passport">Passport</option>
-                                <option value="Identity Card">Identity Card</option>
-                                <option value="Visa">Visa</option>
-                                <option value="Insurance Card">Insurance Card</option>
-                                <option value="Work Permit">Work Permit</option>
-                                <option value="Driving License">Driving License</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            @error('doc_type')
-                                <div class="text-danger p-2">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @if (Auth::guard('web')->user()->emp_type == 'self')
+                            <div class="form-group col-md-6">
+                                <label>Select Document Type<span class="required"> *</span></label>
+                                <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}" class="form-control" required>
+                                    <option value="" selected disabled>Select Document</option>
+                                    <option value="Personal Photo">Personal Photo</option>
+                                    <option value="Passport">Passport</option>
+                                    <option value="Visit Visa">Visit Visa</option>
+                                    <option value="Entry Permit Visa">Entry Permit Visa</option>
+                                    <option value="Change of Status Visa">Change of Status Visa</option>
+                                    <option value="Emirates Identity Card">Emirates Identity Card</option>
+                                    <option value="Residence Visa">Residence Visa</option>
+                                    <option value="Work Permit">Work Permit</option>
+                                    <option value="Health Insurance Card">Health Insurance Card</option>
+                                    <option value="National Identity Card">National Identity Card</option>
+                                    <option value="Birth Certificate">Birth Certificate</option>
+                                    <option value="Marriage Certificate">Marriage Certificate</option>
+                                    <option value="School Certificate">School Certificate</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="University Degree">University Degree</option>
+                                    <option value="Salary Certificate">Salary Certificate</option>
+                                    <option value="Tenancy Contract">Tenancy Contract</option>
+                                    <option value="CV">CV</option>
+                                    <option value="Other">Other(Resume)</option>
+                                </select>
+                                @error('doc_type')
+                                    <div class="text-danger p-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        @else
+                            <div class="form-group col-md-6">
+                                <label>Select Document Type<span class="required"> *</span></label>
+                                <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
+                                    class="form-control" required>
+                                    <option value="" selected disabled>Select Document</option>
+                                    <option value="Passport">Passport</option>
+                                    <option value="Identity Card">Identity Card</option>
+                                    <option value="Visa">Visa</option>
+                                    <option value="Insurance Card">Insurance Card</option>
+                                    <option value="Work Permit">Work Permit</option>
+                                    <option value="Driving License">Driving License</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                @error('doc_type')
+                                    <div class="text-danger p-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        @endif
+
                         <div class="form-group col-md-6">
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
@@ -80,7 +113,8 @@
                                 class="form-control" rows="5"></textarea>
                         </div>
                         <div class="form-group col-12">
-                            <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span class="fa fa-trash mr-2"></span>Remove</a>
+                            <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span
+                                    class="fa fa-trash mr-2"></span>Remove</a>
                         </div>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
@@ -98,14 +132,20 @@
     <script type="text/javascript">
         $(function() {
             $(document).on('change', '#selectDocument', function() {
-                if($(this).val()=='Other') {
-                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                if ($(this).val() == 'Other') {
+                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
+                        .attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
+                        .attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
+                        .attr('required', false);
                 } else {
-                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
+                        .attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
+                        .attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
+                        .attr('required', true);
                 }
             });
 

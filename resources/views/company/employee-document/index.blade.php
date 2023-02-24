@@ -1,11 +1,11 @@
-@extends('user.layout.master')
+@extends('company.layout.master')
 @section('content')
     <div class="mb-5 admin-main-content-inner">
         <h4>Company Dashboard</h4>
         <p><span class="fa fa-user"></span> - Employee Details - <b>{{ $user->name }}</b></p>
         <div class="text-right">
-            <a href="{{ route('employeeDocument.show', ['employeeDocument' => $empId]) }}" class="mb-3 btn btn-success"><span
-                    class="fa fa-plus mr-2"></span>Add Document</a>
+            <a href="{{ route('company.employeeDocument.show', ['employeeDocument' => $empId]) }}"
+                class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add Document</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
             <div class="table-responsive">
@@ -56,10 +56,12 @@
                                 <td>{{ $document->expiry_date }}</td>
                                 <td>{{ $document->comment }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('employeeDocument.download', $document->id) }}"><span
+                                    <a href="{{ route('company.employeeDocument.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>
-                                    <a href="{{ route('employeeDocument.edit', $document->id) }}" class="mx-2"><span class="fa fa-edit text-info"></span></a>
-                                    <form class="d-inline" method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
+                                    <a href="{{ route('company.employeeDocument.edit', $document->id) }}"
+                                        class="mx-2"><span class="fa fa-edit text-info"></span></a>
+                                    <form class="d-inline" method="post"
+                                        action="{{ route('company.employeeDocument.destroy', $document->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <a class="form-btn" type="submit"><span
@@ -77,15 +79,6 @@
     </div>
 @endsection
 @section('script')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
-
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
     <script type="text/javascript">
         $(function() {
             /*datatable search*/

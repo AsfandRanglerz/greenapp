@@ -18,9 +18,9 @@
                             </div>
                             {{-- @dd($data) --}}
                             <div class="card-body table-striped table-bordered table-responsive">
-                                <a class="btn btn-primary mb-3" href="{{ route('user.store') }}">Back</a>
+                                <a class="btn btn-primary mb-3" href="{{ url()->previous() }}">Back</a>
                                 <a class="btn btn-success mb-3"
-                                    href="{{ route('user-document.create', $data['user_id']) }}">Add Document</a>
+                                    href="{{ route('user-document.create', $user_id) }}">Add Document</a>
                                 <table class="table" id="table_id_events">
                                     <thead>
                                         <tr>
@@ -32,11 +32,10 @@
                                             <th>Expiry Date</th>
                                             <th>Comment</th>
                                             <th scope="col">Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data['user'] as $document)
+                                        @foreach ($documents as $document)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
 
@@ -69,14 +68,8 @@
                                                 <td>{{ $document->issue_date }}</td>
                                                 <td>{{ $document->expiry_date }}</td>
                                                 <td>{{ $document->comment }}</td>
-
-
-
-
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-
-
                                                     <a class="btn btn-info"
                                                         href="{{ route('user-document.edit', $document->id) }}">Edit</a>
                                                     <form method="get"
@@ -89,7 +82,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
@@ -104,15 +96,15 @@
 @endsection
 
 @section('js')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
+    <script>
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
 
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+    </script>
     <script>
         $(document).ready(function() {
             $('#table_id_events').DataTable();

@@ -4,7 +4,7 @@
         <h4>Employee Dashboard</h4>
         <p><span class="fa fa-user"></span> - Employee Details </p>
         <div class="text-right">
-            <a href="{{ route('document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
+            <a href="{{ route('user.document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
                 Document</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
@@ -54,16 +54,21 @@
                                 <td>{{ $document->doc_name }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
-                                <td>{{ $document->comment}}</td>
+                                <td>{{ $document->comment }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('document.download', $document->id) }}"><span
+                                    <a href="{{ route('user.document.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>
-                                    {{-- <a href="" class="mx-2"><span class="fa fa-edit text-info"></span></a> --}}
-                                    {{-- <form method="post" action="{{ route('employeeDocument.destroy', $document->id) }}">
-                                    @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="border" type="submit"><span class="fa fa-trash text-danger"></span></button>
-                                </form> --}}
+                                    @if (Auth::guard('web')->user()->emp_type == 'self')
+                                        <a href="{{ route('user.document.edit', $document->id) }}" class="mx-2"><span
+                                                class="fa fa-edit text-info"></span></a>
+                                        <form class="d-inline" method="post"
+                                            action="{{ route('user.document.destroy', $document->id) }}">
+                                            @csrf
+                                            <input name="_method" type="hidden" value="DELETE">
+                                            <a class="form-btn" type="submit"><span
+                                                    class="fa fa-trash text-danger show_confirm"></span></a>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -76,15 +81,7 @@
     </div>
 @endsection
 @section('script')
-<script>
-    @if (\Illuminate\Support\Facades\Session::has('success'))
-        toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
-    @endif
-
-    @if (\Illuminate\Support\Facades\Session::has('error'))
-        toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
-    @endif
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function() {
             /*datatable search*/
@@ -95,7 +92,24 @@
                 ]
             });
             /*datatable search*/
+
+            $('.show_confirm').click(function(event) {
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                swal({
+                        title: `Are you sure you want to delete this record?`,
+                        text: "If you delete this, it will be gone forever.",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        }
+                    });
+            });
         });
     </script>
-
 @endsection

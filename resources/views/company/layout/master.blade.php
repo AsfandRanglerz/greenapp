@@ -10,24 +10,26 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link data-n-head="ssr" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link data-n-head="ssr" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('public/user/css/inter.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/variables.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/common.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
-    <link rel="stylesheet" href="{{asset('public/admin/assets/toastr/css/toastr.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/admin/assets/toastr/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
 </head>
+
 <body>
     <div id="pgLoader">
         <span id="pgLoaderGif"></span>
     </div>
-    @include('user.common.sidebar')
+    @include('company.common.sidebar')
     <div id="dashboardSidebarRightContent" class="position-relative">
-        @include('user.common.header')
+        @include('company.common.header')
         <div class="p-xl-4 p-3 admin-main-content">
             @yield('content')
         </div>
@@ -37,7 +39,7 @@
     <script src="{{ asset('public/user/js/popper.min.js') }}"></script>
     <script src="{{ asset('public/user/js/bootstrap-4.5.3.min.js') }}"></script>
     <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js')}}"></script>
+    <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
 
     <script type="text/javascript">
@@ -145,6 +147,13 @@
             }
         }
         toastrPopUp();
+
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
     </script>
     @yield('script')
 </body>

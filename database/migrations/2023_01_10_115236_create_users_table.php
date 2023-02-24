@@ -21,10 +21,19 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('password')->nullable();
             $table->string('dob')->nullable();
+            $table->string('gender')->nullable();
             $table->string('nationality')->nullable();
             $table->string('religion')->nullable();
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->enum('emp_type',['self','company'])->default('company');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('passport_number')->nullable();
+            $table->string('unified_number')->nullable();
+            $table->string('emirate_id_number')->nullable();
+            $table->string('work_permit_number')->nullable();
+            $table->string('person_code')->nullable();
 
             $table->timestamps();
         });

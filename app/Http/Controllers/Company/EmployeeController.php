@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 // use App\Mail\UserLoginPassword;
@@ -84,7 +84,6 @@ class EmployeeController extends Controller
             'image' => $image,
 
         ]);
-        // dd($user);
         $company = Company::find(Auth::guard('company')->id());
 
         $message['name'] = $request->name;
@@ -94,7 +93,7 @@ class EmployeeController extends Controller
 
         try {
             Mail::to($request->email)->send(new CompanyLoginPassword($message));
-            return redirect()->route('employee.index')
+            return redirect()->route('company.employee.index')
                 ->with('success', 'Created Successfully');
         } catch (\Throwable $th) {
             return back()
@@ -200,7 +199,7 @@ public function update(Request $request, $id)
 
     $employee->update($updateData);
 
-    return redirect()->route('employee.index')->with('success', 'Updated Successfully');
+    return redirect()->route('company.employee.index')->with('success', 'Updated Successfully');
 }
 
     /**
@@ -212,6 +211,6 @@ public function update(Request $request, $id)
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->route('employee.index')->with('success', 'Deleted Successfully');
+        return redirect()->route('company.employee.index')->with('success', 'Deleted Successfully');
     }
 }

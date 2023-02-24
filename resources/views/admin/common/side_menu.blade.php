@@ -10,14 +10,6 @@
                 <a href="{{ url('/admin/dashboard') }}" class="nav-link"><i
                         class="fa fa-tachometer-alt"></i><span>Dashboard</span></a>
             </li>
-
-            <!-- <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Teams</span></a>
-                <ul class="dropdown-menu active">
-                    <li><a class="nav-link" href="">common</a></li>
-
-                </ul>
-            </li> -->
             <li class="dropdown {{ request()->is('admin/company*') ? 'active' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Companies</span></a>
@@ -25,6 +17,14 @@
             <li class="dropdown {{ request()->is('admin/user*') ? 'active' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link"><i
                         class="fa fa-users"></i><span>Employees</span></a>
+            </li>
+            <li class="dropdown {{ request()->is('admin/selfemployee*') ? 'active' : '' }}">
+                <a href="{{ route('selfemployee.index') }}" class="nav-link"><i
+                        class="fa fa-users"></i><span>Self Employees</span></a>
+            </li>
+            <li class="dropdown {{ request()->is('admin/inquiry*') ? 'active' : '' }}">
+                <a href="{{ route('inquiry.index') }}" class="nav-link"><i
+                        class="fa fa-users"></i><span>Inquiry</span></a>
             </li>
             <li class="dropdown {{ request()->is('admin/faq*') ? 'active' : '' }}">
                 <a href="{{ route('faq.index') }}" class="nav-link"><i

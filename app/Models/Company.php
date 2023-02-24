@@ -24,7 +24,7 @@ class Company extends Authenticatable
         return $this->hasMany(User::class, 'company_id');
     }
 
-    /** has many throufh for coounting the employee documents against company */
+    /** has many through for counting the employee documents against company */
     public function empDocument()
     {
         return $this->hasManyThrough(UserDocument::class, User::class);
