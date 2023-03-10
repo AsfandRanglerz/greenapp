@@ -26,7 +26,8 @@
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
-                                            <th>Employee Name</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             @if (!isset($company))
@@ -35,7 +36,6 @@
                                             <th>DOB</th>
                                             <th>Nationality</th>
                                             <th>Religion</th>
-                                            <th>Image</th>
                                             <th>Document</th>
                                             <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
@@ -46,6 +46,10 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $employee->name }}</td>
+                                                <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
+                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
+                                                            height="50" width="50" class="image"></a>
+                                                </td>
                                                 <td>{{ $employee->email }}</td>
                                                 <td>{{ $employee->phone }}</td>
                                                 @if (!isset($company))
@@ -54,10 +58,6 @@
                                                 <td>{{ $employee->dob }}</td>
                                                 <td>{{ $employee->nationality }}</td>
                                                 <td>{{ $employee->religion }}</td>
-                                                <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
-                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
-                                                            height="50" width="50" class="image"></a>
-                                                </td>
                                                 <td>
                                                     <a href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>

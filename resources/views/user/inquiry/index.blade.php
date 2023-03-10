@@ -100,7 +100,7 @@
                                                     <span class="badge @if (!isset($inquiry->answer)) bg-danger @endif"></span>{!! $inquiry->question ?? '' !!}
                                                 </h6>
                                             </div>
-                                            <div class="text-right m-3">
+                                            {{-- <div class="text-right m-3">
                                                 @if (isset($inquiry->answer))
                                                     <form class="d-inline" method="post"
                                                         action="{{ route('user.inquiry.destroy', $inquiry->id) }}">
@@ -110,7 +110,7 @@
                                                                 class="fa fa-trash text-danger show_confirm"></span></a>
                                                     </form>
                                                 @endif
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <div id="faqCollapse-{{ $inquiry->id }}" class="collapse"

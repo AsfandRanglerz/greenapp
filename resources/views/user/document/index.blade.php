@@ -18,7 +18,9 @@
                             <th scope="col">Name</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
-                            <th scope="col">Comment</th>
+                            @if (Auth::guard('web')->user()->emp_type == 'company')
+                                <th scope="col">Comment</th>
+                            @endif
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -54,7 +56,9 @@
                                 <td>{{ $document->doc_name }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
-                                <td>{{ $document->comment }}</td>
+                                @if (Auth::guard('web')->user()->emp_type == 'company')
+                                    <td>{{ $document->comment }}</td>
+                                @endif
                                 <td class="text-center">
                                     <a href="{{ route('user.document.download', $document->id) }}"><span
                                             class="fa fa-download text-success"></span></a>

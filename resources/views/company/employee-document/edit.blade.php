@@ -69,20 +69,20 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6 other-none">
-                            <label>Issue Date<span class="required"> *</span></label>
+                            <label>Issue Date</label>
                             <div class="input-group">
                                 <input type="date" name="issue_date" placeholder="dd.mm.yyyy"
-                                value="{{ $data['issue_date'] }}" class="form-control issue-date" required>
+                                value="{{ $data['issue_date'] }}" class="form-control issue-date">
                             </div>
                             @error('issue_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group col-md-6 other-none">
-                            <label>Expiry Date<span class="required"> *</span></label>
+                            <label>Expiry Date</label>
                             <div class="input-group">
                                 <input type="date" name="expiry_date" placeholder="dd.mm.yyyy"
-                                value="{{ $data['expiry_date'] }}" class="form-control expire-date" required>
+                                value="{{ $data['expiry_date'] }}" class="form-control expire-date">
                             </div>
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -113,24 +113,24 @@
             $('#selectDocument').each(function() {
                 if($(this).val()=='Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
                 } else {
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
                 }
             });
 
             $(document).on('change', '#selectDocument', function() {
                 if($(this).val()=='Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input').attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
                 } else {
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input').attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
                 }
             });
 

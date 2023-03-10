@@ -3,7 +3,7 @@
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
             <h4>Employee Dashboard</h4>
-            <p><span class="fa fa-book"></span> - Change Password</p>
+            <p><span class="fa fa-lock"></span> - Change Password</p>
             <form action="{{ route('user.changePassword') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row col-md-5 mx-auto py-3 rounded light-box-shadow">

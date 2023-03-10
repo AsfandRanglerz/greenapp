@@ -57,11 +57,13 @@ class EmployeeController extends Controller
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
-            // 'password'=>'required|confirmed',
-            // 'password_confirmation'=>'required'
         ]);
-        $image = 'public/admin/assets/img/users/1675332882.jpg';
-        // dd($image);
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
+        ],[
+            'email.unique' => ' email has already been taken as Company'
+        ]);
+
         $password = random_int(10000000, 99999999);
 
         if ($request->hasFile('image')) {
@@ -70,6 +72,8 @@ class EmployeeController extends Controller
             $filename = time() . '.' . $extension;
             $file->move(public_path('admin/assets/img/users/'), $filename);
             $image = 'public/admin/assets/img/users/' . $filename;
+        }else{
+            $image = 'public/admin/assets/img/users/1675332882.jpg';
         }
 
         $user = User::create([

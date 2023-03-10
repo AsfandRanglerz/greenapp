@@ -27,12 +27,12 @@
                                         <tr>
                                             <th>Sr.</th>
                                             <th>Company Name</th>
+                                            <th>Image</th>
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Trade License No</th>
                                             <th>Establishment Card No</th>
                                             <th>MOHRE Company Code</th>
-                                            <th>Image</th>
                                             <th>Documents</th>
                                             <th>Employees</th>
                                             <th scope="col">Action</th>
@@ -44,15 +44,15 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $company->name }}</td>
+                                                <td> <a target="_black" href="{{ asset('') . '/' . $company->image }}">
+                                                        <img src="{{ asset('') . '/' . $company->image }}"
+                                                            alt="" height="50" width="50" class="image"></a>
+                                                </td>
                                                 <td>{{ $company->phone }}</td>
                                                 <td>{{ $company->email }}</td>
                                                 <td>{{ $company->license_no }}</td>
                                                 <td>{{ $company->establishment_no }}</td>
                                                 <td>{{ $company->mohre_no }}</td>
-                                                <td> <a target="_black" href="{{ asset('') . '/' . $company->image }}">
-                                                        <img src="{{ asset('') . '/' . $company->image }}"
-                                                            alt="" height="50" width="50" class="image"></a>
-                                                </td>
 
                                                 <td>
 

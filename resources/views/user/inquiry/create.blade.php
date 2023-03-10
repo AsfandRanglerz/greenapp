@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group col-12">
                         <label>Inquiry</label>
-                        <textarea type="text" name="question" placeholder="Enter Your Inquiry ..." value="{{ old('question') }}"
+                        <textarea type="text" name="question" placeholder="Ask anything ..." value="{{ old('question') }}"
                             class="form-control" rows="5"></textarea>
                     </div>
                     @error('question')

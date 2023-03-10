@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class InquiryController extends Controller
 {
@@ -46,6 +48,16 @@ class InquiryController extends Controller
         ]);
         $authId = Auth::guard('web')->id();
         Inquiry::create(['question' => $request->question, 'user_id' => $authId]);
+        
+        $data['question'] = $request->question;
+        $admin = Admin::first();
+        try {
+            Mail::to($admin->emai)->send(new \App\Mail\Inquiry($data));
+            // Mail::to('arshadfaarsi13@gmail.com')->send(new \App\Mail\Inquiry($data));
+        } catch (\Throwable $th) {
+           return 'afads';
+        }
+
         return redirect()->route('user.inquiry.index')->with('success','Inquiry Send Successfully');
     }
 

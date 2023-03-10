@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $authId = Auth::guard('web')->id();
+       $data['user'] =  User::find($authId);
         $data['document'] = UserDocument::whereUser_id($authId)->count();
         return view('user.dashboard', $data);
     }

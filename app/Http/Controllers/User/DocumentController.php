@@ -65,7 +65,9 @@ class DocumentController extends Controller
         $document->doc_name = $doc_name[$i];
         $document->issue_date = $issue_date[$i];
         $document->expiry_date = $expiry_date[$i];
-        $document->comment = $comment[$i];
+        if (Auth::guard('web')->user()->emp_type == 'company'){
+            $document->comment = $comment[$i];
+        }
         $document->user_id = Auth::guard('web')->id();
 
         if ($request->hasFile('file.' . $i)) {
@@ -120,7 +122,9 @@ class DocumentController extends Controller
 
         $document = UserDocument::find($id);
         $document->doc_type = $request->input('doc_type');
-        $document->comment = $request->input('comment');
+        if (Auth::guard('web')->user()->emp_type == 'company'){
+            $document->comment = $request->input('comment');
+        }
         if($request->doc_type =="Other"){
             $document->issue_date = null;
             $document->expiry_date = null;
