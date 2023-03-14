@@ -1,5 +1,11 @@
 @extends('auth.layout.master')
 @section('content')
+<style type="text/css">
+    body .auth-centered-block {
+        padding: 30px 0;
+        height: unset;
+    }
+</style>
     <div class="col-xl-5 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
@@ -24,8 +30,8 @@
                 <div class="form-group col-md-6">
                     <label for="companyName">Role<span class="required"> *</span></label>
                     <div class="position-relative d-flex align-items-center">
-                        <select class="form-control" name="role" id="">
-                            <option selected disabled>Select Role</option>
+                        <select class="form-control" name="role" id="selRole">
+                            <option value=""></option>
                             <option value="company">Company</option>
                             <option value="employee">Employee</option>
                         </select>
@@ -115,5 +121,19 @@
         @if (\Illuminate\Support\Facades\Session::has('error'))
             toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
         @endif
+
+        $(function() {
+            $('#selRole').select2({
+                placeholder: 'Select Role',
+            });
+
+            $(document).on('change', '#selRole', function() {
+                if($(this).val()=='company') {
+                    $('#companyName').attr('placeholder', 'Enter Company Name');
+                } else {
+                    $('#companyName').attr('placeholder', 'Enter Your Name');
+                }
+            });
+        });
     </script>
 @endsection

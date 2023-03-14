@@ -17,6 +17,8 @@
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
                                             <th>Inquiry</th>
                                             <th>Answer</th>
                                             <th scope="col">Actions</th>
@@ -26,6 +28,8 @@
                                         @foreach ($data as $inquiry)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $inquiry->user->name }}</td>
+                                                <td>{{ $inquiry->user->email }}</td>
                                                 <td>{{ $inquiry->question }} </td>
                                                 <td>{!! $inquiry->answer !!}</td>
                                                 <td style="display: flex;align-items: center;justify-content: center;column-gap: 8px">

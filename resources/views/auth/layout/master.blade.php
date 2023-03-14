@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/bootstrap-4.5.3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/user/css/style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('public/user/plugins/select2/css/select2.min.css') }}">
 </head>
 
 <body>
@@ -25,6 +26,7 @@
     </div>
     <script src="{{ asset('public/user/js/jquery-3.5.1.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
     <script type="text/javascript">
         $(function() {

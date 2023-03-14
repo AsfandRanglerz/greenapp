@@ -12,7 +12,7 @@
             </li>
             <li class="position-relative">
                 <a href="{{ route('company.profile.index') }}" class="sidebar-links"><span
-                        class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Profile</a>
+                        class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Company Profile</a>
             </li>
             <li class="position-relative {{ request()->is('employee*') ? 'active' : '' }}">
                 <a href="{{ route('company.employee.index') }}" class="sidebar-links"><span

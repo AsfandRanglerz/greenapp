@@ -3,7 +3,7 @@
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
             <h4>Employee Dashboard</h4>
-            <p><span class="fa fa-building"></span> - Employee Profile</p>
+            <p><span class="fa fa-user"></span> - My Profile</p>
             <form action="{{ route('user.profile.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
-                        <input id="userName" type="text" name="name" value="{{ $employee->name }}"
+                        <input id="userName" type="text" name="name" value="{{ old('name') ?? $employee->name }}"
                             class="form-control" placeholder="Enter Employee Name">
                         @error('name')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -28,7 +28,7 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="date" name="dob"value="{{ $employee->dob }}" placeholder="dd.mm.yyyy"
+                            <input type="date" name="dob" value="{{ old('dob') ?? $employee->dob }}" placeholder="dd.mm.yyyy"
                                 class="form-control date-of-birth">
                         </div>
                         @error('dob')
@@ -37,10 +37,11 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-                        <select name="nationality" id="nationality" class="form-control" required>
+                        <select name="nationality" id="selCountry" class="form-control">
+                            <option value=""></option>
                             @foreach ($data['countries'] as $country)
                                 <option value="{{ $country->name }}"
-                                    {{ $employee['nationality'] == $country->name ? 'selected' : '' }}>{{ $country->name }}
+                                    {{ old('nationality') == $country->name || $employee['nationality'] == $country->name ? 'selected' : '' }}>{{ $country->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -50,8 +51,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" value="{{ $employee->religion }}"
-                            placeholder="Enter Religion" required>
+                        <input type="text" class="form-control" name="religion" value="{{ old('religion') ?? $employee->religion }}"
+                            placeholder="Enter Religion">
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -60,8 +61,12 @@
                     @if (Auth::guard('web')->user()->emp_type == 'self')
                         <div class="form-group col-md-6">
                             <label>Gender<span class="required"> *</span></label>
-                            <input type="text" class="form-control" name="gender" value="{{ $employee->gender }}"
-                                placeholder="Enter Gender" required>
+                            <select name="gender" id="selGender" class="form-control">
+                                <option value=""></option>
+                                <option value="Male" {{ old('gender') == "Male" ||  $employee->gender =="Male" ? "selected" : '' }}>Male</option>
+                                <option value="Female" {{ old('gender') == "Female" || $employee->gender =="Female" ? "selected" : '' }}>Female</option>
+                            </select>
+
                             @error('gender')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -69,7 +74,7 @@
                         <div class="form-group col-md-6">
                             <label>Father Name</label>
                             <input type="text" class="form-control" name="father_name"
-                                value="{{ $employee->father_name }}" placeholder="Enter Father Name">
+                                value="{{ old('father_name') ?? $employee->father_name }}" placeholder="Enter Father Name">
                             @error('father_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -77,7 +82,7 @@
                         <div class="form-group col-md-6">
                             <label>Mother Name</label>
                             <input type="text" class="form-control" name="mother_name"
-                                value="{{ $employee->mother_name }}" placeholder="Enter Mother Name">
+                                value="{{ old('mother_name') ?? $employee->mother_name }}" placeholder="Enter Mother Name">
                             @error('mother_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -85,7 +90,7 @@
                         <div class="form-group col-md-6">
                             <label>Passport Number</label>
                             <input type="text" class="form-control" name="passport_number"
-                                value="{{ $employee->passport_number }}" placeholder="Enter Passport Number">
+                                value="{{ old('passport_number') ?? $employee->passport_number }}" placeholder="Enter Passport Number">
                             @error('passport_number')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -93,7 +98,7 @@
                         <div class="form-group col-md-6">
                             <label>Unified Number</label>
                             <input type="text" class="form-control" name="unified_number"
-                                value="{{ $employee->unified_number }}" placeholder="Enter Unified Number">
+                                value="{{ old('unified_number') ?? $employee->unified_number }}" placeholder="Enter Unified Number">
                             @error('unified_number')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -101,7 +106,7 @@
                         <div class="form-group col-md-6">
                             <label>Emirates ID Number</label>
                             <input type="text" class="form-control" name="emirate_id_number"
-                                value="{{ $employee->emirate_id_number }}" placeholder="Enter Emirates ID Number">
+                                value="{{ old('emirate_id_number') ?? $employee->emirate_id_number }}" placeholder="Enter Emirates ID Number">
                             @error('emirate_id_number')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -109,7 +114,7 @@
                         <div class="form-group col-md-6">
                             <label>Work Permit Number</label>
                             <input type="text" class="form-control" name="work_permit_number"
-                                value="{{ $employee->work_permit_number }}" placeholder="Enter Work Permit Number">
+                                value="{{ old('work_permit_number') ?? $employee->work_permit_number }}" placeholder="Enter Work Permit Number">
                             @error('work_permit_number')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -117,7 +122,7 @@
                         <div class="form-group col-md-6">
                             <label>Person Code</label>
                             <input type="text" class="form-control" name="person_code"
-                                value="{{ $employee->person_code }}" placeholder="Enter Person Code">
+                                value="{{ old('person_code') ?? $employee->person_code }}" placeholder="Enter Person Code">
                             @error('person_code')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -126,7 +131,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="userPhone">Phone<span class="required"> *</span></label>
-                        <input id="userPhone" type="number" name="phone" value="{{ $employee->phone }}"
+                        <input id="userPhone" type="number" name="phone" value="{{ old('phone') ?? $employee->phone }}"
                             class="form-control" placeholder="Enter Phone Number">
                         @error('phone')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -153,8 +158,11 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
-            $('#nationality').select2({
+            $('#selCountry').select2({
                 placeholder: 'Select Country'
+            });
+            $('#selGender').select2({
+                placeholder: 'Select Gender'
             });
             /*Avatar upload*/
             var readURL = function(input) {

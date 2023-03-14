@@ -86,21 +86,24 @@
                     <a href="{{ route('user.inquiry.create') }}" class="mb-3 btn btn-success"><span
                             class="fa fa-plus mr-2"></span>Add Inquiry</a>
                 </div>
-                <div class="p-3 rounded light-box-shadow">
-                    <section class="faq-section">
-                        <div class="faq" id="accordion">
-                            @foreach ($data as $inquiry)
-                                <div class="card">
-                                    <div class="card-header" id="faqHeading-1">
-                                        <div class="mb-0 d-flex">
-                                            <div class="flex-fill">
-                                                <h6 class="faq-title" data-toggle="collapse"
-                                                    data-target="#faqCollapse-{{ $inquiry->id }}" data-aria-expanded="true"
-                                                    data-aria-controls="faqCollapse-{{ $inquiry->id }}">
-                                                    <span class="badge @if (!isset($inquiry->answer)) bg-danger @endif"></span>{!! $inquiry->question ?? '' !!}
-                                                </h6>
-                                            </div>
-                                            {{-- <div class="text-right m-3">
+                @if (count($data) > 0)
+                    <div class="p-3 rounded light-box-shadow">
+                        <section class="faq-section">
+                            <div class="faq" id="accordion">
+                                @foreach ($data as $inquiry)
+                                    <div class="card">
+                                        <div class="card-header" id="faqHeading-1">
+                                            <div class="mb-0 d-flex">
+                                                <div class="flex-fill">
+                                                    <h6 class="faq-title" data-toggle="collapse"
+                                                        data-target="#faqCollapse-{{ $inquiry->id }}"
+                                                        data-aria-expanded="true"
+                                                        data-aria-controls="faqCollapse-{{ $inquiry->id }}">
+                                                        <span
+                                                            class="badge @if (!isset($inquiry->answer)) bg-danger @endif"></span>{!! $inquiry->question ?? '' !!}
+                                                    </h6>
+                                                </div>
+                                                {{-- <div class="text-right m-3">
                                                 @if (isset($inquiry->answer))
                                                     <form class="d-inline" method="post"
                                                         action="{{ route('user.inquiry.destroy', $inquiry->id) }}">
@@ -111,43 +114,44 @@
                                                     </form>
                                                 @endif
                                             </div> --}}
+                                            </div>
+                                        </div>
+                                        <div id="faqCollapse-{{ $inquiry->id }}" class="collapse"
+                                            aria-labelledby="faqHeading-1" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>{!! $inquiry->answer ?? '' !!}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="faqCollapse-{{ $inquiry->id }}" class="collapse"
-                                        aria-labelledby="faqHeading-1" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>{!! $inquiry->answer ?? '' !!}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
-                </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    </div>
+                @endif
             </div>
         </div>
     @endsection
     @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('.show_confirm').click(function(event) {
-                var form = $(this).closest("form");
-                var name = $(this).data("name");
-                event.preventDefault();
-                swal({
-                        title: `Are you sure you want to delete this record?`,
-                        text: "If you delete this, it will be gone forever.",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            form.submit();
-                        }
-                    });
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('.show_confirm').click(function(event) {
+                    var form = $(this).closest("form");
+                    var name = $(this).data("name");
+                    event.preventDefault();
+                    swal({
+                            title: `Are you sure you want to delete this record?`,
+                            text: "If you delete this, it will be gone forever.",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                form.submit();
+                            }
+                        });
+                });
             });
-        });
-    </script>
+        </script>
     @endsection

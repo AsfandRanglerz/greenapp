@@ -2,7 +2,7 @@
 @section('content')
     <div class="mb-5 admin-main-content-inner">
         <h4>Employee Dashboard</h4>
-        <p><span class="fa fa-user"></span> - Employee Details </p>
+        <p><span class="fa fa-book"></span> - Documents/Attachments</p>
         <div class="text-right">
             <a href="{{ route('user.document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
                 Document</a>
