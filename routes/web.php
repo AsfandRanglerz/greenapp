@@ -229,3 +229,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::get('term&condition', 'SecurityController@termCondition')->name('term-condition');
 
 });
+
+//privacy-policy
+     Route::get('/privacy-policy-page', [AuthController::class, 'privacyPolicyPage']);
