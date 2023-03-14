@@ -156,7 +156,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
-                                                    <label>Issue Date<span class="required"> *</span></label>
+                                                    <label>Issue Date</label>
                                                     <input type="date" name="issue_date"
                                                         value="{{ $document->issue_date }}" id="issue_date"
                                                         class="form-control" placeholder="Issue Date">
@@ -167,7 +167,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
-                                                    <label>Expiry Date<span class="required"> *</span></label>
+                                                    <label>Expiry Date</label>
                                                     <input type="date" name="expiry_date"
                                                         value="{{ $document->expiry_date }}" id="expiry_date"
                                                         class="form-control" placeholder="Expiry Date">
@@ -178,17 +178,20 @@
 
                                             </div>
                                         </div>
-                                        <div class="row mx-0 px-4">
-                                            <div class="col-sm-12 pl-sm-0 pr-sm-3">
-                                                <div class="form-group mb-2">
-                                                    <label>Comments</label>
-                                                    <textarea placeholder="Enter Your Comments ..." name="comment" id="comment" class="form-control">{{ $document->comment ?? '' }}</textarea>
-                                                    @error('comment')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
+                                        @if ($document->user->emp_type == 'company')
+                                            <div class="row mx-0 px-4">
+                                                <div class="col-sm-12 pl-sm-0 pr-sm-3">
+                                                    <div class="form-group mb-2">
+                                                        <label>Comments</label>
+                                                        <textarea placeholder="Enter Your Comments ..." name="comment" id="comment" class="form-control">{{ $document->comment ?? '' }}</textarea>
+                                                        @error('comment')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
+
                                     </div>
                                     <div class="card-footer text-center row">
                                         <div class="col">
@@ -218,17 +221,13 @@
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
                 } else {
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
                 }
             });
 
@@ -236,17 +235,13 @@
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
                 } else {
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
                 }
             });
         });
