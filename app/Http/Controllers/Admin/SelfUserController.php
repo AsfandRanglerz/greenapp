@@ -74,7 +74,7 @@ class SelfUserController extends Controller
         $message['password'] = $password;
 
         try {
-            // Mail::to($request->email)->send(new UserLoginPassword($message));
+            Mail::to($request->email)->send(new UserLoginPassword($message));
             return redirect()->route('selfemployee.index')->with('success', 'Created Successfully');
         } catch (\Throwable $th) {
             dd($th->getMessage());

@@ -19,8 +19,8 @@
                             {{-- @dd($data) --}}
                             <div class="card-body table-striped table-bordered table-responsive">
                                 <a class="btn btn-primary mb-3" href="{{ url()->previous() }}">Back</a>
-                                <a class="btn btn-success mb-3"
-                                    href="{{ route('user-document.create', $user_id) }}">Add Document</a>
+                                <a class="btn btn-success mb-3" href="{{ route('user-document.create', $user->id) }}">Add
+                                    Document</a>
                                 <table class="table" id="table_id_events">
                                     <thead>
                                         <tr>
@@ -30,7 +30,9 @@
                                             <th>File</th>
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
-                                            <th>Comment</th>
+                                            @if ($user->emp_type == 'company')
+                                                <th>Comment</th>
+                                            @endif
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -67,7 +69,9 @@
                                                 </td>
                                                 <td>{{ $document->issue_date }}</td>
                                                 <td>{{ $document->expiry_date }}</td>
-                                                <td>{{ $document->comment }}</td>
+                                                @if ($documents[0]->user->emp_type == 'company')
+                                                    <td>{{ $document->comment }}</td>
+                                                @endif
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                     <a class="btn btn-info"

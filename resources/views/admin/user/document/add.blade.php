@@ -105,7 +105,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
-                                                    <label>Issue Date<span class="required"> *</span></label>
+                                                    <label>Issue Date</label>
                                                     <input type="date" name="issue_date[]"
                                                         value="{{ old('issue_date[]') }}" id="issue_date"
                                                         class="form-control" placeholder="Issue Date">
@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="col-sm-6 pl-sm-0 pr-sm-3 other-none">
                                                 <div class="form-group mb-2">
-                                                    <label>Expiry Date<span class="required"> *</span></label>
+                                                    <label>Expiry Date</label>
                                                     <input type="date" name="expiry_date[]"
                                                         value="{{ old('expiry_date[]') }}" id="expiry_date"
                                                         class="form-control" placeholder="Expiry Date">
@@ -126,18 +126,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mx-0 px-4">
-                                            <div class="col-sm-12 pl-sm-0 pr-sm-3">
-                                                <div class="form-group mb-2">
-                                                    <label>Comments</label>
-                                                    <textarea name="comment[]" placeholder="Enter Your Comments ..." id="comment" value="{{ old('comment[]') }}"
-                                                        class="form-control"></textarea>
-                                                    @error('comment')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
+                                        @if ($user->emp_type == 'company')
+                                            <div class="row mx-0 px-4">
+                                                <div class="col-sm-12 pl-sm-0 pr-sm-3">
+                                                    <div class="form-group mb-2">
+                                                        <label>Comments</label>
+                                                        <textarea name="comment[]" placeholder="Enter Your Comments ..." id="comment" value="{{ old('comment[]') }}"
+                                                            class="form-control"></textarea>
+                                                        @error('comment')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                         <div class="row mx-0 px-4 py-4">
                                             <button type="button" class="btn btn-danger remove-btn"><span
                                                     class="fa fa-trash mr-2"></span>Remove</button>
@@ -171,17 +173,13 @@
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none').find('input')
-                        .attr('required', false);
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
                 } else {
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
-                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none').find('input')
-                        .attr('required', true);
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
+                    $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');
                 }
             });
 
