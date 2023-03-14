@@ -1,11 +1,5 @@
 @extends('auth.layout.master')
 @section('content')
-<style type="text/css">
-    body .auth-centered-block {
-        padding: 30px 0;
-        height: unset;
-    }
-</style>
     <div class="col-xl-5 col-lg-6 col-sm-8 col-11 px-0 mx-auto auth-form light-box-shadow">
         <div class="auth-form-block-header">
             <div class="position-relative auth-form-block-header-inner">
