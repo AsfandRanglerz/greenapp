@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Inquiry;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Inquiry;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class InquiryController extends Controller
 {
@@ -16,7 +18,7 @@ class InquiryController extends Controller
      */
     public function index()
     {
-        $data = Inquiry::orderBy('id','desc')->get();
+        $data = Inquiry::orderBy('id', 'desc')->get();
         return view('admin.inquiry.index', compact('data'));
     }
 
@@ -73,8 +75,14 @@ class InquiryController extends Controller
      */
     public function update(Request $request, $id)
     {
-       Inquiry::find($id)->update(['answer'=>$request->answer]);
-       return redirect()->route('inquiry.index')->with('success','Successfully Responded');
+        $inquiry = Inquiry::find($id);
+        $inquiry->answer = $request->input('answer');
+        $inquiry->save();
+        $data['answer'] = $request->input('answer');
+        $user = User::where('id', $inquiry->user_id)->first();
+        Mail::to($user->email)->send(new \App\Mail\RespondInquiry($data));
+        return redirect()->route('inquiry.index')->with('success', 'Successfully responded');
+
 
     }
 
@@ -87,6 +95,6 @@ class InquiryController extends Controller
     public function destroy($id)
     {
         Inquiry::destroy($id);
-        return redirect()->route('inquiry.index')->with('success','Successfully Deleted');
+        return redirect()->route('inquiry.index')->with('success', 'Successfully Deleted');
     }
 }

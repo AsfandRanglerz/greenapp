@@ -5,9 +5,10 @@
 
 <p>{{ $data['question'] }}</p>
 
-<p style="width: 160px;margin:auto"><a href="{{route('inquiry.index')}}" style="padding:5px 10px;color:rgb(253, 253, 253);background:rgb(18, 223, 18);border-radius:5px;text-decoration:none">Click here to Login </a></p>
+<p style="width: 160px;margin:auto"><a href="{{route('inquiry.index')}}" style="padding:5px 10px;color:rgb(253, 253, 253);background:rgb(18, 223, 18);border-radius:5px;text-decoration:none">Go To inquiry</a></p>
 
 
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent
+

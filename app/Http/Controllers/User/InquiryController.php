@@ -48,12 +48,12 @@ class InquiryController extends Controller
         ]);
         $authId = Auth::guard('web')->id();
         Inquiry::create(['question' => $request->question, 'user_id' => $authId]);
-        
+
         $data['question'] = $request->question;
         $admin = Admin::first();
         try {
-            Mail::to($admin->emai)->send(new \App\Mail\Inquiry($data));
-            // Mail::to('arshadfaarsi13@gmail.com')->send(new \App\Mail\Inquiry($data));
+             Mail::to($admin->email)->send(new \App\Mail\Inquiry($data));
+            // Mail::to('aliashraf20026@gmail.com')->send(new \App\Mail\Inquiry($data));
         } catch (\Throwable $th) {
            return 'afads';
         }

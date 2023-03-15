@@ -41,7 +41,7 @@
                                     <option value="Salary Certificate">Salary Certificate</option>
                                     <option value="Tenancy Contract">Tenancy Contract</option>
                                     <option value="CV">CV</option>
-                                    <option value="Other">Other(Resume)</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 @error('doc_type')
                                     <div class="text-danger p-2">{{ $message }}</div>

@@ -93,7 +93,7 @@
                                                             </option>
                                                             <option value="Other"
                                                                 {{ $document->doc_type == 'Other' ? 'selected' : '' }}>
-                                                                Other(Resume)</option>
+                                                                Other</option>
                                                         </select>
                                                     @else
                                                         <select id="selectDocument" class="form-control category"

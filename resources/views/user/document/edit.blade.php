@@ -70,7 +70,7 @@
                                 </option>
                                 <option value="CV" {{ $document['doc_type'] == 'CV' ? 'selected' : '' }}>CV</option>
                                 <option value="Other" {{ $document['doc_type'] == 'Other' ? 'selected' : '' }}>
-                                    Other(Resume)</option>
+                                    Other</option>
                             </select>
                             @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>
