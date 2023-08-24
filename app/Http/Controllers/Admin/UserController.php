@@ -59,7 +59,11 @@ class UserController extends Controller
         [
             'company_id.required' => 'The company field is required.',
         ]);
-
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
+        ],[
+            'email.unique' => ' email has already been taken as Company'
+        ]);
         $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'company_id']);
 
         $password = random_int(10000000, 99999999);

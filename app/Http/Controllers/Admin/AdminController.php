@@ -63,6 +63,7 @@ class AdminController extends Controller
             DB::table('password_resets')->insert([
                 'email'=>$request->email,
                 'token'=>$token,
+                'guard'=>'admin'
             ]);
 
             $data['url'] = url('change_password',$token);
@@ -100,14 +101,14 @@ class AdminController extends Controller
         ];
         if (Admin::where('email',$request->email)->update($tags_data)){
             DB::table('password_resets')->where('email',$request->email)->delete();
-            return redirect('admin');
+            return redirect('admin-login')->with('success','Reset Password Successfully');
         }
 
 
     }
     public function logout(){
         Auth::guard('admin')->logout();
-        return redirect('admin');
+        return redirect('admin-login')->with('success','Logout Successfully');
     }
     //Change Password
     public function profile_change_password(Request $request)

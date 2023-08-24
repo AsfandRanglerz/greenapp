@@ -103,7 +103,7 @@ class DocumentController extends Controller
     {
         $document  = UserDocument::find($id);
         return view('user.document.edit',compact('document'));
-        
+
     }
 
     /**
@@ -165,9 +165,9 @@ class DocumentController extends Controller
     }
 
     public function download($id)
-{
-    $userDocument = UserDocument::find($id);
-    return response()->download($userDocument->file);
-}
+    {
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
+    }
 
 }

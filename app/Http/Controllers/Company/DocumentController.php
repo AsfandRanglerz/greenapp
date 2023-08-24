@@ -122,7 +122,7 @@ class DocumentController extends Controller
 
     public function download($id)
     {
-        $CompanyDocument = CompanyDocument::find($id);
-        return response()->download($CompanyDocument->file);
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
     }
 }

@@ -60,7 +60,11 @@
                                     <td>{{ $document->comment }}</td>
                                 @endif
                                 <td class="text-center">
-                                    <a href="{{ route('user.document.download', $document->id) }}"><span
+                                    @php
+                                        $file_name = $document->file;
+                                        $ext = explode('users/', $file_name);
+                                    @endphp
+                                    <a href="{{ route('user.document.download', $ext[1]) }}"><span
                                             class="fa fa-download text-success"></span></a>
                                     @if (Auth::guard('web')->user()->emp_type == 'self')
                                         <a href="{{ route('user.document.edit', $document->id) }}" class="mx-2"><span

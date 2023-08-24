@@ -46,7 +46,7 @@ Route::get('/cache_clear', function () {
 
  * */
 
-Route::get('/admin', [AuthController::class, 'getLoginPage']);
+Route::get('/admin-login', [AuthController::class, 'getLoginPage']);
 
 Route::post('admin/login', [AuthController::class, 'Login']);
 

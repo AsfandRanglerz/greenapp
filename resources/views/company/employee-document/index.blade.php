@@ -56,7 +56,11 @@
                                 <td>{{ $document->expiry_date }}</td>
                                 <td>{{ $document->comment }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('company.employeeDocument.download', $document->id) }}"><span
+                                    @php
+                                        $file_name = $document->file;
+                                        $ext = explode('users/', $file_name);
+                                    @endphp
+                                    <a href="{{ route('company.employeeDocument.download', $ext[1]) }}"><span
                                             class="fa fa-download text-success"></span></a>
                                     <a href="{{ route('company.employeeDocument.edit', $document->id) }}"
                                         class="mx-2"><span class="fa fa-edit text-info"></span></a>

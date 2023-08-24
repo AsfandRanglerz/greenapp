@@ -48,7 +48,11 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('company.document.download', $document->id) }}"><span
+                                    @php
+                                        $file_name = $document->file;
+                                        $ext = explode('users/', $file_name);
+                                    @endphp
+                                    <a href="{{ route('company.document.download', $ext[1]) }}"><span
                                             class="fa fa-download text-success"></span></a>
                                     <form class="d-inline" method="post"
                                         action="{{ route('company.document.destroy', $document->id) }}">

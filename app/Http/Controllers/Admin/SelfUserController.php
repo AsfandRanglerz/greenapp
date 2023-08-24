@@ -52,6 +52,11 @@ class SelfUserController extends Controller
             'nationality' => 'required',
             'religion' => 'required',
         ]);
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
+        ],[
+            'email.unique' => ' email has already been taken as Company'
+        ]);
         $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'gender', 'father_name', 'mother_name', 'passport_number', 'unified_number', 'emirate_id_number', 'work_permit_number', 'person_code']);
 
         $password = random_int(10000000, 99999999);

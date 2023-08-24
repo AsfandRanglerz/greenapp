@@ -152,7 +152,12 @@ public function update(Request $request, $id)
         'dob' => 'required',
         'nationality' => 'required',
         'religion' => 'required',
-        'email' => ['required', 'email', Rule::unique('users')->ignore($id)],
+        'email' => [
+            'required',
+            'email',
+            Rule::unique('users')->ignore($id),
+            Rule::unique('companies')->ignore($id),
+        ],
     ]);
 
     $employee = User::find($id);

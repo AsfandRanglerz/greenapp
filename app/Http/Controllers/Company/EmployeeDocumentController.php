@@ -166,7 +166,7 @@ class EmployeeDocumentController extends Controller
 
     public function download($id)
     {
-        $userDocument = UserDocument::find($id);
-        return response()->download($userDocument->file);
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
     }
 }
