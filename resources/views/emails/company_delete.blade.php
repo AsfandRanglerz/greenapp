@@ -7,18 +7,9 @@
 
 
 <p>If you wish to proceed with the account deletion, please click on the "Accept" button below.</p>
-<p style="width: 160px;margin:auto" id="acceptButtonContainer">
-    <a href="{{ url('login') }}" onclick="updateButtonContent(event)" style="padding:5px 10px;color:#fff;background:#12df12;border-radius:5px;text-decoration:none">Accept</a>
+<p style="width: 160px;margin:auto">
+    <a href="{{ url('admin-delete-company', ['id' => $message['id']]) }}"  style="padding:5px 10px;color:#fff;background:#12df12;border-radius:5px;text-decoration:none">Accept</a>
 </p>
-
-<script>
-    function updateButtonContent(event) {
-        event.preventDefault(); // Prevents the link from navigating to the URL
-
-        var acceptButtonContainer = document.getElementById('acceptButtonContainer');
-        acceptButtonContainer.innerHTML = "Thanks for your response";
-    }
-</script>
 <p>However, if you prefer to retain your account, kindly select the "Reject" button instead.</p>
 <p style="width: 160px;margin:auto"><a href="{{url('login')}}" style="padding:5px 10px;color:rgb(253, 253, 253);background:rgb(18, 223, 18);border-radius:5px;text-decoration:none">Reject</a></p>
 

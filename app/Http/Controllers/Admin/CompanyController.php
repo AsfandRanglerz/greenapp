@@ -198,6 +198,8 @@ class CompanyController extends Controller
 
     $message['name'] = $company->name;
     $message['email'] = $company->email;
+    $message['id'] = $company->id;
+
 
     try {
         Mail::to($company->email)->send(new CompanyDelete($message));
@@ -206,5 +208,26 @@ class CompanyController extends Controller
         return back()->with(['status' => false, 'message' => $th->getMessage()]);
     }
 }
+
+public function company_delete($id) {
+    $company = Company::find($id);
+
+    if (!$company) {
+        $message = 'Company is already deleted.';
+        return $message;
+
+    }
+
+    $company->company_delete = '1';
+    $company->save();
+
+    if ($company->company_delete == '1' && $company->admin_delete == '1') {
+        $company->delete();
+        $message = 'Company deleted successfully.';
+        return $message;
+
+    }
+}
+
 
 }

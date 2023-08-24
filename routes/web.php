@@ -58,6 +58,11 @@ Route::get('/change_password/{id}', [AdminController::class, 'change_password'])
 
 Route::post('/admin-reset-password', [AdminController::class, 'ResetPassword']);
 
+Route::get('/admin-delete-company/{id}', [CompanyController::class, 'company_delete']);
+
+
+
+
 Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('dashboard', [AdminController::class, 'getdashboard']);
@@ -159,6 +164,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('reset-password', 'AuthController@resetPassword')->name('reset-password');
 
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
+
 
 });
 
