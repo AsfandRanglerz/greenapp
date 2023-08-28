@@ -2,7 +2,12 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
-            <h4>Company Dashboard</h4>
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Company Dashboard</h4>
+                <a href="{{ route('company.employee.create') }}" class="btn btn-success"><span
+                    class="fa fa-plus mr-2"></span>Add
+                Employee</a>
+            </div>
             <p><span class="fa fa-home"></span> - Main Overview</p>
             <div class="row mb-sm-3">
                 <div class="col-sm-4 mb-sm-3 mb-1 wow fadeInUp" data-wow-duration="2s">

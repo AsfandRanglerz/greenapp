@@ -36,13 +36,11 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
-
-                        <select name="nationality" id="nationality" class="form-control">
+                        <select name="nationality" id="selCountry" class="form-control">
                             <option value=""></option>
                             @foreach($countries as $country)
                             <option value="{{$country->name}}">{{$country->name}}</option>
                             @endforeach
-
                         </select>
                         @error('nationality')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -50,7 +48,12 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" value="{{old('religion')}}" placeholder="Enter Religion">
+                        <select name="religion" class="form-control" id="selReligion">
+                            <option value=""></option>
+                            <option value="Islam">Islam</option>
+                            <option value="Judaism">Judaism</option>
+                            <option value="Christianity">Christianity</option>
+                        </select>
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -86,8 +89,11 @@
     <script type="text/javascript">
         $(function() {
             /*single-select-dropdowns*/
-            $('#nationality').select2({
+            $('#selCountry').select2({
                 placeholder: 'Select Country'
+            });
+            $('#selReligion').select2({
+                placeholder: 'select Religion'
             });
             /*single-select-dropdowns*/
             /*Avatar upload*/

@@ -86,6 +86,26 @@
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>Issue Date</label>
+                        <div class="input-group">
+                            <input type="date" name="issue_date" value="{{ old('issue_date') }}" placeholder="dd.mm.yyyy"
+                                class="form-control">
+                        </div>
+                        @error('issue_date')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Expiry Date</label>
+                        <div class="input-group">
+                            <input type="date" name="expiry_date" value="{{ old('expiry_date') }}" placeholder="dd.mm.yyyy"
+                                class="form-control">
+                        </div>
+                        @error('expiry_date')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
                     </div>

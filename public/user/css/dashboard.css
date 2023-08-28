@@ -301,6 +301,31 @@ body .navbar .dropdown-item {
     width: 32px;
 }
 
+#dashboardSidebarRightContent .close {
+    opacity: 0.8;
+}
+
+#dashboardSidebarRightContent .close:hover {
+    opacity: 1;
+}
+
+#dashboardSidebarRightContent .close:focus {
+    outline: none;
+}
+
+#dashboardSidebarRightContent .close .fa-times {
+    color: #FFF;
+    background: #bb374c;
+    font-size: 14px;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
 @media (max-width:1199px) {
     #dashboardSidebarRightContent .admin-panel-header {
         background-color: var(--theme-clr);

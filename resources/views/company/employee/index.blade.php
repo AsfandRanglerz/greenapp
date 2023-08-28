@@ -15,12 +15,12 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">image</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
+                            {{-- <th scope="col">Phone</th>
                             <th scope="col">Nationality</th>
                             <th scope="col">Religion</th>
-                            <th scope="col">Data-Of-birth</th>
+                            <th scope="col">Data-Of-birth</th> --}}
                             <th scope="col">Document</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -32,18 +32,19 @@
                                 <td>{{ $employee->name }}</td>
                                 <td><a target="_black" href="{{ asset('') . '' . $employee->image }}">
                                         <img src="{{ asset('') . '' . $employee->image }}" alt="" height="50"
-                                            width="50" class="image"></a>
+                                            width="50" class="rounded-circle"></a>
                                 </td>
                                 <td>{{ $employee->email }}</td>
-                                <td>{{ $employee->phone }}</td>
+                                {{-- <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->nationality }}</td>
                                 <td>{{ $employee->religion }}</td>
-                                <td>{{ $employee->dob }}</td>
+                                <td>{{ $employee->dob }}</td> --}}
                                 <td>
                                     <a href="{{ route('company.employee.show', ['employee' => $employee->id]) }}"><span
                                             class="fa fa-eye text-success"></span></a>
                                 </td>
                                 <td class="text-center">
+                                    <a type="button" data-toggle="modal" data-target="#employeeDetails"><span class="fa fa-eye text-success"></span></a>
                                     <a href="{{ route('company.employee.edit', $employee->id) }}" class="mx-2"><span
                                             class="fa fa-edit text-info"></span></a>
                                     <form class="d-inline" method="post"
@@ -60,8 +61,57 @@
                 </table>
             </div>
         </div>
-    </div>
-    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="employeeDetails" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="employeeDetailsLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="employeeDetailsLabel"><span class="fa fa-user"></span> - Employee Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            @foreach ($employees as $employee)
+                            <div class="col-12 mb-sm-3 mb-2 text-center">
+                                <img src="{{ asset('') . '' . $employee->image }}" alt="" height="90"
+                                    width="90" class="rounded-circle">
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-2">
+                                <label>Name</label>
+                                <input type="text" value="{{ $employee->name }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-2">
+                                <label>Email</label>
+                                <input type="text" value="{{ $employee->email }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-2">
+                                <label>Phone</label>
+                                <input type="text" value="{{ $employee->phone }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-2">
+                                <label>Nationality</label>
+                                <input type="text" value="{{ $employee->nationality }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-2">
+                                <label>Religion</label>
+                                <input type="text" value="{{ $employee->religion }}" class="form-control" readonly>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Data-Of-birth</label>
+                                <input type="text" value="{{ $employee->dob }}" class="form-control" readonly>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-bg" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('script')
