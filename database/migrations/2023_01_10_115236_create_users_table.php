@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('work_permit_number')->nullable();
             $table->string('person_code')->nullable();
 
+
             $table->timestamps();
         });
     }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyDocument;
 use App\Models\User;
+use App\Models\Note;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -28,4 +30,24 @@ class HomeController extends Controller
         Auth::guard('company')->logout();
         return redirect()->route('login')->with('success', "You've Logout Successfully");
     }
+
+    public function note_update(Request $request)
+{
+    $authId = Auth::guard('company')->id();
+    $note = Note::where('company_id', $authId)->first();
+
+    if ($note) {
+        $note->update([
+            'note' => $request->input('note'),
+        ]);
+    } else {
+        Note::create([
+            'note' => $request->input('note'),
+            'company_id' => $authId,
+        ]);
+    }
+
+    return redirect()->route('company.dashboard')->with('success', "Updated Successfully");
+}
+
 }

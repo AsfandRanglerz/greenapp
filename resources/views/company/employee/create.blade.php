@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userName">Name<span class="required"> *</span></label>
-                        <input id="userName" type="text" name="name" value="{{old('name')}}" class="form-control"
+                        <input id="userName" type="text" name="name" value="{{ old('name') }}" class="form-control"
                             placeholder="Enter Employee Name">
                         @error('name')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -27,7 +27,7 @@
                     <div class="form-group col-md-6">
                         <label>Date Of Birth<span class="required"> *</span></label>
                         <div class="input-group">
-                            <input type="date"  name="dob" value="{{old('dob')}}" placeholder="dd.mm.yyyy"
+                            <input type="date" name="dob" value="{{ old('dob') }}" placeholder="dd.mm.yyyy"
                                 class="form-control date-of-birth">
                         </div>
                         @error('dob')
@@ -38,8 +38,8 @@
                         <label>Nationality<span class="required"> *</span></label>
                         <select name="nationality" id="selCountry" class="form-control">
                             <option value=""></option>
-                            @foreach($countries as $country)
-                            <option value="{{$country->name}}">{{$country->name}}</option>
+                            @foreach ($countries as $country)
+                                <option value="{{ $country->name }}">{{ $country->name }}</option>
                             @endforeach
                         </select>
                         @error('nationality')
@@ -53,6 +53,13 @@
                             <option value="Islam">Islam</option>
                             <option value="Judaism">Judaism</option>
                             <option value="Christianity">Christianity</option>
+                            <option value="Hinduism">Hinduism</option>
+                            <option value="Atheist">Atheist</option>
+                            <option value="Baha'i">Baha'i</option>
+                            <option value="Buddhism">Buddhism</option>
+                            <option value="Sikhism">Sikhism</option>
+                            <option value="Spiritism">Spiritism</option>
+                            <option value="Tenrikyo">Tenrikyo</option>
                         </select>
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -60,7 +67,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userPhone">Phone<span class="required"> *</span></label>
-                        <input id="userPhone" type="number" name="phone" value="{{old('phone')}}" class="form-control"
+                        <input id="userPhone" type="number" name="phone" value="{{ old('phone') }}" class="form-control"
                             placeholder="Enter Phone Number">
                         @error('phone')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -68,8 +75,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="userEmail">Email<span class="required"> *</span></label>
-                        <input id="userEmail" type="email" name="email" value="{{old('email')}}" class="form-control"
-                            placeholder="Enter Your Email">
+                        <input id="userEmail" type="email" name="email" value="{{ old('email') }}"
+                            class="form-control" placeholder="Enter Your Email">
                         @error('email')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror

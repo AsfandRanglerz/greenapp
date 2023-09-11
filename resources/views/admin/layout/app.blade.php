@@ -48,8 +48,8 @@
     <script src="{{ asset('public/admin/assets/js/custom.js') }}"></script>
     <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js') }}"></script>
     <script src="{{ asset('public/admin/assets/js/datatables.js') }}">
-        < /scrip> <
-        script >
+        </script>
+        <script>
             /*toastr popup function*/
             function toastrPopUp() {
                 toastr.options = {

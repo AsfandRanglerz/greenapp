@@ -96,6 +96,8 @@ class ProfileController extends Controller
             'establishment_no' => $request->establishment_no,
             'license_no' => $request->license_no,
             'mohre_no' => $request->mohre_no,
+            'issue_date' => $request->issue_date,
+            'expiry_date' => $request->expiry_date,
         ] + ['image' => $image]);
 
         return redirect()->route('company.profile.index')->with('success', 'Updated Successfully');

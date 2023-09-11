@@ -174,11 +174,18 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::get('logout', 'HomeController@logout')->name('logout');
 
+    Route::post('note', 'HomeController@note_update')->name('note.update');
+
+    Route::get('note', 'HomeController@getnote');
+
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
 
     Route::resource('profile', 'ProfileController');
 
     Route::resource('employee', 'EmployeeController');
+    
+    Route::get('employee-view', 'EmployeeController@view');
+
 
     Route::resource('employeeDocument', 'EmployeeDocumentController');
 

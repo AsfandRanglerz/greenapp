@@ -12,7 +12,7 @@ class Company extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $guarded = [];
 
-    protected $fillable = ['name', 'phone', 'image', 'email', 'password', 'establishment_no', 'license_no', 'mohre_no'];
+    protected $fillable = ['name', 'phone', 'image', 'email', 'password', 'establishment_no', 'license_no', 'mohre_no','issue_date','expiry_date'];
 
     public function documents()
     {

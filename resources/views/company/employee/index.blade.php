@@ -44,7 +44,8 @@
                                             class="fa fa-eye text-success"></span></a>
                                 </td>
                                 <td class="text-center">
-                                    <a type="button" data-toggle="modal" data-target="#employeeDetails"><span class="fa fa-eye text-success"></span></a>
+                                    <a id="{{ $employee->id }}"" data-toggle="modal" data-target=".bd-example-modal-lg"
+                                        class="employee-data"><span class="fa fa-eye text-success"></span></a>
                                     <a href="{{ route('company.employee.edit', $employee->id) }}" class="mx-2"><span
                                             class="fa fa-edit text-info"></span></a>
                                     <form class="d-inline" method="post"
@@ -62,54 +63,9 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="employeeDetails" data-backdrop="static" data-keyboard="false" tabindex="-1"
-            aria-labelledby="employeeDetailsLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="employeeDetailsLabel"><span class="fa fa-user"></span> - Employee Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="fa fa-times"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            @foreach ($employees as $employee)
-                            <div class="col-12 mb-sm-3 mb-2 text-center">
-                                <img src="{{ asset('') . '' . $employee->image }}" alt="" height="90"
-                                    width="90" class="rounded-circle">
-                            </div>
-                            <div class="col-sm-6 mb-sm-3 mb-2">
-                                <label>Name</label>
-                                <input type="text" value="{{ $employee->name }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-6 mb-sm-3 mb-2">
-                                <label>Email</label>
-                                <input type="text" value="{{ $employee->email }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-6 mb-sm-3 mb-2">
-                                <label>Phone</label>
-                                <input type="text" value="{{ $employee->phone }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-6 mb-sm-3 mb-2">
-                                <label>Nationality</label>
-                                <input type="text" value="{{ $employee->nationality }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-6 mb-sm-3 mb-2">
-                                <label>Religion</label>
-                                <input type="text" value="{{ $employee->religion }}" class="form-control" readonly>
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Data-Of-birth</label>
-                                <input type="text" value="{{ $employee->dob }}" class="form-control" readonly>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-bg" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg scrol" id="mymodal">
             </div>
         </div>
     </div>
@@ -144,6 +100,27 @@
                         }
                     });
             });
+            $(document).on('click', '.employee-data', function() {
+                var id = $(this).attr('id');
+                // alert(id);
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    headers: {
+                        'X-CSRF-Token': '{{ csrf_token() }}',
+                    },
+                    url: "{{ url('company/employee-view') }}",
+                    data: {
+                        'id': id,
+
+                    },
+                    success: function(response) {
+                        $("#mymodal").html(response);
+
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

@@ -222,4 +222,10 @@ public function update(Request $request, $id)
         User::destroy($id);
         return redirect()->route('company.employee.index')->with('success', 'Deleted Successfully');
     }
+
+    public function view(Request $request){
+        $data = User::find($request->id);
+        $employees = view('company.employee.modal', compact('data'))->render();
+        return response()->json($employees);
+    }
 }

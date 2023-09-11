@@ -89,7 +89,7 @@
                     <div class="form-group col-md-6">
                         <label>Issue Date</label>
                         <div class="input-group">
-                            <input type="date" name="issue_date" value="{{ old('issue_date') }}" placeholder="dd.mm.yyyy"
+                            <input type="date" name="issue_date" value="{{ $company->issue_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control">
                         </div>
                         @error('issue_date')
@@ -99,7 +99,7 @@
                     <div class="form-group col-md-6">
                         <label>Expiry Date</label>
                         <div class="input-group">
-                            <input type="date" name="expiry_date" value="{{ old('expiry_date') }}" placeholder="dd.mm.yyyy"
+                            <input type="date" name="expiry_date" value="{{ $company->expiry_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control">
                         </div>
                         @error('expiry_date')

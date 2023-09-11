@@ -53,8 +53,29 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Religion<span class="required"> *</span></label>
-                        <input type="text" class="form-control" name="religion" value="{{ $data['religion'] }}"
-                            placeholder="Enter Religion">
+                        <select name="religion" class="form-control" id="selReligion">
+                            {{-- <option value=""></option> --}}
+                            <option value="Islam"
+                            {{ isset($data->religion) && $data->religion == 'Islam' ? 'selected' : '' }}>Islam</option>
+                            <option value="Judaism"
+                            {{ isset($data->religion) && $data->religion == 'Judaism' ? 'selected' : '' }}>Judaism</option>
+                            <option value="Christianity"
+                            {{ isset($data->religion) && $data->religion == 'Christianity' ? 'selected' : '' }}>Christianity</option>
+                            <option value="Hinduism"
+                            {{ isset($data->religion) && $data->religion == 'Hinduism' ? 'selected' : '' }}>Hinduism</option>
+                            <option value="Atheist"
+                            {{ isset($data->religion) && $data->religion == 'Atheist' ? 'selected' : '' }}>Atheist</option>
+                            <option value="Baha'i"
+                            {{ isset($data->religion) && $data->religion == "Baha'i" ? 'selected' : '' }}>Baha'i</option>
+                            <option value="Buddhism"
+                            {{ isset($data->religion) && $data->religion == 'Buddhism' ? 'selected' : '' }}>Buddhism</option>
+                            <option value="Sikhism"
+                            {{ isset($data->religion) && $data->religion == 'Sikhism' ? 'selected' : '' }}>Sikhism</option>
+                            <option value="Spiritism"
+                            {{ isset($data->religion) && $data->religion == 'Spiritism' ? 'selected' : '' }}>Spiritism</option>
+                            <option value="Tenrikyo"
+                            {{ isset($data->religion) && $data->religion == 'Tenrikyo' ? 'selected' : '' }}>Tenrikyo</option>
+                        </select>
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -92,6 +113,9 @@
             /*single-select-dropdowns*/
             $('#nationality').select2({
                 placeholder: 'Select Country'
+            });
+            $('#selReligion').select2({
+                placeholder: 'select Religion'
             });
             /*single-select-dropdowns*/
             /*Avatar upload*/

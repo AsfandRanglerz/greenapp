@@ -23,6 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->string('establishment_no')->nullable();
             $table->string('license_no')->nullable();
             $table->string('mohre_no')->nullable();
+            $table->date('issue_date')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->timestamps();
         });
     }

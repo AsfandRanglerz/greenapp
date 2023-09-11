@@ -1,3 +1,11 @@
+<?php
+use App\Models\Note;
+$authId = Auth::guard('company')->id();
+if ($authId) { // Check if the user is authenticated
+    $data['note'] = Note::where('company_id', $authId)->first();
+}
+?>
+
 <nav class="row mx-0 position-sticky top-0 d-flex align-items-center admin-panel-header">
     <div id="sideNavOverlay" class="position-fixed d-none"></div>
     <div class="col-6">
@@ -35,20 +43,24 @@
 <!-- Modal -->
 <div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="notesModelLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="fa fa-times"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <textarea cols="30" rows="10" class="form-control" placeholder="Your Notes ..."></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn-bg">Save Notes</button>
+    <form action="{{route('company.note.update')}}" method="POST">
+        @csrf
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea cols="30" rows="10" class="form-control" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-bg">Save Notes</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
+
