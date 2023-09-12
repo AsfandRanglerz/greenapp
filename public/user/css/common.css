@@ -252,6 +252,7 @@ body .datepicker-dropdown.datepicker-orient-top:before {
     left: 0;
     height: 100%;
     width: 100%;
+    cursor: no-drop;
 }
 .avatar-wrapper .upload-button .profile-img-uploaded-icon {
     color: #34495e;

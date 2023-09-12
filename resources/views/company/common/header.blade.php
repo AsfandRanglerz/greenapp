@@ -54,13 +54,13 @@ if ($authId) { // Check if the user is authenticated
                     </button>
                 </div>
                 <div class="modal-body">
-                    <textarea cols="30" rows="10" class="form-control" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn-bg">Save Notes</button>
+                    <button class="btn-bg reset-btn">Reset</button>
+                    <button type="submit" class="btn-bg">Save</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
-

@@ -7,7 +7,11 @@
     </div>
     <div class="col-6">
         <div class="navbar p-0">
-            <div class="dropdown ml-auto">
+            <div class="dropdown ml-auto d-flex align-items-center">
+                <!-- Button trigger modal -->
+                <h5 type="button" class="text-white mb-0 mr-3" data-toggle="modal" data-target="#notesModel">
+                    <span class="fa fa-edit text-success mr-2"></span>Notes
+                </h5>
                 <a class="p-0 btn dropdown-toggle rounded-circle" role="button" id="profContentBtn"
                     data-toggle="dropdown" aria-expanded="false">
                     @if (isset(Auth::guard('web')->user()->image))
@@ -27,3 +31,28 @@
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="notesModelLabel" aria-hidden="true">
+    <form action="{{route('company.note.update')}}" method="POST">
+        @csrf
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-bg reset-btn">Reset</button>
+                    <button type="submit" class="btn-bg">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

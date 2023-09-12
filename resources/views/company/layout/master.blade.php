@@ -44,6 +44,29 @@
 
     <script type="text/javascript">
         $(function() {
+            // notes section
+            var textarea = $('.notes-section');
+
+            // Check if there's a stored value in localStorage
+            var storedValue = localStorage.getItem('textareaValue');
+
+           // If a stored value exists, set the textarea value to it
+            if (storedValue) {
+                textarea.val(storedValue);
+            }
+
+            // Update the stored value whenever the textarea changes
+            textarea.on('input', function() {
+                var currentValue = textarea.val();
+                localStorage.setItem('textareaValue', currentValue);
+            });
+
+            // Reset button par click karne par textarea ki value mai store value rkh do
+            $(document).on('click', '.reset-btn', function(event) {
+                event.preventDefault();
+                textarea.val(storedValue);
+            });
+
             /*dashboard right side content toggle*/
             $(document).on('click', '#menuToggle', function() {
                 $("#dashboardSidebarRightContent").toggleClass("toggled");
