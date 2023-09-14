@@ -56,16 +56,16 @@
                         <label>Religion<span class="required"> *</span></label>
                         <select name="religion" class="form-control" id="selReligion" disabled>
                             <option value=""></option>
-                            <option value="Islam">Islam</option>
-                            <option value="Judaism">Judaism</option>
-                            <option value="Christianity">Christianity</option>
-                            <option value="Hinduism">Hinduism</option>
-                            <option value="Atheist">Atheist</option>
-                            <option value="Baha'i">Baha'i</option>
-                            <option value="Buddhism">Buddhism</option>
-                            <option value="Sikhism">Sikhism</option>
-                            <option value="Spiritism">Spiritism</option>
-                            <option value="Tenrikyo">Tenrikyo</option>
+                            <option value="Islam" {{ old('religion') == "Islam" ||  $employee->religion =="Islam" ? "selected" : '' }}>Islam</option>
+                            <option value="Judaism" {{ old('religion') == "Judaism" ||  $employee->religion =="Judaism" ? "selected" : '' }}>Judaism</option>
+                            <option value="Christianity" {{ old('religion') == "Christianity" ||  $employee->religion =="Christianity" ? "selected" : '' }}>Christianity</option>
+                            <option value="Hinduism" {{ old('religion') == "Hinduism" ||  $employee->religion =="Hinduism" ? "selected" : '' }}>Hinduism</option>
+                            <option value="Atheist" {{ old('religion') == "Atheist" ||  $employee->religion =="Atheist" ? "selected" : '' }}>Atheist</option>
+                            <option value="Baha'i" {{ old('religion') == "Baha'i" ||  $employee->religion =="Baha'i" ? "selected" : '' }}>Baha'i</option>
+                            <option value="Buddhism" {{ old('religion') == "Buddhism" ||  $employee->religion =="Buddhism" ? "selected" : '' }}>Buddhism</option>
+                            <option value="Sikhism" {{ old('religion') == "Sikhism" ||  $employee->religion =="Sikhism" ? "selected" : '' }}>Sikhism</option>
+                            <option value="Spiritism" {{ old('religion') == "Spiritism" ||  $employee->religion =="Spiritism" ? "selected" : '' }}>Spiritism</option>
+                            <option value="Tenrikyo" {{ old('religion') == "Tenrikyo" ||  $employee->religion =="Tenrikyo" ? "selected" : '' }}>Tenrikyo</option>
                         </select>
                         @error('religion')
                             <div class="text-danger p-2">{{ $message }}</div>

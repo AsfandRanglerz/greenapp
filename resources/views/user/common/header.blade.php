@@ -1,3 +1,10 @@
+<?php
+use App\Models\Note;
+$authId = Auth::guard('web')->id();
+if ($authId) { // Check if the user is authenticated
+    $data['note'] = Note::where('user_id', $authId)->first();
+}
+?>
 <nav class="row mx-0 position-sticky top-0 d-flex align-items-center admin-panel-header">
     <div id="sideNavOverlay" class="position-fixed d-none"></div>
     <div class="col-6">
@@ -35,7 +42,7 @@
 <!-- Modal -->
 <div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="notesModelLabel" aria-hidden="true">
-    <form action="{{route('company.note.update')}}" method="POST">
+    <form action="{{route('user.note.update')}}" method="POST">
         @csrf
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -46,7 +53,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ..."></textarea>
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn-bg reset-btn">Reset</button>

@@ -76,13 +76,13 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
-
         ]);
 
         if ($request->hasFile('image')) {
@@ -110,7 +110,7 @@ class ProfileController extends Controller
             'emirate_id_number' => $request->emirate_id_number,
             'work_permit_number' => $request->work_permit_number,
             'person_code' => $request->person_code,
-            
+
         ]);
 
         return redirect()->route('user.profile.index')->with('success', 'Updated Successfully');
