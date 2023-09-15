@@ -65,53 +65,53 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Po Box</label>
-                        <input type="text" class="form-control" name="mohre_no" value="" placeholder="Po Box"
+                        <input type="text" class="form-control" name="po_box" value="{{ $company->po_box }}" placeholder="Po Box"
                             disabled>
-                        @error('')
+                        @error('po_box')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Daman Police Number</label>
-                        <input type="text" class="form-control" name="mohre_no" value=""
+                        <input type="text" class="form-control" name="daman_police_number" value="{{ $company->daman_police_number }}"
                             placeholder="Daman Police Number" disabled>
-                        @error('')
+                        @error('daman_police_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Daman Customer Number</label>
-                        <input type="text" class="form-control" name="mohre_no" value=""
+                        <input type="text" class="form-control" name="daman_customer_number" value="{{ $company->daman_customer_number }}"
                             placeholder="Daman Customer Number" disabled>
-                        @error('')
+                        @error('daman_customer_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Other Insurance Policy Number</label>
-                        <input type="text" class="form-control" name="mohre_no" value=""
+                        <input type="text" class="form-control" name="other_insurance_policy_number" value="{{ $company->other_insurance_policy_number }}"
                             placeholder="Other Insurance Policy Number" disabled>
-                        @error('')
+                        @error('other_insurance_policy_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>E Channel Issue Date</label>
                         <div class="input-group">
-                            <input type="date" name="issue_date" value="{{ $company->issue_date }}"
+                            <input type="date" name="e_channel_issue_date" value="{{ $company->e_channel_issue_date }}"
                                 placeholder="dd.mm.yyyy" class="form-control" disabled>
                         </div>
-                        @error('issue_date')
+                        @error('e_channel_issue_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>E Channel Expiry Date</label>
                         <div class="input-group">
-                            <input type="date" name="expiry_date" value="{{ $company->expiry_date }}"
+                            <input type="date" name="e_channel_expiry_date" value="{{ $company->e_channel_expiry_date }}"
                                 placeholder="dd.mm.yyyy" class="form-control" disabled>
                         </div>
-                        @error('expiry_date')
+                        @error('e_channel_expiry_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -126,20 +126,20 @@
                     <div class="form-group col-md-4">
                         <label>Issue Date</label>
                         <div class="input-group">
-                            <input type="date" name="issue_date" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="license_issue_date" value="{{ $company->license_issue_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('issue_date')
+                        @error('license_issue_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label>Expiry Date</label>
                         <div class="input-group">
-                            <input type="date" name="expiry_date" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="license_expiry_date" value="{{ $company->license_expiry_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('expiry_date')
+                        @error('license_expiry_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -154,45 +154,45 @@
                     <div class="form-group col-md-4">
                         <label>Issue Date</label>
                         <div class="input-group">
-                            <input type="date" name="issue_date" value="{{ $company->issue_date }}"
+                            <input type="date" name="establishment_issue_date" value="{{ $company->establishment_issue_date }}"
                                 placeholder="dd.mm.yyyy" class="form-control" disabled>
                         </div>
-                        @error('issue_date')
+                        @error('establishment_issue_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label>Expiry Date</label>
                         <div class="input-group">
-                            <input type="date" name="expiry_date" value="{{ $company->expiry_date }}"
+                            <input type="date" name="establishment_expiry_date" value="{{ $company->establishment_expiry_date }}"
                                 placeholder="dd.mm.yyyy" class="form-control" disabled>
                         </div>
-                        @error('expiry_date')
+                        @error('establishment_expiry_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label>Tenancy</label>
-                        <input type="text" class="form-control" name="tenancy" value=""
+                        <input type="text" class="form-control" name="tenancy" value="{{ $company->tenancy }}"
                             placeholder="Tenancy" disabled>
                     </div>
                     <div class="form-group col-md-4">
                         <label>Issue Date</label>
                         <div class="input-group">
-                            <input type="date" name="issue_date" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="tenancy_issue_date" value="{{ $company->tenancy_issue_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('issue_date')
+                        @error('tenancy_issue_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label>Expiry Date</label>
                         <div class="input-group">
-                            <input type="date" name="expiry_date" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="tenancy_expiry_date" value="{{ $company->tenancy_expiry_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('expiry_date')
+                        @error('tenancy_expiry_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>

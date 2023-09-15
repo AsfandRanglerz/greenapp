@@ -75,6 +75,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
@@ -94,10 +95,21 @@ class ProfileController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'establishment_no' => $request->establishment_no,
+            'establishment_issue_date' => $request->establishment_issue_date,
+            'establishment_expiry_date' => $request->establishment_expiry_date,
             'license_no' => $request->license_no,
+            'license_issue_date' => $request->license_issue_date,
+            'license_expiry_date' => $request->license_expiry_date,
+            'tenancy' => $request->tenancy,
+            'tenancy_issue_date' => $request->tenancy_issue_date,
+            'tenancy_expiry_date' => $request->tenancy_expiry_date,
+            'e_channel_issue_date' => $request->e_channel_issue_date,
+            'e_channel_expiry_date' => $request->e_channel_expiry_date,
             'mohre_no' => $request->mohre_no,
-            'issue_date' => $request->issue_date,
-            'expiry_date' => $request->expiry_date,
+            'po_box' => $request->po_box,
+            'daman_police_number' => $request->daman_police_number,
+            'daman_customer_number' => $request->daman_customer_number,
+            'other_insurance_policy_number' => $request->other_insurance_policy_number,
         ] + ['image' => $image]);
 
         return redirect()->route('company.profile.index')->with('success', 'Updated Successfully');

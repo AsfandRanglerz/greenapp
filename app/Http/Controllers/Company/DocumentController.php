@@ -41,25 +41,26 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('ali');
         // Validate the input data
-        $validator = Validator::make($request->all(), [
-            'doc_name.*' => 'required|string',
-            'file.*' => 'required|file',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'doc_name.*' => 'required|string',
+        //     'file.*' => 'required|file',
+        // ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
 
-        $doc_names = $request->input('doc_name');
+        $doc_type = $request->input('doc_type');
+        $doc_name = $request->input('doc_name');
         $files = $request->file('file');
         // dd($doc_names);
-        for ($i = 0; $i < count($doc_names); $i++) {
+        for ($i = 0; $i < count($doc_type); $i++) {
             $document = new CompanyDocument;
-            $document->doc_name = $doc_names[$i];
+            $document->doc_type = $doc_type[$i];
+            $document->doc_name = $doc_name[$i];
             $document->company_id = Auth::guard('company')->id();
 
             if ($request->hasFile('file.' . $i)) {

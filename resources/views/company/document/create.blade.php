@@ -20,7 +20,7 @@
                             <label>Company Attachment<span class="required"> *</span></label>
                             {{-- <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
                                 placeholder="Enter Document Name" class="form-control" required> --}}
-                                <select id="selectDocument" name="doc_name" value="{{ old('doc_name[]') }}" class="form-control" required>
+                                <select id="selectDocument" name="doc_type[]"  class="form-control" required>
                                     <option  selected disabled>Select Document</option>
                                     <option value="Trade License">Trade License</option>
                                     <option value="Establishment Card ">Establishment Card </option>
@@ -31,7 +31,7 @@
                                     <option value="Civil Defense Certificate">Civil Defense Certificate</option>
                                     <option value="Other">Other</option>
                                 </select>
-                            @error('doc_name')
+                            @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>

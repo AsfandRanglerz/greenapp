@@ -17,6 +17,7 @@ class CreateCompanyDocumentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->string('doc_type')->nullable();
             $table->string('doc_name')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
