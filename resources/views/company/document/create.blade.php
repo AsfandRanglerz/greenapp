@@ -90,7 +90,7 @@
 
                 // Clone it and assign the new ID (i.e: from num 4 to ID "klon4")
                 var html = $div.clone().prop('id', 'docField' + num).find("input, textarea").val("").end().show();
-
+                html.find('.other-show').addClass('d-none');
                 $($div).before(html);
             });
 
