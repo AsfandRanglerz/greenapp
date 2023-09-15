@@ -16,7 +16,8 @@ if ($authId) { // Check if the user is authenticated
         <div class="navbar p-0">
             <div class="dropdown ml-auto d-flex align-items-center">
                 <!-- Button trigger modal -->
-                <h5 type="button" class="text-white mb-0 mr-3" data-toggle="modal" data-target="#notesModel">
+                <h5 type="button" class="text-white mb-0 mr-3" data-toggle="modal" data-target="#notesModel" title="here you can save Notes for Reminder,
+Here You can save your data, this option allows you to send request for these services etc.">
                     <span class="fa fa-edit text-success mr-2"></span>Notes
                 </h5>
                 <a class="p-0 btn dropdown-toggle rounded-circle" role="button" id="profContentBtn"
