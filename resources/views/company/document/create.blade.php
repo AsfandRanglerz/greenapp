@@ -17,9 +17,20 @@
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">
-                            <label>Document Name<span class="required"> *</span></label>
-                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
-                                placeholder="Enter Document Name" class="form-control" required>
+                            <label>Company Attachment<span class="required"> *</span></label>
+                            {{-- <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                placeholder="Enter Document Name" class="form-control" required> --}}
+                                <select id="selectDocument" name="doc_name" value="{{ old('doc_name[]') }}" class="form-control" required>
+                                    <option  selected disabled>Select Document</option>
+                                    <option value="Trade License">Trade License</option>
+                                    <option value="Establishment Card ">Establishment Card </option>
+                                    <option value="Trade Name">Trade Name</option>
+                                    <option value="Tenancy">Tenancy</option>
+                                    <option value="Memorandum of Association">Memorandum of Association</option>
+                                    <option value="Power of Attorney">Power of Attorney</option>
+                                    <option value="Civil Defense Certificate">Civil Defense Certificate</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -34,6 +45,14 @@
                                 </div>
                             </div>
                             @error('file')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6 other-show d-none">
+                            <label>Document Name<span class="required"> *</span></label>
+                            <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
+                                placeholder="Enter Document Name" class="form-control" required>
+                            @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
@@ -53,6 +72,14 @@
 @section('script')
     <script type="text/javascript">
         $(function() {
+            $(document).on('change', '#selectDocument', function() {
+                if($(this).val()=='Other') {
+                    $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input').attr('required', true);
+                } else {
+                    $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input').attr('required', false);
+                }
+            });
+
             $(document).on('click', '.add-btn', function() {
                 // get the last DIV which ID starts with ^= "docField"
                 var $div = $('div[id^="docField"]:first');
