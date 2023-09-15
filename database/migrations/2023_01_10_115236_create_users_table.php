@@ -34,8 +34,13 @@ class CreateUsersTable extends Migration
             $table->string('emirate_id_number')->nullable();
             $table->string('work_permit_number')->nullable();
             $table->string('person_code')->nullable();
-
-
+            $table->string('position')->nullable();
+            $table->string('pob')->nullable();
+            $table->date('join_date')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('residence_no')->nullable();
+            $table->string('insurance_no')->nullable();
+            $table->string('salary_detail')->nullable();
             $table->timestamps();
         });
     }

@@ -2,7 +2,11 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
+            @if (Auth::guard('web')->user()->emp_type == 'self')
+            <h4>Dashboard</h4>
+            @else
             <h4>Employee Dashboard</h4>
+            @endif
             <p><span class="fa fa-user"></span> - My Profile</p>
             <form action="{{ route('user.profile.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -47,20 +51,20 @@
                     <div class="form-group col-md-6">
                         <label>Position</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Position"
+                            <input type="text" name="position" value="{{ old('position') ?? $employee->position }}" placeholder="Position"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('position')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Person Code</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Person Code"
+                            <input type="text" name="person_code" value="{{ old('person_code') ?? $employee->person_code }}" placeholder="Person Code"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('person_code')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -77,20 +81,20 @@
                     <div class="form-group col-md-6">
                         <label>Place Of Birth</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Place Of Birth"
+                            <input type="text" name="pob" value="{{ old('pob') ?? $employee->pob }}" placeholder="Place Of Birth"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('pob')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Joining Date</label>
                         <div class="input-group">
-                            <input type="date" name="" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="join_date" value="{{ old('join_date') ?? $employee->join_date }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('join_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -130,14 +134,14 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Marital Status</label>
-                        <select name="" class="form-control" id="martialStatus" disabled>
+                        <select name="marital_status" class="form-control" id="martialStatus" disabled>
                             <option value=""></option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                            <option value="Widowed">Widowed</option>
+                            <option value="Single"{{ old('marital_status') == "Single" ||  $employee->marital_status =="Single" ? "selected" : '' }}>Single</option>
+                            <option value="Married"{{ old('marital_status') == "Married" ||  $employee->marital_status =="Married" ? "selected" : '' }}>Married</option>
+                            <option value="Divorced"{{ old('marital_status') == "Divorced" ||  $employee->marital_status =="Divorced" ? "selected" : '' }}>Divorced</option>
+                            <option value="Widowed"{{ old('marital_status') == "Widowed" ||  $employee->marital_status =="Widowed" ? "selected" : '' }}>Widowed</option>
                         </select>
-                        @error('')
+                        @error('marital_status')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -203,27 +207,27 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Residence File Number</label>
-                            <input type="text" class="form-control" name=""
-                                value="" placeholder="Enter Residence File Number" disabled>
-                            @error('')
+                            <input type="text" class="form-control" name="residence_no"
+                            value="{{ old('residence_no') ?? $employee->residence_no }}" placeholder="Enter Residence File Number" disabled>
+                            @error('residence_no')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label>Health Insurance Card Number</label>
-                            <input type="text" class="form-control" name=""
-                                value="" placeholder="Enter Health Insurance Card Number" disabled>
-                            @error('')
+                            <input type="text" class="form-control" name="insurance_no"
+                            value="{{ old('insurance_no') ?? $employee->insurance_no }}" placeholder="Enter Health Insurance Card Number" disabled>
+                            @error('insurance_no')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label>Salary Details</label>
-                            <select name="" id="salDetails" class="form-control" disabled>
+                            <select name="salary_detail" id="salDetails" class="form-control" disabled>
                                 <option value=""></option>
-                                <option value="Basic Salary">Basic Salary</option>
-                                <option value="Other Allowance" >Other Allowance</option>
-                                <option value="Total">Total</option>
+                                <option value="Basic Salary"{{ old('salary_detail') == "Basic Salary" ||  $employee->salary_detail =="Basic Salary" ? "selected" : '' }}>Basic Salary</option>
+                                <option value="Other Allowance"{{ old('salary_detail') == "Other Allowance" ||  $employee->salary_detail =="Other Allowance" ? "selected" : '' }} >Other Allowance</option>
+                                <option value="Total"{{ old('salary_detail') == "Total" ||  $employee->salary_detail =="Total" ? "selected" : '' }}>Total</option>
                             </select>
                         </div>
                     @endif

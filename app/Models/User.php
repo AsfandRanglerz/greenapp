@@ -29,7 +29,14 @@ class User extends Authenticatable
         'unified_number',
         'emirate_id_number',
         'work_permit_number',
-        'person_code'];
+        'person_code',
+        'position',
+        'pob',
+        'join_date',
+        'marital_status',
+        'residence_no',
+        'insurance_no',
+        'salary_detail',];
 
     public function usercompany()
     {

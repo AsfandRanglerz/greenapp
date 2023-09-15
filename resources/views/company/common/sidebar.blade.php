@@ -14,11 +14,11 @@
                 <a href="{{ route('company.profile.index') }}" class="sidebar-links"><span
                         class="fa fa-building text-white pr-2 sidebar-link-icons"></span>Company Profile</a>
             </li>
-            <li class="position-relative {{ request()->is('employee*') ? 'active' : '' }}">
+            <li class="position-relative {{ request()->is('company/employee*') ? 'active' : '' }}">
                 <a href="{{ route('company.employee.index') }}" class="sidebar-links"><span
                         class="fa fa-users text-white pr-2 sidebar-link-icons"></span>Employees</a>
             </li>
-            <li class="position-relative {{ request()->is('document*') ? 'active' : '' }}">
+            <li class="position-relative {{ request()->is('company/document*') ? 'active' : '' }}">
                 <a href="{{ route('company.document.index') }}" class="sidebar-links"><span
                         class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
             </li>

@@ -19,12 +19,12 @@
                 <a href="{{ route('user.profile.index') }}" class="sidebar-links"><span
                         class="fa fa-user text-white pr-2 sidebar-link-icons"></span>My Profile</a>
             </li>
-            <li class="position-relative {{ request()->is('document*') ? 'active' : '' }}">
+            <li class="position-relative {{ request()->is('user/document*') ? 'active' : '' }}">
                 <a href="{{ route('user.document.index') }}" class="sidebar-links"><span
                         class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
             </li>
             @if (Auth::guard('web')->user()->emp_type == 'self')
-                <li class="position-relative {{ request()->is('inquiry*') ? 'active' : '' }}">
+                <li class="position-relative {{ request()->is('user/inquiry*') ? 'active' : '' }}">
                     <a href="{{ route('user.inquiry.index') }}" class="sidebar-links"><span
                             class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>Inquiries</a>
                 </li>

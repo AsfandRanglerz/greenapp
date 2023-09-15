@@ -110,6 +110,14 @@ class ProfileController extends Controller
             'emirate_id_number' => $request->emirate_id_number,
             'work_permit_number' => $request->work_permit_number,
             'person_code' => $request->person_code,
+            'position' => $request->position,
+            'pob' => $request->pob,
+            'join_date' => $request->join_date,
+            'marital_status' => $request->marital_status,
+            'residence_no' => $request->residence_no,
+            'insurance_no' => $request->insurance_no,
+            'salary_detail' => $request->salary_detail,
+
 
         ]);
 
