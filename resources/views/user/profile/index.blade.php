@@ -98,7 +98,6 @@
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="form-group col-md-6">
                         <label>Nationality<span class="required"> *</span></label>
                         <select name="nationality" id="selCountry" class="form-control" disabled>

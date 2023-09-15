@@ -17,10 +17,46 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userName">Name<span class="required"> *</span></label>
+                        <label for="userName">Full Name<span class="required"> *</span></label>
                         <input id="userName" type="text" name="name" value="{{ old('name') }}" class="form-control"
                             placeholder="Enter Employee Name">
                         @error('name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userEmail">Email<span class="required"> *</span></label>
+                        <input id="userEmail" type="email" name="email" value="{{ old('email') }}"
+                            class="form-control" placeholder="Enter Your Email">
+                        @error('email')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userPhone">Phone<span class="required"> *</span></label>
+                        <input id="userPhone" type="number" name="phone" value="{{ old('phone') }}" class="form-control"
+                            placeholder="Enter Phone Number">
+                        @error('phone')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Position</label>
+                        <div class="input-group">
+                            <input type="text" name="" value="" placeholder="Position"
+                                class="form-control">
+                        </div>
+                        @error('')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Person Code</label>
+                        <div class="input-group">
+                            <input type="text" name="" value="" placeholder="Person Code"
+                                class="form-control">
+                        </div>
+                        @error('')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -31,6 +67,26 @@
                                 class="form-control date-of-birth">
                         </div>
                         @error('dob')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Place Of Birth</label>
+                        <div class="input-group">
+                            <input type="text" name="" value="" placeholder="Place Of Birth"
+                                class="form-control">
+                        </div>
+                        @error('')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Joining Date</label>
+                        <div class="input-group">
+                            <input type="date" name="" value="" placeholder="dd.mm.yyyy"
+                                class="form-control">
+                        </div>
+                        @error('')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -66,20 +122,101 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userPhone">Phone<span class="required"> *</span></label>
-                        <input id="userPhone" type="number" name="phone" value="{{ old('phone') }}" class="form-control"
-                            placeholder="Enter Phone Number">
-                        @error('phone')
+                        <label>Marital Status</label>
+                        <select name="" class="form-control" id="martialStatus">
+                            <option value=""></option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                        @error('')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userEmail">Email<span class="required"> *</span></label>
-                        <input id="userEmail" type="email" name="email" value="{{ old('email') }}"
-                            class="form-control" placeholder="Enter Your Email">
-                        @error('email')
+                        <label>Gender<span class="required"> *</span></label>
+                        <select name="gender" id="selGender" class="form-control">
+                            <option value=""></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        @error('gender')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Father's Name<span class="required"> *</span></label>
+                        <input type="text" class="form-control" name="father_name"
+                            value="" placeholder="Enter Father Name">
+                        @error('father_name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Mother's Name</label>
+                        <input type="text" class="form-control" name="mother_name"
+                            value="" placeholder="Enter Mother Name">
+                        @error('mother_name')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Passport Number</label>
+                        <input type="text" class="form-control" name="passport_number"
+                            value="" placeholder="Enter Passport Number">
+                        @error('passport_number')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Unified Number</label>
+                        <input type="text" class="form-control" name="unified_number"
+                            value="" placeholder="Enter Unified Number">
+                        @error('unified_number')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Emirates ID Number</label>
+                        <input type="text" class="form-control" name="emirate_id_number"
+                            value="" placeholder="Enter Emirates ID Number">
+                        @error('emirate_id_number')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Work Permit Number</label>
+                        <input type="text" class="form-control" name="work_permit_number"
+                            value="" placeholder="Enter Work Permit Number">
+                        @error('work_permit_number')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Residence File Number</label>
+                        <input type="text" class="form-control" name=""
+                            value="" placeholder="Enter Residence File Number">
+                        @error('')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Health Insurance Card Number</label>
+                        <input type="text" class="form-control" name=""
+                            value="" placeholder="Enter Health Insurance Card Number">
+                        @error('')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Salary Details</label>
+                        <select name="" id="salDetails" class="form-control">
+                            <option value=""></option>
+                            <option value="Basic Salary">Basic Salary</option>
+                            <option value="Other Allowance" >Other Allowance</option>
+                            <option value="Total">Total</option>
+                        </select>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>
@@ -96,11 +233,20 @@
     <script type="text/javascript">
         $(function() {
             /*single-select-dropdowns*/
+            $('#selReligion').select2({
+                placeholder: 'Select Religion'
+            });
+            $('#martialStatus').select2({
+                placeholder: 'Select Martial Status'
+            });
             $('#selCountry').select2({
                 placeholder: 'Select Country'
             });
-            $('#selReligion').select2({
-                placeholder: 'select Religion'
+            $('#selGender').select2({
+                placeholder: 'Select Gender'
+            });
+            $('#salDetails').select2({
+                placeholder: 'Salary Details'
             });
             /*single-select-dropdowns*/
             /*Avatar upload*/
