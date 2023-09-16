@@ -13,9 +13,12 @@
             </li>
         </ul>
     </div>
-    <ul class="navbar-nav navbar-right">
-
-
+    <ul class="navbar-nav navbar-right align-items-center">
+                <!-- Button trigger modal -->
+                <h5 type="button" class="mb-0 mr-3" data-toggle="modal" data-target="#notesModel" title="here you can save Notes for Reminder,
+Here You can save your data, this option allows you to send request for these services etc.">
+                    <span class="fa fa-edit text-success mr-2"></span>Notes
+                </h5>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
                     src="{{ asset(Auth::guard('admin')->user()->image) }}" class="user-img-radious-style"> <span
@@ -37,3 +40,28 @@
         </li>
     </ul>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="notesModelLabel" aria-hidden="true">
+    <form action="" method="POST">
+        @csrf
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success reset-btn">Reset</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -47,28 +47,50 @@
 
     <script src="{{ asset('public/admin/assets/js/custom.js') }}"></script>
     <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/datatables.js') }}">
-        </script>
-        <script>
-            /*toastr popup function*/
-            function toastrPopUp() {
-                toastr.options = {
-                    "closeButton": true,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "3000",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
+    <script src="{{ asset('public/admin/assets/js/datatables.js') }}"></script>
+    <script>
+        // notes section
+        var textarea = $('.notes-section');
+
+        // Check if there's a stored value in localStorage
+        var storedValue = localStorage.getItem('textareaValue');
+
+        // If a stored value exists, set the textarea value to it
+        if (storedValue) {
+            textarea.val(storedValue);
+        }
+
+        // Update the stored value whenever the textarea changes
+        textarea.on('input', function() {
+            var currentValue = textarea.val();
+            localStorage.setItem('textareaValue', currentValue);
+        });
+
+        // Reset button par click karne par textarea ki value mai store value rkh do
+        $(document).on('click', '.reset-btn', function(event) {
+            event.preventDefault();
+            textarea.val(storedValue);
+        });
+
+        /*toastr popup function*/
+        function toastrPopUp() {
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "3000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
             }
+        }
 
         /*toastr popup function*/
         toastrPopUp();
