@@ -69,6 +69,18 @@
 
                                                     <a class="btn btn-info"
                                                         href="{{ route('company.edit', $company->id) }}">Edit</a>
+                                                        @if($company->admin_delete == '1')
+                                                        <form method="post"
+                                                        action="{{ route('company.destroy', $company->id) }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                            data-toggle="tooltip">Delete
+                                                            <i class=" fas fa-star"
+                                                            style="position: relative; margin:-5px 52px 0 -4px; position: absolute; color:#FFD700; font-size:15px"></i>
+                                                </button>
+                                                    </form>
+                                                    @else
                                                     <form method="post"
                                                         action="{{ route('company.destroy', $company->id) }}">
                                                         @csrf
@@ -76,6 +88,7 @@
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

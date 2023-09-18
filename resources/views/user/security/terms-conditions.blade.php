@@ -2,7 +2,12 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
+            @if (Auth::guard('web')->user()->emp_type == 'self')
+            <h4>Dashboard</h4>
+            @else
             <h4>Employee Dashboard</h4>
+            @endif
+
             <p><span class="fa fa-key"></span> - Terms & Conditions</p>
             <div class="p-3 rounded light-box-shadow">
                 <p>{!! $data->description ?? '' !!}</p>

@@ -1,3 +1,10 @@
+<?php
+use App\Models\Note;
+$authId = Auth::guard('admin')->id();
+if ($authId) { // Check if the user is authenticated
+    $data['note'] = Note::where('admin_id', $authId)->first();
+}
+?>
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar sticky">
     <div class="form-inline mr-auto">
@@ -44,7 +51,7 @@ Here You can save your data, this option allows you to send request for these se
 <!-- Modal -->
 <div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="notesModelLabel" aria-hidden="true">
-    <form action="" method="POST">
+    <form action="{{route('note.update')}}" method="POST">
         @csrf
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -55,7 +62,7 @@ Here You can save your data, this option allows you to send request for these se
                     </button>
                 </div>
                 <div class="modal-body">
-                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ..."></textarea>
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success reset-btn">Reset</button>

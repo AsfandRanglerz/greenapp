@@ -144,7 +144,7 @@
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    @if (Auth::guard('web')->user()->emp_type == 'self')
+                    {{-- @if (Auth::guard('web')->user()->emp_type == 'self') --}}
                         <div class="form-group col-md-6">
                             <label>Gender<span class="required"> *</span></label>
                             <select name="gender" id="selGender" class="form-control" disabled>
@@ -229,7 +229,7 @@
                                 <option value="Total"{{ old('salary_detail') == "Total" ||  $employee->salary_detail =="Total" ? "selected" : '' }}>Total</option>
                             </select>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
                     </div>

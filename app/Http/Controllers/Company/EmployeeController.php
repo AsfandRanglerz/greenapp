@@ -50,6 +50,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
@@ -84,6 +85,21 @@ class EmployeeController extends Controller
             'dob' => $request->dob,
             'nationality' => $request->nationality,
             'religion' => $request->religion,
+            'gender' => $request->gender,
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'passport_number' => $request->passport_number,
+            'unified_number' => $request->unified_number,
+            'emirate_id_number' => $request->emirate_id_number,
+            'work_permit_number' => $request->work_permit_number,
+            'person_code' => $request->person_code,
+            'position' => $request->position,
+            'pob' => $request->pob,
+            'join_date' => $request->join_date,
+            'marital_status' => $request->marital_status,
+            'residence_no' => $request->residence_no,
+            'insurance_no' => $request->insurance_no,
+            'salary_detail' => $request->salary_detail,
             'company_id' => Auth::guard('company')->id(),
             'image' => $image,
 
@@ -146,6 +162,7 @@ class EmployeeController extends Controller
 
 public function update(Request $request, $id)
 {
+    // return $request;
     $request->validate([
         'name' => 'required',
         'phone' => 'required',
@@ -178,6 +195,21 @@ public function update(Request $request, $id)
         'dob' => $request->dob,
         'nationality' => $request->nationality,
         'religion' => $request->religion,
+        'gender' => $request->gender,
+        'father_name' => $request->father_name,
+        'mother_name' => $request->mother_name,
+        'passport_number' => $request->passport_number,
+        'unified_number' => $request->unified_number,
+        'emirate_id_number' => $request->emirate_id_number,
+        'work_permit_number' => $request->work_permit_number,
+        'person_code' => $request->person_code,
+        'position' => $request->position,
+        'pob' => $request->pob,
+        'join_date' => $request->join_date,
+        'marital_status' => $request->marital_status,
+        'residence_no' => $request->residence_no,
+        'insurance_no' => $request->insurance_no,
+        'salary_detail' => $request->salary_detail,
         'company_id' => Auth::guard('company')->id(),
         // 'company_name' => Auth::guard('company')->name(),
         'image' => $image,

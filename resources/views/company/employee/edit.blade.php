@@ -47,20 +47,20 @@
                     <div class="form-group col-md-6">
                         <label>Position</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Position"
+                            <input type="text" name="position" value="{{ $data['position'] }}" placeholder="Position"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('position')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Person Code</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Person Code"
+                            <input type="text" name="person_code" value="{{ $data['person_code'] }}" placeholder="Person Code"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('person_code')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -77,20 +77,20 @@
                     <div class="form-group col-md-6">
                         <label>Place Of Birth</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Place Of Birth"
+                            <input type="text" name="pob" value="{{ $data['pob'] }}" placeholder="Place Of Birth"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('pob')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Joining Date</label>
                         <div class="input-group">
-                            <input type="date" name="" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="join_date" value="{{ $data['join_date'] }}" placeholder="dd.mm.yyyy"
                                 class="form-control" disabled>
                         </div>
-                        @error('')
+                        @error('join_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -141,14 +141,14 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Marital Status</label>
-                        <select name="" class="form-control" id="martialStatus" disabled>
+                        <select name="marital_status" class="form-control" id="martialStatus" disabled>
                             <option value=""></option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                            <option value="Widowed">Widowed</option>
+                            <option value="Single"{{ $data->marital_status =="Single" ? "selected" : '' }}>Single</option>
+                            <option value="Married"{{   $data->marital_status =="Married" ? "selected" : '' }}>Married</option>
+                            <option value="Divorced"{{ $data->marital_status =="Divorced" ? "selected" : '' }}>Divorced</option>
+                            <option value="Widowed"{{   $data->marital_status =="Widowed" ? "selected" : '' }}>Widowed</option>
                         </select>
-                        @error('')
+                        @error('marital_status')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -156,8 +156,8 @@
                         <label>Gender<span class="required"> *</span></label>
                         <select name="gender" id="selGender" class="form-control" disabled>
                             <option value=""></option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="Male"   {{  $data->gender =="Male" ? "selected" : '' }}>Male</option>
+                            <option value="Female" {{  $data->gender =="Female" ? "selected" : '' }}>Female</option>
                         </select>
                         @error('gender')
                             <div class="text-danger p-2">{{ $message }}</div>
@@ -166,7 +166,7 @@
                     <div class="form-group col-md-6">
                         <label>Father's Name<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="father_name"
-                            value="" placeholder="Enter Father Name" disabled>
+                            value="{{ $data->father_name }}" placeholder="Enter Father Name" disabled>
                         @error('father_name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -174,7 +174,7 @@
                     <div class="form-group col-md-6">
                         <label>Mother's Name</label>
                         <input type="text" class="form-control" name="mother_name"
-                            value="" placeholder="Enter Mother Name" disabled>
+                            value="{{ $data->mother_name }}" placeholder="Enter Mother Name" disabled>
                         @error('mother_name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -182,7 +182,7 @@
                     <div class="form-group col-md-6">
                         <label>Passport Number</label>
                         <input type="text" class="form-control" name="passport_number"
-                            value="" placeholder="Enter Passport Number" disabled>
+                            value="{{ $data->passport_number }}" placeholder="Enter Passport Number" disabled>
                         @error('passport_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -190,7 +190,7 @@
                     <div class="form-group col-md-6">
                         <label>Unified Number</label>
                         <input type="text" class="form-control" name="unified_number"
-                            value="" placeholder="Enter Unified Number" disabled>
+                            value="{{ $data->unified_number }}" placeholder="Enter Unified Number" disabled>
                         @error('unified_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -198,7 +198,7 @@
                     <div class="form-group col-md-6">
                         <label>Emirates ID Number</label>
                         <input type="text" class="form-control" name="emirate_id_number"
-                            value="" placeholder="Enter Emirates ID Number" disabled>
+                            value="{{ $data->emirate_id_number }}" placeholder="Enter Emirates ID Number" disabled>
                         @error('emirate_id_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -206,34 +206,34 @@
                     <div class="form-group col-md-6">
                         <label>Work Permit Number</label>
                         <input type="text" class="form-control" name="work_permit_number"
-                            value="" placeholder="Enter Work Permit Number" disabled>
+                            value="{{ $data->work_permit_number }}" placeholder="Enter Work Permit Number" disabled>
                         @error('work_permit_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Residence File Number</label>
-                        <input type="text" class="form-control" name=""
-                            value="" placeholder="Enter Residence File Number" disabled>
-                        @error('')
+                        <input type="text" class="form-control" name="residence_no"
+                        value="{{ $data->residence_no }}" placeholder="Enter Residence File Number" disabled>
+                        @error('residence_no')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Health Insurance Card Number</label>
-                        <input type="text" class="form-control" name=""
-                            value="" placeholder="Enter Health Insurance Card Number" disabled>
-                        @error('')
+                        <input type="text" class="form-control" name="insurance_no"
+                        value="{{ $data->insurance_no }}" placeholder="Enter Health Insurance Card Number" disabled>
+                        @error('insurance_no')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Salary Details</label>
-                        <select name="" id="salDetails" class="form-control" disabled>
+                        <select name="salary_detail" id="salDetails" class="form-control" disabled>
                             <option value=""></option>
-                            <option value="Basic Salary">Basic Salary</option>
-                            <option value="Other Allowance" >Other Allowance</option>
-                            <option value="Total">Total</option>
+                            <option value="Basic Salary"   {{ $data->salary_detail =="Basic Salary" ? "selected" : '' }}>Basic Salary</option>
+                            <option value="Other Allowance"{{ $data->salary_detail =="Other Allowance" ? "selected" : '' }} >Other Allowance</option>
+                            <option value="Total"          {{ $data->salary_detail =="Total" ? "selected" : '' }}>Total</option>
                         </select>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">

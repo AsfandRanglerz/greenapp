@@ -69,6 +69,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('profile', [AdminController::class, 'getProfile']);
 
+    Route::post('note', [AdminController::class, 'note_update'])->name('note.update');
+
+
     Route::post('update-profile', [AdminController::class, 'update_profile']);
 
     Route::post('update-password', [AdminController::class, 'profile_change_password'])->name('profile.change-password');

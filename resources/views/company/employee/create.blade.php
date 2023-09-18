@@ -43,20 +43,20 @@
                     <div class="form-group col-md-6">
                         <label>Position</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Position"
+                            <input type="text" name="position" value="{{ old('position') }}" placeholder="Position"
                                 class="form-control">
                         </div>
-                        @error('')
+                        @error('position')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Person Code</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Person Code"
+                            <input type="text" name="person_code" value="{{ old('person_code')}}" placeholder="Person Code"
                                 class="form-control">
                         </div>
-                        @error('')
+                        @error('person_code')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -73,20 +73,20 @@
                     <div class="form-group col-md-6">
                         <label>Place Of Birth</label>
                         <div class="input-group">
-                            <input type="text" name="" value="" placeholder="Place Of Birth"
+                            <input type="text" name="pob" value="{{ old('pob')}}" placeholder="Place Of Birth"
                                 class="form-control">
                         </div>
-                        @error('')
+                        @error('pob')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Joining Date</label>
                         <div class="input-group">
-                            <input type="date" name="" value="" placeholder="dd.mm.yyyy"
+                            <input type="date" name="join_date" value="{{ old('join_date') }}" placeholder="dd.mm.yyyy"
                                 class="form-control">
                         </div>
-                        @error('')
+                        @error('join_date')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -123,14 +123,14 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Marital Status</label>
-                        <select name="" class="form-control" id="martialStatus">
+                        <select name="marital_status" class="form-control" id="martialStatus">
                             <option value=""></option>
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
                             <option value="Divorced">Divorced</option>
                             <option value="Widowed">Widowed</option>
                         </select>
-                        @error('')
+                        @error('marital_status')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -148,7 +148,7 @@
                     <div class="form-group col-md-6">
                         <label>Father's Name<span class="required"> *</span></label>
                         <input type="text" class="form-control" name="father_name"
-                            value="" placeholder="Enter Father Name">
+                            value="{{old('father_name')}}" placeholder="Enter Father Name">
                         @error('father_name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -156,7 +156,7 @@
                     <div class="form-group col-md-6">
                         <label>Mother's Name</label>
                         <input type="text" class="form-control" name="mother_name"
-                            value="" placeholder="Enter Mother Name">
+                            value="{{old('mother_name')}}" placeholder="Enter Mother Name">
                         @error('mother_name')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -164,7 +164,7 @@
                     <div class="form-group col-md-6">
                         <label>Passport Number</label>
                         <input type="text" class="form-control" name="passport_number"
-                            value="" placeholder="Enter Passport Number">
+                            value="{{old('passport_number')}}" placeholder="Enter Passport Number">
                         @error('passport_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -172,7 +172,7 @@
                     <div class="form-group col-md-6">
                         <label>Unified Number</label>
                         <input type="text" class="form-control" name="unified_number"
-                            value="" placeholder="Enter Unified Number">
+                            value="{{old('passport_number')}}" placeholder="Enter Unified Number">
                         @error('unified_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -180,7 +180,7 @@
                     <div class="form-group col-md-6">
                         <label>Emirates ID Number</label>
                         <input type="text" class="form-control" name="emirate_id_number"
-                            value="" placeholder="Enter Emirates ID Number">
+                            value="{{old('passport_number')}}" placeholder="Enter Emirates ID Number">
                         @error('emirate_id_number')
                             <div class="text-danger p-2">{{ $message }}</div>
                         @enderror
@@ -188,30 +188,30 @@
                     <div class="form-group col-md-6">
                         <label>Work Permit Number</label>
                         <input type="text" class="form-control" name="work_permit_number"
-                            value="" placeholder="Enter Work Permit Number">
-                        @error('work_permit_number')
-                            <div class="text-danger p-2">{{ $message }}</div>
-                        @enderror
+                                value="{{ old('work_permit_number')}}" placeholder="Enter Work Permit Number">
+                            @error('work_permit_number')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Residence File Number</label>
-                        <input type="text" class="form-control" name=""
-                            value="" placeholder="Enter Residence File Number">
-                        @error('')
-                            <div class="text-danger p-2">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" name="residence_no"
+                            value="{{ old('residence_no')}}" placeholder="Enter Residence File Number">
+                            @error('residence_no')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Health Insurance Card Number</label>
-                        <input type="text" class="form-control" name=""
-                            value="" placeholder="Enter Health Insurance Card Number">
-                        @error('')
-                            <div class="text-danger p-2">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" name="insurance_no"
+                            value="{{ old('insurance_no')}}" placeholder="Enter Health Insurance Card Number" >
+                            @error('insurance_no')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label>Salary Details</label>
-                        <select name="" id="salDetails" class="form-control">
+                        <select name="salary_detail" id="salDetails" class="form-control">
                             <option value=""></option>
                             <option value="Basic Salary">Basic Salary</option>
                             <option value="Other Allowance" >Other Allowance</option>

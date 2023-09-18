@@ -80,7 +80,12 @@
 
         <div class="admin-main-content-inner">
             <div class="dashboard-front-pg">
-                <h4>Employee Dashboard</h4>
+                @if (Auth::guard('web')->user()->emp_type == 'self')
+            <h4>Dashboard</h4>
+            @else
+            <h4>Employee Dashboard</h4>
+            @endif
+
                 <p><span class="fa fa-question-circle"></span> - FAQ's</p>
                 <div class="p-3 rounded light-box-shadow">
                     <section class="faq-section">

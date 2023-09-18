@@ -5,7 +5,12 @@
 @section('content')
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
+            @if (Auth::guard('web')->user()->emp_type == 'self')
+            <h4>Dashboard</h4>
+            @else
             <h4>Employee Dashboard</h4>
+            @endif
+
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
             <form action="{{ route('user.document.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -1,7 +1,12 @@
 @extends('user.layout.master')
 @section('content')
     <div class="mb-5 admin-main-content-inner">
-        <h4>Employee Dashboard</h4>
+        @if (Auth::guard('web')->user()->emp_type == 'self')
+            <h4>Dashboard</h4>
+            @else
+            <h4>Employee Dashboard</h4>
+            @endif
+
         <p><span class="fa fa-book"></span> - Documents/Attachments</p>
         <div class="text-right">
             <a href="{{ route('user.document.create') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add

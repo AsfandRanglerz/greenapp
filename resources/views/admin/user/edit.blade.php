@@ -30,7 +30,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Email<span class="required"> *</span></label>
                                                 <input type="email" placeholder="Enter Your Email" name="email" id="email"
-                                                    value="{{$data['email']}}" class="form-control"readonly />
+                                                    value="{{$data['email']}}" class="form-control" />
                                             </div>
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}</div>

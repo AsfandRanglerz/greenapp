@@ -43,7 +43,7 @@
                                                 <label>Email<span class="required"> *</span></label>
                                                 <input type="email" placeholder="Enter Your Email" name="email"
                                                     id="email" value="{{ $data['email'] }}"
-                                                    class="form-control"readonly />
+                                                    class="form-control"/>
                                             </div>
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}</div>

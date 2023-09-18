@@ -117,8 +117,6 @@ class ProfileController extends Controller
             'residence_no' => $request->residence_no,
             'insurance_no' => $request->insurance_no,
             'salary_detail' => $request->salary_detail,
-
-
         ]);
 
         return redirect()->route('user.profile.index')->with('success', 'Updated Successfully');

@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\CompanyDocument;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Note;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -129,5 +130,23 @@ class AdminController extends Controller
             return back()->with('success','Updated Successfully');
         }
     }
+    public function note_update(Request $request)
+{
+    $authId = Auth::guard('admin')->id();
+    $note = Note::where('admin_id', $authId)->first();
+
+    if ($note) {
+        $note->update([
+            'note' => $request->input('note'),
+        ]);
+    } else {
+        Note::create([
+            'note' => $request->input('note'),
+            'admin_id' => $authId,
+        ]);
+    }
+
+    return redirect()->back()->with('success', "Updated Successfully");
+}
 
 }

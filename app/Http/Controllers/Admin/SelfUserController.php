@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\UserLoginPassword;
+use App\Mail\CompanyEmailUpdated;
 use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
+
 
 class SelfUserController extends Controller
 {
@@ -54,8 +57,8 @@ class SelfUserController extends Controller
         ]);
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
-        ],[
-            'email.unique' => ' email has already been taken as Company'
+        ], [
+            'email.unique' => ' email has already been taken as Company',
         ]);
         $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'gender', 'father_name', 'mother_name', 'passport_number', 'unified_number', 'emirate_id_number', 'work_permit_number', 'person_code']);
 
@@ -63,8 +66,8 @@ class SelfUserController extends Controller
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('public/admin/assets/img/users', $filename);
+            $filename = time() . '.' . $extension;
+            $file->move('public/admin/assets/img/users', $filename);
             $data['image'] = 'public/admin/assets/img/users/' . $filename;
         } else {
             $data['image'] = 'public/admin/assets/img/users/1675332882.jpg';
@@ -125,25 +128,16 @@ class SelfUserController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'dob' => 'required',
-            'gender' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($id),
+                Rule::unique('companies')->ignore($id),
+            ],
         ]);
         $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
-        $user->dob = $request->input('dob');
-        $user->gender = $request->input('gender');
-        $user->nationality = $request->input('nationality');
-        $user->religion = $request->input('religion');
-        $user->father_name = $request->input('father_name');
-        $user->mother_name = $request->input('mother_name');
-        $user->passport_number = $request->input('passport_number');
-        $user->unified_number = $request->input('unified_number');
-        $user->emirate_id_number = $request->input('emirate_id_number');
-        $user->work_permit_number = $request->input('work_permit_number');
-        $user->person_code = $request->input('person_code');
-
         if ($request->hasfile('image')) {
             $destination = 'public/admin/assets/img/users' . $user->image;
             if (File::exists($destination)) {
@@ -153,9 +147,43 @@ class SelfUserController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('public/admin/assets/img/users', $filename);
-            $user->image = 'public/admin/assets/img/users/' . $filename;
+            $image = 'public/admin/assets/img/users/' . $filename;
+        } else {
+            $image = 'public/admin/assets/img/users/1675332882.jpg';
         }
-        $user->update();
+        $updateData = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'dob' => $request->input('dob'),
+            'nationality' => $request->input('nationality'),
+            'religion' => $request->input('religion'),
+            'father_name' => $request->input('father_name'),
+            'mother_name' => $request->input('mother_name'),
+            'passport_number' => $request->input('passport_number'),
+            'unified_number' => $request->input('unified_number'),
+            'emirate_id_number' => $request->input('emirate_id_number'),
+            'work_permit_number' => $request->input('work_permit_number'),
+            'person_code' => $request->input('person_code'),
+            'image' => $image,
+        ];
+        if ($request->email !== $user->email) {
+            // Generate a new password
+            $password = random_int(10000000, 99999999);
+            $updateData['password'] = Hash::make($password);
+            $message['email'] = $request->email;
+            $message['name'] = $request->name;
+            $message['password'] = $password;
+
+            try {
+                Mail::to($request->email)->send(new CompanyEmailUpdated($message));
+            } catch (\Throwable $th) {
+                return back()->with(['status' => false, 'message' => $th->getMessage()]);
+            }
+        } else {
+            $updateData['email'] = $user->email;
+        }
+        $user->update($updateData);
         return redirect()->route('selfemployee.index')->with('success', 'Updated Successfully');
     }
 
