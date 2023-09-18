@@ -336,6 +336,12 @@ body .navbar .dropdown-item {
     }
 }
 
+@media (min-width: 992px) {
+    .employee-details-model .modal-dialog {
+        max-width: 1200px;
+    }
+}
+
 @media (max-width:991px) {
     #dashboardSidebarRightContent {
         margin-left: 0
