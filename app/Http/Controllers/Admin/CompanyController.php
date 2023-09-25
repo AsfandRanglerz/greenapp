@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 //use Faker\Provider\ar_EG\Company;
+use App\Mail\CompanyDelete;
 use App\Mail\CompanyEmailUpdated;
 use App\Mail\UserLoginPassword;
-use App\Mail\CompanyDelete;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,6 +47,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:companies,email|email',
@@ -60,7 +61,27 @@ class CompanyController extends Controller
         ], [
             'email.unique' => ' email has already been taken as Employee',
         ]);
-        $data = $request->only(['name', 'email', 'phone', 'establishment_no', 'license_no', 'mohre_no']);
+        $data = $request->only([
+            'name',
+            'email',
+            'phone',
+            'establishment_no',
+            'establishment_issue_date',
+            'establishment_expiry_date',
+            'license_no',
+            'license_issue_date',
+            'license_expiry_date',
+            'tenancy',
+            'tenancy_issue_date',
+            'tenancy_expiry_date',
+            'e_channel_issue_date',
+            'e_channel_expiry_date',
+            'mohre_no',
+            'po_box',
+            'daman_police_number',
+            'daman_customer_number',
+            'other_insurance_policy_number'
+        ]);
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -125,6 +146,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
@@ -156,9 +178,22 @@ class CompanyController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'establishment_no' => $request->input('establishment_no'),
-            'license_no' => $request->input('license_no'),
-            'mohre_no' => $request->input('mohre_no'),
+            'establishment_no' => $request->establishment_no,
+            'establishment_issue_date' => $request->establishment_issue_date,
+            'establishment_expiry_date' => $request->establishment_expiry_date,
+            'license_no' => $request->license_no,
+            'license_issue_date' => $request->license_issue_date,
+            'license_expiry_date' => $request->license_expiry_date,
+            'tenancy' => $request->tenancy,
+            'tenancy_issue_date' => $request->tenancy_issue_date,
+            'tenancy_expiry_date' => $request->tenancy_expiry_date,
+            'e_channel_issue_date' => $request->e_channel_issue_date,
+            'e_channel_expiry_date' => $request->e_channel_expiry_date,
+            'mohre_no' => $request->mohre_no,
+            'po_box' => $request->po_box,
+            'daman_police_number' => $request->daman_police_number,
+            'daman_customer_number' => $request->daman_customer_number,
+            'other_insurance_policy_number' => $request->other_insurance_policy_number,
             'image' => $image,
         ];
 
@@ -191,43 +226,42 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-{
-    $company = Company::find($id);
-    $company->admin_delete = '1';
-    $company->save();
+    {
+        $company = Company::find($id);
+        $company->admin_delete = '1';
+        $company->save();
 
-    $message['name'] = $company->name;
-    $message['email'] = $company->email;
-    $message['id'] = $company->id;
+        $message['name'] = $company->name;
+        $message['email'] = $company->email;
+        $message['id'] = $company->id;
 
-
-    try {
-        Mail::to($company->email)->send(new CompanyDelete($message));
-        return redirect()->back()->with('success', 'Deletion request sent to the company successfully');
-    } catch (\Throwable $th) {
-        return back()->with(['status' => false, 'message' => $th->getMessage()]);
-    }
-}
-
-public function company_delete($id) {
-    $company = Company::find($id);
-
-    if (!$company) {
-        $message = 'Company is already deleted.';
-        return $message;
-
+        try {
+            Mail::to($company->email)->send(new CompanyDelete($message));
+            return redirect()->back()->with('success', 'Deletion request sent to the company successfully');
+        } catch (\Throwable $th) {
+            return back()->with(['status' => false, 'message' => $th->getMessage()]);
+        }
     }
 
-    $company->company_delete = '1';
-    $company->save();
+    public function company_delete($id)
+    {
+        $company = Company::find($id);
 
-    if ($company->company_delete == '1' && $company->admin_delete == '1') {
-        $company->delete();
-        $message = 'Company deleted successfully.';
-        return $message;
+        if (!$company) {
+            $message = 'Company is already deleted.';
+            return $message;
 
+        }
+
+        $company->company_delete = '1';
+        $company->save();
+
+        if ($company->company_delete == '1' && $company->admin_delete == '1') {
+            $company->delete();
+            $message = 'Company deleted successfully.';
+            return $message;
+
+        }
     }
-}
-
 
 }

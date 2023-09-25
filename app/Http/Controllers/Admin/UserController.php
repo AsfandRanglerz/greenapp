@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\UserLoginPassword;
 use App\Mail\CompanyEmailUpdated;
+use App\Mail\UserLoginPassword;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\User;
@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\storage;
 use Illuminate\Validation\Rule;
-
 
 class UserController extends Controller
 {
@@ -50,6 +49,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
@@ -59,15 +59,30 @@ class UserController extends Controller
             'religion' => 'required',
             'company_id' => 'required',
         ],
-        [
-            'company_id.required' => 'The company field is required.',
-        ]);
+            [
+                'company_id.required' => 'The company field is required.',
+            ]);
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
-        ],[
-            'email.unique' => ' email has already been taken as Company'
+        ], [
+            'email.unique' => ' email has already been taken as Company',
         ]);
-        $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'company_id']);
+        $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'company_id',
+            'gender',
+            'father_name',
+            'mother_name',
+            'passport_number',
+            'unified_number',
+            'emirate_id_number',
+            'work_permit_number',
+            'person_code',
+            'position',
+            'pob',
+            'join_date',
+            'marital_status',
+            'residence_no',
+            'insurance_no',
+            'salary_detail']);
 
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
@@ -166,6 +181,21 @@ class UserController extends Controller
             'nationality' => $request->input('nationality'),
             'religion' => $request->input('religion'),
             'company_id' => $request->input('company_id'),
+            'gender' => $request->input('gender'), // Add 'gender'
+            'father_name' => $request->input('father_name'), // Add 'father_name'
+            'mother_name' => $request->input('mother_name'), // Add 'mother_name'
+            'passport_number' => $request->input('passport_number'), // Add 'passport_number'
+            'unified_number' => $request->input('unified_number'), // Add 'unified_number'
+            'emirate_id_number' => $request->input('emirate_id_number'), // Add 'emirate_id_number'
+            'work_permit_number' => $request->input('work_permit_number'), // Add 'work_permit_number'
+            'person_code' => $request->input('person_code'), // Add 'person_code'
+            'position' => $request->input('position'),
+            'pob' => $request->input('pob'),
+            'join_date' => $request->input('join_date'),
+            'marital_status' => $request->input('marital_status'),
+            'residence_no' => $request->input('residence_no'),
+            'insurance_no' => $request->input('insurance_no'),
+            'salary_detail' => $request->input('salary_detail'),
             'image' => $image,
         ];
         if ($request->email !== $user->email) {

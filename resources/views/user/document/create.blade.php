@@ -22,7 +22,7 @@
                             More</a>
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
-                        @if (Auth::guard('web')->user()->emp_type == 'self')
+                        {{-- @if (Auth::guard('web')->user()->emp_type == 'self') --}}
                             <div class="form-group col-md-6">
                                 <label>Select Document Type<span class="required"> *</span></label>
                                 <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
@@ -76,7 +76,7 @@
                                     <div class="text-danger p-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                        @else
+                        {{-- @else
                             <div class="form-group col-md-6">
                                 <label>Select Document Type<span class="required"> *</span></label>
                                 <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
@@ -94,7 +94,7 @@
                                     <div class="text-danger p-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                        @endif
+                        @endif --}}
 
                         <div class="form-group col-md-6">
                             <label>Select File<span class="required"> *</span></label>
@@ -109,7 +109,7 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6 receipts-show d-none">
+                        {{-- <div class="form-group col-md-6 receipts-show d-none">
                             <label>Receipts <span class="required"> *</span></label>
                             <select id="selectReceipt" class="form-control" required>
                                 <option value="" selected disabled>Select Receipt</option>
@@ -131,7 +131,7 @@
                                     <option value="Immigration Application">Immigration Application</option>
                                     <option value="MOHRE Application">MOHRE Application</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
                             <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"

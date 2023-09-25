@@ -18,8 +18,8 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Company Name<span class="required"> *</span></label>
-                                                <input type="text" placeholder="Company Name" name="name" id="name"
-                                                    value="{{ old('name') }}" class="form-control">
+                                                <input type="text" placeholder="Company Name" name="name"
+                                                    id="name" value="{{ old('name') }}" class="form-control">
                                                 @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -28,8 +28,8 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Email<span class="required"> *</span></label>
-                                                <input type="email" placeholder="Enter Your Email" name="email" id="email"
-                                                    value="{{ old('email') }}" class="form-control" />
+                                                <input type="email" placeholder="Enter Your Email" name="email"
+                                                    id="email" value="{{ old('email') }}" class="form-control" />
                                                 @error('email')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -54,33 +54,6 @@
 
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
-                                                <label>Trade License No</label>
-                                                <input type="text" name="license_no" id="license_no" class="form-control"
-                                                    value="{{ old('license_no') }}" placeholder="Enter Trade License No">
-                                                @error('license_no')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row mx-0 px-4">
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
-                                            <div class="form-group mb-2">
-                                                <label>Establishment Card No</label>
-                                                <input type="text" name="establishment_no" id="establishment_no"
-                                                    class="form-control" value="{{ old('establishment_no') }}"
-                                                    placeholder="Enter Establishment Card No">
-                                                @error('establishment_no')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
-                                            <div class="form-group mb-2">
                                                 <label>MOHRE Company Code</label>
                                                 <input type="text" name="mohre_no" id="mohre_no"
                                                     value="{{ old('mohre_no') }}" class="form-control" name="mohre_no"
@@ -96,27 +69,219 @@
                                     <div class="row mx-0 px-4">
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
-                                                <label>Choose Image</label>
-                                                <input type="file" name="image" value="{{ old('image') }}"
-                                                    class="form-control">
-                                                @error('image')
-                                                    <div class="text-danger">{{ $message }}</div>
+                                                <label>Po Box</label>
+                                                <input type="text" class="form-control" name="po_box"
+                                                    value="{{ old('po_box') }}" placeholder="Po Box" >
+                                                @error('po_box')
+                                                    <div class="text-danger p-2">{{ $message }}</div>
+                                                @enderror
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
+                                            <div class="form-group mb-2">
+                                                <label>Daman Police Number</label>
+                                                <input type="text" class="form-control" name="daman_police_number"
+                                                    value="{{ old('daman_police_number') }}"
+                                                    placeholder="Daman Police Number" >
+                                                @error('daman_police_number')
+                                                    <div class="text-danger p-2">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer text-center row">
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-success mr-1 btn-bg"
-                                                id="submit">Save</button>
+
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>Daman Customer Number</label>
+                                            <input type="text" class="form-control" name="daman_customer_number"
+                                                value="{{ old('daman_customer_number') }}"
+                                                placeholder="Daman Customer Number" >
+                                            @error('daman_customer_number')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-sm-6 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Other Insurance Policy Number</label>
+                                            <input type="text" class="form-control" name="other_insurance_policy_number"
+                                                value="{{ old('other_insurance_policy_number') }}"
+                                                placeholder="Other Insurance Policy Number" >
+                                            @error('other_insurance_policy_number')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>E Channel Issue Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="e_channel_issue_date"
+                                                    value="{{ old('e_channel_issue_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('e_channel_issue_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>E Channel Expiry Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="e_channel_expiry_date"
+                                                    value="{{ old('e_channel_expiry_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('e_channel_expiry_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>Trade License No</label>
+                                            <input type="text" class="form-control" name="license_no"
+                                                value="{{ old('license_no') }}" placeholder="Enter Trade License No"
+                                                >
+                                            @error('license_no')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Issue Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="license_issue_date"
+                                                    value="{{ old('license_issue_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('license_issue_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Expiry Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="license_expiry_date"
+                                                    value="{{ old('license_expiry_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('license_expiry_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>ICP Establishment Card No</label>
+                                            <input type="text" class="form-control" name="establishment_no"
+                                                value="{{ old('establishment_no') }}"
+                                                placeholder="Enter Establishment Card No" >
+                                            @error('establishment_no')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Issue Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="establishment_issue_date"
+                                                    value="{{ old('establishment_issue_date') }}"
+                                                    placeholder="dd.mm.yyyy" class="form-control">
+                                            </div>
+                                            @error('establishment_issue_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Expiry Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="establishment_expiry_date"
+                                                    value="{{ old('establishment_expiry_date') }}"
+                                                    placeholder="dd.mm.yyyy" class="form-control">
+                                            </div>
+                                            @error('establishment_expiry_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>Tenancy</label>
+                                            <input type="text" class="form-control" name="tenancy"
+                                                value="{{ old('tenancy') }}" placeholder="Tenancy" >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Issue Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="tenancy_issue_date"
+                                                    value="{{ old('tenancy_issue_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('tenancy_issue_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 pl-sm-0 pr-sm-2">
+                                        <div class="form-group mb-2">
+                                            <label>Expiry Date</label>
+                                            <div class="input-group">
+                                                <input type="date" name="tenancy_expiry_date"
+                                                    value="{{ old('tenancy_expiry_date') }}" placeholder="dd.mm.yyyy"
+                                                    class="form-control" >
+                                            </div>
+                                            @error('tenancy_expiry_date')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-0 px-4">
+                                    <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        <div class="form-group mb-2">
+                                            <label>Choose Image</label>
+                                            <input type="file" name="image" value="{{ old('image') }}"
+                                                class="form-control">
+                                            @error('image')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success mr-1 btn-bg"
+                                            id="submit">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
-            </section>
+                </form>
+        </div>
+        </section>
         </div>
     </body>
 @endsection

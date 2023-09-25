@@ -60,8 +60,22 @@ class SelfUserController extends Controller
         ], [
             'email.unique' => ' email has already been taken as Company',
         ]);
-        $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion', 'gender', 'father_name', 'mother_name', 'passport_number', 'unified_number', 'emirate_id_number', 'work_permit_number', 'person_code']);
-
+        $data = $request->only(['name', 'email', 'phone', 'dob', 'nationality', 'religion',
+        'gender',
+        'father_name',
+        'mother_name',
+        'passport_number',
+        'unified_number',
+        'emirate_id_number',
+        'work_permit_number',
+        'person_code',
+        'position',
+        'pob',
+        'join_date',
+        'marital_status',
+        'residence_no',
+        'insurance_no',
+        'salary_detail']);
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -158,13 +172,21 @@ class SelfUserController extends Controller
             'dob' => $request->input('dob'),
             'nationality' => $request->input('nationality'),
             'religion' => $request->input('religion'),
-            'father_name' => $request->input('father_name'),
-            'mother_name' => $request->input('mother_name'),
-            'passport_number' => $request->input('passport_number'),
-            'unified_number' => $request->input('unified_number'),
-            'emirate_id_number' => $request->input('emirate_id_number'),
-            'work_permit_number' => $request->input('work_permit_number'),
-            'person_code' => $request->input('person_code'),
+            'gender' => $request->input('gender'), // Add 'gender'
+            'father_name' => $request->input('father_name'), // Add 'father_name'
+            'mother_name' => $request->input('mother_name'), // Add 'mother_name'
+            'passport_number' => $request->input('passport_number'), // Add 'passport_number'
+            'unified_number' => $request->input('unified_number'), // Add 'unified_number'
+            'emirate_id_number' => $request->input('emirate_id_number'), // Add 'emirate_id_number'
+            'work_permit_number' => $request->input('work_permit_number'), // Add 'work_permit_number'
+            'person_code' => $request->input('person_code'), // Add 'person_code'
+            'position' => $request->input('position'),
+            'pob' => $request->input('pob'),
+            'join_date' => $request->input('join_date'),
+            'marital_status' => $request->input('marital_status'),
+            'residence_no' => $request->input('residence_no'),
+            'insurance_no' => $request->input('insurance_no'),
+            'salary_detail' => $request->input('salary_detail'),
             'image' => $image,
         ];
         if ($request->email !== $user->email) {

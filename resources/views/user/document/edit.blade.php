@@ -6,9 +6,9 @@
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
             @if (Auth::guard('web')->user()->emp_type == 'self')
-            <h4>Dashboard</h4>
+                <h4>Dashboard</h4>
             @else
-            <h4>Employee Dashboard</h4>
+                <h4>Employee Dashboard</h4>
             @endif
 
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
@@ -33,15 +33,46 @@
                                     Passport</option>
                                 <option value="Visit Visa" {{ $document['doc_type'] == 'Visit Visa' ? 'selected' : '' }}>
                                     Visit Visa</option>
+                                <option value="Offer Letter"
+                                    {{ $document['doc_type'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                <option value="MOL Job Offer"
+                                    {{ $document['doc_type'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                <option value="Signed MOL Job Offer"
+                                    {{ $document['doc_type'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                    Offer</option>
+                                <option value="MOL MB Contract"
+                                    {{ $document['doc_type'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                </option>
+                                <option value="Signed MOL MB Offer"
+                                    {{ $document['doc_type'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                    Offer</option>
+                                <option value="Preapproval Work Permit"
+                                    {{ $document['doc_type'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                    Work Permit</option>
+                                <option value="Dubai Insurance"
+                                    {{ $document['doc_type'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                </option>
                                 <option value="Entry Permit Visa"
                                     {{ $document['doc_type'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
                                 </option>
-                                <option value="Change of Status Visa"
-                                    {{ $document['doc_type'] == 'Change of Status Visa' ? 'selected' : '' }}>Change of
-                                    Status Visa</option>
-                                <option value="Emirates Identity Card"
-                                    {{ $document['doc_type'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
-                                    Identity Card</option>
+                                <option value="Stamped Entry Visa"
+                                    {{ $document['doc_type'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                    Visa</option>
+                                <option value="Change of Visa Status"
+                                    {{ $document['doc_type'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                    Status</option>
+                                <option value="Medical Fitness Receipt"
+                                    {{ $document['doc_type'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                    Fitness Receipt</option>
+                                <option value="Tawjeeh Receipt"
+                                    {{ $document['doc_type'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                </option>
+                                <option value="Emirates Id Application form"
+                                    {{ $document['doc_type'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                    Emirates Id Application form</option>
+                                <option value="Stamped EID Application form"
+                                    {{ $document['doc_type'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                    EID Application form</option>
                                 <option value="Residence Visa"
                                     {{ $document['doc_type'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
                                 </option>
@@ -53,6 +84,15 @@
                                 <option value="National Identity Card"
                                     {{ $document['doc_type'] == 'National Identity Card' ? 'selected' : '' }}>National
                                     Identity Card</option>
+                                <option value="Emirates Identity Card"
+                                    {{ $document['doc_type'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                    Identity Card</option>
+                                <option value="Vehicle Registration Card"
+                                    {{ $document['doc_type'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                    Registration Card</option>
+                                <option value="Driving License"
+                                    {{ $document['doc_type'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                </option>
                                 <option value="Birth Certificate"
                                     {{ $document['doc_type'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
                                 </option>
@@ -73,9 +113,40 @@
                                 <option value="Tenancy Contract"
                                     {{ $document['doc_type'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
                                 </option>
-                                <option value="CV" {{ $document['doc_type'] == 'CV' ? 'selected' : '' }}>CV</option>
-                                <option value="Other" {{ $document['doc_type'] == 'Other' ? 'selected' : '' }}>
-                                    Other</option>
+                                <option value="MOL Cancellation form"
+                                    {{ $document['doc_type'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                    Cancellation form</option>
+                                <option value="Signed MOL Cancellation Form"
+                                    {{ $document['doc_type'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                    MOL Cancellation Form</option>
+                                <option value="Work Permit Cancellation Approval"
+                                    {{ $document['doc_type'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                    Work Permit Cancellation Approval</option>
+                                <option value="Residency Cancellation Approval"
+                                    {{ $document['doc_type'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                    Residency Cancellation Approval</option>
+                                <option value="Modify MOL Contract"
+                                    {{ $document['doc_type'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                    Contract</option>
+                                <option value="Work Permit Application"
+                                    {{ $document['doc_type'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                    Application</option>
+                                <option value="Work Permit Renewal Application"
+                                    {{ $document['doc_type'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                    Permit Renewal Application</option>
+                                <option value="Signed Work Permit Renewal"
+                                    {{ $document['doc_type'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                    Work Permit Renewal</option>
+                                <option value="Application" {{ $document['doc_type'] == 'Application' ? 'selected' : '' }}>
+                                    Application</option>
+                                <option value="Submission Form"
+                                    {{ $document['doc_type'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                </option>
+                                <option value="Receipts" {{ $document['doc_type'] == 'Receipts' ? 'selected' : '' }}>
+                                    Receipts</option>
+                                <option value="Other" {{ $document['doc_type'] == 'Other' ? 'selected' : '' }}>Other
+                                </option>
+
                             </select>
                             @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>
