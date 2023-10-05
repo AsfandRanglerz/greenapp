@@ -17,7 +17,11 @@
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
+                        @if (Auth::guard('web')->user()->emp_type == 'self')
+                        <h6><span class="fa fa-question-circle"></span> - Inquiry</h6>
+                        @else
                         <h6><span class="fa fa-question-circle"></span> - Employee Inquiry</h6>
+                        @endif
                     </div>
                     <div class="form-group col-12">
                         <label>Inquiry</label>

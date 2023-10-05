@@ -62,7 +62,6 @@ class DocumentController extends Controller
             $document->doc_type = $doc_type[$i];
             $document->doc_name = $doc_name[$i];
             $document->company_id = Auth::guard('company')->id();
-
             if ($request->hasFile('file.' . $i)) {
                 $file = $files[$i];
                 $file_name = time() . $i . '.' . $file->getClientOriginalExtension();

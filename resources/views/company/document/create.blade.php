@@ -18,8 +18,6 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-md-6">
                             <label>Company Attachment<span class="required"> *</span></label>
-                            {{-- <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
-                                placeholder="Enter Document Name" class="form-control" required> --}}
                                 <select id="selectDocument" name="doc_type[]"  class="form-control" required>
                                     <option  selected disabled>Select Document</option>
                                     <option value="Trade License">Trade License</option>

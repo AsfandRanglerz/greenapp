@@ -23,8 +23,9 @@
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
-                                            <th>Document Name</th>
-                                            <th>File</th>
+                                            <th>Document</th>
+                                            <th>Type</th>
+                                            <th>Name</th>
                                             <th scope="col">Action</th>
 
                                         </tr>
@@ -33,8 +34,6 @@
                                         @foreach ($data['company'] as $document)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-
-                                                <td>{{ $document->doc_name }}</td>
                                                 @php
                                                     $file_name = $document->file;
                                                     $ext = explode('.', $file_name);
@@ -59,6 +58,8 @@
                                                         @endif
                                                     </a>
                                                 </td>
+                                                <td>{{ $document->doc_type }}</td>
+                                                <td>{{ $document->doc_name }}</td>
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                     <a class="btn btn-info"

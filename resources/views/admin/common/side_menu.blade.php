@@ -20,7 +20,7 @@
             </li>
             <li class="dropdown {{ request()->is('admin/selfemployee*') ? 'active' : '' }}">
                 <a href="{{ route('selfemployee.index') }}" class="nav-link"><i
-                        class="fa fa-users"></i><span>Self Employees</span></a>
+                        class="fa fa-users"></i><span>Individual</span></a>
             </li>
             <li class="dropdown {{ request()->is('admin/inquiry*') ? 'active' : '' }}">
                 <a href="{{ route('inquiry.index') }}" class="nav-link"><i

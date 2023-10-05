@@ -46,24 +46,26 @@ class CompanyDocumentController extends Controller
     {
 
         // validate the input data
-        $validator = Validator::make($request->all(), [
-            //"doc_name"    => "required|array",
-            "doc_name.*" => "required|string",
-            // "file"    => "required|array",
-            "file.*" => "required",
-            // 'file' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        $doc_names = $request->input('doc_name');
-        // dd($doc_names);
+        // $validator = Validator::make($request->all(), [
+        //     //"doc_name"    => "required|array",
+        //     "doc_name.*" => "required|string",
+        //     // "file"    => "required|array",
+        //     "file.*" => "required",
+        //     // 'file' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+        $doc_type = $request->input('doc_type');
+        $doc_name = $request->input('doc_name');
         $files = $request->file('file');
-        for ($i = 0; $i < count($doc_names); $i++) {
+        // dd($doc_names);
+        for ($i = 0; $i < count($doc_type); $i++) {
             $document = new CompanyDocument;
-            $document->doc_name = $doc_names[$i];
+            $document->doc_type = $doc_type[$i];
+            $document->doc_name = $doc_name[$i];
             $document->company_id = $id;
             if ($request->hasFile('file.' . $i)) {
                 $extension = $files[$i]->getClientOriginalExtension();
@@ -112,12 +114,14 @@ class CompanyDocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         {
-            $request->validate([
-                'doc_name' => 'required',
+            // $request->validate([
+            //     'doc_name' => 'required',
 
-            ]);
+            // ]);
             $company = CompanyDocument::find($id);
+            $company->doc_type = $request->input('doc_type');
             $company->doc_name = $request->input('doc_name');
             //$company->company_id = $request->input('company_id');
             //$company['company_id'] = $id;

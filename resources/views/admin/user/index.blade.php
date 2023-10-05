@@ -3,7 +3,14 @@
 @section('title', 'index')
 
 @section('content')
-
+<style>
+    .btn_warning{
+    background: #ef9e09;
+    padding: 9px 14px;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px #82d3f8;
+    }
+</style>
     <div class="main-content" style="min-height: 562px;">
         <section class="section">
             <div class="section-body">
@@ -29,13 +36,13 @@
                                             <th>Name</th>
                                             <th>Image</th>
                                             <th>Email</th>
-                                            <th>Phone</th>
+                                            {{-- <th>Phone</th> --}}
                                             @if (!isset($company))
                                                 <th>Company Name</th>
                                             @endif
-                                            <th>DOB</th>
+                                            {{-- <th>DOB</th>
                                             <th>Nationality</th>
-                                            <th>Religion</th>
+                                            <th>Religion</th> --}}
                                             <th>Document</th>
                                             <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
@@ -51,13 +58,13 @@
                                                             height="50" width="50" class="image"></a>
                                                 </td>
                                                 <td>{{ $employee->email }}</td>
-                                                <td>{{ $employee->phone }}</td>
+                                                {{-- <td>{{ $employee->phone }}</td> --}}
                                                 @if (!isset($company))
                                                     <td>{{ $employee->usercompany->name }}</td>
                                                 @endif
-                                                <td>{{ $employee->dob }}</td>
+                                                {{-- <td>{{ $employee->dob }}</td>
                                                 <td>{{ $employee->nationality }}</td>
-                                                <td>{{ $employee->religion }}</td>
+                                                <td>{{ $employee->religion }}</td> --}}
                                                 <td>
                                                     <a href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>
@@ -65,7 +72,9 @@
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
 
-
+                                                    <a id="{{ $employee->id }}" data-toggle="modal"
+                                                        data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
+                                                            class="fa fa-eye text-white"></span></a>
                                                     <a class="btn btn-info"
                                                         href="{{ route('user.edit', $employee->id) }}">Edit</a>
                                                     <form method="post"
@@ -88,6 +97,12 @@
                 </div>
             </div>
         </section>
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg scrol employee-details-model" id="mymodal">
+            </div>
+        </div>
     </div>
 
 @endsection
@@ -126,6 +141,26 @@
                         form.submit();
                     }
                 });
+        });
+    </script>
+    <script>
+        $('.employee-data').click(function() {
+            var id = $(this).attr('id');
+            // console.log(id);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}', // Corrected csrf_token() usage
+                },
+                url: "{{ url('admin/employee-view') }}",
+                data: {
+                    'id': id,
+                },
+                success: function(response) {
+                    $("#mymodal").html(response);
+                }
+            });
         });
     </script>
 @endsection

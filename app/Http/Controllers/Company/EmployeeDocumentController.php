@@ -55,6 +55,7 @@ class EmployeeDocumentController extends Controller
 
         $doc_type = $request->input('doc_type');
         $doc_name = $request->input('doc_name');
+        $receipt = $request->input('receipt');
         $issue_date = $request->input('issue_date');
         $expiry_date = $request->input('expiry_date');
         $comment = $request->input('comment');
@@ -64,6 +65,9 @@ class EmployeeDocumentController extends Controller
             $document = new UserDocument;
             $document->doc_type = $doc_type[$i];
             $document->doc_name = $doc_name[$i];
+            if (isset($receipt[$i])) {
+                $document->receipt = $receipt[$i];
+            }
             $document->issue_date = $issue_date[$i];
             $document->expiry_date = $expiry_date[$i];
             $document->comment = $comment[$i];
@@ -127,8 +131,16 @@ class EmployeeDocumentController extends Controller
         if ($request->doc_type == "Other") {
             $company->issue_date = null;
             $company->expiry_date = null;
+            $company->receipt = null;
             $company->doc_name = $request->input('doc_name');
-        } else {
+        }
+        elseif ($request->doc_type == "Receipts") {
+            $company->issue_date = null;
+            $company->expiry_date = null;
+            $company->doc_name = null;
+            $company->receipt = $request->input('receipt');
+        }
+        else {
             $company->issue_date = $request->input('issue_date');
             $company->expiry_date = $request->input('expiry_date');
             $company->doc_name = null;

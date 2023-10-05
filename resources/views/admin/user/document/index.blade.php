@@ -25,9 +25,10 @@
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
-                                            <th>Document Type</th>
-                                            <th>Document Name</th>
-                                            <th>File</th>
+                                            <th>Document</th>
+                                            <th>Type</th>
+                                            <th>Name</th>
+                                            <th>Receipt</th>
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
                                             @if ($user->emp_type == 'company')
@@ -40,9 +41,6 @@
                                         @foreach ($documents as $document)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-
-                                                <td>{{ $document->doc_type }}</td>
-                                                <td>{{ $document->doc_name }}</td>
                                                 @php
                                                     $file_name = $document->file;
                                                     $ext = explode('.', $file_name);
@@ -67,6 +65,9 @@
                                                         @endif
                                                     </a>
                                                 </td>
+                                                <td>{{ $document->doc_type }}</td>
+                                                <td>{{ $document->doc_name }}</td>
+                                                <td>{{ $document->receipt }}</td>
                                                 <td>{{ $document->issue_date }}</td>
                                                 <td>{{ $document->expiry_date }}</td>
                                                 @if ($documents[0]->user->emp_type == 'company')

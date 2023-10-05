@@ -22,7 +22,7 @@
                             <label>Select Document Type<span class="required"> *</span></label>
                             <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
-                                <option selected disabled>Select Document</option>
+                                <option value="" selected disabled>Select Document</option>
                                 <option value="Personal Photo">Personal Photo</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Visit Visa">Visit Visa</option>
@@ -64,6 +64,7 @@
                                 <option value="Signed Work Permit Renewal">Signed Work Permit Renewal</option>
                                 <option value="Application">Application</option>
                                 <option value="Submission Form">Submission Form</option>
+                                <option value="Receipts">Receipts</option>
                                 <option value="Other">Other</option>
                             </select>
                             @error('doc_type')
@@ -83,10 +84,34 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group col-md-6 receipts-show d-none">
+                            <label>Receipts <span class="required"> *</span></label>
+                            <select id="selectReceipt" name="receipt[]" class="form-control">
+                                <option value="" selected disabled>Select Receipt</option>
+                                <option value="Preapproval of work permit receipt">Preapproval of work permit</option>
+                                <option value="Dubai Insurance receipts">Dubai Insurance</option>
+                                <option value="Preapproval work permit fees receipt">Preapproval work permit fees</option>
+                                <option value="Work permit Renewal Fees Receipt">Work permit Renewal Fees</option>
+                                <option value="Entry Visa Application Receipt">Entry Visa Application</option>
+                                <option value="Change of Visa Status Application">Change of Visa Status Application</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Tawjeeh">Tawjeeh</option>
+                                <option value="Heath Insurance">Heath Insurance</option>
+                                <option value="Emirates ID Application">Emirates ID Application</option>
+                                <option value="Residency Visa Application">Residency Visa Application</option>
+                                <option value="Visa Fines">Visa Fines</option>
+                                <option value="Emirates ID Fines">Emirates ID Fines</option>
+                                <option value="Other fines">Other fines</option>
+                                <option value="Health Insurance Fines">Health Insurance Fines</option>
+                                <option value="Immigration Application">Immigration Application</option>
+                                <option value="MOHRE Application">MOHRE Application</option>
+                            </select>
+                        </div>
                         <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
                             <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
-                                placeholder="Enter Document Name" class="form-control" required>
+                                placeholder="Enter Document Name" class="form-control"
+                                >
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
@@ -136,15 +161,35 @@
     <script type="text/javascript">
         $(function() {
             $(document).on('change', '#selectDocument', function() {
-                var notIssueExpiryOther = $(this).val() == 'Personal Photo' || $(this).val() == 'Offer Letter' || $(this).val() == 'MOL Job Offer' || $(this).val() == 'Signed MOL Job Offer' || $(this).val() == 'MOL MB Contract' || $(this).val() == 'Signed MOL MB Offer' || $(this).val() == 'Preapproval Work Permit' || $(this).val() == 'Dubai Insurance' || $(this).val() == 'Tawjeeh Receipt' || $(this).val() == 'Emirates Id Application form' || $(this).val() == 'Stamped EID Application form' || $(this).val() == 'Birth Certificate' || $(this).val() == 'Marriage Certificate' || $(this).val() == 'School Certificate' || $(this).val() == 'Diploma' || $(this).val() == 'University Degree' || $(this).val() == 'Salary Certificate' || $(this).val() == 'Tenancy Contract' || $(this).val() == 'MOL Cancellation form' || $(this).val() == 'Signed MOL Cancellation Form' || $(this).val() == 'Work Permit Cancellation Approval' || $(this).val() == 'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this).val() == 'Work Permit Application' || $(this).val() == 'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(this).val() == 'Application' || $(this).val() == 'Submission Form';
+                var notIssueExpiryOther = $(this).val() == 'Personal Photo' || $(this).val() ==
+                    'Offer Letter' || $(this).val() == 'MOL Job Offer' || $(this).val() ==
+                    'Signed MOL Job Offer' || $(this).val() == 'MOL MB Contract' || $(this).val() ==
+                    'Signed MOL MB Offer' || $(this).val() == 'Preapproval Work Permit' || $(this).val() ==
+                    'Dubai Insurance' || $(this).val() == 'Tawjeeh Receipt' || $(this).val() ==
+                    'Emirates Id Application form' || $(this).val() == 'Stamped EID Application form' || $(
+                        this).val() == 'Birth Certificate' || $(this).val() == 'Marriage Certificate' || $(
+                        this).val() == 'School Certificate' || $(this).val() == 'Diploma' || $(this)
+                .val() == 'University Degree' || $(this).val() == 'Salary Certificate' || $(this).val() ==
+                    'Tenancy Contract' || $(this).val() == 'MOL Cancellation form' || $(this).val() ==
+                    'Signed MOL Cancellation Form' || $(this).val() ==
+                    'Work Permit Cancellation Approval' || $(this).val() ==
+                    'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this)
+                    .val() == 'Work Permit Application' || $(this).val() ==
+                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(
+                        this).val() == 'Application' || $(this).val() == 'Submission Form';
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);
                     $(this).closest('.doc-fields').find('.other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.receipts-show').addClass('d-none');
                 } else if (notIssueExpiryOther) {
                     $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
-                }
-                else {
+                    $(this).closest('.doc-fields').find('.receipts-show').addClass('d-none');
+                } else if ($(this).val() == 'Receipts') {
+                    $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
+                    $(this).closest('.doc-fields').find('.receipts-show').removeClass('d-none');
+                } else {
+                    $(this).closest('.doc-fields').find('.receipts-show').addClass('d-none');
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);
                     $(this).closest('.doc-fields').find('.other-none').removeClass('d-none');

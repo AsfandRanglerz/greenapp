@@ -1,0 +1,38 @@
+Level Headed:
+->Student can login and register.
+->Student can see programs according to filters on quick search page.
+Profile Dashboard:
+->Student can add and update general information.
+->Student can add and update test scores
+->Student can add and update education summary
+->Student can add and update multiple school attendent
+->Student can add and update background information.
+Programs & Schools:
+->Student can see programs according to filters
+->Student can see program details.
+
+Admin panel:
+->Admin can login
+->Admin can add,update and delete users 
+->Admin can see details of users.
+->Admin can add,update and delete recruiter
+->Admin can add and delete multiple courses of universities
+->Admin can add,update and delete courses
+->Admin can add,update and delete cities.
+->Admin can add,update and delete degree category and degree subCategory.
+->Admin can add,update and delete Blogs,FAQ's,privacy policy and term&condition.
+
+Points need to be done:
+Level Headed Plan:
+Student will able to apply for universities.
+Student will able to add documents according to university requirement.
+Show data of universities which student apply and also change status.
+admin will able to send message through(email or whatsapp) in admin panel.
+Show summary of student profile and in this summary student will able to change data separately.
+
+->Admin can add duocuments name which will be mandatory for students when then apply for university program
+->Student can upload documents according to program requirements
+->Student can apply on different programs
+->Show data of programs which student apply
+->Admin can able to change status of student programs
+-> Student will be able to upload more documents on the applied programs page by clicking upload button, a popup will appear up to upload those documents

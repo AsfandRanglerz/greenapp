@@ -43,6 +43,7 @@ class UserDocumentController extends Controller
      */
     public function store(Request $request, $id)
     {
+        // return $request;
         $validator = Validator::make($request->all(), [
             "doc_type.*" => "required|string",
             "file.*" => "required",
@@ -56,16 +57,20 @@ class UserDocumentController extends Controller
 
         $doc_type = $request->input('doc_type');
         $doc_name = $request->input('doc_name');
+        $receipt = $request->input('receipt');
         $issue_date = $request->input('issue_date');
         $expiry_date = $request->input('expiry_date');
         $comment = $request->input('comment');
         //dd($doc_names);
         $files = $request->file('file');
         for ($i = 0; $i < count($doc_type); $i++) {
-
             $document = new UserDocument;
             $document->doc_type = $doc_type[$i];
             $document->doc_name = $doc_name[$i];
+            if(isset($receipt[$i]))
+            {
+                $document->receipt = $receipt[$i];
+            }
             $document->issue_date = $issue_date[$i];
             $document->expiry_date = $expiry_date[$i];
             if (isset($comment[$i])) {
@@ -117,6 +122,7 @@ class UserDocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $request->validate([
             'doc_type' => 'required',
         ]);
@@ -129,8 +135,15 @@ class UserDocumentController extends Controller
         if ($request->doc_type == "Other") {
             $document->issue_date = null;
             $document->expiry_date = null;
+            $document->receipt = null;
             $document->doc_name = $request->input('doc_name');
-        } else {
+        }
+        elseif($request->doc_type =="Receipts"){
+            $document->issue_date = null;
+            $document->expiry_date = null;
+            $document->doc_name = null;
+            $document->receipt = $request->input('receipt');
+        }else {
             $document->issue_date = $request->input('issue_date');
             $document->expiry_date = $request->input('expiry_date');
             $document->doc_name = null;

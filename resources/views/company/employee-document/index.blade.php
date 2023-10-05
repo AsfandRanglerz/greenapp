@@ -1,5 +1,10 @@
 @extends('company.layout.master')
 @section('content')
+<style>
+    .word_wrap{
+    white-space: normal;
+    }
+</style>
     <div class="mb-5 admin-main-content-inner">
         <h4>Company Dashboard</h4>
         <p><span class="fa fa-user"></span> - Employee Details - <b>{{ $user->name }}</b></p>
@@ -16,6 +21,7 @@
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Receipt</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
                             <th scope="col">Comment</th>
@@ -51,7 +57,8 @@
                                     </a>
                                 </td>
                                 <td>{{ $document->doc_type }}</td>
-                                <td>{{ $document->doc_name }}</td>
+                                <td class="word_wrap">{{ $document->doc_name }}</td>
+                                <td class="word_wrap">{{ $document->receipt }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
                                 <td>{{ $document->comment }}</td>

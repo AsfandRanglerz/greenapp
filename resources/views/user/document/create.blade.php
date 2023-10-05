@@ -6,9 +6,9 @@
     <div class="admin-main-content-inner">
         <div class="dashboard-front-pg">
             @if (Auth::guard('web')->user()->emp_type == 'self')
-            <h4>Dashboard</h4>
+                <h4>Dashboard</h4>
             @else
-            <h4>Employee Dashboard</h4>
+                <h4>Employee Dashboard</h4>
             @endif
 
             <p><span class="fa fa-book"></span> - Documents/Attachments</p>
@@ -17,65 +17,70 @@
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
+                        @if (Auth::guard('web')->user()->emp_type == 'self')
+                        <h6><span class="fa fa-book"></span> - Documents</h6>
+                        @else
                         <h6><span class="fa fa-book"></span> - Employee Documents</h6>
+                        @endif
+
                         <a type="button" class="mb-3 btn btn-success add-btn"><span class="fa fa-plus mr-2"></span>Add
                             More</a>
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
                         {{-- @if (Auth::guard('web')->user()->emp_type == 'self') --}}
-                            <div class="form-group col-md-6">
-                                <label>Select Document Type<span class="required"> *</span></label>
-                                <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
-                                    class="form-control" required>
-                                    <option value="" disabled selected>Select Document</option>
-                                    <option value="Personal Photo">Personal Photo</option>
-                                    <option value="Passport">Passport</option>
-                                    <option value="Visit Visa">Visit Visa</option>
-                                    <option value="Offer Letter">Offer Letter</option>
-                                    <option value="MOL Job Offer">MOL Job Offer</option>
-                                    <option value="Signed MOL Job Offer">Signed MOL Job Offer</option>
-                                    <option value="MOL MB Contract">MOL MB Contract</option>
-                                    <option value="Signed MOL MB Offer">Signed MOL MB Offer</option>
-                                    <option value="Preapproval Work Permit">Preapproval Work Permit</option>
-                                    <option value="Dubai Insurance">Dubai Insurance</option>
-                                    <option value="Entry Permit Visa">Entry Permit Visa</option>
-                                    <option value="Stamped Entry Visa">Stamped Entry Visa</option>
-                                    <option value="Change of Status Visa">Change of Visa Status</option>
-                                    <option value="Medical Fitness Receipt">Medical Fitness Receipt</option>
-                                    <option value="Tawjeeh Receipt">Tawjeeh Receipt</option>
-                                    <option value="Emirates Id Application form">Emirates Id Application form</option>
-                                    <option value="Stamped EID Application form">Stamped EID Application form</option>
-                                    <option value="Residence Visa">Residence Visa</option>
-                                    <option value="Work Permit">Work Permit</option>
-                                    <option value="Health Insurance Card">Health Insurance Card</option>
-                                    <option value="National Identity Card">National Identity Card</option>
-                                    <option value="Emirates Identity Card">Emirates Identity Card</option>
-                                    <option value="Vehicle Registration Card">Vehicle Registration Card</option>
-                                    <option value="Driving License">Driving License</option>
-                                    <option value="Birth Certificate">Birth Certificate</option>
-                                    <option value="Marriage Certificate">Marriage Certificate</option>
-                                    <option value="School Certificate">School Certificate</option>
-                                    <option value="Diploma">Diploma</option>
-                                    <option value="University Degree">University Degree</option>
-                                    <option value="Salary Certificate">Salary Certificate</option>
-                                    <option value="Tenancy Contract">Tenancy Contract</option>
-                                    <option value="MOL Cancellation form">MOL Cancellation form</option>
-                                    <option value="Signed MOL Cancellation Form">Signed MOL Cancellation Form</option>
-                                    <option value="Work Permit Cancellation Approval">Work Permit Cancellation Approval</option>
-                                    <option value="Residency Cancellation Approval">Residency Cancellation Approval</option>
-                                    <option value="Modify MOL Contract">Modify MOL Contract</option>
-                                    <option value="Work Permit Application">Work Permit Application</option>
-                                    <option value="Work Permit Renewal Application">Work Permit Renewal Application</option>
-                                    <option value="Signed Work Permit Renewal">Signed Work Permit Renewal</option>
-                                    <option value="Application">Application</option>
-                                    <option value="Submission Form">Submission Form</option>
-                                    <option value="Receipts">Receipts</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                @error('doc_type')
-                                    <div class="text-danger p-2">{{ $message }}</div>
-                                @enderror
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label>Select Document Type<span class="required"> *</span></label>
+                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
+                                class="form-control" required>
+                                <option value="" disabled selected>Select Document</option>
+                                <option value="Personal Photo">Personal Photo</option>
+                                <option value="Passport">Passport</option>
+                                <option value="Visit Visa">Visit Visa</option>
+                                <option value="Offer Letter">Offer Letter</option>
+                                <option value="MOL Job Offer">MOL Job Offer</option>
+                                <option value="Signed MOL Job Offer">Signed MOL Job Offer</option>
+                                <option value="MOL MB Contract">MOL MB Contract</option>
+                                <option value="Signed MOL MB Offer">Signed MOL MB Offer</option>
+                                <option value="Preapproval Work Permit">Preapproval Work Permit</option>
+                                <option value="Dubai Insurance">Dubai Insurance</option>
+                                <option value="Entry Permit Visa">Entry Permit Visa</option>
+                                <option value="Stamped Entry Visa">Stamped Entry Visa</option>
+                                <option value="Change of Status Visa">Change of Visa Status</option>
+                                <option value="Medical Fitness Receipt">Medical Fitness Receipt</option>
+                                <option value="Tawjeeh Receipt">Tawjeeh Receipt</option>
+                                <option value="Emirates Id Application form">Emirates Id Application form</option>
+                                <option value="Stamped EID Application form">Stamped EID Application form</option>
+                                <option value="Residence Visa">Residence Visa</option>
+                                <option value="Work Permit">Work Permit</option>
+                                <option value="Health Insurance Card">Health Insurance Card</option>
+                                <option value="National Identity Card">National Identity Card</option>
+                                <option value="Emirates Identity Card">Emirates Identity Card</option>
+                                <option value="Vehicle Registration Card">Vehicle Registration Card</option>
+                                <option value="Driving License">Driving License</option>
+                                <option value="Birth Certificate">Birth Certificate</option>
+                                <option value="Marriage Certificate">Marriage Certificate</option>
+                                <option value="School Certificate">School Certificate</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="University Degree">University Degree</option>
+                                <option value="Salary Certificate">Salary Certificate</option>
+                                <option value="Tenancy Contract">Tenancy Contract</option>
+                                <option value="MOL Cancellation form">MOL Cancellation form</option>
+                                <option value="Signed MOL Cancellation Form">Signed MOL Cancellation Form</option>
+                                <option value="Work Permit Cancellation Approval">Work Permit Cancellation Approval</option>
+                                <option value="Residency Cancellation Approval">Residency Cancellation Approval</option>
+                                <option value="Modify MOL Contract">Modify MOL Contract</option>
+                                <option value="Work Permit Application">Work Permit Application</option>
+                                <option value="Work Permit Renewal Application">Work Permit Renewal Application</option>
+                                <option value="Signed Work Permit Renewal">Signed Work Permit Renewal</option>
+                                <option value="Application">Application</option>
+                                <option value="Submission Form">Submission Form</option>
+                                <option value="Receipts">Receipts</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            @error('doc_type')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
                         {{-- @else
                             <div class="form-group col-md-6">
                                 <label>Select Document Type<span class="required"> *</span></label>
@@ -109,29 +114,29 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <div class="form-group col-md-6 receipts-show d-none">
+                        <div class="form-group col-md-6 receipts-show d-none">
                             <label>Receipts <span class="required"> *</span></label>
-                            <select id="selectReceipt" class="form-control" required>
+                            <select id="selectReceipt" name="receipt[]" class="form-control">
                                 <option value="" selected disabled>Select Receipt</option>
                                 <option value="Preapproval of work permit receipt">Preapproval of work permit</option>
-                                    <option value="Dubai Insurance receipts">Dubai Insurance</option>
-                                    <option value="Preapproval work permit fees receipt">Preapproval work permit fees</option>
-                                    <option value="Work permit Renewal Fees Receipt">Work permit Renewal Fees</option>
-                                    <option value="Entry Visa Application Receipt">Entry Visa Application</option>
-                                    <option value="Change of Visa Status Application">Change of Visa Status Application</option>
-                                    <option value="Medical">Medical</option>
-                                    <option value="Tawjeeh">Tawjeeh</option>
-                                    <option value="Heath Insurance">Heath Insurance</option>
-                                    <option value="Emirates ID Application">Emirates ID Application</option>
-                                    <option value="Residency Visa Application">Residency Visa Application</option>
-                                    <option value="Visa Fines">Visa Fines</option>
-                                    <option value="Emirates ID Fines">Emirates ID Fines</option>
-                                    <option value="Other fines">Other fines</option>
-                                    <option value="Health Insurance Fines">Health Insurance Fines</option>
-                                    <option value="Immigration Application">Immigration Application</option>
-                                    <option value="MOHRE Application">MOHRE Application</option>
+                                <option value="Dubai Insurance receipts">Dubai Insurance</option>
+                                <option value="Preapproval work permit fees receipt">Preapproval work permit fees</option>
+                                <option value="Work permit Renewal Fees Receipt">Work permit Renewal Fees</option>
+                                <option value="Entry Visa Application Receipt">Entry Visa Application</option>
+                                <option value="Change of Visa Status Application">Change of Visa Status Application</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Tawjeeh">Tawjeeh</option>
+                                <option value="Heath Insurance">Heath Insurance</option>
+                                <option value="Emirates ID Application">Emirates ID Application</option>
+                                <option value="Residency Visa Application">Residency Visa Application</option>
+                                <option value="Visa Fines">Visa Fines</option>
+                                <option value="Emirates ID Fines">Emirates ID Fines</option>
+                                <option value="Other fines">Other fines</option>
+                                <option value="Health Insurance Fines">Health Insurance Fines</option>
+                                <option value="Immigration Application">Immigration Application</option>
+                                <option value="MOHRE Application">MOHRE Application</option>
                             </select>
-                        </div> --}}
+                        </div>
                         <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
                             <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
@@ -191,7 +196,22 @@
             // });
 
             $(document).on('change', '#selectDocument', function() {
-                var notIssueExpiryOther = $(this).val() == 'Personal Photo' || $(this).val() == 'Offer Letter' || $(this).val() == 'MOL Job Offer' || $(this).val() == 'Signed MOL Job Offer' || $(this).val() == 'MOL MB Contract' || $(this).val() == 'Signed MOL MB Offer' || $(this).val() == 'Preapproval Work Permit' || $(this).val() == 'Dubai Insurance' || $(this).val() == 'Tawjeeh Receipt' || $(this).val() == 'Emirates Id Application form' || $(this).val() == 'Stamped EID Application form' || $(this).val() == 'Birth Certificate' || $(this).val() == 'Marriage Certificate' || $(this).val() == 'School Certificate' || $(this).val() == 'Diploma' || $(this).val() == 'University Degree' || $(this).val() == 'Salary Certificate' || $(this).val() == 'Tenancy Contract' || $(this).val() == 'MOL Cancellation form' || $(this).val() == 'Signed MOL Cancellation Form' || $(this).val() == 'Work Permit Cancellation Approval' || $(this).val() == 'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this).val() == 'Work Permit Application' || $(this).val() == 'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(this).val() == 'Application' || $(this).val() == 'Submission Form';
+                var notIssueExpiryOther = $(this).val() == 'Personal Photo' || $(this).val() ==
+                    'Offer Letter' || $(this).val() == 'MOL Job Offer' || $(this).val() ==
+                    'Signed MOL Job Offer' || $(this).val() == 'MOL MB Contract' || $(this).val() ==
+                    'Signed MOL MB Offer' || $(this).val() == 'Preapproval Work Permit' || $(this).val() ==
+                    'Dubai Insurance' || $(this).val() == 'Tawjeeh Receipt' || $(this).val() ==
+                    'Emirates Id Application form' || $(this).val() == 'Stamped EID Application form' || $(
+                        this).val() == 'Birth Certificate' || $(this).val() == 'Marriage Certificate' || $(
+                        this).val() == 'School Certificate' || $(this).val() == 'Diploma' || $(this)
+                .val() == 'University Degree' || $(this).val() == 'Salary Certificate' || $(this).val() ==
+                    'Tenancy Contract' || $(this).val() == 'MOL Cancellation form' || $(this).val() ==
+                    'Signed MOL Cancellation Form' || $(this).val() ==
+                    'Work Permit Cancellation Approval' || $(this).val() ==
+                    'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this)
+                    .val() == 'Work Permit Application' || $(this).val() ==
+                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(
+                        this).val() == 'Application' || $(this).val() == 'Submission Form';
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);

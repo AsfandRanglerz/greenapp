@@ -1,5 +1,10 @@
 @extends('user.layout.master')
 @section('content')
+<style>
+    .word_wrap{
+    white-space: normal;
+    }
+</style>
     <div class="mb-5 admin-main-content-inner">
         @if (Auth::guard('web')->user()->emp_type == 'self')
             <h4>Dashboard</h4>
@@ -21,6 +26,7 @@
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Receipt</th>
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
                             @if (Auth::guard('web')->user()->emp_type == 'company')
@@ -58,7 +64,8 @@
                                     </a>
                                 </td>
                                 <td>{{ $document->doc_type }}</td>
-                                <td>{{ $document->doc_name }}</td>
+                                <td class="word_wrap">{{ $document->doc_name }}</td>
+                                <td class="word_wrap">{{ $document->receipt }}</td>
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
                                 @if (Auth::guard('web')->user()->emp_type == 'company')

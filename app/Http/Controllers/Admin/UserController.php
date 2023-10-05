@@ -229,4 +229,9 @@ class UserController extends Controller
         User::destroy($id);
         return redirect()->back()->with('success', 'Deleted Successfully');
     }
+    public function view(Request $request){
+        $data = User::find($request->id);
+        $employees = view('admin.user.modal', compact('data'))->render();
+        return response()->json($employees);
+    }
 }

@@ -44,7 +44,7 @@
                                             class="fa fa-eye text-success"></span></a>
                                 </td>
                                 <td class="text-center">
-                                    <a id="{{ $employee->id }}"" data-toggle="modal" data-target=".bd-example-modal-lg"
+                                    <a id="{{ $employee->id }}" data-toggle="modal" data-target=".bd-example-modal-lg"
                                         class="employee-data"><span class="fa fa-eye text-success"></span></a>
                                     <a href="{{ route('company.employee.edit', $employee->id) }}" class="mx-2"><span
                                             class="fa fa-edit text-info"></span></a>

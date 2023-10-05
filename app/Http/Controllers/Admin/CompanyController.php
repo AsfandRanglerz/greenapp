@@ -263,5 +263,10 @@ class CompanyController extends Controller
 
         }
     }
+    public function view(Request $request){
+        $data = Company::find($request->id);
+        $employees = view('admin.company.modal', compact('data'))->render();
+        return response()->json($employees);
+    }
 
 }

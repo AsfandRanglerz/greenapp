@@ -1,7 +1,8 @@
 <?php
 use App\Models\Note;
 $authId = Auth::guard('web')->id();
-if ($authId) { // Check if the user is authenticated
+if ($authId) {
+    // Check if the user is authenticated
     $data['note'] = Note::where('user_id', $authId)->first();
 }
 ?>
@@ -16,7 +17,8 @@ if ($authId) { // Check if the user is authenticated
         <div class="navbar p-0">
             <div class="dropdown ml-auto d-flex align-items-center">
                 <!-- Button trigger modal -->
-                <h5 type="button" class="text-white mb-0 mr-3" data-toggle="modal" data-target="#notesModel" title="here you can save Notes for Reminder,
+                <h5 type="button" class="text-white mb-0 mr-3" data-toggle="modal" data-target="#notesModel"
+                    title="here you can save Notes for Reminder,
 Here You can save your data, this option allows you to send request for these services etc.">
                     <span class="fa fa-edit text-success mr-2"></span>Notes
                 </h5>
@@ -30,7 +32,11 @@ Here You can save your data, this option allows you to send request for these se
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
-                    <b class="text-muted text-uppercase d-block mb-2 user-name-text">Employee Menu</b>
+                    @if (Auth::guard('web')->user()->emp_type == 'self')
+                        <b class="text-muted text-uppercase d-block mb-2 user-name-text">Menu</b>
+                    @else
+                        <b class="text-muted text-uppercase d-block mb-2 user-name-text">Employee Menu</b>
+                    @endif
                     <hr class="my-1">
                     <a class="dropdown-item" href="{{ route('user.logout') }}"><span
                             class="fa fa-sign-out-alt mr-2"></span>Logout</a>
@@ -43,18 +49,23 @@ Here You can save your data, this option allows you to send request for these se
 <!-- Modal -->
 <div class="modal fade" id="notesModel" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="notesModelLabel" aria-hidden="true">
-    <form action="{{route('user.note.update')}}" method="POST">
+    <form action="{{ route('user.note.update') }}" method="POST">
         @csrf
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes</h5>
+                    <h5 class="modal-title" id="notesModelLabel"><span class="fa fa-edit text-success mr-2"></span>Notes
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ...">@if ($data['note']){{ $data['note']->note }}@endif</textarea>
+                    <textarea cols="30" rows="10" class="form-control notes-section" name="note" placeholder="Your Notes ...">
+@if ($data['note'])
+{{ $data['note']->note }}
+@endif
+</textarea>
                 </div>
                 <div class="modal-footer">
                     <button class="btn-bg reset-btn">Reset</button>

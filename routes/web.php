@@ -94,6 +94,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::resource('company', CompanyController::class);
 
+    Route::get('company-view', [CompanyController::class, 'view']);
+
     Route::get('company-document-index/{id}', [CompanyDocumentController::class, 'index'])->name('company-document.index');
 
     Route::get('company-document-create/{id}', [CompanyDocumentController::class, 'create'])->name('company-document.create');
@@ -112,6 +114,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::resource('user', UserController::class);
 
+    Route::get('employee-view', [UserController::class, 'view']);
+
     Route::get('user-document-index/{id}', [UserDocumentController::class, 'index'])->name('user-document.index');
 
     Route::get('user-document-create/{id}', [UserDocumentController::class, 'create'])->name('user-document.create');
@@ -129,6 +133,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('inquiry', InquiryController::class);
 
     Route::resource('selfemployee', SelfUserController::class);
+
+    Route::get('self-employee-view', [SelfUserController::class, 'view']);
 
     Route::resource('about-us', AboutUsController::class);
 
