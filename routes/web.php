@@ -242,6 +242,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::resource('inquiry', 'InquiryController');
 
+    Route::resource('generateCV', 'GenerateCVController');
+
+
     /** All security routes */
 
     Route::get('faqs', 'SecurityController@faq')->name('faqs');

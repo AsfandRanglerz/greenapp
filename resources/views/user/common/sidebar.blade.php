@@ -28,6 +28,10 @@
                     <a href="{{ route('user.inquiry.index') }}" class="sidebar-links"><span
                             class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>Inquiries</a>
                 </li>
+                <li class="position-relative {{ request()->is('user/generateCV*') ? 'active' : '' }}">
+                    <a href="{{ route('user.generateCV.index') }}" class="sidebar-links"><span
+                            class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>Generate CV</a>
+                </li>
             @endif
             <li class="position-relative">
                 <a href="{{ route('user.changePassword.index') }}" class="sidebar-links"><span
