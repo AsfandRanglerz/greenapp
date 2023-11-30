@@ -1,4 +1,4 @@
-<div id="dashboardSidebar">
+<div id="dashboardSidebar" style="overflow: auto">
     <div class="mb-4 user-name-block">
         <a href="#" class="my-4 d-block text-center"><img src="{{ asset('public/user/images/logo.png') }}"
                 alt="logo" class="logo-img" /></a>
@@ -87,8 +87,8 @@
             @endif
 
             @if(Auth::guard('web')->user()->emp_type = 'self')
-            <li class="position-relative {{ request()->is('user/Services/index*') ? 'active' : '' }}">
-                <a href="#" class="sidebar-links"><span
+            <li class="position-relative {{ request()->is('user/services*') ? 'active' : '' }}">
+                <a href="{{route('user.get-services.index')}}" class="sidebar-links"><span
                         class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Services</a>
             </li>
             @endif
