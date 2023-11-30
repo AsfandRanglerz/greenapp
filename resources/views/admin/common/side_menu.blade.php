@@ -1,4 +1,4 @@
-<div class="main-sidebar sidebar-style-2">
+<div class="main-sidebar sidebar-style-2" style="overflow: auto">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand ">
             <a href="{{ URL::TO('admin/dashboard') }}"><img alt="image" height="80px" width=""
@@ -39,6 +39,11 @@
                         </span>
                     @endif
                 </a>
+            </li>
+
+            <li class="dropdown {{ request()->is('admin/services*') ? 'active' : '' }}">
+                <a href="{{ route('get-services-requests') }}" class="nav-link"><i
+                        class="fa fa-question"></i><span>Services</span></a>
             </li>
 
             <li class="dropdown {{ request()->is('admin/faq*') ? 'active' : '' }}">

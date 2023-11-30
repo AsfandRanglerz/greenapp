@@ -53,6 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserDocument::class, 'user_id');
     }
+    public function IndividualService()
+    {
+        return $this->hasMany(IndividualService::class,'user_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

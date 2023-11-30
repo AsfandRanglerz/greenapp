@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
+use App\Http\Controllers\Admin\ServicesResponseController;
 
 
 
@@ -97,7 +98,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index');
     Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification');
 
+    // Services Response
+    Route::get('get-services-requests', [ServicesResponseController::class, 'get_services_requests'])->name('get-services-requests');
 
+    Route::get('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests');
 
     /** Company routes  */
 
@@ -241,6 +245,8 @@ Route::get('show-notifications-to-self-employee', [SendAllNotificationController
 
 Route::get('show-notifications-to-all', [SendAllNotificationController::class, 'show_notification_to_all_employee'])->name('show-notifications-to-all');
 
+// Route::get('get-services',[IndividualServicesController::class, 'services_index'])->name('show');
+
 Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'middleware' => 'user', 'as' => 'user.'], function () {
 
     Route::get('logout', 'HomeController@logout')->name('logout');
@@ -267,6 +273,11 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::put('add-cv-details/{id}', 'MyCvController@add_cv_details')->name('add-cv-details');
 
+    Route::get('get-services','IndividualServicesController@services_index')->name('get-services.index');
+
+    Route::get('request-service','IndividualServicesController@request_for_service')->name('request-service');
+
+    Route::post('request-store','IndividualServicesController@store_request')->name('request-store');
 
     /** All security routes */
 
