@@ -11,7 +11,7 @@
             <form action="{{route('user.add-cv-details',$data->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
+                <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow my-cv">
                     {{-- @dd($data) --}}
                     <div class="form-group col-md-12">
                         <label for="">Carrier Objectives<span class="required"> *</span></label>
@@ -29,9 +29,24 @@
                             class="form-control" placeholder="Enter Your Experience" rows="4">{{$data->experience}}</textarea>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="userEmail">Skills<span class="required"> *</span></label>
-                        <textarea id="userEmail" type="text" name="skills"
-                            class="form-control" placeholder="Enter Your Experience" rows="4">{{$data->skills}}</textarea>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="userEmail" class="mb-0">Skills<span class="required"> *</span></label>
+                            <button type="button" class="btn btn-success add-skill"><span class="fa fa-plus mr-2"></span>Add</button>
+                        </div>
+                        {{-- <textarea id="userEmail" type="text" name="skills" class="form-control" placeholder="Enter Your Experience" rows="4">{{$data->skills}}</textarea> --}}
+                        <div class="skill-container">
+                            <div class="row skill-block" id="skillBlock1">
+                                <div class="col-sm-4 skill-inner">
+                                    <input type="text" class="form-control" placeholder="Add Your Skill">
+                                </div>
+                                <div class="col-sm-4 skill-inner">
+                                    <input type="text" class="form-control" placeholder="Add Your Skill">
+                                </div>
+                                <div class="col-sm-4 skill-inner">
+                                    <input type="text" class="form-control" placeholder="Add Your Skill">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="">Do you have your driving license ?<span class="required"> *</span></label>
@@ -42,8 +57,8 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-12 text-right">
-                        <button class="btn btn-success form-control" type="submit"><span class="fa fa-edit mr-2"></span>Add</button>
+                    <div class="my-sm-4 mt-3 mb-2 form-group col-12 text-center">
+                        <button class="btn btn-success" type="submit">Save Changes</button>
                     </div>
                 </div>
             </form>
@@ -96,7 +111,18 @@
             $(".upload-button").on('click', function() {
                 $(this).siblings('.file-upload').click();
             });
+            /*Avatar upload*/
+
+            /*Add skill*/
+            var counterItem = 1;
+            $(document).on('click', '.add-skill', function() {
+                counterItem++;
+                var clonedDiv = $('.skill-block:first-child').clone();
+                clonedDiv.find('input').val('');
+                clonedDiv.attr('id', 'skillBlock' + counterItem);
+                $('.skill-container').prepend(clonedDiv);
+            });
+            /*Add skill*/
         });
-        /*Avatar upload*/
     </script>
 @endsection

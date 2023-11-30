@@ -2,9 +2,11 @@
     background-color: var(--theme-clr);
     border-radius: 8px 8px 0 0;
 }
+
 .auth-form .auth-form-block-header .PolygonRuler .PolygonRuler__SVG .PolygonRuler__Polygon {
     fill: #fff;
 }
+
 .auth-form .auth-form-block-header .PolygonRuler {
     display: flex;
     height: 0;
@@ -12,6 +14,7 @@
     position: relative;
     width: 100%;
 }
+
 .auth-form .auth-form-block-header .PolygonRuler .PolygonRuler__SVG {
     bottom: -0.0625rem;
     height: 100%;
@@ -19,33 +22,42 @@
     position: absolute;
     width: 100%;
 }
+
 .auth-form #authForm {
     padding: 24px;
     background-color: #FFF;
     border-radius: 0 0 8px 8px;
 }
+
 .auth-form .auth-form-block-header .auth-form-block-header-inner {
     padding: 16px 24px;
 }
+
 body .pl-pr-padding {
     padding: 0 2.5rem;
 }
+
 body .pl-padding {
     padding-left: 2.5rem;
 }
+
 .input-field-left-icon {
     left: 16px;
     color: var(--green-clr);
 }
+
 .fa-phone {
     transform: rotate(90deg);
 }
+
 .logout-navbar {
     background-color: var(--theme-clr);
 }
+
 .logo-img {
     height: 60px;
 }
+
 .auth-centered-block {
     height: 100vh;
     display: flex;
@@ -54,7 +66,10 @@ body .pl-padding {
     background-position: center;
     background-size: cover;
 }
+
+
 /*OTP*/
+
 .verify-field {
     height: 37px;
     width: 37px;
@@ -62,12 +77,17 @@ body .pl-padding {
     text-align: center;
     border-radius: 50%;
 }
+
+
 /*OTP*/
-.form-btn, .form-btn:focus {
+
+.form-btn,
+.form-btn:focus {
     background: none;
     border: none;
     outline: none;
 }
+
 .doc-fields .remove-btn {
     position: absolute;
     right: 10px;
@@ -75,19 +95,109 @@ body .pl-padding {
     font-size: 14px;
     cursor: pointer;
 }
+
 #docField1 .remove-btn {
     display: none;
 }
+
+.my-cv .skill-block {
+    margin-bottom: 16px;
+}
+
+.my-cv .skill-block:last-child {
+    margin-bottom: 0;
+}
+
+.CV_format_section .avatar-wrapper .upload-button-removeDrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.CV_format_section .CV_dp {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+.CV_format_section hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid var(--theme-clr);
+}
+
+.CV_format_section .CV_info {
+    background-color: var(--theme-clr);
+}
+
+.CV_format_section .avatar-section {
+    text-align: start;
+}
+
+.CV_format_section .avatar-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.CV_format_section .cv_dp_inner {
+    object-fit: cover;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+.CV_format_section .avatar-wrapper {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    border-radius: 0;
+    margin: 16px auto;
+    overflow: hidden;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.CV_format_section .upload-button-removeDrop {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.CV_format_section .CV_border {
+    border: 1px solid var(--theme-clr);
+}
+
 @media (min-width: 992px) {
     .back-btn {
         display: none;
     }
 }
+
 @media (max-width: 575px) {
     .auth-form #authForm {
         padding: 16px;
     }
     .logo-img {
         height: 50px;
+    }
+    .my-cv .skill-inner {
+        margin-bottom: 16px;
+    }
+    .my-cv .skill-inner:last-child {
+        margin-bottom: 0;
+    }
+    .CV_format_section .col-form-label {
+        padding-left: 0;
+    }
+    .CV_format_section .avatar-section {
+        text-align: center;
+    }
+    .CV_format_section .avatar-wrapper {
+        display: inline-block;
+        position: relative;
     }
 }
