@@ -27,6 +27,24 @@
                         class="fa fa-lock text-white pr-2 sidebar-link-icons"></span>Change Password</a>
             </li>
 
+            <li class="position-relative {{ request()->is('company/notifications*') ? 'active' : '' }}">
+                @php
+                 $notificationCount = App\Models\AdminNotification::where('to_all','Companies')->where('seen','0')->count();
+                @endphp
+
+                <a href="{{ route('show-notifications') }}" class="sidebar-links">
+                    <span class="fa fa-book text-white pr-2 sidebar-link-icons">
+                    </span>
+                    <span class='mr-1'>Notifications</span>
+                    @if($notificationCount > 0 )
+                    <span class="badge badge-danger text-white">
+                        {{ $notificationCount}}
+                    </span>
+                    @endif
+                </a>
+            </li>
+
+
             <li class="position-relative {{ request()->is('faqs*') ? 'active' : '' }}">
                 <a href="{{ route('company.faqs') }}" class="sidebar-links"><span
                         class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>FAQ's</a>

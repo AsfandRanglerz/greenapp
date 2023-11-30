@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('public/user/plugins/DataTables/datatables.css') }}">
 </head>
 
-<body>
+<body class="hidden_content">
     <div id="pgLoader">
         <span id="pgLoaderGif"></span>
     </div>

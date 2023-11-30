@@ -20,12 +20,27 @@
             </li>
             <li class="dropdown {{ request()->is('admin/selfemployee*') ? 'active' : '' }}">
                 <a href="{{ route('selfemployee.index') }}" class="nav-link"><i
-                        class="fa fa-users"></i><span>Individual</span></a>
+                        class="fa fa-users"></i><span>Individuals</span></a>
             </li>
+            <li class="dropdown {{ request()->is('admin/notifications*') ? 'active' : '' }}">
+                <a href="{{ route('notification-index') }}" class="nav-link"><i
+                        class="fas fa-bell"></i><span>Notifications</span></a>
+            </li>
+            @php
+                $notificationCount = App\Models\Inquiry::where('seen','0')->count();
+            @endphp
+
             <li class="dropdown {{ request()->is('admin/inquiry*') ? 'active' : '' }}">
-                <a href="{{ route('inquiry.index') }}" class="nav-link"><i
-                        class="fa fa-users"></i><span>Inquiry</span></a>
+                <a href="{{ route('inquiry.index') }}" class="nav-link">
+                    <i class="fa fa-users"></i><span>Inquiry</span>
+                    @if($notificationCount)
+                        <span class="badge badge-danger text-white">
+                           {{$notificationCount}}
+                        </span>
+                    @endif
+                </a>
             </li>
+
             <li class="dropdown {{ request()->is('admin/faq*') ? 'active' : '' }}">
                 <a href="{{ route('faq.index') }}" class="nav-link"><i
                         class="fa fa-question-circle"></i><span>FAQ's</span></a>

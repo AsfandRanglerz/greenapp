@@ -20,6 +20,13 @@ class InquiryController extends Controller
     {
         $authId = Auth::guard('web')->id();
         $data = Inquiry::whereUserId($authId)->orderBy('id','desc')->get();
+        $seen = Inquiry::where('answered', 1)->where('individual_seen','0')->get();
+        // Check if there are records matching the criteria
+        if ($seen->isNotEmpty()) {
+            // Use update on the query builder instance, not on the collection
+            Inquiry::where('answered', 1)->where('individual_seen','0')->update([
+                'individual_seen' => 1,
+            ]);}
         return view('user.inquiry.index', compact('data'));
     }
 

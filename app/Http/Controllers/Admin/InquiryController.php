@@ -19,6 +19,13 @@ class InquiryController extends Controller
     public function index()
     {
         $data = Inquiry::orderBy('id', 'desc')->get();
+        $seen = Inquiry::where('seen', 0)->get();
+        // Check if there are records matching the criteria
+        if ($seen->isNotEmpty()) {
+            // Use update on the query builder instance, not on the collection
+            Inquiry::where('seen', 0)->update([
+                'seen' => 1,
+            ]);}
         return view('admin.inquiry.index', compact('data'));
     }
 
@@ -77,6 +84,7 @@ class InquiryController extends Controller
     {
         $inquiry = Inquiry::find($id);
         $inquiry->answer = $request->input('answer');
+        $inquiry->answered = 1;
         $inquiry->save();
         $data['answer'] = $request->input('answer');
         $user = User::where('id', $inquiry->user_id)->first();

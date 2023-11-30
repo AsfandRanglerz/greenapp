@@ -24,19 +24,76 @@
                         class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
             </li>
             @if (Auth::guard('web')->user()->emp_type == 'self')
+            <li class="position-relative {{ request()->is('user/generateCV/mycv_index*') ? 'active' : '' }}">
+                <a href="{{ route('user.myCv.index') }}" class="sidebar-links"><span
+                        class="far fa-paper-plane text-white pr-2 sidebar-link-icons"></span>My CV</a>
+            </li>
+            @php
+            $user = Auth::guard('web')->user();
+            $usercount = App\Models\Inquiry::where('user_id',$user->id)->where('answered','1')->where('individual_seen','0')->count();
+            @endphp
                 <li class="position-relative {{ request()->is('user/inquiry*') ? 'active' : '' }}">
-                    <a href="{{ route('user.inquiry.index') }}" class="sidebar-links"><span
-                            class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>Inquiries</a>
+                    <a href="{{ route('user.inquiry.index') }}" class="sidebar-links">
+                        <span class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>
+                        <span class="py-1 mr-1">Inquiries</span>
+                        @if($usercount)
+                        <span class="badge badge-danger text-white">
+                           {{$usercount}}
+                        </span>
+                    @endif
+                    </a>
                 </li>
                 <li class="position-relative {{ request()->is('user/generateCV*') ? 'active' : '' }}">
                     <a href="{{ route('user.generateCV.index') }}" class="sidebar-links"><span
-                            class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>Generate CV</a>
+                            class="fas fa-print text-white pr-2 sidebar-link-icons"></span>Generate CV</a>
                 </li>
             @endif
+
             <li class="position-relative">
                 <a href="{{ route('user.changePassword.index') }}" class="sidebar-links"><span
                         class="fa fa-lock text-white pr-2 sidebar-link-icons"></span>Change Password</a>
             </li>
+
+            @if (Auth::guard('web')->user()->emp_type == 'self')
+            <li class="position-relative">
+                @php
+                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen','0')->count();
+               @endphp
+                <a href="{{ route('show-notifications-to-self-employee') }}" class="sidebar-links"><span
+                        class="far fa-bell text-white pr-2 sidebar-link-icons"></span>
+                        <span class='mr-1'>Notifications</span>
+                            @if ($notificationCount > 0)
+                        <span class="badge badge-danger text-white">
+                            {{$notificationCount}}
+                        </span>
+                        @endif
+                </a>
+            </li>
+            @else
+            <li class="position-relative">
+                @php
+                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen','0')->count();
+               @endphp
+                <a href="{{ route('show-notifications-to-employee') }}" class="sidebar-links"><span
+                        class="far fa-bell text-white pr-2 sidebar-link-icons"></span>
+                        <span class='mr-1'>Notifications</span>
+                        @if ($notificationCount > 0)
+                        <span class="badge badge-danger text-white">
+                            {{$notificationCount}}
+                        </span>
+                        @endif
+                </a>
+            </li>
+            @endif
+
+            @if(Auth::guard('web')->user()->emp_type = 'self')
+            <li class="position-relative {{ request()->is('user/Services/index*') ? 'active' : '' }}">
+                <a href="#" class="sidebar-links"><span
+                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Services</a>
+            </li>
+            @endif
+
+
             <li class="position-relative {{ request()->is('faqs*') ? 'active' : '' }}">
                 <a href="{{ route('user.faqs') }}" class="sidebar-links"><span
                         class="fa fa-question-circle text-white pr-2 sidebar-link-icons"></span>FAQ's</a>

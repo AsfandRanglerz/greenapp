@@ -124,7 +124,11 @@
                                         <div id="faqCollapse-{{ $inquiry->id }}" class="collapse"
                                             aria-labelledby="faqHeading-1" data-parent="#accordion">
                                             <div class="card-body">
+                                                @if ($inquiry->answer)
                                                 <p>{!! $inquiry->answer ?? '' !!}</p>
+                                                @else
+                                                <p class="text-danger">Waiting for response!</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -132,6 +136,12 @@
                             </div>
                         </section>
                     </div>
+                @else
+                <div class="text-center mt-5">
+                    <p class="text-danger">No Inquiry Yet.</p>
+                </div>
+
+
                 @endif
             </div>
         </div>

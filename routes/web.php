@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\UserDocumentController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
+use App\Http\Controllers\Admin\SendAllNotificationController;
+
+
 
 /*
 
@@ -71,7 +74,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::post('note', [AdminController::class, 'note_update'])->name('note.update');
 
-
     Route::post('update-profile', [AdminController::class, 'update_profile']);
 
     Route::post('update-password', [AdminController::class, 'profile_change_password'])->name('profile.change-password');
@@ -89,6 +91,13 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('term-condition-update', [SecurityController::class, 'TermConditionUpdate']);
 
     Route::get('logout', [AdminController::class, 'logout']);
+
+    // Notifications Routes
+
+    Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index');
+    Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification');
+
+
 
     /** Company routes  */
 
@@ -109,6 +118,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('company-document-update/{id}', [CompanyDocumentController::class, 'update'])->name('company-document.update');
 
     Route::get('company-document-download/{id}', [CompanyDocumentController::class, 'download'])->name('company-document.download');
+
+
 
     /** User routes  */
 
@@ -178,6 +189,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 });
 
 /** Company panel Routes*/
+Route::get('show-notifications', [SendAllNotificationController::class, 'show_notification_to_company'])->name('show-notifications');
 
 Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Company', 'middleware' => 'company', 'as' => 'company.'], function () {
 
@@ -208,6 +220,8 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
 
+
+
     /** All security routes */
 
     Route::get('faqs', 'SecurityController@faq')->name('faqs');
@@ -221,6 +235,11 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 });
 
 /**Employee panel Routes*/
+Route::get('show-notifications-to-employee', [SendAllNotificationController::class, 'show_notification_to_employee'])->name('show-notifications-to-employee');
+
+Route::get('show-notifications-to-self-employee', [SendAllNotificationController::class, 'show_notification_to_self_employee'])->name('show-notifications-to-self-employee');
+
+Route::get('show-notifications-to-all', [SendAllNotificationController::class, 'show_notification_to_all_employee'])->name('show-notifications-to-all');
 
 Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'middleware' => 'user', 'as' => 'user.'], function () {
 
@@ -243,6 +262,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::resource('inquiry', 'InquiryController');
 
     Route::resource('generateCV', 'GenerateCVController');
+
+    Route::get('myCv', 'MyCvController@myCvIndex')->name('myCv.index');
+
+    Route::put('add-cv-details/{id}', 'MyCvController@add_cv_details')->name('add-cv-details');
 
 
     /** All security routes */

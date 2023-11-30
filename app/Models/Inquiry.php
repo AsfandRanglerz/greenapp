@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inquiry extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','question','answer'];
+    protected $fillable = ['user_id','question','answer','seen','answered','individual_seen'];
 
     /**
      * Get the user that owns the Inquiry
