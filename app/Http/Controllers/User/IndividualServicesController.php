@@ -15,6 +15,12 @@ class IndividualServicesController extends Controller
     {
         $authId = Auth::guard('web')->id();
         $service_request = IndividualService::whereUser_id($authId)->latest()->get();
+        $request_count = IndividualService::whereNotNull('response')->where('seen_by_user', '0')->count();
+        if ($request_count > 0) {
+            IndividualService::whereNotNull('response')->where('seen_by_user', '0')->update([
+                'seen_by_user' => 1,
+            ]);
+        }
         return view('user.services.index',compact('service_request'));
     }
 
@@ -55,5 +61,11 @@ class IndividualServicesController extends Controller
         ]);
         return redirect()->route('user.get-services.index')->with('success', 'Request Sended Successfully.');
 
+    }
+
+    public function delete_request($id)
+    {
+         IndividualService::destroy($id);
+         return redirect()->back()->with('status','Request deleted successfully.');
     }
 }

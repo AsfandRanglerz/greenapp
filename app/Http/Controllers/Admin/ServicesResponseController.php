@@ -10,9 +10,15 @@ class ServicesResponseController extends Controller
 {
     public function get_services_requests()
     {
-
         $service_requests = IndividualService::with('user')->orderBy('created_at', 'DESC')->get();
         // return $service_requests;
+        $request_count = IndividualService::where('seen_by_admin','0')->count();
+        if($request_count > 0)
+        {
+            IndividualService::where('seen_by_admin','0')->update([
+                'seen_by_admin'=>1,
+            ]);
+        }
         return view('admin.services.index',compact('service_requests'));
     }
     public function response_to_request(Request $request, $id)
@@ -25,7 +31,7 @@ class ServicesResponseController extends Controller
             $response_req->update([
                 'response'=>$request->response,
             ]);
-            return redirect()->back()->with('status','Response send to individual successfully.');
+            return redirect()->route('get-services-requests')->with('status','Response send to individual successfully.');
         }
         else
         {

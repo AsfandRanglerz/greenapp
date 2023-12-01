@@ -54,7 +54,7 @@
                                                             <select name="response" class="form-control" id="" >
                                                                 <option value="" hidden>Pending</option>
                                                                 @if (!$req->file)
-                                                                <option value="Request For Document Upload">Request For Document Upload</option>
+                                                                <option value="Request For Document Upload">Upload your document</option>
                                                                 @endif
                                                                 <option value="Returned">Returned</option>
                                                                 <option value="Approved">Approved</option>

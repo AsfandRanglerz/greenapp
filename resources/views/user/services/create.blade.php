@@ -29,7 +29,7 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
                         {{-- @if (Auth::guard('web')->user()->emp_type == 'self') --}}
                         <div class="form-group col-md-6">
-                            <label>Select Document Type<span class="required"> *</span></label>
+                            <label>Select Request Type<span class="required"> *</span></label>
                             <select id="selectDocument" name="req_type" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
                                 <option value="" selected disabled>Select Request</option>

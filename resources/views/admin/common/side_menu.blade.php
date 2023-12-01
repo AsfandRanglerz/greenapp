@@ -27,23 +27,31 @@
                         class="fas fa-bell"></i><span>Notifications</span></a>
             </li>
             @php
-                $notificationCount = App\Models\Inquiry::where('seen','0')->count();
+                $notificationCount = App\Models\Inquiry::where('seen', '0')->count();
             @endphp
 
             <li class="dropdown {{ request()->is('admin/inquiry*') ? 'active' : '' }}">
                 <a href="{{ route('inquiry.index') }}" class="nav-link">
                     <i class="fa fa-users"></i><span>Inquiry</span>
-                    @if($notificationCount)
+                    @if ($notificationCount)
                         <span class="badge badge-danger text-white">
-                           {{$notificationCount}}
+                            {{ $notificationCount }}
                         </span>
                     @endif
                 </a>
             </li>
-
+            @php
+                $response_count = App\Models\IndividualService::where('seen_by_admin', '0')->count();
+            @endphp
             <li class="dropdown {{ request()->is('admin/services*') ? 'active' : '' }}">
                 <a href="{{ route('get-services-requests') }}" class="nav-link"><i
-                        class="fa fa-question"></i><span>Services</span></a>
+                        class="fa fa-question"></i><span>Services</span>
+                        @if ($response_count > 0)
+                        <span class="badge badge-danger text-white">
+                            {{$response_count}}
+                        </span>
+                        @endif
+                    </a>
             </li>
 
             <li class="dropdown {{ request()->is('admin/faq*') ? 'active' : '' }}">
@@ -59,8 +67,8 @@
                         Policy</span></a>
             </li>
             <li class="dropdown {{ request()->is('admin/term-condition*') ? 'active' : '' }}">
-                <a href="{{ route('term-condition.index') }}" class="nav-link"><i
-                        class="fa fa-key"></i><span>Terms & Conditions</span></a>
+                <a href="{{ route('term-condition.index') }}" class="nav-link"><i class="fa fa-key"></i><span>Terms &
+                        Conditions</span></a>
             </li>
         </ul>
     </aside>

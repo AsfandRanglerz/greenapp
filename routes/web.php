@@ -279,6 +279,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::post('request-store','IndividualServicesController@store_request')->name('request-store');
 
+    Route::delete('request-delete/{id}','IndividualServicesController@delete_request')->name('request-delete');
+
     /** All security routes */
 
     Route::get('faqs', 'SecurityController@faq')->name('faqs');

@@ -17,7 +17,7 @@
                             <h5 class="mb-0">Mr.{{ $employee->name }}</h5>
                         </div>
                     </div>
-                    <div class="mt-sm-5 mt-2">
+                    <div class="mt-sm-5 mt-2 ml-5">
                         <p>
                             {{ $employee->carrier_objectives }}
                         </p>
@@ -33,11 +33,15 @@
                                     <div class="form-group align-items-center row mb-0 mx-0">
                                         {{-- <p for="fullName" class="col-sm-1 col-form-label">{{ $employee->skills }}</p> --}}
                                         <ol class="pl-3 mb-0">
-                                            <li>HTML</li>
-                                            <li>CSS</li>
-                                            <li>JS</li>
-                                            <li>REACT JS</li>
-                                            <li>BOOTSTRAP 5</li>
+
+                         @php
+                            //  $skills=explode(',',$employee->skills);
+                             $skills=explode(',',$employee->skills);
+                         @endphp
+                         @foreach ( $skills as $skill)
+                         <li>{{$skill}}</li>
+                         @endforeach
+
                                         </ol>
                                     </div>
                                 </div>
@@ -177,18 +181,18 @@
                                                     <div class="col-lg-6">
                                                         <div class="form-group align-items-center row mb-0">
                                                             <label for="email"
-                                                                class="col-sm-5 col-12 col-form-label col-12">Visa
+                                                                class="col-sm-7 col-12 col-form-label">Visa
                                                                 Issue Date:</label>
-                                                            <p>{{ $documents->doc_type == 'Visit Visa' ? $documents->issue_date : '' }}
+                                                            <p class="mb-0">{{ $documents->doc_type == 'Visit Visa' ? $documents->issue_date : '' }}
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group align-items-center row mb-0">
                                                             <label for="email"
-                                                                class="col-sm-4 col-12 col-form-label col-12">Visa
+                                                                class="col-sm-7 col-12 col-form-label">Visa
                                                                 Expiry Date:</label>
-                                                            <p>{{ $documents->doc_type == 'Visit Visa' ? $documents->expiry_date : '' }}
+                                                            <p class="mb-0">{{ $documents->doc_type == 'Visit Visa' ? $documents->expiry_date : '' }}
                                                             </p>
                                                         </div>
                                                     </div>

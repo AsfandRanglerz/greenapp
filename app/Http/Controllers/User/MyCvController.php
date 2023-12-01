@@ -15,6 +15,7 @@ class MyCvController extends Controller
         $data =  User::find($authId);
 
 
+
         // return $data;
         return view('user.generateCV.mycv_index',compact('data'));
     }
@@ -32,12 +33,14 @@ class MyCvController extends Controller
             'skills' => 'required',
         ]);
         // $authId = Auth::guard('web')->id();
+        $skills = implode(',', array_filter($request->skills));
+        // Now $skills contains a comma-separated string without empty values
         $user->update([
             'carrier_objectives'=>$request->carrier_objectives,
             'education_details'=>$request->education_details,
             'experience'=>$request->experience,
             'license'=>$request->license,
-            'skills'=>$request->skills,
+            'skills'=>$skills,
         ]);
         // return $user;
         return redirect()->back()->with('success', 'Updated Successfully');

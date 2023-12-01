@@ -90,6 +90,8 @@ class SelfUserController extends Controller
         $data['password'] = Hash::make($password);
         $data['emp_type'] = 'self';
         $data['carrier_objectives'] = "Hard-working and self-driven web developer with 5+ years' relevant coding and site creation experience. Proactive and dedicated project manager looking for opportunities to pursue technology milestones while contributing to a company's business growth.";
+        $data['education_details'] = "Hard-working and self-driven web developer with 5+ years' relevant coding and site creation experience. Proactive and dedicated project manager looking for opportunities to pursue technology milestones while contributing to a company's business growth.";
+        $data['experience'] = "Hard-working and self-driven web developer with 5+ years' relevant coding and site creation experience. Proactive and dedicated project manager looking for opportunities to pursue technology milestones while contributing to a company's business growth.";
         $data['license'] = 'No';
         // return $data;
         User::create($data);

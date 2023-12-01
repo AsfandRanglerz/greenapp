@@ -86,10 +86,21 @@
             </li>
             @endif
 
+
             @if(Auth::guard('web')->user()->emp_type = 'self')
+            @php
+            $response_count = App\Models\IndividualService::whereNotNull('response')->where('seen_by_user','0')->count();
+        @endphp
+
             <li class="position-relative {{ request()->is('user/services*') ? 'active' : '' }}">
                 <a href="{{route('user.get-services.index')}}" class="sidebar-links"><span
-                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Services</a>
+                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Services
+                        @if ($response_count > 0)
+                        <span class="badge badge-danger text-white ml-1">
+                            {{$response_count}}
+                        </span>
+                        @endif
+                    </a>
             </li>
             @endif
 

@@ -15,7 +15,7 @@
         <p><span class="fa fa-book"></span> - Services</p>
         <div class="text-right">
             <a href="{{ route('user.request-service') }}" class="mb-3 btn btn-success"><span class="fa fa-plus mr-2"></span>Add
-                Document</a>
+                Request</a>
         </div>
         <div class="p-4 rounded light-box-shadow">
             <div class="table-responsive">
@@ -37,53 +37,63 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $req->req_type }}</td>
                                 <td class="word_wrap">{{ $req->comment }}</td>
-                                <td class="word_wrap">{{ $req->response }}</td>
                                 <td class="word_wrap">
-
-                                        @if ($req->status == 'Pending')
-                                            <div class="badge  badge-shadow btn-warning text-black">Pending</div>
-                                        @elseif ($req->status == 'completed')
-                                            <div class="badge badge-success badge-shadow">Accepted</div>
-                                        @else
-                                            <div class="badge badge-danger badge-shadow">Rejected</div>
-                                        @endif
-
-
+                                    @if (!$req->response)
+                                        <span class="text-danger">Waiting for admin response!</span>
+                                    @else
+                                        {{ $req->response }}
+                                    @endif
+                                </td>
+                                <td class="word_wrap">
+                                    @if ($req->status == 'Pending')
+                                        <div class="badge badge-shadow py-2 btn-warning text-black">Pending</div>
+                                    @elseif ($req->status == 'Returned')
+                                        <div class="badge badge-success badge-shadow py-2">Returned</div>
+                                    @elseif ($req->status == 'Approved')
+                                        <div class="badge badge-success badge-shadow py-2">Approved</div>
+                                    @elseif ($req->status == 'Completed')
+                                        <div class="badge badge-success badge-shadow py-2">Completed</div>
+                                    @elseif ($req->status == 'Hold')
+                                        <div class="badge badge-success badge-shadow py-2">Hold</div>
+                                    @elseif ($req->status == 'Skip')
+                                        <div class="badge badge-success badge-shadow py-2">Skip</div>
+                                    @else
+                                        <div class="badge badge-danger badge-shadow py-2">Rejected</div>
+                                    @endif
                                 </td>
 
                                 @if ($req->file)
-                                @php
-                                $file_name = $req->file;
-                                $ext = explode('.', $file_name);
-                            @endphp
-                            <td>
-                                <a target="_black" href="{{ asset('' . '/' . $req->file) }}">
-                                    @if ($ext[1] == 'pdf')
-                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                            style="height: 50px;width:50px">
-                                    @elseif($ext[1] == 'docx')
-                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                            style="height: 50px;width:50px">
-                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                            style="height: 50px;width:50px">
-                                    @elseif($ext[1] == 'pptx')
-                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                            style="height: 50px;width:50px">
-                                    @else
-                                        <img src="{{ asset('' . '/' . $req->file) }}"
-                                            style="height: 50px;width:50px">
-                                    @endif
-                                </a>
-                            </td>
+                                    @php
+                                        $file_name = $req->file;
+                                        $ext = explode('.', $file_name);
+                                    @endphp
+                                    <td>
+                                        <a target="_black" href="{{ asset('' . '/' . $req->file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'docx')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $req->file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                    </td>
                                 @else
-
-                                <td>N/A</td>
+                                    <td>N/A</td>
                                 @endif
 
                                 <td>
                                     <form class="d-inline" method="post"
-                                        action="{{ route('user.document.destroy', $req->id) }}">
+                                        action="{{ route('user.request-delete', $req->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <a class="form-btn" type="submit"><span
@@ -115,6 +125,15 @@
 @endsection
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script>
+        @if (\Illuminate\Support\Facades\Session::has('success'))
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
+        @endif
+
+        @if (\Illuminate\Support\Facades\Session::has('error'))
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        @endif
+        </script>
     <script type="text/javascript">
         $(function() {
             /*datatable search*/
