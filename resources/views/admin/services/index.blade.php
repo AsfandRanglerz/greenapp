@@ -47,30 +47,25 @@
                                                 <td>{{ $req->req_type }}</td>
                                                 <td class="word_wrap">{{ $req->comment }}</td>
                                                 <td class="word_wrap">
+                                                    <form action="{{route('response-against-requests',$req->id)}}" method="PUT" class='d-flex'>
+                                                        @csrf
                                                     <div class="col-lg-12">
-                                                        <div class="form-group mb-2 ">
-                                                                <form action="{{route('response-against-requests',$req->id)}}" method="PUT" class='d-flex'>
-                                                                    @csrf
+                                                        <div class="form-group mb-2">
                                                             <select name="response" class="form-control" id="" >
                                                                 <option value="" hidden>Pending</option>
                                                                 @if (!$req->file)
-                                                                <option value="Request For Document Upload">Upload your document</option>
+                                                                <option value="Upload your document">Upload your document</option>
                                                                 @endif
                                                                 <option value="Returned">Returned</option>
                                                                 <option value="Approved">Approved</option>
                                                                 <option value="Completed">Completed</option>
-                                                                <option value= "Hold">Hold</option>
-                                                                <option value="Skip">Skip</option>
                                                                 <option value="Rejected">Rejected</option>
                                                             </select>
-                                                            <button type="submit" class="btn btn-success ml-1">Send</button>
-                                                        </form>
-
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="word_wrap">
-                                                    @if ($req->status == 'Pending')
+                                                    @if ($req->status == 'Pending' || $req->status == 'Upload your document')
                                                         <div class="badge badge-shadow btn-warning text-black">Pending
                                                         </div>
                                                     @elseif ($req->status == 'Returned')
@@ -115,10 +110,16 @@
                                                         @endif
                                                     </td>
                                                 @else
-                                                    <td>N/A</td>
+                                                    <td class="center">
+                                                        <label for="">Upload</label>
+                                                        <input type="file" placeholder="upload">
+                                                    </td>
                                                 @endif
                                                 <td
                                                 style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                <button type="submit" class="btn btn-success ml-1">Send</button>
+                                            </form>
+
                                                 <form method="post"
                                                     action="{{ route('user.destroy', $req->id) }}">
                                                     @csrf

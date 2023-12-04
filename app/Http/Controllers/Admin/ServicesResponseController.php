@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\models\IndividualService;
+use App\Models\IndividualService;
 
 class ServicesResponseController extends Controller
 {

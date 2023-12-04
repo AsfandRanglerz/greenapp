@@ -11,7 +11,7 @@
                 <div class="d-sm-flex justify-content-start">
                     <div class="d-flex flex-column align-items-center">
                         <div class="bg-light CV_dp">
-                            <img src="{{ asset($employee->image) }}" alt="" class="img-fluid cv_dp_inner" />
+                            <img src="{{ asset($employee->image) }}" alt="" class="img-fluid cv_dp_inner"/>
                         </div>
                         <div class="my-sm-3 my-2">
                             <h5 class="mb-0">Mr.{{ $employee->name }}</h5>

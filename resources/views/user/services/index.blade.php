@@ -45,7 +45,7 @@
                                     @endif
                                 </td>
                                 <td class="word_wrap">
-                                    @if ($req->status == 'Pending')
+                                    @if ($req->status == 'Pending' || $req->status == 'Upload your document')
                                         <div class="badge badge-shadow py-2 btn-warning text-black">Pending</div>
                                     @elseif ($req->status == 'Returned')
                                         <div class="badge badge-success badge-shadow py-2">Returned</div>
@@ -125,7 +125,7 @@
 @endsection
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script>
+    {{-- <script>
         @if (\Illuminate\Support\Facades\Session::has('success'))
             toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
         @endif
@@ -133,7 +133,7 @@
         @if (\Illuminate\Support\Facades\Session::has('error'))
             toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
         @endif
-        </script>
+        </script> --}}
     <script type="text/javascript">
         $(function() {
             /*datatable search*/

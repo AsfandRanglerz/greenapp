@@ -66,6 +66,6 @@ class IndividualServicesController extends Controller
     public function delete_request($id)
     {
          IndividualService::destroy($id);
-         return redirect()->back()->with('status','Request deleted successfully.');
+         return redirect()->route('user.get-services.index')->with('success','Request deleted successfully.');
     }
 }
