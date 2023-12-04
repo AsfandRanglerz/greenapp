@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\AddPermissions;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('add-permission',[AddPermissions::class,'add_permission'])->name('add-permission');
+Route::post('update-permission/{id}',[AddPermissions::class,'update_permission'])->name('update-permission');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

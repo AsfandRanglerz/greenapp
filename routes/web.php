@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
 use App\Http\Controllers\Admin\ServicesResponseController;
+use App\Http\Controllers\Admin\SubAdminController;
 
 
 
@@ -93,9 +94,21 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('logout', [AdminController::class, 'logout']);
 
-    // Notifications Routes
+    //Sub-Admin routes
+    Route::get('get-sub-admins', [SubAdminController::class, 'index'])->name('get-sub-admins');
 
+    Route::get('create-sub-admin', [SubAdminController::class, 'create'])->name('create-sub-admin');
+
+    Route::post('add-sub-admin', [SubAdminController::class, 'store'])->name('add-sub-admin');
+
+    Route::post('update-sub-admin/{id}', [SubAdminController::class, 'update'])->name('update-sub-admin');
+
+    Route::delete('delete-sub-admin/{id}', [SubAdminController::class, 'delete'])->name('delete-sub-admin');
+
+
+    // Notifications Routes
     Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index');
+
     Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification');
 
     // Services Response
@@ -280,6 +293,12 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::post('request-store','IndividualServicesController@store_request')->name('request-store');
 
     Route::delete('request-delete/{id}','IndividualServicesController@delete_request')->name('request-delete');
+
+    Route::get('get-dependent','IndividualServicesController@index')->name('get-dependent');
+
+    Route::get('create-dependent','IndividualServicesController@index')->name('create-dependent');
+
+
 
     /** All security routes */
 

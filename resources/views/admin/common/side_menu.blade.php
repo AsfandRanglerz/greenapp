@@ -10,6 +10,10 @@
                 <a href="{{ url('/admin/dashboard') }}" class="nav-link"><i
                         class="fa fa-tachometer-alt"></i><span>Dashboard</span></a>
             </li>
+            <li class="dropdown {{ request()->is('admin/subadmin*') ? 'active' : '' }}">
+                <a href="{{ route('get-sub-admins') }}" class="nav-link"><i
+                        class="fa fa-users"></i><span>Sub Admin</span></a>
+            </li>
             <li class="dropdown {{ request()->is('admin/company*') ? 'active' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Companies</span></a>
@@ -41,7 +45,7 @@
                 </a>
             </li>
 
-            
+
             @php
                 $response_count = App\Models\IndividualService::where('seen_by_admin', '0')->count();
             @endphp
