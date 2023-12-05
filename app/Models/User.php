@@ -59,6 +59,12 @@ class User extends Authenticatable
         return $this->hasMany(IndividualService::class,'user_id');
     }
 
+
+    public function getAssignedPermission()
+    {
+        return $this->hasMany(Permission_component::class,'user_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

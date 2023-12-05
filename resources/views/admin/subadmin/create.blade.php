@@ -53,6 +53,16 @@
                                     </div>
 
                                     <div class="row mx-0 px-4">
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
+                                            <div class="form-group mb-2">
+                                                <label>Password<span class="required"> *</span></label>
+                                                <input type="text" placeholder="Enter Password" name="password"
+                                                    id="password" value="{{ old('password') }}" class="form-control" />
+                                                @error('password')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Image<span class="required"> *</span></label>
@@ -63,7 +73,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-2">
+                                        {{-- <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2 position-relative">
                                                 <label class="d-flex justify-content-between align-items-center"><span>Permissions<span class="required" >*</span></span>
                                                 </label>
@@ -73,43 +83,23 @@
                                                 </span>
                                                 </div>
                                                 <div class="permission-container d-none py-2 px-3">
+                                                    @foreach ($permissions as $permission)
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <input class="form-check-input" type="checkbox" value="{{$permission->id}}" id="">
                                                         <label class="form-check-label" for="flexCheckDefault">
-                                                          Default checkbox
+                                                          {{$permission->name}}
                                                         </label>
-
                                                     </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                          Default checkbox
-                                                        </label>
-
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                          Default checkbox
-                                                        </label>
-
-                                                    </div>
-                                                    <div class="form-check mb-0">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                          Default checkbox
-                                                        </label>
-
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                     <div class="card-footer text-center row">
                                         <div class="col">
                                             <button type="submit" class="btn btn-success mr-1 btn-bg"
-                                                id="submit">Save</button>
+                                                id="submit">Add</button>
                                         </div>
                                     </div>
                                 </div>

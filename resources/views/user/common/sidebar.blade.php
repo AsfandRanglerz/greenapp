@@ -86,6 +86,22 @@
             </li>
             @endif
 
+            @if(Auth::guard('web')->user()->emp_type = 'self')
+            {{-- @php
+            $response_count = App\Models\IndividualService::whereNotNull('response')->where('seen_by_user','0')->count();
+        @endphp --}}
+
+            <li class="position-relative {{ request()->is('user/dependents*') ? 'active' : '' }}">
+                <a href="{{route('user.get-dependent')}}" class="sidebar-links"><span
+                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Dependents
+                        {{-- @if ($response_count > 0)
+                        <span class="badge badge-danger text-white ml-1">
+                            {{$response_count}}
+                        </span>
+                        @endif --}}
+                    </a>
+            </li>
+            @endif
 
             @if(Auth::guard('web')->user()->emp_type = 'self')
             @php

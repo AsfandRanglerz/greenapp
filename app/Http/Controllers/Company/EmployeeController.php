@@ -102,6 +102,7 @@ class EmployeeController extends Controller
             'salary_detail' => $request->salary_detail,
             'company_id' => Auth::guard('company')->id(),
             'image' => $image,
+            'emp_type' =>'company',
 
         ]);
         $company = Company::find(Auth::guard('company')->id());

@@ -27,28 +27,26 @@ class AuthController extends Controller
     public function Login(Request $request)
 
     {
-
-
-
         $request->validate([
-
             'email'=>'required',
-
             'password'=>'required',
-
         ]);
-
-        $remember_me=($request->remember_me)?true:false;
-
-        if(!auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$remember_me)){
-
-            return redirect()->back()->with( 'error','Invalid Email and Password');
-
+        // $remember_me=($request->remember_me)?true:false;
+        // if(!auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$remember_me)){
+        //     return redirect()->back()->with( 'error','Invalid Email and Password');
+        // }
+        if(auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password])){
+            return redirect('admin/dashboard');
+        }
+        if(auth()->guard('web')->attempt(['email'=>$request->email,'password'=>$request->password])){
+            return redirect('admin/dashboard');
+        }
+        else
+        {
+            return "failed to login.";
         }
 
 
-
-                return redirect('admin/dashboard');
 
     }
 

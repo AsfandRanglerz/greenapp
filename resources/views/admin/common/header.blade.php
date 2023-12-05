@@ -1,6 +1,6 @@
 <?php
 use App\Models\Note;
-$authId = Auth::guard('admin')->id();
+$authId = Auth::guard('admin')->id() || Auth::guard('web')->id();
 if ($authId) {
     // Check if the user is authenticated
     $data['note'] = Note::where('admin_id', $authId)->first();
@@ -29,9 +29,9 @@ if ($authId) {
             <span class="fa fa-edit text-success mr-2"></span>Notes
         </h5>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
-                class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                    src="{{ asset(Auth::guard('admin')->user()->image) }}" class="user-img-radious-style"> <span
-                    class="d-sm-none d-lg-inline-block"></span></a>
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                 {{-- <img alt="image"src="{{ asset(Auth::guard('admin')->user()->image ||  Auth::guard('web')->user()->image) }}" class="user-img-radious-style"> --}}
+                  <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Hello Admin</div>
                 <a href="{{ url('admin/profile') }}" class="dropdown-item has-icon"> <i class="far fa-user"></i> Profile

@@ -2,35 +2,115 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Permission_component;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
 
 class SubAdminController extends Controller
 {
     public function index()
     {
-        return view('admin.subadmin.index');
+        $permissions = Permission::all();
+        $sub_admins = User::where('emp_type','subadmin')->get();
+        foreach ($sub_admins as $sub) {
+            $permissions_subadmin = Permission_component::where('user_id', $sub->id)->get();
+            $sub->permissions = $permissions_subadmin;
+        }
+        return view('admin.subadmin.index',compact('sub_admins','permissions'));
     }
 
     public function create()
     {
+        $permissions = Permission::all();
         return view('admin.subadmin.create');
-
     }
 
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email|email',
+            'password' => 'required',
+        ]);
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/admin/assets/img/users', $filename);
+            $image = 'public/admin/assets/img/users/' . $filename;
+        } else {
+            $image = 'public/admin/assets/img/users/1675332882.jpg';
+        }
+        $password =  Hash::make($request->password);
+        $subAdmin = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password,
+            'image'=>$image,
+            'emp_type'=>'subadmin',
+        ]);
+        return redirect()->route('get-sub-admins')->with('success','Sub-Admin created successfully.');
+        // return $subAdmin;
+    }
+
+    public function add_permission(Request $request,$id)
+    {
+         $permissions = $request->input('permission');
+         foreach($permissions as $permission_id)
+         {
+            $add_permissions = Permission_component::create([
+                'user_id'=>$id,
+                'permission_id'=>$permission_id,
+            ]);
+         }
+        //  return $add_permissions;
+         if(!$add_permissions)
+         {
+            return redirect()->back()->with('error', 'An error occurred while adding permissions.');
+         }
+         else
+         {
+            return redirect()->route('get-sub-admins')->with('success','Permissions assign successfully.');
+         }
 
     }
 
+    public function update_permission(Request $request,$id)
+    {
+        $user = User::where('emp_type','subadmin')->find($id);
+        if (!$user) {
+            return response()->json(['success' => false, 'message' => 'User not found'], 404);
+        }
+        $permissions = $request->input('permission');
+
+          $updatedPermissions=Permission_component::where('user_id',$id)->delete();
+
+          foreach($permissions as $permission_id)
+         {
+            $add_permissions = Permission_component::create([
+                'user_id'=>$id,
+                'permission_id'=>$permission_id,
+            ]);
+         }
+
+        $user->syncPermissions($permissions);
+
+        return redirect()->route('get-sub-admins')->with('success','Permissions updated successfully.');
+
+    }
+
+
     public function update()
     {
-
     }
 
     public function delete()
     {
-
     }
 }
