@@ -11,8 +11,9 @@
         <div class="dashboard-front-pg">
                 <h4>Dependents</h4>
             <p><span class="fa fa-solid fa-users"></span> - Dependents</p>
-            <form action="{{ route('user.document.store') }}" method="POST" enctype="multipart/form-data">
-
+            {{-- @dd(auth()->user()->id); --}}
+            <form action="{{route('user.add-dependent',auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                 <div class="col-lg-9 mx-auto py-3 rounded light-box-shadow">
                     <div
                         class="form-group d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
@@ -23,7 +24,7 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
                         <div class="form-group col-xl-4 col-lg-6 col-md-4">
                             <label>Select Dependent<span class="required"> *</span></label>
-                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
+                            <select id="selectDocument" name="dependent_type[]" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
                                 <option value="" disabled selected>Select Dependent</option>
                                 <option value="Father">Father</option>
@@ -35,7 +36,7 @@
                         </div>
                         <div class="form-group col-xl-4 col-lg-6 col-md-4">
                         <label>Select Request<span class="required"> *</span></label>
-                            <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
+                            <select id="selectDocument" name="request_type[]" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
                                 <option value="" disabled selected>Select Request</option>
                                 <option value="Personal Photo">Parents</option>
@@ -54,9 +55,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-12">
-                            <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span
-                             class="fa fa-trash mr-2"></span>Remove</a>
+
+                        <div class="form-group col-xl-4 col-lg-6 col-md-4">
+                            <label>Issue Date</label>
+                            <div class="input-group">
+                                <input type="date" name="issue_date[]" placeholder="dd.mm.yyyy"
+                                    value="{{ old('issue_date[]') }}" class="form-control issue-date">
+                            </div>
+                            @error('issue_date')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-xl-4 col-lg-6 col-md-4">
+                            <label>Expiry Date</label>
+                            <div class="input-group">
+                                <input type="date" name="expiry_date[]" placeholder="dd.mm.yyyy"
+                                    value="{{ old('expiry_date[]') }}" class="form-control expire-date">
+                            </div>
+                            @error('expiry_date')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">

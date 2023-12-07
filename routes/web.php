@@ -300,9 +300,19 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::delete('request-delete/{id}','IndividualServicesController@delete_request')->name('request-delete');
 
+    // Dependents routes
+
     Route::get('get-dependent','DependentController@index')->name('get-dependent');
 
     Route::get('create-dependent','DependentController@create')->name('create-dependent');
+
+    Route::post('add-dependent/{id}','DependentController@store')->name('add-dependent');
+
+    Route::get('edit-dependent/{id}','DependentController@edit')->name('edit-dependent');
+
+    Route::post('update-dependent/{id}','DependentController@update')->name('update-dependent');
+
+    Route::delete('delete-dependent/{id}','DependentController@delete')->name('delete-dependent');
 
 
 

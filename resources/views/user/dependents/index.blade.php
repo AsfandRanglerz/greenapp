@@ -18,19 +18,81 @@
         </div>
         <div class="p-4 rounded light-box-shadow">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped mb-0 dependants text-center">
+                <table class="table table-bordered table-striped mb-0 employees text-center">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Dependent type</th>
                             <th scope="col">Request type</th>
                             <th scope="col">File</th>
+                            <th scope="col">Issue Date</th>
+                            <th scope="col">Expiry Date</th>
                             <th scope="col">Response</th>
                             <th scope="col">Comment</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="employees-body"></tbody>
+                    <tbody class="employees-body">
+                        @foreach ($dependents as $dependent)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+
+                            <td>{{ $dependent->dependent_type }}</td>
+                            <td class="word_wrap">{{ $dependent->request_type }}</td>
+                            @php
+                            $file_name = $dependent->file;
+                            $ext = explode('.', $file_name);
+                        @endphp
+                        <td>
+                            <a target="_black" href="{{ asset('' . '/' . $dependent->file) }}">
+                                @if ($ext[1] == 'pdf')
+                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                        style="height: 50px;width:50px">
+                                @elseif($ext[1] == 'docx')
+                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                        style="height: 50px;width:50px">
+                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                        style="height: 50px;width:50px">
+                                @elseif($ext[1] == 'pptx')
+                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                        style="height: 50px;width:50px">
+                                @else
+                                    <img src="{{ asset('' . '/' . $dependent->file) }}"
+                                        style="height: 50px;width:50px">
+                                @endif
+                            </a>
+                        </td>
+                            <td>{{ $dependent->issue_date }}</td>
+                            <td>{{ $dependent->expiry_date }}</td>
+
+                            <td>
+                                @if(!$dependent->response)
+                                    <span class="text-danger">Waiting for admin response.</span>
+                                @else
+                                    {{ $dependent->response }}
+                               @endif
+                            </td>
+
+                            <td>@if(!$dependent->comment)
+                                <span class="text-danger">Waiting for admin response.</span>
+                            @else
+                                {{$dependent->comment}}
+                           @endif</td>
+
+                            <td>
+                                <a href="{{ route('user.edit-dependent', $dependent->id) }}" class="mx-2"><span
+                                    class="fa fa-edit text-info"></span></a>
+                            <form class="d-inline" method="post"
+                                action="{{ route('user.delete-dependent', $dependent->id) }}">
+                                @csrf
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="form-btn" type="submit"><span
+                                        class="fa fa-trash text-danger show_confirm"></span></button>
+                            </form>
+                            </td>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -60,6 +122,18 @@
                 $(this).closest('.doc-fields').remove();
             });
         });
+
+    </script>
+
+    <script>
+         /*datatable search*/
+         $('.employees').DataTable({
+                "pageLength": 10,
+                aaSorting: [
+                    [0, "asc"]
+                ]
+            });
+            /*datatable search*/
     </script>
 
 <!-- <script type="text/javascript">

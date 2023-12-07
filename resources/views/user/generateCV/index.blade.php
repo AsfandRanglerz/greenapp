@@ -14,7 +14,7 @@
                             <img src="{{ asset($employee->image) }}" alt="" class="img-fluid cv_dp_inner"/>
                         </div>
                         <div class="my-sm-3 my-2">
-                            <h5 class="mb-0">Mr.{{ $employee->name }}</h5>
+                            <h5 class="mb-0">{{ $employee->name }}</h5>
                         </div>
                     </div>
                     <div class="mt-sm-5 mt-2 ml-5">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
 
-                        <h5 class="CV_info py-2 px-3 text-white mt-2">Eduction Details</h5>
+                        <h5 class="CV_info py-2 px-3 text-white mt-2">Education Details</h5>
                         <div class="CV_border">
                             <div class="row mx-0 px-sm-0 px-3 py-2">
                                 <div class="col-lg-12">
