@@ -59,7 +59,10 @@ class User extends Authenticatable
         return $this->hasMany(IndividualService::class,'user_id');
     }
 
-
+    public function dependent()
+    {
+        return $this->hasMany(IndividualDependent::class,'user_id');
+    }
     public function getAssignedPermission()
     {
         return $this->hasMany(Permission_component::class,'user_id');

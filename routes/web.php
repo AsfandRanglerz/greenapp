@@ -70,7 +70,7 @@ Route::get('/admin-delete-company/{id}', [CompanyController::class, 'company_del
 
 Route::prefix('admin')->middleware('admin')->group(function () {
 
-    Route::get('dashboard', [AdminController::class, 'getdashboard']);
+    Route::get('dashboard', [AdminController::class, 'getdashboard'])->middleware('permission:Dashboard');
 
     Route::get('profile', [AdminController::class, 'getProfile']);
 
@@ -80,99 +80,101 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::post('update-password', [AdminController::class, 'profile_change_password'])->name('profile.change-password');
 
-    Route::get('Privacy-policy', [SecurityController::class, 'PrivacyPolicy']);
+    Route::get('Privacy-policy', [SecurityController::class, 'PrivacyPolicy'])->middleware('permission:Privacy Policy');
 
-    Route::get('privacy-policy-edit', [SecurityController::class, 'PrivacyPolicyEdit']);
+    Route::get('privacy-policy-edit', [SecurityController::class, 'PrivacyPolicyEdit'])->middleware('permission:Privacy Policy');
 
-    Route::post('privacy-policy-update', [SecurityController::class, 'PrivacyPolicyUpdate']);
+    Route::post('privacy-policy-update', [SecurityController::class, 'PrivacyPolicyUpdate'])->middleware('permission:Privacy Policy');
 
-    Route::get('term-condition', [SecurityController::class, 'TermCondition']);
+    Route::get('term-condition', [SecurityController::class, 'TermCondition'])->middleware('permission:Terms & Conditions');
 
-    Route::get('term-condition-edit', [SecurityController::class, 'TermConditionEdit']);
+    Route::get('term-condition-edit', [SecurityController::class, 'TermConditionEdit'])->middleware('permission:Terms & Conditions');
 
-    Route::post('term-condition-update', [SecurityController::class, 'TermConditionUpdate']);
+    Route::post('term-condition-update', [SecurityController::class, 'TermConditionUpdate'])->middleware('permission:Terms & Conditions');
 
     Route::get('logout', [AdminController::class, 'logout']);
 
     //Sub-Admin routes
-    Route::get('get-sub-admins', [SubAdminController::class, 'index'])->name('get-sub-admins');
+    Route::get('get-sub-admins', [SubAdminController::class, 'index'])->name('get-sub-admins')->middleware('permission:Sub Admin');
 
-    Route::get('create-sub-admin', [SubAdminController::class, 'create'])->name('create-sub-admin');
+    Route::get('create-sub-admin', [SubAdminController::class, 'create'])->name('create-sub-admin')->middleware('permission:Sub Admin');
 
-    Route::post('add-sub-admin', [SubAdminController::class, 'store'])->name('add-sub-admin');
+    Route::post('add-sub-admin', [SubAdminController::class, 'store'])->name('add-sub-admin')->middleware('permission:Sub Admin');
 
-    Route::post('add-sub-admin-permission/{id}', [SubAdminController::class, 'add_permission'])->name('add-sub-admin-permission');
+    Route::post('add-sub-admin-permission/{id}', [SubAdminController::class, 'add_permission'])->name('add-sub-admin-permission')->middleware('permission:Sub Admin');
 
-    Route::get('update-sub-admin-permission/{id}', [SubAdminController::class, 'update_permission'])->name('update-sub-admin-permission');
+    Route::get('update-sub-admin-permission/{id}', [SubAdminController::class, 'update_permission'])->name('update-sub-admin-permission')->middleware('permission:Sub Admin');
 
-    Route::post('update-sub-admin/{id}', [SubAdminController::class, 'update'])->name('update-sub-admin');
+    Route::get('edit-sub-admin/{id}', [SubAdminController::class, 'edit'])->name('edit-sub-admin')->middleware('permission:Sub Admin');
 
-    Route::delete('delete-sub-admin/{id}', [SubAdminController::class, 'delete'])->name('delete-sub-admin');
+    Route::post('update-sub-admin/{id}', [SubAdminController::class, 'update'])->name('update-sub-admin')->middleware('permission:Sub Admin');
+
+    Route::delete('delete-sub-admin/{id}', [SubAdminController::class, 'delete'])->name('delete-sub-admin')->middleware('permission:Sub Admin');
 
 
     // Notifications Routes
-    Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index');
+    Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index')->middleware('permission:Notifications');
 
-    Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification');
+    Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification')->middleware('permission:Notifications');
 
     // Services Response
-    Route::get('get-services-requests', [ServicesResponseController::class, 'get_services_requests'])->name('get-services-requests');
+    Route::get('get-services-requests', [ServicesResponseController::class, 'get_services_requests'])->name('get-services-requests')->middleware('permission:Services');
 
-    Route::get('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests');
+    Route::get('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests')->middleware('permission:Services');
 
     /** Company routes  */
 
-    Route::resource('company', CompanyController::class);
+    Route::resource('company', CompanyController::class)->middleware('permission:Companies');
 
-    Route::get('company-view', [CompanyController::class, 'view']);
+    Route::get('company-view', [CompanyController::class, 'view'])->middleware('permission:Companies');
 
-    Route::get('company-document-index/{id}', [CompanyDocumentController::class, 'index'])->name('company-document.index');
+    Route::get('company-document-index/{id}', [CompanyDocumentController::class, 'index'])->name('company-document.index')->middleware('permission:Companies');
 
-    Route::get('company-document-create/{id}', [CompanyDocumentController::class, 'create'])->name('company-document.create');
+    Route::get('company-document-create/{id}', [CompanyDocumentController::class, 'create'])->name('company-document.create')->middleware('permission:Companies');
 
-    Route::post('company-document-store/{id}', [CompanyDocumentController::class, 'store'])->name('company-document.store');
+    Route::post('company-document-store/{id}', [CompanyDocumentController::class, 'store'])->name('company-document.store')->middleware('permission:Companies');
 
-    Route::get('company-document-destroy/{id}', [CompanyDocumentController::class, 'destroy'])->name('company-document.destroy');
+    Route::get('company-document-destroy/{id}', [CompanyDocumentController::class, 'destroy'])->name('company-document.destroy')->middleware('permission:Companies');
 
-    Route::get('company-document-edit/{id}', [CompanyDocumentController::class, 'edit'])->name('company-document.edit');
+    Route::get('company-document-edit/{id}', [CompanyDocumentController::class, 'edit'])->name('company-document.edit')->middleware('permission:Companies');
 
-    Route::post('company-document-update/{id}', [CompanyDocumentController::class, 'update'])->name('company-document.update');
+    Route::post('company-document-update/{id}', [CompanyDocumentController::class, 'update'])->name('company-document.update')->middleware('permission:Companies');
 
-    Route::get('company-document-download/{id}', [CompanyDocumentController::class, 'download'])->name('company-document.download');
+    Route::get('company-document-download/{id}', [CompanyDocumentController::class, 'download'])->name('company-document.download')->middleware('permission:Companies');
 
 
 
     /** User routes  */
 
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->middleware('permission:Employees');
 
-    Route::get('employee-view', [UserController::class, 'view']);
+    Route::get('employee-view', [UserController::class, 'view'])->middleware('permission:Employees');
 
-    Route::get('user-document-index/{id}', [UserDocumentController::class, 'index'])->name('user-document.index');
+    Route::get('user-document-index/{id}', [UserDocumentController::class, 'index'])->name('user-document.index')->middleware('permission:Employees');
 
-    Route::get('user-document-create/{id}', [UserDocumentController::class, 'create'])->name('user-document.create');
+    Route::get('user-document-create/{id}', [UserDocumentController::class, 'create'])->name('user-document.create')->middleware('permission:Employees');
 
-    Route::post('user-document-store/{id}', [UserDocumentController::class, 'store'])->name('user-document.store');
+    Route::post('user-document-store/{id}', [UserDocumentController::class, 'store'])->name('user-document.store')->middleware('permission:Employees');
 
-    Route::get('user-document-destroy/{id}', [UserDocumentController::class, 'destroy'])->name('user-document.destroy');
+    Route::get('user-document-destroy/{id}', [UserDocumentController::class, 'destroy'])->name('user-document.destroy')->middleware('permission:Employees');
 
-    Route::get('user-document-edit/{id}', [UserDocumentController::class, 'edit'])->name('user-document.edit');
+    Route::get('user-document-edit/{id}', [UserDocumentController::class, 'edit'])->name('user-document.edit')->middleware('permission:Employees');
 
-    Route::post('user-document-update/{id}', [UserDocumentController::class, 'update'])->name('user-document.update');
+    Route::post('user-document-update/{id}', [UserDocumentController::class, 'update'])->name('user-document.update')->middleware('permission:Employees');
 
-    Route::resource('faq', FaqController::class);
+    Route::resource('faq', FaqController::class)->middleware('permission:Employees');
 
-    Route::resource('inquiry', InquiryController::class);
+    Route::resource('inquiry', InquiryController::class)->middleware('permission:Employees');
 
-    Route::resource('selfemployee', SelfUserController::class);
+    Route::resource('selfemployee', SelfUserController::class)->middleware('permission:Individuals');
 
-    Route::get('self-employee-view', [SelfUserController::class, 'view']);
+    Route::get('self-employee-view', [SelfUserController::class, 'view'])->middleware('permission:Individuals');
 
-    Route::resource('about-us', AboutUsController::class);
+    Route::resource('about-us', AboutUsController::class)->middleware('permission:About us');
 
-    Route::resource('privacy-policy', PrivacyPolicyController::class);
+    Route::resource('privacy-policy', PrivacyPolicyController::class)->middleware('permission:Privacy Policy');
 
-    Route::resource('term-condition', TermConditionController::class);
+    Route::resource('term-condition', TermConditionController::class)->middleware('permission:Terms & Conditions');
 
 });
 

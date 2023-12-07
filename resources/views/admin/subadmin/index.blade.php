@@ -65,8 +65,8 @@
                                                 <td class="">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <a style="margin-right:10px" class="btn p-0 btn-info"
-                                                            href="">Edit</a>
-                                                        <form method="post" action="">
+                                                            href="{{route('edit-sub-admin',$sub_admin->id)}}">Edit</a>
+                                                        <form method="post" action="{{route('delete-sub-admin',$sub_admin->id)}}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -96,8 +96,6 @@
             aria-labelledby="notesModelLabel" aria-hidden="true">
             <form action="{{ route('add-sub-admin-permission', $sub_admin->id) }}" method="POST">
                 @csrf
-
-
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -114,7 +112,7 @@
                                 <div class="form-check">
                                     <input name='permission[]' class="form-check-label" type="checkbox"
                                         value="{{ $permission->id }}" id="create-{{$sub_admin->id}}-{{$permission->id}}"
-                                        required>
+                                        >
                                     <label class="form-check-label" for="create-{{$sub_admin->id}}-{{$permission->id}}">
                                         {{ $permission->name }}
                                     </label>

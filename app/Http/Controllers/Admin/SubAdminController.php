@@ -105,12 +105,55 @@ class SubAdminController extends Controller
 
     }
 
-
-    public function update()
+    public function edit($id)
     {
+        $subadmin = User::where('emp_type','subadmin')->find($id);
+        return view('admin.subadmin.edit',compact('subadmin'));
     }
 
-    public function delete()
+    public function update(Request $request , $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            // 'password' => 'required',
+        ]);
+        $user = User::where('emp_type','subadmin')->find($id);
+        if ($request->hasfile('image')) {
+            $destination = 'public/admin/assets/img/users' . $user->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/admin/assets/img/users', $filename);
+            $image = 'public/admin/assets/img/users/' . $filename;
+        } else {
+            $image = 'public/admin/assets/img/users/1675332882.jpg';
+        }
+        // $password =  Hash::make($request->password);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            // 'password' => $password,
+            'image'=>$image,
+            // 'emp_type'=>'subadmin',
+        ]);
+        return redirect()->route('get-sub-admins')->with('success','Sub-Admin updated successfully.');
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('emp_type','subadmin')->first();
+        if(!$user)
+        {
+            return redirect()->route('get-sub-admins')->with('success','Admin not found.');
+        }
+        else{
+            User::destroy($id);
+            return redirect()->route('get-sub-admins')->with('success','Admin deleted successfully.');
+        }
+
     }
 }

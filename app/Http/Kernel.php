@@ -48,6 +48,9 @@ class Kernel extends HttpKernel
         'admin'=>[
             \App\Http\Middleware\admin::class,
         ],
+        'subadmin'=>[
+            \App\Http\Middleware\SubAdminMiddleware::class,
+        ],
     ];
 
     /**

@@ -38,8 +38,10 @@
             <li class="dropdown {{ request()->is('admin/company*') ? 'active' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Companies</span></a>
+
             </li>
             @elseif(auth()->guard('admin')->check())
+
             <li class="dropdown {{ request()->is('admin/company*') ? 'active' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Companies</span></a>

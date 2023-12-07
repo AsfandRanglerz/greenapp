@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class admin
 {
@@ -15,12 +17,16 @@ class admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
 
-        if (auth::guard('admin')->check() || auth::guard('web')->check()) {
+        if (auth::guard('admin')->check() || auth::guard('web')->check() ) {
 
-            return $next($request);
+
+
+                return $next($request);
+
+
         } else {
 
             return redirect('admin-login');
