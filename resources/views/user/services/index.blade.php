@@ -25,9 +25,10 @@
                             <th scope="col">#</th>
                             <th scope="col">Request Type</th>
                             <th scope="col">Comment</th>
-                            <th scope="col">Response</th>
-                            <th scope="col">Status</th>
                             <th scope="col">File</th>
+                            <th scope="col">Admin Comment</th>
+                            <th scope="col">Admin Attachement</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -37,30 +38,6 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $req->req_type }}</td>
                                 <td class="word_wrap">{{ $req->comment }}</td>
-                                <td class="word_wrap">
-                                    @if (!$req->response)
-                                        <span class="text-danger">Waiting for admin response!</span>
-                                    @else
-                                        {{ $req->response }}
-                                    @endif
-                                </td>
-                                <td class="word_wrap">
-                                    @if ($req->status == 'Pending' || $req->status == 'Upload your document')
-                                        <div class="badge badge-shadow py-2 btn-warning text-black">Pending</div>
-                                    @elseif ($req->status == 'Returned')
-                                        <div class="badge badge-success badge-shadow py-2">Returned</div>
-                                    @elseif ($req->status == 'Approved')
-                                        <div class="badge badge-success badge-shadow py-2">Approved</div>
-                                    @elseif ($req->status == 'Completed')
-                                        <div class="badge badge-success badge-shadow py-2">Completed</div>
-                                    @elseif ($req->status == 'Hold')
-                                        <div class="badge badge-success badge-shadow py-2">Hold</div>
-                                    @elseif ($req->status == 'Skip')
-                                        <div class="badge badge-success badge-shadow py-2">Skip</div>
-                                    @else
-                                        <div class="badge badge-danger badge-shadow py-2">Rejected</div>
-                                    @endif
-                                </td>
 
                                 @if ($req->file)
                                     @php
@@ -90,6 +67,60 @@
                                 @else
                                     <td>N/A</td>
                                 @endif
+                                <td class="word_wrap">
+                                    @if (!$req->reason)
+                                        <span class="text-danger">Waiting for admin response!</span>
+                                    @else
+                                        {{ $req->reason }}
+                                    @endif
+                                </td>
+
+                                @if ($req->admin_file)
+                                @php
+                                    $file_name = $req->file;
+                                    $ext = explode('.', $file_name);
+                                @endphp
+                                <td>
+                                    <a target="_black" href="{{ asset('' . '/' . $req->file) }}">
+                                        @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'docx')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @else
+                                            <img src="{{ asset('' . '/' . $req->file) }}"
+                                                style="height: 50px;width:50px">
+                                        @endif
+                                    </a>
+                                </td>
+                            @else
+                                <td>N/A</td>
+                            @endif
+
+                            <td class="word_wrap">
+                                @if ($req->status == 'Pending' || $req->status == 'Upload your document')
+                                    <div class="badge badge-shadow py-2 btn-warning text-black">Pending</div>
+                                @elseif ($req->status == 'Returned')
+                                    <div class="badge badge-success badge-shadow py-2">Returned</div>
+                                @elseif ($req->status == 'Approved')
+                                    <div class="badge badge-success badge-shadow py-2">Approved</div>
+                                @elseif ($req->status == 'Completed')
+                                    <div class="badge badge-success badge-shadow py-2">Completed</div>
+                                @elseif ($req->status == 'Hold')
+                                    <div class="badge badge-success badge-shadow py-2">Hold</div>
+                                @elseif ($req->status == 'Skip')
+                                    <div class="badge badge-success badge-shadow py-2">Skip</div>
+                                @else
+                                    <div class="badge badge-danger badge-shadow py-2">Rejected</div>
+                                @endif
+                            </td>
 
                                 <td>
                                     <form class="d-inline" method="post"

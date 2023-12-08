@@ -22,7 +22,7 @@ class GenerateCVController extends Controller
         $employee =  User::find($authId);
         // return $data;
         // $documents = UserDocument::all();
-        $document =  UserDocument::with('user')->whereIn('doc_type',['Passport','Visit Visa'])->where('user_id',$authId)->get();
+        $document =  UserDocument::with('user')->whereIn('doc_type',['Passport','Visit Visa','Residence Visa'])->where('user_id',$authId)->get();
         return view ('user.generateCV.index',compact('employee','document'));
     }
 

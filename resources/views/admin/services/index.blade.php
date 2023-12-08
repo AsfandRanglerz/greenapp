@@ -10,6 +10,11 @@
             border-radius: 9px;
             box-shadow: 0 2px 6px #82d3f8;
         }
+
+        .textarea-content textarea:focus {
+            outline: 2px solid #108d0cfa;
+            border-radius: 4px;
+        }
     </style>
     <div class="main-content" style="min-height: 562px;">
         <section class="section">
@@ -38,7 +43,7 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="content-parent">
                                         @foreach ($service_requests as $req)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -46,43 +51,61 @@
                                                 <td>{{ $req->user->email }}</td>
                                                 <td>{{ $req->req_type }}</td>
                                                 <td class="word_wrap">{{ $req->comment }}</td>
-                                                <td class="word_wrap">
-                                                    <form action="{{route('response-against-requests',$req->id)}}" method="PUT" class='d-flex'>
-                                                        @csrf
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group mb-2">
-                                                            <select name="response" class="form-control" id="" >
-                                                                <option value="" hidden>Pending</option>
-                                                                @if (!$req->file)
-                                                                <option value="Upload your document">Upload your document</option>
-                                                                @endif
-                                                                <option value="Returned">Returned</option>
-                                                                <option value="Approved">Approved</option>
-                                                                <option value="Completed">Completed</option>
-                                                                <option value="Rejected">Rejected</option>
-                                                            </select>
+                                                <form action="{{ route('response-against-requests', $req->id) }}"
+                                                    method="POST" enctype="multipart/form-data" class='d-flex'>
+                                                    @csrf
+                                                    <td class="word_wrap">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group mb-2">
+                                                                <select name="response" style="min-width: 200px"
+                                                                    class="form-control select-content" id="">
+                                                                    <option value="" hidden>Pending</option>
+                                                                    @if (!$req->file)
+                                                                        <option value="Upload your document">Upload your
+                                                                            document</option>
+                                                                    @endif
+                                                                    <option value="Returned">Returned</option>
+                                                                    <option value="Approved">Approved</option>
+                                                                    <option value="Completed">Completed</option>
+                                                                    <option value="Rejected">Rejected</option>
+                                                                </select>
+
+                                                                <div class="d-none file-content" style="width: 300px">
+                                                                    <div class="mt-3">
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control"
+                                                                                name="file" style="line-height: 1">
+                                                                            <div class="input-group-prepend">
+                                                                                <small class="input-group-text"><span
+                                                                                        class="fa fa-paperclip"></span></small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-3 d-none textarea-content">
+                                                                    <textarea name="reason" id="" cols="40" rows="2" placeholder="Enter Reason" class='pt-1 pl-1'></textarea>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="word_wrap">
-                                                    @if ($req->status == 'Pending' || $req->status == 'Upload your document')
-                                                        <div class="badge badge-shadow btn-warning text-black">Pending
-                                                        </div>
-                                                    @elseif ($req->status == 'Returned')
-                                                        <div class="badge badge-success badge-shadow">Returned</div>
-                                                    @elseif ($req->status == 'Approved')
-                                                        <div class="badge badge-success badge-shadow">Approved</div>
-                                                    @elseif ($req->status == 'Completed')
-                                                        <div class="badge badge-success badge-shadow">Completed</div>
-                                                    @elseif ($req->status == 'Hold')
-                                                        <div class="badge badge-success badge-shadow">Hold</div>
-                                                    @elseif ($req->status == 'Skip')
-                                                        <div class="badge badge-success badge-shadow">Skip</div>
-                                                    @else
-                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
-                                                    @endif
-                                                </td>
-                                                @if ($req->file)
+                                                    </td>
+                                                    <td class="word_wrap">
+                                                        @if ($req->status == 'Pending' || $req->status == 'Upload your document')
+                                                            <div class="badge badge-shadow btn-warning text-black">Pending
+                                                            </div>
+                                                        @elseif ($req->status == 'Returned')
+                                                            <div class="badge badge-success badge-shadow">Returned</div>
+                                                        @elseif ($req->status == 'Approved')
+                                                            <div class="badge badge-success badge-shadow">Approved</div>
+                                                        @elseif ($req->status == 'Completed')
+                                                            <div class="badge badge-success badge-shadow">Completed</div>
+                                                        @elseif ($req->status == 'Hold')
+                                                            <div class="badge badge-success badge-shadow">Hold</div>
+                                                        @elseif ($req->status == 'Skip')
+                                                            <div class="badge badge-success badge-shadow">Skip</div>
+                                                        @else
+                                                            <div class="badge badge-danger badge-shadow">Rejected</div>
+                                                        @endif
+                                                    </td>
                                                     @php
                                                         $file_name = $req->file;
                                                         $ext = explode('.', $file_name);
@@ -109,26 +132,17 @@
                                                             </a>
                                                         @endif
                                                     </td>
-                                                @else
-                                                    <td class="center">
-                                                        <label for="">Upload</label>
-                                                        <input type="file" placeholder="upload">
+                                                    <td>
+                                                        <div
+                                                            style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                            <button type="submit"
+                                                                class="btn btn-success ml-1 form-control">Send</button>
+                                                        </div>
                                                     </td>
-                                                @endif
-                                                <td
-                                                style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-                                                <button type="submit" class="btn btn-success ml-1">Send</button>
-                                            </form>
-
-                                                <form method="post"
-                                                    action="{{ route('user.destroy', $req->id) }}">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                        data-toggle="tooltip">Delete</button>
                                                 </form>
-                                            </td>
+                                            </tr>
                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -162,7 +176,25 @@
     <script>
         $(document).ready(function() {
             $('#table_id_events').DataTable();
+            // Response functionalit
         });
+        $('.content-parent').on('change','.select-content', function() {
+    $('.file-content').each(function() {
+        $(this).addClass('d-none');
+    });
+
+    $('.textarea-content').each(function() {
+        $(this).addClass('d-none');
+    });
+    if ($(this).val() == 'Rejected' || $(this).val() == 'Returned') {
+        $(this).siblings('.file-content').removeClass('d-none');
+        $(this).siblings('.textarea-content').removeClass('d-none');
+    } else if ($(this).val() == 'Approved' || $(this).val() == 'Completed') {
+        $(this).siblings('.file-content').removeClass('d-none');
+        $(this).siblings('.textarea-content').addClass('d-none');
+    }
+});
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">

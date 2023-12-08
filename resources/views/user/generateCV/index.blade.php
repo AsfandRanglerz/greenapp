@@ -25,40 +25,7 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-lg-3 pr-lg-0 mb-lg-0 mb-2">
-                        <h5 class="CV_info py-2 px-3 text-white">Skills</h5>
-                        <div class="CV_border">
-                            <div class="row mx-0 px-sm-0 px-3 py-2">
-                                <div class="col-lg-12">
-                                    <div class="form-group align-items-center row mb-0 mx-0">
-                                        {{-- <p for="fullName" class="col-sm-1 col-form-label">{{ $employee->skills }}</p> --}}
-                                        <ol class="pl-3 mb-0">
 
-                         @php
-                            //  $skills=explode(',',$employee->skills);
-                             $skills=explode(',',$employee->skills);
-                         @endphp
-                         @foreach ( $skills as $skill)
-                         <li>{{$skill}}</li>
-                         @endforeach
-
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="CV_info py-2 px-3 text-white mt-2">Driving License</h5>
-                        <div class="CV_border">
-                            <div class="row mx-0 px-sm-0 px-3 py-2">
-                                <div class="col-lg-12">
-                                    <div class="form-group align-items-center row mb-0">
-                                        <label for="fullName"
-                                            class="col-sm-5 col-12 col-form-label">{{ $employee->license }}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-9">
                         <h5 class="CV_info py-2 px-3 text-white">Personal Details</h5>
                         <div class="CV_border">
@@ -197,9 +164,64 @@
                                                         </div>
                                                     </div>
                                                 @endif
+
+                                                @if ($documents->doc_type == 'Residence Visa')
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email"
+                                                            class="col-sm-7 col-12 col-form-label">Residence Visa
+                                                            Issue Date:</label>
+                                                        <p class="mb-0">{{ $documents->doc_type == 'Residence Visa' ? $documents->issue_date : '' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email"
+                                                            class="col-sm-7 col-12 col-form-label">Residence Visa
+                                                            Expiry Date:</label>
+                                                        <p class="mb-0">{{ $documents->doc_type == 'Residence Visa' ? $documents->expiry_date : '' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            @endif
                                             </div>
                                         @endforeach
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 pr-lg-0 mb-lg-0 mb-2">
+                        <h5 class="CV_info py-2 px-3 text-white">Skills</h5>
+                        <div class="CV_border">
+                            <div class="row mx-0 px-sm-0 px-3 py-2">
+                                <div class="col-lg-12">
+                                    <div class="form-group align-items-center row mb-0 mx-0">
+                                        {{-- <p for="fullName" class="col-sm-1 col-form-label">{{ $employee->skills }}</p> --}}
+                                        <ol class="pl-3 mb-0">
+
+                         @php
+                            //  $skills=explode(',',$employee->skills);
+                             $skills=explode(',',$employee->skills);
+                         @endphp
+                         @foreach ( $skills as $skill)
+                         <li>{{$skill}}</li>
+                         @endforeach
+
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="CV_info py-2 px-3 text-white mt-2">Driving License</h5>
+                        <div class="CV_border">
+                            <div class="row mx-0 px-sm-0 px-3 py-2">
+                                <div class="col-lg-12">
+                                    <div class="form-group align-items-center row mb-0">
+                                        <label for="fullName"
+                                            class="col-sm-5 col-12 col-form-label">{{ $employee->license }}</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

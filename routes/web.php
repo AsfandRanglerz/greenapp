@@ -120,7 +120,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Services Response
     Route::get('get-services-requests', [ServicesResponseController::class, 'get_services_requests'])->name('get-services-requests')->middleware('permission:Services');
 
-    Route::get('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests')->middleware('permission:Services');
+    Route::post('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests')->middleware('permission:Services');
 
     /** Company routes  */
 

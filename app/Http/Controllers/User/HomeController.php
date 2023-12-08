@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Note;
 use App\Models\UserDocument;
+use App\Models\IndividualDependent;
+use App\Models\IndividualService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,8 @@ class HomeController extends Controller
         $authId = Auth::guard('web')->id();
        $data['user'] =  User::find($authId);
         $data['document'] = UserDocument::whereUser_id($authId)->count();
+        $data['dependent'] = IndividualDependent::whereUser_id($authId)->count();
+        $data['service'] = IndividualService::whereUser_id($authId)->count();
         return view('user.dashboard', $data);
     }
 

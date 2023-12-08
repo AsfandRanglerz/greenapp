@@ -61,16 +61,16 @@
                 </div>
 
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
-                    <a href="{{ route('user.') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
-                        <h5 class="text-center mb-4 theme-color">Documents</h5>
-                        <span class="block-badge">{{ $document }}</span>
+                    <a href="{{ route('user.get-services.index') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
+                        <h5 class="text-center mb-4 theme-color">Services</h5>
+                        <span class="block-badge">{{ $service }}</span>
                     </a>
                 </div>
 
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
-                    <a href="{{ route('user.document.index') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
-                        <h5 class="text-center mb-4 theme-color">Documents</h5>
-                        <span class="block-badge">{{ $document }}</span>
+                    <a href="{{ route('user.get-dependent') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
+                        <h5 class="text-center mb-4 theme-color">Dependents</h5>
+                        <span class="block-badge">{{ $dependent }}</span>
                     </a>
                 </div>
             </div>

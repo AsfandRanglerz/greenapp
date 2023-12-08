@@ -23,12 +23,12 @@
             auth()->guard('web')->user()->can('Sub Admin'))
             <li class="dropdown {{ request()->is('admin/subadmin*') ? 'active' : '' }}">
                 <a href="{{ route('get-sub-admins') }}" class="nav-link"><i
-                        class="fa fa-users"></i><span>Sub Admin</span></a>
+                        class="fa fa-users"></i><span>Sub Admins</span></a>
             </li>
             @elseif(auth()->guard('admin')->check())
             <li class="dropdown {{ request()->is('admin/subadmin*') ? 'active' : '' }}">
                 <a href="{{ route('get-sub-admins') }}" class="nav-link"><i
-                        class="fa fa-users"></i><span>Sub Admin</span></a>
+                        class="fa fa-users"></i><span>Sub Admins</span></a>
             </li>
             @endif
 

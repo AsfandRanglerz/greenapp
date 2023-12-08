@@ -33,7 +33,7 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Name<span class="required"> *</span></label>
-                                                <input type="text" placeholder="Company Name" name="name"
+                                                <input type="text" placeholder="Name" name="name"
                                                     id="name" value="{{ old('name') }}" class="form-control">
                                                 @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
