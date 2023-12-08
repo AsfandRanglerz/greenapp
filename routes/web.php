@@ -230,7 +230,6 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::get('employee-view', 'EmployeeController@view');
 
-
     Route::resource('employeeDocument', 'EmployeeDocumentController');
 
     Route::get('employeeDownload/{id}', 'EmployeeDocumentController@download')->name('employeeDocument.download');
@@ -242,6 +241,8 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
     Route::get('change-password', 'ProfileController@changePasswordIndex')->name('ChangePassword.index');
 
     Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
+
+    Route::get('employee-visa-process', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
 
 
 

@@ -17,6 +17,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Image</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Visa Process</th>
                             {{-- <th scope="col">Phone</th>
                             <th scope="col">Nationality</th>
                             <th scope="col">Religion</th>
@@ -39,6 +40,10 @@
                                 <td>{{ $employee->nationality }}</td>
                                 <td>{{ $employee->religion }}</td>
                                 <td>{{ $employee->dob }}</td> --}}
+                                <td>
+                                    <a href="{{ route('company.employee.visa.process') }}"><span
+                                            class="fa fa-eye text-success"></span></a>
+                                </td>
                                 <td>
                                     <a href="{{ route('company.employee.show', ['employee' => $employee->id]) }}"><span
                                             class="fa fa-eye text-success"></span></a>
