@@ -78,6 +78,20 @@
 
 
 
+            @if (auth()->guard('web')->check() &&
+            auth()->guard('web')->user()->can('Receipt'))
+            <li class="dropdown {{ request()->is('admin/user*') ? 'active' : '' }}">
+                <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Receipt</span></a>
+
+            </li>
+            @elseif(auth()->guard('admin')->check())
+
+            <li class="dropdown {{ request()->is('admin/user*') ? 'active' : '' }}">
+                <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Receipt</span></a>
+            </li>
+            @endif
 
 
             @if (auth()->guard('web')->check() &&

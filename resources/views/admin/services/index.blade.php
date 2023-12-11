@@ -64,10 +64,10 @@
                                                                         <option value="Upload your document">Upload your
                                                                             document</option>
                                                                     @endif
-                                                                    <option value="Returned">Returned</option>
-                                                                    <option value="Approved">Approved</option>
-                                                                    <option value="Completed">Completed</option>
-                                                                    <option value="Rejected">Rejected</option>
+                                                                    <option value="Returned" {{ $req->response == 'Returned' ? 'selected' : '' }}>Returned</option>
+                                                                    <option value="Approved" {{ $req->response == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                                    <option value="Completed"{{ $req->response == 'Completed' ? 'selected' : '' }}>Completed</option>
+                                                                    <option value="Rejected" {{ $req->response == 'Rejected' ? 'selected' : '' }}>Rejected</option>
                                                                 </select>
 
                                                                 <div class="d-none file-content" style="width: 300px">

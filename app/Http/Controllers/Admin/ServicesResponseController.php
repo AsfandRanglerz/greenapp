@@ -15,7 +15,7 @@ class ServicesResponseController extends Controller
 {
     public function get_services_requests()
     {
-        $service_requests = IndividualService::with('user')->orderBy('created_at', 'DESC')->get();
+        $service_requests = IndividualService::with('user')->orderBy('updated_at', 'DESC')->orderBy('created_at', 'DESC')->get();
         // return $service_requests;
         $request_count = IndividualService::where('seen_by_admin','0')->count();
         if($request_count > 0)
@@ -55,6 +55,7 @@ class ServicesResponseController extends Controller
                 'response'=>$request->response,
                 'status'=>$request->response,
                 'admin_file'=>$file,
+                'seen_by_user'=>0,
             ]);
             $user_id = IndividualService::with('user')->where('id',$id)->value('user_id');
             $user_email = User::where('id',$user_id)->value('email');
@@ -80,9 +81,17 @@ class ServicesResponseController extends Controller
                 'status'=>$request->response,
                 'admin_file'=>$file,
                 'reason'=>$request->reason,
+                'seen_by_user'=>0,
             ]);
             return redirect()->route('get-services-requests')->with('success','Response send to individual successfully.');
 
         }
+    }
+
+    public function delete_request($id)
+    {
+        IndividualService::destroy($id);
+        return redirect()->route('get-services-requests')->with('success','Request deleted successfully.');
+
     }
 }

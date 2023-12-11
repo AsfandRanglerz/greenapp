@@ -229,6 +229,15 @@
                                 <option value="Total"{{ old('salary_detail') == "Total" ||  $employee->salary_detail =="Total" ? "selected" : '' }}>Total</option>
                             </select>
                         </div>
+                        {{-- @dd($employee->salary); --}}
+                        <div class="form-group col-md-6">
+                            <label>Salary</label>
+                            <input type="text" class="form-control" name="salary"
+                            value="{{ old('salary') ?? $employee->salary }}" placeholder="Enter Salary" disabled>
+                            @error('salary')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
                     {{-- @endif --}}
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>

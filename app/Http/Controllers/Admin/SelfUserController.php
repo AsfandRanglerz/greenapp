@@ -75,6 +75,7 @@ class SelfUserController extends Controller
         'marital_status',
         'residence_no',
         'insurance_no',
+        'salary',
         'salary_detail']);
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
@@ -192,6 +193,7 @@ class SelfUserController extends Controller
             'residence_no' => $request->input('residence_no'),
             'insurance_no' => $request->input('insurance_no'),
             'salary_detail' => $request->input('salary_detail'),
+            'salary' => $request->input('salary'),
             'image' => $image,
         ];
         if ($request->email !== $user->email) {

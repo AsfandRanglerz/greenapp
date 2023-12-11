@@ -43,6 +43,7 @@ class User extends Authenticatable
         'residence_no',
         'insurance_no',
         'salary_detail',
+        'salary',
     ];
 
     public function usercompany()
@@ -66,6 +67,11 @@ class User extends Authenticatable
     public function getAssignedPermission()
     {
         return $this->hasMany(Permission_component::class,'user_id');
+    }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
     }
 
     /**

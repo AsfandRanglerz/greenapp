@@ -9,15 +9,16 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\ReceiptsController;
 use App\Http\Controllers\Admin\SecurityController;
 use App\Http\Controllers\Admin\SelfUserController;
+use App\Http\Controllers\Admin\SubAdminController;
 use App\Http\Controllers\Admin\UserDocumentController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
-use App\Http\Controllers\Admin\SendAllNotificationController;
 use App\Http\Controllers\Admin\ServicesResponseController;
-use App\Http\Controllers\Admin\SubAdminController;
+use App\Http\Controllers\Admin\SendAllNotificationController;
 
 
 
@@ -117,8 +118,17 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification')->middleware('permission:Notifications');
 
+    // Receipts
+
+    Route::get('receipt-user-index', [ReceiptsController::class, 'index'])->name('receipt-user-index')->middleware('permission:Receipt');
+
+    Route::get('receipt-index', [ReceiptsController::class, 'receipts_index'])->name('receipt-index')->middleware('permission:Receipt');
+
+
     // Services Response
     Route::get('get-services-requests', [ServicesResponseController::class, 'get_services_requests'])->name('get-services-requests')->middleware('permission:Services');
+
+    Route::delete('delete-services-request/{id}', [ServicesResponseController::class, 'delete_request'])->name('delete-services-request')->middleware('permission:Services');
 
     Route::post('response-against-requests/{id}', [ServicesResponseController::class, 'response_to_request'])->name('response-against-requests')->middleware('permission:Services');
 
@@ -299,6 +309,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::post('request-store','IndividualServicesController@store_request')->name('request-store');
 
+    Route::get('edit-request/{id}','IndividualServicesController@edit_request')->name('edit-request');
+
+    Route::post('request-update/{id}','IndividualServicesController@request_update')->name('request-update');
+
     Route::delete('request-delete/{id}','IndividualServicesController@delete_request')->name('request-delete');
 
     // Dependents routes
@@ -314,6 +328,20 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::post('update-dependent/{id}','DependentController@update')->name('update-dependent');
 
     Route::delete('delete-dependent/{id}','DependentController@delete')->name('delete-dependent');
+
+    // Receipts
+
+    Route::get('get-receipts','UserReceiptsController@index')->name('get-receipts');
+
+    Route::get('create-receipt','UserReceiptsController@create')->name('create-receipt');
+
+    Route::post('store-receipt','UserReceiptsController@store')->name('store-receipt');
+
+    Route::get('edit-receipt/{id}','UserReceiptsController@edit')->name('edit-receipt');
+
+    Route::post('update-receipt/{id}','UserReceiptsController@update')->name('update-receipt');
+
+    Route::delete('delete-receipt/{id}','UserReceiptsController@delete')->name('delete-receipt');
 
 
 

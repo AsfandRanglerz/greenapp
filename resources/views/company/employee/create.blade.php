@@ -218,6 +218,15 @@
                             <option value="Total">Total</option>
                         </select>
                     </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Salary</label>
+                        <input type="text" class="form-control" name="salary"
+                            value="{{ old('salary')}}" placeholder="Enter salary" >
+                            @error('salary')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                    </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>
                     </div>

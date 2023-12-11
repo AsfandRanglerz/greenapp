@@ -287,6 +287,19 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                            <div class="form-group mb-2">
+                                                <label>Salary</label>
+                                                <input type="text" class="form-control" name="salary"
+                                                    value="{{ old('salary') }}"
+                                                    placeholder="Enter salary">
+                                                @error('salary')
+                                                    <div class="text-danger p-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Choose Image</label>

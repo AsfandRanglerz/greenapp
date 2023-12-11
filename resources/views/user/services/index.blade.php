@@ -77,11 +77,11 @@
 
                                 @if ($req->admin_file)
                                 @php
-                                    $file_name = $req->file;
+                                    $file_name = $req->admin_file;
                                     $ext = explode('.', $file_name);
                                 @endphp
                                 <td>
-                                    <a target="_black" href="{{ asset('' . '/' . $req->file) }}">
+                                    <a target="_black" href="{{ asset('' . '/' . $req->admin_file) }}">
                                         @if ($ext[1] == 'pdf')
                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                 style="height: 50px;width:50px">
@@ -95,7 +95,7 @@
                                             <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
                                                 style="height: 50px;width:50px">
                                         @else
-                                            <img src="{{ asset('' . '/' . $req->file) }}"
+                                            <img src="{{ asset('' . '/' . $req->admin_file) }}"
                                                 style="height: 50px;width:50px">
                                         @endif
                                     </a>
@@ -123,6 +123,8 @@
                             </td>
 
                                 <td>
+                                    <a href="{{ route('user.edit-request', $req->id) }}" class="mx-2"><span
+                                        class="fa fa-edit text-info"></span></a>
                                     <form class="d-inline" method="post"
                                         action="{{ route('user.request-delete', $req->id) }}">
                                         @csrf
