@@ -116,9 +116,15 @@
                             role="tab" aria-controls="v-visa2-profile" aria-selected="false">Upload signed ST & MB</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa3-tab" data-toggle="pill" href="#v-pills-visa3"
                             role="tab" aria-controls="v-pills-visa3" aria-selected="false">Pay Dubai insurance</a>
-                        <a class="nav-link bordered_tab" id="v-pills-settings-tab" data-toggle="pill"
-                            href="#v-pills-visa4" role="tab" aria-controls="v-pills-settings"
-                            aria-selected="false">Entry Visa</a>
+                        <a class="nav-link bordered_tab" id="v-pills-visa4-tab" data-toggle="pill"
+                            href="#v-pills-visa4" role="tab" aria-controls="v-pills-visa4"
+                            aria-selected="false">Entry visa Dubai</a>
+                            <a class="nav-link bordered_tab" id="v-pills-visa5-tab" data-toggle="pill"
+                            href="#v-pills-visa5" role="tab" aria-controls="v-pills-visa5"
+                            aria-selected="false">Entry visa outside</a>
+                            <a class="nav-link bordered_tab" id="v-pills-visa5-tab" data-toggle="pill"
+                            href="#v-pills-visa6" role="tab" aria-controls="v-pills-visa6"
+                            aria-selected="false">Medical Fitness</a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3 ">
@@ -266,7 +272,7 @@
                                         </div>
                                         <div class="col-xl-4 col-lg-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Over Stay Fines</label>
+                                                <label for="#select-fine-file">Over Stay Fines</label>
                                                 <select class="form-control fine-select" id="select-fine-file">
                                                     <option>Select fine</option>
                                                     <option value='yes'>Yes</option>
@@ -294,6 +300,85 @@
                                     </div>
                                 </form>
 
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-visa5" role="tabpanel"
+                            aria-labelledby="v-pills-visa5-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process5</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#visa5-transaction-number">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa5-transaction-number"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#visa5-transaction-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa5-transaction-fee"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#">Status</label>
+                                                <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="#select-country">Select Country</label>
+                                                <select class="form-control" id="select-country">
+                                                    <option value="">Pakistan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="#entry-stamp-file">Upload entry stamp</label>
+                                                <div class="input-group">
+                                                <input type="file" multiple class="form-control" id='entry-stamp-file'
+                                                    name="file" style="line-height: 1">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-visa6" role="tabpanel"
+                            aria-labelledby="v-pills-visa6-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process6</h6>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#start-process-transaction-number6">Transaction No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="start-process-transaction-number6" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#start-process-transaction-fee6">Transaction Fee</label>
+                                                <input type="text" class="form-control"
+                                                    id="start-process-transaction-fee6" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                            <label for="">Status</label>
+                                            <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -378,7 +463,7 @@
                     aria-labelledby="pills-sponsored-tab">
                     <div class="row">
                         <div class="col-xl-3 col-lg-4">
-                            <div class="nav side-bar flex-row  flex-lg-column nav-pills" id="v-sponsored-tab"
+                            <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-sponsored-tab"
                                 role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab" id="v-pills-sponsored1-tab" data-toggle="pill"
                                     href="#v-pills-sponsored1" role="tab" aria-controls="v-pills-sponsored1"
@@ -594,7 +679,7 @@
         <!-- Cancelatoion Tab -->
         <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
             aria-labelledby="pills-pills-cancelation-tab">
-            <ul class="nav nav-pills mb-3" id="cancelation-tab" role="tablist">
+            <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
                         href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
