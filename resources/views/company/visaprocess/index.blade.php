@@ -246,14 +246,14 @@
                                     <div class="row align-items-end fine-select-container">
                                         <div class="col-xl-4 col-lg-12 col-md-4">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-number">Transaction No:</label>
+                                                <label for="#visa4-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa3-transaction-number"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-lg-12 col-md-4">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-fee">Transaction Fee</label>
+                                                <label for="#visa4-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa3-transaction-fee"
                                                     placeholder="...">
                                             </div>
@@ -265,7 +265,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
-                                            <label for='#visa3-textareara'>Comments</label>
+                                            <label for='#visa4-textareara'>Comments</label>
                                             <textarea required type="text" id='visa3-textareara' name="comment"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5"></textarea>
@@ -283,7 +283,7 @@
                                     </div>
                                     <div class="row fine-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#visa3-file'>Choose Files</label>
+                                            <label class='#visa4-file'>Choose Files</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='visa3-file'
                                                     name="file" style="line-height: 1">
@@ -300,57 +300,6 @@
                                     </div>
                                 </form>
 
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-visa5" role="tabpanel"
-                            aria-labelledby="v-pills-visa5-tab">
-                            <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process5</h6>
-                                    <div class="row align-items-end fine-select-container">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <label for="#visa5-transaction-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="visa5-transaction-number"
-                                                    placeholder="...">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <label for="#visa5-transaction-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="visa5-transaction-fee"
-                                                    placeholder="...">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
-                                            <div class="form-group mb-3">
-                                                <label for="#">Status</label>
-                                                <p class='m-0 form-control'>Pending</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="#select-country">Select Country</label>
-                                                <select class="form-control" id="select-country">
-                                                    <option value="">Pakistan</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="#entry-stamp-file">Upload entry stamp</label>
-                                                <div class="input-group">
-                                                <input type="file" multiple class="form-control" id='entry-stamp-file'
-                                                    name="file" style="line-height: 1">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
-                                            </div>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-visa6" role="tabpanel"
@@ -394,13 +343,13 @@
                         id="v-renewal-proces-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-renewal-process1-tab" data-toggle="pill"
                             href="#v-pills-renewal-process1" role="tab" aria-controls="v-pills-renewal-process1"
-                            aria-selected="true">Renewa-lProcess1</a>
+                            aria-selected="true">Medical fitness</a>
                         <a class="nav-link bordered_tab" id="v-pills-renewal-process2-tab" data-toggle="pill"
                             href="#v-pills-renewal-process2" role="tab" aria-controls="v-pills-renewal-process2"
-                            aria-selected="false">renewal-process2</a>
+                            aria-selected="false">Work permit application</a>
                         <a class="nav-link bordered_tab" id="v-pills-renewal-process3-tab" data-toggle="pill"
                             href="#v-pills-renewal-process3" role="tab" aria-controls="v-pills-renewal-process3"
-                            aria-selected="false">renewal-process3</a>
+                            aria-selected="false">Upload signed MB</a>
                         <a class="nav-link bordered_tab" id="v-pills-renewal-process4-tab" data-toggle="pill"
                             href="#v-pills-renewal-process4" role="tab" aria-controls="v-pills-renewal-process4"
                             aria-selected="false">renewal-process4</a>
@@ -409,11 +358,150 @@
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="v-renewal-process-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-renewal-process1" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-process1-tab">RenewalProcess1</div>
+                            aria-labelledby="v-pills-renewal-process1-tab">
+                            
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> RenewalProcess1</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-medical-transaction-number">Transaction No:</label>
+                                                <input type="text" class="form-control" id="renewal-medical-transaction-number"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-medical-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="renewal-medical-fee"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#">Status</label>
+                                                <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="#fitness">Fitness Status</label>
+                                                <select class="form-control" id="fitness">
+                                                    <option value="">select fitness</option>
+                                                    <option value="fit">Fit</option>
+                                                    <option value="not fit">Not Fit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button
+                                                class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                        </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process2" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-process2-tab">renewal-process2</div>
+                            aria-labelledby="v-pills-renewal-process2-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Reneewal Process2</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#work-permit-app-transaction-number">Transaction No:</label>
+                                                <input type="text" class="form-control" id="work-permit-app-transaction-number"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#work-permit-app-transaction-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="work-permit-app-transaction-fee"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#">Status</label>
+                                                <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for='#work-permit-app-textareara'>Comments</label>
+                                            <textarea required type="text" id='work-permit-app-textareara' name="comment"
+                                                placeholder="Enter Your Comments ..." class="form-control"
+                                                rows="5"></textarea>
+                                        </div>
+                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
+                                            <label class='#work-permit-app'>Upload Contract</label>
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" multiple class="form-control" id='work-permit-app-file'
+                                                    name="file" style="line-height: 1">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button
+                                                class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process3" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-process3-tab">renewal-process3</div>
+                            aria-labelledby="v-pills-renewal-process3-tab">
+                        
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Renewal Process 3</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#upload-signed-mb-transaction-number">Transaction No:</label>
+                                                <input type="text" class="form-control" id="upload-signed-mb-transaction-number"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#upload-signed-mb-transaction-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="upload-signed-mb-transaction-fee"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                            <div class="form-group mb-3">
+                                                <label for="#">Status</label>
+                                                <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                        
+                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
+                                            <label class='#upload-signed-mb'>Upload signed MB</label>
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" multiple class="form-control" id='upload-signed-mb-file'
+                                                    name="file" style="line-height: 1">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button
+                                                class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process4" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process4-tab">renewal-process4</div>
                     </div>
