@@ -175,6 +175,7 @@ class DocumentController extends Controller
 
     public function download($id)
     {
+        // return $id;
         $path = public_path('admin/assets/img/users/' . $id);
         return response()->download($path);
     }

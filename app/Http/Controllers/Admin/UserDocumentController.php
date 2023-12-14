@@ -176,4 +176,10 @@ class UserDocumentController extends Controller
         UserDocument::destroy($id);
         return redirect()->back()->with('success', 'Deleted Successfully');
     }
+
+    public function download($id)
+    {
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
+    }
 }

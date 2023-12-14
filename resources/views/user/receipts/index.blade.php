@@ -72,7 +72,7 @@
                                         <a href="{{ route('user.edit-receipt', $receipt->id) }}" class="mx-2"><span
                                                 class="fa fa-edit text-info"></span></a>
                                         <form class="d-inline" method="post"
-                                            action="{{ route('user.document.destroy', $receipt->id) }}">
+                                            action="{{ route('user.delete-receipt', $receipt->id) }}">
                                             @csrf
                                             <input name="_method" type="hidden" value="DELETE">
                                             <a class="form-btn" type="submit"><span

@@ -161,7 +161,7 @@ class CompanyDocumentController extends Controller
     //     $document = CompanyDocument::find($id);
     //     if ($document) {
 
-    //         $path = asset('admin/' . $document->file);
+    //         $path = asset('img/users/' . $document->file);
     //         dd($path);
     //         if (file_exists($path)) {
     //             return response()->download($path);
@@ -172,5 +172,11 @@ class CompanyDocumentController extends Controller
     //         return back()->withErrors(['msg' => 'Document not found']);
     //     }
     // }
+
+    public function download($id)
+    {
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
+    }
 
 }

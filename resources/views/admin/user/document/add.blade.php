@@ -162,7 +162,7 @@
                                                                 Renewal</option>
                                                             <option value="Application">Application</option>
                                                             <option value="Submission Form">Submission Form</option>
-                                                            <option value="Receipts">Receipts</option>
+                                                            {{-- <option value="Receipts">Receipts</option> --}}
                                                             <option value="Other">Other</option>
                                                         </select>
                                                         @error('doc_type')

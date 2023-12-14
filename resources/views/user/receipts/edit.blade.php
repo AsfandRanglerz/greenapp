@@ -27,9 +27,10 @@
                     <div class="form-row position-relative doc-fields" id="docField1">
 
                         <div class="form-group col-md-6">
+                            {{-- @dd($receipts->file) --}}
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
-                                <input type="file" class="form-control" name="file" value="{{ $receipts->file }}"
+                                <input type="file" class="form-control" name="file" value="{{$receipts->file}}"
                                     style="line-height: 1">
                                 <div class="input-group-prepend">
                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>

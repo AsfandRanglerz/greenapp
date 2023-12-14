@@ -122,7 +122,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('receipt-user-index', [ReceiptsController::class, 'index'])->name('receipt-user-index')->middleware('permission:Receipt');
 
-    Route::get('receipt-index', [ReceiptsController::class, 'receipts_index'])->name('receipt-index')->middleware('permission:Receipt');
+    Route::get('receipt-index/{id}', [ReceiptsController::class, 'receipts_index'])->name('user-receipts')->middleware('permission:Receipt');
+
+    Route::get('create-receipt/{id}', [ReceiptsController::class, 'create'])->name('create-receipt')->middleware('permission:Receipt');
+
+    Route::post('store-receipt/{id}', [ReceiptsController::class, 'store'])->name('store-receipt')->middleware('permission:Receipt');
+
+    Route::get('edit-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'edit'])->name('edit-receipt')->middleware('permission:Receipt');
+
+    Route::post('update-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'update'])->name('update-receipt')->middleware('permission:Receipt');
+
+    Route::delete('delete-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'delete'])->name('delete-receipt')->middleware('permission:Receipt');
+
 
 
     // Services Response
@@ -171,6 +182,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('user-document-edit/{id}', [UserDocumentController::class, 'edit'])->name('user-document.edit')->middleware('permission:Employees');
 
     Route::post('user-document-update/{id}', [UserDocumentController::class, 'update'])->name('user-document.update')->middleware('permission:Employees');
+
+    Route::get('user-document-download/{id}', [UserDocumentController::class, 'download'])->name('user-document.download')->middleware('permission:Companies');
 
     Route::resource('faq', FaqController::class)->middleware('permission:Employees');
 

@@ -19,67 +19,71 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-12">
-                                    <h4>Employees</h4>
-
+                                    <h4>Receipts</h4>
                                 </div>
-                                {{-- @dd($data) --}}
                             </div>
-                            {{-- @dd($data) --}}
                             <div class="card-body table-striped table-bordered table-responsive">
-                                {{-- <a class="btn btn-primary mb-3"
-                                href="{{route('admin.user.index')}}">Back</a> --}}
-                                {{-- <a class="btn btn-success mb-3" href="{{ route('receipt-user-index') }}">Back</a> --}}
-
+                                <a class="btn btn-success mb-3" href="{{ route('create-receipt',$id) }}">Add Receipt</a>
                                 <table class="table text-center" id="table_id_events">
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
-                                            <th>Name</th>
+                                            <th>Receipt</th>
                                             <th>Image</th>
-                                            <th>Email</th>
-                                            <th>Receipts</th>
-                                            {{-- <th scope="col">Action</th> --}}
-                                            {{-- <th scope="col">Action</th> --}}
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $employee)
+                                        @foreach ($receipts as $receipt)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $employee->name }}</td>
-                                                <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
-                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
-                                                            height="50" width="50" class="image"></a>
-                                                </td>
-                                                <td>{{ $employee->email }}</td>
-
+                                                <td>{{ $receipt->receipt }}</td>
+                                                  @php
+                                                    $file_name = $receipt->file;
+                                                    $ext = explode('.', $file_name);
+                                                @endphp
                                                 <td>
-                                                    <a href="{{ route('user-receipts', $employee->id) }}">View</a>
+                                                    <a target="_black" href="{{ asset('' . '/' . $receipt->file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @else
+                                                            <img src="{{ asset('' . '/' . $receipt->file) }}"
+                                                                style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
                                                 </td>
-
-                                                {{-- <td
+                                                <td>
+                                                 <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-
-                                                    <a id="{{ $employee->id }}" data-toggle="modal"
+                                                    {{-- <a id="{{ $employee->id }}" data-toggle="modal"
                                                         data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
-                                                            class="fa fa-eye text-white"></span></a>
+                                                            class="fa fa-eye text-white"></span></a> --}}
                                                     <a class="btn btn-info"
-                                                        href="{{ route('user.edit', $employee->id) }}">Edit</a>
+                                                        href="{{ route('edit-receipt', ['id'=>$id,'receipt_id'=>$receipt->id]) }}">Edit</a>
                                                     <form method="post"
-                                                        action="{{ route('user.destroy', $employee->id) }}">
+                                                        action="{{ route('delete-receipt', ['id'=>$id,'receipt_id'=>$receipt->id]) }}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
-                                                </td> --}}
+                                                </div>
+                                            </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>

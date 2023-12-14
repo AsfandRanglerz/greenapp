@@ -23,12 +23,6 @@
                 <a href="{{ route('user.document.index') }}" class="sidebar-links"><span
                         class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
             </li>
-
-            <li class="position-relative {{ request()->is('user/receipts*') ? 'active' : '' }}">
-                <a href="{{ route('user.get-receipts') }}" class="sidebar-links"><span
-                        class="fa fa-key text-white pr-2 sidebar-link-icons"></span>Receipts</a>
-            </li>
-
             @if (Auth::guard('web')->user()->emp_type == 'self')
             <li class="position-relative {{ request()->is('user/generateCV/mycv_index*') ? 'active' : '' }}">
                 <a href="{{ route('user.myCv.index') }}" class="sidebar-links"><span
@@ -61,6 +55,10 @@
             </li>
 
             @if (Auth::guard('web')->user()->emp_type == 'self')
+            <li class="position-relative {{ request()->is('user/dependants*') ? 'active' : '' }}">
+                <a href="{{ route('user.dependants.index') }}" class="sidebar-links"><span
+                        class="fa fa-solid fa-users text-white pr-2 sidebar-link-icons"></span>Dependents</a>
+            </li>
             <li class="position-relative">
                 @php
                 $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen','0')->count();
@@ -92,25 +90,8 @@
             </li>
             @endif
 
-            @if(Auth::guard('web')->user()->emp_type == 'self')
 
-            {{-- @php
-            $response_count = App\Models\IndividualService::whereNotNull('response')->where('seen_by_user','0')->count();
-        @endphp --}}
-
-            <li class="position-relative {{ request()->is('user/dependents*') ? 'active' : '' }}">
-                <a href="{{route('user.get-dependent')}}" class="sidebar-links"><span
-                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Dependents
-                        {{-- @if ($response_count > 0)
-                        <span class="badge badge-danger text-white ml-1">
-                            {{$response_count}}
-                        </span>
-                        @endif --}}
-                    </a>
-            </li>
-            @endif
-
-            @if(Auth::guard('web')->user()->emp_type == 'self')
+            @if(Auth::guard('web')->user()->emp_type = 'self')
             @php
             $response_count = App\Models\IndividualService::whereNotNull('response')->where('seen_by_user','0')->count();
         @endphp
@@ -126,7 +107,6 @@
                     </a>
             </li>
             @endif
-
 
 
             <li class="position-relative {{ request()->is('faqs*') ? 'active' : '' }}">

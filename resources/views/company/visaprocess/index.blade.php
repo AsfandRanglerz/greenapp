@@ -359,7 +359,7 @@
                     <div class="tab-content" id="v-renewal-process-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-renewal-process1" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process1-tab">
-                            
+
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> RenewalProcess1</h6>
@@ -401,7 +401,7 @@
                                     </div>
                                 </form>
                             </div>
-                        
+
                         </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process2" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process2-tab">
@@ -457,7 +457,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process3" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process3-tab">
-                        
+
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Renewal Process 3</h6>
@@ -482,7 +482,7 @@
                                                 <p class='m-0 form-control'>Pending</p>
                                             </div>
                                         </div>
-                        
+
                                          <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
                                             <label class='#upload-signed-mb'>Upload signed MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
