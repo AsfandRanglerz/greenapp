@@ -84,7 +84,7 @@ class UserController extends Controller
             'insurance_no',
             'salary',
             'salary_detail']);
-
+             $data['emp_type'] = 'company';
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
             $file = $request->file('image');

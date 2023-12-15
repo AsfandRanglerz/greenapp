@@ -28,7 +28,7 @@
                                             <th>Document</th>
                                             <th>Type</th>
                                             <th>Name</th>
-                                            <th>Receipt</th>
+                                            {{-- <th>Receipt</th> --}}
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
                                             @if ($user->emp_type == 'company')
@@ -67,14 +67,20 @@
                                                 </td>
                                                 <td>{{ $document->doc_type }}</td>
                                                 <td>{{ $document->doc_name }}</td>
-                                                <td>{{ $document->receipt }}</td>
+                                                {{-- <td>{{ $document->receipt }}</td> --}}
                                                 <td>{{ $document->issue_date }}</td>
                                                 <td>{{ $document->expiry_date }}</td>
                                                 @if ($documents[0]->user->emp_type == 'company')
                                                     <td>{{ $document->comment }}</td>
                                                 @endif
+                                                @php
+                                                    $file_name = $document->file;
+                                                    $ext = explode('users/', $file_name);
+                                                @endphp
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                    <a class="btn btn-success" href="{{ route('user-document.download', $ext[1]) }}"><span
+                                                        class="fa fa-download text-white"></span></a>
                                                     <a class="btn btn-info"
                                                         href="{{ route('user-document.edit', $document->id) }}">Edit</a>
                                                     <form method="get"

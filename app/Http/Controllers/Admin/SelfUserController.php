@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Mail\UserLoginPassword;
-use App\Mail\CompanyEmailUpdated;
-use App\Models\Country;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\UserDocument;
 use Illuminate\Http\Request;
+use App\Mail\UserLoginPassword;
+use Illuminate\Validation\Rule;
+use App\Mail\CompanyEmailUpdated;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
 
 
 class SelfUserController extends Controller
@@ -119,7 +120,9 @@ class SelfUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['user'] = User::find($id);
+        $data['documents'] = UserDocument::where('user_id', $id)->orderby('id', 'DESC')->get();
+        return view('admin.self-user.document.index', $data);
     }
 
     /**
@@ -231,5 +234,12 @@ class SelfUserController extends Controller
         $data = User::find($request->id);
         $employees = view('admin.self-user.modal', compact('data'))->render();
         return response()->json($employees);
+    }
+
+    public function get_document_index($id)
+    {
+        $data['user'] = User::find($id);
+        $data['documents'] = UserDocument::where('user_id', $id)->orderby('id', 'DESC')->get();
+        return view('admin.self-user.document.index', $data);
     }
 }

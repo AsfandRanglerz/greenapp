@@ -21,7 +21,7 @@
                                     href="{{ route('company-document.create', $data['company_id']) }}">Add Document</a>
                                 <table class="table" id="table_id_events">
                                     <thead>
-                                        <tr>
+                                        <tr class='text-center'>
                                             <th>Sr.</th>
                                             <th>Document</th>
                                             <th>Type</th>
@@ -60,8 +60,15 @@
                                                 </td>
                                                 <td>{{ $document->doc_type }}</td>
                                                 <td>{{ $document->doc_name }}</td>
-                                                <td
+                                                <td>
+                                                    @php
+                                                    $file_name = $document->file;
+                                                    $ext = explode('users/', $file_name);
+                                                @endphp
+                                                <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                        <a class="btn btn-success" href="{{ route('company-document.download', $ext[1]) }}"><span
+                                                            class="fa fa-download text-white"></span></a>
                                                     <a class="btn btn-info"
                                                         href="{{ route('company-document.edit', $document->id) }}">Edit</a>
                                                     <form method="get"
@@ -71,7 +78,9 @@
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
-                                                </td>
+                                                </div>
+                                            </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>

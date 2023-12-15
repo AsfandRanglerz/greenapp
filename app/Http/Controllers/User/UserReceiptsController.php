@@ -14,8 +14,8 @@ class UserReceiptsController extends Controller
 {
     public function index()
     {
-
-        $receipts = Receipt::with('user')->orderBy('created_at','DESC')->get();
+        $id = auth()->user()->id;
+        $receipts = Receipt::with('user')->where('user_id',$id)->orderBy('created_at','DESC')->get();
         return view('user.receipts.index',compact('receipts'));
     }
 
@@ -42,7 +42,7 @@ class UserReceiptsController extends Controller
             }
             $receipts->save();
         }
-        return redirect()->route('user.get-receipts')->with('success', 'Recept created Successfully');
+        return redirect()->route('user.get-receipts')->with('success', 'Receipt created Successfully');
     }
 
     public function edit($id)
@@ -69,9 +69,7 @@ class UserReceiptsController extends Controller
         $file = NULL;
         if ($request->hasfile('file')) {
             $destination = 'public/admin/assets/img/users' . $receipts->file;
-            // return $destination;
             if (File::exists($destination)) {
-                // return "ok";
                 File::delete($destination);
             }
             $file = $request->file('file');
@@ -81,14 +79,30 @@ class UserReceiptsController extends Controller
             $file = 'public/admin/assets/img/users/' . $filename;
             // return $file;
         }
+        else
+        {
+            $file =  $receipts->file;
+            // return $file;
+        }
 
         $receipts->update([
             'file'=>$file,
             'receipt'=>$request->receipt,
         ]);
         // return 'ok';
-        return redirect()->route('user.get-receipts')->with('success', 'Recept created Successfully');
+        return redirect()->route('user.get-receipts')->with('success', 'Receipt created Successfully');
 
     }
+
+
+    public function delete($id)
+    {
+        // return "running";
+        Receipt::destroy($id);
+        return redirect()->route('user.get-receipts')->with('success', 'Receipt deleted Successfully');
+
+    }
+
+
 
 }
