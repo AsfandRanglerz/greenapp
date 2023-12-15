@@ -62,9 +62,15 @@
                                                         @endif
                                                     </a>
                                                 </td>
+                                                @php
+                                                    $file_name = $receipt->file;
+                                                    $ext = explode('users/', $file_name);
+                                                @endphp
                                                 <td>
                                                  <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                    <a class="btn btn-success" href="{{ route('user-receipt.download', $ext[1]) }}"><span
+                                                        class="fa fa-download text-white"></span></a>
                                                     {{-- <a id="{{ $employee->id }}" data-toggle="modal"
                                                         data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
                                                             class="fa fa-eye text-white"></span></a> --}}

@@ -238,6 +238,7 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
+                        
                     {{-- @endif --}}
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>

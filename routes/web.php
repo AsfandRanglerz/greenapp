@@ -134,6 +134,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::delete('delete-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'delete'])->name('delete-receipt')->middleware('permission:Receipt');
 
+    Route::get('download-receipt/{id}', [ReceiptsController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+
 
 
     // Services Response

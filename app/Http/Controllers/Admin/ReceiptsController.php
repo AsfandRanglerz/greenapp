@@ -117,8 +117,19 @@ class ReceiptsController extends Controller
         {
             return redirect()->route('receipt-user-index')->with('success', 'Deleted Successfully');
         }
-        
 
+    }
+
+    // public function download($id)
+    // {
+    //     return "ok";
+    // }
+
+    public function download($id)
+    {
+        // return $id;
+        $path = public_path('admin/assets/img/users/' . $id);
+        return response()->download($path);
     }
 
 }
