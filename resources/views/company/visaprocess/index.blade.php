@@ -149,17 +149,17 @@
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                         aria-labelledby="v-pills-start-tab">
                         <div class='rounded p-3 light-box-shadow'>
-                            {{-- <form action="" class='py-2'> --}}
+                            <form action="{{route('company.sent-new-visa-request',$employee->id)}}" method="POST" class='py-2'>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                 <div class="row">
                                         <div class="col-12 text-center">
                                             {{-- {{$employee->name}} --}}
-                                            <form action="{{route('company.sent-new-visa-request',$employee->id)}}" method="POST">
+                                            {{-- <form action="{{route('company.sent-new-visa-request',$employee->id)}}" method="POST"> --}}
                                             {{-- <a href="" class='btn btn-success px-5 py-2'>Start Process</a> --}}
                                             @csrf
                                             <input type="hidden" value='new visa' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
-                                             </form>
+                                             {{-- </form> --}}
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -169,7 +169,7 @@
                                             </div>
                                         </div>
                                 </div>
-                            {{-- </form> --}}
+                            </form>
                         </div>
                     </div>
                         <div class="tab-pane fade" id="v-pills-visa1" role="tabpanel"

@@ -31,7 +31,6 @@ class EmployeeVisaProcessController extends Controller
         if($get_request)
         {
             return redirect()->route('company.employee.visa.process',$id)->with('success','This request is already in process.');
-
         }
         else
         {

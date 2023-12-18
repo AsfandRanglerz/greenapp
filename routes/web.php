@@ -281,7 +281,7 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
     Route::get('employee-visa-process/{id}', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
 
     Route::post('sent-new-visa-request/{id}', 'EmployeeVisaProcessController@visa_process_request')->name('sent-new-visa-request');
-
+     
 
 
     /** All security routes */
