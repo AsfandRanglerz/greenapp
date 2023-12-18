@@ -41,7 +41,7 @@
                                 <td>{{ $employee->religion }}</td>
                                 <td>{{ $employee->dob }}</td> --}}
                                 <td>
-                                    <a href="{{ route('company.employee.visa.process') }}"><span
+                                    <a href="{{ route('company.employee.visa.process',$employee->id) }}"><span
                                             class="fa fa-eye text-success"></span></a>
                                 </td>
                                 <td>

@@ -278,7 +278,9 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
 
-    Route::get('employee-visa-process', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
+    Route::get('employee-visa-process/{id}', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
+
+    Route::post('sent-new-visa-request/{id}', 'EmployeeVisaProcessController@visa_process_request')->name('sent-new-visa-request');
 
 
 
