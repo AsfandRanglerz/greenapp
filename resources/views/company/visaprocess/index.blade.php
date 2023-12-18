@@ -153,7 +153,7 @@
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                 <div class="row">
                                         <div class="col-12 text-center">
-                                            <a href="{{route('sent-new-visa-request')}}" class='btn btn-success px-5 py-2'>Start Process</a>
+                                            <button class='btn btn-success px-5 py-2'>Start Process</button>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -166,7 +166,6 @@
                             </form>
                         </div>
                     </div>
-
                         <div class="tab-pane fade" id="v-pills-visa1" role="tabpanel"
                             aria-labelledby="v-pills-visa1-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -359,8 +358,8 @@
                                     </div>
                                 </form>
                             </div>
-
-                    </div>
+                            
+                    </div>    
                         <div class="tab-pane fade" id="v-pills-visa4" role="tabpanel"
                             aria-labelledby="v-pills-visa4-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -408,7 +407,6 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
-
                                         <div class="form-group col-12">
                                             <label for='#visa4-textareara'>Comments</label>
                                             <textarea required type="text" id='visa3-textareara' name="comment"
@@ -1241,7 +1239,7 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
-                                    </div>
+                                    </div>    
                                 </form>
                             </div>
                         </div>
@@ -1250,7 +1248,7 @@
             </div>
         </div>
         <!-- Renewal Process End -->
-
+        
         <!-- Work Permit -->
         <div class="tab-pane fade" id="pills-Work-permit" role="tabpanel" aria-labelledby="pills-work-permit-tab">
             <ul class="nav nav-pills mb-3 work-permit-nav horizontal_tabs" id="work-permit-tab" role="tablist">
@@ -1310,7 +1308,7 @@
                                     aria-selected="false">Preapproval Work Permit Fees</a>
                                     <a class="nav-link bordered_tab" id="v-pills-sponsored5-tab" data-toggle="pill"
                                     href="#v-pills-sponsored5" role="tab" aria-controls="v-pills-sponsored5"
-                                    aria-selected="false">Upload Work Permit
+                                    aria-selected="false">Upload Work Permit 
                                 </a>
                             </div>
                         </div>
@@ -1336,7 +1334,7 @@
                                                             id="sponsored1-transacton1" placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
                                                     <label for="">Status</label>
                                                     <p class='form-control m-0 sponsor-by-someone-status'>Pending</p>
                                                 </div>
@@ -1411,7 +1409,7 @@
                                                     <button class='btn btn-success px-5 py-2'>Submit</button>
                                                 </div>
                                             </div>
-
+                                            
                                         </form>
                                     </div>
                                 </div>
@@ -1489,7 +1487,7 @@
                                     aria-labelledby="v-pills-sponsored5-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit 
                                             </h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -1540,7 +1538,7 @@
                                     aria-selected="false">Upload Sign MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time3-tab" data-toggle="pill"
                                     href="#v-pills-part-time3" role="tab" aria-controls="v-pills-part-time3"
-                                    aria-selected="false">part-time3</a>
+                                    aria-selected="false">Part time temporary work permit</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time4-tab" data-toggle="pill"
                                     href="#v-pills-part-time4" role="tab" aria-controls="v-pills-part-time4"
                                     aria-selected="false">part-time4</a>
@@ -1552,7 +1550,7 @@
                                     aria-labelledby="v-pills-part-time1-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit 
                                             </h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -1585,9 +1583,102 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-part-time2" role="tabpanel"
-                                    aria-labelledby="v-pills-part-time2-tab">part-time2</div>
+                                    aria-labelledby="v-pills-part-time2-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed MB</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#parttime2-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="parttime2-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#parttime2-transacton1-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="parttime2-transacton1-fee1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#parttime2-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="#parttime2-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                    <label class='#upload-partime1'>Upload Signed MB</label>
+                                                    <div class="input-group  mb-4">
+                                                        <input type="file" multiple class="form-control" id='upload-partime1'
+                                                            name="file" style="line-height: 1">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                </div>
+                                            </div>  
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-part-time3" role="tabpanel"
-                                    aria-labelledby="v-pills-part-time3-tab">part-time3</div>
+                                    aria-labelledby="v-pills-part-time3-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit application</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#parttime3-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="parttime3-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#parttime3-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="parttime3-fee1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 parent-of-approval-rejected">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0 sponsor-by-someone-status'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor1-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="sponsor1-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 d-none sponsor-workPermit-textearea">
+                                                    <label for='#sponsor2-textareara'>Comments</label>
+                                                    <textarea type="text" id='sponsor2-textareara' name="comment"
+                                                        placeholder="Enter Your Comments ..." class="form-control"
+                                                        rows="5"></textarea>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6 d-none sponsor-workPermit-approval">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor-approval">Approval No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsor-approval" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-part-time4" role="tabpanel"
                                     aria-labelledby="v-pills-part-time4-tab">part-time4</div>
                             </div>
@@ -1887,16 +1978,18 @@
                 a.addClass('d-none');
             }
         });
-        if($('.sponsor-by-someone-status').text().toLowerCase()=='approved'){
-            $('.sponsor-workPermit-approval').removeClass('d-none');
-        }if($('.sponsor-by-someone-status').text().toLowerCase()=='rejected' || $('.sponsor-by-someone-status').text().toLowerCase()=='return'){
-            $('.sponsor-workPermit-textearea').removeClass('d-none');
-        }if($('.sponsor-by-someone-status').text().toLowerCase()!='rejected' && $('.sponsor-by-someone-status').text().toLowerCase()!='return' &&
-        $('.sponsor-by-someone-status').text().toLowerCase()!='approved')
-        {
-            $('.sponsor-workPermit-textearea').addClass('d-none');
-            $('.sponsor-workPermit-approval').addClass('d-none');
-        }
+        $('.sponsor-by-someone-status').each(function () {
+    if ($(this).text().toLowerCase() === 'approved') {
+        $(this).parents('.parent-of-approval-rejected').siblings('.sponsor-workPermit-approval').removeClass('d-none');
+    } else if ($(this).text().toLowerCase() === 'rejected' || $(this).text().toLowerCase() === 'return') {
+        $(this).parents('.parent-of-approval-rejected').siblings('.sponsor-workPermit-textearea').removeClass('d-none');
+    } else {
+        $(this).parents('.parent-of-approval-rejected').siblings('.sponsor-workPermit-textearea').addClass('d-none');
+        $(this).parents('.parent-of-approval-rejected').siblings('.sponsor-workPermit-approval').addClass('d-none');
+    }
+});
+
+        
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,
