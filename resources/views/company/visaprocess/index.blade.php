@@ -1547,26 +1547,7 @@
                                     aria-selected="false">Part time temporary work permit</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time4-tab" data-toggle="pill"
                                     href="#v-pills-part-time4" role="tab" aria-controls="v-pills-part-time4"
-                                    aria-selected="false">part-time4</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
-                            <div class="tab-content" id="v-part-time-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-part-time1" role="tabpanel"
-                                    aria-labelledby="v-pills-part-time1-tab">
-                                    <div class='rounded p-3 light-box-shadow'>
-                                        <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
-                                            </h6>
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-12 col-md-6">
-                                                    <div class="form-group mb-3">
-                                                        <label for="#part-time1-number1">Transaction No:</label>
-                                                        <input type="text" class="form-control"
-                                                            id="part-time1-number1" placeholder="...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-12 col-m                                    aria-selected="false">Upload Contract</a>
+                                    aria-selected="false">Upload Contract</a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
@@ -1753,7 +1734,7 @@
                                         </form>
                                     </div>
                                 </div>
-                   </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1766,16 +1747,16 @@
                                 id="v-header-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab" id="v-pills-UAE1-tab" data-toggle="pill"
                                     href="#v-pills-UAE1" role="tab" aria-controls="v-pills-UAE1"
-                                    aria-selected="true">UAE1</a>
+                                    aria-selected="true">Work permit application</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE2-tab" data-toggle="pill"
                                     href="#v-pills-UAE2" role="tab" aria-controls="v-pills-UAE2"
-                                    aria-selected="false">UAE2</a>
+                                    aria-selected="false">Upload sign MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE3-tab" data-toggle="pill"
                                     href="#v-pills-UAE3" role="tab" aria-controls="v-pills-UAE3"
-                                    aria-selected="false">UAE3</a>
+                                    aria-selected="false">Pay Dubi insurance</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE4-tab" data-toggle="pill"
                                     href="#v-pills-UAE4" role="tab" aria-controls="v-pills-UAE4"
-                                    aria-selected="false">UAE4</a>
+                                    aria-selected="false">Upload Work Permit</a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
