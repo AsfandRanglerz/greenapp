@@ -45,6 +45,8 @@ class Company extends Authenticatable
         return $this->hasManyThrough(UserDocument::class, User::class);
     }
 
+    // public function VisaProcessRequest
+
     /**
      * The attributes that should be hidden for serialization.
      *

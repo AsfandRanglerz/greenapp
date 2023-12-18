@@ -80,6 +80,21 @@
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipt'))
+            <li class="dropdown {{ request()->is('admin/visaprocess*') ? 'active' : '' }}">
+                <a href="{{ route('get-visa-requests') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Visa Process</span></a>
+
+            </li>
+            @elseif(auth()->guard('admin')->check())
+
+            <li class="dropdown {{ request()->is('admin/visaprocess*') ? 'active' : '' }}">
+                <a href="{{ route('get-visa-requests') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Visa Process</span></a>
+            </li>
+            @endif
+
+            @if (auth()->guard('web')->check() &&
+            auth()->guard('web')->user()->can('Receipt'))
             <li class="dropdown {{ request()->is('admin/get-receipts*') ? 'active' : '' }}">
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Receipts</span></a>

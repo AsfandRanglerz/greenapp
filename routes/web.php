@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\ServicesResponseController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
+use App\Http\Controllers\Admin\NewVisaProcessController;
 
 
 
@@ -136,6 +137,16 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('download-receipt/{id}', [ReceiptsController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
+
+    // New visa
+
+    Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
+
+    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+
+    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+
+    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
 
     // Services Response

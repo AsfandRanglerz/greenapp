@@ -153,7 +153,7 @@
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                 <div class="row">
                                         <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Start Process</button>
+                                            <a href="{{route('sent-new-visa-request')}}" class='btn btn-success px-5 py-2'>Start Process</a>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -359,8 +359,8 @@
                                     </div>
                                 </form>
                             </div>
-                            
-                    </div>    
+
+                    </div>
                         <div class="tab-pane fade" id="v-pills-visa4" role="tabpanel"
                             aria-labelledby="v-pills-visa4-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -1241,7 +1241,7 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
-                                    </div>    
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -1250,7 +1250,7 @@
             </div>
         </div>
         <!-- Renewal Process End -->
-        
+
         <!-- Work Permit -->
         <div class="tab-pane fade" id="pills-Work-permit" role="tabpanel" aria-labelledby="pills-work-permit-tab">
             <ul class="nav nav-pills mb-3 work-permit-nav horizontal_tabs" id="work-permit-tab" role="tablist">
@@ -1310,7 +1310,7 @@
                                     aria-selected="false">Preapproval Work Permit Fees</a>
                                     <a class="nav-link bordered_tab" id="v-pills-sponsored5-tab" data-toggle="pill"
                                     href="#v-pills-sponsored5" role="tab" aria-controls="v-pills-sponsored5"
-                                    aria-selected="false">Upload Work Permit 
+                                    aria-selected="false">Upload Work Permit
                                 </a>
                             </div>
                         </div>
@@ -1411,7 +1411,7 @@
                                                     <button class='btn btn-success px-5 py-2'>Submit</button>
                                                 </div>
                                             </div>
-                                            
+
                                         </form>
                                     </div>
                                 </div>
@@ -1489,7 +1489,7 @@
                                     aria-labelledby="v-pills-sponsored5-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit 
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit
                                             </h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -1552,7 +1552,7 @@
                                     aria-labelledby="v-pills-part-time1-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit 
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit
                                             </h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
