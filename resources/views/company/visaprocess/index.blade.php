@@ -203,7 +203,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                <label class='#job-file1'>Uplaod documents wih transaction number & fees</label>
+                                                <label for='#job-file1'>Uplaod documents wih transaction number & fees</label>
                                                 <div class="input-group  mb-4">
                                                     <input type="file" multiple class="form-control" id='job-file1'
                                                         name="file" style="line-height: 1">
@@ -261,7 +261,7 @@
                                                 rows="5"></textarea>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#visa2-file'>Upload ST & MB</label>
+                                            <label for='#visa2-file'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control" id='visa2-file'
                                                     name="file" style="line-height: 1">
@@ -308,7 +308,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="#dubai-insurance-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="StMB-insurance-date" placeholder="...">
+                                                    id="dubai-insurance-date" placeholder="...">
                                             </div>
                                         </div>
                                     </div>
@@ -347,7 +347,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                <label class='#preapproval-file1'>Uplaod documents</label>
+                                                <label for='#preapproval-file1'>Uplaod documents</label>
                                                 <div class="input-group mb-4">
                                                     <input type="file" multiple class="form-control" id='preapproval-file1'
                                                         name="file" style="line-height: 1">
@@ -399,7 +399,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#entry-file'>Upload entry visa</label>
+                                            <label for='#entry-file'>Upload entry visa</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='entry-file'
                                                     name="file" style="line-height: 1">
@@ -441,7 +441,7 @@
                                     </div>
                                     <div class="row fine-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#visa4-file'>Choose Files</label>
+                                            <label for='#visa4-file'>Choose Files</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='visa3-file'
                                                     name="file" style="line-height: 1">
@@ -490,7 +490,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 mb-4">
-                                            <label class='#visa-stamp'>Upload Entry Stamped</label>
+                                            <label for='#visa-stamp'>Upload Entry Stamped</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control" id='visa-stamp'
                                                     name="file" style="line-height: 1">
@@ -623,7 +623,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#visa-contract-file'>Upload Contract</label>
+                                            <label for='#visa-contract-file'>Upload Contract</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control" id='visa-contract-file'
                                                     name="file" style="line-height: 1">
@@ -707,7 +707,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#visa10-work-permit-file'>Upload work permit</label>
+                                            <label for='#visa10-work-permit-file'>Upload work permit</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control"
                                                     id='visa10-work-permit-file' name="file" style="line-height: 1">
@@ -803,7 +803,7 @@
                                     </div>
                                     <div class="row biometric-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#biometric-file'>Upload biometric</label>
+                                            <label for='#biometric-file'>Upload biometric</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='biometric-file'
                                                     name="file" style="line-height: 1">
@@ -949,7 +949,7 @@
                                                 class="form-control" rows="5"></textarea>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#work-permit-app'>Upload Contract</label>
+                                            <label for='#work-permit-app'>Upload Contract</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control"
                                                     id='work-permit-app-file' name="file" style="line-height: 1">
@@ -1002,7 +1002,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#upload-signed-mb'>Upload signed MB</label>
+                                            <label for='#upload-signed-mb'>Upload signed MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control"
                                                     id='upload-signed-mb-file' name="file" style="line-height: 1">
@@ -1086,7 +1086,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label class='#visa-contract-file'>Upload Contract</label>
+                                            <label for='#visa-contract-file'>Upload Contract</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control" id='visa-contract-file'
                                                     name="file" style="line-height: 1">
@@ -1231,7 +1231,7 @@
                                     </div>
                                     <div class="row biometric-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#biometric-renewal-file'>Upload biometric</label>
+                                            <label for='#biometric-renewal-file'>Upload biometric</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='biometric-renewal-file'
                                                     name="file" style="line-height: 1">
@@ -1400,7 +1400,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                    <label class='#sponsored1-file1'>Upload Signed MB</label>
+                                                    <label for='#sponsored1-file1'>Upload Signed MB</label>
                                                     <div class="input-group  mb-4">
                                                         <input type="file" multiple class="form-control" id='sponsored1-file1'
                                                             name="file" style="line-height: 1">
@@ -1619,7 +1619,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                    <label class='#upload-partime1'>Upload Signed MB</label>
+                                                    <label for='#upload-partime1'>Upload Signed MB</label>
                                                     <div class="input-group  mb-4">
                                                         <input type="file" multiple class="form-control" id='upload-partime1'
                                                             name="file" style="line-height: 1">
@@ -1640,7 +1640,7 @@
                                     aria-labelledby="v-pills-part-time3-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit application</h6>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Part time/ temporary work permit</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -1716,7 +1716,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                        <label class='upload-parttime'>Uplaod Contract</label>
+                                                        <label for='upload-parttime'>Uplaod Contract</label>
                                                         <div class="input-group  mb-4">
                                                             <input type="file" multiple class="form-control" id='upload-parttime'
                                                                 name="file" style="line-height: 1">
@@ -1746,26 +1746,157 @@
                                 id="v-header-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab" id="v-pills-UAE1-tab" data-toggle="pill"
                                     href="#v-pills-UAE1" role="tab" aria-controls="v-pills-UAE1"
-                                    aria-selected="true">UAE1</a>
+                                    aria-selected="true">Work permit application</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE2-tab" data-toggle="pill"
                                     href="#v-pills-UAE2" role="tab" aria-controls="v-pills-UAE2"
-                                    aria-selected="false">UAE2</a>
+                                    aria-selected="false">Upload sign MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE3-tab" data-toggle="pill"
                                     href="#v-pills-UAE3" role="tab" aria-controls="v-pills-UAE3"
-                                    aria-selected="false">UAE3</a>
+                                    aria-selected="false">Pay Dubi insurance</a>
                                 <a class="nav-link bordered_tab" id="v-pills-UAE4-tab" data-toggle="pill"
                                     href="#v-pills-UAE4" role="tab" aria-controls="v-pills-UAE4"
-                                    aria-selected="false">UAE4</a>
+                                    aria-selected="false">Upload Work Permit</a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                             <div class="tab-content" id="v-header-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-UAE1" role="tabpanel"
-                                    aria-labelledby="v-pills-UAE1-tab">UAE1</div>
+                                    aria-labelledby="v-pills-UAE1-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit application</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae-transacton1-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="uae-transacton1-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="uae-fee1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0 sponsor-by-someone-status'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae1-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="uae1-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 d-none sponsor-workPermit-textearea">
+                                                    <label for='#sponsor2-textareara'>Comments</label>
+                                                    <textarea type="text" id='sponsor2-textareara' name="comment"
+                                                        placeholder="Enter Your Comments ..." class="form-control"
+                                                        rows="5"></textarea>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6 d-none sponsor-workPermit-approval">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor-approval">Approval No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsor-approval" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-UAE2" role="tabpanel"
-                                    aria-labelledby="v-pills-UAE2-tab">UAE2</div>
+                                    aria-labelledby="v-pills-UAE2-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed MB</h6>
+                                            <div class="row align-items-end">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#upload-signed-uae2-mb-transaction-number">Transaction
+                                                            No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="upload-signed-uae2-mb-transaction-number" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#upload-signed-uae2-mb-transaction-fee">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="upload-signed-uae2-mb-transaction-fee" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#">Status</label>
+                                                        <p class='m-0 form-control'>Pending</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#upload-signed-uae2-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="upload-signed-uae2-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
+                                                    <label for='#upload-signed-uae2-mb-file'>Upload signed MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" multiple class="form-control"
+                                                            id='upload-signed-uae2-mb-file' name="file" style="line-height: 1">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-UAE3" role="tabpanel"
-                                    aria-labelledby="v-pills-UAE3-tab">UAE3</div>
+                                    aria-labelledby="v-pills-UAE3-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae3-transaction-number">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="uae3-transaction-number"
+                                                            placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae3-transaction-fee">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="uae3-transaction-fee"
+                                                            placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="#status">Status</label>
+                                                    <p class='form-control'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#uae3-insurance-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="uae3-insurance-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-UAE4" role="tabpanel"
                                     aria-labelledby="v-pills-UAE4-tab">UAE4</div>
                             </div>
