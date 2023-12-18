@@ -1545,7 +1545,7 @@
                                     aria-selected="false">Part time temporary work permit</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time4-tab" data-toggle="pill"
                                     href="#v-pills-part-time4" role="tab" aria-controls="v-pills-part-time4"
-                                    aria-selected="false">part-time4</a>
+                                    aria-selected="false">Upload Contract</a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
@@ -1684,7 +1684,54 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-part-time4" role="tabpanel"
-                                    aria-labelledby="v-pills-part-time4-tab">part-time4</div>
+                                    aria-labelledby="v-pills-part-time4-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Upload Contract</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#partime-4-number">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="partime-4-number" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#partime-4-fee">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="partime-4-fee" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#partime-4-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="partime-4-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                        <label class='upload-parttime'>Uplaod Contract</label>
+                                                        <div class="input-group  mb-4">
+                                                            <input type="file" multiple class="form-control" id='upload-parttime'
+                                                                name="file" style="line-height: 1">
+                                                            <div class="input-group-prepend">
+                                                                <small class="input-group-text"><span
+                                                                        class="fa fa-paperclip"></span></small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                    </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
