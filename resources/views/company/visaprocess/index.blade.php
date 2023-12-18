@@ -104,12 +104,14 @@
 
     <div class="tab-content" id="header-tabContent">
         <!-- Visa Tabs -->
-        <div class="tab-pane fade active show" id="pills-visa" role="tabpanel" aria-labelledby="pills-visa-tab">
+        <div class="tab-pane fade active show" id="pills-visa" role="tabpanel"h aria-labelledby="pills-visa-tab">
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-visa-tab"
                         role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-visa1-tab" data-toggle="pill"
+                        <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
+                            href="#v-pills-start" role="tab" aria-controls="v-pills-start" aria-selected="true">Start Process</a>
+                        <a class="nav-link bordered_tab" id="v-pills-visa1-tab" data-toggle="pill"
                             href="#v-pills-visa1" role="tab" aria-controls="v-pills-visa1" aria-selected="true">Job Offer</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa2-tab" data-toggle="pill" href="#v-pills-visa2"
                             role="tab" aria-controls="v-visa2-profile" aria-selected="false">Upload signed ST & MB</a>
@@ -144,7 +146,28 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3 ">
                     <div class="tab-content" id="v-visa-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-visa1" role="tabpanel"
+                        <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
+                        aria-labelledby="v-pills-start-tab">
+                        <div class='rounded p-3 light-box-shadow'>
+                            <form action="" class='py-2'>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
+                                <div class="row">
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Start Process</button>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#start-process-visa">Process start status</label>
+                                                <input type="text" class="form-control"
+                                                    id="start-process-visa" placeholder="...">
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                        <div class="tab-pane fade" id="v-pills-visa1" role="tabpanel"
                             aria-labelledby="v-pills-visa1-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
@@ -193,6 +216,7 @@
                                 </form>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-visa2" role="tabpanel"
                             aria-labelledby="v-pills-visa2-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -1226,7 +1250,7 @@
             </div>
         </div>
         <!-- Renewal Process End -->
-
+        
         <!-- Work Permit -->
         <div class="tab-pane fade" id="pills-Work-permit" role="tabpanel" aria-labelledby="pills-work-permit-tab">
             <ul class="nav nav-pills mb-3 work-permit-nav horizontal_tabs" id="work-permit-tab" role="tablist">
@@ -1280,10 +1304,14 @@
                                     aria-selected="false">Upload signed MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-sponsored3-tab" data-toggle="pill"
                                     href="#v-pills-sponsored3" role="tab" aria-controls="v-pills-sponsored3"
-                                    aria-selected="false">sponsored3</a>
+                                    aria-selected="false">Pay Dubai insurance</a>
                                 <a class="nav-link bordered_tab" id="v-pills-sponsored4-tab" data-toggle="pill"
                                     href="#v-pills-sponsored4" role="tab" aria-controls="v-pills-sponsored4"
-                                    aria-selected="false">sponsored4</a>
+                                    aria-selected="false">Preapproval Work Permit Fees</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-sponsored5-tab" data-toggle="pill"
+                                    href="#v-pills-sponsored5" role="tab" aria-controls="v-pills-sponsored5"
+                                    aria-selected="false">Upload Work Permit 
+                                </a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
@@ -1292,7 +1320,7 @@
                                     aria-labelledby="v-pills-sponsored1-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -sponsored1</h6>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit application</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -1310,7 +1338,27 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <p class='form-control m-0'>Pending</p>
+                                                    <p class='form-control m-0 sponsor-by-someone-status'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor1-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="sponsor1-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 d-none sponsor-workPermit-textearea">
+                                                    <label for='#sponsor2-textareara'>Comments</label>
+                                                    <textarea type="text" id='sponsor2-textareara' name="comment"
+                                                        placeholder="Enter Your Comments ..." class="form-control"
+                                                        rows="5"></textarea>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6 d-none sponsor-workPermit-approval">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor-approval">Approval No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsor-approval" placeholder="...">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
@@ -1321,7 +1369,7 @@
                                     aria-labelledby="v-pills-sponsored2-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -sponsored1</h6>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed MB</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -1341,28 +1389,138 @@
                                                     <label for="">Status</label>
                                                     <p class='form-control m-0'>Pending</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                                <label class='#sponsored1-file1'>Upload Signed MB</label>
-                                                <div class="input-group  mb-4">
-                                                    <input type="file" multiple class="form-control" id='sponsored1-file1'
-                                                        name="file" style="line-height: 1">
-                                                    <div class="input-group-prepend">
-                                                        <small class="input-group-text"><span
-                                                                class="fa fa-paperclip"></span></small>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor2-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="#sponsor2-date" placeholder="...">
                                                     </div>
                                                 </div>
+                                                <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                    <label class='#sponsored1-file1'>Upload Signed MB</label>
+                                                    <div class="input-group  mb-4">
+                                                        <input type="file" multiple class="form-control" id='sponsored1-file1'
+                                                            name="file" style="line-height: 1">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                </div>
                                             </div>
-                                            <div class="col-12 text-center">
-                                                <button class='btn btn-success px-5 py-2'>Submit</button>
-                                            </div>
+                                            
                                         </form>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-sponsored3" role="tabpanel"
-                                    aria-labelledby="v-pills-sponsored3-tab">sponsored3</div>
+                                    aria-labelledby="v-pills-sponsored3-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored3-transacton3-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored3-transacton3-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored3-transacton3-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored3-transacton3" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor3-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="sponsor3-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-sponsored4" role="tabpanel"
-                                    aria-labelledby="v-pills-sponsored4-tab">sponsored4</div>
+                                    aria-labelledby="v-pills-sponsored4-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Preapproval Work Permit Fees</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored4-transacton3-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored4-transacton3-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored4-transacton3-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored4-transacton3" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor4-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="sponsor4-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-sponsored5" role="tabpanel"
+                                    aria-labelledby="v-pills-sponsored5-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit 
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored4-transacton3-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored4-transacton3-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored4-transacton3-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored4-transacton3" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsor4-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="sponsor4-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1376,10 +1534,10 @@
                                 id="v-part-time-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab" id="v-pills-part-time1-tab" data-toggle="pill"
                                     href="#v-pills-part-time1" role="tab" aria-controls="v-pills-part-time1"
-                                    aria-selected="true">part-time1</a>
+                                    aria-selected="true">Work Permit Application</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time2-tab" data-toggle="pill"
                                     href="#v-pills-part-time2" role="tab" aria-controls="v-pills-part-time2"
-                                    aria-selected="false">part-time2</a>
+                                    aria-selected="false">Upload Sign MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-part-time3-tab" data-toggle="pill"
                                     href="#v-pills-part-time3" role="tab" aria-controls="v-pills-part-time3"
                                     aria-selected="false">part-time3</a>
@@ -1391,7 +1549,41 @@
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                             <div class="tab-content" id="v-part-time-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-part-time1" role="tabpanel"
-                                    aria-labelledby="v-pills-part-time1-tab">part-time1</div>
+                                    aria-labelledby="v-pills-part-time1-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit 
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#part-time1-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="part-time1-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#part-time1-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="part-time1-transacton3" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#part-time1-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="part-time1-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-part-time2" role="tabpanel"
                                     aria-labelledby="v-pills-part-time2-tab">part-time2</div>
                                 <div class="tab-pane fade" id="v-pills-part-time3" role="tabpanel"
@@ -1695,7 +1887,16 @@
                 a.addClass('d-none');
             }
         });
-
+        if($('.sponsor-by-someone-status').text().toLowerCase()=='approved'){
+            $('.sponsor-workPermit-approval').removeClass('d-none');
+        }if($('.sponsor-by-someone-status').text().toLowerCase()=='rejected' || $('.sponsor-by-someone-status').text().toLowerCase()=='return'){
+            $('.sponsor-workPermit-textearea').removeClass('d-none');
+        }if($('.sponsor-by-someone-status').text().toLowerCase()!='rejected' && $('.sponsor-by-someone-status').text().toLowerCase()!='return' &&
+        $('.sponsor-by-someone-status').text().toLowerCase()!='approved')
+        {
+            $('.sponsor-workPermit-textearea').addClass('d-none');
+            $('.sponsor-workPermit-approval').addClass('d-none');
+        }
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,
