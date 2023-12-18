@@ -110,15 +110,16 @@
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-visa-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-visa1-tab" data-toggle="pill"
-                            href="#v-pills-visa1" role="tab" aria-controls="v-pills-visa1" aria-selected="true">Start
-                            Process</a>
+                            href="#v-pills-visa1" role="tab" aria-controls="v-pills-visa1" aria-selected="true">Job Offer</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa2-tab" data-toggle="pill" href="#v-pills-visa2"
                             role="tab" aria-controls="v-visa2-profile" aria-selected="false">Upload signed ST & MB</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa3-tab" data-toggle="pill" href="#v-pills-visa3"
                             role="tab" aria-controls="v-pills-visa3" aria-selected="false">Pay Dubai insurance</a>
+                            <a class="nav-link bordered_tab" id="v-pills-preapproval-tab" data-toggle="pill" href="#v-pills-preapproval"
+                            role="tab" aria-controls="v-pills-preapproval" aria-selected="false">Preapproval work <br class='d-none d-lg-block'>permit fees & upload <br class='d-none d-lg-block'>the documents</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa4-tab" data-toggle="pill" href="#v-pills-visa4"
-                            role="tab" aria-controls="v-pills-visa4" aria-selected="false">Dubai visa</a>
-                        <a class="nav-link bordered_tab" id="v-pills-visa5-tab" data-toggle="pill"
+                            role="tab" aria-controls="v-pills-visa4" aria-selected="false">Entry visa</a>
+                        <a class="nav-link bordered_tab d-none change-visa-status" id="v-pills-visa5-tab" data-toggle="pill"
                             href="#v-pills-visa-5" role="tab" aria-controls="v-pills-visa-5"
                             aria-selected="false">Change of visa status</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa6-tab" data-toggle="pill" href="#v-pills-visa6"
@@ -147,26 +148,47 @@
                             aria-labelledby="v-pills-visa1-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Job Offer, MB Contracts + Preapproval of work permit</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#start-process-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="start-process-transaction-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                <label class='#job-file1'>Uplaod documents wih transaction number & fees</label>
+                                                <div class="input-group  mb-4">
+                                                    <input type="file" multiple class="form-control" id='job-file1'
+                                                        name="file" style="line-height: 1">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            </div>
                                     </div>
                                 </form>
                             </div>
@@ -175,26 +197,33 @@
                             aria-labelledby="v-pills-visa2-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process2</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
                                     <div class="row align-items-end">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#visa2-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa2-transaction-number"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#visa2-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa2-transaction-fee"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#">Status</label>
                                                 <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#StMB-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="StMB-transaction-date" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
@@ -227,65 +256,154 @@
                             aria-labelledby="v-pills-visa3-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process3</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#visa3-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa3-transaction-number"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#visa3-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa3-transaction-fee"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="#status">Status</label>
                                             <p class='form-control'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#dubai-insurance-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="StMB-insurance-date" placeholder="...">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="v-pills-preapproval" role="tabpanel"
+                            aria-labelledby="v-pills-preapproval-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Preapproval Work Permit Fees and upload the documents</h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#preapproval-transaction-number">Transaction No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="preapproval-transaction-number" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control"
+                                                    id="preapproval-transaction-fee" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <label for="">Status</label>
+                                            <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#preapproval-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="preapproval-transaction-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                <label class='#preapproval-file1'>Uplaod documents</label>
+                                                <div class="input-group mb-4">
+                                                    <input type="file" multiple class="form-control" id='preapproval-file1'
+                                                        name="file" style="line-height: 1">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                    </div>    
                         <div class="tab-pane fade" id="v-pills-visa4" role="tabpanel"
                             aria-labelledby="v-pills-visa4-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process4</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Entry visa</h6>
                                     <div class="row align-items-end fine-select-container">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa4-transaction-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-number"
+                                                <label for="#entry-visa-number">Transaction No:</label>
+                                                <input type="text" class="form-control" id="entry-visa-number"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa4-transaction-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-fee"
+                                                <label for="#entry-visa-fee">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="entry-visa-fee"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#">Status</label>
-                                                <p class='m-0 form-control'>Pending</p>
+                                                <p class='m-0 form-control entry-visa-status'>Approved</p>
                                             </div>
                                         </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#entry-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="entry-transaction-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                            <label class='#entry-file'>Upload entry visa</label>
+                                            <div class="input-group  mb-4">
+                                                <input type="file" multiple class="form-control" id='entry-file'
+                                                    name="file" style="line-height: 1">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+
                                         <div class="form-group col-12">
                                             <label for='#visa4-textareara'>Comments</label>
                                             <textarea required type="text" id='visa3-textareara' name="comment"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5"></textarea>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none entry-visa-country">
                                             <div class="form-group">
-                                                <label for="#select-fine-file">Over Stay Fines</label>
+                                                <label for="#select-entry-visa">Are u inside the country?</label>
+                                                <select class="form-control entry-visa-select" id="entry-visa-select">
+                                                    <option>select status</option>
+                                                    <option value='yes'>Yes</option>
+                                                    <option value='no'>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
+                                            <div class="form-group">
+                                                <label for="#select-fine-file">Over Stay Fines?</label>
                                                 <select class="form-control fine-select" id="select-fine-file">
                                                     <option>Select fine</option>
                                                     <option value='yes'>Yes</option>
@@ -317,34 +435,31 @@
                             aria-labelledby="v-pills-visa-5-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process5</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of visa status</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number5">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number5" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee5">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee5" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="#country">Select Country</label>
-                                                <select class="form-control" id="fitness">
-                                                    <option value="">select country</option>
-                                                    <option value="">Pakistan</option>
-                                                    <option value="">India</option>
-                                                </select>
+                                            <div class="form-group mb-3">
+                                                <label for="#change-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="change-date" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 mb-4">
@@ -370,27 +485,33 @@
                             aria-labelledby="v-pills-visa6-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process6</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Medical Fitness</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number6">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number6" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee6">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee6" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#change-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="change-date" placeholder="...">
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -399,32 +520,45 @@
                             aria-labelledby="v-pills-visa7-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process7</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh training classes</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number5">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number6" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee6">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee6" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-procecss-tawjeeh">Tawjeeh Payment</label>
-                                                <input type="text" class="form-control" id="start-procecss-tawjeeh"
-                                                    placeholder="...">
+                                                <label for="#tawjeeh-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="tawjeeh-date" placeholder="...">
                                             </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="#select-tawjeeh-payment">Tawjeeh Payment</label>
+                                                <select class="form-control" id="select-tawjeeh-payment">
+                                                    <option>Tawjeeh Payment</option>
+                                                    <option value='yes'>Yes</option>
+                                                    <option value='no'>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -434,25 +568,32 @@
                             aria-labelledby="v-pills-visa8-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process8</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract Submission</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number8">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number8" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee8">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee8" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#tawjeeh-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="tawjeeh-date" placeholder="...">
+                                            </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
                                             <label class='#visa-contract-file'>Upload Contract</label>
@@ -476,25 +617,32 @@
                             aria-labelledby="v-pills-visa9-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process9</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Health Insurance</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number9">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number9" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee9">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee9" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#health-insurance-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="health-insurance-date" placeholder="...">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -504,25 +652,32 @@
                             aria-labelledby="v-pills-visa10-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process10</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number10">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number10" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee10">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee10" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#work-permit-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="work-permit-transaction-date" placeholder="...">
+                                            </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
                                             <label class='#visa10-work-permit-file'>Upload work permit</label>
@@ -546,25 +701,32 @@
                             aria-labelledby="v-pills-visa11-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process11</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Emirates ID & residency application</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number11">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number11" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee11">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee11" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#emirates-transaction-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="emirates-transaction-date" placeholder="...">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -574,40 +736,47 @@
                             aria-labelledby="v-pills-visa12-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process12</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Employee Biometric</h6>
                                     <div class="row biometric-file-container">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number12">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee12">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#biometric1-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="#biometric1-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8">
                                             <div class="form-group">
-                                                <label for="#select-biometric-file">Send employee for biometric</label>
+                                                <label for="#select-biometric-file">Employee Biometric</label>
                                                 <select class="form-control biometric-select" id="select-biometric">
-                                                    <option>send biometric file</option>
-                                                    <option value='yes'>Yes</option>
-                                                    <option value='no'>No</option>
+                                                    <option>Employee Biometric</option>
+                                                    <option value='required'>Required</option>
+                                                    <option value='not required'>Not Required</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row biometric-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#biometric-file'>Choose Files</label>
+                                            <label class='#biometric-file'>Upload biometric</label>
                                             <div class="input-group  mb-4">
                                                 <input type="file" multiple class="form-control" id='biometric-file'
                                                     name="file" style="line-height: 1">
@@ -665,35 +834,38 @@
                     <div class="tab-content" id="v-renewal-process-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-renewal-process1" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process1-tab">
-<<<<<<< HEAD
-=======
-
->>>>>>> f2d2f1717fd7a971021aa05e82aa5970a4246bfc
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> RenewalProcess1</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Medical Fitness</h6>
                                     <div class="row align-items-end">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#renewal-medical-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="renewal-medical-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#renewal-medical-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="renewal-medical-fee"
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#">Status</label>
                                                 <p class='m-0 form-control'>Pending</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-process1-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal-process1-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8">
                                             <div class="form-group">
                                                 <label for="#fitness">Fitness Status</label>
                                                 <select class="form-control" id="fitness">
@@ -709,32 +881,38 @@
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process2" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process2-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Reneewal Process2</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit application</h6>
                                     <div class="row align-items-end">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#work-permit-app-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="work-permit-app-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#work-permit-app-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="work-permit-app-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#">Status</label>
                                                 <p class='m-0 form-control'>Pending</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-process2-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal-process2-date" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
@@ -764,15 +942,11 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-renewal-process3" role="tabpanel"
                             aria-labelledby="v-pills-renewal-process3-tab">
-<<<<<<< HEAD
-=======
-
->>>>>>> f2d2f1717fd7a971021aa05e82aa5970a4246bfc
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Renewal Process 3</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed MB</h6>
                                     <div class="row align-items-end">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#upload-signed-mb-transaction-number">Transaction
                                                     No:</label>
@@ -780,25 +954,27 @@
                                                     id="upload-signed-mb-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#upload-signed-mb-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="upload-signed-mb-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#">Status</label>
                                                 <p class='m-0 form-control'>Pending</p>
                                             </div>
                                         </div>
-
-<<<<<<< HEAD
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-process3-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal-process3-date" placeholder="...">
+                                            </div>
+                                        </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-=======
-                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
->>>>>>> f2d2f1717fd7a971021aa05e82aa5970a4246bfc
                                             <label class='#upload-signed-mb'>Upload signed MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" multiple class="form-control"
@@ -820,25 +996,32 @@
                             aria-labelledby="v-pills-renewal-process4-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -RenewalProcess4</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number12">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee12">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-process3-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal-process3-date" placeholder="...">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -848,25 +1031,32 @@
                             aria-labelledby="v-pills-renewal-process5-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -RenewalProcess5</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract submission</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#RenewalProcess4-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="RenewalProcess4-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#RenewalProcess4-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="RenewalProcess4-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="#renewal-process3-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal-process3-date" placeholder="...">
+                                            </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
                                             <label class='#visa-contract-file'>Upload Contract</label>
@@ -890,32 +1080,45 @@
                             aria-labelledby="v-renewal-process6-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -RenwalProcess6</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh classes</h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#Renewal-process7-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#Renewal-process7-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-procecss-tawjeeh">Tawjeeh Payment</label>
-                                                <input type="text" class="form-control" id="start-procecss-tawjeeh"
-                                                    placeholder="...">
+                                                <label for="renewal6-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal6-date" placeholder="...">
                                             </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="#renewal-tawjeeh-payment">Tawjeeh Payment</label>
+                                                <select class="form-control" id="renewal-tawjeeh-payment">
+                                                    <option>Tawjeeh Payment</option>
+                                                    <option value='yes'>Yes</option>
+                                                    <option value='no'>No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -925,27 +1128,34 @@
                             aria-labelledby="v-pills-visa7-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -RenwalProcess7</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency and Identity renewal
+                                    </h6>
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#Renewal-process7-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-number" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#Renewal-process7-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="renewal7-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal7-date" placeholder="...">
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -954,42 +1164,49 @@
                             aria-labelledby="v-pills-renewal-process8-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -Process12</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Employee biometric</h6>
                                     <div class="row biometric-file-container">
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number12">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-number12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee12">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="start-process-transaction-fee12" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-4 col-lg-12 col-md-4 ">
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
                                             <p class='form-control m-0'>Pending</p>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="renewal8-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="renewal8-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-8 col-lg-12 col-md-8">
                                             <div class="form-group">
-                                                <label for="#select-biometric-file">Send employee for biometric</label>
-                                                <select class="form-control biometric-select" id="select-biometric-renewal">
-                                                    <option>send biometric file</option>
-                                                    <option value='yes'>Yes</option>
-                                                    <option value='no'>No</option>
+                                                <label for="#select-biometric-file">Employee Biometric</label>
+                                                <select class="form-control biometric-select" id="select-biometric">
+                                                    <option>Employee Biometric</option>
+                                                    <option value='required'>Required</option>
+                                                    <option value='not required'>Not Required</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row biometric-files-container align-items-end d-none">
                                         <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label class='#biometric-file'>Choose Files</label>
+                                            <label class='#biometric-renewal-file'>Upload biometric</label>
                                             <div class="input-group  mb-4">
-                                                <input type="file" multiple class="form-control" id='biometric-file'
+                                                <input type="file" multiple class="form-control" id='biometric-renewal-file'
                                                     name="file" style="line-height: 1">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -1000,11 +1217,10 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
-                                    </div>
+                                    </div>    
                                 </form>
                             </div>
                         </div>
-                    
                     </div>
                 </div>
             </div>
@@ -1056,10 +1272,12 @@
                                 id="v-sponsored-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab" id="v-pills-sponsored1-tab" data-toggle="pill"
                                     href="#v-pills-sponsored1" role="tab" aria-controls="v-pills-sponsored1"
-                                    aria-selected="true">sponsored1</a>
+                                    aria-selected="true">
+                                    Work Permit Application
+                                </a>
                                 <a class="nav-link bordered_tab" id="v-pills-sponsored2-tab" data-toggle="pill"
                                     href="#v-pills-sponsored2" role="tab" aria-controls="v-pills-sponsored2"
-                                    aria-selected="false">sponsored2</a>
+                                    aria-selected="false">Upload signed MB</a>
                                 <a class="nav-link bordered_tab" id="v-pills-sponsored3-tab" data-toggle="pill"
                                     href="#v-pills-sponsored3" role="tab" aria-controls="v-pills-sponsored3"
                                     aria-selected="false">sponsored3</a>
@@ -1071,9 +1289,76 @@
                         <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                             <div class="tab-content" id="v-sponsored-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-sponsored1" role="tabpanel"
-                                    aria-labelledby="v-pills-sponsored1-tab">sponsored1</div>
+                                    aria-labelledby="v-pills-sponsored1-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -sponsored1</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored1-transacton1-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored1-transacton1-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored1-transacton1-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored1-transacton1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                                 <div class="tab-pane fade" id="v-pills-sponsored2" role="tabpanel"
-                                    aria-labelledby="v-pills-sponsored2-tab">sponsored2</div>
+                                    aria-labelledby="v-pills-sponsored2-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> -sponsored1</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored1-transacton1-number1">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored1-transacton1-number1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#sponsored1-transacton1-fee1">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="sponsored1-transacton1" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-12 col-md-8 ">
+                                                <label class='#sponsored1-file1'>Upload Signed MB</label>
+                                                <div class="input-group  mb-4">
+                                                    <input type="file" multiple class="form-control" id='sponsored1-file1'
+                                                        name="file" style="line-height: 1">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-sponsored3" role="tabpanel"
                                     aria-labelledby="v-pills-sponsored3-tab">sponsored3</div>
                                 <div class="tab-pane fade" id="v-pills-sponsored4" role="tabpanel"
@@ -1379,6 +1664,21 @@
 <script>
     $(function () {
         // Handle change event on .fine-select within .fine-select-container
+        if($('.entry-visa-status').text().toLowerCase()=='approved'){
+                $('.entry-visa-country').removeClass('d-none');
+        }
+        $('.entry-visa-select').change(function(){
+            if ($(this).val() == 'yes') {
+                $('.Over-stay-fine').removeClass('d-none');
+                $('.change-visa-status').addClass('d-none');
+            }else{
+                $('.Over-stay-fine').addClass('d-none')
+                let a = $('.fine-select').parents('.fine-select-container').siblings('.fine-files-container');
+                a.addClass('d-none');
+                $('.change-visa-status').removeClass('d-none');
+                $('.change-visa-status').click();
+            }
+        })
         $('.fine-select-container').on('change', '.fine-select', function () {
             let a = $(this).parents('.fine-select-container').siblings('.fine-files-container');
             if ($(this).val() == 'yes') {
@@ -1389,7 +1689,7 @@
         });
         $('.biometric-file-container').on('change', '.biometric-select', function () {
             let a = $(this).parents('.biometric-file-container').siblings('.biometric-files-container');
-            if ($(this).val() == 'yes') {
+            if ($(this).val() == 'not required') {
                 a.removeClass('d-none');
             } else {
                 a.addClass('d-none');
