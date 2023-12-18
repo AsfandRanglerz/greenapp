@@ -156,6 +156,7 @@
                                             {{-- {{$employee->name}} --}}
                                             <form action="{{route('company.sent-new-visa-request',$employee->id)}}" method="POST">
                                             {{-- <a href="" class='btn btn-success px-5 py-2'>Start Process</a> --}}
+                                            <input type="text" value='new visa' name='process_name' hidden>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                              </form>
                                         </div>
