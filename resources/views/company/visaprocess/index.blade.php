@@ -1899,7 +1899,54 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-UAE4" role="tabpanel"
-                                    aria-labelledby="v-pills-UAE4-tab">UAE4</div>
+                                    aria-labelledby="v-pills-UAE4-tab">
+                                    <div class='rounded p-3 light-box-shadow'>
+                                        <form action="" class='py-2'>
+                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit</h6>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#UAE4-process-transaction-number10">Transaction No:</label>
+                                                        <input type="text" class="form-control"
+                                                            id="UAE4-process-transaction-number10" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#UAE4-process-transaction-fee10">Transaction Fee</label>
+                                                        <input type="text" class="form-control"
+                                                            id="UAE4-process-transaction-fee10" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
+                                                    <label for="">Status</label>
+                                                    <p class='form-control m-0'>Pending</p>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="#UAE4-permit-transaction-date">Date</label>
+                                                        <input type="date" class="form-control"
+                                                            id="UAE4-permit-transaction-date" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
+                                                    <label for='#UAE4-work-permit-file'>Upload work permit</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" multiple class="form-control"
+                                                            id='UAE4-work-permit-file' name="file" style="line-height: 1">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
