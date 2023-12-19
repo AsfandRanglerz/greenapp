@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\ServicesResponseController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
 use App\Http\Controllers\Admin\NewVisaProcessController;
+use App\Http\Controllers\Admin\NewVisaController;
+use App\Http\Controllers\Admin\AdminReceiptsController;
 
 
 
@@ -121,6 +123,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Receipts
 
+    // Route::resource('receipts', AdminReceiptsController::class)->middleware('permission:Receipt');
+
     Route::get('receipt-user-index', [ReceiptsController::class, 'index'])->name('receipt-user-index')->middleware('permission:Receipt');
 
     Route::get('receipt-index/{id}', [ReceiptsController::class, 'receipts_index'])->name('user-receipts')->middleware('permission:Receipt');
@@ -140,13 +144,15 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // New visa
 
-    Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
+    Route::resource('visa', NewVisaController::class)->middleware('permission:Receipt');
 
-    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+    // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
 
-    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+    // Route::get('visa-request-action/{id}', [NewVisaProcessController::class, 'show'])->name('visa-request-action')->middleware('permission:Receipt');
 
-    Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+    // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+
+    // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
 
     // Services Response
@@ -281,7 +287,7 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
     Route::get('employee-visa-process/{id}', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
 
     Route::post('sent-new-visa-request/{id}', 'EmployeeVisaProcessController@visa_process_request')->name('sent-new-visa-request');
-     
+
 
 
     /** All security routes */

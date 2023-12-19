@@ -80,29 +80,29 @@
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipt'))
-            <li class="dropdown {{ request()->is('admin/visaprocess*') ? 'active' : '' }}">
-                <a href="{{ route('get-visa-requests') }}" class="nav-link"><i
+            <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
+                <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span></a>
 
             </li>
             @elseif(auth()->guard('admin')->check())
 
-            <li class="dropdown {{ request()->is('admin/visaprocess*') ? 'active' : '' }}">
-                <a href="{{ route('get-visa-requests') }}" class="nav-link"><i
+            <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
+                <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span></a>
             </li>
             @endif
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipt'))
-            <li class="dropdown {{ request()->is('admin/get-receipts*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/receipt-user-index*') ? 'active' : '' }}">
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Receipts</span></a>
 
             </li>
             @elseif(auth()->guard('admin')->check())
 
-            <li class="dropdown {{ request()->is('admin/get-receipts*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/receipt-user-index*') ? 'active' : '' }}">
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Receipts</span></a>
             </li>
@@ -156,7 +156,7 @@
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Services'))
-            <li class="dropdown {{ request()->is('admin/services*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-services-requests*') ? 'active' : '' }}">
                 <a href="{{ route('get-services-requests') }}" class="nav-link"><i
                         class="fa fa-question"></i><span>Services</span>
                         @if ($response_count > 0)
@@ -167,7 +167,7 @@
                     </a>
             </li>
             @elseif(auth()->guard('admin')->check())
-            <li class="dropdown {{ request()->is('admin/services*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-services-requests*') ? 'active' : '' }}">
                 <a href="{{ route('get-services-requests') }}" class="nav-link"><i
                         class="fa fa-question"></i><span>Services</span>
                         @if ($response_count > 0)

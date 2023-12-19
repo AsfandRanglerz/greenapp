@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\NewVisaProcess;
-use Illuminate\Support\Facades\Mail;
+use App\Models\VisaProcessRequest;
+use App\Http\Controllers\Controller;
 
 class NewVisaProcessController extends Controller
 {
     public function index()
     {
-        return view('admin.visaprocess.index');
+        $visa_requests = VisaProcessRequest::with('company','user')->get();
+        // return $visa_requests->company->name;
+        return view('admin.visaprocess.index',compact('visa_requests'));
+    }
+
+    public function show($id)
+    {
+        // return 'ok';
+        return view('admin.visaprocess.newvisa');
     }
 }

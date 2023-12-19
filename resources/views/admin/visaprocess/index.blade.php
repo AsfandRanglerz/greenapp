@@ -43,39 +43,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($users as $employee)
+                                        @foreach ($visa_requests as $requests)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $employee->name }}</td>
-                                                <td>{{ $employee->email }}</td>
-                                                {{-- <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
-                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
-                                                            height="50" width="50" class="image"></a>
-                                                </td> --}}
-                                                {{-- <td>{{ $employee->email }}</td>
-
-                                                <td>
-                                                    <a href="{{ route('user-receipts', $employee->id) }}">View</a>
-                                                </td> --}}
-
-                                                {{-- <td
+                                                <td>{{ $requests->company->name }}</td>
+                                                <td>{{ $requests->user->name }}</td>
+                                                <td>{{ $requests->process_name }}</td>
+                                                {{-- <td>{{ $employee->email }}</td> --}}
+                                                {{-- <td> --}}
+                                                    {{-- <a href="{{ route('user-receipts', $visa_requests->id) }}">View</a> --}}
+                                                {{-- </td> --}}
+                                                 <td>
+                                                    <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-
-                                                    <a id="{{ $employee->id }}" data-toggle="modal"
-                                                        data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
-                                                            class="fa fa-eye text-white"></span></a>
+                                                    {{-- <a id="{{ $requests->id }}" data-toggle="modal"
+                                                        data-target=".bd-example-modal-lg" class="visa_requests-data btn_warning"><span
+                                                            class="fa fa-eye text-white"></span></a> --}}
                                                     <a class="btn btn-info"
-                                                        href="{{ route('user.edit', $employee->id) }}">Edit</a>
-                                                    <form method="post"
-                                                        action="{{ route('user.destroy', $employee->id) }}">
+                                                        href="{{ route('visa.show', $requests->id) }}">Approve</a>
+                                                    {{-- <form method="post"
+                                                        action="{{ route('user.destroy', $requests->id) }}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                            data-toggle="tooltip">Delete</button>
-                                                    </form>
-                                                </td> --}}
-                                            {{-- </tr>
-                                        @endforeach --}}
+                                                            data-toggle="tooltip">Reject</button>
+                                                    </form> --}}
+                                                </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
