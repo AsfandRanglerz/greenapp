@@ -40,60 +40,72 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
+                        {{-- @dd($receipts->receipt) --}}
                         <div class="form-group col-md-6 receipts-show">
                             <label>Receipts<span class="required"> *</span></label>
-                            <select id="selectReceipt" name="receipt" class="form-control">
+                            <select id="selectReceipt" name="receipt" class="form-control select-other">
                                 <option value="" selected disabled>Select Receipt</option>
                                 <option
-                                    value="Preapproval of work permit receipt"{{ $receipts->receipt == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                    value="Preapproval of work permit receipt"{{ $receipts['receipt'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
                                     Preapproval of work permit</option>
                                 <option
-                                    value="Dubai Insurance receipts"{{ $receipts->receipt == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                    value="Dubai Insurance receipts"{{ $receipts['receipt'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
                                     Dubai Insurance</option>
                                 <option
-                                    value="Preapproval work permit fees receipt"{{ $receipts->receipt == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                    value="Preapproval work permit fees receipt"{{ $receipts['receipt'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
                                     Preapproval work permit fees</option>
                                 <option
-                                    value="Work permit Renewal Fees Receipt"{{ $receipts->receipt == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                    value="Work permit Renewal Fees Receipt"{{ $receipts['receipt'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
                                     Work permit Renewal Fees</option>
                                 <option
-                                    value="Entry Visa Application Receipt"{{ $receipts->receipt == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                    value="Entry Visa Application Receipt"{{ $receipts['receipt'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
                                     Entry Visa Application</option>
                                 <option
-                                    value="Change of Visa Status Application"{{ $receipts->receipt == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                    value="Change of Visa Status Application"{{ $receipts['receipt'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
                                     Change of Visa Status Application</option>
-                                <option value="Medical"{{ $receipts->receipt == 'Medical' ? 'selected' : '' }}>Medical
+                                <option value="Medical"{{ $receipts['receipt'] == 'Medical' ? 'selected' : '' }}>Medical
                                 </option>
-                                <option value="Tawjeeh"{{ $receipts->receipt == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                <option value="Tawjeeh"{{ $receipts['receipt'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
                                 </option>
                                 <option
-                                    value="Heath Insurance"{{ $receipts->receipt == 'Heath Insurance' ? 'selected' : '' }}>
+                                    value="Heath Insurance"{{ $receipts['receipt'] == 'Heath Insurance' ? 'selected' : '' }}>
                                     Health Insurance</option>
                                 <option
-                                    value="Emirates ID Application"{{ $receipts->receipt == 'Emirates ID Application' ? 'selected' : '' }}>
+                                    value="Emirates ID Application"{{ $receipts['receipt'] == 'Emirates ID Application' ? 'selected' : '' }}>
                                     Emirates ID Application</option>
                                 <option
-                                    value="Residency Visa Application"{{ $receipts->receipt == 'Residency Visa Application' ? 'selected' : '' }}>
+                                    value="Residency Visa Application"{{ $receipts['receipt'] == 'Residency Visa Application' ? 'selected' : '' }}>
                                     Residency Visa Application</option>
-                                <option value="Visa Fines"{{ $receipts->receipt == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                <option value="Visa Fines"{{ $receipts['receipt'] == 'Visa Fines' ? 'selected' : '' }}>Visa
                                     Fines</option>
                                 <option
-                                    value="Emirates ID Fines"{{ $receipts->receipt == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                    value="Emirates ID Fines"{{ $receipts['receipt'] == 'Emirates ID Fines' ? 'selected' : '' }}>
                                     Emirates ID Fines</option>
-                                <option value="Other fines"{{ $receipts->receipt == 'Other fines' ? 'selected' : '' }}>
+                                <option value="Other fines"{{ $receipts['receipt'] == 'Other fines' ? 'selected' : '' }}>
                                     Other fines</option>
                                 <option
-                                    value="Health Insurance Fines"{{ $receipts->receipt == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                    value="Health Insurance Fines"{{ $receipts['receipt'] == 'Health Insurance Fines' ? 'selected' : '' }}>
                                     Health Insurance Fines</option>
                                 <option
-                                    value="Immigration Application"{{ $receipts->receipt == 'Immigration Application' ? 'selected' : '' }}>
+                                    value="Immigration Application"{{ $receipts['receipt'] == 'Immigration Application' ? 'selected' : '' }}>
                                     Immigration Application</option>
                                 <option
-                                    value="MOHRE Application"{{ $receipts->receipt == 'MOHRE Application' ? 'selected' : '' }}>
+                                    value="MOHRE Application"{{ $receipts['receipt'] == 'MOHRE Application' ? 'selected' : '' }}>
                                     MOHRE Application</option>
+
+                                    <option
+                                    value="other" {{ $receipts['receipt'] == 'other' ? 'selected' : '' }}>
+                                    Other</option>
                             </select>
                         </div>
-
+                        {{-- @if ($receipts->name) --}}
+                        <div class="form-group d-none other-input col-md-6">
+                            <label>Other Request</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="enter" name="name" value="{{$receipts->name}}">
+                            </div>
+                        </div>
+                        {{-- @endif --}}
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
@@ -107,8 +119,19 @@
     </div>
 @endsection
 @section('script')
+<script>
+    $('.select-other').change(function(){
+      if($(this).val()=='other'){
+          $('.other-input').removeClass('d-none');
+      }else{
+          $('.other-input').addClass('d-none');
+      }
+    });
+    if($('.select-other').val()=='other'){
+      $('.other-input').removeClass('d-none');
+    }
+  </script>
     <script type="text/javascript">
-
             /*Avatar upload*/
             var readURL = function(input) {
                 if (input.files && input.files[0]) {
@@ -131,6 +154,6 @@
                 $(this).siblings('.file-upload').click();
             });
             /*Avatar upload*/
-        });
+
     </script>
 @endsection

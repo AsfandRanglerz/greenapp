@@ -25,6 +25,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Receipt Type</th>
                             {{-- <th scope="col"></th> --}}
+                            <th scope="col">Name</th>
                             <th scope="col">File</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -35,6 +36,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                    <td class="word_wrap">{{ $receipt->receipt }}</td>
                                    {{-- <td class="word_wrap">{{ $receipt->receipt_type }}</td> --}}
+                                   <td class="word_wrap">{{ $receipt->name }}</td>
 
                                 <td>
                                     @php

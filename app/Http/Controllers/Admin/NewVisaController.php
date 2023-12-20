@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProcessStarted;
 
 class NewVisaController extends Controller
 {
@@ -15,7 +18,7 @@ class NewVisaController extends Controller
      */
     public function index()
     {
-        $visa_requests = VisaProcessRequest::with('company','user')->get();
+        $visa_requests = VisaProcessRequest::with('company','user')->orderBy('created_at','DESC')->get();
         // return $visa_requests->company->name;
         return view('admin.visaprocess.index',compact('visa_requests'));
     }
@@ -55,8 +58,7 @@ class NewVisaController extends Controller
             'status'=>'approved',
         ]);
         return redirect()->back()->with('success', 'Request approved successfully.');
-
-        return view('admin.visaprocess.newvisa');
+        // return view('admin.visaprocess.newvisa');
     }
     /**
      * Show the form for editing the specified resource.
@@ -90,5 +92,22 @@ class NewVisaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function start_visa_process($request_id,$user_id)
+    {
+        $employee = User::find($user_id);
+        $data['employee_name'] = $employee->name;
+        $data['request_name'] = VisaProcessRequest::where('employee_id',$user_id)->value('process_name');
+        $process_request= VisaProcessRequest::find($request_id);
+        // return $process_request->notify;
+        if($process_request->notify == 'pending')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            $process_request->update([
+                'notify'=>'notified',
+            ]);
+        }
+        return view('admin.visaprocess.newvisa',compact('employee'));
     }
 }

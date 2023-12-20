@@ -59,8 +59,19 @@
                                                     {{-- <a id="{{ $requests->id }}" data-toggle="modal"
                                                         data-target=".bd-example-modal-lg" class="visa_requests-data btn_warning"><span
                                                             class="fa fa-eye text-white"></span></a> --}}
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('visa.show', $requests->id) }}">Approve</a>
+                                                        @if ($requests->status == 'pending')
+                                                            <a class="btn btn-info"
+                                                                href="{{ route('visa.show', $requests->id) }}">Approve</a>
+                                                            <a class="btn btn-danger"
+                                                                href="{{ route('visa.show', $requests->id) }}">Rejecte</a>
+                                                        @else
+                                                            {{-- <a class="btn btn-danger"
+                                                            href="{{ route('visa.show', $requests->id) }}">Rejecte</a> --}}
+                                                            <a class="btn btn-primary"
+                                                                href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id])}}">Start Process</a>
+                                                        @endif
+
+
                                                     {{-- <form method="post"
                                                         action="{{ route('user.destroy', $requests->id) }}">
                                                         @csrf

@@ -27,11 +27,15 @@ class UserReceiptsController extends Controller
     public function store(Request $request)
     {
         $rec_type = $request->input('receipt_type');
+        $rec_name = $request->input('name');
         $files = $request->file('file');
         for ($i = 0; $i < count($rec_type); $i++) {
             $receipts = new Receipt;
             $receipts->receipt = $rec_type[$i];
-
+            if($rec_name)
+            {
+                $receipts->name = $rec_name[$i];
+            }
             $receipts->user_id = Auth::guard('web')->id();
 
             if ($request->hasFile('file.' . $i)) {
@@ -84,14 +88,23 @@ class UserReceiptsController extends Controller
             $file =  $receipts->file;
             // return $file;
         }
-
-        $receipts->update([
-            'file'=>$file,
-            'receipt'=>$request->receipt,
-        ]);
-        // return 'ok';
-        return redirect()->route('user.get-receipts')->with('success', 'Receipt created Successfully');
-
+        if($request->receipt == "other")
+        {
+            $receipts->update([
+                'file'=>$file,
+                'receipt'=>$request->receipt,
+                'name'=>$request->name,
+            ]);
+        }
+        else
+        {
+            $receipts->update([
+                'file'=>$file,
+                'receipt'=>$request->receipt,
+                'name'=>NULL,
+            ]);
+        }
+        return redirect()->route('user.get-receipts')->with('success', 'Receipt Updated Successfully');
     }
 
 

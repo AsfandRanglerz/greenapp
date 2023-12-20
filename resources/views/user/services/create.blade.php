@@ -30,8 +30,8 @@
                         {{-- @if (Auth::guard('web')->user()->emp_type == 'self') --}}
                         <div class="form-group col-md-6">
                             <label>Select Request Type<span class="required"> *</span></label>
-                            <select id="selectDocument" name="req_type" value="{{ old('doc_type[]') }}"
-                                class="form-control" required>
+                            <select id="selectDocument"   in name="req_type" value="{{ old('doc_type[]') }}"
+                                class="form-control select-other" required>
                                 <option value="" selected disabled>Select Request</option>
                                 <option value="Request to Apply for Golden Visa Nomination">Request to Apply for Golden Visa Nomination</option>
                                 <option value="Request for Documents Attestation">Request for Documents Attestation</option>
@@ -42,6 +42,7 @@
                                 <option value="Traffic services">Traffic services</option>
                                 <option value="New Business setup inquiry">New Business setup inquiry</option>
                                 <option value="Request for Vehicle Insurance">Request for Vehicle Insurance</option>
+                                <option value="other">Other</option>
                             </select>
                             @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -60,13 +61,19 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group d-none mb-3 other-input col-md-6">
+                            <label>Other Request</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
                             <div class="form-group w-100">
                                 <label>Comments</label>
                                 <textarea required type="text" name="comment" placeholder="Enter Your Comments ..." value="{{ old('comment[]') }}"
                                     class="form-control" rows="5"></textarea>
                             </div>
                     </div>
-                    <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
+                    <div class="w-100 mt-3 mb-sm-2 mb-0 align-center">
                         <button type="submit" class="btn-bg">Save</button>
                     </div>
                 </div>
@@ -78,6 +85,19 @@
     </div>
 @endsection
 @section('script')
+<script>
+  $('.select-other').change(function(){
+    if($(this).val()=='other'){
+        $('.other-input').removeClass('d-none');
+    }else{
+        $('.other-input').addClass('d-none');
+    }
+  });
+  if($('.select-other').val()=='other'){
+    $('.other-input').removeClass('d-none');
+  }
+
+</script>
     <script type="text/javascript">
         $(function() {
             // $('#selectDocument').select2({

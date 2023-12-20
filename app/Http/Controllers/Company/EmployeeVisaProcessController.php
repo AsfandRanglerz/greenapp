@@ -16,6 +16,7 @@ class EmployeeVisaProcessController extends Controller
 {
     public function index($id)
     {
+        // return 'ok';
         $authId = Auth::guard('company')->id();
         $employee = User::find($id);
         // return $employee;

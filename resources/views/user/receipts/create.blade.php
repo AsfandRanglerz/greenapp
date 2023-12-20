@@ -104,7 +104,7 @@
 
                         <div class="form-group col-md-6 receipts-show">
                             <label>Receipts <span class="required"> *</span></label>
-                            <select id="selectReceipt" name="receipt_type[]" class="form-control">
+                            <select id="selectReceipt" name="receipt_type[]" class="form-control select-other">
                                 <option value="" selected disabled>Select Receipt</option>
                                 <option value="Preapproval of work permit receipt">Preapproval of work permit</option>
                                 <option value="Dubai Insurance receipts">Dubai Insurance</option>
@@ -123,6 +123,7 @@
                                 <option value="Health Insurance Fines">Health Insurance Fines</option>
                                 <option value="Immigration Application">Immigration Application</option>
                                 <option value="MOHRE Application">MOHRE Application</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
@@ -137,6 +138,12 @@
                             @error('file')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
+                        </div>
+                        <div class="form-group d-none other-input col-md-6">
+                            <label>Other Request</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="enter" name="name[]">
+                            </div>
                         </div>
                         {{-- <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
@@ -190,6 +197,19 @@
     </div>
 @endsection
 @section('script')
+<script>
+    $('.select-other').change(function(){
+      if($(this).val()=='other'){
+          $('.other-input').removeClass('d-none');
+      }else{
+          $('.other-input').addClass('d-none');
+      }
+    });
+    if($('.select-other').val()=='other'){
+      $('.other-input').removeClass('d-none');
+    }
+
+  </script>
     <script type="text/javascript">
         $(function() {
             // $('#selectDocument').select2({
