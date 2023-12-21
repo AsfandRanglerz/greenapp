@@ -2,10 +2,15 @@
 
 @section('title', 'index')
 
-@section('content')
- 
 
+
+@section('content')
+
+<p>sdfghdfs</p>
 @endsection
+
+
+
 
 @section('js')
     <script>

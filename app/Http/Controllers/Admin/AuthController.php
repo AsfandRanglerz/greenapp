@@ -31,6 +31,8 @@ class AuthController extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
+        // return $request;
+
         // $remember_me=($request->remember_me)?true:false;
         // if(!auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$remember_me)){
         //     return redirect()->back()->with( 'error','Invalid Email and Password');
