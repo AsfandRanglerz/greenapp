@@ -214,8 +214,8 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                          </div>  
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                       </div>
                                     </div>
                                 </form>
@@ -255,11 +255,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-3 col-12">
-                                          <div class="form-check">
-                                            <input class="form-check-input"  type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                              The contract has been sign.
-                                            </label>
+                                          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="flexCheckDefault">
+                                            <label class="custom-control-label" for="flexCheckDefault">The contract has been signed.</label>
                                           </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
@@ -274,7 +272,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                         </div>
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
@@ -319,9 +317,9 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                           <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
-                                          
+
                                       </div>
                                     </div>
                                 </form>
@@ -361,7 +359,7 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
                                       </div>
                                     </div>
@@ -405,14 +403,14 @@
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
                                       </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
                                                 <label for="#select-entry-visa">Are u inside the country?</label>
                                                 <select class="form-control entry-visa-select" id="entry-visa-select">
-                                                    <option>select status</option>
+                                                    <option selected disabled>select status</option>
                                                     <option value='yes'>Yes</option>
                                                     <option value='no'>No</option>
                                                 </select>
@@ -443,7 +441,7 @@
                                               </div>
                                           </div>
                                         </div>
-                                           <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                           <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                       </div>
                                     </div>
                                   </div>
@@ -487,8 +485,8 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                          </div>  
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                       </div>
                                     </div>
                                 </form>
@@ -537,7 +535,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                         </div>
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
@@ -581,7 +579,7 @@
                                             <div class="form-group">
                                                 <label for="#select-tawjeeh-payment">Tawjeeh Payment</label>
                                                 <select class="form-control select-tawjeeh-payment" id="select-tawjeeh-payment">
-                                                    <option>Tawjeeh Payment</option>
+                                                    <option selected disabled>Select Option</option>
                                                     <option value='yes'>Yes</option>
                                                     <option value='no'>No</option>
                                                 </select>
@@ -599,7 +597,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                         </div>
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
@@ -642,8 +640,8 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                          </div>  
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                       </div>
                                     </div>
                                 </form>
@@ -683,8 +681,8 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                          </div>  
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                       </div>
                                     </div>
 
@@ -725,8 +723,8 @@
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                          </div>  
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                       </div>
                                     </div>
                                 </form>
@@ -766,8 +764,8 @@
                                       <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                         <div class="d-flex flex-column">
                                           <label for="#">Attachment</label>
-                                       <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                        </div>  
+                                       <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                        </div>
                                   </div>
                                 </div>
                               </form>
@@ -802,8 +800,8 @@
                                     <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                       <div class="d-flex flex-column">
                                         <label for="#">Attachment</label>
-                                     <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
-                                      </div>  
+                                     <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                      </div>
                                 </div>
                               </div>
                               </form>
@@ -844,7 +842,7 @@
                                             <div class="form-group">
                                                 <label for="#select-biometric-file">Employee Biometric</label>
                                                 <select class="form-control biometric-select" id="select-biometric">
-                                                    <option>Employee Biometric</option>
+                                                    <option selected disabled>Select Option</option>
                                                     <option value='required'>Required</option>
                                                     <option value='not required'>Not Required</option>
                                                 </select>
@@ -863,7 +861,7 @@
                                                   </div>
                                               </div>
                                             </div>
-                                               <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> 
+                                               <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
                                       </div>
                                       <div class="col-12 text-center">
@@ -913,7 +911,7 @@
                             aria-selected="false">Employee Biometric</a>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="v-renewal-process-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-renewal-process0" role="tabpanel"
@@ -1216,7 +1214,7 @@
                                             <div class="form-group">
                                                 <label for="#renewal-tawjeeh-payment">Tawjeeh Payment</label>
                                                 <select class="form-control" id="renewal-tawjeeh-payment">
-                                                    <option>Tawjeeh Payment</option>
+                                                    <option selected disabled>Select Option</option>
                                                     <option value='yes'>Yes</option>
                                                     <option value='no'>No</option>
                                                 </select>
@@ -1408,7 +1406,7 @@
                                         <form  class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                             <div class="row">
-                                                    <div class="col-12 text-center">                                                       
+                                                    <div class="col-12 text-center">
                                                         <input type="hidden">
                                                         <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                                     </div>
@@ -2096,7 +2094,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2619,7 +2617,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -2759,7 +2757,7 @@
         $('.fine-select').change(function(){
             let file_container=$('.fine-files-container');
            if ($(this).val()=='yes'){
-                file_container.removeClass('d-none');  
+                file_container.removeClass('d-none');
            }else{
             file_container.addClass('d-none');
            }
@@ -2777,7 +2775,7 @@
                 a.addClass('d-none');
                 file_container.addClass('d-none');
             }
-            
+
         });
 
         if($('.biometric-file-container').val()=='required'){
@@ -2847,7 +2845,7 @@
                 },
                 success: function (response) {
                     // Handle the successful response here
-                    console.log(response); 
+                    console.log(response);
                 },
                 error: function (error) {
                     // Handle the error here
@@ -2855,9 +2853,8 @@
                 }
             });
         });
-      
+
     });
 </script>
 @endsection
 
- 
