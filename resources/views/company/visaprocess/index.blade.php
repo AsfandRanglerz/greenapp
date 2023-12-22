@@ -968,7 +968,7 @@
                                                     id="renewal-process1-date" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-8 col-lg-12 col-md-8">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="#fitness">Fitness Status</label>
                                                 <select class="form-control" id="fitness">
@@ -1018,26 +1018,12 @@
                                                     id="renewal-process2-date" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
-                                            <label for='#work-permit-app-textareara'>Comments</label>
-                                            <textarea required type="text" id='work-permit-app-textareara'
-                                                name="comment" placeholder="Enter Your Comments ..."
-                                                class="form-control" rows="5"></textarea>
-                                        </div>
-                                        <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label for='#work-permit-app'>Upload Contract</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" multiple class="form-control"
-                                                    id='work-permit-app-file' name="file" style="line-height: 1">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                          <div class="d-flex flex-column">
+                                            <label for="#">Attachment</label>
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
+                                      </div>
                                     </div>
                                 </form>
                             </div>
@@ -1077,20 +1063,30 @@
                                                     id="renewal-process3-date" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label for='#upload-signed-mb'>Upload signed MB</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" multiple class="form-control"
-                                                    id='upload-signed-mb-file' name="file" style="line-height: 1">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
+                                        <div class="form-group mb-3 col-12">
+                                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                              <input type="checkbox" class="custom-control-input" id="renwal-contract1">
+                                              <label class="custom-control-label" for="renwal-contract1">The contract has been signed.</label>
                                             </div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+                                          </div>
+                                          <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                              <label for='renewal-process-file'>Upload ST & MB</label>
+                                              <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                  <input type="file" class="form-control" id='renewal-process-file'
+                                                      name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                  <div class="input-group-prepend">
+                                                      <small class="input-group-text"><span
+                                                              class="fa fa-paperclip"></span></small>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                               <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
+                                          <div class="col-12">
+                                              <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                          </div>
+  
                                     </div>
                                 </form>
                             </div>
@@ -1124,6 +1120,12 @@
                                                 <label for="#renewal-process3-date">Date</label>
                                                 <input type="date" class="form-control"
                                                     id="renewal-process3-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                              <label for="#">Attachment</label>
+                                           <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1161,19 +1163,11 @@
                                                     id="renewal-process3-date" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                            <label for='#visa-contract-file'>Upload Contract</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" multiple class="form-control" id='visa-contract-file'
-                                                    name="file" style="line-height: 1">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
+                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                              <label for="#">Attachment</label>
+                                           <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                             </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -1212,14 +1206,28 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="#renewal-tawjeeh-payment">Tawjeeh Payment</label>
-                                                <select class="form-control" id="renewal-tawjeeh-payment">
+                                                <label for="renewal-tawjeeh-payment-select">Tawjeeh Payment</label>
+                                                <select class="form-control renewal-tawjeeh-payment-select1" id="renewal-tawjeeh-payment-select">
                                                     <option selected disabled>Select Option</option>
                                                     <option value='yes'>Yes</option>
                                                     <option value='no'>No</option>
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end renewal-tawjeeh-payment-container d-none">
+                                            <div class="upload-file">
+                                              <label for='renewal-tawjeeh-payment'>Upload Document</label>
+                                              <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                  <input type="file" class="form-control" id='renewal-tawjeeh-payment'
+                                                      name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                  <div class="input-group-prepend">
+                                                      <small class="input-group-text"><span
+                                                              class="fa fa-paperclip"></span></small>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                               <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
                                         </div>
@@ -1231,19 +1239,19 @@
                             aria-labelledby="v-pills-visa7-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency and Identity renewal
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency
                                     </h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#Renewal-process7-transaction-number">Transaction No:</label>
+                                                <label for="Renewal-process7-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-number" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#Renewal-process7-transaction-fee">Transaction Fee</label>
+                                                <label for="Renewal-process7-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
                                                     id="Renewal-process7-transaction-fee" placeholder="...">
                                             </div>
@@ -1259,28 +1267,30 @@
                                                     id="renewal7-date" placeholder="...">
                                             </div>
                                         </div>
+                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                              <label for="#">Attachment</label>
+                                           <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-renewal-process8" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-process8-tab">
-                            <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Employee biometric</h6>
-                                    <div class="row biometric-file-container">
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> ID Renewal
+                                    </h6>
+                                    <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number12">Transaction No:</label>
+                                                <label for="Renewal-id-renewal-transaction-number">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number12" placeholder="...">
+                                                    id="Renewal-id-renewal-transaction-number" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee12">Transaction Fee</label>
+                                                <label for="Renewal-id-renewal-transaction-fee">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee12" placeholder="...">
+                                                    id="Renewal-id-renewal-transaction-fee" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
@@ -1289,37 +1299,81 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal8-date">Date</label>
+                                                <label for="renewal7_1-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="renewal8-date" placeholder="...">
+                                                    id="renewal7_1-date" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="col-xl-8 col-lg-12 col-md-8">
+                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                              <label for="#">Attachment</label>
+                                           <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-renewal-process8" role="tabpanel"
+                            aria-labelledby="v-pills-renewal-process8-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Employee Biometric</h6>
+                                    <div class="row biometric-file-container">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="renewal-process-transaction-number12">Transaction No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="renewal-process-transaction-number12" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="renewal-process-transaction-fee12">Transaction Fee</label>
+                                                <input type="text" class="form-control"
+                                                    id="renewal-process-transaction-fee12" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="">Status</label>
+                                            <p class='form-control m-0'>Pending</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="biometric1_2-date">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="#biometric1_2-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="#select-biometric-file">Employee Biometric</label>
-                                                <select class="form-control biometric-select" id="select-biometric">
-                                                    <option>Employee Biometric</option>
+                                                <label for="select-biometric-file-renewal">Employee Biometric</label>
+                                                <select class="form-control biometric-select" id="select-biometric-file-renewal">
+                                                    <option selected disabled>Select Option</option>
                                                     <option value='required'>Required</option>
                                                     <option value='not required'>Not Required</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row biometric-files-container align-items-end d-none">
-                                        <div class="col-xl-8 col-lg-12 col-md-8 ">
-                                            <label for='#biometric-renewal-file'>Upload biometric</label>
-                                            <div class="input-group  mb-4">
-                                                <input type="file" multiple class="form-control" id='biometric-renewal-file'
-                                                    name="file" style="line-height: 1">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
+                                          <div class="mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                              <label for='renewal-file-bio'>Uplaod File</label>
+                                              <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                  <input type="file" class="form-control" id='renewal-file-bio'
+                                                      name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                  <div class="input-group-prepend">
+                                                      <small class="input-group-text"><span
+                                                              class="fa fa-paperclip"></span></small>
+                                                  </div>
+                                              </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+                                               <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
+                                      </div>
+                                      <div class="col-12 text-center">
+                                        <button class='btn btn-success px-5 py-2'>Submit</button>
+                                    </div>
                                     </div>
                                 </form>
                             </div>
@@ -2828,6 +2882,18 @@
                     }
                 });
         });
+        if($('.renewal-tawjeeh-payment-select1').val()=='yes'){
+            let a=$('.renewal-tawjeeh-payment-container');
+            a.addClass('d-flex'); 
+        }
+        $('.renewal-tawjeeh-payment-select1').change(function(){
+            let a=$('.renewal-tawjeeh-payment-container');
+            if($(this).val()=='yes'){
+               a.addClass('d-flex'); 
+            }else{
+                a.removeClass('d-flex');
+            }
+        })
 
         // Handle click event on elements with class 'employee-data'
         $(document).on('click', '.employee-don', function () {
