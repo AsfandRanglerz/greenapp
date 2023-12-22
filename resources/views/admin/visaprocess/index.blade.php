@@ -67,8 +67,9 @@
                                                         @else
                                                             {{-- <a class="btn btn-danger"
                                                             href="{{ route('visa.show', $requests->id) }}">Rejecte</a> --}}
+                                                            
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id])}}">Start Process</a>
+                                                                href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
                                                         @endif
 
 
