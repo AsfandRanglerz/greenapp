@@ -93,7 +93,14 @@
             @endif
 
             @if(Auth::guard('web')->user()->emp_type == 'self')
+            <li class="position-relative {{ request()->is('user/visa-process*') ? 'active' : '' }}">
+                <a href="{{route('user.visa-process.index')}}" class="sidebar-links"><span
+                        class="fab fa-servicestack text-white pr-2 sidebar-link-icons"></span>Visa Process
+                    </a>
+            </li>
+            @endif
 
+            @if(Auth::guard('web')->user()->emp_type == 'self')
             {{-- @php
             $response_count = App\Models\IndividualService::whereNotNull('response')->where('seen_by_user','0')->count();
         @endphp --}}

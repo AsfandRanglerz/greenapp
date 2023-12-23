@@ -146,7 +146,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::resource('visa', NewVisaController::class)->middleware('permission:Receipt');
     Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')->middleware('permission:Receipt');
-    Route::get('view', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Receipt');
+    Route::get('view-process', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Receipt');
     Route::post('Job-offer/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Receipt');
 
     // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
@@ -379,6 +379,13 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::post('update-receipt/{id}','UserReceiptsController@update')->name('update-receipt');
 
     Route::delete('delete-receipt/{id}','UserReceiptsController@delete')->name('delete-receipt');
+
+    // individual visa process
+
+
+    Route::resource('visa-process','IndividualVisaProcessController');
+
+    // Route::resource('document', 'DocumentController');
 
 
 
