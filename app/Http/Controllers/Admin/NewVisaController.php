@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\NewVisaProcess;
 use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Receipt;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -134,6 +135,8 @@ class NewVisaController extends Controller
     public function new_visa_updation(Request $request,$user_id,$company_id,$newvisa_id,$req_id)
     {
         $new_visa = NewVisaProcess::find($newvisa_id);
+        // $employee_receipt = Receipt::where('user_id',$user_id)->first();
+        // return $employee_receipt;
 
         if($request->input('job_offer')== "step1")
         {
@@ -167,12 +170,33 @@ class NewVisaController extends Controller
                 'job_offer_mb_trc_no'=>$request->job_offer_mb_trc_no,
                 'job_offer_tran_no'=>$request->job_offer_tran_no,
             ]);
+            // $primaryKey = NULL;
+            //  if(!$employee_receipt)
+            //  {
+            //     // return "ok";
+            //     $receipt = Receipt::create([
+            //         'user_id'=>$user_id,
+            //         'file'=>$file,
+            //         'receipt'=>$request->job_offer_file_name,
+            //     ]);
+            //     $primaryKey = $receipt->getKey();
+            //     // return $primaryKey;
+            //  }
+            // elseif(Receipt::where('user_id',$user_id)->where('receipt',$request->job_offer_file_name)->first())
+            // {
+            //     $exist_receipt = Receipt::where('receipt',$request->job_offer_file_name)->first();
+            //     // return $exist_receipt;
+            //     $exist_receipt->update([
+            //         'file'=>$file,
+            //         'receipt'=>$request->job_offer_file_name,
+            //     ]);
+            //     return $exist_receipt;
+            // }
             $ids['user_id'] = $user_id;
             $ids['company_id'] = $company_id;
             $ids['req_id'] = $req_id;
              return redirect()->back()->with('success','Data Added Successfully.');
             //  return redirect()->route('view-process')->with('success', 'Added.');
-
 
         }
         elseif($request->input('sign_mb')== "step2")
@@ -190,12 +214,13 @@ class NewVisaController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $file->move('public/admin/assets/img/users',$filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file = 'public/admin/assets/img/users/' . $filename;
             }
             else
             {
                 $file = $new_visa->signed_mb_st_file;
             }
+            // return $file;
             $new_visa->update([
                 'company_id'=>$company_id,
                 'employee_id'=>$user_id,
@@ -218,8 +243,8 @@ class NewVisaController extends Controller
                 $file = $request->file('dubai_insurance_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time(). '.' .$extension;
-                $file->move('public/admin/assets/img/users'.$filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file->move('public/admin/assets/img/users',$filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
             }
             else
             {
@@ -250,12 +275,12 @@ class NewVisaController extends Controller
                 $file = $request->file('pre_approved_wp_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time(). '.' .$extension;
-                $file->move('public/admin/assets/img/users'.$filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file->move('public/admin/assets/img/users' ,$filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
             }
             else
             {
-                $file = $new_visa->dubai_insurance_file;
+                $file = $new_visa->pre_approved_wp_file;
             }
              $new_visa->update([
                 'company_id'=>$company_id,
@@ -284,14 +309,14 @@ class NewVisaController extends Controller
                 $file = $request->file('enter_visa_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
-                $file->move('public/admin/assets/img/users' . $filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file->move('public/admin/assets/img/users' , $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
                 // return $file;
 
             }
             else
             {
-                $file = $new_visa->entry_visa_file;
+                $file = $new_visa->enter_visa_file;
             }
             $over_stay = NULL;
             if($request->hasFile('enter_visa_osf_file'))
@@ -303,8 +328,8 @@ class NewVisaController extends Controller
                 $over_stay = $request->file('enter_visa_osf_file');
                 $extension = $over_stay->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
-                $over_stay->move('public/admin/assets/img/users'.$filename);
-                $over_stay = 'public/admin/assets/img/users'.$filename;
+                $over_stay->move('public/admin/assets/img/users', $filename);
+                $over_stay = 'public/admin/assets/img/users/'.$filename;
             }
             else
             {
@@ -344,12 +369,12 @@ class NewVisaController extends Controller
                 $file = $request->file('change_of_visa_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time(). '.' .$extension;
-                $file->move('public/admin/assets/img/users'.$filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
             }
             else
             {
-                $file = $new_visa->dubai_insurance_file;
+                $file = $new_visa->change_of_visa_file;
             }
              $new_visa->update([
                 'company_id'=>$company_id,
@@ -366,36 +391,271 @@ class NewVisaController extends Controller
 
         elseif($request->input('medical_fitness') == 'step7')
         {
-            return "ok";
+            // return $request;
             $file = NULl;
-            if($request->hasFile('change_of_visa_file'))
+            if($request->hasFile('medical_fitness_file'))
             {
-                $destination = 'public/admin/assets/img/users' . $new_visa->change_of_visa_file;
+                $destination = 'public/admin/assets/img/users' . $new_visa->medical_fitness_file;
                 if(File::exists($destination)){
                     File::delete($destination);
                 }
-                $file = $request->file('change_of_visa_file');
+                $file = $request->file('medical_fitness_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time(). '.' .$extension;
-                $file->move('public/admin/assets/img/users'.$filename);
-                $file = 'public/admin/assets/img/users' . $filename;
+                $file->move('public/admin/assets/img/users' , $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
             }
             else
             {
-                $file = $new_visa->dubai_insurance_file;
+                $file = $new_visa->medical_fitness_file;
             }
              $new_visa->update([
                 'company_id'=>$company_id,
                 'employee_id'=>$user_id,
-                'change_of_visa_file'=>$file,
-                'change_of_visa_status'=>$request->change_of_visa_status,
-                'change_of_visa_file_name'=>$request->change_of_visa_file_name,
-                'change_of_visa_tfee'=>$request->change_of_visa_tfee,
-                'change_of_visa_date'=>$request->change_of_visa_date,
-                'change_of_visa_tno'=>$request->change_of_visa_tno,
+                'medical_fitness_file'=>$file,
+                'medical_fitness_status'=>$request->medical_fitness_status,
+                'medical_fitness_file_name'=>$request->medical_fitness_file_name,
+                'medical_fitness_tfee'=>$request->medical_fitness_tfee,
+                'medical_fitness_date'=>$request->medical_fitness_date,
+                'medical_fitness_tno'=>$request->medical_fitness_tno,
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
 
+        elseif($request->input('tawjeeh_class') == 'step8')
+        {
+            // return $request;
+            $file = NULl;
+            if($request->hasFile('tawjeeh_file'))
+            {
+                $destination = 'public/admin/assets/img/users' . $new_visa->tawjeeh_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('tawjeeh_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->tawjeeh_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'tawjeeh_file'=>$file,
+                'tawjeeh_status'=>$request->tawjeeh_status,
+                'tawjeeh_payment'=>$request->tawjeeh_payment,
+                'tawjeeh_trans_fee'=>$request->tawjeeh_trans_fee,
+                'tawjeeh_date'=>$request->tawjeeh_date,
+                'tawjeeh_trans_no'=>$request->tawjeeh_trans_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+        elseif($request->input('contract_subm') == 'step9')
+        {
+            // return "ok";
+            $file = NULl;
+            if($request->hasFile('contract_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->contract_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('contract_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->contract_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'contract_file'=>$file,
+                'contract_status'=>$request->contract_status,
+                'contract_file_name'=>$request->contract_file_name,
+                'contract_tran_no'=>$request->contract_tran_no,
+                'contract_date'=>$request->contract_date,
+                'contract_tran_fee'=>$request->contract_tran_fee,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+        elseif($request->input('health_insurance') == 'step10')
+        {
+            // return $request;
+            $file = NULl;
+            if($request->hasFile('health_insur_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->health_insur_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('health_insur_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->health_insur_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'health_insur_file'=>$file,
+                'health_insur_status'=>$request->health_insur_status,
+                'health_insur_file_name'=>$request->health_insur_file_name,
+                'health_insur_tran_fee'=>$request->health_insur_tran_fee,
+                'health_insur_date'=>$request->health_insur_date,
+                'health_insur_tran_no'=>$request->health_insur_tran_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+        elseif($request->input('work_permit') == 'step11')
+        {
+            // return $request;
+            $file = NULl;
+            if($request->hasFile('work_permit_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->work_permit_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('work_permit_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users' , $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->work_permit_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'work_permit_file'=>$file,
+                'work_permit_status'=>$request->work_permit_status,
+                'work_permit_file_name'=>$request->work_permit_file_name,
+                'work_permit_tran_fee'=>$request->work_permit_tran_fee,
+                'work_permit_date'=>$request->work_permit_date,
+                'work_permit_tran_no'=>$request->work_permit_tran_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+        elseif($request->input('emirates_residency_app') == 'step12')
+        {
+            // return $request;
+            $file = NULl;
+            if($request->hasFile('work_permit_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->work_permit_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('work_permit_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users' ,$filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->work_permit_file;
+            }
+            $rs_file = NULl;
+            if($request->hasFile('residency_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->residency_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $rs_file = $request->file('residency_file');
+                $extension = $rs_file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $rs_file->move('public/admin/assets/img/users', $filename);
+                $rs_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $rs_file = $new_visa->residency_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'emirates_file'=>$file,
+                'emirates_status'=>$request->emirates_status,
+                'emirates_file_name'=>$request->emirates_file_name,
+                'emirates_tran_fee'=>$request->emirates_tran_fee,
+                'emirates_date'=>$request->emirates_date,
+                'emirates_tran_no'=>$request->emirates_tran_no,
+                'residency_file'=>$rs_file,
+                'residency_status'=>$request->residency_status,
+                'residency_file_name'=>$request->residency_file_name,
+                'residency_tran_fee'=>$request->residency_tran_fee,
+                'residency_date'=>$request->residency_date,
+                'residency_tran_no'=>$request->residency_tran_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+        elseif($request->input('biometric') == 'step13')
+        {
+            // return $request;
+            $file = NULl;
+            if($request->hasFile('biometric_file'))
+            {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $new_visa->biometric_file;
+                if(File::exists($destination)){
+                    File::delete($destination);
+                }
+                $file = $request->file('biometric_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '.' .$extension;
+                $file->move('public/admin/assets/img/users' , $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $file = $new_visa->biometric_file;
+            }
+             $new_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'biometric_file'=>$file,
+                'biometric_status'=>$request->biometric_status,
+                'employee_biometric'=>$request->employee_biometric,
+                'biometric_tranc_fee'=>$request->biometric_tranc_fee,
+                'biometric_date'=>$request->biometric_date,
+                'biometric_tranc_no'=>$request->biometric_tranc_no,
+            ]);
+            if($request->biometric_status == "Approved")
+            {
+                return redirect()->back()->with('success','This process is completed Successfully.');
+            }
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        else
+        {
+            return redirect()->back();
+
+        }
     }
 }

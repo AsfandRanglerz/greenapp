@@ -1,5 +1,5 @@
 @extends('user.layout.master')
-@section('content')
+@section('content') 
 <style>
     .nav-link {
         color: black;

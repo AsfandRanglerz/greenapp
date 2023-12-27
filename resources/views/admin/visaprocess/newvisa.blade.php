@@ -185,7 +185,6 @@
                             </form>
                         </div>
                     </div>
-
                      {{-- Job Offer, MB Contracts + Preapproval of work permit section --}}
                      {{$ids['company_id']}}
                      {{$ids['user_id'],}}
@@ -1132,7 +1131,7 @@
                                 </form>
                             </div>
                         </div>
-                    {{--Entry visa section--}}
+                        {{--Entry visa section--}}
                         <div class="tab-pane fade" id="v-pills-visa4" role="tabpanel"
                             aria-labelledby="v-pills-visa4-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -1736,13 +1735,12 @@
                                       </div> --}}
 
                                       <div class="col-12 text-center">
-                                        <button class='btn btn-success px-5 py-2' type="submit">ADD</button>
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                     </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-
                         {{--medical fitness--}}
                         <div class="tab-pane fade" id="v-pills-visa6" role="tabpanel"
                             aria-labelledby="v-pills-visa6-tab">
@@ -1758,28 +1756,252 @@
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number6">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" placeholder="...">
+                                                    id="start-process-transaction-number6" placeholder="..." name="medical_fitness_tno" value="{{$new_visa->medical_fitness_tno}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee6">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" placeholder="...">
+                                                    id="start-process-transaction-fee6" placeholder="..." name="medical_fitness_tfee" value="{{$new_visa->medical_fitness_tfee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="medical_fitness_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['medical_fitness_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['medical_fitness_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#change-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="change-date" placeholder="...">
+                                                    id="change-date" placeholder="..." name="medical_fitness_date" value="{{$new_visa->medical_fitness_date}}">
                                             </div>
                                         </div>
+
+
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                          <label for='#over-stay-file'>Upload file</label>
+
+                                                 <select id="selectDocument" class="form-control category" name="medical_fitness_file_name"
+                                                    value="{{$new_visa->medical_fitness_file_name}}" required>
+                                                    <option value="" selected disabled>Select Document</option>
+                                                    <option value="Personal Photo"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                    </option>
+                                                    <option value="Passport" {{ $new_visa['medical_fitness_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                        Passport</option>
+                                                    <option value="Visit Visa" {{ $new_visa['medical_fitness_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                        Visit Visa</option>
+                                                    <option value="Offer Letter"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                    <option value="MOL Job Offer"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                    <option value="Signed MOL Job Offer"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                        Offer</option>
+                                                    <option value="MOL MB Contract"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                    </option>
+                                                    <option value="Signed MOL MB Offer"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                        Offer</option>
+                                                    <option value="Preapproval Work Permit"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                        Work Permit</option>
+                                                    <option value="Dubai Insurance"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                    </option>
+                                                    <option value="Entry Permit Visa"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                    </option>
+                                                    <option value="Stamped Entry Visa"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                        Visa</option>
+                                                    <option value="Change of Visa Status"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                        Status</option>
+                                                    <option value="Medical Fitness Receipt"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                        Fitness Receipt</option>
+                                                    <option value="Tawjeeh Receipt"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                    </option>
+                                                    <option value="Emirates Id Application form"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                        Emirates Id Application form</option>
+                                                    <option value="Stamped EID Application form"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                        EID Application form</option>
+                                                    <option value="Residence Visa"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                    </option>
+                                                    <option value="Work Permit" {{ $new_visa['medical_fitness_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                        Work Permit</option>
+                                                    <option value="Health Insurance Card"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                        Insurance Card</option>
+                                                    <option value="National Identity Card"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                        Identity Card</option>
+                                                    <option value="Emirates Identity Card"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                        Identity Card</option>
+                                                    <option value="Vehicle Registration Card"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                        Registration Card</option>
+                                                    <option value="Driving License"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                    </option>
+                                                    <option value="Birth Certificate"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                    </option>
+                                                    <option value="Marriage Certificate"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                        Certificate</option>
+                                                    <option value="School Certificate"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                        Certificate</option>
+                                                    <option value="Diploma" {{ $new_visa['medical_fitness_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                    </option>
+                                                    <option value="University Degree"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                    </option>
+                                                    <option value="Salary Certificate"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                        Certificate</option>
+                                                    <option value="Tenancy Contract"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                    </option>
+                                                    <option value="MOL Cancellation form"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                        Cancellation form</option>
+                                                    <option value="Signed MOL Cancellation Form"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                        MOL Cancellation Form</option>
+                                                    <option value="Work Permit Cancellation Approval"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                        Work Permit Cancellation Approval</option>
+                                                    <option value="Residency Cancellation Approval"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                        Residency Cancellation Approval</option>
+                                                    <option value="Modify MOL Contract"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                        Contract</option>
+                                                    <option value="Work Permit Application"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                        Application</option>
+                                                    <option value="Work Permit Renewal Application"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                        Permit Renewal Application</option>
+                                                    <option value="Signed Work Permit Renewal"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal</option>
+                                                    <option value="Application" {{ $new_visa['medical_fitness_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                        Application</option>
+                                                    <option value="Submission Form"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                    </option>
+                                                    <option
+                                                    value="Preapproval of work permit receipt"{{ $new_visa['medical_fitness_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option
+                                                    value="Dubai Insurance receipts"{{ $new_visa['medical_fitness_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option
+                                                    value="Preapproval work permit fees receipt"{{ $new_visa['medical_fitness_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option
+                                                    value="Work permit Renewal Fees Receipt"{{ $new_visa['medical_fitness_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option
+                                                    value="Entry Visa Application Receipt"{{ $new_visa['medical_fitness_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option
+                                                    value="Change of Visa Status Application"{{ $new_visa['medical_fitness_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical"{{ $new_visa['medical_fitness_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh"{{ $new_visa['medical_fitness_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                                </option>
+                                                <option
+                                                    value="Heath Insurance"{{ $new_visa['medical_fitness_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option
+                                                    value="Emirates ID Application"{{ $new_visa['medical_fitness_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option
+                                                    value="Residency Visa Application"{{ $new_visa['medical_fitness_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines"{{ $new_visa['medical_fitness_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                    Fines</option>
+                                                <option
+                                                    value="Emirates ID Fines"{{ $new_visa['medical_fitness_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines"{{ $new_visa['medical_fitness_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                    Other fines</option>
+                                                <option
+                                                    value="Health Insurance Fines"{{ $new_visa['medical_fitness_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option
+                                                    value="Immigration Application"{{ $new_visa['medical_fitness_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option
+                                                    value="MOHRE Application"{{ $new_visa['medical_fitness_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                    <option value="Other" {{ $new_visa['medical_fitness_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa2-file'
+                                                    name="medical_fitness_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->medical_fitness_file}}">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            @php
+                                            $file_name = $new_visa->medical_fitness_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($new_visa->medical_fitness_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->medical_fitness_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->medical_fitness_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                            @endif
+                                        </div>
+
+                                        {{-- <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                           <div class="upload-file">
                                             <label for='#visa-medical'>Upload Medical</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
@@ -1792,7 +2014,7 @@
                                             </div>
                                           </div>
                                              <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2' type="submit">Add</button>
                                         </div>
@@ -1800,304 +2022,1486 @@
                                 </form>
                             </div>
                         </div>
+                        {{--Tawjeeh tranning--}}
                         <div class="tab-pane fade" id="v-pills-visa7" role="tabpanel"
                             aria-labelledby="v-pills-visa7-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step8' name='tawjeeh_class' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh training classes</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number5">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" placeholder="...">
+                                                    id="start-process-transaction-number6" placeholder="..." name="tawjeeh_trans_no" value="{{$new_visa->tawjeeh_trans_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee6">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" placeholder="...">
+                                                    id="start-process-transaction-fee6" placeholder="..." name="tawjeeh_trans_fee" value="{{$new_visa->tawjeeh_trans_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="tawjeeh_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['tawjeeh_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['tawjeeh_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['tawjeeh_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['tawjeeh_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#tawjeeh-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="tawjeeh-date" placeholder="...">
+                                                    id="tawjeeh-date" placeholder="..." name="tawjeeh_date" value="{{$new_visa->tawjeeh_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="#select-tawjeeh-payment">Tawjeeh Payment</label>
-                                                <select class="form-control select-tawjeeh-payment" id="select-tawjeeh-payment">
+                                                <select class="form-control select-tawjeeh-payment" id="select-tawjeeh-payment" name="tawjeeh_payment">
                                                     <option>Tawjeeh Payment</option>
-                                                    <option value='yes'>Yes</option>
-                                                    <option value='no'>No</option>
+                                                    <option value='yes' {{$new_visa['tawjeeh_payment'] == 'yes' ? 'selected':''}}>Yes</option>
+                                                    <option value='no'  {{$new_visa['tawjeeh_payment'] == 'no' ? 'selected':''}}>No</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end ">
+                                        <div class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end">
                                           <div class="upload-file">
                                             <label for='#visa-tawjeeh-medical'>Upload Document</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='visa-tawjeeh-medical'
-                                                    name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                    name="tawjeeh_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
                                                             class="fa fa-paperclip"></span></small>
                                                 </div>
                                             </div>
                                           </div>
-                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          @php
+                                          $file_name = $new_visa->tawjeeh_file;
+                                          $ext = explode('.', $file_name);
+                                          @endphp
+                                          @if ($new_visa->tawjeeh_file)
+                                          <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->tawjeeh_file) }}">
+                                              @if ($ext[1] == 'pdf')
+                                                  <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                      style="height: 50px;width:50px">
+                                              @elseif($ext[1] == 'doc')
+                                                  <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                      style="height: 50px;width:50px">
+                                              @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                  <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                      style="height: 50px;width:50px">
+                                              @elseif($ext[1] == 'pptx')
+                                                  <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                      style="height: 50px;width:50px">
+                                              @else
+                                                  <img src="{{ asset('' . '/' . $new_visa->tawjeeh_file) }}"
+                                                      style="height: 50px;width:50px">
+                                              @endif
+                                          </a>
+                                          {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                          @endif
+                                             {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        {{--Contract submission--}}
                         <div class="tab-pane fade" id="v-pills-visa8" role="tabpanel"
                             aria-labelledby="v-pills-visa8-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step9' name='contract_subm' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract Submission</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number8">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number8" placeholder="...">
+                                                    id="start-process-transaction-number8" placeholder="..." name="contract_tran_no" value="{{$new_visa->contract_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee8">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee8" placeholder="...">
+                                                    id="start-process-transaction-fee8" placeholder="..." name="contract_tran_fee" value="{{$new_visa->contract_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="contract_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
+
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#tawjeeh-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="tawjeeh-date" placeholder="...">
+                                                    id="tawjeeh-date" placeholder="..." name="contract_date" value="{{$new_visa->contract_date}}">
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                          <label for='#over-stay-file'>Upload file</label>
+
+                                                 <select id="selectDocument" class="form-control category" name="contract_file_name"
+                                                    value="{{$new_visa->contract_file_name}}" required>
+                                                    <option value="" selected disabled>Select Document</option>
+                                                    <option value="Personal Photo"
+                                                        {{ $new_visa['contract_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                    </option>
+                                                    <option value="Passport" {{ $new_visa['contract_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                        Passport</option>
+                                                    <option value="Visit Visa" {{ $new_visa['contract_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                        Visit Visa</option>
+                                                    <option value="Offer Letter"
+                                                        {{ $new_visa['contract_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                    <option value="MOL Job Offer"
+                                                        {{ $new_visa['contract_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                    <option value="Signed MOL Job Offer"
+                                                        {{ $new_visa['contract_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                        Offer</option>
+                                                    <option value="MOL MB Contract"
+                                                        {{ $new_visa['contract_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                    </option>
+                                                    <option value="Signed MOL MB Offer"
+                                                        {{ $new_visa['contract_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                        Offer</option>
+                                                    <option value="Preapproval Work Permit"
+                                                        {{ $new_visa['contract_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                        Work Permit</option>
+                                                    <option value="Dubai Insurance"
+                                                        {{ $new_visa['contract_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                    </option>
+                                                    <option value="Entry Permit Visa"
+                                                        {{ $new_visa['contract_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                    </option>
+                                                    <option value="Stamped Entry Visa"
+                                                        {{ $new_visa['contract_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                        Visa</option>
+                                                    <option value="Change of Visa Status"
+                                                        {{ $new_visa['contract_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                        Status</option>
+                                                    <option value="Medical Fitness Receipt"
+                                                        {{ $new_visa['contract_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                        Fitness Receipt</option>
+                                                    <option value="Tawjeeh Receipt"
+                                                        {{ $new_visa['contract_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                    </option>
+                                                    <option value="Emirates Id Application form"
+                                                        {{ $new_visa['contract_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                        Emirates Id Application form</option>
+                                                    <option value="Stamped EID Application form"
+                                                        {{ $new_visa['contract_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                        EID Application form</option>
+                                                    <option value="Residence Visa"
+                                                        {{ $new_visa['contract_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                    </option>
+                                                    <option value="Work Permit" {{ $new_visa['contract_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                        Work Permit</option>
+                                                    <option value="Health Insurance Card"
+                                                        {{ $new_visa['contract_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                        Insurance Card</option>
+                                                    <option value="National Identity Card"
+                                                        {{ $new_visa['contract_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                        Identity Card</option>
+                                                    <option value="Emirates Identity Card"
+                                                        {{ $new_visa['contract_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                        Identity Card</option>
+                                                    <option value="Vehicle Registration Card"
+                                                        {{ $new_visa['contract_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                        Registration Card</option>
+                                                    <option value="Driving License"
+                                                        {{ $new_visa['contract_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                    </option>
+                                                    <option value="Birth Certificate"
+                                                        {{ $new_visa['contract_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                    </option>
+                                                    <option value="Marriage Certificate"
+                                                        {{ $new_visa['contract_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                        Certificate</option>
+                                                    <option value="School Certificate"
+                                                        {{ $new_visa['contract_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                        Certificate</option>
+                                                    <option value="Diploma" {{ $new_visa['contract_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                    </option>
+                                                    <option value="University Degree"
+                                                        {{ $new_visa['contract_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                    </option>
+                                                    <option value="Salary Certificate"
+                                                        {{ $new_visa['contract_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                        Certificate</option>
+                                                    <option value="Tenancy Contract"
+                                                        {{ $new_visa['contract_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                    </option>
+                                                    <option value="MOL Cancellation form"
+                                                        {{ $new_visa['contract_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                        Cancellation form</option>
+                                                    <option value="Signed MOL Cancellation Form"
+                                                        {{ $new_visa['contract_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                        MOL Cancellation Form</option>
+                                                    <option value="Work Permit Cancellation Approval"
+                                                        {{ $new_visa['contract_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                        Work Permit Cancellation Approval</option>
+                                                    <option value="Residency Cancellation Approval"
+                                                        {{ $new_visa['contract_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                        Residency Cancellation Approval</option>
+                                                    <option value="Modify MOL Contract"
+                                                        {{ $new_visa['contract_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                        Contract</option>
+                                                    <option value="Work Permit Application"
+                                                        {{ $new_visa['contract_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                        Application</option>
+                                                    <option value="Work Permit Renewal Application"
+                                                        {{ $new_visa['contract_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                        Permit Renewal Application</option>
+                                                    <option value="Signed Work Permit Renewal"
+                                                        {{ $new_visa['contract_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal</option>
+                                                    <option value="Application" {{ $new_visa['contract_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                        Application</option>
+                                                    <option value="Submission Form"
+                                                        {{ $new_visa['contract_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                    </option>
+                                                    <option
+                                                    value="Preapproval of work permit receipt"{{ $new_visa['contract_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option
+                                                    value="Dubai Insurance receipts"{{ $new_visa['contract_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option
+                                                    value="Preapproval work permit fees receipt"{{ $new_visa['contract_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option
+                                                    value="Work permit Renewal Fees Receipt"{{ $new_visa['contract_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option
+                                                    value="Entry Visa Application Receipt"{{ $new_visa['contract_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option
+                                                    value="Change of Visa Status Application"{{ $new_visa['contract_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical"{{ $new_visa['contract_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh"{{ $new_visa['contract_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                                </option>
+                                                <option
+                                                    value="Heath Insurance"{{ $new_visa['contract_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option
+                                                    value="Emirates ID Application"{{ $new_visa['contract_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option
+                                                    value="Residency Visa Application"{{ $new_visa['contract_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines"{{ $new_visa['contract_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                    Fines</option>
+                                                <option
+                                                    value="Emirates ID Fines"{{ $new_visa['contract_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines"{{ $new_visa['contract_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                    Other fines</option>
+                                                <option
+                                                    value="Health Insurance Fines"{{ $new_visa['contract_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option
+                                                    value="Immigration Application"{{ $new_visa['contract_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option
+                                                    value="MOHRE Application"{{ $new_visa['contract_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                    <option value="Other" {{ $new_visa['contract_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa2-file'
+                                                    name="contract_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->contract_file}}">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            @php
+                                            $file_name = $new_visa->contract_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($new_visa->contract_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->contract_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->contract_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                            @endif
+                                        </div>
+                                        {{-- <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
                                          <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
-                                      </div>
+                                      </div> --}}
                                     </div>
+                                    <div class="col-12 text-center">
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
                                 </form>
                             </div>
                         </div>
+                        {{--Health insurance--}}
                         <div class="tab-pane fade" id="v-pills-visa9" role="tabpanel"
                             aria-labelledby="v-pills-visa9-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step10' name='health_insurance' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Health Insurance</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number9">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number9" placeholder="...">
+                                                    id="start-process-transaction-number9" placeholder="..." name="health_insur_tran_no" value="{{$new_visa->health_insur_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee9">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee9" placeholder="...">
+                                                    id="start-process-transaction-fee9" placeholder="..." name="health_insur_tran_fee" value="{{$new_visa->health_insur_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="health_insur_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['health_insur_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['health_insur_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['health_insur_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['health_insur_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
+
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#health-insurance-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="health-insurance-date" placeholder="...">
+                                                    id="health-insurance-date" placeholder="..." name="health_insur_date" value="{{$new_visa->health_insur_date}}">
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                          <label for='#over-stay-file'>Upload file</label>
+
+                                                 <select id="selectDocument" class="form-control category" name="health_insur_file_name"
+                                                    value="{{$new_visa->health_insur_file_name}}" required>
+                                                    <option value="" selected disabled>Select Document</option>
+                                                    <option value="Personal Photo"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                    </option>
+                                                    <option value="Passport" {{ $new_visa['health_insur_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                        Passport</option>
+                                                    <option value="Visit Visa" {{ $new_visa['health_insur_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                        Visit Visa</option>
+                                                    <option value="Offer Letter"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                    <option value="MOL Job Offer"
+                                                        {{ $new_visa['health_insur_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                    <option value="Signed MOL Job Offer"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                        Offer</option>
+                                                    <option value="MOL MB Contract"
+                                                        {{ $new_visa['health_insur_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                    </option>
+                                                    <option value="Signed MOL MB Offer"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                        Offer</option>
+                                                    <option value="Preapproval Work Permit"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                        Work Permit</option>
+                                                    <option value="Dubai Insurance"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                    </option>
+                                                    <option value="Entry Permit Visa"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                    </option>
+                                                    <option value="Stamped Entry Visa"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                        Visa</option>
+                                                    <option value="Change of Visa Status"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                        Status</option>
+                                                    <option value="Medical Fitness Receipt"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                        Fitness Receipt</option>
+                                                    <option value="Tawjeeh Receipt"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                    </option>
+                                                    <option value="Emirates Id Application form"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                        Emirates Id Application form</option>
+                                                    <option value="Stamped EID Application form"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                        EID Application form</option>
+                                                    <option value="Residence Visa"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                    </option>
+                                                    <option value="Work Permit" {{ $new_visa['health_insur_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                        Work Permit</option>
+                                                    <option value="Health Insurance Card"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                        Insurance Card</option>
+                                                    <option value="National Identity Card"
+                                                        {{ $new_visa['health_insur_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                        Identity Card</option>
+                                                    <option value="Emirates Identity Card"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                        Identity Card</option>
+                                                    <option value="Vehicle Registration Card"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                        Registration Card</option>
+                                                    <option value="Driving License"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                    </option>
+                                                    <option value="Birth Certificate"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                    </option>
+                                                    <option value="Marriage Certificate"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                        Certificate</option>
+                                                    <option value="School Certificate"
+                                                        {{ $new_visa['health_insur_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                        Certificate</option>
+                                                    <option value="Diploma" {{ $new_visa['health_insur_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                    </option>
+                                                    <option value="University Degree"
+                                                        {{ $new_visa['health_insur_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                    </option>
+                                                    <option value="Salary Certificate"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                        Certificate</option>
+                                                    <option value="Tenancy Contract"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                    </option>
+                                                    <option value="MOL Cancellation form"
+                                                        {{ $new_visa['health_insur_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                        Cancellation form</option>
+                                                    <option value="Signed MOL Cancellation Form"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                        MOL Cancellation Form</option>
+                                                    <option value="Work Permit Cancellation Approval"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                        Work Permit Cancellation Approval</option>
+                                                    <option value="Residency Cancellation Approval"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                        Residency Cancellation Approval</option>
+                                                    <option value="Modify MOL Contract"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                        Contract</option>
+                                                    <option value="Work Permit Application"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                        Application</option>
+                                                    <option value="Work Permit Renewal Application"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                        Permit Renewal Application</option>
+                                                    <option value="Signed Work Permit Renewal"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal</option>
+                                                    <option value="Application" {{ $new_visa['health_insur_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                        Application</option>
+                                                    <option value="Submission Form"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                    </option>
+                                                    <option
+                                                    value="Preapproval of work permit receipt"{{ $new_visa['health_insur_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option
+                                                    value="Dubai Insurance receipts"{{ $new_visa['health_insur_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option
+                                                    value="Preapproval work permit fees receipt"{{ $new_visa['health_insur_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option
+                                                    value="Work permit Renewal Fees Receipt"{{ $new_visa['health_insur_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option
+                                                    value="Entry Visa Application Receipt"{{ $new_visa['health_insur_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option
+                                                    value="Change of Visa Status Application"{{ $new_visa['health_insur_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical"{{ $new_visa['health_insur_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh"{{ $new_visa['health_insur_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                                </option>
+                                                <option
+                                                    value="Heath Insurance"{{ $new_visa['health_insur_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option
+                                                    value="Emirates ID Application"{{ $new_visa['health_insur_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option
+                                                    value="Residency Visa Application"{{ $new_visa['health_insur_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines"{{ $new_visa['health_insur_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                    Fines</option>
+                                                <option
+                                                    value="Emirates ID Fines"{{ $new_visa['health_insur_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines"{{ $new_visa['health_insur_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                    Other fines</option>
+                                                <option
+                                                    value="Health Insurance Fines"{{ $new_visa['health_insur_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option
+                                                    value="Immigration Application"{{ $new_visa['health_insur_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option
+                                                    value="MOHRE Application"{{ $new_visa['health_insur_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                    <option value="Other" {{ $new_visa['health_insur_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa2-file'
+                                                    name="health_insur_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->health_insur_file}}">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            @php
+                                            $file_name = $new_visa->health_insur_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($new_visa->health_insur_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->health_insur_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->health_insur_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                            @endif
+                                        </div>
+                                        {{-- <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                           <div class="d-flex flex-column">
                                             <label for="#">Attachment</label>
                                          <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
-                                      </div>
-                                    </div>
-
+                                      </div> --}}
+                                      <div class="col-12 text-center">
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
+                                </div>
                                 </form>
                             </div>
                         </div>
+                        {{--Work permit--}}
                         <div class="tab-pane fade" id="v-pills-visa10" role="tabpanel"
                             aria-labelledby="v-pills-visa10-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step11' name='work_permit' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number10">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number10" placeholder="...">
+                                                    id="start-process-transaction-number10" placeholder="..." name="work_permit_tran_no" value="{{$new_visa->work_permit_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee10">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee10" placeholder="...">
+                                                    id="start-process-transaction-fee10" placeholder="..." name="work_permit_tran_fee" value="{{$new_visa->work_permit_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="work_permit_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['work_permit_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['work_permit_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
+
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#work-permit-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="work-permit-transaction-date" placeholder="...">
+                                                    id="work-permit-transaction-date" placeholder="..." name="work_permit_date" value="{{$new_visa->work_permit_date}}">
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
-                                          <div class="d-flex flex-column">
-                                            <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
-                                          </div>
-                                      </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                          <label for='#over-stay-file'>Upload file</label>
+
+                                                 <select id="selectDocument" class="form-control category" name="work_permit_file_name"
+                                                    value="{{$new_visa->work_permit_file_name}}" required>
+                                                    <option value="" selected disabled>Select Document</option>
+                                                    <option value="Personal Photo"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                    </option>
+                                                    <option value="Passport" {{ $new_visa['work_permit_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                        Passport</option>
+                                                    <option value="Visit Visa" {{ $new_visa['work_permit_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                        Visit Visa</option>
+                                                    <option value="Offer Letter"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                    <option value="MOL Job Offer"
+                                                        {{ $new_visa['work_permit_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                    <option value="Signed MOL Job Offer"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                        Offer</option>
+                                                    <option value="MOL MB Contract"
+                                                        {{ $new_visa['work_permit_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                    </option>
+                                                    <option value="Signed MOL MB Offer"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                        Offer</option>
+                                                    <option value="Preapproval Work Permit"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                        Work Permit</option>
+                                                    <option value="Dubai Insurance"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                    </option>
+                                                    <option value="Entry Permit Visa"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                    </option>
+                                                    <option value="Stamped Entry Visa"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                        Visa</option>
+                                                    <option value="Change of Visa Status"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                        Status</option>
+                                                    <option value="Medical Fitness Receipt"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                        Fitness Receipt</option>
+                                                    <option value="Tawjeeh Receipt"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                    </option>
+                                                    <option value="Emirates Id Application form"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                        Emirates Id Application form</option>
+                                                    <option value="Stamped EID Application form"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                        EID Application form</option>
+                                                    <option value="Residence Visa"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                    </option>
+                                                    <option value="Work Permit" {{ $new_visa['work_permit_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                        Work Permit</option>
+                                                    <option value="Health Insurance Card"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                        Insurance Card</option>
+                                                    <option value="National Identity Card"
+                                                        {{ $new_visa['work_permit_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                        Identity Card</option>
+                                                    <option value="Emirates Identity Card"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                        Identity Card</option>
+                                                    <option value="Vehicle Registration Card"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                        Registration Card</option>
+                                                    <option value="Driving License"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                    </option>
+                                                    <option value="Birth Certificate"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                    </option>
+                                                    <option value="Marriage Certificate"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                        Certificate</option>
+                                                    <option value="School Certificate"
+                                                        {{ $new_visa['work_permit_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                        Certificate</option>
+                                                    <option value="Diploma" {{ $new_visa['work_permit_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                    </option>
+                                                    <option value="University Degree"
+                                                        {{ $new_visa['work_permit_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                    </option>
+                                                    <option value="Salary Certificate"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                        Certificate</option>
+                                                    <option value="Tenancy Contract"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                    </option>
+                                                    <option value="MOL Cancellation form"
+                                                        {{ $new_visa['work_permit_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                        Cancellation form</option>
+                                                    <option value="Signed MOL Cancellation Form"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                        MOL Cancellation Form</option>
+                                                    <option value="Work Permit Cancellation Approval"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                        Work Permit Cancellation Approval</option>
+                                                    <option value="Residency Cancellation Approval"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                        Residency Cancellation Approval</option>
+                                                    <option value="Modify MOL Contract"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                        Contract</option>
+                                                    <option value="Work Permit Application"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                        Application</option>
+                                                    <option value="Work Permit Renewal Application"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                        Permit Renewal Application</option>
+                                                    <option value="Signed Work Permit Renewal"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal</option>
+                                                    <option value="Application" {{ $new_visa['work_permit_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                        Application</option>
+                                                    <option value="Submission Form"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                    </option>
+                                                    <option
+                                                    value="Preapproval of work permit receipt"{{ $new_visa['work_permit_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option
+                                                    value="Dubai Insurance receipts"{{ $new_visa['work_permit_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option
+                                                    value="Preapproval work permit fees receipt"{{ $new_visa['work_permit_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option
+                                                    value="Work permit Renewal Fees Receipt"{{ $new_visa['work_permit_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option
+                                                    value="Entry Visa Application Receipt"{{ $new_visa['work_permit_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option
+                                                    value="Change of Visa Status Application"{{ $new_visa['work_permit_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical"{{ $new_visa['work_permit_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh"{{ $new_visa['work_permit_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                                </option>
+                                                <option
+                                                    value="Heath Insurance"{{ $new_visa['work_permit_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option
+                                                    value="Emirates ID Application"{{ $new_visa['work_permit_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option
+                                                    value="Residency Visa Application"{{ $new_visa['work_permit_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines"{{ $new_visa['work_permit_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                    Fines</option>
+                                                <option
+                                                    value="Emirates ID Fines"{{ $new_visa['work_permit_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines"{{ $new_visa['work_permit_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                    Other fines</option>
+                                                <option
+                                                    value="Health Insurance Fines"{{ $new_visa['work_permit_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option
+                                                    value="Immigration Application"{{ $new_visa['work_permit_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option
+                                                    value="MOHRE Application"{{ $new_visa['work_permit_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                    <option value="Other" {{ $new_visa['work_permit_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            <div class="upload-file">
+                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa2-file'
+                                                    name="work_permit_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->work_permit_file}}">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            @php
+                                            $file_name = $new_visa->work_permit_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($new_visa->work_permit_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->work_permit_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->work_permit_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                            @endif
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        {{--Emrates ID--}}
                         <div class="tab-pane fade" id="v-pills-visa11" role="tabpanel"
                             aria-labelledby="v-pills-visa11-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                              <form action="" class='pt-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step12' name='emirates_residency_app' hidden>
                                   <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Emirates ID</h6>
                                   <div class="row">
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
                                               <label for="#start-process-transaction-number11">Transaction No:</label>
                                               <input type="text" class="form-control"
-                                                  id="start-process-transaction-number11" placeholder="...">
+                                                  id="start-process-transaction-number11" placeholder="..." name="emirates_tran_no" value="{{$new_visa->emirates_tran_no}}">
                                           </div>
                                       </div>
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
                                               <label for="#start-process-transaction-fee11">Transaction Fee</label>
                                               <input type="text" class="form-control"
-                                                  id="start-process-transaction-fee11" placeholder="...">
+                                                  id="start-process-transaction-fee11" placeholder="..." name="emirates_tran_fee" value="{{$new_visa->emirates_tran_fee}}">
                                           </div>
                                       </div>
                                       <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                           <label for="">Status</label>
-                                          <p class='form-control m-0'>Pending</p>
+                                          <select id="selectDocument" class="form-control category" name="emirates_status">
+                                            <option value="" selected disabled>select</option>
+                                            <option value="Approved" {{$new_visa['emirates_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                            <option value="Hold" {{$new_visa['emirates_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="Skip" {{$new_visa['emirates_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                            <option value="Reject" {{$new_visa['emirates_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                        </select>
                                       </div>
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
                                               <label for="#emirates-transaction-date">Date</label>
                                               <input type="date" class="form-control"
-                                                  id="emirates-transaction-date" placeholder="...">
+                                                  id="emirates-transaction-date" placeholder="..." name="emirates_date" value="{{$new_visa->emirates_date}}">
                                           </div>
                                       </div>
-                                      <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+
+                                      <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group mb-3">
+                                      <label for='#over-stay-file'>Upload file</label>
+
+                                             <select id="selectDocument" class="form-control category" name="emirates_file_name"
+                                                value="{{$new_visa->emirates_file_name}}" required>
+                                                <option value="" selected disabled>Select Document</option>
+                                                <option value="Personal Photo"
+                                                    {{ $new_visa['emirates_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                </option>
+                                                <option value="Passport" {{ $new_visa['emirates_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                    Passport</option>
+                                                <option value="Visit Visa" {{ $new_visa['emirates_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                    Visit Visa</option>
+                                                <option value="Offer Letter"
+                                                    {{ $new_visa['emirates_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                <option value="MOL Job Offer"
+                                                    {{ $new_visa['emirates_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                <option value="Signed MOL Job Offer"
+                                                    {{ $new_visa['emirates_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                    Offer</option>
+                                                <option value="MOL MB Contract"
+                                                    {{ $new_visa['emirates_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                </option>
+                                                <option value="Signed MOL MB Offer"
+                                                    {{ $new_visa['emirates_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                    Offer</option>
+                                                <option value="Preapproval Work Permit"
+                                                    {{ $new_visa['emirates_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                    Work Permit</option>
+                                                <option value="Dubai Insurance"
+                                                    {{ $new_visa['emirates_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                </option>
+                                                <option value="Entry Permit Visa"
+                                                    {{ $new_visa['emirates_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                </option>
+                                                <option value="Stamped Entry Visa"
+                                                    {{ $new_visa['emirates_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                    Visa</option>
+                                                <option value="Change of Visa Status"
+                                                    {{ $new_visa['emirates_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                    Status</option>
+                                                <option value="Medical Fitness Receipt"
+                                                    {{ $new_visa['emirates_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                    Fitness Receipt</option>
+                                                <option value="Tawjeeh Receipt"
+                                                    {{ $new_visa['emirates_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                </option>
+                                                <option value="Emirates Id Application form"
+                                                    {{ $new_visa['emirates_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                    Emirates Id Application form</option>
+                                                <option value="Stamped EID Application form"
+                                                    {{ $new_visa['emirates_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                    EID Application form</option>
+                                                <option value="Residence Visa"
+                                                    {{ $new_visa['emirates_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                </option>
+                                                <option value="Work Permit" {{ $new_visa['emirates_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                    Work Permit</option>
+                                                <option value="Health Insurance Card"
+                                                    {{ $new_visa['emirates_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                    Insurance Card</option>
+                                                <option value="National Identity Card"
+                                                    {{ $new_visa['emirates_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                    Identity Card</option>
+                                                <option value="Emirates Identity Card"
+                                                    {{ $new_visa['emirates_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                    Identity Card</option>
+                                                <option value="Vehicle Registration Card"
+                                                    {{ $new_visa['emirates_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                    Registration Card</option>
+                                                <option value="Driving License"
+                                                    {{ $new_visa['emirates_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                </option>
+                                                <option value="Birth Certificate"
+                                                    {{ $new_visa['emirates_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                </option>
+                                                <option value="Marriage Certificate"
+                                                    {{ $new_visa['emirates_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                    Certificate</option>
+                                                <option value="School Certificate"
+                                                    {{ $new_visa['emirates_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                    Certificate</option>
+                                                <option value="Diploma" {{ $new_visa['emirates_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                </option>
+                                                <option value="University Degree"
+                                                    {{ $new_visa['emirates_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                </option>
+                                                <option value="Salary Certificate"
+                                                    {{ $new_visa['emirates_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                    Certificate</option>
+                                                <option value="Tenancy Contract"
+                                                    {{ $new_visa['emirates_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                </option>
+                                                <option value="MOL Cancellation form"
+                                                    {{ $new_visa['emirates_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                    Cancellation form</option>
+                                                <option value="Signed MOL Cancellation Form"
+                                                    {{ $new_visa['emirates_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                    MOL Cancellation Form</option>
+                                                <option value="Work Permit Cancellation Approval"
+                                                    {{ $new_visa['emirates_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                    Work Permit Cancellation Approval</option>
+                                                <option value="Residency Cancellation Approval"
+                                                    {{ $new_visa['emirates_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                    Residency Cancellation Approval</option>
+                                                <option value="Modify MOL Contract"
+                                                    {{ $new_visa['emirates_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                    Contract</option>
+                                                <option value="Work Permit Application"
+                                                    {{ $new_visa['emirates_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                    Application</option>
+                                                <option value="Work Permit Renewal Application"
+                                                    {{ $new_visa['emirates_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                    Permit Renewal Application</option>
+                                                <option value="Signed Work Permit Renewal"
+                                                    {{ $new_visa['emirates_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal</option>
+                                                <option value="Application" {{ $new_visa['emirates_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                    Application</option>
+                                                <option value="Submission Form"
+                                                    {{ $new_visa['emirates_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                </option>
+                                                <option
+                                                value="Preapproval of work permit receipt"{{ $new_visa['emirates_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                Preapproval of work permit</option>
+                                            <option
+                                                value="Dubai Insurance receipts"{{ $new_visa['emirates_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                Dubai Insurance</option>
+                                            <option
+                                                value="Preapproval work permit fees receipt"{{ $new_visa['emirates_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                Preapproval work permit fees</option>
+                                            <option
+                                                value="Work permit Renewal Fees Receipt"{{ $new_visa['emirates_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                Work permit Renewal Fees</option>
+                                            <option
+                                                value="Entry Visa Application Receipt"{{ $new_visa['emirates_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                Entry Visa Application</option>
+                                            <option
+                                                value="Change of Visa Status Application"{{ $new_visa['emirates_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                Change of Visa Status Application</option>
+                                            <option value="Medical"{{ $new_visa['emirates_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                            </option>
+                                            <option value="Tawjeeh"{{ $new_visa['emirates_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                            </option>
+                                            <option
+                                                value="Heath Insurance"{{ $new_visa['emirates_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                Health Insurance</option>
+                                            <option
+                                                value="Emirates ID Application"{{ $new_visa['emirates_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                Emirates ID Application</option>
+                                            <option
+                                                value="Residency Visa Application"{{ $new_visa['emirates_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                Residency Visa Application</option>
+                                            <option value="Visa Fines"{{ $new_visa['emirates_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                Fines</option>
+                                            <option
+                                                value="Emirates ID Fines"{{ $new_visa['emirates_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                Emirates ID Fines</option>
+                                            <option value="Other fines"{{ $new_visa['emirates_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                Other fines</option>
+                                            <option
+                                                value="Health Insurance Fines"{{ $new_visa['emirates_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                Health Insurance Fines</option>
+                                            <option
+                                                value="Immigration Application"{{ $new_visa['emirates_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                Immigration Application</option>
+                                            <option
+                                                value="MOHRE Application"{{ $new_visa['emirates_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                MOHRE Application</option>
+
+                                                <option value="Other" {{ $new_visa['emirates_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                        <div class="upload-file">
+                                        {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                            <input type="file" class="form-control" id='visa2-file'
+                                                name="emirates_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->emirates_file}}">
+                                            <div class="input-group-prepend">
+                                                <small class="input-group-text"><span
+                                                        class="fa fa-paperclip"></span></small>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        @php
+                                        $file_name = $new_visa->emirates_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($new_visa->emirates_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->emirates_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $new_visa->emirates_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                        @endif
+                                    </div>
+                                      {{-- <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                         <div class="d-flex flex-column">
                                           <label for="#">Attachment</label>
                                        <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                         </div>
-                                  </div>
+                                        </div> --}}
                                 </div>
-                              </form>
-                              <form action="" class='pt-4 pb-2'>
+                              {{-- </form> --}}
+
+                              {{-- <form action="" class='pt-4 pb-2'> --}}
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application</h6>
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#start-process-transaction-number111">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number112" placeholder="...">
+                                                id="start-process-transaction-number112" placeholder="..." name="residency_tran_no" value="{{$new_visa->residency_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#start-process-transaction-fee112">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-fee112" placeholder="...">
+                                                id="start-process-transaction-fee112" placeholder="..." name="residency_tran_fee" value="{{$new_visa->residency_tran_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="">Status</label>
-                                        <p class='form-control m-0'>Pending</p>
+                                        <select id="selectDocument" class="form-control category" name="residency_status">
+                                            <option value="" selected disabled>select</option>
+                                            <option value="Approved" {{$new_visa['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                            <option value="Hold" {{$new_visa['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="Skip" {{$new_visa['residency_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                            <option value="Reject" {{$new_visa['residency_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                        </select>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#emirates-transaction-date2">Date</label>
                                             <input type="date" class="form-control"
-                                                id="emirates-transaction-date2" >
+                                                id="emirates-transaction-date2"  name="residency_date" value="{{$new_visa->residency_date}}">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+
+                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group mb-3">
+                                      <label for='#over-stay-file'>Upload file</label>
+
+                                             <select id="selectDocument" class="form-control category" name="residency_file_name"
+                                                value="{{$new_visa->residency_file_name}}" required>
+                                                <option value="" selected disabled>Select Document</option>
+                                                <option value="Personal Photo"
+                                                    {{ $new_visa['residency_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
+                                                </option>
+                                                <option value="Passport" {{ $new_visa['residency_file_name'] == 'Passport' ? 'selected' : '' }}>
+                                                    Passport</option>
+                                                <option value="Visit Visa" {{ $new_visa['residency_file_name'] == 'Visit Visa' ? 'selected' : '' }}>
+                                                    Visit Visa</option>
+                                                <option value="Offer Letter"
+                                                    {{ $new_visa['residency_file_name'] == 'Offer Letter' ? 'selected' : '' }}>Offer Letter</option>
+                                                <option value="MOL Job Offer"
+                                                    {{ $new_visa['residency_file_name'] == 'MOL Job Offer' ? 'selected' : '' }}>MOL Job Offer</option>
+                                                <option value="Signed MOL Job Offer"
+                                                    {{ $new_visa['residency_file_name'] == 'Signed MOL Job Offer' ? 'selected' : '' }}>Signed MOL Job
+                                                    Offer</option>
+                                                <option value="MOL MB Contract"
+                                                    {{ $new_visa['residency_file_name'] == 'MOL MB Contract' ? 'selected' : '' }}>MOL MB Contract
+                                                </option>
+                                                <option value="Signed MOL MB Offer"
+                                                    {{ $new_visa['residency_file_name'] == 'Signed MOL MB Offer' ? 'selected' : '' }}>Signed MOL MB
+                                                    Offer</option>
+                                                <option value="Preapproval Work Permit"
+                                                    {{ $new_visa['residency_file_name'] == 'Preapproval Work Permit' ? 'selected' : '' }}>Preapproval
+                                                    Work Permit</option>
+                                                <option value="Dubai Insurance"
+                                                    {{ $new_visa['residency_file_name'] == 'Dubai Insurance' ? 'selected' : '' }}>Dubai Insurance
+                                                </option>
+                                                <option value="Entry Permit Visa"
+                                                    {{ $new_visa['residency_file_name'] == 'Entry Permit Visa' ? 'selected' : '' }}>Entry Permit Visa
+                                                </option>
+                                                <option value="Stamped Entry Visa"
+                                                    {{ $new_visa['residency_file_name'] == 'Stamped Entry Visa' ? 'selected' : '' }}>Stamped Entry
+                                                    Visa</option>
+                                                <option value="Change of Visa Status"
+                                                    {{ $new_visa['residency_file_name'] == 'Change of Visa Status' ? 'selected' : '' }}>Change of Visa
+                                                    Status</option>
+                                                <option value="Medical Fitness Receipt"
+                                                    {{ $new_visa['residency_file_name'] == 'Medical Fitness Receipt' ? 'selected' : '' }}>Medical
+                                                    Fitness Receipt</option>
+                                                <option value="Tawjeeh Receipt"
+                                                    {{ $new_visa['residency_file_name'] == 'Tawjeeh Receipt' ? 'selected' : '' }}>Tawjeeh Receipt
+                                                </option>
+                                                <option value="Emirates Id Application form"
+                                                    {{ $new_visa['residency_file_name'] == 'Emirates Id Application form' ? 'selected' : '' }}>
+                                                    Emirates Id Application form</option>
+                                                <option value="Stamped EID Application form"
+                                                    {{ $new_visa['residency_file_name'] == 'Stamped EID Application form' ? 'selected' : '' }}>Stamped
+                                                    EID Application form</option>
+                                                <option value="Residence Visa"
+                                                    {{ $new_visa['residency_file_name'] == 'Residence Visa' ? 'selected' : '' }}>Residence Visa
+                                                </option>
+                                                <option value="Work Permit" {{ $new_visa['residency_file_name'] == 'Work Permit' ? 'selected' : '' }}>
+                                                    Work Permit</option>
+                                                <option value="Health Insurance Card"
+                                                    {{ $new_visa['residency_file_name'] == 'Health Insurance Card' ? 'selected' : '' }}>Health
+                                                    Insurance Card</option>
+                                                <option value="National Identity Card"
+                                                    {{ $new_visa['residency_file_name'] == 'National Identity Card' ? 'selected' : '' }}>National
+                                                    Identity Card</option>
+                                                <option value="Emirates Identity Card"
+                                                    {{ $new_visa['residency_file_name'] == 'Emirates Identity Card' ? 'selected' : '' }}>Emirates
+                                                    Identity Card</option>
+                                                <option value="Vehicle Registration Card"
+                                                    {{ $new_visa['residency_file_name'] == 'Vehicle Registration Card' ? 'selected' : '' }}>Vehicle
+                                                    Registration Card</option>
+                                                <option value="Driving License"
+                                                    {{ $new_visa['residency_file_name'] == 'Driving License' ? 'selected' : '' }}>Driving License
+                                                </option>
+                                                <option value="Birth Certificate"
+                                                    {{ $new_visa['residency_file_name'] == 'Birth Certificate' ? 'selected' : '' }}>Birth Certificate
+                                                </option>
+                                                <option value="Marriage Certificate"
+                                                    {{ $new_visa['residency_file_name'] == 'Marriage Certificate' ? 'selected' : '' }}>Marriage
+                                                    Certificate</option>
+                                                <option value="School Certificate"
+                                                    {{ $new_visa['residency_file_name'] == 'School Certificate' ? 'selected' : '' }}>School
+                                                    Certificate</option>
+                                                <option value="Diploma" {{ $new_visa['residency_file_name'] == 'Diploma' ? 'selected' : '' }}>Diploma
+                                                </option>
+                                                <option value="University Degree"
+                                                    {{ $new_visa['residency_file_name'] == 'University Degree' ? 'selected' : '' }}>University Degree
+                                                </option>
+                                                <option value="Salary Certificate"
+                                                    {{ $new_visa['residency_file_name'] == 'Salary Certificate' ? 'selected' : '' }}>Salary
+                                                    Certificate</option>
+                                                <option value="Tenancy Contract"
+                                                    {{ $new_visa['residency_file_name'] == 'Tenancy Contract' ? 'selected' : '' }}>Tenancy Contract
+                                                </option>
+                                                <option value="MOL Cancellation form"
+                                                    {{ $new_visa['residency_file_name'] == 'MOL Cancellation form' ? 'selected' : '' }}>MOL
+                                                    Cancellation form</option>
+                                                <option value="Signed MOL Cancellation Form"
+                                                    {{ $new_visa['residency_file_name'] == 'Signed MOL Cancellation Form' ? 'selected' : '' }}>Signed
+                                                    MOL Cancellation Form</option>
+                                                <option value="Work Permit Cancellation Approval"
+                                                    {{ $new_visa['residency_file_name'] == 'Work Permit Cancellation Approval' ? 'selected' : '' }}>
+                                                    Work Permit Cancellation Approval</option>
+                                                <option value="Residency Cancellation Approval"
+                                                    {{ $new_visa['residency_file_name'] == 'Residency Cancellation Approval' ? 'selected' : '' }}>
+                                                    Residency Cancellation Approval</option>
+                                                <option value="Modify MOL Contract"
+                                                    {{ $new_visa['residency_file_name'] == 'Modify MOL Contract' ? 'selected' : '' }}>Modify MOL
+                                                    Contract</option>
+                                                <option value="Work Permit Application"
+                                                    {{ $new_visa['residency_file_name'] == 'Work Permit Application' ? 'selected' : '' }}>Work Permit
+                                                    Application</option>
+                                                <option value="Work Permit Renewal Application"
+                                                    {{ $new_visa['residency_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
+                                                    Permit Renewal Application</option>
+                                                <option value="Signed Work Permit Renewal"
+                                                    {{ $new_visa['residency_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal</option>
+                                                <option value="Application" {{ $new_visa['residency_file_name'] == 'Application' ? 'selected' : '' }}>
+                                                    Application</option>
+                                                <option value="Submission Form"
+                                                    {{ $new_visa['residency_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
+                                                </option>
+                                                <option
+                                                value="Preapproval of work permit receipt"{{ $new_visa['residency_file_name'] == 'Preapproval of work permit receipt' ? 'selected' : '' }}>
+                                                Preapproval of work permit</option>
+                                            <option
+                                                value="Dubai Insurance receipts"{{ $new_visa['residency_file_name'] == 'Dubai Insurance receipts' ? 'selected' : '' }}>
+                                                Dubai Insurance</option>
+                                            <option
+                                                value="Preapproval work permit fees receipt"{{ $new_visa['residency_file_name'] == 'Preapproval work permit fees receipt' ? 'selected' : '' }}>
+                                                Preapproval work permit fees</option>
+                                            <option
+                                                value="Work permit Renewal Fees Receipt"{{ $new_visa['residency_file_name'] == 'Work permit Renewal Fees Receipt' ? 'selected' : '' }}>
+                                                Work permit Renewal Fees</option>
+                                            <option
+                                                value="Entry Visa Application Receipt"{{ $new_visa['residency_file_name'] == 'Entry Visa Application Receipt' ? 'selected' : '' }}>
+                                                Entry Visa Application</option>
+                                            <option
+                                                value="Change of Visa Status Application"{{ $new_visa['residency_file_name'] == 'Change of Visa Status Application' ? 'selected' : '' }}>
+                                                Change of Visa Status Application</option>
+                                            <option value="Medical"{{ $new_visa['residency_file_name'] == 'Medical' ? 'selected' : '' }}>Medical
+                                            </option>
+                                            <option value="Tawjeeh"{{ $new_visa['residency_file_name'] == 'Tawjeeh' ? 'selected' : '' }}>Tawjeeh
+                                            </option>
+                                            <option
+                                                value="Heath Insurance"{{ $new_visa['residency_file_name'] == 'Heath Insurance' ? 'selected' : '' }}>
+                                                Health Insurance</option>
+                                            <option
+                                                value="Emirates ID Application"{{ $new_visa['residency_file_name'] == 'Emirates ID Application' ? 'selected' : '' }}>
+                                                Emirates ID Application</option>
+                                            <option
+                                                value="Residency Visa Application"{{ $new_visa['residency_file_name'] == 'Residency Visa Application' ? 'selected' : '' }}>
+                                                Residency Visa Application</option>
+                                            <option value="Visa Fines"{{ $new_visa['residency_file_name'] == 'Visa Fines' ? 'selected' : '' }}>Visa
+                                                Fines</option>
+                                            <option
+                                                value="Emirates ID Fines"{{ $new_visa['residency_file_name'] == 'Emirates ID Fines' ? 'selected' : '' }}>
+                                                Emirates ID Fines</option>
+                                            <option value="Other fines"{{ $new_visa['residency_file_name'] == 'Other fines' ? 'selected' : '' }}>
+                                                Other fines</option>
+                                            <option
+                                                value="Health Insurance Fines"{{ $new_visa['residency_file_name'] == 'Health Insurance Fines' ? 'selected' : '' }}>
+                                                Health Insurance Fines</option>
+                                            <option
+                                                value="Immigration Application"{{ $new_visa['residency_file_name'] == 'Immigration Application' ? 'selected' : '' }}>
+                                                Immigration Application</option>
+                                            <option
+                                                value="MOHRE Application"{{ $new_visa['residency_file_name'] == 'MOHRE Application' ? 'selected' : '' }}>
+                                                MOHRE Application</option>
+
+                                                <option value="Other" {{ $new_visa['residency_file_name'] == 'Other' ? 'selected' : '' }}>Other
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                        <div class="upload-file">
+                                        {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                            <input type="file" class="form-control" id='visa2-file'
+                                                name="residency_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->residency_file}}">
+                                            <div class="input-group-prepend">
+                                                <small class="input-group-text"><span
+                                                        class="fa fa-paperclip"></span></small>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        @php
+                                        $file_name = $new_visa->residency_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($new_visa->residency_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->residency_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $new_visa->residency_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                        @endif
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                    </div>
+                                    {{-- <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                       <div class="d-flex flex-column">
                                         <label for="#">Attachment</label>
                                      <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                       </div>
-                                </div>
+                                </div> --}}
                               </div>
-                              </form>
+                            </form>
                             </div>
                         </div>
+                        {{--Employee Biometric--}}
                         <div class="tab-pane fade" id="v-pills-visa12" role="tabpanel"
                             aria-labelledby="v-pills-visa12-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='step13' name='biometric' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Employee Biometric</h6>
                                     <div class="row biometric-file-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-number12">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number12" placeholder="...">
+                                                    id="start-process-transaction-number12" placeholder="..."  name="biometric_tranc_no" value="{{$new_visa->biometric_tranc_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-fee12">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee12" placeholder="...">
+                                                    id="start-process-transaction-fee12" placeholder="..."  name="biometric_tranc_fee" value="{{$new_visa->biometric_tranc_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="">Status</label>
-                                            <p class='form-control m-0'>Pending</p>
+                                            <select id="selectDocument" class="form-control category" name="biometric_status">
+                                                <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$new_visa['biometric_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$new_visa['biometric_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$new_visa['biometric_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$new_visa['biometric_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#biometric1-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="#biometric1-date" placeholder="...">
+                                                    id="#biometric1-date" placeholder="..."  name="biometric_date" value="{{$new_visa->biometric_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="#select-biometric-file">Employee Biometric</label>
-                                                <select class="form-control biometric-select" id="select-biometric">
+                                                <select class="form-control biometric-select" id="select-biometric" name="employee_biometric">
                                                     <option>Employee Biometric</option>
                                                     <option value='required'>Required</option>
                                                     <option value='not required'>Not Required</option>
@@ -2110,18 +3514,46 @@
                                               <label for='#visa2-file-bio'>Uplaod File</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                   <input type="file" class="form-control" id='visa2-file-bio'
-                                                      name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                      name="biometric_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                   <div class="input-group-prepend">
                                                       <small class="input-group-text"><span
                                                               class="fa fa-paperclip"></span></small>
                                                   </div>
                                               </div>
                                             </div>
-                                               <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            @php
+                                            $file_name = $new_visa->biometric_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($new_visa->biometric_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $new_visa->biometric_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->biometric_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
+                                            @endif
+                                               {{-- <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
                                           </div>
                                       </div>
                                       <div class="col-12 text-center">
-                                        <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                             @if($new_visa['biometric_status'] == 'Approved')
+                                                <p class="text-success mt-2">This new visa process is completed !</p>
+                                             @endif
                                     </div>
                                     </div>
                                 </form>
@@ -2131,6 +3563,8 @@
                 </div>
             </div>
         </div>
+
+        
         <!-- Renewal Process Tab-->
         <div class="tab-pane fade" id="pills-renewal-process" role="tabpanel"
             aria-labelledby="pills-renewal-process-tab">
