@@ -145,9 +145,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // New visa
 
     Route::resource('visa', NewVisaController::class)->middleware('permission:Receipt');
+
     Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')->middleware('permission:Receipt');
+
     Route::get('view-process', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Receipt');
-    Route::post('Job-offer/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Receipt');
+
+    Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Receipt');
+
+    Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation')->middleware('permission:Receipt');
+
+    Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation')->middleware('permission:Receipt');
+
+    Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation')->middleware('permission:Receipt');
 
     // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
 
@@ -291,6 +300,12 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::post('sent-new-visa-request/{id}', 'EmployeeVisaProcessController@visa_process_request')->name('sent-new-visa-request');
 
+    Route::post('new-visa-updation-company/{id}', 'EmployeeVisaProcessController@new_visa_data')->name('new-visa-updation-company');
+
+    Route::post('renewal-process/{id}', 'EmployeeVisaProcessController@renewal_process')->name('renewal-process-company');
+
+    Route::post('sponsored-by-process/{id}', 'EmployeeVisaProcessController@sponsored_by')->name('sponsored-by-process-company');
+
 
 
     /** All security routes */
@@ -403,3 +418,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
 //privacy-policy
      Route::get('/privacy-policy-page', [AuthController::class, 'privacyPolicyPage']);
+
+

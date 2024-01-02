@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContentModeration;
 use App\Http\Controllers\Api\AddPermissions;
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\Api\AddPermissions;
 */
 Route::post('add-permission',[AddPermissions::class,'add_permission'])->name('add-permission');
 Route::post('update-permission/{id}',[AddPermissions::class,'update_permission'])->name('update-permission');
+Route::post('/content-moderation', [AddPermissions::class, 'add'])->name('content-moderation');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

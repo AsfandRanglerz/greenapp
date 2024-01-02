@@ -48,38 +48,24 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $requests->company->name }}</td>
                                                 <td>{{ $requests->user->name }}</td>
-                                                <td>{{ $requests->process_name }}</td>
-                                                {{-- <td>{{ $employee->email }}</td> --}}
-                                                {{-- <td> --}}
-                                                    {{-- <a href="{{ route('user-receipts', $visa_requests->id) }}">View</a> --}}
-                                                {{-- </td> --}}
+                                                <td>{{ $requests->process_name }} <br>
+                                                @if ($requests->sub_type)
+                                                       <span class='text-danger'>({{$requests->sub_type}})</span>
+                                                @endif
+                                                </td>
                                                  <td>
                                                     <div
-                                                    style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-                                                    {{-- <a id="{{ $requests->id }}" data-toggle="modal"
-                                                        data-target=".bd-example-modal-lg" class="visa_requests-data btn_warning"><span
-                                                            class="fa fa-eye text-white"></span></a> --}}
+                                                        style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                         @if ($requests->status == 'pending')
                                                             <a class="btn btn-info"
                                                                 href="{{ route('visa.show', $requests->id) }}">Approve</a>
                                                             <a class="btn btn-danger"
                                                                 href="{{ route('visa.show', $requests->id) }}">Rejecte</a>
                                                         @else
-                                                            {{-- <a class="btn btn-danger"
-                                                            href="{{ route('view-process',['user_id'=>$requests->user->id ,'company_id'=>$requests->company->id]) }}">view</a> --}}
                                                             <a class="btn btn-primary"
                                                                 href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
                                                         @endif
-
-
-                                                    {{-- <form method="post"
-                                                        action="{{ route('user.destroy', $requests->id) }}">
-                                                        @csrf
-                                                        <input name="_method" type="hidden" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                            data-toggle="tooltip">Reject</button>
-                                                    </form> --}}
-                                                </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
