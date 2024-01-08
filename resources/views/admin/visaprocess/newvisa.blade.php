@@ -177,27 +177,37 @@
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                         aria-labelledby="v-pills-start-tab">
                         <div class='rounded p-3 light-box-shadow'>
-                            <form action="" method="POST" class='py-2'>
+                            {{-- <form action="" method="POST" class='py-2'> --}}
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                 <div class="row">
                                         <div class="col-12 text-center">
                                                 {{-- {{$user_id}} --}}
-                                            <form action="" method="POST">
-                                            <a href="" class='btn btn-success px-5 py-2'>Start Process</a>
-                                            @csrf
-                                            <input type="hidden" value='new visa' name='process_name'>
-                                            <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                            <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value='new visa' name='process_name'>
+                                                @php
+                                                    $n_visa = App\Models\NewVisaProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                @endphp
+                                                @if (!$n_visa)
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                                @endif
                                              </form>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-1">Process status</label>
-                                                <input type="text" class="form-control"
-                                                    id="new-visa-1" placeholder="...">
+                                                @if ($n_visa)
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
+
                                             </div>
                                         </div>
                                 </div>
-                            </form>
+                            {{-- </form> --}}
                         </div>
                     </div>
                      {{-- Job Offer, MB Contracts + Preapproval of work permit section --}}
@@ -543,7 +553,7 @@
                                         @endif
                                         </div>
 
-                                        
+
 
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
@@ -3738,20 +3748,31 @@
                     <div class="tab-pane fade show active" id="v-pills-renewal-process0" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process0-tab">
                         <div class='rounded p-3 light-box-shadow'>
-                            <form class='py-2'>
+                            <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                @csrf
+                                <input type="hidden" value='renewal process' name='process_name'>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start renewal
                                     process</h6>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <input type="hidden">
-                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                            Process</button>
+                                        @php
+                                            $n_visa = App\Models\RenewalProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                        @endphp
+                                            @if (!$n_visa)
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                            @endif
+
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="new-visa-98">Process status</label>
-                                            <input type="text" class="form-control" id="new-visa-98"
-                                                placeholder="...">
+                                            @if ($n_visa)
+                                            <input type="text" class="form-control"
+                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                            @else
+                                                <input type="text" class="form-control"
+                                                id="new-visa-1" disabled placeholder="..." value='not started'>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -5909,20 +5930,33 @@
                         <div class="tab-pane fade show active" id="v-pills-sponsored0" role="tabpanel"
                             aria-labelledby="v-pills-sponsored0-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form class='py-2'>
+                                <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value='work permit' name='process_name'>
+                                    <input type="hidden" value='sponsored by some one' name='process_type'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                         Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden">
-                                            <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                Process</button>
+                                                @php
+                                                    $n_visa = App\Models\SponsaredBySomeOne::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                @endphp
+                                                @if (!$n_visa)
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                                @endif
+
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-152">Process status</label>
+                                                @if ($n_visa)
                                                 <input type="text" class="form-control"
-                                                    id="new-visa-152" placeholder="...">
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
@@ -7527,20 +7561,31 @@
                         <div class="tab-pane fade show active" id="v-pills-part-time0" role="tabpanel"
                             aria-labelledby="v-pills-part-time0-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form class='py-2'>
+                                <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value='work permit' name='process_name'>
+                                    <input type="hidden" value='part time' name='process_type'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                         Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden">
-                                            <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                Process</button>
+                                            @php
+                                            $n_visa = App\Models\PartTimeAndTemporary::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            @endphp
+                                            @if (!$n_visa)
+                                            <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                            @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-187">Process status</label>
-                                                <input type="text" class="form-control" id="new-visa-187"
-                                                    placeholder="...">
+                                                 @if ($n_visa)
+                                                <input type="text" class="form-control"
+                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -8538,20 +8583,31 @@
                         <div class="tab-pane fade show active" id="v-pills-UAE0" role="tabpanel"
                             aria-labelledby="v-pills-UAE0-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form class='py-2'>
+                                <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                    @csrf
+                                     <input type="hidden" value='work permit' name='process_name'>
+                                     <input type="hidden" value='uae and gcc' name='process_type'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                         Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden">
-                                            <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                Process</button>
+                                            @php
+                                            $n_visa = App\Models\UaeAndGccNational::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            @endphp
+                                            @if (!$n_visa)
+                                            <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                            @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-215">Process status</label>
-                                                <input type="text" class="form-control" id="new-visa-215"
-                                                    placeholder="...">
+                                                @if ($n_visa)
+                                                <input type="text" class="form-control"
+                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -9829,14 +9885,20 @@
                         <div class="tab-pane fade show active" id="v-pills-modify-contract0" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract0-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form class='py-2'>
+                                <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                    @csrf
+                                     <input type="hidden" value='work permit' name='process_name'>
+                                     <input type="hidden" value='modify contract' name='process_type'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                         Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden">
-                                            <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                Process</button>
+                                            @php
+                                            $n_visa = App\Models\NewVisaProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            @endphp
+                                            @if (!$n_visa)
+                                            <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                            @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -10772,21 +10834,32 @@
                   <div class="tab-pane fade show active" id="v-pills-modify-visa1" role="tabpanel"
                       aria-labelledby="v-pills-modify-visa1-tab">
                       <div class='rounded p-3 light-box-shadow'>
-                          <form class="py-2">
+                        <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                            @csrf
+                             <input type="hidden" value='modification of visa' name='process_name'>
+                             {{-- <input type="hidden" value='sponsored by some one' name='process_type'> --}}
                               <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Visa
                                   Modification</h6>
                               <div class="row">
                                   <div class="col-12 text-center">
-                                      <input type="hidden">
-                                      <button class='btn btn-success px-5 py-2' type="submit">Start
-                                          Process</button>
+                                    @php
+                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name','modification of visa')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                    @endphp
+                                    @if (!$n_visa)
+                                    <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                    @endif
                                   </div>
                                   <div class="col-xl-6 col-lg-12 col-md-6">
                                       <div class="form-group mb-3">
                                           <label for="new-visa-265">Process
                                               status</label>
-                                          <input type="text" class="form-control"
-                                              id="new-visa-265" placeholder="...">
+                                              @if ($n_visa)
+                                              <input type="text" class="form-control"
+                                              id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
                                       </div>
                                   </div>
                               </div>
@@ -10929,21 +11002,32 @@
                   <div class="tab-pane fade show active" id="v-pills-modify-emirates1" role="tabpanel"
                       aria-labelledby="v-pills-modify-emirates1-tab">
                       <div class='rounded p-3 light-box-shadow'>
-                        <form action="">
+                        <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                            @csrf
+                             <input type="hidden" value='modification of emirates Id' name='process_name'>
+                             {{-- <input type="hidden" value='sponsored by some one' name='process_type'> --}}
                               <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
                                   Modification of Emirates ID</h6>
                               <div class="row">
                                   <div class="col-12 text-center">
-                                      <input type="hidden">
-                                      <button class='btn btn-success px-5 py-2' type="submit">Start
-                                          Process</button>
+                                    @php
+                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name','modification of visa')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                    @endphp
+                                    @if (!$n_visa)
+                                    <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                    @endif
                                   </div>
                                   <div class="col-xl-6 col-lg-12 col-md-6">
                                       <div class="form-group mb-3">
                                           <label for="new-visa-270">Process
                                               status</label>
-                                          <input type="text" class="form-control"
-                                              id="new-visa-270" placeholder="...">
+                                              @if ($n_visa)
+                                              <input type="text" class="form-control"
+                                              id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
                                       </div>
                                   </div>
                               </div>
@@ -11116,20 +11200,31 @@
                             <div class="tab-pane fade show active" id="v-pills-visa-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel0-tab">
                                 <div class='rounded p-3 light-box-shadow'>
-                                    <form class='py-2'>
+                                    <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                        @csrf
+                                         <input type="hidden" value='visa cancellation' name='process_name'>
+                                         {{-- <input type="hidden" value='sponsored by some one' name='process_type'> --}}
                                         <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                             Process</h6>
                                         <div class="row">
                                             <div class="col-12 text-center">
-                                                <input type="hidden">
-                                                <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                    Process</button>
+                                                @php
+                                                $n_visa = App\Models\VisaCancelation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                @endphp
+                                                @if (!$n_visa)
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                                @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-275">Process status</label>
-                                                    <input type="text" class="form-control" id="new-visa-275"
-                                                        placeholder="...">
+                                                    @if ($n_visa)
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @else
+                                                        <input type="text" class="form-control"
+                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -12356,20 +12451,30 @@
                             <div class="tab-pane fade show active" id="v-pills-permit-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel0-tab">
                                 <div class='rounded p-3 light-box-shadow'>
-                                    <form class='py-2'>
+                                    <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
+                                        @csrf
+                                         <input type="hidden" value='permit cancellation' name='process_name'>
                                         <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
                                             Process</h6>
                                         <div class="row">
                                             <div class="col-12 text-center">
-                                                <input type="hidden">
-                                                <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                    Process</button>
+                                                @php
+                                                    $n_visa = App\Models\PermitCancellation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                @endphp
+                                                @if (!$n_visa)
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
+                                                @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-300">Process status</label>
-                                                    <input type="text" class="form-control" id="new-visa-300"
-                                                        placeholder="...">
+                                                    @if ($n_visa)
+                                                    <input type="text" class="form-control"
+                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @else
+                                                        <input type="text" class="form-control"
+                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -13344,7 +13449,7 @@
                     a.siblings('.status-select-approval').addClass('d-none');
                 };
             });
-           
+
             if ($(this).val().toLowerCase() === 'reject') {
                     a.siblings('.status-select-comment').removeClass('d-none');
                     a.siblings('.status-select-file').removeClass('d-flex');

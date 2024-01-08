@@ -63,7 +63,8 @@
             @if (Auth::guard('web')->user()->emp_type == 'self')
             <li class="position-relative">
                 @php
-                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen','0')->count();
+                $authId = Auth::guard('web')->id();
+                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('employee_id',$authId)->where('seen','0')->count();
                @endphp
                 <a href="{{ route('show-notifications-to-self-employee') }}" class="sidebar-links"><span
                         class="far fa-bell text-white pr-2 sidebar-link-icons"></span>
@@ -78,7 +79,8 @@
             @else
             <li class="position-relative">
                 @php
-                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen','0')->count();
+                $authId = Auth::guard('web')->id();
+                $notificationCount = App\Models\AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('employee_id',$authId)->where('seen','0')->count();
                @endphp
                 <a href="{{ route('show-notifications-to-employee') }}" class="sidebar-links"><span
                         class="far fa-bell text-white pr-2 sidebar-link-icons"></span>

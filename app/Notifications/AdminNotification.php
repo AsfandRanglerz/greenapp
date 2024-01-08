@@ -16,10 +16,10 @@ class AdminNotification extends Notification
      *
      * @return void
      */
-    protected $message;
-    public function __construct($message)
+    protected  $data;
+    public function __construct($data)
     {
-        return $this->message = $message;
+     $this->data = $data;
     }
 
     /**
@@ -30,7 +30,7 @@ class AdminNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
     /**
@@ -42,8 +42,10 @@ class AdminNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+        ->subject('Admin Notification')
+                    ->line($this->data['title'])
+                    ->line($this->data['message'])
+                    // ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 
@@ -56,7 +58,7 @@ class AdminNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message'=>$this->message,
+            
         ];
     }
 }

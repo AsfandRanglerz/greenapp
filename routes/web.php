@@ -146,6 +146,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')/*->middleware('permission:Receipt')*/;
 
+    Route::post('visa-visa/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process_by_admin'])->name('start-process-admin')/*->middleware('permission:Receipt')*/;
+
     Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process')/*->middleware('permission:Receipt')*/;
 
     Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')/*->middleware('permission:Receipt')*/;

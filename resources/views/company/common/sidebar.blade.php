@@ -29,7 +29,8 @@
 
             <li class="position-relative {{ request()->is('company/notifications*') ? 'active' : '' }}">
                 @php
-                 $notificationCount = App\Models\AdminNotification::where('to_all','Companies')->where('seen','0')->count();
+                 $authId = Auth::guard('company')->id();
+                 $notificationCount = App\Models\AdminNotification::where('company_id',$authId)->where('to_all','Companies')->where('seen','0')->count();
                 @endphp
 
                 <a href="{{ route('show-notifications') }}" class="sidebar-links">

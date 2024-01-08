@@ -43,6 +43,7 @@
                                             <th>Emirates ID Number</th>
                                             <th>Work Permit Number</th>
                                             <th>Person Code</th> --}}
+                                            <th>Dependents</th>
                                             <th>Document</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -69,6 +70,9 @@
                                                 <td>{{ $employee->emirate_id_number }}</td>
                                                 <td>{{ $employee->work_permit_number }}</td>
                                                 <td>{{ $employee->person_code }}</td> --}}
+                                                <td>
+                                                    <a href="{{ route('user-document.index', $employee->id) }}">View</a>
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>

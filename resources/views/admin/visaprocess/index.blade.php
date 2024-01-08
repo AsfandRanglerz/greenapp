@@ -79,7 +79,6 @@
                                                                     <a href="{{route('view-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='btn btn-success'>View</a>
                                                                 @else --}}
 
-                                                                
                                                                  <a class="btn btn-primary"
                                                                  href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
                                                                 {{-- @endif --}}

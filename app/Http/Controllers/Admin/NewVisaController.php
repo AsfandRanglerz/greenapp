@@ -122,17 +122,21 @@ class NewVisaController extends Controller
 
     public function start_visa_process(Request $request ,$request_id,$user_id,$company_id)
     {
+
         $employee = User::find($user_id);
         $data['employee_name'] = $employee->name;
         $data['request_name'] = VisaProcessRequest::where('id',$request_id)->value('process_name');
         $data['request_type'] = VisaProcessRequest::where('id',$request_id)->value('sub_type');
-        $process_request= VisaProcessRequest::find($request_id);
-        if($process_request->notify == 'pending')
+        $process_request = VisaProcessRequest::find($request_id);
+        if($process_request)
         {
-            Mail::to($employee->email)->send(new ProcessStarted($data));
-            $process_request->update([
-                'notify'=>'notified',
-            ]);
+            if($process_request->notify == 'pending')
+            {
+                Mail::to($employee->email)->send(new ProcessStarted($data));
+                $process_request->update([
+                    'notify'=>'notified',
+                ]);
+            }
         }
         $ids['user_id'] = $user_id;
         $ids['company_id'] = $company_id;
@@ -248,6 +252,130 @@ class NewVisaController extends Controller
             ]);}
         }
         return view('admin.visaprocess.newvisa',compact('ids','new_visa','renewal_process','spo_by_some','part_time','uae_gcc','modify_contract','modification_visa','modification_emirates','visa_cancellation','permit_cancellation'));
+    }
+
+    public function start_visa_process_by_admin(Request $request,$user_id,$company_id)
+    {
+        $employee = User::find($user_id);
+        $data['employee_name'] = $employee->name;
+        $data['request_name'] = $request->input('process_name');
+        $data['request_type'] = $request->input('process_type');
+        // return $data;
+        $new_visa = NewVisaProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $renewal_process = RenewalProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $spo_by_some = SponsaredBySomeOne::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $part_time = PartTimeAndTemporary::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $uae_gcc = UaeAndGccNational::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $modify_contract = ModifyContract::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $modification_visa = ModificationVisaEmiratesId::where('employee_id',$user_id)->where('company_id',$company_id)->where('process_name','modification of visa')->first();
+        $modification_emirates = ModificationVisaEmiratesId::where('employee_id',$user_id)->where('company_id',$company_id)->where('process_name','modification of emirates Id')->first();
+        $visa_cancellation =  VisaCancelation::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $permit_cancellation =  PermitCancellation::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        if($data['request_name'] == 'new visa')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            // return "ok new visa";
+            if(!$new_visa)
+            {
+                $new_visa = NewVisaProcess::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'renewal process')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$renewal_process)
+            {
+                $renewal_process = RenewalProcess::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'sponsored by some one')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$spo_by_some)
+            {
+                $spo_by_some = SponsaredBySomeOne::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'part time')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$part_time)
+            {
+                $part_time = PartTimeAndTemporary::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$uae_gcc)
+            {
+                $uae_gcc = UaeAndGccNational::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$modify_contract)
+            {
+                // return "ok";
+                $modify_contract = ModifyContract::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'modification of visa')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$modification_visa)
+            {
+                $modification_visa = ModificationVisaEmiratesId::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+                    'process_name'=>'modification of visa',
+            ]);}
+        }
+         elseif($data['request_name'] == 'modification of emirates Id')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$modification_emirates)
+            {
+                $modification_emirates = ModificationVisaEmiratesId::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+                    'process_name'=>'modification of emirates Id',
+            ]);}
+        }
+        elseif($data['request_name'] == 'visa cancellation')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$visa_cancellation)
+            {
+                $visa_cancellation = VisaCancelation::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'permit cancellation')
+        {
+            Mail::to($employee->email)->send(new ProcessStarted($data));
+            if(!$permit_cancellation)
+            {
+                $permit_cancellation = PermitCancellation::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        return redirect()->back()->with('success','Process has been started successfully.');
     }
 
     // new visa action

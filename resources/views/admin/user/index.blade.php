@@ -43,6 +43,7 @@
                                             {{-- <th>DOB</th>
                                             <th>Nationality</th>
                                             <th>Religion</th> --}}
+                                            <th>Visa Process</th>
                                             <th>Document</th>
                                             <th scope="col">Action</th>
                                             {{-- <th scope="col">Action</th> --}}
@@ -60,12 +61,16 @@
                                                 <td>{{ $employee->email }}</td>
                                                 {{-- <td>{{ $employee->phone }}</td> --}}
                                                 @if (!isset($company))
-                                                    <td>{{ $employee->usercompany->name }}</td>
+                                                    <td>{{ $employee->usercompany->name }} {{ $employee->usercompany->id }}</td>
                                                 @endif
                                                 {{-- <td>{{ $employee->dob }}</td>
                                                 <td>{{ $employee->nationality }}</td>
                                                 <td>{{ $employee->religion }}</td> --}}
                                                 <td>
+                                                    <a class="btn btn-primary"
+                                                                 href="{{ route('start-process',['request_id'=>0 ,'user_id'=>$employee->id ,'company_id'=>$employee->usercompany->id])}}">Go</a>
+                                                </td>
+                                                 <td>
                                                     <a href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>
 
