@@ -31,50 +31,40 @@ class SendAllNotificationController extends Controller
         $data = $request->select;
         $message = $request->message;
 
-    if ($data == 'Companies') {
-        // $companies = Company::orderBy('id', 'desc')->get();
-        $notification = AdminNotification::create([
-                'title'=>$request->title,
-                'message'=>$request->message,
-                'to_all'=>$data,
-        ]);
-        return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
-    }
-        elseif($data == 'Employees')
-        {
+        if ($data == 'Companies') {
+            // $companies = Company::orderBy('id', 'desc')->get();
+            $notification = AdminNotification::create([
+                'title' => $request->title,
+                'message' => $request->message,
+                'to_all' => $data,
+            ]);
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+        } elseif ($data == 'Employees') {
             $employee = User::with('usercompany')->whereempType('company')->orderBy('id', 'desc')->get();
             $notification = AdminNotification::create([
-                'title'=>$request->title,
-                'message'=>$request->message,
-                'to_all'=>$data,
-        ]);
-        return view('admin.notifications.index')->with('success', 'Created Successfully');
-
-        }
-        elseif($data == 'Individuals')
-        {
+                'title' => $request->title,
+                'message' => $request->message,
+                'to_all' => $data,
+            ]);
+            return view('admin.notifications.index')->with('success', 'Created Successfully');
+        } elseif ($data == 'Individuals') {
             $self_employee = User::whereempType('self')->orderBy('id', 'desc')->get();
             $notification = AdminNotification::create([
-                'title'=>$request->title,
-                'message'=>$request->message,
-                'to_all'=>$data,
-        ]);
-        return view('admin.notifications.index')->with('success', 'Created Successfully');
-        }
-        elseif($data == 'All Employees')
-        {
+                'title' => $request->title,
+                'message' => $request->message,
+                'to_all' => $data,
+            ]);
+            return view('admin.notifications.index')->with('success', 'Created Successfully');
+        } elseif ($data == 'All Employees') {
             $all_employee = User::orderBy('id', 'desc')->get();
             $notification = AdminNotification::create([
-                'title'=>$request->title,
-                'message'=>$request->message,
-                'to_all'=>$data,
-             ]);
+                'title' => $request->title,
+                'message' => $request->message,
+                'to_all' => $data,
+            ]);
             return view('admin.notifications.index')->with('success', 'Created Successfully');
-
-        }
-        else
-        {
-            return redirect()->back()->with(['status'=>false,'message'=>'You enter wrong data.']);
+        } else {
+            return redirect()->back()->with(['status' => false, 'message' => 'You enter wrong data.']);
         }
     }
 
@@ -90,16 +80,14 @@ class SendAllNotificationController extends Controller
         }
         $company_notifications = AdminNotification::where('to_all', 'Companies')->orderBy('id', 'desc')->get();
         return view('company.notifications.index', compact('company_notifications'));
-
     }
 
     public function show_notification_to_employee()
     {
-        $seen = AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen','0')->get();
-        if($seen->isNotEmpty())
-        {
-            AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen','0')->update([
-                'seen'=>1,
+        $seen = AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen', '0')->get();
+        if ($seen->isNotEmpty()) {
+            AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->where('seen', '0')->update([
+                'seen' => 1,
             ]);
         }
         $employee_notifications = AdminNotification::whereIn('to_all', ['Employees', 'All Employees'])->orderBy('id', 'desc')->get();
@@ -108,18 +96,13 @@ class SendAllNotificationController extends Controller
 
     public function show_notification_to_self_employee()
     {
-        $seen = AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen','0')->get();
-        if($seen->isNotEmpty())
-        {
-            AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen','0')->update([
-                'seen'=>1,
+        $seen = AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen', '0')->get();
+        if ($seen->isNotEmpty()) {
+            AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->where('seen', '0')->update([
+                'seen' => 1,
             ]);
         }
         $self_employee_notifications = AdminNotification::whereIn('to_all', ['Individuals', 'All Employees'])->orderBy('id', 'desc')->get();
         return view('user.notifications.selfEmployeeIndex', compact('self_employee_notifications'));
     }
-
-
-
-
 }

@@ -148,7 +148,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')->middleware('permission:Receipt');
 
-    Route::get('view-process', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Receipt');
+    Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Receipt');
 
     Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Receipt');
 
@@ -157,6 +157,18 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation')->middleware('permission:Receipt');
 
     Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation')->middleware('permission:Receipt');
+
+    Route::post('uae-national-process/{user_id}/{company_id}/{uae_gcc}/{req_id}', [NewVisaController::class,'uae_gcc_process'])->name('uae-gcc-updation')->middleware('permission:Receipt');
+
+    Route::post('modify-contract-process/{user_id}/{company_id}/{modify_cn}/{req_id}', [NewVisaController::class,'modify_cnt'])->name('modify-contract-updation')->middleware('permission:Receipt');
+
+    Route::post('modify-visa-process/{user_id}/{company_id}/{modify_visa}/{req_id}', [NewVisaController::class,'modification_visa'])->name('modify-visa-updation')->middleware('permission:Receipt');
+
+    Route::post('modify-emirates-process/{user_id}/{company_id}/{modify_emirates}/{req_id}', [NewVisaController::class,'modification_emirates'])->name('modify-emirates-updation')->middleware('permission:Receipt');
+
+    Route::post('visa-cancellation-process/{user_id}/{company_id}/{visa_can}/{req_id}', [NewVisaController::class,'visa_cancellation'])->name('visa-cancellation-updation')->middleware('permission:Receipt');
+
+    Route::post('permit-cancellation-process/{user_id}/{company_id}/{permit_can}/{req_id}', [NewVisaController::class,'permit_cancellation'])->name('permit-cancellation-updation')->middleware('permission:Receipt');
 
     // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
 
@@ -296,6 +308,8 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
 
+    // visa process
+
     Route::get('employee-visa-process/{id}', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
 
     Route::post('sent-new-visa-request/{id}', 'EmployeeVisaProcessController@visa_process_request')->name('sent-new-visa-request');
@@ -305,6 +319,20 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
     Route::post('renewal-process/{id}', 'EmployeeVisaProcessController@renewal_process')->name('renewal-process-company');
 
     Route::post('sponsored-by-process/{id}', 'EmployeeVisaProcessController@sponsored_by')->name('sponsored-by-process-company');
+
+    Route::post('part-time-process/{id}', 'EmployeeVisaProcessController@part_time')->name('part-time-company');
+
+    Route::post('uae-national-process/{id}', 'EmployeeVisaProcessController@uae_gcc')->name('uae-gcc-company');
+
+    Route::post('modify-contract-process/{id}', 'EmployeeVisaProcessController@modify_contract')->name('modify-contract-company');
+
+    Route::post('visa-modification-process/{id}', 'EmployeeVisaProcessController@visa_modification')->name('modification-visa-process-company');
+
+    Route::post('emirates-id-modification-process/{id}', 'EmployeeVisaProcessController@emirates_modification')->name('modification-emirates-process-company');
+
+    Route::post('visa-cancellation-process/{id}', 'EmployeeVisaProcessController@visa_cancellation')->name('visa-cancellation-process-company');
+
+    Route::post('permit-cancellation-process/{id}', 'EmployeeVisaProcessController@permit_cancellation')->name('permit-cancellation-process-company');
 
 
 

@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\Receipt;
 use App\Mail\ProcessStarted;
 use Illuminate\Http\Request;
+use App\Models\ModifyContract;
 use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
+use App\Models\UaeAndGccNational;
 use App\Models\SponsaredBySomeOne;
 use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
@@ -15,7 +17,9 @@ use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\ModificationVisaEmiratesId;
+use App\Models\PermitCancellation;
+use App\Models\VisaCancelation;
 
 class NewVisaController extends Controller
 {
@@ -102,9 +106,18 @@ class NewVisaController extends Controller
         //
     }
 
-    public function view()
+    public function view($request_id,$user_id,$company_id)
     {
-        return view('admin.visaprocess.newvisa');
+        $ids['user_id'] = $user_id;
+        $ids['company_id'] = $company_id;
+        $ids['req_id'] = $request_id;
+        $new_visa = NewVisaProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $renewal_process = RenewalProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $spo_by_some = SponsaredBySomeOne::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $part_time = PartTimeAndTemporary::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $uae_gcc = UaeAndGccNational::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        return view('admin.visaprocess.newvisa',compact('ids','new_visa','renewal_process','spo_by_some','part_time','uae_gcc'));
+
     }
 
     public function start_visa_process(Request $request ,$request_id,$user_id,$company_id)
@@ -113,7 +126,6 @@ class NewVisaController extends Controller
         $data['employee_name'] = $employee->name;
         $data['request_name'] = VisaProcessRequest::where('id',$request_id)->value('process_name');
         $data['request_type'] = VisaProcessRequest::where('id',$request_id)->value('sub_type');
-        // return $data['request_name'];
         $process_request= VisaProcessRequest::find($request_id);
         if($process_request->notify == 'pending')
         {
@@ -129,6 +141,13 @@ class NewVisaController extends Controller
         $renewal_process = RenewalProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first();
         $spo_by_some = SponsaredBySomeOne::where('employee_id',$user_id)->where('company_id',$company_id)->first();
         $part_time = PartTimeAndTemporary::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $uae_gcc = UaeAndGccNational::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $modify_contract = ModifyContract::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $modification_visa = ModificationVisaEmiratesId::where('employee_id',$user_id)->where('company_id',$company_id)->where('process_name','modification of visa')->first();
+        $modification_emirates = ModificationVisaEmiratesId::where('employee_id',$user_id)->where('company_id',$company_id)->where('process_name','modification of emirates Id')->first();
+        $visa_cancellation =  VisaCancelation::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+        $permit_cancellation =  PermitCancellation::where('employee_id',$user_id)->where('company_id',$company_id)->first();
+
         if($data['request_name'] == 'new visa')
         {
             // return "ok new visa";
@@ -167,7 +186,68 @@ class NewVisaController extends Controller
                     'employee_id'=>$user_id,
             ]);}
         }
-        return view('admin.visaprocess.newvisa',compact('ids','new_visa','renewal_process','spo_by_some','part_time'));
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc')
+        {
+            if(!$uae_gcc)
+            {
+                $uae_gcc = UaeAndGccNational::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract')
+        {
+            if(!$modify_contract)
+            {
+                // return "ok";
+                $modify_contract = ModifyContract::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'modification of visa')
+        {
+            // return "ok renewal process";
+            if(!$modification_visa)
+            {
+                $modification_visa = ModificationVisaEmiratesId::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+                    'process_name'=>'modification of visa',
+            ]);}
+        }
+         elseif($data['request_name'] == 'modification of emirates Id')
+        {
+            // return "ok renewal process";
+            if(!$modification_emirates)
+            {
+                $modification_emirates = ModificationVisaEmiratesId::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+                    'process_name'=>'modification of emirates Id',
+            ]);}
+        }
+        elseif($data['request_name'] == 'visa cancellation')
+        {
+            // return "ok renewal process";
+            if(!$visa_cancellation)
+            {
+                $visa_cancellation = VisaCancelation::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        elseif($data['request_name'] == 'permit cancellation')
+        {
+            // return "ok renewal process";
+            if(!$permit_cancellation)
+            {
+                $permit_cancellation = PermitCancellation::create([
+                    'company_id'=>$company_id,
+                    'employee_id'=>$user_id,
+            ]);}
+        }
+        return view('admin.visaprocess.newvisa',compact('ids','new_visa','renewal_process','spo_by_some','part_time','uae_gcc','modify_contract','modification_visa','modification_emirates','visa_cancellation','permit_cancellation'));
     }
 
     // new visa action
@@ -209,38 +289,13 @@ class NewVisaController extends Controller
                 'job_offer_mb_trc_no'=>$request->job_offer_mb_trc_no,
                 'job_offer_tran_no'=>$request->job_offer_tran_no,
             ]);
-            // $primaryKey = NULL;
-            //  if(!$employee_receipt)
-            //  {
-            //     // return "ok";
-            //     $receipt = Receipt::create([
-            //         'user_id'=>$user_id,
-            //         'file'=>$file,
-            //         'receipt'=>$request->job_offer_file_name,
-            //     ]);
-            //     $primaryKey = $receipt->getKey();
-            //     // return $primaryKey;
-            //  }
-            // elseif(Receipt::where('user_id',$user_id)->where('receipt',$request->job_offer_file_name)->first())
-            // {
-            //     $exist_receipt = Receipt::where('receipt',$request->job_offer_file_name)->first();
-            //     // return $exist_receipt;
-            //     $exist_receipt->update([
-            //         'file'=>$file,
-            //         'receipt'=>$request->job_offer_file_name,
-            //     ]);
-            //     return $exist_receipt;
-            // }
             $ids['user_id'] = $user_id;
             $ids['company_id'] = $company_id;
             $ids['req_id'] = $req_id;
              return redirect()->back()->with('success','Data Added Successfully.');
-            //  return redirect()->route('view-process')->with('success', 'Added.');
-
         }
         elseif($request->input('sign_mb')== "step2")
         {
-            // return "create";
             $file = NULL;
             if($request->hasFile('signed_mb_st_file'))
             {
@@ -1112,7 +1167,7 @@ class NewVisaController extends Controller
                     File::delete($destination);
                 }
                 $reason_file = $request->file('waiting_for_approval_reason_file');
-                $extension = $file->getClientOriginalExtension();
+                $extension = $reason_file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $reason_file->move('public/admin/assets/img/users', $filename);
                 $reason_file = 'public/admin/assets/img/users/' . $filename;
@@ -1320,7 +1375,7 @@ class NewVisaController extends Controller
                     File::delete($destination);
                 }
                 $reason_file = $request->file('waiting_for_approval_reason_file');
-                $extension = $file->getClientOriginalExtension();
+                $extension = $reason_file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $reason_file->move('public/admin/assets/img/users', $filename);
                 $reason_file = 'public/admin/assets/img/users/' . $filename;
@@ -1374,4 +1429,793 @@ class NewVisaController extends Controller
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
+    // work permit (uae and gcc)
+    public function uae_gcc_process(Request $request,$user_id,$company_id,$uae_gcc,$req_id)
+    {
+        $uae_national = UaeAndGccNational::find($uae_gcc);
+        if($request->input('work_p') == 'step1')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('wp_app_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->wp_app_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('wp_app_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $uae_national->wp_app_file;
+            }
+            $uae_national->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'wp_app_file'=>$file,
+                'wp_app_date'=>$request->wp_app_date,
+                'wp_app_status'=>$request->wp_app_status,
+                'wp_app_trnc_fee'=>$request->wp_app_trnc_fee,
+                'wp_app_trnc_no'=>$request->wp_app_trnc_no,
+                'wp_app_file_name'=>$request->wp_app_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signed_st') == 'step2')
+        {
+            $file = NULL;
+            if ($request->hasfile('signed_mb_st_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->signed_mb_st_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_mb_st_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $uae_national->signed_mb_st_file;
+            }
+            $uae_national->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signed_mb_st_file'=>$file,
+                'signed_mb_st_date'=>$request->signed_mb_st_date,
+                'signed_mb_st_status'=>$request->signed_mb_st_status,
+                'signed_mb_st_trc_fee'=>$request->signed_mb_st_trc_fee,
+                'signed_mb_st_trc_no'=>$request->signed_mb_st_trc_no,
+                // 'work_permit_app_file_name'=>$request->work_permit_app_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('dubai_insu') == 'step3')
+        {
+            $file = NULL;
+            if ($request->hasfile('pay_dubai_insu_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->pay_dubai_insu_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('pay_dubai_insu_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $uae_national->pay_dubai_insu_file;
+            }
+            $uae_national->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'pay_dubai_insu_file'=>$file,
+                'pay_dubai_insu_tranc_no'=>$request->pay_dubai_insu_tranc_no,
+                'pay_dubai_insu_tranc_fee'=>$request->pay_dubai_insu_tranc_fee,
+                'pay_dubai_insu_status'=>$request->pay_dubai_insu_status,
+                'pay_dubai_insu_date'=>$request->pay_dubai_insu_date,
+                'pay_dubai_insu_file_name'=>$request->pay_dubai_insu_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting_for') == 'step4')
+        {
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->waiting_for_approval_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $uae_national->waiting_for_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->waiting_for_approval_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('waiting_for_approval_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $reason_file =  $uae_national->waiting_for_approval_reason_file;
+            }
+            $uae_national->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'waiting_for_approval_file'=>$file,
+                'waiting_for_approval_status'=>$request->waiting_for_approval_status,
+                'waiting_for_approval_no'=>$request->waiting_for_approval_no,
+                'waiting_for_approval_reason'=>$request->waiting_for_approval_reason,
+                // 'signed_mb_st_tranc_no'=>$request->signed_mb_st_tranc_no,
+                'waiting_for_approval_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('upload_wp') == 'step5')
+        {
+            $file = NULL;
+            if ($request->hasfile('upload_wp_file')) {
+                $destination = 'public/admin/assets/img/users' . $uae_national->upload_wp_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('upload_wp_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $uae_national->upload_wp_file;
+            }
+            $uae_national->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'upload_wp_file'=>$file,
+                'upload_wp_file_name'=>$request->upload_wp_file_name,
+                'upload_wp_date'=>$request->upload_wp_date,
+                'upload_wp_status'=>$request->upload_wp_status,
+                'upload_wp_tranc_fee'=>$request->upload_wp_tranc_fee,
+                'upload_wp_tranc_no'=>$request->upload_wp_tranc_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+    }
+    //work permit (modify contract)
+    public function modify_cnt(Request $request,$user_id,$company_id,$modify_cn,$req_id)
+    {
+        // return "ok";
+        $modify_contract = ModifyContract::find($modify_cn);
+        if($request->input('work_permit') == 'step1')
+        {
+            // return $request;
+            $file = NULL;
+            if ($request->hasfile('wp_app_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_contract->wp_app_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('wp_app_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $modify_contract->wp_app_file;
+            }
+            $modify_contract->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'wp_app_file'=>$file,
+                'wp_app_date'=>$request->wp_app_date,
+                'wp_app_status'=>$request->wp_app_status,
+                'wp_app_trnc_fee'=>$request->wp_app_trnc_fee,
+                'wp_app_trnc_no'=>$request->wp_app_trnc_no,
+                'wp_app_file_name'=>$request->wp_app_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signed_st') == 'step2')
+        {
+            $file = NULL;
+            if ($request->hasfile('signed_mb_st_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_contract->signed_mb_st_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_mb_st_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $modify_contract->signed_mb_st_file;
+            }
+            $modify_contract->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signed_mb_st_file'=>$file,
+                'signed_mb_st_date'=>$request->signed_mb_st_date,
+                'signed_mb_st_status'=>$request->signed_mb_st_status,
+                'signed_mb_st_trc_fee'=>$request->signed_mb_st_trc_fee,
+                'signed_mb_st_trc_no'=>$request->signed_mb_st_trc_no,
+                // 'work_permit_app_file_name'=>$request->work_permit_app_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting_for') == 'step3')
+        {
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_contract->waiting_for_approval_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $modify_contract->waiting_for_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_contract->waiting_for_approval_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('waiting_for_approval_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $reason_file =  $modify_contract->waiting_for_approval_reason_file;
+            }
+            $modify_contract->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'waiting_for_approval_file'=>$file,
+                'waiting_for_approval_status'=>$request->waiting_for_approval_status,
+                'waiting_for_approval_no'=>$request->waiting_for_approval_no,
+                'waiting_for_approval_reason'=>$request->waiting_for_approval_reason,
+                // 'signed_mb_st_tranc_no'=>$request->signed_mb_st_tranc_no,
+                'waiting_for_approval_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('upload_wp') == 'step4')
+        {
+            $file = NULL;
+            if ($request->hasfile('upload_wp_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_contract->upload_wp_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('upload_wp_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $modify_contract->upload_wp_file;
+            }
+            $modify_contract->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'upload_wp_file'=>$file,
+                'upload_wp_file_name'=>$request->upload_wp_file_name,
+                'upload_wp_date'=>$request->upload_wp_date,
+                'upload_wp_status'=>$request->upload_wp_status,
+                'upload_wp_tranc_fee'=>$request->upload_wp_tranc_fee,
+                'upload_wp_tranc_no'=>$request->upload_wp_tranc_no,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+    public function modification_visa(Request $request,$user_id,$company_id,$modify_visa,$req_id)
+    {
+        $modify_visa = ModificationVisaEmiratesId::find($modify_visa);
+        // return $modify_visa;
+        if($request->input('application') == 'step1')
+        {
+        // return $modify_visa;
+            $file = NULL;
+            if ($request->hasfile('application_approval_file')) {
+                // return $request;
+                $destination = 'public/admin/assets/img/users' . $modify_visa->application_approval_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('application_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+                // return $file;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $modify_visa->application_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('application_reject_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $modify_visa->application_reject_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('application_reject_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $reason_file =  $modify_visa->application_reject_reason_file;
+            }
+            $modify_visa->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'application_approval_file'=>$file,
+                'application_approval_no'=>$request->application_approval_no,
+                'application_status'=>$request->application_status,
+                'application_reject_reason'=>$request->application_reject_reason,
+                'application_reject_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+
+    }
+    public function modification_emirates(Request $request,$user_id,$company_id,$modify_emirates,$req_id)
+    {
+        $emirates = ModificationVisaEmiratesId::find($modify_emirates);
+        if($request->input('application') == 'step1')
+        {
+            $file = NULL;
+            if ($request->hasfile('application_approval_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $emirates->application_approval_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('application_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+                // return $file;
+            }
+            else
+            {
+                $file =  $emirates->application_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('application_reject_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $emirates->application_reject_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('application_reject_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                $reason_file =  $emirates->application_reject_reason_file;
+            }
+            $emirates->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'application_approval_file'=>$file,
+                'application_approval_no'=>$request->application_approval_no,
+                'application_status'=>$request->application_status,
+                'application_reject_reason'=>$request->application_reject_reason,
+                'application_reject_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+    public function visa_cancellation(Request $request,$user_id,$company_id,$visa_can,$req_id)
+    {
+        $visa_cancellation = VisaCancelation::find($visa_can);
+        if($request->input('work_permit_app_cancellation') == 'step1')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('wp_app_can_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->wp_app_can_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('wp_app_can_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $visa_cancellation->wp_app_can_file;
+            }
+            $visa_cancellation->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'wp_app_can_file'=>$file,
+                'wp_app_can_date'=>$request->wp_app_can_date,
+                'wp_app_can_status'=>$request->wp_app_can_status,
+                'wp_app_can_trnc_fee'=>$request->wp_app_can_trnc_fee,
+                'wp_app_can_trnc_no'=>$request->wp_app_can_trnc_no,
+                'wp_app_can_file_name'=>$request->wp_app_can_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signed_cancellation') == 'step2')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('signed_cancellation_form')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->signed_cancellation_form;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_cancellation_form');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $visa_cancellation->signed_cancellation_form;
+            }
+            $visa_cancellation->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signed_cancellation_form'=>$file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signd_can_form_det') == 'step3')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('signd_can_from_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->signd_can_from_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signd_can_from_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $visa_cancellation->signd_can_from_file;
+            }
+            $visa_cancellation->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signd_can_from_file'=>$file,
+                'signd_can_from_date'=>$request->signd_can_from_date,
+                'signd_can_from_status'=>$request->signd_can_from_status,
+                'signd_can_from_tranc_fee'=>$request->signd_can_from_tranc_fee,
+                'signd_can_from_tranc_no'=>$request->signd_can_from_tranc_no,
+                'signd_can_from_file_name'=>$request->signd_can_from_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting_for') == 'step4')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->waiting_for_approval_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $visa_cancellation->waiting_for_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->waiting_for_approval_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('waiting_for_approval_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $reason_file =  $visa_cancellation->waiting_for_approval_reason_file;
+            }
+            $visa_cancellation->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'waiting_for_approval_file'=>$file,
+                'waiting_for_approval_status'=>$request->waiting_for_approval_status,
+                'waiting_for_approval_no'=>$request->waiting_for_approval_no,
+                'waiting_for_approval_reason'=>$request->waiting_for_approval_reason,
+                // 'signed_mb_st_tranc_no'=>$request->signed_mb_st_tranc_no,
+                'waiting_for_approval_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('residency') == 'step5')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('residency_app_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_cancellation->residency_app_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('residency_app_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $visa_cancellation->residency_app_file;
+            }
+            $visa_cancellation->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'residency_app_file'=>$file,
+                'residency_app_date'=>$request->residency_app_date,
+                'residency_app_status'=>$request->residency_app_status,
+                'residency_app_tranc_fee'=>$request->residency_app_tranc_fee,
+                'residency_app_tranc_no'=>$request->residency_app_tranc_no,
+                'residency_app_file_name'=>$request->residency_app_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+    public function permit_cancellation(Request $request,$user_id,$company_id,$permit_can,$req_id)
+    {
+        $permit_can = PermitCancellation::find($permit_can);
+        if($request->input('work_permit_app_cancellation') == 'step1')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('wp_app_can_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $permit_can->wp_app_can_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('wp_app_can_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $permit_can->wp_app_can_file;
+            }
+            $permit_can->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'wp_app_can_file'=>$file,
+                'wp_app_can_date'=>$request->wp_app_can_date,
+                'wp_app_can_status'=>$request->wp_app_can_status,
+                'wp_app_can_trnc_fee'=>$request->wp_app_can_trnc_fee,
+                'wp_app_can_trnc_no'=>$request->wp_app_can_trnc_no,
+                'wp_app_can_file_name'=>$request->wp_app_can_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signed_cancellation') == 'step2')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('signed_cancellation_form')) {
+                $destination = 'public/admin/assets/img/users' . $permit_can->signed_cancellation_form;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_cancellation_form');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $permit_can->signed_cancellation_form;
+            }
+            $permit_can->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signed_cancellation_form'=>$file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('signd_can_form_det') == 'step3')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('signd_can_from_file')) {
+                $destination = 'public/admin/assets/img/users' . $permit_can->signd_can_from_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signd_can_from_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $permit_can->signd_can_from_file;
+            }
+            $permit_can->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'signd_can_from_file'=>$file,
+                'signd_can_from_date'=>$request->signd_can_from_date,
+                'signd_can_from_status'=>$request->signd_can_from_status,
+                'signd_can_from_tranc_fee'=>$request->signd_can_from_tranc_fee,
+                'signd_can_from_tranc_no'=>$request->signd_can_from_tranc_no,
+                'signd_can_from_file_name'=>$request->signd_can_from_file_name,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting_for') == 'step4')
+        {
+            // return "ok";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_file')) {
+                $destination = 'public/admin/assets/img/users' . $permit_can->waiting_for_approval_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $permit_can->waiting_for_approval_file;
+            }
+            $reason_file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                $destination = 'public/admin/assets/img/users' . $permit_can->waiting_for_approval_reason_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $reason_file = $request->file('waiting_for_approval_reason_file');
+                $extension = $reason_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $reason_file->move('public/admin/assets/img/users', $filename);
+                $reason_file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $reason_file =  $permit_can->waiting_for_approval_reason_file;
+            }
+            $permit_can->update([
+                'company_id'=>$company_id,
+                'employee_id'=>$user_id,
+                'waiting_for_approval_file'=>$file,
+                'waiting_for_approval_status'=>$request->waiting_for_approval_status,
+                'waiting_for_approval_no'=>$request->waiting_for_approval_no,
+                'waiting_for_approval_reason'=>$request->waiting_for_approval_reason,
+                // 'signed_mb_st_tranc_no'=>$request->signed_mb_st_tranc_no,
+                'waiting_for_approval_reason_file'=>$reason_file,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        // elseif($request->input('residency') == 'step5')
+        // {
+        //     // return "ok";
+        //     $file = NULL;
+        //     if ($request->hasfile('residency_app_file')) {
+        //         $destination = 'public/admin/assets/img/users' . $permit_can->residency_app_file;
+        //         if (File::exists($destination)) {
+        //             File::delete($destination);
+        //         }
+        //         $file = $request->file('residency_app_file');
+        //         $extension = $file->getClientOriginalExtension();
+        //         $filename = time() . '.' . $extension;
+        //         $file->move('public/admin/assets/img/users', $filename);
+        //         $file = 'public/admin/assets/img/users/' . $filename;
+        //     }
+        //     else
+        //     {
+        //         // return "ok";
+        //         $file =  $permit_can->residency_app_file;
+        //     }
+        //     $permit_can->update([
+        //         'company_id'=>$company_id,
+        //         'employee_id'=>$user_id,
+        //         'residency_app_file'=>$file,
+        //         'residency_app_date'=>$request->residency_app_date,
+        //         'residency_app_status'=>$request->residency_app_status,
+        //         'residency_app_tranc_fee'=>$request->residency_app_tranc_fee,
+        //         'residency_app_tranc_no'=>$request->residency_app_tranc_no,
+        //         'residency_app_file_name'=>$request->residency_app_file_name,
+        //     ]);
+        //     return redirect()->back()->with('success','Data Added Successfully.');
+        // }
+    }
+
 }

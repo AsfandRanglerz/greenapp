@@ -4,19 +4,22 @@ namespace App\Http\Controllers\Company;
 
 use App\Models\User;
 use App\Models\Company;
-use App\Models\VisaProcessRequest;
 use Illuminate\Http\Request;
+use App\Models\ModifyContract;
+use App\Models\NewVisaProcess;
+use App\Models\RenewalProcess;
+use App\Models\VisaCancelation;
+use App\Models\UaeAndGccNational;
+use App\Models\PermitCancellation;
+use App\Models\SponsaredBySomeOne;
+use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
+use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Models\NewVisaProcess;
-use App\Models\RenewalProcess;
-use App\Models\UaeAndGccNational;
-use App\Models\SponsaredBySomeOne;
-use App\Models\PartTimeAndTemporary;
-
+use App\Models\ModificationVisaEmiratesId;
 
 class EmployeeVisaProcessController extends Controller
 {
@@ -30,12 +33,19 @@ class EmployeeVisaProcessController extends Controller
         $spo_by_some = SponsaredBySomeOne::where('company_id',$authId)->where('employee_id',$id)->first();
         $part_time = PartTimeAndTemporary::where('company_id',$authId)->where('employee_id',$id)->first();
         $uae_national = UaeAndGccNational::where('company_id',$authId)->where('employee_id',$id)->first();
+        $modify_contract = ModifyContract::where('company_id',$authId)->where('employee_id',$id)->first();
+        $modification_visa = ModificationVisaEmiratesId::where('employee_id',$id)->where('company_id',$authId)->where('process_name','modification of visa')->first();
+        $modification_emirates = ModificationVisaEmiratesId::where('employee_id',$id)->where('company_id',$authId)->where('process_name','modification of emirates Id')->first();
+        $visa_cancellation = VisaCancelation::where('company_id',$authId)->where('employee_id',$id)->first();
+        $permit_cancellation =  PermitCancellation::where('employee_id',$id)->where('company_id',$authId)->first();
+
         // return $renewal_process_data;
-        return view('company.visaprocess.index',compact('employee','new_visa_data','renewal_process_data','spo_by_some'));
+        return view('company.visaprocess.index',compact('employee','new_visa_data','renewal_process_data','spo_by_some','part_time','uae_national','modify_contract','modification_visa','modification_emirates','visa_cancellation','permit_cancellation'));
     }
 
     public function visa_process_request(Request $request , $id)
     {
+        // return "ok";
         $authId = Auth::guard('company')->id();
         $name = $request->input('process_name');
         $sub_name = $request->input('sub_type');
@@ -218,7 +228,7 @@ class EmployeeVisaProcessController extends Controller
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
-        elseif($request->input('waiting_for_approval')== "waiting_for_approval")
+        elseif($request->input('waiting_for_approval') == "waiting_for_approval")
         {
              // return "create";
              $file = NULL;
@@ -429,4 +439,392 @@ class EmployeeVisaProcessController extends Controller
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
+
+    public function part_time(Request $request, $id)
+    {
+        $data = PartTimeAndTemporary::find($id);
+        // return $data;
+
+        if($request->input('signed_mb')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('signed_mb_st_file')) {
+                // return $data->signed_mb_st_file;
+                $destination = 'public/admin/assets/img/users' . $data->signed_mb_st_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_mb_st_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->signed_mb_st_file;
+            }
+            // return $file;
+            $data->update([
+                'signed_mb_st_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting')== "step2")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                // return $data->waiting_for_approval_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->waiting_for_approval_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->waiting_for_approval_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'waiting_for_approval_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+    public function uae_gcc(Request $request, $id)
+    {
+        $data = UaeAndGccNational::find($id);
+        if($request->input('signed_mb')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('signed_mb_st_file')) {
+                // return $data->signed_mb_st_file;
+                $destination = 'public/admin/assets/img/users' . $data->signed_mb_st_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_mb_st_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->signed_mb_st_file;
+            }
+            // return $file;
+            $data->update([
+                'signed_mb_st_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting')== "step2")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                // return $data->waiting_for_approval_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->waiting_for_approval_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->waiting_for_approval_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'waiting_for_approval_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+
+    public function modify_contract(Request $request, $id)
+    {
+        $data = ModifyContract::find($id);
+        if($request->input('signed_mb')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('signed_mb_st_file')) {
+                // return $data->signed_mb_st_file;
+                $destination = 'public/admin/assets/img/users' . $data->signed_mb_st_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_mb_st_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->signed_mb_st_file;
+            }
+            // return $file;
+            $data->update([
+                'signed_mb_st_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting')== "step2")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                // return $data->waiting_for_approval_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->waiting_for_approval_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->waiting_for_approval_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'waiting_for_approval_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+    public function visa_modification(Request $request, $id)
+    {
+        $data = ModificationVisaEmiratesId::find($id);
+        if($request->input('waiting')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('application_reject_reason_file')) {
+                // return $data->application_reject_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->application_reject_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('application_reject_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->application_reject_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'application_reject_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+    public function emirates_modification(Request $request, $id)
+    {
+        $data = ModificationVisaEmiratesId::find($id);
+        if($request->input('waiting')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('application_reject_reason_file')) {
+                // return $data->application_reject_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->application_reject_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('application_reject_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->application_reject_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'application_reject_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+    public function visa_cancellation(Request $request, $id)
+    {
+        $data = VisaCancelation::find($id);
+        if($request->input('signed_cancellation')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('signed_cancellation_form')) {
+                // return $data->signed_cancellation_form;
+                $destination = 'public/admin/assets/img/users' . $data->signed_cancellation_form;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_cancellation_form');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->signed_cancellation_form;
+            }
+            // return $file;
+            $data->update([
+                'signed_cancellation_form'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting')== "step2")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                // return $data->waiting_for_approval_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->waiting_for_approval_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->waiting_for_approval_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'waiting_for_approval_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
+    public function permit_cancellation(Request $request, $id)
+    {
+        $data = PermitCancellation::find($id);
+        // return $id;
+        if($request->input('signed_cancellation')== "step1")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('signed_cancellation_form')) {
+                // return $data->signed_cancellation_form;
+                $destination = 'public/admin/assets/img/users' . $data->signed_cancellation_form;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('signed_cancellation_form');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->signed_cancellation_form;
+            }
+            // return $file;
+            $data->update([
+                'signed_cancellation_form'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+        elseif($request->input('waiting')== "step2")
+        {
+            // return "create";
+            $file = NULL;
+            if ($request->hasfile('waiting_for_approval_reason_file')) {
+                // return $data->waiting_for_approval_reason_file;
+                $destination = 'public/admin/assets/img/users' . $data->waiting_for_approval_reason_file;
+                // return $destination;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('waiting_for_approval_reason_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            }
+            else
+            {
+                // return "ok";
+                $file =  $data->waiting_for_approval_reason_file;
+            }
+            // return $file;
+            $data->update([
+                'waiting_for_approval_reason_file'=>$file,
+                // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            return redirect()->back()->with('success','Data Added Successfully.');
+        }
+    }
+
 }

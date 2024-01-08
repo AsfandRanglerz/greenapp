@@ -7643,7 +7643,7 @@
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="">Status</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="wp_app_status">
+                                                name="residency_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$part_time['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -7962,69 +7962,6 @@
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
-                                    {{-- <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Job Offer Transaction
-                                                No:</label>
-                                            <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">MB Contracts
-                                                Transaction No:</label>
-                                            <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="..."
-                                                name='job_offer_mb_trc_no'>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Preapproval Of Work
-                                                Permit Transaction No:</label>
-                                            <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
-                                        </div>
-                                    </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
-                                            <label for='#visa2-file'>Upload ST & MB</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
-                                                    name="signed_mb_st_file" style="line-height: 1"
-                                                    accept=".pdf,.doc,.excel">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <a href=""><img class="upload-img"
-                                                src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                alt=""></a>
-                                    </div>
-
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="StMB-transaction-date"
-                                                placeholder="..." name='signed_mb_st_date'>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
-                                            name="signed_mb_st_status">
-                                            <option value="" selected disabled>select</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class='btn btn-success d-block mx-auto px-5 py-2'
-                                            type="submit">Add</button>
-                                    </div> --}}
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#sponsored1-transacton1-number1">Transaction
@@ -8136,7 +8073,7 @@
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
                                             <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="comment"
+                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$part_time->waiting_for_approval_reason}}</textarea>
                                                 @php
@@ -8617,10 +8554,15 @@
                                 </form>
                             </div>
                         </div>
+                        @if ($uae_gcc)
+                        {{-- wp application --}}
                         <div class="tab-pane fade" id="v-pills-UAE1" role="tabpanel"
                             aria-labelledby="v-pills-UAE1-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="work_p" value="step1" hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
                                         application</h6>
                                     <div class="row">
@@ -8629,7 +8571,7 @@
                                                 <label for="#sponsored1-transacton1-number1">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" placeholder="...">
+                                                    id="sponsored1-transacton1-number1" name="wp_app_trnc_no" value="{{$uae_gcc->wp_app_trnc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -8637,42 +8579,277 @@
                                                 <label for="#sponsored1-transacton1-fee1">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" placeholder="...">
+                                                    id="sponsored1-transacton1" name="wp_app_trnc_fee" value="{{$uae_gcc->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="">Status</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="job_offer_status">
+                                                name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
-
+                                                <option value="Approved" {{$uae_gcc['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$uae_gcc['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$uae_gcc['wp_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$uae_gcc['wp_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
-
+                                                    id="start-process-transaction-date" name="wp_app_date" value="{{$uae_gcc->wp_app_date}}" placeholder="..."
                                                     name='job_offer_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="">Slect File</label>
-                                                <select id="selectDocument" class="form-control category"
-                                                    name="job_offer_file_name">
-                                                    <option value="" selected disabled>Select Document
-                                                    </option>
-                                                            </select>
+                                                    <select id="selectDocument" class="form-control category" name="wp_app_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $uae_gcc['wp_app_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $uae_gcc['wp_app_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $uae_gcc['wp_app_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $uae_gcc['wp_app_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $uae_gcc['wp_app_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $uae_gcc['wp_app_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $uae_gcc['wp_app_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $uae_gcc['wp_app_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $uae_gcc['wp_app_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $uae_gcc['wp_app_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $uae_gcc['wp_app_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $uae_gcc['wp_app_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $uae_gcc['wp_app_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $uae_gcc['wp_app_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $uae_gcc['wp_app_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $uae_gcc['wp_app_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $uae_gcc['wp_app_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $uae_gcc['wp_app_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $uae_gcc['wp_app_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $uae_gcc['wp_app_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $uae_gcc['wp_app_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $uae_gcc['wp_app_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $uae_gcc['wp_app_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $uae_gcc['wp_app_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $uae_gcc['wp_app_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $uae_gcc['wp_app_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $uae_gcc['wp_app_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $uae_gcc['wp_app_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $uae_gcc['wp_app_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $uae_gcc['wp_app_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $uae_gcc['wp_app_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $uae_gcc['wp_app_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $uae_gcc['wp_app_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $uae_gcc['wp_app_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $uae_gcc['wp_app_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $uae_gcc['wp_app_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $uae_gcc['wp_app_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $uae_gcc['wp_app_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $uae_gcc['wp_app_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $uae_gcc['wp_app_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $uae_gcc['wp_app_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $uae_gcc['wp_app_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $uae_gcc['wp_app_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $uae_gcc['wp_app_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $uae_gcc['wp_app_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $uae_gcc['wp_app_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                    </select>
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload ST & MB</label>
+                                                <label for='#visa2-file'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-file'
-                                                         style="line-height: 1"
+                                                         style="line-height: 1" name="wp_app_file"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -8681,14 +8858,35 @@
                                                 </div>
                                             </div>
 
-                                             <a href=""><img class="upload-img"
-                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                    alt=""></a>
+                                            @php
+                                            $file_name = $uae_gcc->wp_app_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($uae_gcc->wp_app_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->wp_app_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $uae_gcc->wp_app_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-6">
                                             <div class="form-group mb-3 align-center">
                                                 <Button type="submit"
-                                                    class='btn btn-success mt-4'>Add</Button>
+                                                    class='btn btn-success mt-4' type="submit">Add</Button>
                                             </div>
                                         </div>
                                     </div>
@@ -8696,39 +8894,54 @@
                             </div>
 
                         </div>
+                        {{-- signed mb--}}
                         <div class="tab-pane fade" id="v-pills-UAE2" role="tabpanel"
                             aria-labelledby="v-pills-UAE2-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form
-                                class='py-2'>
+                                <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="signed_st" value="step2" hidden>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Job Offer Transaction
+                                            <label for="#start-process-transaction-number">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
+                                                id="start-process-transaction-number" name="signed_mb_st_trc_no" value="{{$uae_gcc->signed_mb_st_trc_no}}" placeholder="...">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">MB Contracts
-                                                Transaction No:</label>
+                                            <label for="#start-process-transaction-number">Transaction
+                                                Fee:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="..."
-                                                name='job_offer_mb_trc_no'>
+                                                id="start-process-transaction-number" name="signed_mb_st_trc_fee" value="{{$uae_gcc->signed_mb_st_trc_fee}}" placeholder="...">
                                         </div>
                                     </div>
+
+                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
+                                        <label for="">Status</label>
+                                        <select id="selectDocument" class="form-control category"
+                                            name="signed_mb_st_status">
+                                            <option value="" selected disabled>select</option>
+                                            <option value="Approved" {{$uae_gcc['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$uae_gcc['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$uae_gcc['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$uae_gcc['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                    </select>
+                                    </div>
+
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Preapproval Of Work
-                                                Permit Transaction No:</label>
-                                            <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
+                                            <label for="#StMB-transaction-date">Date</label>
+                                            <input type="date" class="form-control" id="StMB-transaction-date"
+                                                value="{{$uae_gcc->signed_mb_st_date}}" placeholder="..." name='signed_mb_st_date'>
                                         </div>
                                     </div>
+
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
                                             <label for='#visa2-file'>Upload ST & MB</label>
@@ -8743,25 +8956,30 @@
                                             </div>
                                         </div>
 
-                                        <a href=""><img class="upload-img"
-                                                src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                alt=""></a>
-                                    </div>
-
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="StMB-transaction-date"
-                                                placeholder="..." name='signed_mb_st_date'>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
-                                            name="signed_mb_st_status">
-                                            <option value="" selected disabled>select</option>
-                                    </select>
+                                        @php
+                                        $file_name = $uae_gcc->signed_mb_st_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($uae_gcc->signed_mb_st_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->signed_mb_st_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $uae_gcc->signed_mb_st_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                     </div>
                                     <div class="col-12">
                                         <button class='btn btn-success d-block mx-auto px-5 py-2'
@@ -8773,11 +8991,14 @@
                             </form>
                             </div>
                         </div>
+                        {{-- pay dubai --}}
                         <div class="tab-pane fade" id="v-pills-UAE3" role="tabpanel"
                             aria-labelledby="v-pills-UAE3-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form
-                                class='py-2'>
+                                <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="dubai_insu" value="step3" hidden>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance
                                 </h6>
 
@@ -8786,32 +9007,35 @@
                                         <div class="form-group mb-3">
                                             <label for="#visa3-transaction-number">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="visa3-transaction-number" placeholder="..."
-                                                name="dubai_insurance_tran_no">
+                                                id="visa3-transaction-number" name="pay_dubai_insu_tranc_no" value="{{$uae_gcc->pay_dubai_insu_tranc_no}}" placeholder="..."
+                                                >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#visa3-transaction-fee">Transaction Fee</label>
                                             <input type="text" class="form-control" id="visa3-transaction-fee"
-                                                placeholder="..."
-                                                name="dubai_insurance_tran_fees">
+                                                name="pay_dubai_insu_tranc_fee" value="{{$uae_gcc->pay_dubai_insu_tranc_fee}}" placeholder="..."
+                                              >
                                         </div>
                                     </div>
 
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                         <label for="">Status</label>
                                         <select id="selectDocument" class="form-control category"
-                                            name="dubai_insurance_status">
+                                            name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
-
+                                            <option value="Approved" {{$uae_gcc['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                            <option value="Hold" {{$uae_gcc['pay_dubai_insu_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="Skip" {{$uae_gcc['pay_dubai_insu_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                            <option value="Reject" {{$uae_gcc['pay_dubai_insu_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
                                             </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#dubai-insurance-date">Date</label>
-                                            <input type="date" class="form-control" name="dubai_insurance_date"
-                                                id="dubai-insurance-date" placeholder="..."
+                                            <input type="date" class="form-control" name="pay_dubai_insu_date"
+                                                id="dubai-insurance-date"   value="{{$uae_gcc->pay_dubai_insu_date}}" placeholder="..."
                                              >
                                         </div>
                                     </div>
@@ -8820,8 +9044,243 @@
                                         <div class="form-group mb-3">
                                             <label for="">Upload File</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="dubai_insurance_file_name">
+                                                name="pay_dubai_insu_file_name">
                                                 <option value="" selected disabled>Select Document</option>
+                                                <option value="Personal Photo" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Personal Photo'
+                                                    ? 'selected' : '' }}>Personal Photo
+                                                </option>
+                                                <option value="Passport" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Passport' ? 'selected'
+                                                    : '' }}>
+                                                    Passport</option>
+                                                <option value="Visit Visa" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Visit Visa' ? 'selected'
+                                                    : '' }}>
+                                                    Visit Visa</option>
+                                                <option value="Offer Letter" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Offer Letter'
+                                                    ? 'selected' : '' }}>Offer Letter</option>
+                                                <option value="MOL Job Offer" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='MOL Job Offer'
+                                                    ? 'selected' : '' }}>MOL Job Offer</option>
+                                                <option value="Signed MOL Job Offer" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed MOL Job Offer'
+                                                    ? 'selected' : '' }}>Signed MOL Job
+                                                    Offer</option>
+                                                <option value="MOL MB Contract" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='MOL MB Contract'
+                                                    ? 'selected' : '' }}>MOL MB Contract
+                                                </option>
+                                                <option value="Signed MOL MB Offer" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed MOL MB Offer'
+                                                    ? 'selected' : '' }}>Signed MOL MB
+                                                    Offer</option>
+                                                <option value="Preapproval Work Permit" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Preapproval Work Permit'
+                                                    ? 'selected' : '' }}>Preapproval
+                                                    Work Permit</option>
+                                                <option value="Dubai Insurance" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Dubai Insurance'
+                                                    ? 'selected' : '' }}>Dubai Insurance
+                                                </option>
+                                                <option value="Entry Permit Visa" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Entry Permit Visa'
+                                                    ? 'selected' : '' }}>Entry Permit Visa
+                                                </option>
+                                                <option value="Stamped Entry Visa" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Stamped Entry Visa'
+                                                    ? 'selected' : '' }}>Stamped Entry
+                                                    Visa</option>
+                                                <option value="Change of Visa Status" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Change of Visa Status'
+                                                    ? 'selected' : '' }}>Change of Visa
+                                                    Status</option>
+                                                <option value="Medical Fitness Receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Medical Fitness Receipt'
+                                                    ? 'selected' : '' }}>Medical
+                                                    Fitness Receipt</option>
+                                                <option value="Tawjeeh Receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Tawjeeh Receipt'
+                                                    ? 'selected' : '' }}>Tawjeeh Receipt
+                                                </option>
+                                                <option value="Emirates Id Application form" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Emirates Id Application form'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates Id Application form</option>
+                                                <option value="Stamped EID Application form" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Stamped EID Application form'
+                                                    ? 'selected' : '' }}>Stamped
+                                                    EID Application form</option>
+                                                <option value="Residence Visa" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Residence Visa'
+                                                    ? 'selected' : '' }}>Residence Visa
+                                                </option>
+                                                <option value="Work Permit" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Work Permit' ? 'selected'
+                                                    : '' }}>
+                                                    Work Permit</option>
+                                                <option value="Health Insurance Card" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Health Insurance Card'
+                                                    ? 'selected' : '' }}>Health
+                                                    Insurance Card</option>
+                                                <option value="National Identity Card" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='National Identity Card'
+                                                    ? 'selected' : '' }}>National
+                                                    Identity Card</option>
+                                                <option value="Emirates Identity Card" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Emirates Identity Card'
+                                                    ? 'selected' : '' }}>Emirates
+                                                    Identity Card</option>
+                                                <option value="Vehicle Registration Card" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Vehicle Registration Card'
+                                                    ? 'selected' : '' }}>Vehicle
+                                                    Registration Card</option>
+                                                <option value="Driving License" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Driving License'
+                                                    ? 'selected' : '' }}>Driving License
+                                                </option>
+                                                <option value="Birth Certificate" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Birth Certificate'
+                                                    ? 'selected' : '' }}>Birth Certificate
+                                                </option>
+                                                <option value="Marriage Certificate" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Marriage Certificate'
+                                                    ? 'selected' : '' }}>Marriage
+                                                    Certificate</option>
+                                                <option value="School Certificate" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='School Certificate'
+                                                    ? 'selected' : '' }}>School
+                                                    Certificate</option>
+                                                <option value="Diploma" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Diploma' ? 'selected'
+                                                    : '' }}>Diploma
+                                                </option>
+                                                <option value="University Degree" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='University Degree'
+                                                    ? 'selected' : '' }}>University Degree
+                                                </option>
+                                                <option value="Salary Certificate" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Salary Certificate'
+                                                    ? 'selected' : '' }}>Salary
+                                                    Certificate</option>
+                                                <option value="Tenancy Contract" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Tenancy Contract'
+                                                    ? 'selected' : '' }}>Tenancy Contract
+                                                </option>
+                                                <option value="MOL Cancellation form" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='MOL Cancellation form'
+                                                    ? 'selected' : '' }}>MOL
+                                                    Cancellation form</option>
+                                                <option value="Signed MOL Cancellation Form" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed MOL Cancellation Form'
+                                                    ? 'selected' : '' }}>Signed
+                                                    MOL Cancellation Form</option>
+                                                <option value="Work Permit Cancellation Approval" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Work Permit Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Work Permit Cancellation Approval</option>
+                                                <option value="Residency Cancellation Approval" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Residency Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Cancellation Approval</option>
+                                                <option value="Modify MOL Contract" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Modify MOL Contract'
+                                                    ? 'selected' : '' }}>Modify MOL
+                                                    Contract</option>
+                                                <option value="Work Permit Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Work Permit Application'
+                                                    ? 'selected' : '' }}>Work Permit
+                                                    Application</option>
+                                                <option value="Work Permit Renewal Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Work Permit Renewal Application'
+                                                    ? 'selected' : '' }}>Work
+                                                    Permit Renewal Application</option>
+                                                <option value="Signed Work Permit Renewal" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed Work Permit Renewal'
+                                                    ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal</option>
+                                                <option value="Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Application' ? 'selected'
+                                                    : '' }}>
+                                                    Application</option>
+                                                <option value="Submission Form" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Submission Form'
+                                                    ? 'selected' : '' }}>Submission Form
+                                                </option>
+                                                <option value="Preapproval of work permit receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Preapproval of work permit receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option value="Dubai Insurance receipts" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Dubai Insurance receipts'
+                                                    ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option value="Preapproval work permit fees receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Preapproval work permit fees receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option value="Work permit Renewal Fees Receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Work permit Renewal Fees Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option value="Entry Visa Application Receipt" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Entry Visa Application Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option value="Change of Visa Status Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Change of Visa Status Application'
+                                                    ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Medical' ? 'selected'
+                                                    : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Tawjeeh' ? 'selected'
+                                                    : '' }}>Tawjeeh
+                                                </option>
+                                                <option value="Heath Insurance" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Heath Insurance'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option value="Emirates ID Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Emirates ID Application'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option value="Residency Visa Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Residency Visa Application'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Visa Fines' ? 'selected'
+                                                    : '' }}>Visa
+                                                    Fines</option>
+                                                <option value="Emirates ID Fines" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Emirates ID Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Other fines' ? 'selected'
+                                                    : '' }}>
+                                                    Other fines</option>
+                                                <option value="Health Insurance Fines" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Health Insurance Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option value="Immigration Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Immigration Application'
+                                                    ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option value="MOHRE Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='MOHRE Application'
+                                                    ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                <option value="Other" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Other' ? 'selected' : ''
+                                                    }}>Other
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -8831,7 +9290,7 @@
                                                     <label for='visa2-file-bio_1'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa2-file-bio_1'
-                                                            name="file" style="line-height: 1"
+                                                            name="pay_dubai_insu_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
                                                             <small class="input-group-text"><span
@@ -8839,9 +9298,31 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+
+                                        @php
+                                        $file_name = $uae_gcc->pay_dubai_insu_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($uae_gcc->pay_dubai_insu_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->pay_dubai_insu_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $uae_gcc->pay_dubai_insu_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                             </div>
                                     <div class="col-xl-12 col-lg-12 col-md-6 mt-4">
                                         <button class='btn btn-success d-block mx-auto px-5 py-2'
@@ -8852,10 +9333,14 @@
                                     </form>
                             </div>
                         </div>
+                        {{-- waiting for approval --}}
                         <div class="tab-pane fade" id="v-pills-UAE3-1" role="tabpanel"
                             aria-labelledby="v-pills-UAE3-1-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="waiting_for" value="step4" hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
                                         Approval
                                     </h6>
@@ -8863,25 +9348,50 @@
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="status-select1">Status</label>
                                             <select id="selectDocument" class="form-control category status-select"
-                                                id="status-select1">
+                                                id="status-select1" name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
-                                                <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
-                                                <option value="Skip">Skip</option>
-                                                <option value="Rejected">Reject</option>
+                                                <option value="Approved" {{$uae_gcc['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$uae_gcc['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$uae_gcc['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$uae_gcc['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
                                             <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="comment"
+                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
-                                                rows="5"></textarea>
+                                                rows="5">{{$uae_gcc->waiting_for_approval_reason}}</textarea>
+
+                                        @php
+                                        $file_name = $uae_gcc->waiting_for_approval_reason_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($uae_gcc->waiting_for_approval_reason_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->waiting_for_approval_reason_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $uae_gcc->waiting_for_approval_reason_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
                                                 <label for="sponsor-approval-13">Approval No:</label>
                                                 <input type="text" class="form-control" id="sponsor-approval-13"
-                                                    placeholder="...">
+                                                     name="waiting_for_approval_no" value="{{$uae_gcc->waiting_for_approval_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div
@@ -8890,7 +9400,7 @@
                                                 <label for='visa2-file-bio_1'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-file-bio_1'
-                                                        name="file" style="line-height: 1"
+                                                        name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -8898,22 +9408,47 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href=""><img class="upload-img"
-                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                    alt=""></a>
+
+                                        @php
+                                        $file_name = $uae_gcc->waiting_for_approval_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($uae_gcc->waiting_for_approval_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->waiting_for_approval_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $uae_gcc->waiting_for_approval_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                         </div>
                                         <div class="col-12 text-center status-select-btn">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        {{-- upload work permit --}}
                         <div class="tab-pane fade" id="v-pills-UAE4" role="tabpanel"
                             aria-labelledby="v-pills-UAE4-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form
-                                class='py-2' method="POST" enctype="multipart/form-data">
+                                <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="upload_wp" value="step5" hidden>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit</h6>
                                 <input type="text" value='step4' name='preapproval' hidden>
                                 <div class="row">
@@ -8921,24 +9456,28 @@
                                         <div class="form-group mb-3">
                                             <label for="#preapproval-transaction-number">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-number" placeholder="..."
-                                                name="pre_approved_wp_tran_no">
+                                                id="preapproval-transaction-number" value="{{$uae_gcc->upload_wp_tranc_no}}" placeholder="..."
+                                                name="upload_wp_tranc_no">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#preapproval-transaction-fee">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-fee" placeholder="..."
-                                                name="pre_approved_wp_tran_fees">
+                                                id="preapproval-transaction-fee" value="{{$uae_gcc->upload_wp_tranc_fee}}" placeholder="..."
+                                                name="upload_wp_tranc_fee">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="">select file</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="dubai_insurance_file_name">
-                                                <option value="" selected disabled>Select Document</option>
+                                                name="upload_wp_status">
+                                                <option value="" selected disabled>Select</option>
+                                                <option value="Approved" {{$uae_gcc['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$uae_gcc['upload_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$uae_gcc['upload_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$uae_gcc['upload_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
                                         </div>
                                     </div>
@@ -8946,8 +9485,8 @@
                                         <div class="form-group mb-3">
                                             <label for="#preapproval-transaction-date">Date</label>
                                             <input type="date" class="form-control"
-                                                id="preapproval-transaction-date" placeholder="..."
-                                                name="pre_approved_wp_date"
+                                                id="preapproval-transaction-date" value="{{$uae_gcc->upload_wp_date}}" placeholder="..."
+                                                name="upload_wp_date"
                                                 >
                                         </div>
                                     </div>
@@ -8955,8 +9494,244 @@
                                         <div class="form-group mb-3">
                                             <label for="">Select File</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="dubai_insurance_file_name">
+                                                name="upload_wp_file_name">
                                                 <option value="" selected disabled>Select Document</option>
+                                                {{-- <option value="" selected disabled>Select Document</option> --}}
+                                                <option value="Personal Photo" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Personal Photo'
+                                                    ? 'selected' : '' }}>Personal Photo
+                                                </option>
+                                                <option value="Passport" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Passport' ? 'selected'
+                                                    : '' }}>
+                                                    Passport</option>
+                                                <option value="Visit Visa" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Visit Visa' ? 'selected'
+                                                    : '' }}>
+                                                    Visit Visa</option>
+                                                <option value="Offer Letter" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Offer Letter'
+                                                    ? 'selected' : '' }}>Offer Letter</option>
+                                                <option value="MOL Job Offer" {{
+                                                    $uae_gcc['upload_wp_file_name']=='MOL Job Offer'
+                                                    ? 'selected' : '' }}>MOL Job Offer</option>
+                                                <option value="Signed MOL Job Offer" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Signed MOL Job Offer'
+                                                    ? 'selected' : '' }}>Signed MOL Job
+                                                    Offer</option>
+                                                <option value="MOL MB Contract" {{
+                                                    $uae_gcc['upload_wp_file_name']=='MOL MB Contract'
+                                                    ? 'selected' : '' }}>MOL MB Contract
+                                                </option>
+                                                <option value="Signed MOL MB Offer" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Signed MOL MB Offer'
+                                                    ? 'selected' : '' }}>Signed MOL MB
+                                                    Offer</option>
+                                                <option value="Preapproval Work Permit" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Preapproval Work Permit'
+                                                    ? 'selected' : '' }}>Preapproval
+                                                    Work Permit</option>
+                                                <option value="Dubai Insurance" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Dubai Insurance'
+                                                    ? 'selected' : '' }}>Dubai Insurance
+                                                </option>
+                                                <option value="Entry Permit Visa" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Entry Permit Visa'
+                                                    ? 'selected' : '' }}>Entry Permit Visa
+                                                </option>
+                                                <option value="Stamped Entry Visa" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Stamped Entry Visa'
+                                                    ? 'selected' : '' }}>Stamped Entry
+                                                    Visa</option>
+                                                <option value="Change of Visa Status" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Change of Visa Status'
+                                                    ? 'selected' : '' }}>Change of Visa
+                                                    Status</option>
+                                                <option value="Medical Fitness Receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Medical Fitness Receipt'
+                                                    ? 'selected' : '' }}>Medical
+                                                    Fitness Receipt</option>
+                                                <option value="Tawjeeh Receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Tawjeeh Receipt'
+                                                    ? 'selected' : '' }}>Tawjeeh Receipt
+                                                </option>
+                                                <option value="Emirates Id Application form" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Emirates Id Application form'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates Id Application form</option>
+                                                <option value="Stamped EID Application form" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Stamped EID Application form'
+                                                    ? 'selected' : '' }}>Stamped
+                                                    EID Application form</option>
+                                                <option value="Residence Visa" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Residence Visa'
+                                                    ? 'selected' : '' }}>Residence Visa
+                                                </option>
+                                                <option value="Work Permit" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Work Permit' ? 'selected'
+                                                    : '' }}>
+                                                    Work Permit</option>
+                                                <option value="Health Insurance Card" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Health Insurance Card'
+                                                    ? 'selected' : '' }}>Health
+                                                    Insurance Card</option>
+                                                <option value="National Identity Card" {{
+                                                    $uae_gcc['upload_wp_file_name']=='National Identity Card'
+                                                    ? 'selected' : '' }}>National
+                                                    Identity Card</option>
+                                                <option value="Emirates Identity Card" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Emirates Identity Card'
+                                                    ? 'selected' : '' }}>Emirates
+                                                    Identity Card</option>
+                                                <option value="Vehicle Registration Card" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Vehicle Registration Card'
+                                                    ? 'selected' : '' }}>Vehicle
+                                                    Registration Card</option>
+                                                <option value="Driving License" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Driving License'
+                                                    ? 'selected' : '' }}>Driving License
+                                                </option>
+                                                <option value="Birth Certificate" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Birth Certificate'
+                                                    ? 'selected' : '' }}>Birth Certificate
+                                                </option>
+                                                <option value="Marriage Certificate" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Marriage Certificate'
+                                                    ? 'selected' : '' }}>Marriage
+                                                    Certificate</option>
+                                                <option value="School Certificate" {{
+                                                    $uae_gcc['upload_wp_file_name']=='School Certificate'
+                                                    ? 'selected' : '' }}>School
+                                                    Certificate</option>
+                                                <option value="Diploma" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Diploma' ? 'selected'
+                                                    : '' }}>Diploma
+                                                </option>
+                                                <option value="University Degree" {{
+                                                    $uae_gcc['upload_wp_file_name']=='University Degree'
+                                                    ? 'selected' : '' }}>University Degree
+                                                </option>
+                                                <option value="Salary Certificate" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Salary Certificate'
+                                                    ? 'selected' : '' }}>Salary
+                                                    Certificate</option>
+                                                <option value="Tenancy Contract" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Tenancy Contract'
+                                                    ? 'selected' : '' }}>Tenancy Contract
+                                                </option>
+                                                <option value="MOL Cancellation form" {{
+                                                    $uae_gcc['upload_wp_file_name']=='MOL Cancellation form'
+                                                    ? 'selected' : '' }}>MOL
+                                                    Cancellation form</option>
+                                                <option value="Signed MOL Cancellation Form" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Signed MOL Cancellation Form'
+                                                    ? 'selected' : '' }}>Signed
+                                                    MOL Cancellation Form</option>
+                                                <option value="Work Permit Cancellation Approval" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Work Permit Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Work Permit Cancellation Approval</option>
+                                                <option value="Residency Cancellation Approval" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Residency Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Cancellation Approval</option>
+                                                <option value="Modify MOL Contract" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Modify MOL Contract'
+                                                    ? 'selected' : '' }}>Modify MOL
+                                                    Contract</option>
+                                                <option value="Work Permit Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Work Permit Application'
+                                                    ? 'selected' : '' }}>Work Permit
+                                                    Application</option>
+                                                <option value="Work Permit Renewal Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Work Permit Renewal Application'
+                                                    ? 'selected' : '' }}>Work
+                                                    Permit Renewal Application</option>
+                                                <option value="Signed Work Permit Renewal" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Signed Work Permit Renewal'
+                                                    ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal</option>
+                                                <option value="Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Application' ? 'selected'
+                                                    : '' }}>
+                                                    Application</option>
+                                                <option value="Submission Form" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Submission Form'
+                                                    ? 'selected' : '' }}>Submission Form
+                                                </option>
+                                                <option value="Preapproval of work permit receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Preapproval of work permit receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option value="Dubai Insurance receipts" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Dubai Insurance receipts'
+                                                    ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option value="Preapproval work permit fees receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Preapproval work permit fees receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option value="Work permit Renewal Fees Receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Work permit Renewal Fees Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option value="Entry Visa Application Receipt" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Entry Visa Application Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option value="Change of Visa Status Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Change of Visa Status Application'
+                                                    ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Medical' ? 'selected'
+                                                    : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Tawjeeh' ? 'selected'
+                                                    : '' }}>Tawjeeh
+                                                </option>
+                                                <option value="Heath Insurance" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Heath Insurance'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option value="Emirates ID Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Emirates ID Application'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option value="Residency Visa Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Residency Visa Application'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Visa Fines' ? 'selected'
+                                                    : '' }}>Visa
+                                                    Fines</option>
+                                                <option value="Emirates ID Fines" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Emirates ID Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Other fines' ? 'selected'
+                                                    : '' }}>
+                                                    Other fines</option>
+                                                <option value="Health Insurance Fines" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Health Insurance Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option value="Immigration Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Immigration Application'
+                                                    ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option value="MOHRE Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='MOHRE Application'
+                                                    ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                <option value="Other" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Other' ? 'selected' : ''
+                                                    }}>Other
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -8966,7 +9741,7 @@
                                              <label for='#visa2-file'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='visa2-file'
-                                                    name="pre_approved_wp_file" style="line-height: 1"
+                                                    name="upload_wp_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel"
                                                    >
                                                 <div class="input-group-prepend">
@@ -8977,9 +9752,31 @@
                                         </div>
 
 
-                                        <a href=""><img class="upload-img"
-                                                src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                alt=""></a>
+
+                                        @php
+                                        $file_name = $uae_gcc->upload_wp_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($uae_gcc->upload_wp_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $uae_gcc->upload_wp_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $uae_gcc->upload_wp_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-6 mt-4">
                                         <button class='btn btn-success d-block mx-auto px-5 py-2'
@@ -8989,6 +9786,7 @@
                             </form>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -9047,10 +9845,15 @@
                                 </form>
                             </div>
                         </div>
+
+                        @if ($modify_contract)
                         <div class="tab-pane fade" id="v-pills-modify-contract1" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract1-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="work_permit_app" value="step1" hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
                                         application</h6>
                                     <div class="row">
@@ -9059,7 +9862,7 @@
                                                 <label for="#sponsored1-transacton1-number1">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" placeholder="...">
+                                                    id="sponsored1-transacton1-number1" name="wp_app_trnc_no" value="{{$modify_contract->wp_app_trnc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -9067,14 +9870,18 @@
                                                 <label for="#sponsored1-transacton1-fee1">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" placeholder="...">
+                                                    id="sponsored1-transacton1" name="wp_app_trnc_fee" value="{{$modify_contract->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="">Status</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="job_offer_status">
+                                                name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
+                                                <option value="Approved" {{$modify_contract['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$modify_contract['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$modify_contract['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$modify_contract['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
                                             </select>
                                         </div>
@@ -9082,17 +9889,250 @@
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-transaction-date">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
-
-                                                    name='job_offer_date'>
+                                                    id="start-process-transaction-date" value="{{$modify_contract->wp_app_date}}" placeholder="..."
+                                                    name='wp_app_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="">Slect File</label>
                                                 <select id="selectDocument" class="form-control category"
-                                                    name="job_offer_file_name">
-                                                    <option value="" selected disabled>Select Document
+                                                    name="wp_app_file_name">
+                                                    <option value="" selected disabled>Select Document</option>
+                                                    <option value="Personal Photo" {{
+                                                        $modify_contract['wp_app_file_name']=='Personal Photo'
+                                                        ? 'selected' : '' }}>Personal Photo
+                                                    </option>
+                                                    <option value="Passport" {{
+                                                        $modify_contract['wp_app_file_name']=='Passport' ? 'selected'
+                                                        : '' }}>
+                                                        Passport</option>
+                                                    <option value="Visit Visa" {{
+                                                        $modify_contract['wp_app_file_name']=='Visit Visa' ? 'selected'
+                                                        : '' }}>
+                                                        Visit Visa</option>
+                                                    <option value="Offer Letter" {{
+                                                        $modify_contract['wp_app_file_name']=='Offer Letter'
+                                                        ? 'selected' : '' }}>Offer Letter</option>
+                                                    <option value="MOL Job Offer" {{
+                                                        $modify_contract['wp_app_file_name']=='MOL Job Offer'
+                                                        ? 'selected' : '' }}>MOL Job Offer</option>
+                                                    <option value="Signed MOL Job Offer" {{
+                                                        $modify_contract['wp_app_file_name']=='Signed MOL Job Offer'
+                                                        ? 'selected' : '' }}>Signed MOL Job
+                                                        Offer</option>
+                                                    <option value="MOL MB Contract" {{
+                                                        $modify_contract['wp_app_file_name']=='MOL MB Contract'
+                                                        ? 'selected' : '' }}>MOL MB Contract
+                                                    </option>
+                                                    <option value="Signed MOL MB Offer" {{
+                                                        $modify_contract['wp_app_file_name']=='Signed MOL MB Offer'
+                                                        ? 'selected' : '' }}>Signed MOL MB
+                                                        Offer</option>
+                                                    <option value="Preapproval Work Permit" {{
+                                                        $modify_contract['wp_app_file_name']=='Preapproval Work Permit'
+                                                        ? 'selected' : '' }}>Preapproval
+                                                        Work Permit</option>
+                                                    <option value="Dubai Insurance" {{
+                                                        $modify_contract['wp_app_file_name']=='Dubai Insurance'
+                                                        ? 'selected' : '' }}>Dubai Insurance
+                                                    </option>
+                                                    <option value="Entry Permit Visa" {{
+                                                        $modify_contract['wp_app_file_name']=='Entry Permit Visa'
+                                                        ? 'selected' : '' }}>Entry Permit Visa
+                                                    </option>
+                                                    <option value="Stamped Entry Visa" {{
+                                                        $modify_contract['wp_app_file_name']=='Stamped Entry Visa'
+                                                        ? 'selected' : '' }}>Stamped Entry
+                                                        Visa</option>
+                                                    <option value="Change of Visa Status" {{
+                                                        $modify_contract['wp_app_file_name']=='Change of Visa Status'
+                                                        ? 'selected' : '' }}>Change of Visa
+                                                        Status</option>
+                                                    <option value="Medical Fitness Receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Medical Fitness Receipt'
+                                                        ? 'selected' : '' }}>Medical
+                                                        Fitness Receipt</option>
+                                                    <option value="Tawjeeh Receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Tawjeeh Receipt'
+                                                        ? 'selected' : '' }}>Tawjeeh Receipt
+                                                    </option>
+                                                    <option value="Emirates Id Application form" {{
+                                                        $modify_contract['wp_app_file_name']=='Emirates Id Application form'
+                                                        ? 'selected' : '' }}>
+                                                        Emirates Id Application form</option>
+                                                    <option value="Stamped EID Application form" {{
+                                                        $modify_contract['wp_app_file_name']=='Stamped EID Application form'
+                                                        ? 'selected' : '' }}>Stamped
+                                                        EID Application form</option>
+                                                    <option value="Residence Visa" {{
+                                                        $modify_contract['wp_app_file_name']=='Residence Visa'
+                                                        ? 'selected' : '' }}>Residence Visa
+                                                    </option>
+                                                    <option value="Work Permit" {{
+                                                        $modify_contract['wp_app_file_name']=='Work Permit' ? 'selected'
+                                                        : '' }}>
+                                                        Work Permit</option>
+                                                    <option value="Health Insurance Card" {{
+                                                        $modify_contract['wp_app_file_name']=='Health Insurance Card'
+                                                        ? 'selected' : '' }}>Health
+                                                        Insurance Card</option>
+                                                    <option value="National Identity Card" {{
+                                                        $modify_contract['wp_app_file_name']=='National Identity Card'
+                                                        ? 'selected' : '' }}>National
+                                                        Identity Card</option>
+                                                    <option value="Emirates Identity Card" {{
+                                                        $modify_contract['wp_app_file_name']=='Emirates Identity Card'
+                                                        ? 'selected' : '' }}>Emirates
+                                                        Identity Card</option>
+                                                    <option value="Vehicle Registration Card" {{
+                                                        $modify_contract['wp_app_file_name']=='Vehicle Registration Card'
+                                                        ? 'selected' : '' }}>Vehicle
+                                                        Registration Card</option>
+                                                    <option value="Driving License" {{
+                                                        $modify_contract['wp_app_file_name']=='Driving License'
+                                                        ? 'selected' : '' }}>Driving License
+                                                    </option>
+                                                    <option value="Birth Certificate" {{
+                                                        $modify_contract['wp_app_file_name']=='Birth Certificate'
+                                                        ? 'selected' : '' }}>Birth Certificate
+                                                    </option>
+                                                    <option value="Marriage Certificate" {{
+                                                        $modify_contract['wp_app_file_name']=='Marriage Certificate'
+                                                        ? 'selected' : '' }}>Marriage
+                                                        Certificate</option>
+                                                    <option value="School Certificate" {{
+                                                        $modify_contract['wp_app_file_name']=='School Certificate'
+                                                        ? 'selected' : '' }}>School
+                                                        Certificate</option>
+                                                    <option value="Diploma" {{
+                                                        $modify_contract['wp_app_file_name']=='Diploma' ? 'selected'
+                                                        : '' }}>Diploma
+                                                    </option>
+                                                    <option value="University Degree" {{
+                                                        $modify_contract['wp_app_file_name']=='University Degree'
+                                                        ? 'selected' : '' }}>University Degree
+                                                    </option>
+                                                    <option value="Salary Certificate" {{
+                                                        $modify_contract['wp_app_file_name']=='Salary Certificate'
+                                                        ? 'selected' : '' }}>Salary
+                                                        Certificate</option>
+                                                    <option value="Tenancy Contract" {{
+                                                        $modify_contract['wp_app_file_name']=='Tenancy Contract'
+                                                        ? 'selected' : '' }}>Tenancy Contract
+                                                    </option>
+                                                    <option value="MOL Cancellation form" {{
+                                                        $modify_contract['wp_app_file_name']=='MOL Cancellation form'
+                                                        ? 'selected' : '' }}>MOL
+                                                        Cancellation form</option>
+                                                    <option value="Signed MOL Cancellation Form" {{
+                                                        $modify_contract['wp_app_file_name']=='Signed MOL Cancellation Form'
+                                                        ? 'selected' : '' }}>Signed
+                                                        MOL Cancellation Form</option>
+                                                    <option value="Work Permit Cancellation Approval" {{
+                                                        $modify_contract['wp_app_file_name']=='Work Permit Cancellation Approval'
+                                                        ? 'selected' : '' }}>
+                                                        Work Permit Cancellation Approval</option>
+                                                    <option value="Residency Cancellation Approval" {{
+                                                        $modify_contract['wp_app_file_name']=='Residency Cancellation Approval'
+                                                        ? 'selected' : '' }}>
+                                                        Residency Cancellation Approval</option>
+                                                    <option value="Modify MOL Contract" {{
+                                                        $modify_contract['wp_app_file_name']=='Modify MOL Contract'
+                                                        ? 'selected' : '' }}>Modify MOL
+                                                        Contract</option>
+                                                    <option value="Work Permit Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Work Permit Application'
+                                                        ? 'selected' : '' }}>Work Permit
+                                                        Application</option>
+                                                    <option value="Work Permit Renewal Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Work Permit Renewal Application'
+                                                        ? 'selected' : '' }}>Work
+                                                        Permit Renewal Application</option>
+                                                    <option value="Signed Work Permit Renewal" {{
+                                                        $modify_contract['wp_app_file_name']=='Signed Work Permit Renewal'
+                                                        ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal</option>
+                                                    <option value="Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Application' ? 'selected'
+                                                        : '' }}>
+                                                        Application</option>
+                                                    <option value="Submission Form" {{
+                                                        $modify_contract['wp_app_file_name']=='Submission Form'
+                                                        ? 'selected' : '' }}>Submission Form
+                                                    </option>
+                                                    <option value="Preapproval of work permit receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Preapproval of work permit receipt'
+                                                        ? 'selected' : '' }}>
+                                                        Preapproval of work permit</option>
+                                                    <option value="Dubai Insurance receipts" {{
+                                                        $modify_contract['wp_app_file_name']=='Dubai Insurance receipts'
+                                                        ? 'selected' : '' }}>
+                                                        Dubai Insurance</option>
+                                                    <option value="Preapproval work permit fees receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Preapproval work permit fees receipt'
+                                                        ? 'selected' : '' }}>
+                                                        Preapproval work permit fees</option>
+                                                    <option value="Work permit Renewal Fees Receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Work permit Renewal Fees Receipt'
+                                                        ? 'selected' : '' }}>
+                                                        Work permit Renewal Fees</option>
+                                                    <option value="Entry Visa Application Receipt" {{
+                                                        $modify_contract['wp_app_file_name']=='Entry Visa Application Receipt'
+                                                        ? 'selected' : '' }}>
+                                                        Entry Visa Application</option>
+                                                    <option value="Change of Visa Status Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Change of Visa Status Application'
+                                                        ? 'selected' : '' }}>
+                                                        Change of Visa Status Application</option>
+                                                    <option value="Medical" {{
+                                                        $modify_contract['wp_app_file_name']=='Medical' ? 'selected'
+                                                        : '' }}>Medical
+                                                    </option>
+                                                    <option value="Tawjeeh" {{
+                                                        $modify_contract['wp_app_file_name']=='Tawjeeh' ? 'selected'
+                                                        : '' }}>Tawjeeh
+                                                    </option>
+                                                    <option value="Heath Insurance" {{
+                                                        $modify_contract['wp_app_file_name']=='Heath Insurance'
+                                                        ? 'selected' : '' }}>
+                                                        Health Insurance</option>
+                                                    <option value="Emirates ID Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Emirates ID Application'
+                                                        ? 'selected' : '' }}>
+                                                        Emirates ID Application</option>
+                                                    <option value="Residency Visa Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Residency Visa Application'
+                                                        ? 'selected' : '' }}>
+                                                        Residency Visa Application</option>
+                                                    <option value="Visa Fines" {{
+                                                        $modify_contract['wp_app_file_name']=='Visa Fines' ? 'selected'
+                                                        : '' }}>Visa
+                                                        Fines</option>
+                                                    <option value="Emirates ID Fines" {{
+                                                        $modify_contract['wp_app_file_name']=='Emirates ID Fines'
+                                                        ? 'selected' : '' }}>
+                                                        Emirates ID Fines</option>
+                                                    <option value="Other fines" {{
+                                                        $modify_contract['wp_app_file_name']=='Other fines' ? 'selected'
+                                                        : '' }}>
+                                                        Other fines</option>
+                                                    <option value="Health Insurance Fines" {{
+                                                        $modify_contract['wp_app_file_name']=='Health Insurance Fines'
+                                                        ? 'selected' : '' }}>
+                                                        Health Insurance Fines</option>
+                                                    <option value="Immigration Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Immigration Application'
+                                                        ? 'selected' : '' }}>
+                                                        Immigration Application</option>
+                                                    <option value="MOHRE Application" {{
+                                                        $modify_contract['wp_app_file_name']=='MOHRE Application'
+                                                        ? 'selected' : '' }}>
+                                                        MOHRE Application</option>
+
+                                                    <option value="Other" {{
+                                                        $modify_contract['wp_app_file_name']=='Other' ? 'selected' : ''
+                                                        }}>Other
                                                     </option>
                                                             </select>
                                             </div>
@@ -9102,7 +10142,7 @@
                                                 <label for='#visa2-file'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-file'
-                                                         style="line-height: 1"
+                                                         style="line-height: 1" name="wp_app_file"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -9111,9 +10151,31 @@
                                                 </div>
                                             </div>
 
-                                             <a href=""><img class="upload-img"
-                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                    alt=""></a>
+
+                                        @php
+                                        $file_name = $modify_contract->wp_app_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modify_contract->wp_app_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modify_contract->wp_app_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modify_contract->wp_app_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-6">
                                             <div class="form-group mb-3 align-center">
@@ -9127,36 +10189,52 @@
                         <div class="tab-pane fade" id="v-pills-modify-contract2" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract2-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form
-                                class='py-2'>
+                                <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="signed_st" value="step2" hidden>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Job Offer Transaction
+                                            <label for="#start-process-transaction-number">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
+                                                id="start-process-transaction-number" name="signed_mb_st_trc_no" value="{{$modify_contract->signed_mb_st_trc_no}}" placeholder="...">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">MB Contracts
-                                                Transaction No:</label>
+                                            <label for="#start-process-transaction-number">
+                                                Transaction Fee:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="..."
-                                                name='job_offer_mb_trc_no'>
+                                                id="start-process-transaction-number" value="{{$modify_contract->signed_mb_st_trc_fee}}" placeholder="..."
+                                                name='signed_mb_st_trc_fee'>
                                         </div>
                                     </div>
+
+                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
+                                        <label for="">Status</label>
+                                        <select id="selectDocument" class="form-control category"
+                                            name="signed_mb_st_status">
+                                            <option value="" selected disabled>select</option>
+                                            <option value="Approved" {{$modify_contract['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                            <option value="Hold" {{$modify_contract['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="Skip" {{$modify_contract['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                            <option value="Reject" {{$modify_contract['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                    </select>
+                                    </div>
+
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Preapproval Of Work
-                                                Permit Transaction No:</label>
-                                            <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="...">
+                                            <label for="#StMB-transaction-date">Date</label>
+                                            <input type="date" class="form-control" id="StMB-transaction-date"
+                                                placeholder="..." name='signed_mb_st_date' value="{{$modify_contract->signed_mb_st_date}}">
                                         </div>
                                     </div>
+
+
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
                                             <label for='#visa2-file'>Upload ST & MB</label>
@@ -9171,26 +10249,34 @@
                                             </div>
                                         </div>
 
-                                        <a href=""><img class="upload-img"
-                                                src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                alt=""></a>
+
+                                        @php
+                                        $file_name = $modify_contract->signed_mb_st_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modify_contract->signed_mb_st_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modify_contract->signed_mb_st_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modify_contract->signed_mb_st_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                     </div>
 
-                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="StMB-transaction-date"
-                                                placeholder="..." name='signed_mb_st_date'>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
-                                            name="signed_mb_st_status">
-                                            <option value="" selected disabled>select</option>
-                                    </select>
-                                    </div>
                                     <div class="col-12">
                                         <button class='btn btn-success d-block mx-auto px-5 py-2'
                                             type="submit">Add</button>
@@ -9204,7 +10290,10 @@
                         <div class="tab-pane fade" id="v-pills-modify-contract4" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract4-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="waiting_for" value="step3" hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
                                         Approval
                                     </h6>
@@ -9212,25 +10301,49 @@
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="status-select1">Status</label>
                                             <select id="selectDocument" class="form-control category status-select"
-                                                id="status-select1">
+                                                id="status-select1" name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
-                                                <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
-                                                <option value="Skip">Skip</option>
-                                                <option value="Rejected">Reject</option>
+                                                <option value="Approved" {{$modify_contract['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$modify_contract['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$modify_contract['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$modify_contract['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
                                             <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="comment"
+                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
-                                                rows="5"></textarea>
+                                                rows="5">{{$modify_contract->waiting_for_approval_reason}}</textarea>
+                                                @php
+                                                $file_name = $modify_contract->waiting_for_approval_reason_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($modify_contract->waiting_for_approval_reason_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modify_contract->waiting_for_approval_reason_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $modify_contract->waiting_for_approval_reason_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
                                                 <label for="sponsor-approval-13">Approval No:</label>
                                                 <input type="text" class="form-control" id="sponsor-approval-13"
-                                                    placeholder="...">
+                                                    placeholder="..." name="waiting_for_approval_no" value="{{$modify_contract->waiting_for_approval_no}}">
                                             </div>
                                         </div>
                                         <div
@@ -9239,7 +10352,7 @@
                                                 <label for='visa2-file-bio_1'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-file-bio_1'
-                                                        name="file" style="line-height: 1"
+                                                        name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -9247,12 +10360,34 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href=""><img class="upload-img"
-                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                    alt=""></a>
+
+                                        @php
+                                        $file_name = $modify_contract->waiting_for_approval_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modify_contract->waiting_for_approval_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modify_contract->waiting_for_approval_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modify_contract->waiting_for_approval_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                         </div>
                                         <div class="col-12 text-center status-select-btn">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                            <button class='btn btn-success px-5 py-2' type="submit">Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -9261,33 +10396,39 @@
                         <div class="tab-pane fade" id="v-pills-modify-contract5" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract5-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form
-                                class='py-2' method="POST" enctype="multipart/form-data">
+                                <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" name="upload_wp" value="step4" hidden>
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Work Permit</h6>
-                                <input type="text" value='step4' name='preapproval' hidden>
+                                {{-- <input type="text" value='step4' name='preapproval' hidden> --}}
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#preapproval-transaction-number">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-number" placeholder="..."
-                                                name="pre_approved_wp_tran_no">
+                                                id="preapproval-transaction-number" value="{{$modify_contract->upload_wp_tranc_no}}" placeholder="..."
+                                                name="upload_wp_tranc_no">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="#preapproval-transaction-fee">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-fee" placeholder="..."
-                                                name="pre_approved_wp_tran_fees">
+                                                id="preapproval-transaction-fee" value="{{$modify_contract->upload_wp_tranc_fee}}" placeholder="..."
+                                                name="upload_wp_tranc_fee">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">select file</label>
+                                            <label for="">status</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="dubai_insurance_file_name">
-                                                <option value="" selected disabled>Select Document</option>
+                                                name="upload_wp_status">
+                                                <option value="" selected disabled>Select</option>
+                                                <option value="Approved" {{$modify_contract['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$modify_contract['upload_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$modify_contract['upload_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$modify_contract['upload_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
                                         </div>
                                     </div>
@@ -9296,7 +10437,7 @@
                                             <label for="#preapproval-transaction-date">Date</label>
                                             <input type="date" class="form-control"
                                                 id="preapproval-transaction-date" placeholder="..."
-                                                name="pre_approved_wp_date"
+                                                name="upload_wp_date" value="{{$modify_contract->upload_wp_date}}"
                                                 >
                                         </div>
                                     </div>
@@ -9304,8 +10445,243 @@
                                         <div class="form-group mb-3">
                                             <label for="">Select File</label>
                                             <select id="selectDocument" class="form-control category"
-                                                name="dubai_insurance_file_name">
+                                                name="upload_wp_file_name">
                                                 <option value="" selected disabled>Select Document</option>
+                                                <option value="Personal Photo" {{
+                                                    $modify_contract['upload_wp_file_name']=='Personal Photo'
+                                                    ? 'selected' : '' }}>Personal Photo
+                                                </option>
+                                                <option value="Passport" {{
+                                                    $modify_contract['upload_wp_file_name']=='Passport' ? 'selected'
+                                                    : '' }}>
+                                                    Passport</option>
+                                                <option value="Visit Visa" {{
+                                                    $modify_contract['upload_wp_file_name']=='Visit Visa' ? 'selected'
+                                                    : '' }}>
+                                                    Visit Visa</option>
+                                                <option value="Offer Letter" {{
+                                                    $modify_contract['upload_wp_file_name']=='Offer Letter'
+                                                    ? 'selected' : '' }}>Offer Letter</option>
+                                                <option value="MOL Job Offer" {{
+                                                    $modify_contract['upload_wp_file_name']=='MOL Job Offer'
+                                                    ? 'selected' : '' }}>MOL Job Offer</option>
+                                                <option value="Signed MOL Job Offer" {{
+                                                    $modify_contract['upload_wp_file_name']=='Signed MOL Job Offer'
+                                                    ? 'selected' : '' }}>Signed MOL Job
+                                                    Offer</option>
+                                                <option value="MOL MB Contract" {{
+                                                    $modify_contract['upload_wp_file_name']=='MOL MB Contract'
+                                                    ? 'selected' : '' }}>MOL MB Contract
+                                                </option>
+                                                <option value="Signed MOL MB Offer" {{
+                                                    $modify_contract['upload_wp_file_name']=='Signed MOL MB Offer'
+                                                    ? 'selected' : '' }}>Signed MOL MB
+                                                    Offer</option>
+                                                <option value="Preapproval Work Permit" {{
+                                                    $modify_contract['upload_wp_file_name']=='Preapproval Work Permit'
+                                                    ? 'selected' : '' }}>Preapproval
+                                                    Work Permit</option>
+                                                <option value="Dubai Insurance" {{
+                                                    $modify_contract['upload_wp_file_name']=='Dubai Insurance'
+                                                    ? 'selected' : '' }}>Dubai Insurance
+                                                </option>
+                                                <option value="Entry Permit Visa" {{
+                                                    $modify_contract['upload_wp_file_name']=='Entry Permit Visa'
+                                                    ? 'selected' : '' }}>Entry Permit Visa
+                                                </option>
+                                                <option value="Stamped Entry Visa" {{
+                                                    $modify_contract['upload_wp_file_name']=='Stamped Entry Visa'
+                                                    ? 'selected' : '' }}>Stamped Entry
+                                                    Visa</option>
+                                                <option value="Change of Visa Status" {{
+                                                    $modify_contract['upload_wp_file_name']=='Change of Visa Status'
+                                                    ? 'selected' : '' }}>Change of Visa
+                                                    Status</option>
+                                                <option value="Medical Fitness Receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Medical Fitness Receipt'
+                                                    ? 'selected' : '' }}>Medical
+                                                    Fitness Receipt</option>
+                                                <option value="Tawjeeh Receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Tawjeeh Receipt'
+                                                    ? 'selected' : '' }}>Tawjeeh Receipt
+                                                </option>
+                                                <option value="Emirates Id Application form" {{
+                                                    $modify_contract['upload_wp_file_name']=='Emirates Id Application form'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates Id Application form</option>
+                                                <option value="Stamped EID Application form" {{
+                                                    $modify_contract['upload_wp_file_name']=='Stamped EID Application form'
+                                                    ? 'selected' : '' }}>Stamped
+                                                    EID Application form</option>
+                                                <option value="Residence Visa" {{
+                                                    $modify_contract['upload_wp_file_name']=='Residence Visa'
+                                                    ? 'selected' : '' }}>Residence Visa
+                                                </option>
+                                                <option value="Work Permit" {{
+                                                    $modify_contract['upload_wp_file_name']=='Work Permit' ? 'selected'
+                                                    : '' }}>
+                                                    Work Permit</option>
+                                                <option value="Health Insurance Card" {{
+                                                    $modify_contract['upload_wp_file_name']=='Health Insurance Card'
+                                                    ? 'selected' : '' }}>Health
+                                                    Insurance Card</option>
+                                                <option value="National Identity Card" {{
+                                                    $modify_contract['upload_wp_file_name']=='National Identity Card'
+                                                    ? 'selected' : '' }}>National
+                                                    Identity Card</option>
+                                                <option value="Emirates Identity Card" {{
+                                                    $modify_contract['upload_wp_file_name']=='Emirates Identity Card'
+                                                    ? 'selected' : '' }}>Emirates
+                                                    Identity Card</option>
+                                                <option value="Vehicle Registration Card" {{
+                                                    $modify_contract['upload_wp_file_name']=='Vehicle Registration Card'
+                                                    ? 'selected' : '' }}>Vehicle
+                                                    Registration Card</option>
+                                                <option value="Driving License" {{
+                                                    $modify_contract['upload_wp_file_name']=='Driving License'
+                                                    ? 'selected' : '' }}>Driving License
+                                                </option>
+                                                <option value="Birth Certificate" {{
+                                                    $modify_contract['upload_wp_file_name']=='Birth Certificate'
+                                                    ? 'selected' : '' }}>Birth Certificate
+                                                </option>
+                                                <option value="Marriage Certificate" {{
+                                                    $modify_contract['upload_wp_file_name']=='Marriage Certificate'
+                                                    ? 'selected' : '' }}>Marriage
+                                                    Certificate</option>
+                                                <option value="School Certificate" {{
+                                                    $modify_contract['upload_wp_file_name']=='School Certificate'
+                                                    ? 'selected' : '' }}>School
+                                                    Certificate</option>
+                                                <option value="Diploma" {{
+                                                    $modify_contract['upload_wp_file_name']=='Diploma' ? 'selected'
+                                                    : '' }}>Diploma
+                                                </option>
+                                                <option value="University Degree" {{
+                                                    $modify_contract['upload_wp_file_name']=='University Degree'
+                                                    ? 'selected' : '' }}>University Degree
+                                                </option>
+                                                <option value="Salary Certificate" {{
+                                                    $modify_contract['upload_wp_file_name']=='Salary Certificate'
+                                                    ? 'selected' : '' }}>Salary
+                                                    Certificate</option>
+                                                <option value="Tenancy Contract" {{
+                                                    $modify_contract['upload_wp_file_name']=='Tenancy Contract'
+                                                    ? 'selected' : '' }}>Tenancy Contract
+                                                </option>
+                                                <option value="MOL Cancellation form" {{
+                                                    $modify_contract['upload_wp_file_name']=='MOL Cancellation form'
+                                                    ? 'selected' : '' }}>MOL
+                                                    Cancellation form</option>
+                                                <option value="Signed MOL Cancellation Form" {{
+                                                    $modify_contract['upload_wp_file_name']=='Signed MOL Cancellation Form'
+                                                    ? 'selected' : '' }}>Signed
+                                                    MOL Cancellation Form</option>
+                                                <option value="Work Permit Cancellation Approval" {{
+                                                    $modify_contract['upload_wp_file_name']=='Work Permit Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Work Permit Cancellation Approval</option>
+                                                <option value="Residency Cancellation Approval" {{
+                                                    $modify_contract['upload_wp_file_name']=='Residency Cancellation Approval'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Cancellation Approval</option>
+                                                <option value="Modify MOL Contract" {{
+                                                    $modify_contract['upload_wp_file_name']=='Modify MOL Contract'
+                                                    ? 'selected' : '' }}>Modify MOL
+                                                    Contract</option>
+                                                <option value="Work Permit Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Work Permit Application'
+                                                    ? 'selected' : '' }}>Work Permit
+                                                    Application</option>
+                                                <option value="Work Permit Renewal Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Work Permit Renewal Application'
+                                                    ? 'selected' : '' }}>Work
+                                                    Permit Renewal Application</option>
+                                                <option value="Signed Work Permit Renewal" {{
+                                                    $modify_contract['upload_wp_file_name']=='Signed Work Permit Renewal'
+                                                    ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal</option>
+                                                <option value="Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Application' ? 'selected'
+                                                    : '' }}>
+                                                    Application</option>
+                                                <option value="Submission Form" {{
+                                                    $modify_contract['upload_wp_file_name']=='Submission Form'
+                                                    ? 'selected' : '' }}>Submission Form
+                                                </option>
+                                                <option value="Preapproval of work permit receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Preapproval of work permit receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval of work permit</option>
+                                                <option value="Dubai Insurance receipts" {{
+                                                    $modify_contract['upload_wp_file_name']=='Dubai Insurance receipts'
+                                                    ? 'selected' : '' }}>
+                                                    Dubai Insurance</option>
+                                                <option value="Preapproval work permit fees receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Preapproval work permit fees receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Preapproval work permit fees</option>
+                                                <option value="Work permit Renewal Fees Receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Work permit Renewal Fees Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Work permit Renewal Fees</option>
+                                                <option value="Entry Visa Application Receipt" {{
+                                                    $modify_contract['upload_wp_file_name']=='Entry Visa Application Receipt'
+                                                    ? 'selected' : '' }}>
+                                                    Entry Visa Application</option>
+                                                <option value="Change of Visa Status Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Change of Visa Status Application'
+                                                    ? 'selected' : '' }}>
+                                                    Change of Visa Status Application</option>
+                                                <option value="Medical" {{
+                                                    $modify_contract['upload_wp_file_name']=='Medical' ? 'selected'
+                                                    : '' }}>Medical
+                                                </option>
+                                                <option value="Tawjeeh" {{
+                                                    $modify_contract['upload_wp_file_name']=='Tawjeeh' ? 'selected'
+                                                    : '' }}>Tawjeeh
+                                                </option>
+                                                <option value="Heath Insurance" {{
+                                                    $modify_contract['upload_wp_file_name']=='Heath Insurance'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance</option>
+                                                <option value="Emirates ID Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Emirates ID Application'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Application</option>
+                                                <option value="Residency Visa Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Residency Visa Application'
+                                                    ? 'selected' : '' }}>
+                                                    Residency Visa Application</option>
+                                                <option value="Visa Fines" {{
+                                                    $modify_contract['upload_wp_file_name']=='Visa Fines' ? 'selected'
+                                                    : '' }}>Visa
+                                                    Fines</option>
+                                                <option value="Emirates ID Fines" {{
+                                                    $modify_contract['upload_wp_file_name']=='Emirates ID Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Emirates ID Fines</option>
+                                                <option value="Other fines" {{
+                                                    $modify_contract['upload_wp_file_name']=='Other fines' ? 'selected'
+                                                    : '' }}>
+                                                    Other fines</option>
+                                                <option value="Health Insurance Fines" {{
+                                                    $modify_contract['upload_wp_file_name']=='Health Insurance Fines'
+                                                    ? 'selected' : '' }}>
+                                                    Health Insurance Fines</option>
+                                                <option value="Immigration Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Immigration Application'
+                                                    ? 'selected' : '' }}>
+                                                    Immigration Application</option>
+                                                <option value="MOHRE Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='MOHRE Application'
+                                                    ? 'selected' : '' }}>
+                                                    MOHRE Application</option>
+
+                                                <option value="Other" {{
+                                                    $modify_contract['upload_wp_file_name']=='Other' ? 'selected' : ''
+                                                    }}>Other
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -9315,7 +10691,7 @@
                                              <label for='#visa2-file'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='visa2-file'
-                                                    name="pre_approved_wp_file" style="line-height: 1"
+                                                    name="upload_wp_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel"
                                                    >
                                                 <div class="input-group-prepend">
@@ -9326,9 +10702,30 @@
                                         </div>
 
 
-                                        <a href=""><img class="upload-img"
-                                                src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                alt=""></a>
+                                        @php
+                                        $file_name = $modify_contract->upload_wp_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modify_contract->upload_wp_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modify_contract->upload_wp_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modify_contract->upload_wp_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-6 mt-4">
                                         <button class='btn btn-success d-block mx-auto px-5 py-2'
@@ -9338,6 +10735,9 @@
                             </form>
                             </div>
                         </div>
+                        @endif
+
+
                     </div>
                 </div>
             </div>
@@ -9358,9 +10758,6 @@
                   <a class="nav-link active bordered_tab" id="v-pills-modify-visa1-tab"
                       data-toggle="pill" href="#v-pills-modify-visa1" role="tab"
                       aria-controls="v-pills-modify-visa1" aria-selected="true">Start process</a>
-                  <a class="nav-link bordered_tab" id="v-pills-modify-visa2-tab" data-toggle="pill"
-                      href="#v-pills-modify-visa2" role="tab" aria-controls="v-pills-modify-visa2"
-                      aria-selected="false">Upload Application</a>
                   <a class="nav-link bordered_tab" id="v-pills-modify-visa3-tab" data-toggle="pill"
                       href="#v-pills-modify-visa3" role="tab" aria-controls="v-pills-modify-visa3"
                       aria-selected="false">Application status</a>
@@ -9392,94 +10789,116 @@
                           </form>
                       </div>
                   </div>
-
-                  <div class="tab-pane fade" id="v-pills-modify-visa2" role="tabpanel"
-                      aria-labelledby="v-pills-modify-visa2-tab">
-                      <div class='rounded p-3 light-box-shadow'>
-                          <form action="" class='py-2'>
-                              <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload visa
-                                  modification application</h6>
-                              <div class="row align-items-end">
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-visa-2-number">Transaction No:</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-visa-2-number" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-visa-2-fee">Transaction Fee</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-visa-2-fee" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#">Status</label>
-                                          <p class='m-0 form-control'>Pending</p>
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-visa-2-date">Date</label>
-                                          <input type="date" class="form-control"
-                                              id="modify-visa-2-date" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                      <label for='#modify-visa-2-file'>Upload application</label>
-                                      <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                          <input type="file" multiple class="form-control"
-                                              id='modify-visa-2-file' name="file"
-                                              style="line-height: 1">
-                                          <div class="input-group-prepend">
-                                              <small class="input-group-text"><span
-                                                      class="fa fa-paperclip"></span></small>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-12">
-                                      <button
-                                          class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
-                                  </div>
-                                  <div>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
+                  @if ($modification_visa)
                   <div class="tab-pane fade" id="v-pills-modify-visa3" role="tabpanel"
                       aria-labelledby="v-pills-modify-visa3-tab">
                       <div class='rounded p-3 light-box-shadow'>
-                          <form action="" class='py-2'>
-                              <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Application
-                                  status</h6>
-                              <div class="row">
-                                  <div
-                                      class="form-group mb-0 col-xl-8 col-lg-12 col-md-8 parent-of-approval-rejected">
-                                      <label for="">Status</label>
-                                      <p class='form-control m-0 sponsor-by-someone-status'>Pending
-                                      </p>
-                                  </div>
-                                  <div class="form-group col-12 d-none sponsor-workPermit-textearea">
-                                      <label for='#modify-app-visa3-textareara'>Comments</label>
-                                      <textarea type="text" id='modify-app-visa3-textareara'
-                                          name="comment" placeholder="Enter Your Comments ..."
-                                          class="form-control" rows="5"></textarea>
-                                  </div>
-                                  <div
-                                      class="col-xl-6 col-lg-12 col-md-6 d-none sponsor-workPermit-approval">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-app-visa3-approval">Approval No:</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-app-visa3-approval" placeholder="...">
-                                      </div>
-                                  </div>
-                              </div>
-                          </form>
+                        <form action="{{route('modify-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_visa'=>$modification_visa->id,'req_id'=>$ids['req_id']])}}"
+                            class='py-2' method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" name="application" value="step1" hidden>
+
+                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                Approval
+                            </h6>
+                            <div class="row">
+                                <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                    <label for="status-select1">Status</label>
+                                    <select id="selectDocument" class="form-control category status-select"
+                                         name="application_status">
+                                        <option value="" selected disabled>select</option>
+                                        <option value="Approved" {{$modification_visa['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                        <option value="Hold" {{$modification_visa['application_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                        <option value="Skip" {{$modification_visa['application_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                        <option value="Reject" {{$modification_visa['application_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12 d-none status-select-comment">
+                                    <label for='sponsor2-textareara-13'>Comments</label>
+                                    <textarea type="text" id='sponsor2-textarear-13' name="application_reject_reason"
+                                        placeholder="Enter Your Comments ..." class="form-control"
+                                        rows="5">{{$modification_visa->application_reject_reason}}</textarea>
+
+                                    @php
+                                    $file_name = $modification_visa->application_reject_reason_file;
+                                    $ext = explode('.', $file_name);
+                                    @endphp
+                                    @if ($modification_visa->application_reject_reason_file)
+                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modification_visa->application_reject_reason_file) }}">
+                                        @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'doc')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @else
+                                            <img src="{{ asset('' . '/' . $modification_visa->application_reject_reason_file) }}"
+                                                style="height: 50px;width:50px">
+                                        @endif
+                                    </a>
+                                    @endif
+                                </div>
+                                <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                    <div class="form-group mb-3">
+                                        <label for="sponsor-approval-13">Approval No:</label>
+                                        <input type="text" class="form-control" id="sponsor-approval-13"
+                                            placeholder="..." name="application_approval_no" value="{{$modification_visa->application_approval_no}}">
+                                    </div>
+                                </div>
+                                <div
+                                    class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                    <div class="upload-file">
+                                        <label for='visa2-file-bio_1'>Upload File</label>
+                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                            <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                name="application_approval_file" style="line-height: 1"
+                                                accept=".pdf,.doc,.excel">
+                                            <div class="input-group-prepend">
+                                                <small class="input-group-text"><span
+                                                        class="fa fa-paperclip"></span></small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @php
+                                    $file_name = $modification_visa->application_approval_file;
+                                    $ext = explode('.', $file_name);
+                                    @endphp
+                                    @if ($modification_visa->application_approval_file)
+                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modification_visa->application_approval_file) }}">
+                                        @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'doc')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                        @else
+                                            <img src="{{ asset('' . '/' . $modification_visa->application_approval_file) }}"
+                                                style="height: 50px;width:50px">
+                                        @endif
+                                    </a>
+                                    @endif
+                                </div>
+                                <div class="col-12 text-center status-select-btn">
+                                    <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                </div>
+                            </div>
+                        </form>
                       </div>
                   </div>
+                  @endif
               </div>
           </div>
       </div>
@@ -9495,10 +10914,6 @@
                   <a class="nav-link active bordered_tab" id="v-pills-modify-emirates1-tab"
                       data-toggle="pill" href="#v-pills-modify-emirates1" role="tab"
                       aria-controls="v-pills-modify-emirates1" aria-selected="true">Start Process</a>
-                  <a class="nav-link bordered_tab" id="v-pills-modify-emirates2-tab"
-                      data-toggle="pill" href="#v-pills-modify-emirates2" role="tab"
-                      aria-controls="v-pills-modify-emirates2" aria-selected="false">Upload
-                      application</a>
                   <a class="nav-link bordered_tab" id="v-pills-modify-emirates3-tab"
                       data-toggle="pill" href="#v-pills-modify-emirates3" role="tab"
                       aria-controls="v-pills-modify-emirates3" aria-selected="false">Application
@@ -9510,8 +10925,7 @@
                   <div class="tab-pane fade show active" id="v-pills-modify-emirates1" role="tabpanel"
                       aria-labelledby="v-pills-modify-emirates1-tab">
                       <div class='rounded p-3 light-box-shadow'>
-                          <form class="py-2
-                      ">
+                        <form action="">
                               <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
                                   Modification of Emirates ID</h6>
                               <div class="row">
@@ -9531,96 +10945,116 @@
                               </div>
                           </form>
                       </div>
+                  </div>
+                  @if ($modification_emirates)
+                    <div class="tab-pane fade" id="v-pills-modify-emirates3" role="tabpanel"
+                        aria-labelledby="v-pills-modify-emirates3-tab">
+                        <div class='rounded p-3 light-box-shadow'>
+                            <form action="{{route('modify-emirates-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_emirates'=>$modification_emirates->id,'req_id'=>$ids['req_id']])}}"
+                                class='py-2' method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" value='step1' name='application' hidden>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                    Approval
+                                </h6>
+                                <div class="row">
+                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                        <label for="status-select1">Status</label>
+                                        <select id="selectDocument" class="form-control category status-select"
+                                            name="application_status">
+                                            <option value="" selected disabled>select</option>
+                                            <option value="Approved" {{$modification_emirates['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                            <option value="Hold" {{$modification_emirates['application_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="Skip" {{$modification_emirates['application_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                            <option value="Reject" {{$modification_emirates['application_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-12 d-none status-select-comment">
+                                        <label for='sponsor2-textareara-13'>Comments</label>
+                                        <textarea type="text" id='sponsor2-textarear-13' name="application_reject_reason"
+                                            placeholder="Enter Your Comments ..." class="form-control"
+                                            rows="5">{{$modification_emirates->application_reject_reason}}</textarea>
 
-                  </div>
-                  <div class="tab-pane fade" id="v-pills-modify-emirates2" role="tabpanel"
-                      aria-labelledby="v-pills-modify-emirates2-tab">
-                      <div class='rounded p-3 light-box-shadow'>
-                          <form action="" class='py-2'>
-                              <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload
-                                  Emirates ID modification application</h6>
-                              <div class="row align-items-end">
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-emirates-2-number">Transaction
-                                              No:</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-emirates-2-number" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-emrates-2-fee">Transaction Fee</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-emirates-2-fee" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#">Status</label>
-                                          <p class='m-0 form-control'>Pending</p>
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-6 col-lg-12 col-md-6">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-emirates-2-date">Date</label>
-                                          <input type="date" class="form-control"
-                                              id="modify-emirates-2-date" placeholder="...">
-                                      </div>
-                                  </div>
-                                  <div class="col-xl-8 col-lg-12 col-md-6 mb-4">
-                                      <label for='#modify-emirates-2-file'>Upload application</label>
-                                      <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                          <input type="file" multiple class="form-control"
-                                              id='modify-emirates-2-file' name="file"
-                                              style="line-height: 1">
-                                          <div class="input-group-prepend">
-                                              <small class="input-group-text"><span
-                                                      class="fa fa-paperclip"></span></small>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-12">
-                                      <button
-                                          class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
-                                  </div>
-                                  <div>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-                  <div class="tab-pane fade" id="v-pills-modify-emirates3" role="tabpanel"
-                      aria-labelledby="v-pills-modify-emirates3-tab">
-                      <div class='rounded p-3 light-box-shadow'>
-                          <form action="" class='py-2'>
-                              <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Application
-                                  status</h6>
-                              <div class="row">
-                                  <div
-                                      class="form-group mb-0 col-xl-8 col-lg-12 col-md-8 parent-of-approval-rejected">
-                                      <label for="">Status</label>
-                                      <p class='form-control m-0 sponsor-by-someone-status'>Pending
-                                      </p>
-                                  </div>
-                                  <div class="form-group col-12 d-none sponsor-workPermit-textearea">
-                                      <label for='#modify-emirates3-textareara'>Comments</label>
-                                      <textarea type="text" id='modify-emirates3-textareara'
-                                          name="comment" placeholder="Enter Your Comments ..."
-                                          class="form-control" rows="5"></textarea>
-                                  </div>
-                                  <div
-                                      class="col-xl-6 col-lg-12 col-md-6 d-none sponsor-workPermit-approval">
-                                      <div class="form-group mb-3">
-                                          <label for="#modify-emirates3-approval">Approval No:</label>
-                                          <input type="text" class="form-control"
-                                              id="modify-emirates3-approval" placeholder="...">
-                                      </div>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
+                                        @php
+                                        $file_name = $modification_emirates->application_reject_reason_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modification_emirates->application_reject_reason_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modification_emirates->application_reject_reason_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modification_emirates->application_reject_reason_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
+                                    </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                        <div class="form-group mb-3">
+                                            <label for="sponsor-approval-13">Approval No:</label>
+                                            <input type="text" class="form-control" id="sponsor-approval-13"
+                                                placeholder="..." name="application_approval_no" value="{{$modification_emirates->application_approval_no}}">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                        <div class="upload-file">
+                                            <label for='visa2-file-bio_1'>Upload File</label>
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    name="application_approval_file" style="line-height: 1"
+                                                    accept=".pdf,.doc,.excel">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @php
+                                        $file_name = $modification_emirates->application_approval_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($modification_emirates->application_approval_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $modification_emirates->application_approval_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $modification_emirates->application_approval_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 text-center status-select-btn">
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                  @endif
               </div>
           </div>
       </div>
@@ -9631,98 +11065,2170 @@
 
         <!-- Cancelatoion Tab -->
         <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
-            aria-labelledby="pills-pills-cancelation-tab">
-            <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
-                        href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
-                        aria-selected="false">Visa
-                        cancelation</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
-                        href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
-                        aria-selected="false">Work permit cancelation</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
-                <!--  Visa Cancel Tab -->
-                <div class="tab-pane active show" id="pills-visa-cancel" role="tabpanel"
-                    aria-labelledby="pills-visa-cancel-tab">
-                    <div class="row ">
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
-                                id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active bordered_tab" id="v-pills-visa-cancel1-tab" data-toggle="pill"
-                                    href="#v-pills-visa-cancel1" role="tab" aria-controls="v-pills-visa-cancel1"
-                                    aria-selected="true">visa-cancel-1</a>
-                                <a class="nav-link bordered_tab" id="v-pills-visa-cancel2-tab" data-toggle="pill"
-                                    href="#v-pills-visa-cancel2" role="tab" aria-controls="v-pills-visa-cancel2"
-                                    aria-selected="false">visa-cancel2</a>
-                                <a class="nav-link bordered_tab" id="v-pills-visa-cancel3-tab" data-toggle="pill"
-                                    href="#v-pills-visa-cancel3" role="tab" aria-controls="v-pills-visa-cancel3"
-                                    aria-selected="false">visa-cancel3</a>
-                                <a class="nav-link bordered_tab" id="v-pills-visa-cancel4-tab" data-toggle="pill"
-                                    href="#v-pills-visa-cancel4" role="tab" aria-controls="v-pills-visa-cancel4"
-                                    aria-selected="false">visa-cancel4</a>
-                            </div>
+        aria-labelledby="pills-pills-cancelation-tab">
+        <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
+                    href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
+                    aria-selected="false">Visa
+                    cancelation</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
+                    href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
+                    aria-selected="false">Work permit cancelation</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
+            <!--  Visa Cancel Tab -->
+            <div class="tab-pane active show" id="pills-visa-cancel" role="tabpanel"
+                aria-labelledby="pills-visa-cancel-tab">
+                <div class="row ">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
+                            id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active bordered_tab" id="v-pills-visa-cancel0-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel0" role="tab" aria-controls="v-pills-visa-cancel0"
+                                aria-selected="true">Start Process</a>
+                                <a class="nav-link   bordered_tab" id="v-pills-visa-cancel1-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel1" role="tab" aria-controls="v-pills-visa-cancel1"
+                                aria-selected="true">Work Permit Canclation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-visa-cancel2-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel2" role="tab" aria-controls="v-pills-visa-cancel2"
+                                aria-selected="false">Upload Signed Cancelation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-visa-cancel3-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel3" role="tab" aria-controls="v-pills-visa-cancel3"
+                                aria-selected="false">Singed Cancelation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-visa-cancel4-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel4" role="tab" aria-controls="v-pills-visa-cancel4"
+                                aria-selected="false">Work Permit Cancelation Approval</a>
+                                <a class="nav-link bordered_tab" id="v-pills-visa-cancel5-tab" data-toggle="pill"
+                                href="#v-pills-visa-cancel5" role="tab" aria-controls="v-pills-visa-cancel5"
+                                aria-selected="false">Residency Application</a>
                         </div>
-                        <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
-                            <div class="tab-content" id="visa-cancel-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-visa-cancel1" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-cancel1-tab">visa-cancel1</div>
-                                <div class="tab-pane fade" id="v-pills-visa-cancel2" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-cancel2-tab">visa-cancel2</div>
-                                <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-cancel3-tab">visa-cancel3</div>
-                                <div class="tab-pane fade" id="v-pills-visa-cancel4" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-cancel4-tab">visa-cancel4</div>
+                    </div>
+                    <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
+                        <div class="tab-content" id="visa-cancel-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-visa-cancel0" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel0-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form class='py-2'>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
+                                            Process</h6>
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <input type="hidden">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                    Process</button>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#parttime3-visa">Process status</label>
+                                                    <input type="text" class="form-control" id="part-time3-visa"
+                                                        placeholder="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+                            @if ($visa_cancellation)
+                            <div class="tab-pane fade" id="v-pills-visa-cancel1" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel1-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="work_permit_app_cancellation" value="step1" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
+                                            application</h6>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                        No:</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1-number1" name="wp_app_can_trnc_no" value="{{$visa_cancellation->wp_app_can_trnc_no}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        Fee</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1" name="wp_app_can_trnc_fee" value="{{$visa_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <label for="">Status</label>
+                                                <select id="selectDocument" class="form-control category"
+                                                    name="wp_app_can_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$visa_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$visa_cancellation['wp_app_can_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$visa_cancellation['wp_app_can_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$visa_cancellation['wp_app_can_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <input type="date" class="form-control"
+                                                        id="start-process-transaction-date" value="{{$visa_cancellation->wp_app_can_date}}" placeholder="..."
+                                                        name='wp_app_can_date'>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="">Slect File</label>
+                                                    <select id="selectDocument" class="form-control category"
+                                                        name="wp_app_can_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file'
+                                                             style="line-height: 1" name="wp_app_can_file"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            @php
+                                            $file_name = $visa_cancellation->wp_app_can_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($visa_cancellation->wp_app_can_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3 align-center">
+                                                    <Button type="submit"
+                                                        class='btn btn-success mt-4'>Add</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-visa-cancel2" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel2-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="signed_cancellation" value="step2" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed Cancellation Form </h6>
+                                        <div class="row">
+                                            <div
+                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='cancel-file-bio_1'>Upload File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='cancel-file-bio_1'
+                                                            name="signed_cancellation_form" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            @php
+                                            $file_name = $visa_cancellation->signed_cancellation_form;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($visa_cancellation->signed_cancellation_form)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel3-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="signd_can_form_det" value="step3" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
+                                            application</h6>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                        No:</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1-number1" name="signd_can_from_tranc_no" value="{{$visa_cancellation->signd_can_from_tranc_no}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        Fee</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1" name="signd_can_from_tranc_fee" value="{{$visa_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <label for="">Status</label>
+                                                <select id="selectDocument" class="form-control category"
+                                                    name="signd_can_from_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$visa_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$visa_cancellation['signd_can_from_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$visa_cancellation['signd_can_from_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$visa_cancellation['signd_can_from_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <input type="date" class="form-control"
+                                                        id="start-process-transaction-date" value="{{$visa_cancellation->signd_can_from_date}}" placeholder="..."
+                                                        name='signd_can_from_date'>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="">Slect File</label>
+                                                    <select id="selectDocument" class="form-control category"
+                                                        name="signd_can_from_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file'
+                                                             style="line-height: 1" name="signd_can_from_file"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            @php
+                                            $file_name = $visa_cancellation->signd_can_from_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($visa_cancellation->signd_can_from_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3 align-center">
+                                                    <Button type="submit"
+                                                        class='btn btn-success mt-4'>Add</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                            </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-visa-cancel4" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel4-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="waiting_for" value="step4" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                            Approval
+                                        </h6>
+                                        <div class="row">
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                                <label for="status-select1">Status</label>
+                                                <select id="selectDocument" class="form-control category status-select"
+                                                    name="waiting_for_approval_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$visa_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$visa_cancellation['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$visa_cancellation['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$visa_cancellation['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-12 d-none status-select-comment">
+                                                <label for='sponsor2-textareara-13'>Comments</label>
+                                                <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                                    placeholder="Enter Your Comments ..." class="form-control"
+                                                    rows="5">{{$visa_cancellation->waiting_for_approval_reason}}</textarea>
+
+                                                @php
+                                                $file_name = $visa_cancellation->waiting_for_approval_reason_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_cancellation->waiting_for_approval_reason_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                                <div class="form-group mb-3">
+                                                    <label for="sponsor-approval-13">Approval No:</label>
+                                                    <input type="text" class="form-control" id="sponsor-approval-13"
+                                                        placeholder="..." name="waiting_for_approval_no" value="{{$visa_cancellation->waiting_for_approval_no}}">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                                <div class="upload-file">
+                                                    <label for='visa2-file-bio_1'>Upload File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                            name="waiting_for_approval_file" style="line-height: 1"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @php
+                                                $file_name = $visa_cancellation->waiting_for_approval_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_cancellation->waiting_for_approval_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-12 text-center status-select-btn">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-visa-cancel5" role="tabpanel"
+                                aria-labelledby="v-pills-visa-cancel5-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="residency" value="step5" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application</h6>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                        No:</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1-number1" name="residency_app_tranc_no" value="{{$visa_cancellation->residency_app_tranc_no}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        Fee</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1" name="residency_app_tranc_fee" value="{{$visa_cancellation->residency_app_tranc_fee}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <label for="">Status</label>
+                                                <select id="selectDocument" class="form-control category"
+                                                    name="residency_app_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$visa_cancellation['residency_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$visa_cancellation['residency_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$visa_cancellation['residency_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$visa_cancellation['residency_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <input type="date" class="form-control"
+                                                        id="start-process-transaction-date" value="{{$visa_cancellation->residency_app_date}}" placeholder="..."
+                                                        name='residency_app_date'>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="">Slect File</label>
+                                                    <select id="selectDocument" class="form-control category"
+                                                        name="residency_app_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $visa_cancellation['residency_app_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $visa_cancellation['residency_app_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $visa_cancellation['residency_app_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $visa_cancellation['residency_app_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $visa_cancellation['residency_app_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $visa_cancellation['residency_app_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file'
+                                                             style="line-height: 1" name="residency_app_file"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            @php
+                                            $file_name = $visa_cancellation->residency_app_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($visa_cancellation->residency_app_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3 align-center">
+                                                    <Button type="submit"
+                                                        class='btn btn-success mt-4'>Add</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                 </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-                <!-- Visa Cancel tab end -->
-                <!-- WorkPermit Cancel tab -->
-                <div class="tab-pane" id="pills-work-permit-cancel" role="tabpanel"
-                    aria-labelledby="pills-work-permit-cancel-tab">
-                    <div class="row ">
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="nav side-bar flex-row horizonts_tabs flex-lg-column nav-pills"
-                                id="work-permit-cancel-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active bordered_tab" id="v-pills-work-permit-cancel1-tab"
-                                    data-toggle="pill" href="#v-pills-work-permit-cancel1" role="tab"
-                                    aria-controls="v-pills-work-permit-cancel1" aria-selected="true">WorkPermit1</a>
-                                <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel2-tab" data-toggle="pill"
-                                    href="#v-pills-work-permit-cancel2" role="tab"
-                                    aria-controls="v-pills-work-permit-cancel2"
-                                    aria-selected="false">work-permit-cancel2</a>
-                                <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel3-tab" data-toggle="pill"
-                                    href="#v-pills-work-permit-cancel3" role="tab"
-                                    aria-controls="v-pills-work-permit-cancel3"
-                                    aria-selected="false">work-permit-cancel3</a>
-                                <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel4-tab" data-toggle="pill"
-                                    href="#v-pills-work-permit-cancel4" role="tab"
-                                    aria-controls="v-pills-work-permit-cancel4"
-                                    aria-selected="false">work-permit-cancel4</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-8 px-lg-3  mt-lg-0 mt-3">
-                            <div class="tab-content" id="work-permit-cancel-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-work-permit-cancel1" role="tabpanel"
-                                    aria-labelledby="v-pills-work-permit-cancel1-tab">work-permit-cancel1</div>
-                                <div class="tab-pane fade" id="v-pills-work-permit-cancel2" role="tabpanel"
-                                    aria-labelledby="v-pills-work-permit-cancel2-tab">work-permit-cancel2</div>
-                                <div class="tab-pane fade" id="v-pills-work-permit-cancel3" role="tabpanel"
-                                    aria-labelledby="v-pills-work-permit-cancel3-tab">work-permit-cancel3</div>
-                                <div class="tab-pane fade" id="v-pills-work-permit-cancel4" role="tabpanel"
-                                    aria-labelledby="v-pills-work-permit-cancel4-tab">work-permit-cancel4</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- WorkPermit Cancel Tabe End -->
             </div>
+            <!-- Visa Cancel tab end -->
+            <!-- WorkPermit Cancel tab -->
+            <div class="tab-pane" id="pills-work-permit-cancel" role="tabpanel"
+                aria-labelledby="pills-work-permit-cancel-tab">
+                <div class="row ">
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
+                            id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active bordered_tab" id="v-pills-permit-cancel0-tab" data-toggle="pill"
+                                href="#v-pills-permit-cancel0" role="tab" aria-controls="v-pills-permit-cancel0"
+                                aria-selected="true">Start Process</a>
+                                <a class="nav-link  bordered_tab" id="v-pills-permit-cancel1-tab" data-toggle="pill"
+                                href="#v-pills-permit-cancel1" role="tab" aria-controls="v-pills-permit-cancel1"
+                                aria-selected="true">Work Permit Canclation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-permit-cancel2-tab" data-toggle="pill"
+                                href="#v-pills-permit-cancel2" role="tab" aria-controls="v-pills-permit-cancel2"
+                                aria-selected="false">Upload Signed Cancelation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-permit-cancel3-tab" data-toggle="pill"
+                                href="#v-pills-permit-cancel3" role="tab" aria-controls="v-pills-permit-cancel3"
+                                aria-selected="false">Singed Cancelation Form</a>
+                            <a class="nav-link bordered_tab" id="v-pills-permit-cancel4-tab" data-toggle="pill"
+                                href="#v-pills-permit-cancel4" role="tab" aria-controls="v-pills-permit-cancel4"
+                                aria-selected="false">Work Permit Cancelation Approval</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
+                        <div class="tab-content" id="work-permit-cancel-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-permit-cancel0" role="tabpanel"
+                                aria-labelledby="v-pills-permit-cancel0-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form class='py-2'>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
+                                            Process</h6>
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <input type="hidden">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                    Process</button>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#parttime3-visa">Process status</label>
+                                                    <input type="text" class="form-control" id="part-time3-visa"
+                                                        placeholder="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            @if ($permit_cancellation)
+                            <div class="tab-pane fade" id="v-pills-permit-cancel1" role="tabpanel"
+                                aria-labelledby="v-pills-permit-cancel1-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="work_permit_app_cancellation" value="step1" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
+                                            application</h6>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                        No:</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1-number1" name="wp_app_can_trnc_no" value="{{$permit_cancellation->wp_app_can_trnc_no}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        Fee</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1" name="wp_app_can_trnc_fee" value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <label for="">Status</label>
+                                                <select id="selectDocument" class="form-control category"
+                                                    name="wp_app_can_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$permit_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$permit_cancellation['wp_app_can_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$permit_cancellation['wp_app_can_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$permit_cancellation['wp_app_can_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <input type="date" class="form-control"
+                                                        id="start-process-transaction-date" value="{{$permit_cancellation->wp_app_can_date}}" placeholder="..."
+                                                        name='wp_app_can_date'>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="">Slect File</label>
+                                                    <select id="selectDocument" class="form-control category"
+                                                        name="wp_app_can_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file'
+                                                             style="line-height: 1" name="wp_app_can_file"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            @php
+                                            $file_name = $permit_cancellation->wp_app_can_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($permit_cancellation->wp_app_can_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3 align-center">
+                                                    <Button type="submit"
+                                                        class='btn btn-success mt-4'>Add</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-permit-cancel2" role="tabpanel"
+                                aria-labelledby="v-pills-permit-cancel2-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="signed_cancellation" value="step2" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed Cancellation Form </h6>
+                                        <div class="row">
+                                            <div
+                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='cancel-file-bio_1'>Upload File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='cancel-file-bio_1'
+                                                            name="signed_cancellation_form" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            @php
+                                            $file_name = $permit_cancellation->signed_cancellation_form;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($permit_cancellation->signed_cancellation_form)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-permit-cancel3" role="tabpanel"
+                                aria-labelledby="v-pills-permit-cancel3-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="signd_can_form_det" value="step3" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
+                                            application</h6>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                        No:</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1-number1" name="signd_can_from_tranc_no" value="{{$permit_cancellation->signd_can_from_tranc_no}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        Fee</label>
+                                                    <input type="text" class="form-control"
+                                                        id="sponsored1-transacton1" name="signd_can_from_tranc_fee" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <label for="">Status</label>
+                                                <select id="selectDocument" class="form-control category"
+                                                    name="signd_can_from_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$permit_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$permit_cancellation['signd_can_from_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$permit_cancellation['signd_can_from_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$permit_cancellation['signd_can_from_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <input type="date" class="form-control"
+                                                        id="start-process-transaction-date" value="{{$permit_cancellation->signd_can_from_date}}" placeholder="..."
+                                                        name='signd_can_from_date'>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="">Slect File</label>
+                                                    <select id="selectDocument" class="form-control category"
+                                                        name="signd_can_from_file_name">
+                                                        <option value="" selected disabled>Select Document</option>
+                                                        <option value="Personal Photo" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Personal Photo'
+                                                            ? 'selected' : '' }}>Personal Photo
+                                                        </option>
+                                                        <option value="Passport" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Passport' ? 'selected'
+                                                            : '' }}>
+                                                            Passport</option>
+                                                        <option value="Visit Visa" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Visit Visa' ? 'selected'
+                                                            : '' }}>
+                                                            Visit Visa</option>
+                                                        <option value="Offer Letter" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Offer Letter'
+                                                            ? 'selected' : '' }}>Offer Letter</option>
+                                                        <option value="MOL Job Offer" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='MOL Job Offer'
+                                                            ? 'selected' : '' }}>MOL Job Offer</option>
+                                                        <option value="Signed MOL Job Offer" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Signed MOL Job Offer'
+                                                            ? 'selected' : '' }}>Signed MOL Job
+                                                            Offer</option>
+                                                        <option value="MOL MB Contract" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='MOL MB Contract'
+                                                            ? 'selected' : '' }}>MOL MB Contract
+                                                        </option>
+                                                        <option value="Signed MOL MB Offer" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Signed MOL MB Offer'
+                                                            ? 'selected' : '' }}>Signed MOL MB
+                                                            Offer</option>
+                                                        <option value="Preapproval Work Permit" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Preapproval Work Permit'
+                                                            ? 'selected' : '' }}>Preapproval
+                                                            Work Permit</option>
+                                                        <option value="Dubai Insurance" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Dubai Insurance'
+                                                            ? 'selected' : '' }}>Dubai Insurance
+                                                        </option>
+                                                        <option value="Entry Permit Visa" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Entry Permit Visa'
+                                                            ? 'selected' : '' }}>Entry Permit Visa
+                                                        </option>
+                                                        <option value="Stamped Entry Visa" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Stamped Entry Visa'
+                                                            ? 'selected' : '' }}>Stamped Entry
+                                                            Visa</option>
+                                                        <option value="Change of Visa Status" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Change of Visa Status'
+                                                            ? 'selected' : '' }}>Change of Visa
+                                                            Status</option>
+                                                        <option value="Medical Fitness Receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Medical Fitness Receipt'
+                                                            ? 'selected' : '' }}>Medical
+                                                            Fitness Receipt</option>
+                                                        <option value="Tawjeeh Receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Tawjeeh Receipt'
+                                                            ? 'selected' : '' }}>Tawjeeh Receipt
+                                                        </option>
+                                                        <option value="Emirates Id Application form" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Emirates Id Application form'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates Id Application form</option>
+                                                        <option value="Stamped EID Application form" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Stamped EID Application form'
+                                                            ? 'selected' : '' }}>Stamped
+                                                            EID Application form</option>
+                                                        <option value="Residence Visa" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Residence Visa'
+                                                            ? 'selected' : '' }}>Residence Visa
+                                                        </option>
+                                                        <option value="Work Permit" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Work Permit' ? 'selected'
+                                                            : '' }}>
+                                                            Work Permit</option>
+                                                        <option value="Health Insurance Card" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Health Insurance Card'
+                                                            ? 'selected' : '' }}>Health
+                                                            Insurance Card</option>
+                                                        <option value="National Identity Card" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='National Identity Card'
+                                                            ? 'selected' : '' }}>National
+                                                            Identity Card</option>
+                                                        <option value="Emirates Identity Card" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Emirates Identity Card'
+                                                            ? 'selected' : '' }}>Emirates
+                                                            Identity Card</option>
+                                                        <option value="Vehicle Registration Card" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Vehicle Registration Card'
+                                                            ? 'selected' : '' }}>Vehicle
+                                                            Registration Card</option>
+                                                        <option value="Driving License" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Driving License'
+                                                            ? 'selected' : '' }}>Driving License
+                                                        </option>
+                                                        <option value="Birth Certificate" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Birth Certificate'
+                                                            ? 'selected' : '' }}>Birth Certificate
+                                                        </option>
+                                                        <option value="Marriage Certificate" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Marriage Certificate'
+                                                            ? 'selected' : '' }}>Marriage
+                                                            Certificate</option>
+                                                        <option value="School Certificate" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='School Certificate'
+                                                            ? 'selected' : '' }}>School
+                                                            Certificate</option>
+                                                        <option value="Diploma" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Diploma' ? 'selected'
+                                                            : '' }}>Diploma
+                                                        </option>
+                                                        <option value="University Degree" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='University Degree'
+                                                            ? 'selected' : '' }}>University Degree
+                                                        </option>
+                                                        <option value="Salary Certificate" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Salary Certificate'
+                                                            ? 'selected' : '' }}>Salary
+                                                            Certificate</option>
+                                                        <option value="Tenancy Contract" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Tenancy Contract'
+                                                            ? 'selected' : '' }}>Tenancy Contract
+                                                        </option>
+                                                        <option value="MOL Cancellation form" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='MOL Cancellation form'
+                                                            ? 'selected' : '' }}>MOL
+                                                            Cancellation form</option>
+                                                        <option value="Signed MOL Cancellation Form" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Signed MOL Cancellation Form'
+                                                            ? 'selected' : '' }}>Signed
+                                                            MOL Cancellation Form</option>
+                                                        <option value="Work Permit Cancellation Approval" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Work Permit Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Work Permit Cancellation Approval</option>
+                                                        <option value="Residency Cancellation Approval" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Residency Cancellation Approval'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Cancellation Approval</option>
+                                                        <option value="Modify MOL Contract" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Modify MOL Contract'
+                                                            ? 'selected' : '' }}>Modify MOL
+                                                            Contract</option>
+                                                        <option value="Work Permit Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Work Permit Application'
+                                                            ? 'selected' : '' }}>Work Permit
+                                                            Application</option>
+                                                        <option value="Work Permit Renewal Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Work Permit Renewal Application'
+                                                            ? 'selected' : '' }}>Work
+                                                            Permit Renewal Application</option>
+                                                        <option value="Signed Work Permit Renewal" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal'
+                                                            ? 'selected' : '' }}>Signed
+                                                            Work Permit Renewal</option>
+                                                        <option value="Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Application' ? 'selected'
+                                                            : '' }}>
+                                                            Application</option>
+                                                        <option value="Submission Form" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Submission Form'
+                                                            ? 'selected' : '' }}>Submission Form
+                                                        </option>
+                                                        <option value="Preapproval of work permit receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Preapproval of work permit receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval of work permit</option>
+                                                        <option value="Dubai Insurance receipts" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Dubai Insurance receipts'
+                                                            ? 'selected' : '' }}>
+                                                            Dubai Insurance</option>
+                                                        <option value="Preapproval work permit fees receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Preapproval work permit fees receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Preapproval work permit fees</option>
+                                                        <option value="Work permit Renewal Fees Receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Work permit Renewal Fees Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Work permit Renewal Fees</option>
+                                                        <option value="Entry Visa Application Receipt" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Entry Visa Application Receipt'
+                                                            ? 'selected' : '' }}>
+                                                            Entry Visa Application</option>
+                                                        <option value="Change of Visa Status Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Change of Visa Status Application'
+                                                            ? 'selected' : '' }}>
+                                                            Change of Visa Status Application</option>
+                                                        <option value="Medical" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Medical' ? 'selected'
+                                                            : '' }}>Medical
+                                                        </option>
+                                                        <option value="Tawjeeh" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Tawjeeh' ? 'selected'
+                                                            : '' }}>Tawjeeh
+                                                        </option>
+                                                        <option value="Heath Insurance" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Heath Insurance'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance</option>
+                                                        <option value="Emirates ID Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Emirates ID Application'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Application</option>
+                                                        <option value="Residency Visa Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Residency Visa Application'
+                                                            ? 'selected' : '' }}>
+                                                            Residency Visa Application</option>
+                                                        <option value="Visa Fines" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Visa Fines' ? 'selected'
+                                                            : '' }}>Visa
+                                                            Fines</option>
+                                                        <option value="Emirates ID Fines" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Emirates ID Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Emirates ID Fines</option>
+                                                        <option value="Other fines" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Other fines' ? 'selected'
+                                                            : '' }}>
+                                                            Other fines</option>
+                                                        <option value="Health Insurance Fines" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Health Insurance Fines'
+                                                            ? 'selected' : '' }}>
+                                                            Health Insurance Fines</option>
+                                                        <option value="Immigration Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Immigration Application'
+                                                            ? 'selected' : '' }}>
+                                                            Immigration Application</option>
+                                                        <option value="MOHRE Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='MOHRE Application'
+                                                            ? 'selected' : '' }}>
+                                                            MOHRE Application</option>
+
+                                                        <option value="Other" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Other' ? 'selected' : ''
+                                                            }}>Other
+                                                        </option>
+                                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file'
+                                                             style="line-height: 1" name="signd_can_from_file"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            @php
+                                            $file_name = $permit_cancellation->signd_can_from_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($permit_cancellation->signd_can_from_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3 align-center">
+                                                    <Button type="submit"
+                                                        class='btn btn-success mt-4'>Add</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                            </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-permit-cancel4" role="tabpanel"
+                                aria-labelledby="v-pills-permit-cancel4-tab">
+                                <div class='rounded p-3 light-box-shadow'>
+                                    <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
+                                        class='py-2' method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="waiting_for" value="step4" hidden>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                            Approval
+                                        </h6>
+                                        <div class="row">
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                                <label for="status-select1">Status</label>
+                                                <select id="selectDocument" class="form-control category status-select"
+                                                    name="waiting_for_approval_status">
+                                                    <option value="" selected disabled>select</option>
+                                                    <option value="Approved" {{$permit_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                    <option value="Hold" {{$permit_cancellation['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Skip" {{$permit_cancellation['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                    <option value="Reject" {{$permit_cancellation['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-12 d-none status-select-comment">
+                                                <label for='sponsor2-textareara-13'>Comments</label>
+                                                <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                                    placeholder="Enter Your Comments ..." class="form-control"
+                                                    rows="5">{{$permit_cancellation->waiting_for_approval_reason}}</textarea>
+
+                                                @php
+                                                $file_name = $permit_cancellation->waiting_for_approval_reason_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($permit_cancellation->waiting_for_approval_reason_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                                <div class="form-group mb-3">
+                                                    <label for="sponsor-approval-13">Approval No:</label>
+                                                    <input type="text" class="form-control" id="sponsor-approval-13"
+                                                        placeholder="..." name="waiting_for_approval_no" value="{{$permit_cancellation->waiting_for_approval_no}}">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                                <div class="upload-file">
+                                                    <label for='visa2-file-bio_1'>Upload File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                            name="waiting_for_approval_file" style="line-height: 1"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @php
+                                                $file_name = $permit_cancellation->waiting_for_approval_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($permit_cancellation->waiting_for_approval_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-12 text-center status-select-btn">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @endif
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- WorkPermit Cancel Tabe End -->
         </div>
+    </div>
         <!-- Cancelatoion Tab end -->
     </div>
     <!-- Main Header Tab content end -->

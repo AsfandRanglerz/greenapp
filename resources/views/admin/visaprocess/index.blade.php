@@ -62,8 +62,27 @@
                                                             <a class="btn btn-danger"
                                                                 href="{{ route('visa.show', $requests->id) }}">Rejecte</a>
                                                         @else
-                                                            <a class="btn btn-primary"
-                                                                href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
+                                                            @php
+                                                                $con = NUll;
+                                                                $user_id = $requests->user->id;
+                                                                $company_id = $requests->company->id;
+                                                                if (App\Models\NewVisaProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
+                                                                App\Models\RenewalProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
+                                                                App\Models\SponsaredBySomeOne::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
+                                                                App\Models\PartTimeAndTemporary::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
+                                                                App\Models\UaeAndGccNational::where('employee_id',$user_id)->where('company_id',$company_id)->first())
+                                                                {
+                                                                    $con = 'yes';
+                                                                }
+                                                            @endphp
+                                                                {{-- @if($con == 'yes')
+                                                                    <a href="{{route('view-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='btn btn-success'>View</a>
+                                                                @else --}}
+
+                                                                
+                                                                 <a class="btn btn-primary"
+                                                                 href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
+                                                                {{-- @endif --}}
                                                         @endif
                                                     </div>
                                                 </td>
