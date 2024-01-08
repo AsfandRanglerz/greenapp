@@ -191,9 +191,9 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-visa">Process status</label>
+                                                <label for="new-visa-1">Process status</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-visa" placeholder="...">
+                                                    id="new-visa-1" placeholder="...">
                                             </div>
                                         </div>
                                 </div>
@@ -217,35 +217,35 @@
                                         <input type="text" value='step1' name='job_offer' hidden>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">Job Offer Transaction No:</label>
+                                                <label for="new-visa-2">Job Offer Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_tran_no}}" name='job_offer_tran_no'>
+                                                    id="new-visa-2" placeholder="..." value="{{$new_visa->job_offer_tran_no}}" name='job_offer_tran_no'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">MB Contracts Transaction No:</label>
+                                                <label for="new-visa-3">MB Contracts Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_mb_trc_no}}" name='job_offer_mb_trc_no'>
+                                                    id="new-visa-3" placeholder="..." value="{{$new_visa->job_offer_mb_trc_no}}" name='job_offer_mb_trc_no'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">Preapproval Of Work Permit Transaction No:</label>
+                                                <label for="new-visa-4">Preapproval Of Work Permit Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_preapproval_wp_t_no}}" name='job_offer_preapproval_wp_t_no'>
+                                                    id="new-visa-4" placeholder="..." value="{{$new_visa->job_offer_preapproval_wp_t_no}}" name='job_offer_preapproval_wp_t_no'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee">Transaction Fee</label>
+                                                <label for="new-visa-5">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee"  placeholder="..." value="{{$new_visa->job_offer_tran_fees}}" name='job_offer_tran_fees'>
+                                                    id="new-visa-5"  placeholder="..." value="{{$new_visa->job_offer_tran_fees}}" name='job_offer_tran_fees'>
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="job_offer_status">
+                                            <label for="new-visa-6">Status</label>
+                                            <select id="new-visa-6" class="form-control category" name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['job_offer_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['job_offer_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -257,14 +257,15 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-7">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..." value="{{$new_visa->job_offer_date}}" name='job_offer_date'>
+                                                    id="new-visa-7" placeholder="..." value="{{$new_visa->job_offer_date}}" name='job_offer_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                 <select id="selectDocument" class="form-control category" name="job_offer_file_name"
+                                                <label for='new-visa-8'>Select Document</label>
+                                                 <select id="new-visa-8" class="form-control category" name="job_offer_file_name"
                                                     value="{{$new_visa->job_offer_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -438,9 +439,9 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 gap-1  col-md-6">
                                           <div class="d-flex flex-column">
-                                            {{-- <label for="#">Attachment</label> --}}
+                                            {{-- <label for="new-visa-9">Attachment</label> --}}
                                             <input type="file" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..." value="{{$new_visa->job_offer_file}}" name='file'>
+                                                    id="new-visa-9" placeholder="..." value="{{$new_visa->job_offer_file}}" name='file'>
                                          {{-- <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
                                           </div>
                                       </div>
@@ -497,25 +498,22 @@
                                     </h6>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="status-select1">Status</label>
-                                            <select id="selectDocument" name="waiting_for_approval_status" class="form-control category status-select" id="status-select1">
+                                            <label for="new-visa-10">Status</label>
+                                            <select id="new-visa-10" name="waiting_for_approval_status" class="form-control category status-select" id="status-select1">
                                                 <option value="" selected disabled>select</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Approved' ? 'selected':''}} value="Approved">Approved</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Hold' ? 'selected':''}} value="Hold" >Hold</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Skip' ? 'selected':''}} value="Skip">Skip</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Rejected' ? 'selected':''}} value="Rejected">Reject</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'Rejected' ? 'selected':''}} value="Reject">Reject</option>
                                             </select>
                                         </div>
-
                                         <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_fappro_reason"
+                                            <label for='new-visa-11'>Comments</label>
+                                            <textarea type="text" id='new-visa-11' name="waiting_fappro_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$new_visa->waiting_fappro_reason}}</textarea>
-                                        </div>
-
-                                        @if($new_visa->waiting_fappro_reason_file)
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                                @if($new_visa->waiting_fappro_reason_file)
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <p>User upload</p>
                                                 @php
                                                 $file_name = $new_visa->waiting_fappro_reason_file;
@@ -543,20 +541,23 @@
                                                     @endif
                                             </div>
                                         @endif
+                                        </div>
+
+                                        
 
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="new-visa-12">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-12"
                                                    name="waiting_fappro_no" value="{{$new_visa->waiting_fappro_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-13'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-13'
                                                         name="waiting_fappro_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -609,31 +610,31 @@
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">Job Offer Transaction No:</label>
+                                                <label for="new-visa-14">Job Offer Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_tran_no}}" disabled name='job_offer_tran_no'>
+                                                    id="new-visa-14" placeholder="..." value="{{$new_visa->job_offer_tran_no}}" disabled name='job_offer_tran_no'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">MB Contracts Transaction No:</label>
+                                                <label for="new-visa-15">MB Contracts Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_mb_trc_no}}" disabled name='job_offer_mb_trc_no'>
+                                                    id="new-visa-15" placeholder="..." value="{{$new_visa->job_offer_mb_trc_no}}" disabled name='job_offer_mb_trc_no'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number">Preapproval Of Work Permit Transaction No:</label>
+                                                <label for="new-visa-16">Preapproval Of Work Permit Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..." value="{{$new_visa->job_offer_preapproval_wp_t_no}}" disabled name='job_offer_preapproval_wp_t_no'>
+                                                    id="new-visa-16" placeholder="..." value="{{$new_visa->job_offer_preapproval_wp_t_no}}" disabled name='job_offer_preapproval_wp_t_no'>
                                             </div>
                                         </div>
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                              <label for='#visa2-file'>Upload ST & MB</label>
+                                              <label for='new-visa-17'>Upload ST & MB</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                  <input type="file" class="form-control" id='visa2-file'
+                                                  <input type="file" class="form-control" id='new-visa-17'
                                                       name="signed_mb_st_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->signed_mb_st_file}}">
                                                   <div class="input-group-prepend">
                                                       <small class="input-group-text"><span
@@ -692,8 +693,8 @@
 
                                         {{-- <div class="form-group mb-3 col-12">
                                           <div class="form-check">
-                                            <input class="form-check-input"  type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input"  type="checkbox" value="" id="new-visa-18">
+                                            <label class="form-check-label" for="new-visa-18">
                                               The contract has been sign.
                                             </label>
                                           </div>
@@ -702,17 +703,17 @@
                                         @if ($new_visa['signed_mb_st_status']=='Approved')
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#StMB-transaction-date">Approval No.</label>
+                                                <label for="new-visa-19">Approval No.</label>
                                                 <input type="text" class="form-control"
-                                                    id="StMB-transaction-date" placeholder="..." name='signed_mb_st_reason' value="{{$new_visa->signed_mb_st_reason}}">
+                                                    id="new-visa-19" placeholder="..." name='signed_mb_st_reason' value="{{$new_visa->signed_mb_st_reason}}">
                                             </div>
                                         </div>
                                         @endif
                                         @if ($new_visa['signed_mb_st_status']=='Reject')
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#StMB-transaction-date">Rejection Reason</label>
-                                                <textarea class="form-control" id="StMB-transaction-date" placeholder="..." name='signed_mb_st_reason' rows="2" value="{{$new_visa->signed_mb_st_reason}}"></textarea>
+                                                <label for="new-visa-20">Rejection Reason</label>
+                                                <textarea class="form-control" id="new-visa-20" placeholder="..." name='signed_mb_st_reason' rows="2" value="{{$new_visa->signed_mb_st_reason}}"></textarea>
                                             </div>
                                         </div>
                                         @endif
@@ -737,22 +738,22 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-number"
+                                                <label for="new-visa-21">Transaction No:</label>
+                                                <input type="text" class="form-control" id="new-visa-21"
                                                     placeholder="..." value="{{$new_visa->dubai_insurance_tran_no}}" name="dubai_insurance_tran_no">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-fee"
+                                                <label for="new-visa-22">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="new-visa-22"
                                                     placeholder="..." value="{{$new_visa->dubai_insurance_tran_fees}}" name="dubai_insurance_tran_fees">
                                             </div>
                                         </div>
 
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="dubai_insurance_status">
+                                            <label for="new-visa-23">Status</label>
+                                            <select id="new-visa-23" class="form-control category" name="dubai_insurance_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['dubai_insurance_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['dubai_insurance_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -766,15 +767,16 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#dubai-insurance-date">Date</label>
+                                                <label for="new-visa-24">Date</label>
                                                 <input type="date" class="form-control" name="dubai_insurance_date"
-                                                    id="dubai-insurance-date" placeholder="..." value="{{$new_visa->dubai_insurance_date}}">
+                                                    id="new-visa-24" placeholder="..." value="{{$new_visa->dubai_insurance_date}}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                 <select id="selectDocument" class="form-control category" name="dubai_insurance_file_name"
+                                                <label for='new-visa-25'>Select-File</label>
+                                                 <select id="new-visa-25" class="form-control category" name="dubai_insurance_file_name"
                                                     value="{{$new_visa->dubai_insurance_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -951,9 +953,9 @@
 
                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                     <div class="upload-file">
-                                      {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                      {{-- <label for='new-visa-26'>Upload File</label> --}}
                                       <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                          <input type="file" class="form-control" id='visa2-file'
+                                          <input type="file" class="form-control" id='new-visa-26'
                                               name="dubai_insurance_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->dubai_insurance_file}}">
                                           <div class="input-group-prepend">
                                               <small class="input-group-text"><span
@@ -1008,22 +1010,22 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-number">Transaction No:</label>
+                                                <label for="new-visa-27">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="preapproval-transaction-number" placeholder="..." name="pre_approved_wp_tran_no" value={{$new_visa->pre_approved_wp_tran_no}}>
+                                                    id="new-visa-27" placeholder="..." name="pre_approved_wp_tran_no" value={{$new_visa->pre_approved_wp_tran_no}}>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                                <label for="new-visa-28">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="preapproval-transaction-fee" placeholder="..." name="pre_approved_wp_tran_fees" value={{$new_visa->pre_approved_wp_tran_fees}}>
+                                                    id="new-visa-28" placeholder="..." name="pre_approved_wp_tran_fees" value={{$new_visa->pre_approved_wp_tran_fees}}>
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             {{-- <div class="form-group col-xl-6 col-lg-12 col-md-6"> --}}
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category" name="pre_approved_wp_status">
+                                                <label for="new-visa-29">Status</label>
+                                                <select id="new-visa-29" class="form-control category" name="pre_approved_wp_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['pre_approved_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['pre_approved_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1036,14 +1038,15 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-date">Date</label>
+                                                <label for="new-visa-30">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="preapproval-transaction-date" placeholder="..." name="pre_approved_wp_date" value="{{$new_visa->pre_approved_wp_date}}">
+                                                    id="new-visa-30" placeholder="..." name="pre_approved_wp_date" value="{{$new_visa->pre_approved_wp_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                 <select id="selectDocument" class="form-control category" name="pre_approved_wp_file_name"
+                                                <label for='new-visa-31'>Select File</label>
+                                                 <select id="new-visa-31" class="form-control category" name="pre_approved_wp_file_name"
                                                     value="{{$new_visa->pre_approved_wp_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -1218,9 +1221,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-32'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-32'
                                                     name="pre_approved_wp_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->pre_approved_wp_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -1273,22 +1276,22 @@
                                     <div class="row align-items-end fine-select-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-visa-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="entry-visa-number"
+                                                <label for="new-visa-33">Transaction No:</label>
+                                                <input type="text" class="form-control" id="new-visa-33"
                                                     placeholder="..." name="enter_visa_ts_no" value="{{$new_visa->enter_visa_ts_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-visa-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="entry-visa-fee"
+                                                <label for="new-visa-34">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="new-visa-34"
                                                     placeholder="..." name="enter_visa_ts_fee" value="{{$new_visa->enter_visa_ts_fee}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category" name="enter_visa_status">
+                                                <label for="new-visa-35">Status</label>
+                                                <select id="new-visa-35" class="form-control category" name="enter_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['enter_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['enter_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1299,16 +1302,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-transaction-date">Date</label>
+                                                <label for="new-visa-36">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="entry-transaction-date" placeholder="..." name="enter_visa_date" value="{{$new_visa->enter_visa_date}}">
+                                                    id="new-visa-36" placeholder="..." name="enter_visa_date" value="{{$new_visa->enter_visa_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-37'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="enter_visa_file_name"
+                                                 <select id="new-visa-37" class="form-control category" name="enter_visa_file_name"
                                                     value="{{$new_visa->enter_visa_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -1483,9 +1486,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-38'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-38'
                                                     name="enter_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->enter_visa_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -1521,7 +1524,7 @@
                                         </div>
                                         {{-- <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                           <div class="d-flex flex-column">
-                                            <label for="#">Attachment</label>
+                                            <label for="">Attachment</label>
                                          <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
                                           </div>
                                       </div> --}}
@@ -1529,8 +1532,8 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
-                                                <label for="#select-entry-visa">Are u inside the country?</label>
-                                                <select class="form-control entry-visa-select" id="entry-visa-select" name='enter_visa_country'>
+                                                <label for="new-visa-40">Are u inside the country?</label>
+                                                <select class="form-control entry-visa-select" id="new-visa-40" name='enter_visa_country'>
                                                     <option>select status</option>
                                                     <option value='yes' {{$new_visa['enter_visa_country'] == 'yes' ? 'selected' : ''}}>Yes</option>
                                                     <option value='no'  {{$new_visa['enter_visa_country'] == 'no' ? 'selected' : ''}}>No</option>
@@ -1539,8 +1542,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
                                             <div class="form-group">
-                                                <label for="#select-fine-file">Over Stay Fines?</label>
-                                                <select class="form-control fine-select" id="select-fine-file" name="enter_visa_over_sf">
+                                                <label for="new-visa-41">Over Stay Fines?</label>
+                                                <select class="form-control fine-select" id="new-visa-41" name="enter_visa_over_sf">
                                                     <option selected disabled>Select fine</option>
                                                     <option value='yes' {{$new_visa['enter_visa_over_sf'] == 'yes' ? 'selected' : ''}}>Yes</option>
                                                     <option value='no'  {{$new_visa['enter_visa_over_sf'] == 'no' ? 'selected' : ''}}>No</option>
@@ -1551,10 +1554,10 @@
                                     <div class="fine-files-container d-none ">
                                     <div class="row  align-items-end ">
                                       <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                        <div class="new-visa-42">
                                           <label for='#over-stay-file'>Upload file</label>
                                           <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                              <input type="file" class="form-control" id='over-stay-file'
+                                              <input type="file" class="form-control" id='new-visa-42'
                                                   name="enter_visa_osf_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                               <div class="input-group-prepend">
                                                   <small class="input-group-text"><span
@@ -1610,22 +1613,22 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number5">Transaction No:</label>
+                                                <label for="new-visa-43">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number5" placeholder="..." name="change_of_visa_tno" value="{{$new_visa->change_of_visa_tno}}">
+                                                    id="new-visa-43" placeholder="..." name="change_of_visa_tno" value="{{$new_visa->change_of_visa_tno}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee5">Transaction Fee</label>
+                                                <label for="new-visa-44">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee5" placeholder="..." name="change_of_visa_tfee" value="{{$new_visa->change_of_visa_tfee}}">
+                                                    id="new-visa-44" placeholder="..." name="change_of_visa_tfee" value="{{$new_visa->change_of_visa_tfee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <div class="form-group mb-3">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category" name="change_of_visa_status">
+                                                <label for="new-visa-45">Status</label>
+                                                <select id="new-visa-45" class="form-control category" name="change_of_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['change_of_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['change_of_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1636,16 +1639,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#change-transaction-date">Date</label>
+                                                <label for="new-visa-46">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="change-date" placeholder="..." name="change_of_visa_date" value="{{$new_visa->change_of_visa_date}}">
+                                                    id="new-visa-46" placeholder="..." name="change_of_visa_date" value="{{$new_visa->change_of_visa_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-47'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="change_of_visa_file_name"
+                                                 <select id="new-visa-47" class="form-control category" name="change_of_visa_file_name"
                                                     value="{{$new_visa->change_of_visa_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -1820,9 +1823,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-48'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-48'
                                                     name="change_of_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->change_of_visa_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -1884,21 +1887,21 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number6">Transaction No:</label>
+                                                <label for="new-visa-49">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" placeholder="..." name="medical_fitness_tno" value="{{$new_visa->medical_fitness_tno}}">
+                                                    id="new-visa-49" placeholder="..." name="medical_fitness_tno" value="{{$new_visa->medical_fitness_tno}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee6">Transaction Fee</label>
+                                                <label for="new-visa-50">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" placeholder="..." name="medical_fitness_tfee" value="{{$new_visa->medical_fitness_tfee}}">
+                                                    id="new-visa-50" placeholder="..." name="medical_fitness_tfee" value="{{$new_visa->medical_fitness_tfee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="medical_fitness_status">
+                                            <label for="new-visa-51">Status</label>
+                                            <select id="new-visa-51" class="form-control category" name="medical_fitness_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1908,18 +1911,18 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#change-transaction-date">Date</label>
+                                                <label for="new-visa-52">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="change-date" placeholder="..." name="medical_fitness_date" value="{{$new_visa->medical_fitness_date}}">
+                                                    id="new-visa-52" placeholder="..." name="medical_fitness_date" value="{{$new_visa->medical_fitness_date}}">
                                             </div>
                                         </div>
 
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-53'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="medical_fitness_file_name"
+                                                 <select id="new-visa-53" class="form-control category" name="medical_fitness_file_name"
                                                     value="{{$new_visa->medical_fitness_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -2094,9 +2097,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-54'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-54'
                                                     name="medical_fitness_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->medical_fitness_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -2133,9 +2136,9 @@
 
                                         {{-- <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                           <div class="upload-file">
-                                            <label for='#visa-medical'>Upload Medical</label>
+                                            <label for='new-visa-55'>Upload Medical</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa-medical'
+                                                <input type="file" class="form-control" id='new-visa-55'
                                                     name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -2164,21 +2167,21 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number5">Transaction No:</label>
+                                                <label for="new-visa-56">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" placeholder="..." name="tawjeeh_trans_no" value="{{$new_visa->tawjeeh_trans_no}}">
+                                                    id="new-visa-56" placeholder="..." name="tawjeeh_trans_no" value="{{$new_visa->tawjeeh_trans_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee6">Transaction Fee</label>
+                                                <label for="new-visa-57">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" placeholder="..." name="tawjeeh_trans_fee" value="{{$new_visa->tawjeeh_trans_fee}}">
+                                                    id="new-visa-57" placeholder="..." name="tawjeeh_trans_fee" value="{{$new_visa->tawjeeh_trans_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="tawjeeh_status">
+                                            <label for="new-visa-58">Status</label>
+                                            <select id="new-visa-58" class="form-control category" name="tawjeeh_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['tawjeeh_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['tawjeeh_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2188,15 +2191,15 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#tawjeeh-transaction-date">Date</label>
+                                                <label for="new-visa-59">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="tawjeeh-date" placeholder="..." name="tawjeeh_date" value="{{$new_visa->tawjeeh_date}}">
+                                                    id="new-visa-59" placeholder="..." name="tawjeeh_date" value="{{$new_visa->tawjeeh_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="#select-tawjeeh-payment">Tawjeeh Payment</label>
-                                                <select class="form-control select-tawjeeh-payment" id="select-tawjeeh-payment" name="tawjeeh_payment">
+                                                <label for="new-visa-60">Tawjeeh Payment</label>
+                                                <select class="form-control select-tawjeeh-payment" id="new-visa-60" name="tawjeeh_payment">
                                                     <option>Tawjeeh Payment</option>
                                                     <option value='yes' {{$new_visa['tawjeeh_payment'] == 'yes' ? 'selected':''}}>Yes</option>
                                                     <option value='no'  {{$new_visa['tawjeeh_payment'] == 'no' ? 'selected':''}}>No</option>
@@ -2205,9 +2208,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end">
                                           <div class="upload-file">
-                                            <label for='#visa-tawjeeh-medical'>Upload Document</label>
+                                            <label for='new-visa-61'>Upload Document</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa-tawjeeh-medical'
+                                                <input type="file" class="form-control" id='new-visa-61'
                                                     name="tawjeeh_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -2261,21 +2264,21 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number8">Transaction No:</label>
+                                                <label for="new-visa-62">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number8" placeholder="..." name="contract_tran_no" value="{{$new_visa->contract_tran_no}}">
+                                                    id="new-visa-62" placeholder="..." name="contract_tran_no" value="{{$new_visa->contract_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee8">Transaction Fee</label>
+                                                <label for="new-visa-63">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee8" placeholder="..." name="contract_tran_fee" value="{{$new_visa->contract_tran_fee}}">
+                                                    id="new-visa-63" placeholder="..." name="contract_tran_fee" value="{{$new_visa->contract_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="contract_status">
+                                            <label for="new-visa-64">Status</label>
+                                            <select id="new-visa-64" class="form-control category" name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2286,17 +2289,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#tawjeeh-transaction-date">Date</label>
+                                                <label for="new-visa-65">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="tawjeeh-date" placeholder="..." name="contract_date" value="{{$new_visa->contract_date}}">
+                                                    id="new-visa-65" placeholder="..." name="contract_date" value="{{$new_visa->contract_date}}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-66'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="contract_file_name"
+                                                 <select id="new-visa-66" class="form-control category" name="contract_file_name"
                                                     value="{{$new_visa->contract_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -2470,9 +2473,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-67'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-67'
                                                     name="contract_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->contract_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -2531,21 +2534,21 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number9">Transaction No:</label>
+                                                <label for="new-visa-68">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number9" placeholder="..." name="health_insur_tran_no" value="{{$new_visa->health_insur_tran_no}}">
+                                                    id="new-visa-68" placeholder="..." name="health_insur_tran_no" value="{{$new_visa->health_insur_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee9">Transaction Fee</label>
+                                                <label for="new-visa-69">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee9" placeholder="..." name="health_insur_tran_fee" value="{{$new_visa->health_insur_tran_fee}}">
+                                                    id="new-visa-69" placeholder="..." name="health_insur_tran_fee" value="{{$new_visa->health_insur_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="health_insur_status">
+                                            <label for="new-visa-70">Status</label>
+                                            <select id="new-visa-70" class="form-control category" name="health_insur_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['health_insur_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['health_insur_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2556,17 +2559,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#health-insurance-date">Date</label>
+                                                <label for="new-visa-71">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="health-insurance-date" placeholder="..." name="health_insur_date" value="{{$new_visa->health_insur_date}}">
+                                                    id="new-visa-71" placeholder="..." name="health_insur_date" value="{{$new_visa->health_insur_date}}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-72'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="health_insur_file_name"
+                                                 <select id="new-visa-72" class="form-control category" name="health_insur_file_name"
                                                     value="{{$new_visa->health_insur_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -2742,9 +2745,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-73'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-73'
                                                     name="health_insur_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->health_insur_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -2803,21 +2806,21 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number10">Transaction No:</label>
+                                                <label for="new-visa-74">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number10" placeholder="..." name="work_permit_tran_no" value="{{$new_visa->work_permit_tran_no}}">
+                                                    id="new-visa-74" placeholder="..." name="work_permit_tran_no" value="{{$new_visa->work_permit_tran_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee10">Transaction Fee</label>
+                                                <label for="new-visa-75">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee10" placeholder="..." name="work_permit_tran_fee" value="{{$new_visa->work_permit_tran_fee}}">
+                                                    id="new-visa-75" placeholder="..." name="work_permit_tran_fee" value="{{$new_visa->work_permit_tran_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="work_permit_status">
+                                            <label for="new-visa-76">Status</label>
+                                            <select id="new-visa-76" class="form-control category" name="work_permit_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2835,9 +2838,9 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='new-visa-77'>Upload file</label>
 
-                                                 <select id="selectDocument" class="form-control category" name="work_permit_app_file_name"
+                                                 <select id="new-visa-77" class="form-control category" name="work_permit_app_file_name"
                                                     value="{{$new_visa->work_permit_app_file_name}}" required>
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo"
@@ -3013,9 +3016,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                            {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                            {{-- <label for='new-visa-78'>Upload File</label> --}}
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-78'
                                                     name="work_permit_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->work_permit_file}}">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -3068,21 +3071,21 @@
                                   <div class="row">
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
-                                              <label for="#start-process-transaction-number11">Transaction No:</label>
+                                              <label for="new-visa-79">Transaction No:</label>
                                               <input type="text" class="form-control"
-                                                  id="start-process-transaction-number11" placeholder="..." name="emirates_tran_no" value="{{$new_visa->emirates_tran_no}}">
+                                                  id="new-visa-79" placeholder="..." name="emirates_tran_no" value="{{$new_visa->emirates_tran_no}}">
                                           </div>
                                       </div>
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
-                                              <label for="#start-process-transaction-fee11">Transaction Fee</label>
+                                              <label for="new-visa-80">Transaction Fee</label>
                                               <input type="text" class="form-control"
-                                                  id="start-process-transaction-fee11" placeholder="..." name="emirates_tran_fee" value="{{$new_visa->emirates_tran_fee}}">
+                                                  id="new-visa-80" placeholder="..." name="emirates_tran_fee" value="{{$new_visa->emirates_tran_fee}}">
                                           </div>
                                       </div>
                                       <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                          <label for="">Status</label>
-                                          <select id="selectDocument" class="form-control category" name="emirates_status">
+                                          <label for="new-visa-81">Status</label>
+                                          <select id="new-visa-81" class="form-control category" name="emirates_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['emirates_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$new_visa['emirates_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3092,17 +3095,17 @@
                                       </div>
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                           <div class="form-group mb-3">
-                                              <label for="#emirates-transaction-date">Date</label>
+                                              <label for="new-visa-82">Date</label>
                                               <input type="date" class="form-control"
-                                                  id="emirates-transaction-date" placeholder="..." name="emirates_date" value="{{$new_visa->emirates_date}}">
+                                                  id="new-visa-82" placeholder="..." name="emirates_date" value="{{$new_visa->emirates_date}}">
                                           </div>
                                       </div>
 
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                      <label for='#over-stay-file'>Upload file</label>
+                                      <label for='new-visa-83'>Upload file</label>
 
-                                             <select id="selectDocument" class="form-control category" name="emirates_file_name"
+                                             <select id="new-visa-83" class="form-control category" name="emirates_file_name"
                                                 value="{{$new_visa->emirates_file_name}}" required>
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Personal Photo"
@@ -3278,9 +3281,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                        {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                        {{-- <label for='new-visa-84'>Upload File</label> --}}
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                            <input type="file" class="form-control" id='visa2-file'
+                                            <input type="file" class="form-control" id='new-visa-84'
                                                 name="emirates_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->emirates_file}}">
                                             <div class="input-group-prepend">
                                                 <small class="input-group-text"><span
@@ -3328,21 +3331,21 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number111">Transaction No:</label>
+                                            <label for="new-visa-85">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number112" placeholder="..." name="residency_tran_no" value="{{$new_visa->residency_tran_no}}">
+                                                id="new-visa-85" placeholder="..." name="residency_tran_no" value="{{$new_visa->residency_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-fee112">Transaction Fee</label>
+                                            <label for="new-visa-86">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-fee112" placeholder="..." name="residency_tran_fee" value="{{$new_visa->residency_tran_fee}}">
+                                                id="new-visa-86" placeholder="..." name="residency_tran_fee" value="{{$new_visa->residency_tran_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category" name="residency_status">
+                                        <label for="new-visa-87">Status</label>
+                                        <select id="new-visa-87" class="form-control category" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$new_visa['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3352,17 +3355,17 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#emirates-transaction-date2">Date</label>
+                                            <label for="new-visa-88">Date</label>
                                             <input type="date" class="form-control"
-                                                id="emirates-transaction-date2"  name="residency_date" value="{{$new_visa->residency_date}}">
+                                                id="new-visa-88"  name="residency_date" value="{{$new_visa->residency_date}}">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                      <label for='#over-stay-file'>Upload file</label>
+                                      <label for='new-visa-89'>Upload file</label>
 
-                                             <select id="selectDocument" class="form-control category" name="residency_file_name"
+                                             <select id="new-visa-89" class="form-control category" name="residency_file_name"
                                                 value="{{$new_visa->residency_file_name}}" required>
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Personal Photo"
@@ -3538,9 +3541,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                        {{-- <label for='#visa2-file'>Upload File</label> --}}
+                                        {{-- <label for='new-visa-90'>Upload File</label> --}}
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                            <input type="file" class="form-control" id='visa2-file'
+                                            <input type="file" class="form-control" id='new-visa-90'
                                                 name="residency_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->residency_file}}">
                                             <div class="input-group-prepend">
                                                 <small class="input-group-text"><span
@@ -3599,21 +3602,21 @@
                                     <div class="row biometric-file-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number12">Transaction No:</label>
+                                                <label for="new-visa-91">Transaction No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number12" placeholder="..."  name="biometric_tranc_no" value="{{$new_visa->biometric_tranc_no}}">
+                                                    id="new-visa-91" placeholder="..."  name="biometric_tranc_no" value="{{$new_visa->biometric_tranc_no}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee12">Transaction Fee</label>
+                                                <label for="new-visa-92">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee12" placeholder="..."  name="biometric_tranc_fee" value="{{$new_visa->biometric_tranc_fee}}">
+                                                    id="new-visa-92" placeholder="..."  name="biometric_tranc_fee" value="{{$new_visa->biometric_tranc_fee}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="biometric_status">
+                                            <label for="new-visa-93">Status</label>
+                                            <select id="new-visa-93" class="form-control category" name="biometric_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['biometric_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['biometric_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3623,15 +3626,15 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#biometric1-date">Date</label>
+                                                <label for="new-visa-94">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="#biometric1-date" placeholder="..."  name="biometric_date" value="{{$new_visa->biometric_date}}">
+                                                    id="new-visa-94" placeholder="..."  name="biometric_date" value="{{$new_visa->biometric_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="#select-biometric-file">Employee Biometric</label>
-                                                <select class="form-control biometric-select" id="select-biometric" name="employee_biometric">
+                                                <label for="new-visa-95">Employee Biometric</label>
+                                                <select class="form-control biometric-select" id="new-visa-95" name="employee_biometric">
                                                     <option>Employee Biometric</option>
                                                     <option value='required'>Required</option>
                                                     <option value='not required'>Not Required</option>
@@ -3641,9 +3644,9 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
                                           <div class="mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                              <label for='#visa2-file-bio'>Uplaod File</label>
+                                              <label for='new-visa-96'>Uplaod File</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                  <input type="file" class="form-control" id='visa2-file-bio'
+                                                  <input type="file" class="form-control" id='new-visa-96'
                                                       name="biometric_file" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                   <div class="input-group-prepend">
                                                       <small class="input-group-text"><span
@@ -3746,8 +3749,8 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-visa">Process status</label>
-                                            <input type="text" class="form-control" id="start-process-visa"
+                                            <label for="new-visa-98">Process status</label>
+                                            <input type="text" class="form-control" id="new-visa-98"
                                                 placeholder="...">
                                         </div>
                                     </div>
@@ -3769,22 +3772,22 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-medical-transaction-number">Transaction
+                                            <label for="new-visa-99">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="renewal-medical-transaction-number" placeholder="..." name="medical_fitness_tran_no" value="{{$renewal_process->medical_fitness_tran_no}}">
+                                                id="new-visa-99" placeholder="..." name="medical_fitness_tran_no" value="{{$renewal_process->medical_fitness_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-medical-fee">Transaction Fee</label>
-                                            <input type="text" class="form-control" id="renewal-medical-fee"
+                                            <label for="new-visa-100">Transaction Fee</label>
+                                            <input type="text" class="form-control" id="new-visa-100"
                                                 placeholder="..." name="medical_fitness_tran_fees" value="{{$renewal_process->medical_fitness_tran_fees}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                        <label for="selectDocument-renwal-1">Status</label>
-                                        <select id="selectDocument-renwal-1"
+                                        <label for="new-visa-101">Status</label>
+                                        <select id="new-visa-101"
                                             class="form-control category status-select" id="status-select1" name="medical_fitness_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -3795,15 +3798,15 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-process1-date">Date</label>
-                                            <input type="date" class="form-control" id="renewal-process1-date"
+                                            <label for="new-visa-102">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-102"
                                                 placeholder="..." name="medical_fitness_date" value="{{$renewal_process->medical_fitness_date}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6 renewal-fitness-parent">
                                         <div class="form-group">
-                                            <label for="fitness-renewal">Fitness Status</label>
-                                            <select class="form-control renewal-fitness" id="fitness-renewal" name="medical_fitness_st">
+                                            <label for="new-visa-103">Fitness Status</label>
+                                            <select class="form-control renewal-fitness" id="new-visa-103" name="medical_fitness_st">
                                                 <option selected disabled>select fitness</option>
                                                 <option value="fit" {{$renewal_process['medical_fitness_st'] == 'fit' ? 'selected':''}}>Fit</option>
                                                 <option value="not fit" {{$renewal_process['medical_fitness_st'] == 'not fit' ? 'selected':''}}>Not Fit</option>
@@ -3813,9 +3816,9 @@
                                     <div
                                         class=" col-xl-6 col-lg-12 col-md-6 mb-3 d-none renewal-medical-file align-items-end">
                                         <div class="upload-file">
-                                            <label for='visa2-file'>Upload ST & MB</label>
+                                            <label for='new-visa-104'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-104'
                                                     name="medical_fitness_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -3869,23 +3872,23 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#work-permit-app-transaction-number">Transaction
+                                            <label for="new-visa-105">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="work-permit-app-transaction-number" placeholder="..." name="work_permit_tran_no" value="{{$renewal_process->work_permit_tran_no}}">
+                                                id="new-visa-105" placeholder="..." name="work_permit_tran_no" value="{{$renewal_process->work_permit_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#work-permit-app-transaction-fee">Transaction
+                                            <label for="new-visa-106">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="work-permit-app-transaction-fee" placeholder="..." name="work_permit_tran_fee" value="{{$renewal_process->work_permit_tran_fee}}">
+                                                id="new-visa-106" placeholder="..." name="work_permit_tran_fee" value="{{$renewal_process->work_permit_tran_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                        <label for="selectDocument-renwal-2">Status</label>
-                                        <select id="selectDocument-renwal-2"
+                                        <label for="new-visa-107">Status</label>
+                                        <select id="new-visa-107"
                                             class="form-control category status-select" id="status-select1" name="work_permit_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -3896,14 +3899,15 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-process2-date">Date</label>
-                                            <input type="date" class="form-control" id="renewal-process2-date"
+                                            <label for="new-visa-108">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-108"
                                                 placeholder="..." name="work_permit_date" value="{{$renewal_process->work_permit_date}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for='new-visa-109'>Select File</label>
+                                            <select id="new-visa-109" class="form-control category"
                                                 name="work_permit_file_name"
                                                 value="{{$renewal_process->work_permit_file_name}}" required>
                                                 <option value="" selected disabled>Select Document</option>
@@ -4147,10 +4151,10 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='visa2-file-renewal-2'>Upload File</label>
+                                            <label for='new-visa-110'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
-                                                    id='visa2-file-renewal-2' name="work_permit_file" style="line-height: 1"
+                                                    id='new-visa-110' name="work_permit_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -4205,24 +4209,24 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#upload-signed-mb-transaction-number">Transaction
+                                            <label for="new-visa-111">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="upload-signed-mb-transaction-number" placeholder="..." name="signed_mb_tranc_no" value="{{$renewal_process->signed_mb_tranc_no}}" >
+                                                id="new-visa-111" placeholder="..." name="signed_mb_tranc_no" value="{{$renewal_process->signed_mb_tranc_no}}" >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#upload-signed-mb-transaction-fee">Transaction
+                                            <label for="new-visa-112">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="upload-signed-mb-transaction-fee" placeholder="..." name="signed_mb_tranc_fee" value="{{$renewal_process->signed_mb_tranc_fee}}">
+                                                id="new-visa-112" placeholder="..." name="signed_mb_tranc_fee" value="{{$renewal_process->signed_mb_tranc_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="status-select1-renewal-3">Status</label>
-                                        <select id="selectDocument" class="form-control category status-select"
-                                            id="status-select1-renwal-3" name="signed_mb_status">
+                                        <select id="new-visa-113" class="form-control category status-select"
+                                            id="new-visa-113" name="signed_mb_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['signed_mb_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['signed_mb_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -4232,16 +4236,16 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-process3-date">Date</label>
-                                            <input type="date" class="form-control" id="renewal-process3-date"
+                                            <label for="new-visa-114">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-114"
                                                 placeholder="..." name="signed_mb_date" value="{{$renewal_process->signed_mb_date}}">
                                         </div>
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='visa2-file'>Upload ST & MB</label>
+                                            <label for='new-visa-115'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-115'
                                                     name="signed_mb_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -4295,24 +4299,24 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number12">Transaction
+                                            <label for="new-visa-116">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number12" placeholder="..." name="pay_dubai_insu_tran_no" value="{{$renewal_process->pay_dubai_insu_tran_no}}">
+                                                id="new-visa-116" placeholder="..." name="pay_dubai_insu_tran_no" value="{{$renewal_process->pay_dubai_insu_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-fee12">Transaction
+                                            <label for="new-visa-117">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-fee12" placeholder="..." name="pay_dubai_insu_tran_fee" value="{{$renewal_process->pay_dubai_insu_tran_fee}}">
+                                                id="new-visa-117" placeholder="..." name="pay_dubai_insu_tran_fee" value="{{$renewal_process->pay_dubai_insu_tran_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                        <label for="status-select1-renewal-4">Status</label>
+                                        <label for="new-visa-118">Status</label>
                                         <select class="form-control category status-select"
-                                            id="status-select1-renwal-4" name="pay_dubai_insu_status">
+                                            id="new-visa-118" name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['pay_dubai_insu_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -4322,15 +4326,15 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#renewal-process3-date">Date</label>
-                                            <input type="date" class="form-control" id="renewal-process3-date"
+                                            <label for="new-visa-119">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-119"
                                                 placeholder="..." name="pay_dubai_insu_date" value="{{$renewal_process->pay_dubai_insu_date}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='selectDocument-renwal-3'>Select file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for='new-visa-120'>Select file</label>
+                                            <select id="new-visa-120" class="form-control category"
                                             name="pay_dubai_insu_file_name"
                                             value="{{$renewal_process->pay_dubai_insu_file_name}}" required>
                                             <option value="" selected disabled>Select Document</option>
@@ -4574,9 +4578,9 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex ">
                                         <div class="upload-file">
-                                            <label for='visa2-file-bio_1'>Upload File</label>
+                                            <label for='new-visa-121'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                <input type="file" class="form-control" id='new-visa-121'
                                                     name="pay_dubai_insu_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -4632,24 +4636,24 @@
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label
-                                                for="#start-process-transaction-number12-contract">Transaction
+                                                for="new-visa-122">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number12-contract"
+                                                id="new-visa-122"
                                                 placeholder="..." name="contract_sub_tranc_no" value="{{$renewal_process->contract_sub_tranc_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="start-process-transaction-fee12-contract">Transaction
+                                            <label for="new-visa-123">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-fee12-contract" placeholder="..." name="contract_sub_tranc_no" value="{{$renewal_process->contract_sub_tranc_no}}">
+                                                id="new-visa-123" placeholder="..." name="contract_sub_tranc_no" value="{{$renewal_process->contract_sub_tranc_no}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                        <label for="selectDocument-renwal-status-contract">Status</label>
-                                        <select id="selectDocument-renwal-status-contract"
+                                        <label for="new-visa-124">Status</label>
+                                        <select id="new-visa-124"
                                             class="form-control category" name="contract_sub_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['contract_sub_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -4660,15 +4664,15 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="selectDocument-renwal-date-contract">Date</label>
+                                            <label for="new-visa-125">Date</label>
                                             <input type="date" class="form-control"
-                                                id="selectDocument-renwal-date-contract" name="contract_sub_date" value="{{$renewal_process->contract_sub_date}}">
+                                                id="new-visa-125" name="contract_sub_date" value="{{$renewal_process->contract_sub_date}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='selectDocument-renwal-3-contract'>Select file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for='new-visa-125'>Select file</label>
+                                            <select id="new-visa-125" class="form-control category"
                                                 name="contract_sub_file_name"
                                                 value="{{$renewal_process->contract_sub_file_name}}" required>
                                                 <option value="" selected disabled>Select Document</option>
@@ -4912,10 +4916,10 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex ">
                                         <div class="upload-file">
-                                            <label for='selectDocument-renwal-file-contract'>Upload File</label>
+                                            <label for='new-visa-126'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
-                                                    id='selectDocument-renwal-file-contract' name="contract_sub_file"
+                                                    id='new-visa-126' name="contract_sub_file"
                                                     style="line-height: 1" accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -4969,23 +4973,23 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#Renewal-process7-transaction-number">Transaction
+                                            <label for="new-visa-127">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="Renewal-process7-transaction-number" placeholder="..." name="tawjeeh_tranc_no" value="{{$renewal_process->tawjeeh_tranc_no}}">
+                                                id="new-visa-127" placeholder="..." name="tawjeeh_tranc_no" value="{{$renewal_process->tawjeeh_tranc_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#Renewal-process7-transaction-fee">Transaction
+                                            <label for="new-visa-128">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="Renewal-process7-transaction-fee" placeholder="..." name="tawjeeh_tranc_fee" value="{{$renewal_process->tawjeeh_tranc_fee}}">
+                                                id="new-visa-128" placeholder="..." name="tawjeeh_tranc_fee" value="{{$renewal_process->tawjeeh_tranc_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category" name="tawjeeh_tranc_status">
+                                        <label for="new-visa-129">Status</label>
+                                        <select id="new-visa-129" class="form-control category" name="tawjeeh_tranc_status">
                                             <option value="" selected disabled>select</option>
                                          <option value="Approved" {{$renewal_process['tawjeeh_tranc_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                          <option value="Hold" {{$renewal_process['tawjeeh_tranc_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -4995,16 +4999,16 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="renewal6-date">Date</label>
-                                            <input type="date" class="form-control" id="renewal6-date"
+                                            <label for="new-visa-130">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-130"
                                                 placeholder="..." name="tawjeeh_tranc_date" value="{{$renewal_process->tawjeeh_tranc_date}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
                                         <div class="form-group">
-                                            <label for="renewal select-tawjeeh-payment">Tawjeeh Payment</label>
+                                            <label for="new-visa-131">Tawjeeh Payment</label>
                                             <select class="form-control select-tawjeeh-payment"
-                                                id="select-tawjeeh-payment" name="tawjeeh_tranc_payment">
+                                                id="new-visa-131" name="tawjeeh_tranc_payment">
                                                 <option selected disabled>Tawjeeh Payment</option>
                                                 <option value='yes' {{$renewal_process['tawjeeh_tranc_payment'] == 'yes' ? 'selected' : '' }}>Yes</option>
                                                 <option value='no'  {{$renewal_process['tawjeeh_tranc_payment'] == 'no' ? 'selected' : '' }}> No</option>
@@ -5014,10 +5018,10 @@
                                     <div
                                         class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end">
                                         <div class="upload-file">
-                                            <label for='#visa-tawjeeh-medical'>Upload Document</label>
+                                            <label for='new-visa-132'>Upload Document</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
-                                                    id='visa-tawjeeh-medical' name="tawjeeh_tranc_file"
+                                                    id='new-visa-132' name="tawjeeh_tranc_file"
                                                     style="line-height: 1" accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span
@@ -5069,21 +5073,21 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-renwal">Transaction
+                                            <label for="new-visa-134">Transaction
                                                 No:</label>
-                                            <input type="text" class="form-control" id="start-process-transaction-renwal" placeholder="..." name="residency_tran_no" value="{{$renewal_process->residency_tran_no}}">
+                                            <input type="text" class="form-control" id="new-visa-134" placeholder="..." name="residency_tran_no" value="{{$renewal_process->residency_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-fee11">Transaction
+                                            <label for="new-visa-135">Transaction
                                                 Fee</label>
-                                            <input type="text" class="form-control" id="start-process-transaction-fee11" placeholder="..." name="residency_tran_fees" value="{{$renewal_process->residency_tran_fees}}">
+                                            <input type="text" class="form-control" id="new-visa-135" placeholder="..." name="residency_tran_fees" value="{{$renewal_process->residency_tran_fees}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                        <label for="select-id-renewal">Status</label>
-                                        <select id="select-id-renewal" class="form-control category" name="residency_status">
+                                        <label for="new-visa-136">Status</label>
+                                        <select id="new-visa-136" class="form-control category" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -5094,16 +5098,16 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#emirates-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="emirates-transaction-date" placeholder="..."
+                                            <label for="new-visa-137">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-137" placeholder="..."
                                                 name="residency_date" value="{{$renewal_process->residency_date}}">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='over-stay-file-renwal'>Upload file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for='new-visa-138'>Upload file</label>
+                                            <select id="new-visa-138" class="form-control category"
                                             name="residency_file_name"
                                             value="{{$renewal_process->residency_file_name}}" required>
                                             <option value="" selected disabled>Select Document</option>
@@ -5347,9 +5351,9 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='visa2-file-renewal'>Upload File</label>
+                                            <label for='new-visa-139'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file-renewal' style="line-height: 1"
+                                                <input type="file" class="form-control" id='new-visa-139' style="line-height: 1"
                                                     accept=".pdf,.doc,.excel" name="residency_file">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
@@ -5394,23 +5398,23 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number111">Transaction
+                                            <label for="new-visa-140">Transaction
                                                 No:</label>
-                                            <input type="text" class="form-control" id="start-process-transaction-number112"
+                                            <input type="text" class="form-control" id="new-visa-140"
                                                 placeholder="..." name="renewal_tran_no" value="{{$renewal_process->renewal_tran_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-fee112">Transaction
+                                            <label for="new-visa-141">Transaction
                                                 Fee</label>
-                                            <input type="text" class="form-control" id="start-process-transaction-fee112" placeholder="..."
+                                            <input type="text" class="form-control" id="new-visa-141" placeholder="..."
                                                 name="renewal_tran_fees" value="{{$renewal_process->renewal_tran_fees}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                        <label for="select-residency">Status</label>
-                                        <select id="select-residency" class="form-control category" name="renewal_status">
+                                        <label for="new-visa-142">Status</label>
+                                        <select id="new-visa-142" class="form-control category" name="renewal_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['renewal_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['renewal_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -5420,16 +5424,16 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="emirate-transaction-date2">Date</label>
-                                            <input type="date" class="form-control" id="emirate-transaction-date2"
+                                            <label for="new-visa-143">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-143"
                                             name="renewal_date" value="{{$renewal_process->renewal_date}}">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='#over-stay-file'>Upload file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for='new-visa-144'>Upload file</label>
+                                            <select id="new-visa-144" class="form-control category"
                                             name="renewal_file_name"
                                             value="{{$renewal_process->renewal_file_name}}" required>
                                             <option value="" selected disabled>Select Document</option>
@@ -5673,9 +5677,9 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='visa2-renwal-file'>Upload File</label>
+                                            <label for='new-visa-145'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file' name="renewal_file"
+                                                <input type="file" class="form-control" id='new-visa-145' name="renewal_file"
                                                     style="line-height: 1" accept=".pdf,.doc,.excel" value="">
                                                 <div class="input-group-prepend">
                                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
@@ -5728,27 +5732,27 @@
                                 <div class="row biometric-file-container">
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                 <div class="form-group mb-3">
-                                <label for="#start-process-transaction-number12">Transaction
+                                <label for="new-visa-146">Transaction
                                 No:</label>
                                 <input type="text" class="form-control"
-                                id="start-process-transaction-number12" placeholder="..."
+                                id="new-visa-146" placeholder="..."
                                 name="emp_biometric_tranc_no"
                                 value="{{$renewal_process->emp_biometric_tranc_no}}">
                                 </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                 <div class="form-group mb-3">
-                                <label for="#start-process-transaction-fee12">Transaction
+                                <label for="new-visa-147">Transaction
                                 Fee</label>
                                 <input type="text" class="form-control"
-                                id="start-process-transaction-fee12" placeholder="..."
+                                id="new-visa-147" placeholder="..."
                                 name="emp_biometric_tranc_fee"
                                 value="{{$renewal_process->emp_biometric_tranc_fee}}">
                                 </div>
                                 </div>
                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                <label for="">Status</label>
-                                <select id="selectDocument" class="form-control category"
+                                <label for="new-visa-148">Status</label>
+                                <select id="new-visa-148" class="form-control category"
                                 name="emp_biometric_status">
                                 <option value="" selected disabled>select</option>
                                 <option value="Approved" {{$renewal_process['emp_biometric_status']=='Approved'
@@ -5763,16 +5767,16 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                 <div class="form-group mb-3">
-                                <label for="#biometric1-date">Date</label>
-                                <input type="date" class="form-control" id="#biometric1-date"
+                                <label for="new-visa-149">Date</label>
+                                <input type="date" class="form-control" id="new-visa-149"
                                 placeholder="..." name="emp_biometric_date"
                                 value="{{$renewal_process->emp_biometric_date}}">
                                 </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                 <div class="form-group">
-                                <label for="#select-biometric-file">Employee Biometric</label>
-                                <select class="form-control biometric-select" id="select-biometric"
+                                <label for="new-visa-150">Employee Biometric</label>
+                                <select class="form-control biometric-select" id="new-visa-150"
                                 name="emp_biometric">
                                 <option selected disabled>Employee Biometric</option>
                                 <option value='required' {{$renewal_process['emp_biometric'] == 'required' ? 'selected' : '' }}>Required</option>
@@ -5783,9 +5787,9 @@
                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
                                 <div class="mb-3 align-items-end d-flex">
                                 <div class="upload-file">
-                                <label for='#visa2-file-bio'>Uplaod File</label>
+                                <label for='new-visa-151'>Uplaod File</label>
                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                    <input type="file" class="form-control" id='visa2-file-bio'
+                                    <input type="file" class="form-control" id='new-visa-151'
                                         name="emp_biometric_file" style="line-height: 1"
                                         accept=".pdf,.doc,.excel">
                                     <div class="input-group-prepend">
@@ -5916,9 +5920,9 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored0-visa">Process status</label>
+                                                <label for="new-visa-152">Process status</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-visa" placeholder="...">
+                                                    id="new-visa-152" placeholder="...">
                                             </div>
                                         </div>
                                     </div>
@@ -5939,23 +5943,23 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-153">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="work_permit_app_tranc_no" value="{{$spo_by_some->work_permit_app_tranc_no}}" placeholder="...">
+                                                    id="new-visa-153" name="work_permit_app_tranc_no" value="{{$spo_by_some->work_permit_app_tranc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-154">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="work_permit_app_tranc_fee" value="{{$spo_by_some->work_permit_app_tranc_fee}}" placeholder="...">
+                                                    id="new-visa-154" name="work_permit_app_tranc_fee" value="{{$spo_by_some->work_permit_app_tranc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-155">Status</label>
+                                            <select id="new-visa-155" class="form-control category"
                                                 name="work_permit_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['work_permit_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -5966,16 +5970,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-156">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="new-visa-156" placeholder="..."
                                                     name='work_permit_app_date' value="{{$spo_by_some->work_permit_app_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Upload File</label>
-                                                <select id="selectDocument" class="form-control category" name="work_permit_app_file_name">
+                                                <label for="new-visa-157">Upload File</label>
+                                                <select id="new-visa-157" class="form-control category" name="work_permit_app_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
                                                         $spo_by_some['work_permit_app_file_name']=='Personal Photo'
@@ -6217,9 +6221,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload</label>
+                                                <label for='new-visa-158'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" name="work_permit_app_file" class="form-control" id='visa2-file'
+                                                    <input type="file" name="work_permit_app_file" class="form-control" id='new-visa-158'
                                                          style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -6277,25 +6281,25 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Transaction
+                                            <label for="new-visa-159">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="..."
+                                                id="new-visa-159" placeholder="..."
                                                 name="signed_mb_st_tranc_no" value="{{$spo_by_some->signed_mb_st_tranc_no}}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Transaction
+                                            <label for="new-visa-160">Transaction
                                                 Fee:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" placeholder="..."
+                                                id="new-visa-160" placeholder="..."
                                                 name="signed_mb_st_tranc_fee" value="{{$spo_by_some->signed_mb_st_tranc_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6  col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-161">Status</label>
+                                        <select id="new-visa-161" class="form-control category"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6307,17 +6311,17 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group ">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" name="signed_mb_st_date" value="{{$spo_by_some->signed_mb_st_date}}" class="form-control" id="StMB-transaction-date">
+                                            <label for="new-visa-162">Date</label>
+                                            <input type="date" name="signed_mb_st_date" value="{{$spo_by_some->signed_mb_st_date}}" class="form-control" id="new-visa-162">
                                         </div>
                                     </div>
 
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='#visa2-file'>Upload ST & MB</label>
+                                            <label for='new-visa-163'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-163'
                                                      style="line-height: 1" name="signed_mb_st_file"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -6374,8 +6378,8 @@
                                     </h6>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="status-select1">Status</label>
-                                            <select id="selectDocument" class="form-control category status-select"
+                                            <label for="new-visa-164">Status</label>
+                                            <select id="new-visa-164" class="form-control category status-select"
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6385,8 +6389,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                            <label for='new-visa-165'>Comments</label>
+                                            <textarea type="text" id='new-visa-165' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$spo_by_some->waiting_for_approval_reason}}</textarea>
 
@@ -6417,17 +6421,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="new-visa-166">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-166"
                                                     placeholder="..." name="waiting_for_approval_no" value="{{$spo_by_some->waiting_for_approval_no}}">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-167'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-167'
                                                         name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -6483,24 +6487,24 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#visa3-transaction-number">Transaction No:</label>
+                                        <label for="new-visa-169">Transaction No:</label>
                                         <input type="text" class="form-control"
-                                            id="visa3-transaction-number" placeholder="..." value="{{$spo_by_some->pay_dubai_insu_tranc_no}}"
+                                            id="new-visa-169" placeholder="..." value="{{$spo_by_some->pay_dubai_insu_tranc_no}}"
                                             name="pay_dubai_insu_tranc_no">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#visa3-transaction-fee">Transaction Fee</label>
-                                        <input type="text" class="form-control" id="visa3-transaction-fee"
+                                        <label for="new-visa-170">Transaction Fee</label>
+                                        <input type="text" class="form-control" id="new-visa-170"
                                             placeholder="..." value="{{$spo_by_some->pay_dubai_insu_tranc_fee}}"
                                             name="pay_dubai_insu_tranc_fee">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                    <label for="">Status</label>
-                                    <select id="selectDocument" class="form-control category"
+                                    <label for="new-visa-171">Status</label>
+                                    <select id="new-visa-171" class="form-control category"
                                         name="pay_dubai_insu_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6512,17 +6516,17 @@
                                         </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#dubai-insurance-date">Date</label>
+                                        <label for="new-visa-172">Date</label>
                                         <input type="date" class="form-control" name="pay_dubai_insu_date"
-                                            id="dubai-insurance-date" placeholder="..." value="{{$spo_by_some->pay_dubai_insu_date}}"
+                                            id="new-visa-172" placeholder="..." value="{{$spo_by_some->pay_dubai_insu_date}}"
                                          >
                                     </div>
                                 </div>
 
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="">Upload File</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-173">Upload File</label>
+                                        <select id="new-visa-173" class="form-control category"
                                             name="pay_dubai_insu_file_name">
                                             <option value="" selected disabled>Select Document</option>
                                             <option value="Personal Photo" {{
@@ -6766,9 +6770,9 @@
                                 <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end  d-flex">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-174'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-174'
                                                         name="pay_dubai_insu_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -6825,23 +6829,23 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#preapproval-transaction-number">Transaction No:</label>
+                                        <label for="new-visa-174">Transaction No:</label>
                                         <input type="text" class="form-control"
-                                            id="preapproval-transaction-number" value="{{$spo_by_some->pre_approv_wp_tranc_no}}" placeholder="..."
+                                            id="new-visa-174" value="{{$spo_by_some->pre_approv_wp_tranc_no}}" placeholder="..."
                                             name="pre_approv_wp_tranc_no">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                        <label for="new-visa-175">Transaction Fee</label>
                                         <input type="text" class="form-control"
-                                            id="preapproval-transaction-fee" value="{{$spo_by_some->pre_approv_wp_tranc_fee}}" placeholder="..."
+                                            id="new-visa-175" value="{{$spo_by_some->pre_approv_wp_tranc_fee}}" placeholder="..."
                                             name="pre_approv_wp_tranc_fee">
                                     </div>
                                 </div>
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                    <label for="">Status</label>
-                                    <select id="selectDocument" class="form-control category"
+                                    <label for="new-visa-176">Status</label>
+                                    <select id="new-visa-176" class="form-control category"
                                         name="pre_approv_wp_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pre_approv_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6852,16 +6856,16 @@
                                         </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="#preapproval-transaction-date">Date</label>
+                                        <label for="new-visa-177">Date</label>
                                         <input type="date" class="form-control"
-                                            id="preapproval-transaction-date" value="{{$spo_by_some->pre_approv_wp_date}}" placeholder="..."
+                                            id="new-visa-177" value="{{$spo_by_some->pre_approv_wp_date}}" placeholder="..."
                                             name="pre_approv_wp_date">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="">select file</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-178">select file</label>
+                                        <select id="new-visa-178" class="form-control category"
                                             name="pre_approv_wp_file_name">
                                             <option value="" selected disabled>Select Document</option>
                                             <option value="Personal Photo" {{
@@ -7104,9 +7108,9 @@
                                 </div>
                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                     <div class="upload-file">
-                                        <label for='#visa2-file'>Upload File</label>
+                                        <label for='new-visa-179'>Upload File</label>
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                            <input type="file" class="form-control" id='visa2-file'
+                                            <input type="file" class="form-control" id='new-visa-179'
                                                 name="pre_approv_wp_file" style="line-height: 1"
                                                 accept=".pdf,.doc,.excel">
                                             <div class="input-group-prepend">
@@ -7161,24 +7165,24 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-number">Transaction No:</label>
+                                            <label for="new-visa-181">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-number" value="{{$spo_by_some->upload_wp_tranc_no}}" placeholder="..."
+                                                id="new-visa-181" value="{{$spo_by_some->upload_wp_tranc_no}}" placeholder="..."
                                                 name="upload_wp_tranc_no">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                            <label for="new-visa-182">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-fee" value="{{$spo_by_some->upload_wp_tranc_fee}}" placeholder="..."
+                                                id="new-visa-182" value="{{$spo_by_some->upload_wp_tranc_fee}}" placeholder="..."
                                                 name="upload_wp_tranc_fee">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">select file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-183">select file</label>
+                                            <select id="new-visa-183" class="form-control category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Approved" {{$spo_by_some['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -7190,17 +7194,17 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-date">Date</label>
+                                            <label for="new-visa-184">Date</label>
                                             <input type="date" class="form-control"
-                                                id="preapproval-transaction-date" value="{{$spo_by_some->upload_wp_date}}" placeholder="..."
+                                                id="new-visa-184" value="{{$spo_by_some->upload_wp_date}}" placeholder="..."
                                                 name="upload_wp_date"
                                                 >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">Select File</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-185">Select File</label>
+                                            <select id="new-visa-185" class="form-control category"
                                                 name="upload_wp_file_name">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Personal Photo" {{
@@ -7444,9 +7448,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                             <label for='#visa2-file'>Upload File</label>
+                                             <label for='new-visa-186'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-186'
                                                     name="upload_wp_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel"
                                                    >
@@ -7534,8 +7538,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#parttime-visa">Process status</label>
-                                                <input type="text" class="form-control" id="part-time-visa"
+                                                <label for="new-visa-187">Process status</label>
+                                                <input type="text" class="form-control" id="new-visa-187"
                                                     placeholder="...">
                                             </div>
                                         </div>
@@ -7557,23 +7561,23 @@
                                     {{-- <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-188">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" placeholder="...">
+                                                    id="new-visa-188" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-189">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" placeholder="...">
+                                                    id="new-visa-189" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-190">Status</label>
+                                            <select id="new-visa-190" class="form-control category"
                                                 name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
 
@@ -7581,16 +7585,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-191">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="new-visa-191" placeholder="..."
                                                     name='job_offer_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">select File</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-192">select File</label>
+                                                <select id="new-visa-192" class="form-control category"
                                                     name="job_offer_file_name"
                                                     >
                                                     <option value="" selected disabled>Select Document
@@ -7600,9 +7604,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload ST & MB</label>
+                                                <label for='new-visa-193'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file'
+                                                    <input type="file" class="form-control" id='new-visa-193'
                                                          style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -7618,31 +7622,31 @@
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-6">
                                             <div class="form-group mb-3 align-center">
-                                                <Button type="submit"
-                                                    class='btn btn-success mt-4'>Add</Button>
+                                                <button type="submit"
+                                                    class='btn btn-success mt-4'>Add</button>
                                             </div>
                                         </div>
                                     </div> --}}
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-194">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="wp_app_trnc_no" value="{{$part_time->wp_app_trnc_no}}" placeholder="...">
+                                                    id="new-visa-194" name="wp_app_trnc_no" value="{{$part_time->wp_app_trnc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-195">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="wp_app_trnc_fee" value="{{$part_time->wp_app_trnc_fee}}" placeholder="...">
+                                                    id="new-visa-195" name="wp_app_trnc_fee" value="{{$part_time->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-196">Status</label>
+                                            <select id="new-visa-196" class="form-control category"
                                                 name="residency_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -7653,16 +7657,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-197">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="new-visa-197" placeholder="..."
                                                     name='wp_app_date' value="{{$part_time->wp_app_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Upload File</label>
-                                                <select id="selectDocument" class="form-control category" name="wp_app_file_name">
+                                                <label for="new-visa-198">Upload File</label>
+                                                <select id="new-visa-198" class="form-control category" name="wp_app_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
                                                         $part_time['wp_app_file_name']=='Personal Photo'
@@ -7904,9 +7908,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload</label>
+                                                <label for='new-visa-199'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" name="wp_app_file" class="form-control" id='visa2-file'
+                                                    <input type="file" name="wp_app_file" class="form-control" id='new-visa-199'
                                                          style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -7964,23 +7968,23 @@
                                 <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-200">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="signed_mb_st_trc_no" value="{{$part_time->signed_mb_st_trc_no}}" placeholder="...">
+                                                    id="new-visa-200" name="signed_mb_st_trc_no" value="{{$part_time->signed_mb_st_trc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-201">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="signed_mb_st_trc_fee" value="{{$part_time->signed_mb_st_trc_fee}}" placeholder="...">
+                                                    id="new-visa-201" name="signed_mb_st_trc_fee" value="{{$part_time->signed_mb_st_trc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-202">Status</label>
+                                            <select id="new-visa-202" class="form-control category"
                                                 name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -7991,18 +7995,18 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-203">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="new-visa-203" placeholder="..."
                                                     name='signed_mb_st_date' value="{{$part_time->signed_mb_st_date}}">
                                             </div>
                                         </div>
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload Signed ST & MB</label>
+                                                <label for='new-visa-204'>Upload Signed ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" name="signed_mb_st_file" class="form-control" id='visa2-file'
+                                                    <input type="file" name="signed_mb_st_file" class="form-control" id='new-visa-204'
                                                          style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -8061,9 +8065,9 @@
                                     </h6>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="status-select1">Status</label>
-                                            <select id="selectDocument" class="form-control category status-select"
-                                                id="status-select1" name="waiting_for_approval_status">
+                                            <label for="new-visa-205">Status</label>
+                                            <select id="new-visa-205" class="form-control category status-select"
+                                                 name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$part_time['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -8072,8 +8076,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                            <label for='new-visa-206'>Comments</label>
+                                            <textarea type="text" id='new-visa-206' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$part_time->waiting_for_approval_reason}}</textarea>
                                                 @php
@@ -8103,17 +8107,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="new-visa-207">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-207"
                                                     placeholder="..." name="waiting_for_approval_no" value="{{$part_time->waiting_for_approval_no}}">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-208'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-208'
                                                         name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -8167,23 +8171,23 @@
                                 <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-209">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="contract_tran_no" value="{{$part_time->contract_tran_no}}" placeholder="...">
+                                                    id="new-visa-209" name="contract_tran_no" value="{{$part_time->contract_tran_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-210">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="contract_tran_fee" value="{{$part_time->contract_tran_fee}}" placeholder="...">
+                                                    id="new-visa-210" name="contract_tran_fee" value="{{$part_time->contract_tran_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-211">Status</label>
+                                            <select id="new-visa-211" class="form-control category"
                                                 name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8194,16 +8198,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-212">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="new-visa-212" placeholder="..."
                                                     name='contract_date' value="{{$part_time->contract_date}}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Upload File</label>
-                                                <select id="selectDocument" class="form-control category" name="contract_file_name">
+                                                <label for="new-visa-213">Upload File</label>
+                                                <select id="new-visa-213" class="form-control category" name="contract_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
                                                         $part_time['contract_file_name']=='Personal Photo'
@@ -8445,9 +8449,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload</label>
+                                                <label for='new-visa-214'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" name="contract_file" class="form-control" id='visa2-file'
+                                                    <input type="file" name="contract_file" class="form-control" id='new-visa-214'
                                                          style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -8545,8 +8549,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#parttime2-visa">Process status</label>
-                                                <input type="text" class="form-control" id="part-time2-visa"
+                                                <label for="new-visa-215">Process status</label>
+                                                <input type="text" class="form-control" id="new-visa-215"
                                                     placeholder="...">
                                             </div>
                                         </div>
@@ -8568,23 +8572,23 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-216">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="wp_app_trnc_no" value="{{$uae_gcc->wp_app_trnc_no}}" placeholder="...">
+                                                    id="new-visa-216" name="wp_app_trnc_no" value="{{$uae_gcc->wp_app_trnc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-217">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="wp_app_trnc_fee" value="{{$uae_gcc->wp_app_trnc_fee}}" placeholder="...">
+                                                    id="new-visa-217" name="wp_app_trnc_fee" value="{{$uae_gcc->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-218">Status</label>
+                                            <select id="new-visa-218" class="form-control category"
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8595,16 +8599,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-219">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" name="wp_app_date" value="{{$uae_gcc->wp_app_date}}" placeholder="..."
+                                                    id="new-visa-219" name="wp_app_date" value="{{$uae_gcc->wp_app_date}}" placeholder="..."
                                                     name='job_offer_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category" name="wp_app_file_name">
+                                                <label for="new-visa-220">Slect File</label>
+                                                    <select id="new-visa-220" class="form-control category" name="wp_app_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
                                                             $uae_gcc['wp_app_file_name']=='Personal Photo'
@@ -8846,9 +8850,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload</label>
+                                                <label for='new-visa-221'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file'
+                                                    <input type="file" class="form-control" id='new-visa-221'
                                                          style="line-height: 1" name="wp_app_file"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -8907,24 +8911,24 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Transaction
+                                            <label for="new-visa-222">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" name="signed_mb_st_trc_no" value="{{$uae_gcc->signed_mb_st_trc_no}}" placeholder="...">
+                                                id="new-visa-222" name="signed_mb_st_trc_no" value="{{$uae_gcc->signed_mb_st_trc_no}}" placeholder="...">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Transaction
+                                            <label for="new-visa-223">Transaction
                                                 Fee:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" name="signed_mb_st_trc_fee" value="{{$uae_gcc->signed_mb_st_trc_fee}}" placeholder="...">
+                                                id="new-visa-223" name="signed_mb_st_trc_fee" value="{{$uae_gcc->signed_mb_st_trc_fee}}" placeholder="...">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-224">Status</label>
+                                        <select id="new-visa-224" class="form-control category"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8936,17 +8940,17 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="StMB-transaction-date"
+                                            <label for="new-visa-225">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-225"
                                                 value="{{$uae_gcc->signed_mb_st_date}}" placeholder="..." name='signed_mb_st_date'>
                                         </div>
                                     </div>
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='#visa2-file'>Upload ST & MB</label>
+                                            <label for='new-visa-226'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-226'
                                                     name="signed_mb_st_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -9005,24 +9009,24 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#visa3-transaction-number">Transaction No:</label>
+                                            <label for="new-visa-227">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="visa3-transaction-number" name="pay_dubai_insu_tranc_no" value="{{$uae_gcc->pay_dubai_insu_tranc_no}}" placeholder="..."
+                                                id="new-visa-227" name="pay_dubai_insu_tranc_no" value="{{$uae_gcc->pay_dubai_insu_tranc_no}}" placeholder="..."
                                                 >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#visa3-transaction-fee">Transaction Fee</label>
-                                            <input type="text" class="form-control" id="visa3-transaction-fee"
+                                            <label for="new-visa-228">Transaction Fee</label>
+                                            <input type="text" class="form-control" id="new-visa-228"
                                                 name="pay_dubai_insu_tranc_fee" value="{{$uae_gcc->pay_dubai_insu_tranc_fee}}" placeholder="..."
                                               >
                                         </div>
                                     </div>
 
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-229">Status</label>
+                                        <select id="new-visa-229" class="form-control category"
                                             name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9033,17 +9037,17 @@
                                             </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#dubai-insurance-date">Date</label>
+                                            <label for="new-visa-230">Date</label>
                                             <input type="date" class="form-control" name="pay_dubai_insu_date"
-                                                id="dubai-insurance-date"   value="{{$uae_gcc->pay_dubai_insu_date}}" placeholder="..."
+                                                id="new-visa-230"   value="{{$uae_gcc->pay_dubai_insu_date}}" placeholder="..."
                                              >
                                         </div>
                                     </div>
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">Upload File</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-231">Upload File</label>
+                                            <select id="new-visa-231" class="form-control category"
                                                 name="pay_dubai_insu_file_name">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Personal Photo" {{
@@ -9287,9 +9291,9 @@
                                     <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end  d-flex">
                                                 <div class="upload-file">
-                                                    <label for='visa2-file-bio_1'>Upload File</label>
+                                                    <label for='new-visa-232'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                        <input type="file" class="form-control" id='new-visa-232'
                                                             name="pay_dubai_insu_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -9346,8 +9350,8 @@
                                     </h6>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="status-select1">Status</label>
-                                            <select id="selectDocument" class="form-control category status-select"
+                                            <label for="new-visa-233">Status</label>
+                                            <select id="new-visa-233" class="form-control category status-select"
                                                 id="status-select1" name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9357,8 +9361,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                            <label for='new-visa-234'>Comments</label>
+                                            <textarea type="text" id='new-visa-234' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$uae_gcc->waiting_for_approval_reason}}</textarea>
 
@@ -9389,17 +9393,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="new-visa-235">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-235"
                                                      name="waiting_for_approval_no" value="{{$uae_gcc->waiting_for_approval_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-236'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-236'
                                                         name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -9454,24 +9458,24 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-number">Transaction No:</label>
+                                            <label for="new-visa-237">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-number" value="{{$uae_gcc->upload_wp_tranc_no}}" placeholder="..."
+                                                id="new-visa-237" value="{{$uae_gcc->upload_wp_tranc_no}}" placeholder="..."
                                                 name="upload_wp_tranc_no">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                            <label for="new-visa-238">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-fee" value="{{$uae_gcc->upload_wp_tranc_fee}}" placeholder="..."
+                                                id="new-visa-238" value="{{$uae_gcc->upload_wp_tranc_fee}}" placeholder="..."
                                                 name="upload_wp_tranc_fee">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">select file</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-239">select file</label>
+                                            <select id="new-visa-239" class="form-control category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$uae_gcc['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9483,17 +9487,17 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-date">Date</label>
+                                            <label for="new-visa-240">Date</label>
                                             <input type="date" class="form-control"
-                                                id="preapproval-transaction-date" value="{{$uae_gcc->upload_wp_date}}" placeholder="..."
+                                                id="new-visa-240" value="{{$uae_gcc->upload_wp_date}}" placeholder="..."
                                                 name="upload_wp_date"
                                                 >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">Select File</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-241">Select File</label>
+                                            <select id="new-visa-241" class="form-control category"
                                                 name="upload_wp_file_name">
                                                 <option value="" selected disabled>Select Document</option>
                                                 {{-- <option value="" selected disabled>Select Document</option> --}}
@@ -9738,9 +9742,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                             <label for='#visa2-file'>Upload File</label>
+                                             <label for='new-visa-242'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-242'
                                                     name="upload_wp_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel"
                                                    >
@@ -9836,8 +9840,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#parttime3-visa">Process status</label>
-                                                <input type="text" class="form-control" id="part-time3-visa"
+                                                <label for="new-visa-243">Process status</label>
+                                                <input type="text" class="form-control" id="new-visa-243"
                                                     placeholder="...">
                                             </div>
                                         </div>
@@ -9859,23 +9863,23 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                <label for="new-visa-244">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1-number1" name="wp_app_trnc_no" value="{{$modify_contract->wp_app_trnc_no}}" placeholder="...">
+                                                    id="new-visa-244" name="wp_app_trnc_no" value="{{$modify_contract->wp_app_trnc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                <label for="new-visa-245">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="sponsored1-transacton1" name="wp_app_trnc_fee" value="{{$modify_contract->wp_app_trnc_fee}}" placeholder="...">
+                                                    id="new-visa-245" name="wp_app_trnc_fee" value="{{$modify_contract->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-246">Status</label>
+                                            <select id="new-visa-246" class="form-control category"
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$modify_contract['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9887,16 +9891,16 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-date">Date</label>
+                                                <label for="new-visa-247">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="start-process-transaction-date" value="{{$modify_contract->wp_app_date}}" placeholder="..."
+                                                    id="new-visa-247" value="{{$modify_contract->wp_app_date}}" placeholder="..."
                                                     name='wp_app_date'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="">Slect File</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-248">Slect File</label>
+                                                <select id="new-visa-248" class="form-control category"
                                                     name="wp_app_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
@@ -10139,9 +10143,9 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa2-file'>Upload ST & MB</label>
+                                                <label for='new-visa-249'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file'
+                                                    <input type="file" class="form-control" id='new-visa-249'
                                                          style="line-height: 1" name="wp_app_file"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -10198,25 +10202,25 @@
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">Transaction
+                                            <label for="new-visa-250">Transaction
                                                 No:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" name="signed_mb_st_trc_no" value="{{$modify_contract->signed_mb_st_trc_no}}" placeholder="...">
+                                                id="new-visa-250" name="signed_mb_st_trc_no" value="{{$modify_contract->signed_mb_st_trc_no}}" placeholder="...">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#start-process-transaction-number">
+                                            <label for="new-visa-251">
                                                 Transaction Fee:</label>
                                             <input type="text" class="form-control"
-                                                id="start-process-transaction-number" value="{{$modify_contract->signed_mb_st_trc_fee}}" placeholder="..."
+                                                id="new-visa-251" value="{{$modify_contract->signed_mb_st_trc_fee}}" placeholder="..."
                                                 name='signed_mb_st_trc_fee'>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
-                                        <label for="">Status</label>
-                                        <select id="selectDocument" class="form-control category"
+                                        <label for="new-visa-252">Status</label>
+                                        <select id="new-visa-252" class="form-control category"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modify_contract['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10228,8 +10232,8 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#StMB-transaction-date">Date</label>
-                                            <input type="date" class="form-control" id="StMB-transaction-date"
+                                            <label for="new-visa-253">Date</label>
+                                            <input type="date" class="form-control" id="new-visa-253"
                                                 placeholder="..." name='signed_mb_st_date' value="{{$modify_contract->signed_mb_st_date}}">
                                         </div>
                                     </div>
@@ -10237,9 +10241,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                            <label for='#visa2-file'>Upload ST & MB</label>
+                                            <label for='new-visa-254'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-254'
                                                     name="signed_mb_st_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -10299,9 +10303,9 @@
                                     </h6>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="status-select1">Status</label>
-                                            <select id="selectDocument" class="form-control category status-select"
-                                                id="status-select1" name="waiting_for_approval_status">
+                                            <label for="new-visa-255">Status</label>
+                                            <select id="new-visa-255" class="form-control category status-select"
+                                                 name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$modify_contract['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$modify_contract['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -10310,8 +10314,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                            <label for='new-visa-256'>Comments</label>
+                                            <textarea type="text" id='new-visa-256' name="waiting_for_approval_reason"
                                                 placeholder="Enter Your Comments ..." class="form-control"
                                                 rows="5">{{$modify_contract->waiting_for_approval_reason}}</textarea>
                                                 @php
@@ -10341,17 +10345,17 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="new-visa-257">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-257"
                                                     placeholder="..." name="waiting_for_approval_no" value="{{$modify_contract->waiting_for_approval_no}}">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='new-visa-258'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='new-visa-258'
                                                         name="waiting_for_approval_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -10405,24 +10409,24 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-number">Transaction No:</label>
+                                            <label for="new-visa-259">Transaction No:</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-number" value="{{$modify_contract->upload_wp_tranc_no}}" placeholder="..."
+                                                id="new-visa-259" value="{{$modify_contract->upload_wp_tranc_no}}" placeholder="..."
                                                 name="upload_wp_tranc_no">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-fee">Transaction Fee</label>
+                                            <label for="new-visa-260">Transaction Fee</label>
                                             <input type="text" class="form-control"
-                                                id="preapproval-transaction-fee" value="{{$modify_contract->upload_wp_tranc_fee}}" placeholder="..."
+                                                id="new-visa-260" value="{{$modify_contract->upload_wp_tranc_fee}}" placeholder="..."
                                                 name="upload_wp_tranc_fee">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">status</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-261">status</label>
+                                            <select id="new-visa-261" class="form-control category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$modify_contract['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10434,17 +10438,17 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="#preapproval-transaction-date">Date</label>
+                                            <label for="new-visa-262">Date</label>
                                             <input type="date" class="form-control"
-                                                id="preapproval-transaction-date" placeholder="..."
+                                                id="new-visa-262" placeholder="..."
                                                 name="upload_wp_date" value="{{$modify_contract->upload_wp_date}}"
                                                 >
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="">Select File</label>
-                                            <select id="selectDocument" class="form-control category"
+                                            <label for="new-visa-263">Select File</label>
+                                            <select id="new-visa-263" class="form-control category"
                                                 name="upload_wp_file_name">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Personal Photo" {{
@@ -10688,9 +10692,9 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file">
-                                             <label for='#visa2-file'>Upload File</label>
+                                             <label for='new-visa-264'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file'
+                                                <input type="file" class="form-control" id='new-visa-264'
                                                     name="upload_wp_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel"
                                                    >
@@ -10779,10 +10783,10 @@
                                   </div>
                                   <div class="col-xl-6 col-lg-12 col-md-6">
                                       <div class="form-group mb-3">
-                                          <label for="#start-process-modify-visa">Process
+                                          <label for="new-visa-265">Process
                                               status</label>
                                           <input type="text" class="form-control"
-                                              id="start-process-modify-visa" placeholder="...">
+                                              id="new-visa-265" placeholder="...">
                                       </div>
                                   </div>
                               </div>
@@ -10803,8 +10807,8 @@
                             </h6>
                             <div class="row">
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                    <label for="status-select1">Status</label>
-                                    <select id="selectDocument" class="form-control category status-select"
+                                    <label for="new-visa-266">Status</label>
+                                    <select id="new-visa-266" class="form-control category status-select"
                                          name="application_status">
                                         <option value="" selected disabled>select</option>
                                         <option value="Approved" {{$modification_visa['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10814,8 +10818,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-12 d-none status-select-comment">
-                                    <label for='sponsor2-textareara-13'>Comments</label>
-                                    <textarea type="text" id='sponsor2-textarear-13' name="application_reject_reason"
+                                    <label for='new-visa-267'>Comments</label>
+                                    <textarea type="text" id='new-visa-267' name="application_reject_reason"
                                         placeholder="Enter Your Comments ..." class="form-control"
                                         rows="5">{{$modification_visa->application_reject_reason}}</textarea>
 
@@ -10846,17 +10850,17 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                     <div class="form-group mb-3">
-                                        <label for="sponsor-approval-13">Approval No:</label>
-                                        <input type="text" class="form-control" id="sponsor-approval-13"
+                                        <label for="new-visa-268">Approval No:</label>
+                                        <input type="text" class="form-control" id="new-visa-268"
                                             placeholder="..." name="application_approval_no" value="{{$modification_visa->application_approval_no}}">
                                     </div>
                                 </div>
                                 <div
                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                     <div class="upload-file">
-                                        <label for='visa2-file-bio_1'>Upload File</label>
+                                        <label for='new-visa-269'>Upload File</label>
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                            <input type="file" class="form-control" id='visa2-file-bio_1'
+                                            <input type="file" class="form-control" id='new-visa-269'
                                                 name="application_approval_file" style="line-height: 1"
                                                 accept=".pdf,.doc,.excel">
                                             <div class="input-group-prepend">
@@ -10936,10 +10940,10 @@
                                   </div>
                                   <div class="col-xl-6 col-lg-12 col-md-6">
                                       <div class="form-group mb-3">
-                                          <label for="#start-process-modify-emirates-id">Process
+                                          <label for="new-visa-270">Process
                                               status</label>
                                           <input type="text" class="form-control"
-                                              id="start-process-modify-visa" placeholder="...">
+                                              id="new-visa-270" placeholder="...">
                                       </div>
                                   </div>
                               </div>
@@ -10959,8 +10963,8 @@
                                 </h6>
                                 <div class="row">
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                        <label for="status-select1">Status</label>
-                                        <select id="selectDocument" class="form-control category status-select"
+                                        <label for="new-visa-271">Status</label>
+                                        <select id="new-visa-271" class="form-control category status-select"
                                             name="application_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modification_emirates['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10970,8 +10974,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-12 d-none status-select-comment">
-                                        <label for='sponsor2-textareara-13'>Comments</label>
-                                        <textarea type="text" id='sponsor2-textarear-13' name="application_reject_reason"
+                                        <label for='new-visa-272'>Comments</label>
+                                        <textarea type="text" id='new-visa-272' name="application_reject_reason"
                                             placeholder="Enter Your Comments ..." class="form-control"
                                             rows="5">{{$modification_emirates->application_reject_reason}}</textarea>
 
@@ -11002,17 +11006,17 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                         <div class="form-group mb-3">
-                                            <label for="sponsor-approval-13">Approval No:</label>
-                                            <input type="text" class="form-control" id="sponsor-approval-13"
+                                            <label for="new-visa-273">Approval No:</label>
+                                            <input type="text" class="form-control" id="new-visa-273"
                                                 placeholder="..." name="application_approval_no" value="{{$modification_emirates->application_approval_no}}">
                                         </div>
                                     </div>
                                     <div
                                         class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                         <div class="upload-file">
-                                            <label for='visa2-file-bio_1'>Upload File</label>
+                                            <label for='new-visa-274'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                <input type="file" class="form-control" id='new-visa-274'
                                                     name="application_approval_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
                                                 <div class="input-group-prepend">
@@ -11123,8 +11127,8 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#parttime3-visa">Process status</label>
-                                                    <input type="text" class="form-control" id="part-time3-visa"
+                                                    <label for="new-visa-275">Process status</label>
+                                                    <input type="text" class="form-control" id="new-visa-275"
                                                         placeholder="...">
                                                 </div>
                                             </div>
@@ -11145,23 +11149,23 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                    <label for="new-visa-276">Transaction
                                                         No:</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1-number1" name="wp_app_can_trnc_no" value="{{$visa_cancellation->wp_app_can_trnc_no}}" placeholder="...">
+                                                        id="new-visa-276" name="wp_app_can_trnc_no" value="{{$visa_cancellation->wp_app_can_trnc_no}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                    <label for="new-visa-277">Transaction
                                                         Fee</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1" name="wp_app_can_trnc_fee" value="{{$visa_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
+                                                        id="new-visa-277" name="wp_app_can_trnc_fee" value="{{$visa_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-278">Status</label>
+                                                <select id="new-visa-278" class="form-control category"
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11173,16 +11177,16 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <label for="new-visa-279">Date</label>
                                                     <input type="date" class="form-control"
-                                                        id="start-process-transaction-date" value="{{$visa_cancellation->wp_app_can_date}}" placeholder="..."
+                                                        id="new-visa-279" value="{{$visa_cancellation->wp_app_can_date}}" placeholder="..."
                                                         name='wp_app_can_date'>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category"
+                                                    <label for="new-visa-280">Slect File</label>
+                                                    <select id="new-visa-280" class="form-control category"
                                                         name="wp_app_can_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
@@ -11425,9 +11429,9 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <label for='new-visa-281'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file'
+                                                        <input type="file" class="form-control" id='new-visa-281'
                                                              style="line-height: 1" name="wp_app_can_file"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -11486,9 +11490,9 @@
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='cancel-file-bio_1'>Upload File</label>
+                                                    <label for='new-visa-282'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='cancel-file-bio_1'
+                                                        <input type="file" class="form-control" id='new-visa-282'
                                                             name="signed_cancellation_form" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
                                                             <small class="input-group-text"><span
@@ -11542,23 +11546,23 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                    <label for="new-visa-283">Transaction
                                                         No:</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1-number1" name="signd_can_from_tranc_no" value="{{$visa_cancellation->signd_can_from_tranc_no}}" placeholder="...">
+                                                        id="new-visa-283" name="signd_can_from_tranc_no" value="{{$visa_cancellation->signd_can_from_tranc_no}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                    <label for="new-visa-284">Transaction
                                                         Fee</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1" name="signd_can_from_tranc_fee" value="{{$visa_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
+                                                        id="new-visa-284" name="signd_can_from_tranc_fee" value="{{$visa_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-285">Status</label>
+                                                <select id="new-visa-285" class="form-control category"
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11570,16 +11574,16 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <label for="new-visa-286">Date</label>
                                                     <input type="date" class="form-control"
-                                                        id="start-process-transaction-date" value="{{$visa_cancellation->signd_can_from_date}}" placeholder="..."
+                                                        id="new-visa-286" value="{{$visa_cancellation->signd_can_from_date}}" placeholder="..."
                                                         name='signd_can_from_date'>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category"
+                                                    <label for="new-visa-287">Slect File</label>
+                                                    <select id="new-visa-287" class="form-control category"
                                                         name="signd_can_from_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
@@ -11822,9 +11826,9 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <label for='new-visa-288'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file'
+                                                        <input type="file" class="form-control" id='new-visa-288'
                                                              style="line-height: 1" name="signd_can_from_file"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -11882,8 +11886,8 @@
                                         </h6>
                                         <div class="row">
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                                <label for="status-select1">Status</label>
-                                                <select id="selectDocument" class="form-control category status-select"
+                                                <label for="new-visa-289">Status</label>
+                                                <select id="new-visa-289" class="form-control category status-select"
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11893,8 +11897,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-12 d-none status-select-comment">
-                                                <label for='sponsor2-textareara-13'>Comments</label>
-                                                <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                                <label for='new-visa-290'>Comments</label>
+                                                <textarea type="text" id='new-visa-290' name="waiting_for_approval_reason"
                                                     placeholder="Enter Your Comments ..." class="form-control"
                                                     rows="5">{{$visa_cancellation->waiting_for_approval_reason}}</textarea>
 
@@ -11925,17 +11929,17 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                                 <div class="form-group mb-3">
-                                                    <label for="sponsor-approval-13">Approval No:</label>
-                                                    <input type="text" class="form-control" id="sponsor-approval-13"
+                                                    <label for="new-visa-292">Approval No:</label>
+                                                    <input type="text" class="form-control" id="new-visa-292"
                                                         placeholder="..." name="waiting_for_approval_no" value="{{$visa_cancellation->waiting_for_approval_no}}">
                                                 </div>
                                             </div>
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                                 <div class="upload-file">
-                                                    <label for='visa2-file-bio_1'>Upload File</label>
+                                                    <label for='new-visa-293'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                        <input type="file" class="form-control" id='new-visa-293'
                                                             name="waiting_for_approval_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -11989,23 +11993,23 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                    <label for="new-visa-294">Transaction
                                                         No:</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1-number1" name="residency_app_tranc_no" value="{{$visa_cancellation->residency_app_tranc_no}}" placeholder="...">
+                                                        id="new-visa-294" name="residency_app_tranc_no" value="{{$visa_cancellation->residency_app_tranc_no}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                    <label for="new-visa-295">Transaction
                                                         Fee</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1" name="residency_app_tranc_fee" value="{{$visa_cancellation->residency_app_tranc_fee}}" placeholder="...">
+                                                        id="new-visa-295" name="residency_app_tranc_fee" value="{{$visa_cancellation->residency_app_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-296">Status</label>
+                                                <select id="new-visa-296" class="form-control category"
                                                     name="residency_app_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['residency_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12017,16 +12021,16 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <label for="new-visa-297">Date</label>
                                                     <input type="date" class="form-control"
-                                                        id="start-process-transaction-date" value="{{$visa_cancellation->residency_app_date}}" placeholder="..."
+                                                        id="new-visa-297" value="{{$visa_cancellation->residency_app_date}}" placeholder="..."
                                                         name='residency_app_date'>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category"
+                                                    <label for="new-visa-298">Slect File</label>
+                                                    <select id="new-visa-298" class="form-control category"
                                                         name="residency_app_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
@@ -12269,9 +12273,9 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <label for='new-visa-299'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file'
+                                                        <input type="file" class="form-control" id='new-visa-299'
                                                              style="line-height: 1" name="residency_app_file"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -12363,8 +12367,8 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#parttime3-visa">Process status</label>
-                                                    <input type="text" class="form-control" id="part-time3-visa"
+                                                    <label for="new-visa-300">Process status</label>
+                                                    <input type="text" class="form-control" id="new-visa-300"
                                                         placeholder="...">
                                                 </div>
                                             </div>
@@ -12386,23 +12390,23 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                    <label for="new-visa-301">Transaction
                                                         No:</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1-number1" name="wp_app_can_trnc_no" value="{{$permit_cancellation->wp_app_can_trnc_no}}" placeholder="...">
+                                                        id="new-visa-301" name="wp_app_can_trnc_no" value="{{$permit_cancellation->wp_app_can_trnc_no}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                    <label for="new-visa-302">Transaction
                                                         Fee</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1" name="wp_app_can_trnc_fee" value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
+                                                        id="new-visa-302" name="wp_app_can_trnc_fee" value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-303">Status</label>
+                                                <select id="new-visa-303" class="form-control category"
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12414,16 +12418,16 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <label for="new-visa-304">Date</label>
                                                     <input type="date" class="form-control"
-                                                        id="start-process-transaction-date" value="{{$permit_cancellation->wp_app_can_date}}" placeholder="..."
+                                                        id="new-visa-304" value="{{$permit_cancellation->wp_app_can_date}}" placeholder="..."
                                                         name='wp_app_can_date'>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category"
+                                                    <label for="new-visa-305">Slect File</label>
+                                                    <select id="new-visa-305" class="form-control category"
                                                         name="wp_app_can_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
@@ -12666,9 +12670,9 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <label for='new-visa-306'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file'
+                                                        <input type="file" class="form-control" id='new-visa-306'
                                                              style="line-height: 1" name="wp_app_can_file"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -12728,9 +12732,9 @@
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='cancel-file-bio_1'>Upload File</label>
+                                                    <label for='new-visa-308'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='cancel-file-bio_1'
+                                                        <input type="file" class="form-control" id='new-visa-308'
                                                             name="signed_cancellation_form" style="line-height: 1" accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
                                                             <small class="input-group-text"><span
@@ -12784,23 +12788,23 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-number1">Transaction
+                                                    <label for="new-visa-309">Transaction
                                                         No:</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1-number1" name="signd_can_from_tranc_no" value="{{$permit_cancellation->signd_can_from_tranc_no}}" placeholder="...">
+                                                        id="new-visa-309" name="signd_can_from_tranc_no" value="{{$permit_cancellation->signd_can_from_tranc_no}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#sponsored1-transacton1-fee1">Transaction
+                                                    <label for="new-visa-310">Transaction
                                                         Fee</label>
                                                     <input type="text" class="form-control"
-                                                        id="sponsored1-transacton1" name="signd_can_from_tranc_fee" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
+                                                        id="new-visa-310" name="signd_can_from_tranc_fee" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <label for="">Status</label>
-                                                <select id="selectDocument" class="form-control category"
+                                                <label for="new-visa-311">Status</label>
+                                                <select id="new-visa-311" class="form-control category"
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12812,16 +12816,16 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="#start-process-transaction-date">Date</label>
+                                                    <label for="new-visa-312">Date</label>
                                                     <input type="date" class="form-control"
-                                                        id="start-process-transaction-date" value="{{$permit_cancellation->signd_can_from_date}}" placeholder="..."
+                                                        id="new-visa-312" value="{{$permit_cancellation->signd_can_from_date}}" placeholder="..."
                                                         name='signd_can_from_date'>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="">Slect File</label>
-                                                    <select id="selectDocument" class="form-control category"
+                                                    <label for="new-visa-313">Slect File</label>
+                                                    <select id="new-visa-313" class="form-control category"
                                                         name="signd_can_from_file_name">
                                                         <option value="" selected disabled>Select Document</option>
                                                         <option value="Personal Photo" {{
@@ -13064,9 +13068,9 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file'>Upload ST & MB</label>
+                                                    <label for='new-visa-314'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file'
+                                                        <input type="file" class="form-control" id='new-visa-314'
                                                              style="line-height: 1" name="signd_can_from_file"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -13124,8 +13128,8 @@
                                         </h6>
                                         <div class="row">
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                                <label for="status-select1">Status</label>
-                                                <select id="selectDocument" class="form-control category status-select"
+                                                <label for="new-visa-315">Status</label>
+                                                <select id="new-visa-315" class="form-control category status-select"
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -13135,8 +13139,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-12 d-none status-select-comment">
-                                                <label for='sponsor2-textareara-13'>Comments</label>
-                                                <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                                <label for='new-visa-316'>Comments</label>
+                                                <textarea type="text" id='new-visa-316' name="waiting_for_approval_reason"
                                                     placeholder="Enter Your Comments ..." class="form-control"
                                                     rows="5">{{$permit_cancellation->waiting_for_approval_reason}}</textarea>
 
@@ -13167,17 +13171,17 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                                 <div class="form-group mb-3">
-                                                    <label for="sponsor-approval-13">Approval No:</label>
-                                                    <input type="text" class="form-control" id="sponsor-approval-13"
+                                                    <label for="new-visa-317">Approval No:</label>
+                                                    <input type="text" class="form-control" id="new-visa-317"
                                                         placeholder="..." name="waiting_for_approval_no" value="{{$permit_cancellation->waiting_for_approval_no}}">
                                                 </div>
                                             </div>
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
                                                 <div class="upload-file">
-                                                    <label for='visa2-file-bio_1'>Upload File</label>
+                                                    <label for='new-visa-318'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                        <input type="file" class="form-control" id='new-visa-318'
                                                             name="waiting_for_approval_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -13232,9 +13236,6 @@
         <!-- Cancelatoion Tab end -->
     </div>
     <!-- Main Header Tab content end -->
-
-
-
     <!-- Mian tab -->
 </div>
 </div>
@@ -13341,15 +13342,22 @@
                     a.siblings('.status-select-comment').addClass('d-none');
                     a.siblings('.status-select-file').removeClass('d-flex');
                     a.siblings('.status-select-approval').addClass('d-none');
-
                 };
             });
-            if ($(this).val() === 'rejected') {
-                a.siblings('.status-select-comment').removeClass('d-none');
-            } else if ($(this).val() === 'approved') {
-                a.siblings('.status-select-file').addClass('d-flex');
-                a.siblings('.status-select-approval').removeClass('d-none');
-            }
+           
+            if ($(this).val().toLowerCase() === 'reject') {
+                    a.siblings('.status-select-comment').removeClass('d-none');
+                    a.siblings('.status-select-file').removeClass('d-flex');
+                    a.siblings('.status-select-approval').addClass('d-none');
+                } else if ($(this).val().toLowerCase() === 'approved') {
+                    a.siblings('.status-select-comment').addClass('d-none');
+                    a.siblings('.status-select-file').addClass('d-flex');
+                    a.siblings('.status-select-approval').removeClass('d-none');
+                } else {
+                    a.siblings('.status-select-comment').addClass('d-none');
+                    a.siblings('.status-select-file').removeClass('d-flex');
+                    a.siblings('.status-select-approval').addClass('d-none');
+                };
         });
         //changes
         $(ducument).on('change','.renewal-fitness', function () {
