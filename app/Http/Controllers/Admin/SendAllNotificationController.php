@@ -70,18 +70,15 @@ class SendAllNotificationController extends Controller
                     'employee_id' => $employee->id,
                 ]);
             }
+            Notification::send($employees, new PushNotification($data));
             return view('admin.notifications.index')->with('success', 'Created Successfully');
         } elseif ($user == 'Individuals') {
             $self_employees = User::whereempType('self')->orderBy('id', 'desc')->get();
+            $data = NULL;
+            $data['title'] = $request->title;
+            $data['message'] = $request->message;
             foreach($self_employees as $individual)
             {
-                $data = NULL;
-                $data['title'] = $request->title;
-                $data['message'] = $request->message;
-                // return $data;
-                // $notification = new PushNotification($data);
-                // $individual->notify($notification);
-
                 $notification = AdminNotification::create([
                     'title' => $request->title,
                     'message' => $request->message,
@@ -89,18 +86,15 @@ class SendAllNotificationController extends Controller
                     'employee_id' => $individual->id,
                 ]);
             }
+            Notification::send($self_employees, new PushNotification($data));
             return view('admin.notifications.index')->with('success', 'Created Successfully');
         } elseif ($user == 'All Employees') {
             $all_employees = User::orderBy('id', 'desc')->get();
-            // return User::count();
+            $data = NULL;
+            $data['title'] = $request->title;
+            $data['message'] = $request->message;
             foreach($all_employees as $employee)
             {
-                $data = NULL;
-                $data['title'] = $request->title;
-                $data['message'] = $request->message;
-                // return $data;
-                // $notification = new PushNotification($data);
-                // $employee->notify($notification);
 
                 $notification = AdminNotification::create([
                     'title' => $request->title,
@@ -109,8 +103,12 @@ class SendAllNotificationController extends Controller
                     'employee_id' => $employee->id,
                 ]);
             }
+            Notification::send($all_employees, new PushNotification($data));
             return view('admin.notifications.index')->with('success', 'Created Successfully');
-        } else {
+        }
+
+        else
+        {
             return redirect()->back()->with(['status' => false, 'message' => 'You enter wrong data.']);
         }
     }
