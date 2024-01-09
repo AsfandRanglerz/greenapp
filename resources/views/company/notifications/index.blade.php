@@ -83,13 +83,14 @@
                     <section class="faq-section">
                         <div class="faq" id="accordion">
                             @foreach ($company_notifications as $data)
+                            {{-- @if ($data->seen == '0') --}}
                                 <div class="card">
                                     <div class="card-header" id="faqHeading-1">
                                         <div class="mb-0">
                                             <h6 class="faq-title" data-toggle="collapse"
                                                 data-target="#faqCollapse-{{ $data->id }}" data-aria-expanded="true"
                                                 data-aria-controls="faqCollapse-{{ $data->id }}">
-                                                <span class="badge">1</span>{!! $data->title ?? '' !!}
+                                                <span class="badge">{{$loop->iteration}}</span>{!! $data->title ?? '' !!}
                                             </h6>
                                         </div>
                                     </div>
@@ -100,6 +101,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            {{-- @endif --}}
                             @endforeach
                         </div>
                     </section>
