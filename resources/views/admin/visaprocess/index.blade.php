@@ -63,26 +63,88 @@
                                                                 href="{{ route('visa.show', $requests->id) }}">Rejecte</a>
                                                         @else
                                                             @php
-                                                                $con = NUll;
                                                                 $user_id = $requests->user->id;
                                                                 $company_id = $requests->company->id;
-                                                                if (App\Models\NewVisaProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
-                                                                App\Models\RenewalProcess::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
-                                                                App\Models\SponsaredBySomeOne::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
-                                                                App\Models\PartTimeAndTemporary::where('employee_id',$user_id)->where('company_id',$company_id)->first() ||
-                                                                App\Models\UaeAndGccNational::where('employee_id',$user_id)->where('company_id',$company_id)->first())
+                                                                $con = NULL;
+                                                                if($requests->process_name == 'new visa')
                                                                 {
-                                                                    $con = 'yes';
-                                                                }
+                                                                    $new_visa = App\Models\NewVisaProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    if($new_visa)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                }elseif ($requests->process_name == 'renewal process') {
+                                                                    $renewal_process = App\Models\RenewalProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($renewal_process)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'sponsored by some one') {
+                                                                    $spo_by_some = App\Models\SponsaredBySomeOne::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($spo_by_some)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'part time') {
+                                                                    $part_time = App\Models\PartTimeAndTemporary::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($part_time)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'uae and gcc') {
+                                                                    $uae_gcc = App\Models\UaeAndGccNational::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($uae_gcc)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'modify contract') {
+                                                                    $modify_contract = App\Models\ModifyContract::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($modify_contract)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'modification of visa') {
+                                                                    $modification_visa = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of visa')->first();
+                                                                            if($modification_visa)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'modification of emirates Id') {
+                                                                    $modification_emirates = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of emirates Id')->first();
+                                                                            if($modification_emirates)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'visa cancellation') {
+                                                                    $visa_cancellation = App\Models\ VisaCancelation::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($visa_cancellation)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
+                                                                elseif ($requests->process_name == 'permit cancellation') {
+                                                                    $permit_cancellation = App\Models\ PermitCancellation::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                            if($permit_cancellation)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                     }
                                                             @endphp
-                                                                {{-- @if($con == 'yes')
-                                                                    <a href="{{route('view-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='btn btn-success'>View</a>
-                                                                @else --}}
 
+                                                                @if($con == 'yes')
+                                                                    <a href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='btn btn-success'>View</a>
+                                                                @else
                                                                  <a class="btn btn-primary"
                                                                  href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
-                                                                {{-- @endif --}}
-                                                        @endif
+                                                                @endif
+                                                            @endif
                                                     </div>
                                                 </td>
                                             </tr>

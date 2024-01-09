@@ -346,7 +346,7 @@ class NewVisaController extends Controller
         }
         return redirect()->back()->with('success', 'Process has been started successfully.');
     }
-    
+
     // new visa action
     public function new_visa_updation(Request $request, $user_id, $company_id, $newvisa_id, $req_id)
     {
@@ -2348,9 +2348,8 @@ class NewVisaController extends Controller
     public function modify_cnt(Request $request, $user_id, $company_id, $modify_cn, $req_id)
     {
         $user = User::find($user_id);
-        // return "ok";
         $modify_contract = ModifyContract::find($modify_cn);
-        if ($request->input('work_permit') == 'step1') {
+        if ($request->input('work_permit_app') == 'step1') {
             // return $request;
             $file = NULL;
             if ($request->hasfile('wp_app_file')) {

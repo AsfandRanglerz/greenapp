@@ -705,7 +705,7 @@
                         </div>
                         <!--waiting for Approval End -->
                         {{-- Upload signed mb and st section --}}
-                        
+
                         {{-- Dubai insurance section --}}
                         <div class="tab-pane fade" id="v-pills-visa3" role="tabpanel"
                             aria-labelledby="v-pills-visa3-tab">
@@ -9885,7 +9885,7 @@
                                 </form>
                             </div>
                         </div>
-
+     
                         @if ($modify_contract)
                         <div class="tab-pane fade" id="v-pills-modify-contract1" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract1-tab">
@@ -13466,24 +13466,24 @@
                     return false;
                 }
             });
-        
+
         }
        let a=$(this).attr('id');
             $('.'+a).removeClass('active').click();
                if(helperCount>=3 && helperCount<=6){
                     $('#pills-work-permit-tab').removeClass('active');
-                    $('#pills-work-permit-tab').click();            
+                    $('#pills-work-permit-tab').click();
                 }
                 else if(helperCount>=9 && helperCount<=10){
                     $('#pills-cancelation-tab').removeClass('active');
-                    $('#pills-cancelation-tab').click();  
+                    $('#pills-cancelation-tab').click();
                 }
                 if(flag===true){
                     return false;
                 }
-             
+
         })
-    
+
 
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
