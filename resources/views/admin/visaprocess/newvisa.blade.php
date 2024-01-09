@@ -9894,7 +9894,7 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             @php
-                                            $n_visa = App\Models\NewVisaProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            $n_visa = App\Models\ModifyContract::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                             @endphp
                                             @if (!$n_visa)
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
@@ -9903,8 +9903,13 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-243">Process status</label>
-                                                <input type="text" class="form-control" id="new-visa-243"
-                                                    placeholder="...">
+                                                @if ($n_visa)
+                                                <input type="text" class="form-control"
+                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @else
+                                                    <input type="text" class="form-control"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
