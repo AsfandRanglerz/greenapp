@@ -84,7 +84,6 @@
     }
 </style>
 <div class="main-content" style="min-height: 562px;">
-
 <div class="mb-5 admin-main-content-inner">
     {{-- <h4>Company Dashboard</h4> --}}
     <p><span class="fa fa-users"></span> - Employee Visa Process</p>
@@ -97,11 +96,11 @@
     <div>
         <ul class="nav nav-bar horizontal_tabs nav-pills mb-3" id="header-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="pills-visa-tab" data-toggle="pill" href="#pills-visa" role="tab"
+                <a class="nav-link active tab-1" id="pills-visa-tab" data-toggle="pill" href="#pills-visa" role="tab"
                     aria-controls="pills-visa" aria-selected="true">New Visa</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-renewal-process-tab" data-toggle="pill" href="#pills-renewal-process"
+                <a class="nav-link tab-2" id="pills-renewal-process-tab" data-toggle="pill" href="#pills-renewal-process"
                     role="tab" aria-controls="pills-renewal-process" aria-selected="false">Renewal-Process</a>
             </li>
             <li class="nav-item" role="presentation">
@@ -109,13 +108,13 @@
                     aria-controls="pills-work-permit" aria-selected="false">Work Permit</a>
             </li>
 
-            <li class="nav-item " role="presentation">
-                <a class="nav-link " id="pills-modify-visa-tab" data-toggle="pill"
+            <li class="nav-item" role="presentation">
+                <a class="nav-link tab-7" id="pills-modify-visa-tab" data-toggle="pill"
                     href="#pills-modify-visa" role="tab" aria-controls="pills-modify-visa"
                     aria-selected="false">Modification of visa</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link " id="pills-modify-emirates-tab" data-toggle="pill"
+                <a class="nav-link tab-8" id="pills-modify-emirates-tab" data-toggle="pill"
                     href="#pills-modify-emirates" role="tab" aria-controls="pills-modify-emirates"
                     aria-selected="false">Modification of
                     Emirates</a>
@@ -126,7 +125,6 @@
             </li>
         </ul>
     </div>
-
     <div class="tab-content" id="header-tabContent">
         <!-- Visa Tabs -->
         <div class="tab-pane fade active show" id="pills-visa" role="tabpanel"h aria-labelledby="pills-visa-tab">
@@ -197,11 +195,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-1">Process status</label>
                                                 @if ($n_visa)
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    <input type="text" id="tab-1" class="form-control process-status-input"
+                                                     disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" id="tab-1" class="form-control process-status-input"
+                                                     disabled placeholder="..." value='not started'>
                                                 @endif
 
                                             </div>
@@ -255,7 +253,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-6">Status</label>
-                                            <select id="new-visa-6" class="form-control category" name="job_offer_status">
+                                            <select id="new-visa-6" class="form-control status-selector-select category" name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['job_offer_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['job_offer_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -496,119 +494,6 @@
                             </div>
                         </div>
                         <!--Waiting for Approval Start-->
-                        <div class="tab-pane fade" id="v-pills-visa2-1" role="tabpanel"
-                            aria-labelledby="v-pills-visa2-1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
-                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
-                                    class='py-2' method="POST" enctype="multipart/form-data">
-                                    {{-- @method('GET') --}}
-                                    @csrf
-                                    <input type="text" hidden value="waiting_for_approval" name="waiting_for_approval">
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for Approval
-                                    </h6>
-                                    <div class="row">
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                            <label for="new-visa-10">Status</label>
-                                            <select id="new-visa-10" name="waiting_for_approval_status" class="form-control category status-select" id="status-select1">
-                                                <option value="" selected disabled>select</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Approved' ? 'selected':''}} value="Approved">Approved</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Hold' ? 'selected':''}} value="Hold" >Hold</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Skip' ? 'selected':''}} value="Skip">Skip</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Rejected' ? 'selected':''}} value="Reject">Reject</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-12 d-none status-select-comment">
-                                            <label for='new-visa-11'>Comments</label>
-                                            <textarea type="text" id='new-visa-11' name="waiting_fappro_reason"
-                                                placeholder="Enter Your Comments ..." class="form-control"
-                                                rows="5">{{$new_visa->waiting_fappro_reason}}</textarea>
-                                                @if($new_visa->waiting_fappro_reason_file)
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                <p>User upload</p>
-                                                @php
-                                                $file_name = $new_visa->waiting_fappro_reason_file;
-                                                $ext = explode('.', $file_name);
-                                                @endphp
-                                                @if ($new_visa->waiting_fappro_reason_file)
-                                                    <a target="_black" href="{{ asset('' . '/' . $new_visa->waiting_fappro_reason_file) }}">
-                                                        @if ($ext[1] == 'pdf')
-                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
-                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'pptx')
-                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                style="height: 50px;width:50px">
-                                                        @else
-                                                            <img src="{{ asset('' . '/' . $new_visa->waiting_fappro_reason_file) }}"
-                                                                style="height: 50px;width:50px">
-                                                        @endif
-                                                    </a>
-                                                    @endif
-                                            </div>
-                                        @endif
-                                        </div>
-
-
-
-                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
-                                            <div class="form-group mb-3">
-                                                <label for="new-visa-12">Approval No:</label>
-                                                <input type="text" class="form-control" id="new-visa-12"
-                                                   name="waiting_fappro_no" value="{{$new_visa->waiting_fappro_no}}" placeholder="...">
-                                            </div>
-                                        </div>
-                                        <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
-                                                <label for='new-visa-13'>Upload File</label>
-                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='new-visa-13'
-                                                        name="waiting_fappro_file" style="line-height: 1" accept=".pdf,.doc,.excel">
-                                                    <div class="input-group-prepend">
-                                                        <small class="input-group-text"><span
-                                                                class="fa fa-paperclip"></span></small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @php
-                                            $file_name = $new_visa->waiting_fappro_file;
-                                            $ext = explode('.', $file_name);
-                                        @endphp
-                                        @if ($new_visa->waiting_fappro_file)
-                                            <a target="_black" href="{{ asset('' . '/' . $new_visa->waiting_fappro_file) }}">
-                                                @if ($ext[1] == 'pdf')
-                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                        style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
-                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                        style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                        style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'pptx')
-                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                        style="height: 50px;width:50px">
-                                                @else
-                                                    <img src="{{ asset('' . '/' . $new_visa->waiting_fappro_file) }}"
-                                                        style="height: 50px;width:50px">
-                                                @endif
-                                            </a>
-                                            @endif
-                                        </div>
-                                        <div class="col-12 text-center status-select-btn">
-                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!--waiting for Approval End -->
-                        {{-- Upload signed mb and st section --}}
                         <div class="tab-pane fade" id="v-pills-visa2" role="tabpanel"
                             aria-labelledby="v-pills-visa2-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -690,7 +575,7 @@
 
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category" name="signed_mb_st_status">
+                                            <select id="selectDocument" class="form-control category status-selector-select" name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -700,33 +585,6 @@
                                             {{-- <input type="text" class="form-control"
                                             id="start-process-transaction-fee"  placeholder="..." value="{{$new_visa->job_offer_status}}" name='job_offer_status'> --}}
                                         </div>
-
-                                        {{-- <div class="form-group mb-3 col-12">
-                                          <div class="form-check">
-                                            <input class="form-check-input"  type="checkbox" value="" id="new-visa-18">
-                                            <label class="form-check-label" for="new-visa-18">
-                                              The contract has been sign.
-                                            </label>
-                                          </div>
-                                        </div> --}}
-
-                                        @if ($new_visa['signed_mb_st_status']=='Approved')
-                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                            <div class="form-group mb-3">
-                                                <label for="new-visa-19">Approval No.</label>
-                                                <input type="text" class="form-control"
-                                                    id="new-visa-19" placeholder="..." name='signed_mb_st_reason' value="{{$new_visa->signed_mb_st_reason}}">
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @if ($new_visa['signed_mb_st_status']=='Reject')
-                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                            <div class="form-group mb-3">
-                                                <label for="new-visa-20">Rejection Reason</label>
-                                                <textarea class="form-control" id="new-visa-20" placeholder="..." name='signed_mb_st_reason' rows="2" value="{{$new_visa->signed_mb_st_reason}}"></textarea>
-                                            </div>
-                                        </div>
-                                        @endif
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2' type="submit">Add</button>
                                         </div>
@@ -736,6 +594,118 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="v-pills-visa2-1" role="tabpanel"
+                            aria-labelledby="v-pills-visa2-1-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    {{-- @method('GET') --}}
+                                    @csrf
+                                    <input type="text" hidden value="waiting_for_approval" name="waiting_for_approval">
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for Approval
+                                    </h6>
+                                    <div class="row">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                            <label for="new-visa-10">Status</label>
+                                            <select id="new-visa-10" name="waiting_for_approval_status" class="form-control category status-selector-select status-select" id="status-select1">
+                                                <option value="" selected disabled>select</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'Approved' ? 'selected':''}} value="Approved">Approved</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'Hold' ? 'selected':''}} value="Hold" >Hold</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'Skip' ? 'selected':''}} value="Skip">Skip</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'Rejected' ? 'selected':''}} value="Reject">Reject</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12 d-none status-select-comment">
+                                            <label for='new-visa-11'>Comments</label>
+                                            <textarea type="text" id='new-visa-11' name="waiting_fappro_reason"
+                                                placeholder="Enter Your Comments ..." class="form-control"
+                                                rows="5">{{$new_visa->waiting_fappro_reason}}</textarea>
+                                                @if($new_visa->waiting_fappro_reason_file)
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                <p>User upload</p>
+                                                @php
+                                                $file_name = $new_visa->waiting_fappro_reason_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($new_visa->waiting_fappro_reason_file)
+                                                    <a target="_black" href="{{ asset('' . '/' . $new_visa->waiting_fappro_reason_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                        @else
+                                                            <img src="{{ asset('' . '/' . $new_visa->waiting_fappro_reason_file) }}"
+                                                                style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+                                            </div>
+                                        @endif
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                            <div class="form-group mb-3">
+                                                <label for="new-visa-12">Approval No:</label>
+                                                <input type="text" class="form-control" id="new-visa-12"
+                                                   name="waiting_fappro_no" value="{{$new_visa->waiting_fappro_no}}" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                            <div class="upload-file">
+                                                <label for='new-visa-13'>Upload File</label>
+                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                    <input type="file" class="form-control" id='new-visa-13'
+                                                        name="waiting_fappro_file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @php
+                                            $file_name = $new_visa->waiting_fappro_file;
+                                            $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($new_visa->waiting_fappro_file)
+                                            <a target="_black" href="{{ asset('' . '/' . $new_visa->waiting_fappro_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $new_visa->waiting_fappro_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 text-center status-select-btn">
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--waiting for Approval End -->
+                        {{-- Upload signed mb and st section --}}
+                        
                         {{-- Dubai insurance section --}}
                         <div class="tab-pane fade" id="v-pills-visa3" role="tabpanel"
                             aria-labelledby="v-pills-visa3-tab">
@@ -763,7 +733,7 @@
 
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-23">Status</label>
-                                            <select id="new-visa-23" class="form-control category" name="dubai_insurance_status">
+                                            <select id="new-visa-23" class="form-control category status-selector-select" name="dubai_insurance_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['dubai_insurance_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['dubai_insurance_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1035,7 +1005,7 @@
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             {{-- <div class="form-group col-xl-6 col-lg-12 col-md-6"> --}}
                                                 <label for="new-visa-29">Status</label>
-                                                <select id="new-visa-29" class="form-control category" name="pre_approved_wp_status">
+                                                <select id="new-visa-29" class="form-control category status-selector-select" name="pre_approved_wp_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['pre_approved_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['pre_approved_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1301,7 +1271,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-35">Status</label>
-                                                <select id="new-visa-35" class="form-control category" name="enter_visa_status">
+                                                <select id="new-visa-35" class="form-control category status-selector-select" name="enter_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['enter_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['enter_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1613,7 +1583,7 @@
                         </div>
                         {{--Change of visa status--}}
                         <div class="tab-pane fade" id="v-pills-visa-5" role="tabpanel"
-                            aria-labelledby="v-pills-visa-5-tab">
+                            aria-labelledby="v-pills-visa5-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
@@ -1638,7 +1608,7 @@
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-45">Status</label>
-                                                <select id="new-visa-45" class="form-control category" name="change_of_visa_status">
+                                                <select id="new-visa-45" class="form-control category status-selector-select" name="change_of_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['change_of_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                     <option value="Hold" {{$new_visa['change_of_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -1911,7 +1881,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-51">Status</label>
-                                            <select id="new-visa-51" class="form-control category" name="medical_fitness_status">
+                                            <select id="new-visa-51" class="form-control category status-selector-select" name="medical_fitness_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2191,7 +2161,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-58">Status</label>
-                                            <select id="new-visa-58" class="form-control category" name="tawjeeh_status">
+                                            <select id="new-visa-58" class="form-control category status-selector-select" name="tawjeeh_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['tawjeeh_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['tawjeeh_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2288,7 +2258,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-64">Status</label>
-                                            <select id="new-visa-64" class="form-control category" name="contract_status">
+                                            <select id="new-visa-64" class="form-control category status-selector-select" name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2558,7 +2528,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-70">Status</label>
-                                            <select id="new-visa-70" class="form-control category" name="health_insur_status">
+                                            <select id="new-visa-70" class="form-control category status-selector-select" name="health_insur_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['health_insur_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['health_insur_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -2830,7 +2800,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-76">Status</label>
-                                            <select id="new-visa-76" class="form-control category" name="work_permit_status">
+                                            <select id="new-visa-76" class="form-control category status-selector-select" name="work_permit_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3095,7 +3065,7 @@
                                       </div>
                                       <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                           <label for="new-visa-81">Status</label>
-                                          <select id="new-visa-81" class="form-control category" name="emirates_status">
+                                          <select id="new-visa-81" class="form-control category status-selector-select" name="emirates_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['emirates_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$new_visa['emirates_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3355,7 +3325,7 @@
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-87">Status</label>
-                                        <select id="new-visa-87" class="form-control category" name="residency_status">
+                                        <select id="new-visa-87" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$new_visa['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3626,7 +3596,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="new-visa-93">Status</label>
-                                            <select id="new-visa-93" class="form-control category" name="biometric_status">
+                                            <select id="new-visa-93" class="form-control category status-selector-select" name="biometric_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['biometric_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$new_visa['biometric_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3767,10 +3737,10 @@
                                         <div class="form-group mb-3">
                                             <label for="new-visa-98">Process status</label>
                                             @if ($n_visa)
-                                            <input type="text" class="form-control"
+                                            <input type="text" id="tab-2" class="form-control process-status-input"
                                                 id="new-visa-1" disabled placeholder="..." value='process started'>
                                             @else
-                                                <input type="text" class="form-control"
+                                                <input type="text" id="tab-2" class="form-control process-status-input"
                                                 id="new-visa-1" disabled placeholder="..." value='not started'>
                                             @endif
                                         </div>
@@ -3809,7 +3779,7 @@
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-101">Status</label>
                                         <select id="new-visa-101"
-                                            class="form-control category status-select" id="status-select1" name="medical_fitness_status">
+                                            class="form-control category status-selector-select status-select" id="status-select1" name="medical_fitness_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -3910,7 +3880,7 @@
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-107">Status</label>
                                         <select id="new-visa-107"
-                                            class="form-control category status-select" id="status-select1" name="work_permit_status">
+                                            class="form-control category status-selector-select status-select" id="status-select1" name="work_permit_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -4246,7 +4216,7 @@
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="status-select1-renewal-3">Status</label>
-                                        <select id="new-visa-113" class="form-control category status-select"
+                                        <select id="new-visa-113" class="form-control category status-selector-select status-select"
                                             id="new-visa-113" name="signed_mb_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['signed_mb_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -4336,7 +4306,7 @@
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-118">Status</label>
-                                        <select class="form-control category status-select"
+                                        <select class="form-control category status-select status-selector-select"
                                             id="new-visa-118" name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -4675,7 +4645,7 @@
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                         <label for="new-visa-124">Status</label>
                                         <select id="new-visa-124"
-                                            class="form-control category" name="contract_sub_status">
+                                            class="form-control status-selector-select category" name="contract_sub_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['contract_sub_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['contract_sub_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -4983,7 +4953,7 @@
                     </div>
                     {{--tawjeeh classes--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process6" role="tabpanel"
-                        aria-labelledby="v-renewal-process6-tab">
+                        aria-labelledby="v-pills-renewal-process6-tab">
                         <div class='rounded p-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
@@ -5010,7 +4980,7 @@
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-129">Status</label>
-                                        <select id="new-visa-129" class="form-control category" name="tawjeeh_tranc_status">
+                                        <select id="new-visa-129" class="form-control category status-selector-select" name="tawjeeh_tranc_status">
                                             <option value="" selected disabled>select</option>
                                          <option value="Approved" {{$renewal_process['tawjeeh_tranc_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                          <option value="Hold" {{$renewal_process['tawjeeh_tranc_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -5084,7 +5054,7 @@
                     </div>
                     {{--residency--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process7" role="tabpanel"
-                        aria-labelledby="v-pills-visa7-tab">
+                        aria-labelledby="v-pills-renewal-process7-tab">
                         <div class='rounded p-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
@@ -5108,7 +5078,7 @@
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-136">Status</label>
-                                        <select id="new-visa-136" class="form-control category" name="residency_status">
+                                        <select id="new-visa-136" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -5435,7 +5405,7 @@
                                     </div>
                                     <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-142">Status</label>
-                                        <select id="new-visa-142" class="form-control category" name="renewal_status">
+                                        <select id="new-visa-142" class="form-control status-selector-select category" name="renewal_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['renewal_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                             <option value="Hold" {{$renewal_process['renewal_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -5773,7 +5743,7 @@
                                 </div>
                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                 <label for="new-visa-148">Status</label>
-                                <select id="new-visa-148" class="form-control category"
+                                <select id="new-visa-148" class="form-control status-selector-select category"
                                 name="emp_biometric_status">
                                 <option value="" selected disabled>select</option>
                                 <option value="Approved" {{$renewal_process['emp_biometric_status']=='Approved'
@@ -5867,23 +5837,23 @@
  <div class="tab-pane fade" id="pills-Work-permit" role="tabpanel" aria-labelledby="pills-work-permit-tab">
     <ul class="nav nav-pills mb-3 work-permit-nav horizontal_tabs" id="work-permit-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active Work-permit-tabs " id="pills-sponsored-tab" data-toggle="pill"
+            <a class="nav-link active tab-3 Work-permit-tabs" id="pills-sponsored-tab" data-toggle="pill"
                 href="#pills-sponsored" role="tab" aria-controls="pills-sponsored"
                 aria-selected="false">Golden Visa/Sponsored
                 by someone</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link Work-permit-tabs" id="pills-part-time-tab" data-toggle="pill"
+            <a class="nav-link Work-permit-tabs tab-4" id="pills-part-time-tab" data-toggle="pill"
                 href="#pills-part-time" role="tab" aria-controls="pills-part-time"
                 aria-selected="false">Part
                 time & temporary</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link Work-permit-tabs" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
+            <a class="nav-link Work-permit-tabs tab-5" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
                 role="tab" aria-controls="pills-UAE" aria-selected="false">UAE & GCC National</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link Work-permit-tabs-last" id="pills-modify-contract-tab" data-toggle="pill"
+            <a class="nav-link Work-permit-tabs-last tab-6" id="pills-modify-contract-tab" data-toggle="pill"
                 href="#pills-modify-contract" role="tab" aria-controls="pills-modify-contract"
                 aria-selected="false">Modify contract</a>
         </li>
@@ -5950,11 +5920,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-152">Process status</label>
                                                 @if ($n_visa)
-                                                <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                <input type="text" class="form-control process-status-input"
+                                                    id="tab-3" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-3" disabled placeholder="..." value='not started'>
                                                 @endif
 
                                             </div>
@@ -5993,8 +5963,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-155">Status</label>
-                                            <select id="new-visa-155" class="form-control category"
-                                                name="work_permit_app_status">
+                                            <select id="new-visa-155" class="form-control status-selector-select category" name="work_permit_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['work_permit_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$spo_by_some['work_permit_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -6333,7 +6302,7 @@
                                     </div>
                                     <div class="form-group col-xl-6  col-lg-12 col-md-6">
                                         <label for="new-visa-161">Status</label>
-                                        <select id="new-visa-161" class="form-control category"
+                                        <select id="new-visa-161" class="form-control status-selector-select category"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6413,7 +6382,7 @@
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-164">Status</label>
-                                            <select id="new-visa-164" class="form-control category status-select"
+                                            <select id="new-visa-164" class="form-control status-selector-select category status-select"
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6538,7 +6507,7 @@
 
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                     <label for="new-visa-171">Status</label>
-                                    <select id="new-visa-171" class="form-control category"
+                                    <select id="new-visa-171" class="form-control status-selector-select category"
                                         name="pay_dubai_insu_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -6879,7 +6848,7 @@
                                 </div>
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                     <label for="new-visa-176">Status</label>
-                                    <select id="new-visa-176" class="form-control category"
+                                    <select id="new-visa-176" class="form-control status-selector-select category"
                                         name="pre_approv_wp_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pre_approv_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -7216,7 +7185,7 @@
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="new-visa-183">select file</label>
-                                            <select id="new-visa-183" class="form-control category"
+                                            <select id="new-visa-183" class="form-control status-selector-select category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Approved" {{$spo_by_some['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -7580,11 +7549,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-187">Process status</label>
                                                  @if ($n_visa)
-                                                <input type="text" class="form-control"
-                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                <input type="text" class="form-control process-status-input"
+                                                id="tab-4" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-4" disabled placeholder="..." value='not started'>
                                                 @endif
                                             </div>
                                         </div>
@@ -7691,8 +7660,8 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-196">Status</label>
-                                            <select id="new-visa-196" class="form-control category"
-                                                name="residency_app_status">
+                                            <select id="new-visa-196" class="form-control status-selector-select category"
+                                                name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="Hold" {{$part_time['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
@@ -8029,7 +7998,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-202">Status</label>
-                                            <select id="new-visa-202" class="form-control category"
+                                            <select id="new-visa-202" class="form-control status-selector-select category"
                                                 name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8111,7 +8080,7 @@
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-205">Status</label>
-                                            <select id="new-visa-205" class="form-control category status-select"
+                                            <select id="new-visa-205" class="form-control category status-selector-select status-select"
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8232,7 +8201,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-211">Status</label>
-                                            <select id="new-visa-211" class="form-control category"
+                                            <select id="new-visa-211" class="form-control status-selector-select category"
                                                 name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8602,11 +8571,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-215">Process status</label>
                                                 @if ($n_visa)
-                                                <input type="text" class="form-control"
-                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                <input type="text" class="form-control process-status-input"
+                                                id="tab-5" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-5" disabled placeholder="..." value='not started'>
                                                 @endif
                                             </div>
                                         </div>
@@ -8644,7 +8613,7 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-218">Status</label>
-                                            <select id="new-visa-218" class="form-control category"
+                                            <select id="new-visa-218" class="form-control status-selector-select category"
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -8984,7 +8953,7 @@
 
                                     <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
                                         <label for="new-visa-224">Status</label>
-                                        <select id="new-visa-224" class="form-control category"
+                                        <select id="new-visa-224" class="form-control category status-selector-select"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9082,7 +9051,7 @@
 
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                         <label for="new-visa-229">Status</label>
-                                        <select id="new-visa-229" class="form-control category"
+                                        <select id="new-visa-229" class="form-control category status-selector-select"
                                             name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9407,7 +9376,7 @@
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-233">Status</label>
-                                            <select id="new-visa-233" class="form-control category status-select"
+                                            <select id="new-visa-233" class="form-control status-selector-select category status-select"
                                                 id="status-select1" name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9531,7 +9500,7 @@
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="new-visa-239">select file</label>
-                                            <select id="new-visa-239" class="form-control category"
+                                            <select id="new-visa-239" class="form-control category status-selector-select"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$uae_gcc['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -9904,11 +9873,11 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-243">Process status</label>
                                                 @if ($n_visa)
-                                                <input type="text" class="form-control"
-                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                <input type="text" class="form-control process-status-input"
+                                                id="tab-6" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-6" disabled placeholder="..." value='not started'>
                                                 @endif
                                             </div>
                                         </div>
@@ -9946,13 +9915,13 @@
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-246">Status</label>
-                                            <select id="new-visa-246" class="form-control category"
+                                            <select id="new-visa-246" class="form-control status-selector-select category"
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
-                                                <option value="Approved" {{$modify_contract['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$modify_contract['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
-                                                <option value="Skip" {{$modify_contract['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
-                                                <option value="Reject" {{$modify_contract['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
+                                                <option value="Approved" {{$modify_contract['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                                <option value="Hold" {{$modify_contract['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="Skip" {{$modify_contract['wp_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
+                                                <option value="Reject" {{$modify_contract['wp_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
                                             </select>
                                         </div>
@@ -10287,7 +10256,7 @@
 
                                     <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
                                         <label for="new-visa-252">Status</label>
-                                        <select id="new-visa-252" class="form-control category"
+                                        <select id="new-visa-252" class="form-control status-selector-select category"
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modify_contract['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10371,7 +10340,7 @@
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-255">Status</label>
-                                            <select id="new-visa-255" class="form-control category status-select"
+                                            <select id="new-visa-255" class="form-control category status-selector-select status-select"
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$modify_contract['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10493,7 +10462,7 @@
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="new-visa-261">status</label>
-                                            <select id="new-visa-261" class="form-control category"
+                                            <select id="new-visa-261" class="form-control status-selector-select category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$modify_contract['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -10859,11 +10828,11 @@
                                           <label for="new-visa-265">Process
                                               status</label>
                                               @if ($n_visa)
-                                              <input type="text" class="form-control"
-                                              id="new-visa-1" disabled placeholder="..." value='process started'>
+                                              <input type="text" class="form-control process-status-input"
+                                              id="tab-7" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-7" disabled placeholder="..." value='not started'>
                                                 @endif
                                       </div>
                                   </div>
@@ -10886,7 +10855,7 @@
                             <div class="row">
                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                     <label for="new-visa-266">Status</label>
-                                    <select id="new-visa-266" class="form-control category status-select"
+                                    <select id="new-visa-266" class="form-control category status-selector-select status-select"
                                          name="application_status">
                                         <option value="" selected disabled>select</option>
                                         <option value="Approved" {{$modification_visa['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11027,11 +10996,11 @@
                                           <label for="new-visa-270">Process
                                               status</label>
                                               @if ($n_visa)
-                                              <input type="text" class="form-control"
-                                              id="new-visa-1" disabled placeholder="..." value='process started'>
+                                              <input type="text" class="form-control process-status-input"
+                                              id="tab-8" disabled placeholder="..." value='process started'>
                                                 @else
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-8" disabled placeholder="..." value='not started'>
                                                 @endif
                                       </div>
                                   </div>
@@ -11053,7 +11022,7 @@
                                 <div class="row">
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-271">Status</label>
-                                        <select id="new-visa-271" class="form-control category status-select"
+                                        <select id="new-visa-271" class="form-control category status-select status-selector-select"
                                             name="application_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modification_emirates['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11161,13 +11130,13 @@
         aria-labelledby="pills-pills-cancelation-tab">
         <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
+                <a class="nav-link active Work-permit-tabs tab-9" id="pills-visa-cancel-tab" data-toggle="pill"
                     href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
                     aria-selected="false">Visa
                     cancelation</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
+                <a class="nav-link Work-permit-tabs-last tab-10" id="pills-work-permit-cancel-tab" data-toggle="pill"
                     href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
                     aria-selected="false">Work permit cancelation</a>
             </li>
@@ -11224,11 +11193,11 @@
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-275">Process status</label>
                                                     @if ($n_visa)
-                                                    <input type="text" class="form-control"
-                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                    id="tab-9" disabled placeholder="..." value='process started'>
                                                     @else
-                                                        <input type="text" class="form-control"
-                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                        <input type="text" class="form-control process-status-input"
+                                                        id="tab-9" disabled placeholder="..." value='not started'>
                                                     @endif
                                                 </div>
                                             </div>
@@ -11265,7 +11234,7 @@
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-278">Status</label>
-                                                <select id="new-visa-278" class="form-control category"
+                                                <select id="new-visa-278" class="form-control category status-selector-select"
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11662,7 +11631,7 @@
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-285">Status</label>
-                                                <select id="new-visa-285" class="form-control category"
+                                                <select id="new-visa-285" class="form-control status-selector-select category"
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -11987,7 +11956,7 @@
                                         <div class="row">
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                                 <label for="new-visa-289">Status</label>
-                                                <select id="new-visa-289" class="form-control category status-select"
+                                                <select id="new-visa-289" class="form-control category status-selector-select status-select"
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12109,7 +12078,7 @@
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-296">Status</label>
-                                                <select id="new-visa-296" class="form-control category"
+                                                <select id="new-visa-296" class="form-control status-selector-select category"
                                                     name="residency_app_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['residency_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12474,11 +12443,11 @@
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-300">Process status</label>
                                                     @if ($n_visa)
-                                                    <input type="text" class="form-control"
-                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="tab-10" disabled placeholder="..." value='process started'>
                                                     @else
-                                                        <input type="text" class="form-control"
-                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                        <input type="text" class="form-control process-status-input"
+                                                        id="tab-10" disabled placeholder="..." value='not started'>
                                                     @endif
                                                 </div>
                                             </div>
@@ -12516,7 +12485,7 @@
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-303">Status</label>
-                                                <select id="new-visa-303" class="form-control category"
+                                                <select id="new-visa-303" class="form-control status-selector-select category"
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -12914,7 +12883,7 @@
                                             </div>
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-311">Status</label>
-                                                <select id="new-visa-311" class="form-control category"
+                                                <select id="new-visa-311" class="form-control status-selector-select category"
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -13239,7 +13208,7 @@
                                         <div class="row">
                                             <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                                 <label for="new-visa-315">Status</label>
-                                                <select id="new-visa-315" class="form-control category status-select"
+                                                <select id="new-visa-315" class="form-control category status-selector-select status-select"
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -13440,11 +13409,11 @@
         $('.status-select').each(function () {
             let a = $(this).parents('.status-select-parent');
             $(this).change(function () {
-                if ($(this).val().toLowerCase() === 'reject') {
+                if ($(this).val() && $(this).val().toLowerCase() === 'reject') {
                     a.siblings('.status-select-comment').removeClass('d-none');
                     a.siblings('.status-select-file').removeClass('d-flex');
                     a.siblings('.status-select-approval').addClass('d-none');
-                } else if ($(this).val().toLowerCase() === 'approved') {
+                } else if ($(this).val() && $(this).val().toLowerCase() === 'approved') {
                     a.siblings('.status-select-comment').addClass('d-none');
                     a.siblings('.status-select-file').addClass('d-flex');
                     a.siblings('.status-select-approval').removeClass('d-none');
@@ -13454,12 +13423,11 @@
                     a.siblings('.status-select-approval').addClass('d-none');
                 };
             });
-
-            if ($(this).val().toLowerCase() === 'reject') {
+            if ($(this).val() && $(this).val().toLowerCase() === 'reject') {
                     a.siblings('.status-select-comment').removeClass('d-none');
                     a.siblings('.status-select-file').removeClass('d-flex');
                     a.siblings('.status-select-approval').addClass('d-none');
-                } else if ($(this).val().toLowerCase() === 'approved') {
+                } else if ($(this).val() && $(this).val().toLowerCase() === 'approved') {
                     a.siblings('.status-select-comment').addClass('d-none');
                     a.siblings('.status-select-file').addClass('d-flex');
                     a.siblings('.status-select-approval').removeClass('d-none');
@@ -13470,7 +13438,7 @@
                 };
         });
         //changes
-        $(ducument).on('change','.renewal-fitness', function () {
+        $(document).on('change','.renewal-fitness', function () {
             if ($(this).val() == 'fit') {
                 $('.renewal-medical-file').addClass('d-flex');
             } else {
@@ -13478,8 +13446,44 @@
             }
         });
         //changes
-
-
+        function helper(){
+            $('.tab-pane').each(function(){
+                $(this).removeClass('show');
+                $(this).removeClass('active');
+            });
+        };
+        let helperCount=0;
+        let flag=false;
+        $('.process-status-input').each(function(){
+        helper();
+        helperCount++;
+        if($(this).val()=='process started'){
+            let c=$(this).closest('.tab-content').find('.status-selector-select').each(function(){
+                if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
+                   let a= $(this).closest('.tab-pane').attr('aria-labelledby');
+                    $('#'+a).click();
+                    flag=true;
+                    return false;
+                }
+            });
+        
+        }
+       let a=$(this).attr('id');
+            $('.'+a).removeClass('active').click();
+               if(helperCount>=3 && helperCount<=6){
+                    $('#pills-work-permit-tab').removeClass('active');
+                    $('#pills-work-permit-tab').click();            
+                }
+                else if(helperCount>=9 && helperCount<=10){
+                    $('#pills-cancelation-tab').removeClass('active');
+                    $('#pills-cancelation-tab').click();  
+                }
+                if(flag===true){
+                    return false;
+                }
+             
+        })
+    
 
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
