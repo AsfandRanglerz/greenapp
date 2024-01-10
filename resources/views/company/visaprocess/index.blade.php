@@ -122,9 +122,9 @@
             </ul>
         </div>
 
-        <div class="tab-content" id="header-tabContent">
+        <div class="tab-content" id="header-tabContent-content">
             <!-- Visa Tabs -->
-            <div class="tab-pane fade active show" id="pills-visa" role="tabpanel" h aria-labelledby="pills-visa-tab">
+            <div class="tab-pane fade active show" id="pills-visa" role="tabpanel"  aria-labelledby="v-pills-visa-tab">
                 <div class="row">
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-visa-tab"
@@ -181,8 +181,8 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3 ">
                         <div class="tab-content" id="v-visa-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
-                                aria-labelledby="v-pills-start-tab">
+                            <div class="tab-pane fade show active process-start" id="v-pills-start" role="tabpanel"
+                                aria-labelledby="pills-visa-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                         method="POST" class='py-2'>
@@ -210,10 +210,10 @@
                                                             ->value('status');
                                                     @endphp
                                                     @if ($request_status == 'approved')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process started'>
                                                     @else
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text"  class="form-control process-status-input"
                                                         disabled placeholder="..." value='not started'>
                                                     @endif
                                                 </div>
@@ -273,8 +273,8 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                     <label for="">Status</label>
-                                                    <input type="text" readonly class="form-control"
-                                                        id="start-process-transaction-fee" placeholder="..."
+                                                    <input type="text" readonly class="form-control status-container"
+                                                        id="start-process-transaction-fee" clas placeholder="..."
                                                         value="{{ $new_visa_data->job_offer_status }}">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -381,7 +381,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="#">Status</label>
-                                                        <input type="text" readonly class="form-control"
+                                                        <input type="text" readonly class="form-control status-container"
                                                             id="visa2-transaction-fee" placeholder="..."
                                                             value="{{ $new_visa_data->signed_mb_st_status }}">
                                                     </div>
@@ -469,7 +469,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
                                                         <label for="visa3-transaction-number1">Sign MB Status</label>
-                                                        <input type="text" class="form-control new-visa-signmbstatus"
+                                                        <input type="text" class="form-control new-visa-signmbstatus status-container"
                                                             readonly id="visa3-transaction-number1" placeholder="..."
                                                             value="{{ $new_visa_data->waiting_for_approval_status }}">
                                                     </div>
@@ -594,7 +594,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="#status">Status</label>
-                                                    <input type="text" class="form-control" id="dubai-insurance-date"
+                                                    <input type="text" class="form-control status-container" id="dubai-insurance-date"
                                                         placeholder="..." disabled
                                                         value="{{ $new_visa_data->dubai_insurance_status }}">
                                                 </div>
@@ -674,7 +674,7 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="preapproval-transaction-date" placeholder="..." disabled
                                                         value="{{ $new_visa_data->pre_approved_wp_status }}"
                                                         name="">
@@ -754,7 +754,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="#">Status</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control status-container"
                                                             id="entry-transaction-date" placeholder="..." disabled
                                                             value={{ $new_visa_data->enter_visa_status }}>
                                                     </div>
@@ -881,7 +881,7 @@
 
                                 {{-- change of visa --}}
                                 <div class="tab-pane fade" id="v-pills-visa-5" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-5-tab">
+                                    aria-labelledby="v-pills-visa5-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa
@@ -908,7 +908,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee5" disabled placeholder="..."
                                                         value="{{ $new_visa_data->change_of_visa_status }}">
                                                 </div>
@@ -988,7 +988,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee6" disabled
                                                         value="{{ $new_visa_data->medical_fitness_status }}"
                                                         placeholder="...">
@@ -1082,7 +1082,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee6" placeholder="..."
                                                         value="{{ $new_visa_data->tawjeeh_status }}" disabled>
                                                 </div>
@@ -1185,7 +1185,7 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-number8" placeholder="..."
                                                         value="{{ $new_visa_data->contract_status }}" disabled>
                                                 </div>
@@ -1261,7 +1261,7 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-number9" placeholder="..."
                                                         value="{{ $new_visa_data->health_insur_status }}" disabled>
                                                 </div>
@@ -1337,7 +1337,7 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee10" placeholder="..."
                                                         value="{{ $new_visa_data->work_permit_status }}" disabled>
                                                 </div>
@@ -1414,7 +1414,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-number11" placeholder="..."
                                                         value="{{ $new_visa_data->emirates_status }}" disabled>
                                                 </div>
@@ -1486,7 +1486,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee112"
                                                         value="{{ $new_visa_data->residency_status }}" disabled
                                                         placeholder="...">
@@ -1570,7 +1570,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-number12"
                                                         value="{{ $new_visa_data->biometric_status }}" disabled
                                                         placeholder="...">
@@ -1649,7 +1649,6 @@
                                     </div>
                                 </div>
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -1657,7 +1656,7 @@
             <!-- Renewal Process Tab-->
             <div class="tab-pane fade" id="pills-renewal-process" role="tabpanel"
                 aria-labelledby="pills-renewal-process-tab">
-                <div class="row ">
+                <div class="row">
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                             id="v-renewal-proces-tab" role="tablist" aria-orientation="vertical">
@@ -1692,11 +1691,10 @@
                                 aria-controls="v-pills-renewal-process8" aria-selected="false">Employee Biometric</a>
                         </div>
                     </div>
-
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                         <div class="tab-content" id="v-renewal-process-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-renewal-process0" role="tabpanel"
-                                aria-labelledby="v-pills-renewal-process0-tab">
+                            <div class="tab-pane fade show active process-start" id="v-pills-renewal-process0" role="tabpanel"
+                                aria-labelledby="pills-renewal-process-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                         method="POST" class='py-2'>
@@ -1767,7 +1765,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="#">Status</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control status-container"
                                                             id="renewal-process1-date" disabled
                                                             value="{{ $renewal_process_data->medical_fitness_status }}"
                                                             placeholder="...">
@@ -1878,7 +1876,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="#">Status</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control status-container"
                                                             id="work-permit-app-transaction-fee" placeholder="..."
                                                             disabled
                                                             value="{{ $renewal_process_data->work_permit_status }}">
@@ -1963,7 +1961,7 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="#">Status</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control status-container"
                                                             id="upload-signed-mb-transaction-fee" placeholder="..."
                                                             disabled
                                                             value="{{ $renewal_process_data->signed_mb_status }}">
@@ -2065,7 +2063,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="start-process-transaction-fee12" disabled placeholder="..."
                                                         value = '{{ $renewal_process_data->pay_dubai_insu_status }}'>
                                                 </div>
@@ -2143,7 +2141,7 @@
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="RenewalProcess4-transaction-fee" disabled
                                                         value="{{ $renewal_process_data->contract_sub_status }}"
                                                         placeholder="...">
@@ -2194,7 +2192,7 @@
                                 </div>
                                 {{-- tawjeeh classes --}}
                                 <div class="tab-pane fade" id="v-pills-renewal-process6" role="tabpanel"
-                                    aria-labelledby="v-renewal-process6-tab">
+                                    aria-labelledby="v-pills-renewal-process6-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form
                                             action="{{ route('company.renewal-process-company', $renewal_process_data->id) }}"
@@ -2226,7 +2224,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="Renewal-process7-transaction-fee" placeholder="..." disabled
                                                         value="{{ $renewal_process_data->tawjeeh_tranc_status }}">
                                                 </div>
@@ -2305,7 +2303,7 @@
                                 </div>
                                 {{-- residency section --}}
                                 <div class="tab-pane fade" id="v-pills-renewal-process7" role="tabpanel"
-                                    aria-labelledby="v-pills-visa7-tab">
+                                    aria-labelledby="v-pills-renewal-process7-tab">
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency
@@ -2333,7 +2331,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="Renewal-id-renewal-transaction-fee" placeholder="..."
                                                         disabled value="{{ $renewal_process_data->residency_status }}">
                                                 </div>
@@ -2404,7 +2402,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control status-container"
                                                         id="Renewal-id-renewal-transaction-fee"disabled
                                                         placeholder="..."
                                                         value="{{ $renewal_process_data->renewal_status }}">
@@ -2486,7 +2484,7 @@
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="">Status</label>
-                                                    <input type="text" class="form-control" id="#biometric1_2-date"
+                                                    <input type="text" class="form-control status-container" id="#biometric1_2-date"
                                                         disabled placeholder="..."
                                                         value="{{ $renewal_process_data->emp_biometric_status }}">
                                                 </div>
@@ -2599,7 +2597,7 @@
                 <div class="tab-content" id="work-permit-tabContent">
                     <!-- Sponsored by someone tab -->
                     <div class="tab-pane active show" id="pills-sponsored" role="tabpanel"
-                        aria-labelledby="pills-sponsored-tab">
+                        aria-labelledby="v-pills-sponsored-tab">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
@@ -2634,9 +2632,9 @@
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
-                                <div class="tab-content" id="v-sponsored-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-sponsored0" role="tabpanel"
-                                        aria-labelledby="v-pills-sponsored0-tab">
+                                <div class="tab-content" id="pills-sponsored-tab">
+                                    <div class="tab-pane fade show active process-start" id="v-pills-sponsored0" role="tabpanel"
+                                        aria-labelledby="pills-sponsored-tab">
                                         <div class='rounded p-3 light-box-shadow'>
                                             <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                                 method="POST" class='py-2'>
@@ -2662,10 +2660,10 @@
                                                                     ->value('status');
                                                             @endphp
                                                                  @if ($request_status == 'approved')
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 <input type="text" class="form-control process-status-input"
                                                                  disabled placeholder="..." value='process started'>
                                                              @else
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 <input type="text"  class="form-control process-status-input"
                                                                  disabled placeholder="..." value='not started'>
                                                              @endif
                                                         </div>
@@ -2707,7 +2705,7 @@
                                                         <div
                                                             class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 parent-of-approval-rejected">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="sponsored1-transacton1" disabled
                                                                 value="{{ $spo_by_some->work_permit_app_status }}"
                                                                 placeholder="...">
@@ -2792,7 +2790,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="sponsored1-transacton1" disabled
                                                                 value="{{ $spo_by_some->signed_mb_st_status }}"
                                                                 placeholder="...">
@@ -2885,7 +2883,7 @@
                                                                     Status</label>
                                                                 {{-- @dd($spo_by_some->waiting_for_approval_status); --}}
                                                                 <input type="text"
-                                                                    class="form-control new-visa-signmbstatus" readonly
+                                                                    class="form-control new-visa-signmbstatus status-container" readonly
                                                                     id="visa3_12-transaction-number1"
                                                                     name="waiting_for_approval_status"
                                                                     value='{{ $spo_by_some->waiting_for_approval_status }}'
@@ -3023,7 +3021,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="sponsored3-transacton3-number1" disabled
                                                                 value="{{ $spo_by_some->pay_dubai_insu_status }}"
                                                                 placeholder="...">
@@ -3104,7 +3102,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="sponsored4-transacton3-number1" disabled
                                                                 value="{{ $spo_by_some->pre_approv_wp_status }}"
                                                                 placeholder="...">
@@ -3186,7 +3184,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="sponsored4-transacton3-number1" disabled
                                                                 value="{{ $spo_by_some->upload_wp_status }}"
                                                                 placeholder="...">
@@ -3259,7 +3257,7 @@
                                     <a class="nav-link bordered_tab" id="v-pills-part-time2-tab" data-toggle="pill"
                                         href="#v-pills-part-time2" role="tab" aria-controls="v-pills-part-time2"
                                         aria-selected="false">Upload Sign MB</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-part-time2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab" id="v-pills-part-time2-1-tab" data-toggle="pill"
                                         href="#v-pills-part-time2-1" role="tab"
                                         aria-controls="v-pills-part-time2-1" aria-selected="false">Part Time Temporary
                                         <br class="d-none d-lg-block"> Work Permit
@@ -3271,9 +3269,9 @@
                             </div>
                             <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                                 <div class="tab-content" id="v-part-time-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-part-time0" role="tabpanel"
-                                        aria-labelledby="v-pills-part-time0-tab">
-                                        <div class='rounded p-3 light-box-shadow'>
+                                    <div class="tab-pane fade show active process-start" id="v-pills-part-time0" role="tabpanel"
+                                        aria-labelledby="pills-part-time-tab">
+                                        <div class='rounded p-3 light-box-shadow'> 
                                             <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                                 method="POST" class='py-2'>
                                                 @csrf
@@ -3299,10 +3297,10 @@
                                                                     ->value('status');
                                                             @endphp
                                                                 @if ($request_status == 'approved')
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                <input type="text"  class="form-control process-status-input"
                                                                 disabled placeholder="..." value='process started'>
                                                             @else
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                <input type="text"  class="form-control process-status-input"
                                                                 disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
@@ -3341,7 +3339,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="part-time1-number1" disabled
                                                                 value="{{ $part_time->wp_app_status }}"
                                                                 placeholder="...">
@@ -3424,7 +3422,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="parttime2-number1" disabled
                                                                 value="{{ $part_time->signed_mb_st_status }}"
                                                                 placeholder="...">
@@ -3516,7 +3514,7 @@
                                                                     Permit
                                                                     Status</label>
                                                                 <input type="text"
-                                                                    class="form-control new-visa-signmbstatus" readonly
+                                                                    class="form-control new-visa-signmbstatus status-container" readonly
                                                                     id="visa3_14-transaction-number1" disabled
                                                                     value="{{ $part_time->waiting_for_approval_status }}"
                                                                     placeholder="...">
@@ -3648,7 +3646,7 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="partime-4-fee-1" disabled
                                                                 value="{{ $part_time->contract_status }}"
                                                                 placeholder="...">
@@ -3705,7 +3703,6 @@
                     </div>
                     <!-- partime-tab end -->
                     <!-- UAE and Gcc tab -->
-
                     <div class="tab-pane" id="pills-UAE" role="tabpanel" aria-labelledby="pills-UAE-tab">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4">
@@ -3723,7 +3720,7 @@
                                     <a class="nav-link bordered_tab" id="v-pills-UAE3-tab" data-toggle="pill"
                                         href="#v-pills-UAE3" role="tab" aria-controls="v-pills-UAE3"
                                         aria-selected="false">Pay Dubai Insurance</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab" id="v-pills-UAE3-1-tab" data-toggle="pill"
                                         href="#v-pills-UAE3-1" role="tab" aria-controls="v-pills-UAE3-1"
                                         aria-selected="false">Waiting For Approval</a>
                                     <a class="nav-link bordered_tab" id="v-pills-UAE4-tab" data-toggle="pill"
@@ -3733,8 +3730,8 @@
                             </div>
                             <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                                 <div class="tab-content" id="v-header-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-UAE0" role="tabpanel"
-                                        aria-labelledby="v-pills-UAE0-tab">
+                                    <div class="tab-pane fade show active process-start" id="v-pills-UAE0" role="tabpanel"
+                                        aria-labelledby="pills-UAE-tab">
                                         <div class='rounded p-3 light-box-shadow'>
                                             <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                                 method="POST" class='py-2'>
@@ -3759,10 +3756,10 @@
                                                                     ->value('status');
                                                             @endphp
                                                                  @if ($request_status == 'approved')
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 <input type="text"  class="form-control process-status-input"
                                                                  disabled placeholder="..." value='process started'>
                                                                 @else
-                                                                    <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                    <input type="text" class="form-control process-status-input"
                                                                     disabled placeholder="..." value='not started'>
                                                                 @endif
                                                         </div>
@@ -3802,7 +3799,7 @@
                                                         <div
                                                             class="form-group mb-0 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control" id="uae1-date"
+                                                            <input type="text" class="form-control status-container" id="uae1-date"
                                                                 disabled value="{{ $uae_national->wp_app_status }}"
                                                                 placeholder="...">
                                                         </div>
@@ -3888,7 +3885,7 @@
                                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                                             <div class="form-group mb-3">
                                                                 <label for="#">Status</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control status-container"
                                                                     id="upload-signed-uae2-mb-transaction-fee" disabled
                                                                     value="{{ $uae_national->signed_mb_st_status }}"
                                                                     placeholder="...">
@@ -3963,6 +3960,85 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        <div class="tab-pane fade" id="v-pills-UAE3" role="tabpanel"
+                                            aria-labelledby="v-pills-UAE3-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="" class='py-2'>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay
+                                                        Dubai
+                                                        insurance</h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#uae3-transaction-number">Transaction
+                                                                    No:</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="uae3-transaction-number" disabled
+                                                                    value="{{ $uae_national->pay_dubai_insu_tranc_no }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#uae3-transaction-fee">Transaction Fee</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="uae3-transaction-fee" disabled
+                                                                    value="{{ $uae_national->pay_dubai_insu_tranc_fee }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                            <label for="#status">Status</label>
+                                                            <input type="text" class="form-control status-container"
+                                                                id="uae3-transaction-fee" disabled
+                                                                value="{{ $uae_national->pay_dubai_insu_status }}"
+                                                                placeholder="...">
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#uae3-insurance-date">Date</label>
+                                                                <input type="date" class="form-control"
+                                                                    id="uae3-insurance-date" disabled
+                                                                    value="{{ $uae_national->pay_dubai_insu_date }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                                            <div class="d-flex flex-column">
+                                                                <label
+                                                                    for="#">{{ $uae_national->pay_dubai_insu_file_name }}</label>
+                                                                @php
+                                                                    $file_name = $uae_national->pay_dubai_insu_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($uae_national->pay_dubai_insu_file)
+                                                                    <a class="upload-img" target="_black"
+                                                                        href="{{ asset('' . '/' . $uae_national->pay_dubai_insu_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $uae_national->pay_dubai_insu_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                         <div class="tab-pane fade" id="v-pills-UAE3-1" role="tabpanel"
                                             aria-labelledby="v-pills-UAE3-1-tab">
                                             <form action="{{ route('company.uae-gcc-company', $uae_national->id) }}"
@@ -3980,7 +4056,7 @@
                                                                 Application
                                                                 Status</label>
                                                             <input type="text"
-                                                                class="form-control new-visa-signmbstatus" readonly
+                                                                class="form-control status-container new-visa-signmbstatus" readonly
                                                                 id="visa1-3-1-transaction-number1"
                                                                 value="{{ $uae_national->waiting_for_approval_status }}"
                                                                 placeholder="...">
@@ -4080,85 +4156,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-UAE3" role="tabpanel"
-                                            aria-labelledby="v-pills-UAE3-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="" class='py-2'>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay
-                                                        Dubai
-                                                        insurance</h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#uae3-transaction-number">Transaction
-                                                                    No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="uae3-transaction-number" disabled
-                                                                    value="{{ $uae_national->pay_dubai_insu_tranc_no }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#uae3-transaction-fee">Transaction Fee</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="uae3-transaction-fee" disabled
-                                                                    value="{{ $uae_national->pay_dubai_insu_tranc_fee }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                            <label for="#status">Status</label>
-                                                            <input type="text" class="form-control"
-                                                                id="uae3-transaction-fee" disabled
-                                                                value="{{ $uae_national->pay_dubai_insu_status }}"
-                                                                placeholder="...">
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#uae3-insurance-date">Date</label>
-                                                                <input type="date" class="form-control"
-                                                                    id="uae3-insurance-date" disabled
-                                                                    value="{{ $uae_national->pay_dubai_insu_date }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
-                                                            <div class="d-flex flex-column">
-                                                                <label
-                                                                    for="#">{{ $uae_national->pay_dubai_insu_file_name }}</label>
-                                                                @php
-                                                                    $file_name = $uae_national->pay_dubai_insu_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($uae_national->pay_dubai_insu_file)
-                                                                    <a class="upload-img" target="_black"
-                                                                        href="{{ asset('' . '/' . $uae_national->pay_dubai_insu_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $uae_national->pay_dubai_insu_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                         <div class="tab-pane fade" id="v-pills-UAE4" role="tabpanel"
                                             aria-labelledby="v-pills-UAE4-tab">
                                             <div class='rounded p-3 light-box-shadow'>
@@ -4190,7 +4187,7 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="UAE4-process-transaction-fee10" disabled
                                                                 value="{{ $uae_national->upload_wp_status }}"
                                                                 placeholder="...">
@@ -4248,7 +4245,7 @@
                     <!-- UAE and Gcc tab end -->
                     <!-- Modify Contract  -->
                     <div class="tab-pane" id="pills-modify-contract" role="tabpanel"
-                        aria-labelledby="pills-modify-contract-tab">
+                        aria-labelledby="v-pills-modify-contract-tab">
                         <div class="row ">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-lg-column flex-row horizontal_tabs nav-pills"
@@ -4276,8 +4273,8 @@
                             </div>
                             <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                                 <div class="tab-content" id="modify-contract-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-modify-contract0"
-                                        role="tabpanel" aria-labelledby="v-pills-modify-contract0-tab">
+                                    <div class="tab-pane fade show active process-start" id="v-pills-modify-contract0"
+                                        role="tabpanel" aria-labelledby="pills-modify-contract-tab">
                                         <div class='rounded p-3 light-box-shadow'>
                                             <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                                 method="POST" class='py-2'>
@@ -4302,10 +4299,10 @@
                                                                     ->value('status');
                                                             @endphp
                                                                 @if ($request_status == 'approved')
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                <input type="text"  class="form-control process-status-input"
                                                                 disabled placeholder="..." value='process started'>
                                                             @else
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                <input type="text"  class="form-control process-status-input"
                                                                 disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
@@ -4344,7 +4341,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="modify1-number1"
                                                                 value="{{ $modify_contract->wp_app_status }}" disabled
                                                                 placeholder="...">
@@ -4426,7 +4423,7 @@
                                                         </div>
                                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="modify2-fee" disabled
                                                                 value="{{ $modify_contract->signed_mb_st_status }}"
                                                                 placeholder="...">
@@ -4507,7 +4504,7 @@
                                                                 <label for="visa3-2-1-transaction-number1">Modify Contract
                                                                     Status</label>
                                                                 <input type="text"
-                                                                    class="form-control new-visa-signmbstatus" readonly
+                                                                    class="form-control new-visa-signmbstatus status-container" readonly
                                                                     value="{{ $modify_contract->waiting_for_approval_status }}"
                                                                     id="visa3-2-1-transaction-number1"
                                                                     placeholder="...">
@@ -4638,7 +4635,7 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
                                                             <label for="">Status</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="text" class="form-control status-container"
                                                                 id="modify5-number10" disabled
                                                                 value="{{ $modify_contract->upload_wp_status }}"
                                                                 placeholder="...">
@@ -4702,931 +4699,9 @@
 
             </div>
             <!-- Workit Permit End -->
-
-            <!-- Cancelatoion Tab -->
-            <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
-                aria-labelledby="pills-pills-cancelation-tab">
-                <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
-                            href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
-                            aria-selected="false">Visa
-                            cancelation</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
-                            href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
-                            aria-selected="false">Work permit cancelation</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
-                    <!--  Visa Cancel Tab -->
-                    <div class="tab-pane active show" id="pills-visa-cancel" role="tabpanel"
-                        aria-labelledby="pills-visa-cancel-tab">
-                        <div class="row ">
-                            <div class="col-xl-3 col-lg-4">
-                                <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
-                                    id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-visa-cancel0-tab"
-                                        data-toggle="pill" href="#v-pills-visa-cancel0" role="tab"
-                                        aria-controls="v-pills-visa-cancel0" aria-selected="true">Start Process</a>
-                                    <a class="nav-link   bordered_tab" id="v-pills-visa-cancel1-tab"
-                                        data-toggle="pill" href="#v-pills-visa-cancel1" role="tab"
-                                        aria-controls="v-pills-visa-cancel1" aria-selected="true">Work Permit Canclation
-                                        Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel2-tab" data-toggle="pill"
-                                        href="#v-pills-visa-cancel2" role="tab"
-                                        aria-controls="v-pills-visa-cancel2" aria-selected="false">Upload Signed
-                                        Cancelation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel3-tab" data-toggle="pill"
-                                        href="#v-pills-visa-cancel3" role="tab"
-                                        aria-controls="v-pills-visa-cancel3" aria-selected="false">Singed Cancelation
-                                        Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel4-tab" data-toggle="pill"
-                                        href="#v-pills-visa-cancel4" role="tab"
-                                        aria-controls="v-pills-visa-cancel4" aria-selected="false">Work Permit
-                                        Cancelation Approval</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel5-tab" data-toggle="pill"
-                                        href="#v-pills-visa-cancel5" role="tab"
-                                        aria-controls="v-pills-visa-cancel5" aria-selected="false">Residency
-                                        Application</a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
-                                <div class="tab-content" id="visa-cancel-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-visa-cancel0" role="tabpanel"
-                                        aria-labelledby="v-pills-visa-cancel0-tab">
-                                        <div class='rounded p-3 light-box-shadow'>
-                                            <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
-                                                method="POST" class='py-2'>
-                                                @csrf
-                                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
-                                                    Process</h6>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <input type="hidden">
-                                                        <input type="hidden" value='visa cancellation'
-                                                            name='process_name'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
-                                                    </div>
-                                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                                        <div class="form-group mb-3">
-                                                            <label for="#parttime3-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'visa cancellation')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                @if ($request_status == 'approved')
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                disabled placeholder="..." value='process started'>
-                                                            @else
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                disabled placeholder="..." value='not started'>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    @if ($visa_cancellation)
-                                        <div class="tab-pane fade" id="v-pills-visa-cancel1" role="tabpanel"
-                                            aria-labelledby="v-pills-visa-cancel1-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="">
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
-                                                        Permit Cancellation Form
-                                                    </h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-number1">Transaction
-                                                                    No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1-number1" disabled
-                                                                    name="wp_app_can_trnc_no"
-                                                                    value="{{ $visa_cancellation->wp_app_can_trnc_no }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-fee1">Transaction
-                                                                    Fee</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1" disabled
-                                                                    name="wp_app_can_trnc_fee"
-                                                                    value="{{ $visa_cancellation->wp_app_can_trnc_fee }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                            <label for="">Status</label>
-                                                            <input type="text" class="form-control"
-                                                                id="sponsored1-transacton1" disabled
-                                                                name="wp_app_can_status"
-                                                                value="{{ $visa_cancellation->wp_app_can_status }}"
-                                                                placeholder="...">
+            
 
 
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#start-process-transaction-date">Date</label>
-                                                                <input type="date" class="form-control"
-                                                                    id="start-process-transaction-date"
-                                                                    value="{{ $visa_cancellation->wp_app_can_date }}"
-                                                                    placeholder="..." disabled name='wp_app_date'>
-                                                            </div>
-                                                        </div>
-
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                            <div class="upload-file">
-                                                                <label
-                                                                    for='#visa2-file'>{{ $visa_cancellation->wp_app_can_file_name }}</label>
-                                                                <br>
-                                                                @php
-                                                                    $file_name = $visa_cancellation->wp_app_can_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($visa_cancellation->wp_app_can_file)
-                                                                    <a class="upload-img" target="_black"
-                                                                        href="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-visa-cancel2" role="tabpanel"
-                                            aria-labelledby="v-pills-visa-cancel2-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form
-                                                    action="{{ route('company.visa-cancellation-process-company', $visa_cancellation->id) }}"
-                                                    class='py-2' method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="text" value='step1' name='signed_cancellation'
-                                                        hidden>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
-                                                        Upload Signed Cancellation Form </h6>
-                                                    <div class="row">
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                            <div class="upload-file">
-                                                                <label for='cancel-file-bio_1'>Upload File</label>
-                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                                    <input type="file" class="form-control"
-                                                                        id='cancel-file-bio_1'
-                                                                        name="signed_cancellation_form"
-                                                                        style="line-height: 1"
-                                                                        accept=".pdf,.doc,.excel">
-                                                                    <div class="input-group-prepend">
-                                                                        <small class="input-group-text"><span
-                                                                                class="fa fa-paperclip"></span></small>
-                                                                    </div>
-                                                                </div>
-                                                                @if($visa_cancellation->signed_cancellation_form)
-                                                                    <input type="text" hidden value='Approved'>
-                                                                @else
-                                                                    <input type="text" hidden value='Reject'>
-                                                                @endif
-                                                            </div>
-                                                            @php
-                                                                $file_name = $visa_cancellation->signed_cancellation_form;
-                                                                $ext = explode('.', $file_name);
-                                                            @endphp
-                                                            @if ($visa_cancellation->signed_cancellation_form)
-                                                                <a class="upload-img" target="_black"
-                                                                    href="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}">
-                                                                    @if ($ext[1] == 'pdf')
-                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'doc')
-                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'pptx')
-                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @else
-                                                                        <img src="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @endif
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                        <div class="col-12 text-center">
-                                                            <button class='btn btn-success px-5 py-2'
-                                                                type="submit">Add</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
-                                            aria-labelledby="v-pills-visa-cancel3-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="">
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
-                                                        Signed Cancellation Form</h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-number1">Transaction
-                                                                    No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1-number1" disabled
-                                                                    name="wp_app_can_trnc_no"
-                                                                    value="{{ $visa_cancellation->signd_can_from_tranc_no }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-fee1">Transaction
-                                                                    Fee</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1" disabled
-                                                                    name="wp_app_can_trnc_fee"
-                                                                    value="{{ $visa_cancellation->signd_can_from_tranc_fee }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                            <label for="">Status</label>
-                                                            <input type="text" class="form-control"
-                                                                id="sponsored1-transacton1" disabled
-                                                                name="wp_app_can_status"
-                                                                value="{{ $visa_cancellation->signd_can_from_status }}"
-                                                                placeholder="...">
-
-
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#start-process-transaction-date">Date</label>
-                                                                <input type="date" class="form-control"
-                                                                    id="start-process-transaction-date"
-                                                                    value="{{ $visa_cancellation->signd_can_from_date }}"
-                                                                    placeholder="..." disabled name='wp_app_date'>
-                                                            </div>
-                                                        </div>
-
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                            <div class="upload-file">
-                                                                <label
-                                                                    for='#visa2-file'>{{ $visa_cancellation->signd_can_from_file_name }}</label>
-                                                                <br>
-                                                                @php
-                                                                    $file_name = $visa_cancellation->signd_can_from_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($visa_cancellation->signd_can_from_file)
-                                                                    <a class="upload-img" target="_black"
-                                                                        href="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-visa-cancel4" role="tabpanel"
-                                            aria-labelledby="v-pills-visa-cancel4-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form
-                                                    action="{{ route('company.visa-cancellation-process-company', $visa_cancellation->id) }}"
-                                                    class='py-2' method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="text" value='step2' name='waiting' hidden>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Work
-                                                        Permit Cancelation Approval
-                                                    </h6>
-                                                    <div class="row">
-                                                        <div
-                                                            class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                                            <label for="status-select1">Status</label>
-                                                            <input type="text" class="form-control"
-                                                                id="sponsor-approval-13" placeholder="..."
-                                                                name="waiting_for_approval_status" disabled
-                                                                value="{{ $visa_cancellation->waiting_for_approval_status }}">
-                                                        </div>
-                                                        <div class="form-group col-12 d-none status-select-comment">
-                                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
-                                                                placeholder="Enter Your Comments ..." class="form-control" rows="5">{{ $visa_cancellation->waiting_for_approval_reason }}</textarea>
-
-                                                            @php
-                                                                $file_name = $visa_cancellation->waiting_for_approval_reason_file;
-                                                                $ext = explode('.', $file_name);
-                                                            @endphp
-                                                            @if ($visa_cancellation->waiting_for_approval_reason_file)
-                                                                <a class="upload-img" target="_black"
-                                                                    href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}">
-                                                                    @if ($ext[1] == 'pdf')
-                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'doc')
-                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'pptx')
-                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @else
-                                                                        <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @endif
-                                                                </a>
-                                                            @endif
-                                                        </div>
-                                                        <div
-                                                            class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
-                                                            <div class="form-group mb-3">
-                                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsor-approval-13" placeholder="..." disabled
-                                                                    name="waiting_for_approval_no"
-                                                                    value="{{ $visa_cancellation->waiting_for_approval_no }}">
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                                            <div class="upload-file">
-                                                                <label for='visa2-file-bio_1'>Upload File</label>
-                                                                @php
-                                                                    $file_name = $visa_cancellation->waiting_for_approval_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($visa_cancellation->waiting_for_approval_file)
-                                                                    <a class="upload-img" target="_black"
-                                                                        href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 text-center status-select-btn">
-                                                            <button class='btn btn-success px-5 py-2'
-                                                                type="submit">Add</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-visa-cancel5" role="tabpanel"
-                                            aria-labelledby="v-pills-visa-cancel5-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="">
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
-                                                        Residency Application</h6>
-
-
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-number1">Transaction
-                                                                    No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1-number1" disabled
-                                                                    name="wp_app_can_trnc_no"
-                                                                    value="{{ $visa_cancellation->residency_app_tranc_no }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#sponsored1-transacton1-fee1">Transaction
-                                                                    Fee</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="sponsored1-transacton1" disabled
-                                                                    name="wp_app_can_trnc_fee"
-                                                                    value="{{ $visa_cancellation->residency_app_tranc_fee }}"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                            <label for="">Status</label>
-                                                            <input type="text" class="form-control"
-                                                                id="sponsored1-transacton1" disabled
-                                                                name="wp_app_can_status"
-                                                                value="{{ $visa_cancellation->residency_app_status }}"
-                                                                placeholder="...">
-
-
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="#start-process-transaction-date">Date</label>
-                                                                <input type="date" class="form-control"
-                                                                    id="start-process-transaction-date"
-                                                                    value="{{ $visa_cancellation->residency_app_date }}"
-                                                                    placeholder="..." disabled name='wp_app_date'>
-                                                            </div>
-                                                        </div>
-
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                            <div class="upload-file">
-                                                                <label
-                                                                    for='#visa2-file'>{{ $visa_cancellation->residency_app_file_name }}</label>
-                                                                <br>
-                                                                @php
-                                                                    $file_name = $visa_cancellation->residency_app_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($visa_cancellation->residency_app_file)
-                                                                    <a class="upload-img" target="_black"
-                                                                        href="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Visa Cancel tab end -->
-                    <!-- WorkPermit Cancel tab -->
-                    <div class="tab-pane" id="pills-work-permit-cancel" role="tabpanel"
-                        aria-labelledby="pills-work-permit-cancel-tab">
-                        <div class="row ">
-                            <div class="col-xl-3 col-lg-4">
-                                <div class="nav side-bar flex-row horizonts_tabs flex-lg-column nav-pills"
-                                    id="work-permit-cancel-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-work-permit-cancel0-tab"
-                                        data-toggle="pill" href="#v-pills-work-permit-cancel0" role="tab"
-                                        aria-controls="v-pills-work-permit-cancel0" aria-selected="false">Start
-                                        Process</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel1-tab"
-                                        data-toggle="pill" href="#v-pills-work-permit-cancel1" role="tab"
-                                        aria-controls="v-pills-work-permit-cancel1" aria-selected="true">Work Permit<br
-                                            class='d-none d-lg-block'> Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel2-tab"
-                                        data-toggle="pill" href="#v-pills-work-permit-cancel2" role="tab"
-                                        aria-controls="v-pills-work-permit-cancel2" aria-selected="false">Upload Singed
-                                        <br class='d-none d-lg-block'>Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel3-tab"
-                                        data-toggle="pill" href="#v-pills-work-permit-cancel3" role="tab"
-                                        aria-controls="v-pills-work-permit-cancel3" aria-selected="false">Signed
-                                        Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel4-tab"
-                                        data-toggle="pill" href="#v-pills-work-permit-cancel4" role="tab"
-                                        aria-controls="v-pills-work-permit-cancel4" aria-selected="false">Work Permit
-                                        <br class='d-none d-lg-block'>Cancelation Approval</a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-8 px-lg-3  mt-lg-0 mt-3">
-                                <div class="tab-content" id="work-permit-cancel-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-work-permit-cancel0"
-                                        role="tabpanel" aria-labelledby="v-pills-work-permit-cancel0-tab">
-                                        <div class='rounded p-3 light-box-shadow'>
-                                            <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
-                                                method="POST" class='py-2'>
-                                                @csrf
-                                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
-                                                    Process</h6>
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        <input type="hidden">
-                                                        <input type="hidden" value='permit cancellation'
-                                                            name='process_name'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
-                                                    </div>
-                                                    <div class="col-xl-6 col-lg-12 col-md-6">
-                                                        <div class="form-group mb-3">
-                                                            <label for="#parttime3-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'permit cancellation')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                 @if ($request_status == 'approved')
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='process started'>
-                                                             @else
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='not started'>
-                                                             @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    @if ($permit_cancellation)
-                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel1" role="tabpanel"
-                                            aria-labelledby="v-pills-work-permit-cancel1-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="" class='py-2'>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
-                                                        Permit
-                                                        Cancellation Form</h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="permit-cancle-transaction-number1">Transaction
-                                                                    No:</label>
-                                                                <input type="text" readonly class="form-control"
-                                                                    id="permit-cancle-transaction-number1"
-                                                                    value="{{$permit_cancellation->wp_app_can_trnc_no}}" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="permit-cancle-transaction-fee1">Transaction
-                                                                    Fee</label>
-                                                                <input type="text" readonly class="form-control"
-                                                                    id="permit-cancle-transaction-number2"
-                                                                    value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                            <label for="">Status</label>
-                                                            <input type="text" readonly class="form-control"
-                                                            id="permit-cancle-transaction-number1"
-                                                            value="{{$permit_cancellation->wp_app_can_status}}" placeholder="...">
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="permit-cancle-date1">Date</label>
-                                                                <input type="date" readonly    value="{{$permit_cancellation->wp_app_can_date}}" class="form-control"
-                                                                    id="permit-cancle-date1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
-                                                            <div class="d-flex flex-column">
-                                                                <label for="#">{{$permit_cancellation->wp_app_can_file_name}}</label>
-                                                                    @php
-                                                                    $file_name = $permit_cancellation->wp_app_can_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                    @endphp
-                                                                    @if ($permit_cancellation->wp_app_can_file)
-                                                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                    @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel2" role="tabpanel"
-                                            aria-labelledby="v-pills-work-permit-cancel2-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form
-                                                action="{{ route('company.permit-cancellation-process-company', $permit_cancellation->id) }}"
-                                                class='py-2' method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="text" value='step1' name='signed_cancellation' hidden>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload
-                                                        Signed Cancellation Form </h6>
-                                                    <div class="row">
-                                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                            <div class="upload-file">
-                                                                <label for='cancel11-file-bio_1'>Upload File</label>
-                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                                    <input type="file" class="form-control"
-                                                                        id='cancel11-file-bio_1' name="signed_cancellation_form"
-                                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
-                                                                    <div class="input-group-prepend">
-                                                                        <small class="input-group-text"><span
-                                                                                class="fa fa-paperclip"></span></small>
-                                                                    </div>
-                                                                </div>
-                                                                @if($permit_cancellation->signed_cancellation_form)
-                                                                <input type="text" hidden value='Approved'>
-                                                                @else
-                                                                    <input type="text" hidden value='Reject'>
-                                                                @endif
-                                                            </div>
-                                                            @php
-                                                            $file_name = $permit_cancellation->signed_cancellation_form;
-                                                            $ext = explode('.', $file_name);
-                                                            @endphp
-                                                            @if ($permit_cancellation->signed_cancellation_form)
-                                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
-                                                                @if ($ext[1] == 'pdf')
-                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'doc')
-                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'pptx')
-                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @else
-                                                                    <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @endif
-                                                            </a>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col-12 text-center">
-                                                            <button class='btn btn-success px-5 py-2' type="submit">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel3" role="tabpanel"
-                                            aria-labelledby="v-pills-work-permit-cancel3-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="" class='py-2'>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Signed
-                                                        Cancellation Form</h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="visa-cancle-transaction-number21">Transaction
-                                                                    No:</label>
-                                                                <input type="text" readonly class="form-control"
-                                                                    id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_tranc_no}}" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="visa-cancle-transaction-fee21">Transaction
-                                                                    Fee</label>
-                                                                    <input type="text" readonly class="form-control"
-                                                                    id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                            <label for="">Status</label>
-                                                            <input type="text" readonly class="form-control"
-                                                            id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_status}}" placeholder="...">
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 col-md-6">
-                                                            <div class="form-group mb-3">
-                                                                <label for="visa-cancle-date21">Date</label>
-                                                                <input type="date" readonly value="{{$permit_cancellation->signd_can_from_date}}" class="form-control"
-                                                                    id="visa-cancle-date21" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
-                                                            <div class="d-flex flex-column">
-                                                                <label for="#">{{$permit_cancellation->signd_can_from_file_name}}</label>
-                                                                @php
-                                                                $file_name = $permit_cancellation->signd_can_from_file;
-                                                                $ext = explode('.', $file_name);
-                                                                @endphp
-                                                                @if ($permit_cancellation->signd_can_from_file)
-                                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}">
-                                                                    @if ($ext[1] == 'pdf')
-                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'doc')
-                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @elseif($ext[1] == 'pptx')
-                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @else
-                                                                        <img src="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}"
-                                                                            style="height: 50px;width:50px">
-                                                                    @endif
-                                                                </a>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel4" role="tabpanel"
-                                            aria-labelledby="v-pills-work-permit-cancel4-tab">
-                                            <div class='rounded p-3 light-box-shadow'>
-                                                <form action="{{route('company.permit-cancellation-process-company',$permit_cancellation->id)}}"
-                                                    class='py-2' method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="text" value='step2' name='waiting' hidden>
-                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting
-                                                        for
-                                                        Approval
-                                                    </h6>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
-                                                            <div class="form-group mb-3 ">
-                                                                <label for="visa-cancel1-transaction-number3_3">Work Permit
-                                                                    Cancellation Approval Status</label>
-                                                                <input type="text"
-                                                                    class="form-control new-visa-signmbstatus" readonly
-                                                                    value="{{$permit_cancellation->waiting_for_approval_status}}" id="visa-cancel1-transaction-number3_3"
-                                                                    placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
-                                                            <div class="d-flex flex-column">
-                                                                <label for="#">Attachment</label>
-                                                                @php
-                                                                    $file_name = $permit_cancellation->waiting_for_approval_file;
-                                                                    $ext = explode('.', $file_name);
-                                                                    @endphp
-                                                                    @if ($permit_cancellation->waiting_for_approval_file)
-                                                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}">
-                                                                        @if ($ext[1] == 'pdf')
-                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'doc')
-                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'pptx')
-                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @else
-                                                                            <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}"
-                                                                                style="height: 50px;width:50px">
-                                                                        @endif
-                                                                    </a>
-                                                                    @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                            <label for='visa-cancel1-textarea-13_3'>Comments</label>
-                                                            <textarea type="text" id='visa-cancel1-textarea-13_3' name="comment" disabled placeholder="Enter Your Comments ..."
-                                                                class="form-control" rows="5">{{$permit_cancellation->waiting_for_approval_reason}}</textarea>
-                                                        </div>
-                                                        <div
-                                                            class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
-                                                            <div class="form-group mb-3">
-                                                                <label for="visa-cancel1-approval21_1-13">Approval No:</label>
-                                                                <input type="text" class="form-control" value="{{$permit_cancellation->waiting_for_approval_no}}"
-                                                                    id="visa-cancel1-approval21_1-13" placeholder="...">
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
-                                                            <div class="upload-file">
-                                                                <label for='visa-cancel1-file-bio23_13'>Upload
-                                                                    Document</label>
-                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                                    <input type="file" class="form-control"
-                                                                        id='visa-cancel1-file-bio23_13' name="waiting_for_approval_reason_file"
-                                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
-                                                                    <div class="input-group-prepend">
-                                                                        <small class="input-group-text"><span
-                                                                                class="fa fa-paperclip"></span></small>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @php
-                                                            $file_name = $permit_cancellation->waiting_for_approval_reason_file;
-                                                            $ext = explode('.', $file_name);
-                                                            @endphp
-                                                            @if ($permit_cancellation->waiting_for_approval_reason_file)
-                                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}">
-                                                                @if ($ext[1] == 'pdf')
-                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'doc')
-                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'pptx')
-                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @else
-                                                                    <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}"
-                                                                        style="height: 50px;width:50px">
-                                                                @endif
-                                                            </a>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
-                                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- WorkPermit Cancel Tabe End -->
-                </div>
-            </div>
-            <!-- Cancelatoion Tab end -->
 
             <!-- Modification Visa Tab -->
             <div class="tab-pane" id="pills-modify-visa" role="tabpanel" aria-labelledby="pills-modify-visa-tab">
@@ -5644,8 +4719,8 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                         <div class="tab-content" id="modify-visa-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-modify-visa1" role="tabpanel"
-                                aria-labelledby="v-pills-modify-visa1-tab">
+                            <div class="tab-pane fade show active process-start" id="v-pills-modify-visa1" role="tabpanel"
+                                aria-labelledby="pills-modify-visa-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                         method="POST" class='py-2'>
@@ -5699,7 +4774,7 @@
                                                     <div class="form-group mb-3 ">
                                                         <label for="visa3-3-transaction-number1">Application
                                                             Status</label>
-                                                        <input type="text" class="form-control new-visa-signmbstatus"
+                                                        <input type="text" class="form-control status-container new-visa-signmbstatus"
                                                             readonly
                                                             value="{{ $modification_visa->application_status }}"
                                                             id="visa3-3-transaction-number1" placeholder="...">
@@ -5825,8 +4900,8 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                         <div class="tab-content" id="modify-emirates-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-modify-emirates1" role="tabpanel"
-                                aria-labelledby="v-pills-modify-emirates1-tab">
+                            <div class="tab-pane fade show active process-start" id="v-pills-modify-emirates1" role="tabpanel"
+                                aria-labelledby="pills-modify-emirates-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                         method="POST" class='py-2'>
@@ -5852,10 +4927,10 @@
                                                             ->value('status');
                                                     @endphp
                                                        @if ($request_status == 'approved')
-                                                       <input type="text" id="tab-1" class="form-control process-status-input"
+                                                       <input type="text" class="form-control process-status-input"
                                                        disabled placeholder="..." value='process started'>
                                                    @else
-                                                       <input type="text" id="tab-1" class="form-control process-status-input"
+                                                       <input type="text"  class="form-control process-status-input"
                                                        disabled placeholder="..." value='not started'>
                                                    @endif
                                                 </div>
@@ -5881,7 +4956,7 @@
                                                     <div class="form-group mb-3 ">
                                                         <label for="visa32-32-transaction-number1">Application
                                                             Status</label>
-                                                        <input type="text" class="form-control new-visa-signmbstatus"
+                                                        <input type="text" class="form-control status-container new-visa-signmbstatus"
                                                             readonly
                                                             value="{{ $modification_emirates->application_status }}"
                                                             id="visa32-32-transaction-number1" placeholder="...">
@@ -5988,8 +5063,933 @@
                 </div>
             </div>
             <!-- Mian tab -->
-        </div>
+
         <!-- Modification of Emirates End -->
+            <!-- Cancelatoion Tab -->
+            <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
+                aria-labelledby="pills-pills-cancelation-tab">
+                <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
+                            href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
+                            aria-selected="false">Visa
+                            cancelation</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
+                            href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
+                            aria-selected="false">Work permit cancelation</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
+                    <!--  Visa Cancel Tab -->
+                    <div class="tab-pane active show" id="pills-visa-cancel" role="tabpanel"
+                        aria-labelledby="v-pills-visa-cancel-tab">
+                        <div class="row ">
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
+                                    id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active bordered_tab" id="v-pills-visa-cancel0-tab"
+                                        data-toggle="pill" href="#v-pills-visa-cancel0" role="tab"
+                                        aria-controls="v-pills-visa-cancel0" aria-selected="true">Start Process</a>
+                                    <a class="nav-link   bordered_tab" id="v-pills-visa-cancel1-tab"
+                                        data-toggle="pill" href="#v-pills-visa-cancel1" role="tab"
+                                        aria-controls="v-pills-visa-cancel1" aria-selected="true">Work Permit Canclation
+                                        Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel2-tab" data-toggle="pill"
+                                        href="#v-pills-visa-cancel2" role="tab"
+                                        aria-controls="v-pills-visa-cancel2" aria-selected="false">Upload Signed
+                                        Cancelation Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel3-tab" data-toggle="pill"
+                                        href="#v-pills-visa-cancel3" role="tab"
+                                        aria-controls="v-pills-visa-cancel3" aria-selected="false">Singed Cancelation
+                                        Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel4-tab" data-toggle="pill"
+                                        href="#v-pills-visa-cancel4" role="tab"
+                                        aria-controls="v-pills-visa-cancel4" aria-selected="false">Work Permit
+                                        Cancelation Approval</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel5-tab" data-toggle="pill"
+                                        href="#v-pills-visa-cancel5" role="tab"
+                                        aria-controls="v-pills-visa-cancel5" aria-selected="false">Residency
+                                        Application</a>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
+                                <div class="tab-content" id="visa-cancel-tabContent">
+                                    <div class="tab-pane fade show active process-start" id="v-pills-visa-cancel0" role="tabpanel"
+                                        aria-labelledby="pills-visa-cancel-tab">
+                                        <div class='rounded p-3 light-box-shadow'>
+                                            <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
+                                                method="POST" class='py-2'>
+                                                @csrf
+                                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
+                                                    Process</h6>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <input type="hidden">
+                                                        <input type="hidden" value='visa cancellation'
+                                                            name='process_name'>
+                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                            Process</button>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="#parttime3-visa">Process status</label>
+                                                            @php
+                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
+                                                                    ->where('process_name', 'visa cancellation')
+                                                                    ->value('status');
+                                                            @endphp
+                                                                @if ($request_status == 'approved')
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='process started'>
+                                                            @else
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='not started'>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @if ($visa_cancellation)
+                                        <div class="tab-pane fade" id="v-pills-visa-cancel1" role="tabpanel"
+                                            aria-labelledby="v-pills-visa-cancel1-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="">
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
+                                                        Permit Cancellation Form
+                                                    </h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                                    No:</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1-number1" disabled
+                                                                    name="wp_app_can_trnc_no"
+                                                                    value="{{ $visa_cancellation->wp_app_can_trnc_no }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                                    Fee</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1" disabled
+                                                                    name="wp_app_can_trnc_fee"
+                                                                    value="{{ $visa_cancellation->wp_app_can_trnc_fee }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                            <label for="">Status</label>
+                                                            <input type="text" class="form-control status-container"
+                                                                id="sponsored1-transacton1" disabled
+                                                                name="wp_app_can_status"
+                                                                value="{{ $visa_cancellation->wp_app_can_status }}"
+                                                                placeholder="...">
+
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#start-process-transaction-date">Date</label>
+                                                                <input type="date" class="form-control"
+                                                                    id="start-process-transaction-date"
+                                                                    value="{{ $visa_cancellation->wp_app_can_date }}"
+                                                                    placeholder="..." disabled name='wp_app_date'>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label
+                                                                    for='#visa2-file'>{{ $visa_cancellation->wp_app_can_file_name }}</label>
+                                                                <br>
+                                                                @php
+                                                                    $file_name = $visa_cancellation->wp_app_can_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($visa_cancellation->wp_app_can_file)
+                                                                    <a class="upload-img" target="_black"
+                                                                        href="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->wp_app_can_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-visa-cancel2" role="tabpanel"
+                                            aria-labelledby="v-pills-visa-cancel2-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form
+                                                    action="{{ route('company.visa-cancellation-process-company', $visa_cancellation->id) }}"
+                                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="text" value='step1' name='signed_cancellation'
+                                                        hidden>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
+                                                        Upload Signed Cancellation Form </h6>
+                                                    <div class="row">
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label for='cancel-file-bio_1'>Upload File</label>
+                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                                    <input type="file" class="form-control"
+                                                                        id='cancel-file-bio_1'
+                                                                        name="signed_cancellation_form"
+                                                                        style="line-height: 1"
+                                                                        accept=".pdf,.doc,.excel">
+                                                                    <div class="input-group-prepend">
+                                                                        <small class="input-group-text"><span
+                                                                                class="fa fa-paperclip"></span></small>
+                                                                    </div>
+                                                                </div>
+                                                                @if($visa_cancellation->signed_cancellation_form)
+                                                                    <input type="text" hidden value='Approved' class="status-container">
+                                                                @else
+                                                                    <input type="text" hidden value='Reject' class="status-container">
+                                                                @endif
+                                                            </div>
+                                                            @php
+                                                                $file_name = $visa_cancellation->signed_cancellation_form;
+                                                                $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($visa_cancellation->signed_cancellation_form)
+                                                                <a class="upload-img" target="_black"
+                                                                    href="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}">
+                                                                    @if ($ext[1] == 'pdf')
+                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'doc')
+                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'pptx')
+                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @else
+                                                                        <img src="{{ asset('' . '/' . $visa_cancellation->signed_cancellation_form) }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @endif
+                                                                </a>
+                                                            @endif
+
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            <button class='btn btn-success px-5 py-2'
+                                                                type="submit">Add</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
+                                            aria-labelledby="v-pills-visa-cancel3-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="">
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
+                                                        Signed Cancellation Form</h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                                    No:</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1-number1" disabled
+                                                                    name="wp_app_can_trnc_no"
+                                                                    value="{{ $visa_cancellation->signd_can_from_tranc_no }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                                    Fee</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1" disabled
+                                                                    name="wp_app_can_trnc_fee"
+                                                                    value="{{ $visa_cancellation->signd_can_from_tranc_fee }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                            <label for="">Status</label>
+                                                            <input type="text" class="form-control status-container"
+                                                                id="sponsored1-transacton1" disabled
+                                                                name="wp_app_can_status"
+                                                                value="{{ $visa_cancellation->signd_can_from_status }}"
+                                                                placeholder="...">
+
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#start-process-transaction-date">Date</label>
+                                                                <input type="date" class="form-control"
+                                                                    id="start-process-transaction-date"
+                                                                    value="{{ $visa_cancellation->signd_can_from_date }}"
+                                                                    placeholder="..." disabled name='wp_app_date'>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label
+                                                                    for='#visa2-file'>{{ $visa_cancellation->signd_can_from_file_name }}</label>
+                                                                <br>
+                                                                @php
+                                                                    $file_name = $visa_cancellation->signd_can_from_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($visa_cancellation->signd_can_from_file)
+                                                                    <a class="upload-img" target="_black"
+                                                                        href="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->signd_can_from_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-visa-cancel4" role="tabpanel"
+                                            aria-labelledby="v-pills-visa-cancel4-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form
+                                                    action="{{ route('company.visa-cancellation-process-company', $visa_cancellation->id) }}"
+                                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="text" value='step2' name='waiting' hidden>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Work
+                                                        Permit Cancelation Approval
+                                                    </h6>
+                                                    <div class="row">
+                                                        <div
+                                                            class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                                            <label for="status-select1">Status</label>
+                                                            <input type="text" class="form-control status-container"
+                                                                id="sponsor-approval-13" placeholder="..."
+                                                                name="waiting_for_approval_status" disabled
+                                                                value="{{ $visa_cancellation->waiting_for_approval_status }}">
+                                                        </div>
+                                                        <div class="form-group col-12 d-none status-select-comment">
+                                                            <label for='sponsor2-textareara-13'>Comments</label>
+                                                            <textarea type="text" id='sponsor2-textarear-13' name="waiting_for_approval_reason"
+                                                                placeholder="Enter Your Comments ..." class="form-control" rows="5">{{ $visa_cancellation->waiting_for_approval_reason }}</textarea>
+
+                                                            @php
+                                                                $file_name = $visa_cancellation->waiting_for_approval_reason_file;
+                                                                $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($visa_cancellation->waiting_for_approval_reason_file)
+                                                                <a class="upload-img" target="_black"
+                                                                    href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}">
+                                                                    @if ($ext[1] == 'pdf')
+                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'doc')
+                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'pptx')
+                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @else
+                                                                        <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @endif
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
+                                                            <div class="form-group mb-3">
+                                                                <label for="sponsor-approval-13">Approval No:</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsor-approval-13" placeholder="..." disabled
+                                                                    name="waiting_for_approval_no"
+                                                                    value="{{ $visa_cancellation->waiting_for_approval_no }}">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
+                                                            <div class="upload-file">
+                                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                                @php
+                                                                    $file_name = $visa_cancellation->waiting_for_approval_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($visa_cancellation->waiting_for_approval_file)
+                                                                    <a class="upload-img" target="_black"
+                                                                        href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 text-center status-select-btn">
+                                                            <button class='btn btn-success px-5 py-2'
+                                                                type="submit">Add</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-visa-cancel5" role="tabpanel"
+                                            aria-labelledby="v-pills-visa-cancel5-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="">
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
+                                                        Residency Application</h6>
+
+
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-number1">Transaction
+                                                                    No:</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1-number1" disabled
+                                                                    name="wp_app_can_trnc_no"
+                                                                    value="{{ $visa_cancellation->residency_app_tranc_no }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#sponsored1-transacton1-fee1">Transaction
+                                                                    Fee</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="sponsored1-transacton1" disabled
+                                                                    name="wp_app_can_trnc_fee"
+                                                                    value="{{ $visa_cancellation->residency_app_tranc_fee }}"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                            <label for="">Status</label>
+                                                            <input type="text" class="form-control status-container"
+                                                                id="sponsored1-transacton1" disabled
+                                                                name="wp_app_can_status"
+                                                                value="{{ $visa_cancellation->residency_app_status }}"
+                                                                placeholder="...">
+
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="#start-process-transaction-date">Date</label>
+                                                                <input type="date" class="form-control"
+                                                                    id="start-process-transaction-date"
+                                                                    value="{{ $visa_cancellation->residency_app_date }}"
+                                                                    placeholder="..." disabled name='wp_app_date'>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label
+                                                                    for='#visa2-file'>{{ $visa_cancellation->residency_app_file_name }}</label>
+                                                                <br>
+                                                                @php
+                                                                    $file_name = $visa_cancellation->residency_app_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($visa_cancellation->residency_app_file)
+                                                                    <a class="upload-img" target="_black"
+                                                                        href="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $visa_cancellation->residency_app_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visa Cancel tab end -->
+                    <!-- WorkPermit Cancel tab -->
+                    <div class="tab-pane" id="pills-work-permit-cancel" role="tabpanel"
+                        aria-labelledby="pills-work-permit-cancel-tab">
+                        <div class="row ">
+                            <div class="col-xl-3 col-lg-4">
+                                <div class="nav side-bar flex-row horizonts_tabs flex-lg-column nav-pills"
+                                    id="work-permit-cancel-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active bordered_tab" id="v-pills-work-permit-cancel0-tab"
+                                        data-toggle="pill" href="#v-pills-work-permit-cancel0" role="tab"
+                                        aria-controls="v-pills-work-permit-cancel0" aria-selected="false">Start
+                                        Process</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel1-tab"
+                                        data-toggle="pill" href="#v-pills-work-permit-cancel1" role="tab"
+                                        aria-controls="v-pills-work-permit-cancel1" aria-selected="true">Work Permit<br
+                                            class='d-none d-lg-block'> Cancellation Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel2-tab"
+                                        data-toggle="pill" href="#v-pills-work-permit-cancel2" role="tab"
+                                        aria-controls="v-pills-work-permit-cancel2" aria-selected="false">Upload Singed
+                                        <br class='d-none d-lg-block'>Cancellation Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel3-tab"
+                                        data-toggle="pill" href="#v-pills-work-permit-cancel3" role="tab"
+                                        aria-controls="v-pills-work-permit-cancel3" aria-selected="false">Signed
+                                        Cancellation Form</a>
+                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel4-tab"
+                                        data-toggle="pill" href="#v-pills-work-permit-cancel4" role="tab"
+                                        aria-controls="v-pills-work-permit-cancel4" aria-selected="false">Work Permit
+                                        <br class='d-none d-lg-block'>Cancelation Approval</a>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-8 px-lg-3  mt-lg-0 mt-3">
+                                <div class="tab-content" id="work-permit-cancel-tabContent">
+                                    <div class="tab-pane fade show active process-start" id="v-pills-work-permit-cancel0"
+                                        role="tabpanel" aria-labelledby="pills-work-permit-cancel-tab">
+                                        <div class='rounded p-3 light-box-shadow'>
+                                            <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
+                                                method="POST" class='py-2'>
+                                                @csrf
+                                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start
+                                                    Process</h6>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <input type="hidden">
+                                                        <input type="hidden" value='permit cancellation'
+                                                            name='process_name'>
+                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                            Process</button>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="#parttime3-visa">Process status</label>
+                                                            @php
+                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
+                                                                    ->where('process_name', 'permit cancellation')
+                                                                    ->value('status');
+                                                            @endphp
+                                                                 @if ($request_status == 'approved')
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='process started'>
+                                                             @else
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='not started'>
+                                                             @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @if ($permit_cancellation)
+                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel1" role="tabpanel"
+                                            aria-labelledby="v-pills-work-permit-cancel1-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="" class='py-2'>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
+                                                        Permit
+                                                        Cancellation Form</h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="permit-cancle-transaction-number1">Transaction
+                                                                    No:</label>
+                                                                <input type="text" readonly class="form-control"
+                                                                    id="permit-cancle-transaction-number1"
+                                                                    value="{{$permit_cancellation->wp_app_can_trnc_no}}" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="permit-cancle-transaction-fee1">Transaction
+                                                                    Fee</label>
+                                                                <input type="text" readonly class="form-control"
+                                                                    id="permit-cancle-transaction-number2"
+                                                                    value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                            <label for="">Status</label>
+                                                            <input type="text" readonly class="form-control status-container"
+                                                            id="permit-cancle-transaction-number1"
+                                                            value="{{$permit_cancellation->wp_app_can_status}}" placeholder="...">
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="permit-cancle-date1">Date</label>
+                                                                <input type="date" readonly    value="{{$permit_cancellation->wp_app_can_date}}" class="form-control"
+                                                                    id="permit-cancle-date1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                                            <div class="d-flex flex-column">
+                                                                <label for="#">{{$permit_cancellation->wp_app_can_file_name}}</label>
+                                                                    @php
+                                                                    $file_name = $permit_cancellation->wp_app_can_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                    @endphp
+                                                                    @if ($permit_cancellation->wp_app_can_file)
+                                                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $permit_cancellation->wp_app_can_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                    @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel2" role="tabpanel"
+                                            aria-labelledby="v-pills-work-permit-cancel2-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form
+                                                action="{{ route('company.permit-cancellation-process-company', $permit_cancellation->id) }}"
+                                                class='py-2' method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="text" value='step1' name='signed_cancellation' hidden>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload
+                                                        Signed Cancellation Form </h6>
+                                                    <div class="row">
+                                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label for='cancel11-file-bio_1'>Upload File</label>
+                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                                    <input type="file" class="form-control"
+                                                                        id='cancel11-file-bio_1' name="signed_cancellation_form"
+                                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                                    <div class="input-group-prepend">
+                                                                        <small class="input-group-text"><span
+                                                                                class="fa fa-paperclip"></span></small>
+                                                                    </div>
+                                                                </div>
+                                                                @if($permit_cancellation->signed_cancellation_form)
+                                                                <input type="text" hidden value='Approved' class="process-container">
+                                                                @else
+                                                                    <input type="text" hidden value='Reject' class="process-container">
+                                                                @endif
+                                                            </div>
+                                                            @php
+                                                            $file_name = $permit_cancellation->signed_cancellation_form;
+                                                            $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($permit_cancellation->signed_cancellation_form)
+                                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
+                                                                @if ($ext[1] == 'pdf')
+                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'doc')
+                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'pptx')
+                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @else
+                                                                    <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @endif
+                                                            </a>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            <button class='btn btn-success px-5 py-2' type="submit">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel3" role="tabpanel"
+                                            aria-labelledby="v-pills-work-permit-cancel3-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="" class='py-2'>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Signed
+                                                        Cancellation Form</h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="visa-cancle-transaction-number21">Transaction
+                                                                    No:</label>
+                                                                <input type="text" readonly class="form-control"
+                                                                    id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_tranc_no}}" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="visa-cancle-transaction-fee21">Transaction
+                                                                    Fee</label>
+                                                                    <input type="text" readonly class="form-control"
+                                                                    id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                                            <label for="">Status</label>
+                                                            <input type="text" readonly class="form-control status-container"
+                                                            id="visa-cancle-transaction-number21" value="{{$permit_cancellation->signd_can_from_status}}" placeholder="...">
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="visa-cancle-date21">Date</label>
+                                                                <input type="date" readonly value="{{$permit_cancellation->signd_can_from_date}}" class="form-control"
+                                                                    id="visa-cancle-date21" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
+                                                            <div class="d-flex flex-column">
+                                                                <label for="#">{{$permit_cancellation->signd_can_from_file_name}}</label>
+                                                                @php
+                                                                $file_name = $permit_cancellation->signd_can_from_file;
+                                                                $ext = explode('.', $file_name);
+                                                                @endphp
+                                                                @if ($permit_cancellation->signd_can_from_file)
+                                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}">
+                                                                    @if ($ext[1] == 'pdf')
+                                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'doc')
+                                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @elseif($ext[1] == 'pptx')
+                                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @else
+                                                                        <img src="{{ asset('' . '/' . $permit_cancellation->signd_can_from_file) }}"
+                                                                            style="height: 50px;width:50px">
+                                                                    @endif
+                                                                </a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-work-permit-cancel4" role="tabpanel"
+                                            aria-labelledby="v-pills-work-permit-cancel4-tab">
+                                            <div class='rounded p-3 light-box-shadow'>
+                                                <form action="{{route('company.permit-cancellation-process-company',$permit_cancellation->id)}}"
+                                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="text" value='step2' name='waiting' hidden>
+                                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting
+                                                        for
+                                                        Approval
+                                                    </h6>
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
+                                                            <div class="form-group mb-3 ">
+                                                                <label for="visa-cancel1-transaction-number3_3">Work Permit
+                                                                    Cancellation Approval Status</label>
+                                                                <input type="text"
+                                                                    class="form-control new-visa-signmbstatus status-container" readonly
+                                                                    value="{{$permit_cancellation->waiting_for_approval_status}}" id="visa-cancel1-transaction-number3_3"
+                                                                    placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
+                                                            <div class="d-flex flex-column">
+                                                                <label for="#">Attachment</label>
+                                                                @php
+                                                                    $file_name = $permit_cancellation->waiting_for_approval_file;
+                                                                    $ext = explode('.', $file_name);
+                                                                    @endphp
+                                                                    @if ($permit_cancellation->waiting_for_approval_file)
+                                                                    <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}">
+                                                                        @if ($ext[1] == 'pdf')
+                                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'doc')
+                                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @elseif($ext[1] == 'pptx')
+                                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @else
+                                                                            <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_file) }}"
+                                                                                style="height: 50px;width:50px">
+                                                                        @endif
+                                                                    </a>
+                                                                    @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
+                                                            <label for='visa-cancel1-textarea-13_3'>Comments</label>
+                                                            <textarea type="text" id='visa-cancel1-textarea-13_3' name="comment" disabled placeholder="Enter Your Comments ..."
+                                                                class="form-control" rows="5">{{$permit_cancellation->waiting_for_approval_reason}}</textarea>
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
+                                                            <div class="form-group mb-3">
+                                                                <label for="visa-cancel1-approval21_1-13">Approval No:</label>
+                                                                <input type="text" class="form-control" value="{{$permit_cancellation->waiting_for_approval_no}}"
+                                                                    id="visa-cancel1-approval21_1-13" placeholder="...">
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
+                                                            <div class="upload-file">
+                                                                <label for='visa-cancel1-file-bio23_13'>Upload
+                                                                    Document</label>
+                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                                    <input type="file" class="form-control"
+                                                                        id='visa-cancel1-file-bio23_13' name="waiting_for_approval_reason_file"
+                                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                                    <div class="input-group-prepend">
+                                                                        <small class="input-group-text"><span
+                                                                                class="fa fa-paperclip"></span></small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @php
+                                                            $file_name = $permit_cancellation->waiting_for_approval_reason_file;
+                                                            $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($permit_cancellation->waiting_for_approval_reason_file)
+                                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}">
+                                                                @if ($ext[1] == 'pdf')
+                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'doc')
+                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'pptx')
+                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @else
+                                                                    <img src="{{ asset('' . '/' . $permit_cancellation->waiting_for_approval_reason_file) }}"
+                                                                        style="height: 50px;width:50px">
+                                                                @endif
+                                                            </a>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
+                                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- WorkPermit Cancel Tabe End -->
+                </div>
+            </div>
+            <!-- Cancelatoion Tab end -->
+</div>
     @endsection
     @section('script')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
@@ -6121,6 +6121,46 @@
                 if ($('.renewal-fitness').val() == 'fit') {
                     $('.renewal-medical-file').addClass('d-flex');
                 };
+                //tabs movement
+                let count=0;
+                let flag=0;
+                $('.process-status-input').each(function(){
+                    $('.tab-pane').each(function(){
+                        $(this).removeClass('active show');
+                    })
+                    if($(this).val()=='prcess started'){
+                        $(this).closest('.tab-content').find('.status-contianer').each(function(){
+                            console.log($(this).val());
+                        })
+                    }
+                    count++;
+                    let b=$(this).closest('.tab-pane').attr('aria-labelledby');
+                    if(count>=3 && count<=6){
+                        $('#pills-work-permit-tab').removeClass('active');
+                        $('#pills-work-permit-tab').click(); 
+                        $('#pills-Work-permit').addClass('show active')                        
+                    }else if(count>=9){
+                        $('#pills-cancelation-tab').removeClass('active');
+                        $('#pills-cancelation-tab').click();  
+                    }
+                    $('.process-start').each(function(){
+                        $(this).addClass('active show');
+                    });
+                    if(count<4){
+                        $('#pills-sponsored').addClass('active show');
+                    }if(count>4){
+                        $('#pills-modify-contract').addClass('active show');
+                    }
+                     if(count<9){
+                        $('#pills-visa-cancel').addClass('active show');
+                    } if(count>9){
+                        $('#pills-work-permit-cancel').addClass('active show');                        
+                    }
+                    $('#'+b).removeClass('active');
+                        $('#'+b).click();
+                        $(this).closest('.tab-pane').addClass('active show');
+                        
+                })
                 // Handle click event on elements with class 'employee-data'
                 $(document).on('click', '.employee-don', function() {
                     var id = $(this).attr('id');
