@@ -13471,9 +13471,7 @@
                     return false;
                 }
             });
-
-        }
-       let a=$(this).attr('id');
+                 let a=$(this).attr('id');
             $('.'+a).removeClass('active').click();
                if(helperCount>=3 && helperCount<=6){
                     $('#pills-work-permit-tab').removeClass('active');
@@ -13483,11 +13481,15 @@
                     $('#pills-cancelation-tab').removeClass('active');
                     $('#pills-cancelation-tab').click();
                 }
-                if(flag===true){
-                    return false;
-                }
+        };
+        if(flag===true){
+            return false;
+        }
 
         })
+        if(!flag){
+            $('#pills-visa-tab').click();
+        }
 
 
         // Initialize DataTable on elements with class 'employees'

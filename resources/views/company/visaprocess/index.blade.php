@@ -3212,7 +3212,8 @@
                                                                         @elseif($ext[1] == 'doc')
                                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                                 style="height: 50px;width:50px">
-                                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+
+                                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
                                                                             <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
                                                                                 style="height: 50px;width:50px">
                                                                         @elseif($ext[1] == 'pptx')
