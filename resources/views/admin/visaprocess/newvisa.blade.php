@@ -201,7 +201,6 @@
                                                     <input type="text" id="tab-1" class="form-control process-status-input"
                                                      disabled placeholder="..." value='not started'>
                                                 @endif
-
                                             </div>
                                         </div>
                                 </div>
@@ -11567,6 +11566,13 @@
                                                             <small class="input-group-text"><span
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
+                                                        @if($visa_cancellation->signed_cancellation_form)
+                                                        <input type="text" hidden value='Approved'>
+                                                        {{-- <p>Approved</p> --}}
+                                                        @else
+                                                            <input type="text" hidden value='Reject'>
+                                                        {{-- <p>Reject</p> --}}
+                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -12819,6 +12825,13 @@
                                                             <small class="input-group-text"><span
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
+                                                        @if($permit_cancellation->signed_cancellation_form)
+                                                                <input type="text" hidden value='Approved'>
+                                                                {{-- <p>Approved</p> --}}
+                                                                @else
+                                                                    <input type="text" hidden value='Reject'>
+                                                                {{-- <p>Reject</p> --}}
+                                                                @endif
                                                     </div>
                                                 </div>
 

@@ -210,9 +210,11 @@
                                                             ->value('status');
                                                     @endphp
                                                     @if ($request_status == 'approved')
-                                                        <input type="text" class="form-control"
-                                                            id="start-process-visa"
-                                                            placeholder="Your process has been started." disabled>
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process started'>
+                                                    @else
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='not started'>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1717,11 +1719,13 @@
                                                             ->where('process_name', 'renewal process')
                                                             ->value('status');
                                                     @endphp
-                                                    @if ($request_status == 'approved')
-                                                        <input type="text" class="form-control"
-                                                            id="start-process-visa"
-                                                            placeholder="Your process has been started." disabled>
-                                                    @endif
+                                                      @if ($request_status == 'approved')
+                                                      <input type="text" id="tab-1" class="form-control process-status-input"
+                                                      disabled placeholder="..." value='process started'>
+                                                  @else
+                                                      <input type="text" id="tab-1" class="form-control process-status-input"
+                                                      disabled placeholder="..." value='not started'>
+                                                  @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -2657,11 +2661,13 @@
                                                                     ->where('sub_type', 'sponsored by some one')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
-                                                            @endif
+                                                                 @if ($request_status == 'approved')
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='process started'>
+                                                             @else
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='not started'>
+                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3292,10 +3298,12 @@
                                                                     ->where('sub_type', 'part time')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
+                                                                @if ($request_status == 'approved')
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='process started'>
+                                                            @else
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -3750,11 +3758,13 @@
                                                                     ->where('sub_type', 'uae and gcc')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
-                                                            @endif
+                                                                 @if ($request_status == 'approved')
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='process started'>
+                                                                @else
+                                                                    <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                    disabled placeholder="..." value='not started'>
+                                                                @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4291,10 +4301,12 @@
                                                                     ->where('sub_type', 'modify contract')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
+                                                                @if ($request_status == 'approved')
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='process started'>
+                                                            @else
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -4766,10 +4778,12 @@
                                                                     ->where('process_name', 'visa cancellation')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
+                                                                @if ($request_status == 'approved')
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='process started'>
+                                                            @else
+                                                                <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -4895,6 +4909,11 @@
                                                                                 class="fa fa-paperclip"></span></small>
                                                                     </div>
                                                                 </div>
+                                                                @if($visa_cancellation->signed_cancellation_form)
+                                                                    <input type="text" hidden value='Approved'>
+                                                                @else
+                                                                    <input type="text" hidden value='Reject'>
+                                                                @endif
                                                             </div>
                                                             @php
                                                                 $file_name = $visa_cancellation->signed_cancellation_form;
@@ -5272,11 +5291,13 @@
                                                                     ->where('process_name', 'permit cancellation')
                                                                     ->value('status');
                                                             @endphp
-                                                            @if ($request_status == 'approved')
-                                                                <input type="text" class="form-control"
-                                                                    id="start-process-visa"
-                                                                    placeholder="Your process has been started." disabled>
-                                                            @endif
+                                                                 @if ($request_status == 'approved')
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='process started'>
+                                                             @else
+                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
+                                                                 disabled placeholder="..." value='not started'>
+                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -5379,6 +5400,11 @@
                                                                                 class="fa fa-paperclip"></span></small>
                                                                     </div>
                                                                 </div>
+                                                                @if($permit_cancellation->signed_cancellation_form)
+                                                                <input type="text" hidden value='Approved'>
+                                                                @else
+                                                                    <input type="text" hidden value='Reject'>
+                                                                @endif
                                                             </div>
                                                             @php
                                                             $file_name = $permit_cancellation->signed_cancellation_form;
@@ -5642,11 +5668,13 @@
                                                             ->where('process_name', 'modification of visa')
                                                             ->value('status');
                                                     @endphp
-                                                    @if ($request_status == 'approved')
-                                                        <input type="text" class="form-control"
-                                                            id="start-process-visa"
-                                                            placeholder="Your process has been started." disabled>
-                                                    @endif
+                                                         @if ($request_status == 'approved')
+                                                         <input type="text" id="tab-1" class="form-control process-status-input"
+                                                         disabled placeholder="..." value='process started'>
+                                                     @else
+                                                         <input type="text" id="tab-1" class="form-control process-status-input"
+                                                         disabled placeholder="..." value='not started'>
+                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -5823,11 +5851,13 @@
                                                             ->where('process_name', 'modification of emirates Id')
                                                             ->value('status');
                                                     @endphp
-                                                    @if ($request_status == 'approved')
-                                                        <input type="text" class="form-control"
-                                                            id="start-process-visa"
-                                                            placeholder="Your process has been started." disabled>
-                                                    @endif
+                                                       @if ($request_status == 'approved')
+                                                       <input type="text" id="tab-1" class="form-control process-status-input"
+                                                       disabled placeholder="..." value='process started'>
+                                                   @else
+                                                       <input type="text" id="tab-1" class="form-control process-status-input"
+                                                       disabled placeholder="..." value='not started'>
+                                                   @endif
                                                 </div>
                                             </div>
                                         </div>
