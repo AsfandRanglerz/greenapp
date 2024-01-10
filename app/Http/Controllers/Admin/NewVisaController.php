@@ -343,12 +343,6 @@ class NewVisaController extends Controller
                 'message' => 'This is inform you that admin started the ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
                     . ' process against ' . $employee->name . ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
             ]);
-            $req = VisaProcessRequest::create([
-                'company_id'=>$company_id,
-                'employee_id'=>$user_id,
-                'process_name'=>$data['request_name'],
-                'sub_type'=>$data['request_type'],
-            ]);
         }
 
 

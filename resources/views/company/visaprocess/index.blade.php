@@ -194,28 +194,30 @@
                                                 {{-- <form action="{{route('company.sent-new-visa-request',$employee->id)}}"
                                                 method="POST"> --}}
                                                 {{-- <a href="" class='btn btn-success px-5 py-2'>Start Process</a> --}}
-
+                                                @php
+                                                $authId = Auth::guard('company')->id();
+                                                $n_visa = App\Models\VisaProcessRequest::where('employee_id',$employee->id)->where('company_id',$authId)->first();
+                                                @endphp
                                                 <input type="hidden" value='new visa' name='process_name'>
+                                                @if (!$n_visa)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start
                                                     Process</button>
+                                                @endif
+
                                                 {{--
                                             </form> --}}
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="#start-process-visa">Process status</label>
-                                                    @php
-                                                        $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                            ->where('process_name', 'new visa')
-                                                            ->value('status');
-                                                    @endphp
-                                                    @if ($request_status == 'approved')
-                                                        <input type="text" class="form-control process-status-input"
-                                                        disabled placeholder="..." value='process started'>
+
+                                                    @if ($n_visa)
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @else
-                                                        <input type="text"  class="form-control process-status-input"
-                                                        disabled placeholder="..." value='not started'>
-                                                    @endif
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                     id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -1706,24 +1708,26 @@
                                             <div class="col-12 text-center">
                                                 <input type="hidden">
                                                 <input type="hidden" value='renewal process' name='process_name'>
+
+                                                @php
+                                                $authId = Auth::guard('company')->id();
+                                                $re_pro = App\Models\RenewalProcess::where('employee_id',$employee->id)->where('company_id',$authId)->first();
+                                                @endphp
+                                                @if (!$re_pro)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start
                                                     Process</button>
+                                                @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="#start-process-visa">Process status</label>
-                                                    @php
-                                                        $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                            ->where('process_name', 'renewal process')
-                                                            ->value('status');
-                                                    @endphp
-                                                      @if ($request_status == 'approved')
-                                                      <input type="text" id="tab-1" class="form-control process-status-input"
-                                                      disabled placeholder="..." value='process started'>
-                                                  @else
-                                                      <input type="text" id="tab-1" class="form-control process-status-input"
-                                                      disabled placeholder="..." value='not started'>
-                                                  @endif
+                                                    @if ($re_pro)
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @else
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                     id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -2647,25 +2651,25 @@
                                                         <input type="hidden" value='work permit' name='process_name'>
                                                         <input type="hidden" value='sponsored by some one'
                                                             name='sub_type'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
+                                                            @php
+                                                            $authId = Auth::guard('company')->id();
+                                                            $sp = App\Models\SponsaredBySomeOne::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                            @endphp
+                                                            @if (!$sp)
+                                                            <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                                Process</button>
+                                                            @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#sponsored0-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'work permit')
-                                                                    ->where('sub_type', 'sponsored by some one')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                 @if ($request_status == 'approved')
-                                                                 <input type="text" class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='process started'>
-                                                             @else
-                                                                 <input type="text"  class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='not started'>
-                                                             @endif
+                                                            @if ($sp)
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                            @else
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3271,7 +3275,7 @@
                                 <div class="tab-content" id="v-part-time-tabContent">
                                     <div class="tab-pane fade show active process-start" id="v-pills-part-time0" role="tabpanel"
                                         aria-labelledby="pills-part-time-tab">
-                                        <div class='rounded p-3 light-box-shadow'> 
+                                        <div class='rounded p-3 light-box-shadow'>
                                             <form action="{{ route('company.sent-new-visa-request', $employee->id) }}"
                                                 method="POST" class='py-2'>
                                                 @csrf
@@ -3284,25 +3288,26 @@
                                                         <input type="hidden" disabled value='work permit'
                                                             name='process_name'>
                                                         <input type="hidden" value='part time' name='sub_type'>
+                                                        @php
+                                                        $authId = Auth::guard('company')->id();
+                                                        $par = App\Models\PartTimeAndTemporary::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                        @endphp
+                                                        @if (!$par)
                                                         <button class='btn btn-success px-5 py-2' type="submit">Start
                                                             Process</button>
+                                                        @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#parttime-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'work permit')
-                                                                    ->where('sub_type', 'part time')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                @if ($request_status == 'approved')
-                                                                <input type="text"  class="form-control process-status-input"
-                                                                disabled placeholder="..." value='process started'>
-                                                            @else
-                                                                <input type="text"  class="form-control process-status-input"
-                                                                disabled placeholder="..." value='not started'>
-                                                            @endif
+
+                                                                        @if ($par)
+                                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                                        @else
+                                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                                        @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3743,25 +3748,27 @@
                                                     <div class="col-12 text-center">
                                                         <input type="hidden" value='work permit' name='process_name'>
                                                         <input type="hidden" value='uae and gcc' name='sub_type'>
+                                                        @php
+                                                        $authId = Auth::guard('company')->id();
+                                                        $ua = App\Models\UaeAndGccNational::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                        @endphp
+                                                        @if (!$ua)
                                                         <button class='btn btn-success px-5 py-2' type="submit">Start
                                                             Process</button>
+                                                        @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#parttime2-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'work permit')
-                                                                    ->where('sub_type', 'uae and gcc')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                 @if ($request_status == 'approved')
-                                                                 <input type="text"  class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='process started'>
+
+                                                                @if ($ua)
+                                                                <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                id="new-visa-1" disabled placeholder="..." value='process started'>
                                                                 @else
-                                                                    <input type="text" class="form-control process-status-input"
-                                                                    disabled placeholder="..." value='not started'>
+                                                                <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                id="new-visa-1" disabled placeholder="..." value='not started'>
                                                                 @endif
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4286,24 +4293,25 @@
                                                     <div class="col-12 text-center">
                                                         <input type="hidden" value='work permit' name='process_name'>
                                                         <input type="hidden" value='modify contract' name='sub_type'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
+                                                        @php
+                                                            $authId = Auth::guard('company')->id();
+                                                            $mc = App\Models\ModifyContract::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                            @endphp
+                                                            @if (!$mc)
+                                                            <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                                Process</button>
+                                                            @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#parttime3-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'work permit')
-                                                                    ->where('sub_type', 'modify contract')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                @if ($request_status == 'approved')
-                                                                <input type="text"  class="form-control process-status-input"
-                                                                disabled placeholder="..." value='process started'>
+
+                                                            @if ($mc)
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
                                                             @else
-                                                                <input type="text"  class="form-control process-status-input"
-                                                                disabled placeholder="..." value='not started'>
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -4699,7 +4707,7 @@
 
             </div>
             <!-- Workit Permit End -->
-            
+
 
 
 
@@ -4732,24 +4740,27 @@
                                                 <input type="hidden" value='modification of visa'
                                                     name='process_name'>
                                                 {{-- <input type="hidden" value='uae and gcc' name='sub_type'> --}}
+                                                @php
+                                                $authId = Auth::guard('company')->id();
+                                                $mv = App\Models\ModificationVisaEmiratesId::where('employee_id', $employee->id)
+                                                ->where('company_id', $authId)
+                                                ->where('process_name', 'modification of visa')->first();
+                                                @endphp
+                                                @if (!$mv)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start
                                                     Process</button>
+                                                @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="#parttime2-visa">Process status</label>
-                                                    @php
-                                                        $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                            ->where('process_name', 'modification of visa')
-                                                            ->value('status');
-                                                    @endphp
-                                                         @if ($request_status == 'approved')
-                                                         <input type="text" id="tab-1" class="form-control process-status-input"
-                                                         disabled placeholder="..." value='process started'>
-                                                     @else
-                                                         <input type="text" id="tab-1" class="form-control process-status-input"
-                                                         disabled placeholder="..." value='not started'>
-                                                     @endif
+                                                    @if ($mv)
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @else
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -4757,7 +4768,7 @@
                                 </div>
                             </div>
 
-                            @if ($modification_visa)
+                            @if($modification_visa)
                                 <div class="tab-pane fade" id="v-pills-modify-visa3" role="tabpanel"
                                     aria-labelledby="v-pills-modify-visa3-tab">
                                     <div class='rounded p-3 light-box-shadow'>
@@ -4913,33 +4924,35 @@
                                                 <input type="hidden">
                                                 <input type="hidden" value='modification of emirates Id'
                                                     name='process_name'>
-
-                                                <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                    Process</button>
+                                                    @php
+                                                    $authId = Auth::guard('company')->id();
+                                                    $me = App\Models\ModificationVisaEmiratesId::where('employee_id', $employee->id)
+                                                    ->where('company_id', $authId)
+                                                    ->where('process_name', 'modification of emirates Id')->first();
+                                                    @endphp
+                                                    @if (!$me)
+                                                    <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                        Process</button>
+                                                    @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="#start-process-modify-emirates-id">Process
                                                         status</label>
-                                                    @php
-                                                        $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                            ->where('process_name', 'modification of emirates Id')
-                                                            ->value('status');
-                                                    @endphp
-                                                       @if ($request_status == 'approved')
-                                                       <input type="text" class="form-control process-status-input"
-                                                       disabled placeholder="..." value='process started'>
-                                                   @else
-                                                       <input type="text"  class="form-control process-status-input"
-                                                       disabled placeholder="..." value='not started'>
-                                                   @endif
+                                                        @if ($me)
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                        @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                        @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            @if ($modification_emirates)
+                            @if($modification_emirates)
                                 <div class="tab-pane fade" id="v-pills-modify-emirates3" role="tabpanel"
                                     aria-labelledby="v-pills-modify-emirates3-tab">
                                     <div class='rounded p-3 light-box-shadow'>
@@ -5129,23 +5142,24 @@
                                                         <input type="hidden">
                                                         <input type="hidden" value='visa cancellation'
                                                             name='process_name'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
+                                                            @php
+                                                            $authId = Auth::guard('company')->id();
+                                                            $vc = App\Models\VisaCancelation::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                            @endphp
+                                                            @if (!$vc)
+                                                            <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                                Process</button>
+                                                            @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#parttime3-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'visa cancellation')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                @if ($request_status == 'approved')
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                disabled placeholder="..." value='process started'>
+                                                            @if ($vc)
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
                                                             @else
-                                                                <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                disabled placeholder="..." value='not started'>
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='not started'>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -5642,24 +5656,25 @@
                                                         <input type="hidden">
                                                         <input type="hidden" value='permit cancellation'
                                                             name='process_name'>
-                                                        <button class='btn btn-success px-5 py-2' type="submit">Start
-                                                            Process</button>
+                                                            @php
+                                                            $authId = Auth::guard('company')->id();
+                                                            $pc = App\Models\PermitCancellation::where('employee_id', $employee->id)->where('company_id', $authId)->first();
+                                                            @endphp
+                                                            @if (!$pc)
+                                                            <button class='btn btn-success px-5 py-2' type="submit">Start
+                                                                Process</button>
+                                                            @endif
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                                         <div class="form-group mb-3">
                                                             <label for="#parttime3-visa">Process status</label>
-                                                            @php
-                                                                $request_status = App\Models\VisaProcessRequest::where('employee_id', $employee->id)
-                                                                    ->where('process_name', 'permit cancellation')
-                                                                    ->value('status');
-                                                            @endphp
-                                                                 @if ($request_status == 'approved')
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='process started'>
-                                                             @else
-                                                                 <input type="text" id="tab-1" class="form-control process-status-input"
-                                                                 disabled placeholder="..." value='not started'>
-                                                             @endif
+                                                                    @if ($pc)
+                                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                    id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                                    @else
+                                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                                    @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -6137,11 +6152,11 @@
                     let b=$(this).closest('.tab-pane').attr('aria-labelledby');
                     if(count>=3 && count<=6){
                         $('#pills-work-permit-tab').removeClass('active');
-                        $('#pills-work-permit-tab').click(); 
-                        $('#pills-Work-permit').addClass('show active')                        
+                        $('#pills-work-permit-tab').click();
+                        $('#pills-Work-permit').addClass('show active')
                     }else if(count>=9){
                         $('#pills-cancelation-tab').removeClass('active');
-                        $('#pills-cancelation-tab').click();  
+                        $('#pills-cancelation-tab').click();
                     }
                     $('.process-start').each(function(){
                         $(this).addClass('active show');
@@ -6154,12 +6169,12 @@
                      if(count<9){
                         $('#pills-visa-cancel').addClass('active show');
                     } if(count>9){
-                        $('#pills-work-permit-cancel').addClass('active show');                        
+                        $('#pills-work-permit-cancel').addClass('active show');
                     }
                     $('#'+b).removeClass('active');
                         $('#'+b).click();
                         $(this).closest('.tab-pane').addClass('active show');
-                        
+
                 })
                 // Handle click event on elements with class 'employee-data'
                 $(document).on('click', '.employee-don', function() {
