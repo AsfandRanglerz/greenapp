@@ -77,19 +77,34 @@
             @endif
 
 
-
+            @php
+            $request_count = App\Models\VisaProcessRequest::where('seen_by_admin', '0')->count();
+            @endphp
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipt'))
             <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
-                        class="fa fa-briefcase"></i><span>Visa Process</span></a>
+                        class="fa fa-briefcase"></i><span>Visa Process</span>
+                        @if ($request_count)
+                        <span class="badge badge-danger text-white">
+                            {{ $request_count }}
+                        </span>
+                        @endif
+                    </a>
 
             </li>
             @elseif(auth()->guard('admin')->check())
 
             <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
-                        class="fa fa-briefcase"></i><span>Visa Process</span></a>
+                        class="fa fa-briefcase"></i><span>Visa Process</span>
+                        @if ($request_count)
+                        <span class="badge badge-danger text-white">
+                            {{ $request_count }}
+                        </span>
+                        @endif
+
+                    </a>
             </li>
             @endif
 
