@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ModificationVisaEmiratesId;
+use App\Models\NotifyToAdmin;
 
 class EmployeeVisaProcessController extends Controller
 {
@@ -88,6 +89,10 @@ class EmployeeVisaProcessController extends Controller
     public function new_visa_data(Request $request , $id)
     {
         $data = NewVisaProcess::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         // return $data;
         if($request->input('sign_mb')== "step1")
         {
@@ -114,6 +119,12 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'signed_mb_st_file'=>$file,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Signed MB & ST step of New Visa Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
+            // return $notify_admin;
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('entry_visa')== "step2")
@@ -143,6 +154,11 @@ class EmployeeVisaProcessController extends Controller
                 'enter_visa_over_sf'=>$request->enter_visa_over_sf,
                 'enter_visa_country'=>$request->enter_visa_country,
             ]);
+           $notify_admin = NotifyToAdmin::create([
+                    'title' => 'Visa Notification',
+                    'message' => 'The company ' . $company->name . ' take action on Entry Visa step of New Visa Process against employee ' . $employee->name.'.',
+                    'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+                ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('medical_fitness')== "step3")
@@ -169,6 +185,11 @@ class EmployeeVisaProcessController extends Controller
             // return $file;
             $data->update([
                 'medical_fitness_file'=>$file,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Medical Fitness step of New Visa Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -198,6 +219,11 @@ class EmployeeVisaProcessController extends Controller
                 'tawjeeh_file'=>$file,
                 'tawjeeh_payment'=>$request->tawjeeh_payment,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Tawjeeh Training Classes step of New Visa Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('bio_metric')== "step5")
@@ -226,6 +252,11 @@ class EmployeeVisaProcessController extends Controller
                 'biometric_file'=>$file,
                 'employee_biometric'=>$request->employee_biometric,
             ]);
+                $notify_admin = NotifyToAdmin::create([
+                    'title' => 'Visa Notification',
+                    'message' => 'The company ' . $company->name . ' take action on Employee Biometric step of New Visa Process against employee ' . $employee->name.'.',
+                    'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+                ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('waiting_for_approval') == "waiting_for_approval")
@@ -260,6 +291,10 @@ class EmployeeVisaProcessController extends Controller
     public function renewal_process(Request $request , $id)
     {
         $data = RenewalProcess::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('medical_fitness')== "step1")
         {
             // return "create";
@@ -285,6 +320,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'medical_fitness_file'=>$file,
                 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Medical Fitness step of Renewal Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -314,6 +354,11 @@ class EmployeeVisaProcessController extends Controller
                 'signed_mb_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload signed MB step of Renewal Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('tawjeeh_class')== "step3")
@@ -341,6 +386,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'tawjeeh_tranc_file'=>$file,
                 'tawjeeh_tranc_payment'=>$request->tawjeeh_tranc_payment,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Tawjeeh classes step of Renewal Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -370,6 +420,11 @@ class EmployeeVisaProcessController extends Controller
                 'emp_biometric_file'=>$file,
                 'emp_biometric'=>$request->emp_biometric,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Employee Biometric step of Renewal Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
@@ -379,6 +434,10 @@ class EmployeeVisaProcessController extends Controller
     {
         $data = SponsaredBySomeOne::find($id);
         // return $data;
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
 
         if($request->input('signed_mb')== "step1")
         {
@@ -406,6 +465,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'signed_mb_st_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload signed MB step of Work Permit (Sponsored by Someone) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -435,6 +499,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Waiting for Approval step of Work Permit (Sponsored by Someone) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -443,7 +512,10 @@ class EmployeeVisaProcessController extends Controller
     public function part_time(Request $request, $id)
     {
         $data = PartTimeAndTemporary::find($id);
-        // return $data;
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
 
         if($request->input('signed_mb')== "step1")
         {
@@ -471,6 +543,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'signed_mb_st_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload signed MB step of Work Permit (Part Time and Temporary Process) against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -500,6 +577,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on  Waiting for Approval step of Work Permit (Part Time and Temporary) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -508,6 +590,10 @@ class EmployeeVisaProcessController extends Controller
     public function uae_gcc(Request $request, $id)
     {
         $data = UaeAndGccNational::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('signed_mb')== "step1")
         {
             // return "create";
@@ -534,6 +620,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'signed_mb_st_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload signed MB step of Work Permit (UAE & GCC National) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -563,6 +654,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Waiting for Approval step of Work Permit (UAE & GCC National) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -572,6 +668,10 @@ class EmployeeVisaProcessController extends Controller
     public function modify_contract(Request $request, $id)
     {
         $data = ModifyContract::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('signed_mb')== "step1")
         {
             // return "create";
@@ -598,6 +698,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'signed_mb_st_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload Signed MB step of Work Permit (Modify Contract) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -628,6 +733,11 @@ class EmployeeVisaProcessController extends Controller
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Waiting for Approval step of Work Permit (Modify Contract) Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
@@ -635,6 +745,10 @@ class EmployeeVisaProcessController extends Controller
     public function visa_modification(Request $request, $id)
     {
         $data = ModificationVisaEmiratesId::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('waiting')== "step1")
         {
             // return "create";
@@ -661,6 +775,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'application_reject_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Waiting for Approval step of Modification of Visa Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
@@ -669,6 +788,10 @@ class EmployeeVisaProcessController extends Controller
     public function emirates_modification(Request $request, $id)
     {
         $data = ModificationVisaEmiratesId::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('waiting')== "step1")
         {
             // return "create";
@@ -696,6 +819,11 @@ class EmployeeVisaProcessController extends Controller
                 'application_reject_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Waiting for Approval step of Modification of Emirates Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
@@ -703,6 +831,10 @@ class EmployeeVisaProcessController extends Controller
     public function visa_cancellation(Request $request, $id)
     {
         $data = VisaCancelation::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         if($request->input('signed_cancellation')== "step1")
         {
             // return "create";
@@ -730,6 +862,11 @@ class EmployeeVisaProcessController extends Controller
                 'signed_cancellation_form'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload Signed Cancellation Form step of Visa Cancellation Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('waiting')== "step2")
@@ -759,6 +896,11 @@ class EmployeeVisaProcessController extends Controller
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Work Permit Cancellation Approval step of Visa Cancellation Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
     }
@@ -766,6 +908,10 @@ class EmployeeVisaProcessController extends Controller
     public function permit_cancellation(Request $request, $id)
     {
         $data = PermitCancellation::find($id);
+        $company_id  = $data->company_id;
+        $employee_id  = $data->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         // return $id;
         if($request->input('signed_cancellation')== "step1")
         {
@@ -794,6 +940,11 @@ class EmployeeVisaProcessController extends Controller
                 'signed_cancellation_form'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
             ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Upload Signed Cancellation Form step of Work Permit Cancellation Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
+            ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }
         elseif($request->input('waiting')== "step2")
@@ -822,6 +973,11 @@ class EmployeeVisaProcessController extends Controller
             $data->update([
                 'waiting_for_approval_reason_file'=>$file,
                 // 'medical_fitness_st'=>$request->medical_fitness_st,
+            ]);
+            $notify_admin = NotifyToAdmin::create([
+                'title' => 'Visa Notification',
+                'message' => 'The company ' . $company->name . ' take action on Work Permit Cancellation Approval Form step of Work Permit Cancellation Process against employee ' . $employee->name.'.',
+                'route' => route('start-process', ['request_id' => 0, 'user_id' => $employee_id, 'company_id' => $company_id]),
             ]);
             return redirect()->back()->with('success','Data Added Successfully.');
         }

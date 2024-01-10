@@ -108,17 +108,31 @@
             </li>
             @endif
 
-
+            @php
+            $notificationCount = App\Models\NotifyToAdmin::where('seen', '0')->count();
+            @endphp
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Notifications'))
             <li class="dropdown {{ request()->is('admin/notification-index*') ? 'active' : '' }}">
                 <a href="{{ route('notification-index') }}" class="nav-link"><i
-                        class="fas fa-bell"></i><span>Notifications</span></a>
+                        class="fas fa-bell"></i><span>Notifications</span>
+                        @if ($notificationCount)
+                        <span class="badge badge-danger text-white">
+                            {{ $notificationCount }}
+                        </span>
+                    @endif
+                    </a>
             </li>
             @elseif(auth()->guard('admin')->check())
             <li class="dropdown {{ request()->is('admin/notification-index*') ? 'active' : '' }}">
                 <a href="{{ route('notification-index') }}" class="nav-link"><i
-                        class="fas fa-bell"></i><span>Notifications</span></a>
+                        class="fas fa-bell"></i><span>Notifications</span>
+                        @if ($notificationCount)
+                        <span class="badge badge-danger text-white">
+                            {{ $notificationCount }}
+                        </span>
+                    @endif
+                    </a>
             </li>
             @endif
 

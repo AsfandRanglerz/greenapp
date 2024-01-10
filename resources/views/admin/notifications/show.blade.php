@@ -1,81 +1,70 @@
 @extends('admin.layout.app')
-@section('title', 'Dashboard')
-@section('content')
 
-    <body>
-        <div class="main-content">
-            <section class="section">
-                <div class="section-body">
-                    <a class="btn btn-primary mb-3" href="#">Back</a>
-                    {{-- <form action="{{route('send-notification')}}" method="POST" enctype="multipart/form-data">
-                        <div class="row justify-content-center align-items-center">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <h4 class="text-center my-4">Create Notifications</h4>
-                                    <div class="row mx-0 px-4">
-                                            <div class="col-lg-12">
-                                                <div class="form-group mb-2">
-                                                    <label>Select<span class="required"> *</span></label>
-                                                    <select name="select" class="form-control" id="" >
-                                                        <option value="" hidden>Select</option>
-                                                        <option value="Companies">Companies</option>
-                                                        <option value="Employees">Employees</option>
-                                                        <option value="Individuals">Individuals</option>
-                                                        <option value="All Employees">All Employees</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                    @csrf
-                                                    <div class="form-group mb-2">
-                                                        <label>Title</label>
-                                                        <input type="text" name="title" placeholder="Title"
-                                                        class="form-control mb-1">
-                                                        <label>Message</label>
-                                                        <textarea type="text" name="message" placeholder="Ask anything ..."
-                                                            class="form-control" rows="5"></textarea>
-                                                        @error('question')
-                                                            <div class="text-danger p-2">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
-                                                        <button type="submit" class="btn btn-primary">Send</button>
-                                                    </div>
-                                            </div>
-                                    </div>
+@section('title', 'index')
+
+@section('content')
+<style>
+    .btn_warning{
+    background: #ef9e09;
+    padding: 9px 14px;
+    border-radius: 9px;
+    box-shadow: 0 2px 6px #82d3f8;
+    }
+</style>
+    <div class="main-content" style="min-height: 562px;">
+        <section class="section">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="col-12">
+                                    <a href="{{route('notification-create')}}" class='btn btn-success float-right'>Create</a>
+                                    <h4>Notifications</h4>
+
                                 </div>
                             </div>
-                        </div>
-                    </form> --}}
+                            <div class="card-body table-striped table-bordered table-responsive">
+                                <table class="table text-center" id="table_id_events">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($admin_notifications as $data)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $data->title }}</td>
+                                                <td>{{ $data->message }} <br> <a href="{{$data->route}}">Click Here.</a> </td>
+                                                <td>
+                                                    <a href="#">ok</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
-                    <div class="card">
-                        <div class="card-header" id="faqHeading-1">
-                            <div class="mb-0">
-                                <h6 class="faq-title" data-toggle="collapse"
-                                    data-target="#faqCollapse-{{ $data->id }}" data-aria-expanded="true"
-                                    data-aria-controls="faqCollapse-{{ $data->id }}">
-                                    <span class="badge">{{$loop->iteration}}</span>{!! $data->title ?? '' !!}
-                                </h6>
-                            </div>
-                        </div>
-                        <div id="faqCollapse-{{ $data->id }}" class="collapse"
-                            aria-labelledby="faqHeading-1" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>{!! $data->message ?? '' !!}</p>
-                            </div>
                         </div>
                     </div>
-
-                    
                 </div>
-            </section>
+            </div>
+        </section>
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg scrol employee-details-model" id="mymodal">
+            </div>
         </div>
-    </body>
+    </div>
+
 @endsection
 
 @section('js')
-
-
     <script>
         @if (\Illuminate\Support\Facades\Session::has('success'))
             toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
@@ -84,25 +73,50 @@
         @if (\Illuminate\Support\Facades\Session::has('error'))
             toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
         @endif
+    </script>
 
-        $(function() {
-            $('#company_id').select2({
-                placeholder: 'Select Company'
-            });
-            $('#nationality').select2({
-                placeholder: 'Select Country'
-            });
-            $('#selReligion').select2({
-                placeholder: 'Select Religion'
-            });
-            $('#selGender').select2({
-                placeholder: 'Select Gender'
-            });
-            $('#martialStatus').select2({
-                placeholder: 'Select Martial Status'
-            });
-            $('#salDetails').select2({
-                placeholder: 'Salary Detail'
+    <script>
+        $(document).ready(function() {
+            $('#table_id_events').DataTable();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Are you sure you want to delete this record?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
+    <script>
+        $('.employee-data').click(function() {
+            var id = $(this).attr('id');
+            // console.log(id);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}', // Corrected csrf_token() usage
+                },
+                url: "{{ url('admin/employee-view') }}",
+                data: {
+                    'id': id,
+                },
+                success: function(response) {
+                    $("#mymodal").html(response);
+                }
             });
         });
     </script>

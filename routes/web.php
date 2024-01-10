@@ -117,6 +117,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Notifications Routes
     Route::get('notification-index', [SendAllNotificationController::class, 'index'])->name('notification-index')->middleware('permission:Notifications');
 
+    Route::get('notification-create', [SendAllNotificationController::class, 'create'])->name('notification-create')->middleware('permission:Notifications');
+
     Route::post('send-notification', [SendAllNotificationController::class, 'send_notification'])->name('send-notification')->middleware('permission:Notifications');
 
     // Receipts

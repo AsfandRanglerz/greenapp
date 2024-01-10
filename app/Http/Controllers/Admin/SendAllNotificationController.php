@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\AdminNotification;
+use App\Models\NotifyToAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\PushNotification;
@@ -17,10 +18,20 @@ class SendAllNotificationController extends Controller
 {
     public function index()
     {
-        return view('admin.notifications.index');
+        $admin_notifications = NotifyToAdmin::orderBy('created_at', 'desc')->get();
+        foreach($admin_notifications as $notification)
+        {
+            $notification->update([
+                'seen'=>1,
+            ]);
+        }
+        return view('admin.notifications.show',compact('admin_notifications'));
     }
 
-
+    public function create()
+    {
+        return view('admin.notifications.index');
+    }
 
     public function send_notification(Request $request)
     {
@@ -56,7 +67,8 @@ class SendAllNotificationController extends Controller
             // $companies = Company::orderBy('id', 'desc')->get();
 
             return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
-        } elseif ($user == 'Employees') {
+        }
+        elseif ($user == 'Employees') {
             $employees = User::with('usercompany')->whereempType('company')->orderBy('id', 'desc')->get();
             $data = NULL;
             $data['title'] = $request->title;
@@ -71,8 +83,9 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($employees, new PushNotification($data));
-            return view('admin.notifications.index')->with('success', 'Created Successfully');
-        } elseif ($user == 'Individuals') {
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+        }
+        elseif ($user == 'Individuals') {
             $self_employees = User::whereempType('self')->orderBy('id', 'desc')->get();
             $data = NULL;
             $data['title'] = $request->title;
@@ -87,8 +100,9 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($self_employees, new PushNotification($data));
-            return view('admin.notifications.index')->with('success', 'Created Successfully');
-        } elseif ($user == 'All Employees') {
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+        }
+        elseif ($user == 'All Employees') {
             $all_employees = User::orderBy('id', 'desc')->get();
             $data = NULL;
             $data['title'] = $request->title;
@@ -104,7 +118,7 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($all_employees, new PushNotification($data));
-            return view('admin.notifications.index')->with('success', 'Created Successfully');
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
         }
 
         else
