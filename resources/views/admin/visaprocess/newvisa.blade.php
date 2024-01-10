@@ -132,7 +132,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-visa-tab"
                         role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
+                        <a class="nav-link active bordered_tab start-btn" id="v-pills-start-tab" data-toggle="pill"
                             href="#v-pills-start" role="tab" aria-controls="v-pills-start" aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-visa1-tab" data-toggle="pill"
                             href="#v-pills-visa1" role="tab" aria-controls="v-pills-visa1" aria-selected="true">Job Offer</a>
@@ -172,7 +172,7 @@
                 {{--new visa--}}
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3 ">
                     <div class="tab-content" id="v-visa-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
+                        <div class="tab-pane fade show active start-process" id="v-pills-start" role="tabpanel"
                         aria-labelledby="v-pills-start-tab">
                         <div class='rounded p-3 light-box-shadow'>
                             {{-- <form action="" method="POST" class='py-2'> --}}
@@ -3684,7 +3684,7 @@
             <div class="col-xl-3 col-lg-4">
                 <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                     id="v-renewal-proces-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active bordered_tab" id="v-pills-renewal-process0-tab" data-toggle="pill"
+                    <a class="nav-link active bordered_tab start-btn" id="v-pills-renewal-process0-tab" data-toggle="pill"
                         href="#v-pills-renewal-process0" role="tab" aria-controls="v-pills-renewal-process1"
                         aria-selected="true">Start Process</a>
                     <a class="nav-link bordered_tab" id="v-pills-renewal-process1-tab" data-toggle="pill"
@@ -3715,7 +3715,7 @@
             </div>
             <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                 <div class="tab-content" id="v-renewal-process-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-renewal-process0" role="tabpanel"
+                    <div class="tab-pane fade show active start-process" id="v-pills-renewal-process0" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process0-tab">
                         <div class='rounded p-3 light-box-shadow'>
                             <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -5861,13 +5861,13 @@
     </ul>
     <div class="tab-content" id="work-permit-tabContent">
         <!-- Sponsored by someone tab -->
-        <div class="tab-pane active show" id="pills-sponsored" role="tabpanel"
+        <div class="tab-pane active show start-process" id="pills-sponsored" role="tabpanel"
             aria-labelledby="pills-sponsored-tab">
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                         id="v-sponsored-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-sponsored0-tab"
+                        <a class="nav-link active bordered_tab start-btn" id="v-pills-sponsored0-tab"
                             data-toggle="pill" href="#v-pills-sponsored0" role="tab"
                             aria-controls="v-pills-sponsored0" aria-selected="true">
                             Start Process
@@ -5897,7 +5897,7 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="v-sponsored-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-sponsored0" role="tabpanel"
+                        <div class="tab-pane fade show active start-process data" id="v-pills-sponsored0" role="tabpanel"
                             aria-labelledby="v-pills-sponsored0-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -7503,12 +7503,12 @@
         </div>
         <!-- Sponsored by someone tab end -->
         <!--partime-tab -->
-        <div class="tab-pane" id="pills-part-time" role="tabpanel" aria-labelledby="pills-part-time-tab">
+        <div class="tab-pane start-process" id="pills-part-time" role="tabpanel" aria-labelledby="pills-part-time-tab">
             <div class="row ">
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                         id="v-part-time-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-part-time0-tab"
+                        <a class="nav-link active bordered_tab start-btn" id="v-pills-part-time0-tab"
                             data-toggle="pill" href="#v-pills-part-time0" role="tab"
                             aria-controls="v-pills-part-time0" aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-part-time1-tab" data-toggle="pill"
@@ -7527,7 +7527,7 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="v-part-time-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-part-time0" role="tabpanel"
+                        <div class="tab-pane fade show active start-process data" id="v-pills-part-time0" role="tabpanel"
                             aria-labelledby="v-pills-part-time0-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -8522,12 +8522,12 @@
         </div>
         <!-- partime-tab end -->
         <!-- UAE and Gcc tab -->
-        <div class="tab-pane" id="pills-UAE" role="tabpanel" aria-labelledby="pills-UAE-tab">
+        <div class="tab-pane start-process" id="pills-UAE" role="tabpanel" aria-labelledby="pills-UAE-tab">
             <div class="row">
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar horizontal_tabs flex-row flex-lg-column nav-pills"
                         id="v-header-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-UAE0-tab" data-toggle="pill"
+                        <a class="nav-link active bordered_tab start-btn" id="v-pills-UAE0-tab" data-toggle="pill"
                             href="#v-pills-UAE0" role="tab" aria-controls="v-pills-UAE0"
                             aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-UAE1-tab" data-toggle="pill"
@@ -8549,7 +8549,7 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="v-header-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-UAE0" role="tabpanel"
+                        <div class="tab-pane fade show active start-process data" id="v-pills-UAE0" role="tabpanel"
                             aria-labelledby="v-pills-UAE0-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -9822,13 +9822,13 @@
         </div>
         <!-- UAE and Gcc tab end -->
         <!-- Modify Contract  -->
-        <div class="tab-pane" id="pills-modify-contract" role="tabpanel"
+        <div class="tab-pane start-process" id="pills-modify-contract" role="tabpanel"
             aria-labelledby="pills-modify-contract-tab">
             <div class="row ">
                 <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-lg-column flex-row horizontal_tabs nav-pills"
                         id="modify-contract-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active bordered_tab" id="v-pills-modify-contract0-tab"
+                        <a class="nav-link active bordered_tab start-btn" id="v-pills-modify-contract0-tab"
                             data-toggle="pill" href="#v-pills-modify-contract0" role="tab"
                             aria-controls="v-pills-modify-contract0" aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-modify-contract1-tab"
@@ -9851,7 +9851,7 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                     <div class="tab-content" id="modify-contract-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-modify-contract0" role="tabpanel"
+                        <div class="tab-pane fade show active start-process data" id="v-pills-modify-contract0" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract0-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -9885,7 +9885,7 @@
                                 </form>
                             </div>
                         </div>
-     
+
                         @if ($modify_contract)
                         <div class="tab-pane fade" id="v-pills-modify-contract1" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract1-tab">
@@ -10795,7 +10795,7 @@
           <div class="col-xl-3 col-lg-4">
               <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                   id="modify-visa-tab" role="tablist" aria-orientation="vertical">
-                  <a class="nav-link active bordered_tab" id="v-pills-modify-visa1-tab"
+                  <a class="nav-link active bordered_tab start-btn" id="v-pills-modify-visa1-tab"
                       data-toggle="pill" href="#v-pills-modify-visa1" role="tab"
                       aria-controls="v-pills-modify-visa1" aria-selected="true">Start process</a>
                   <a class="nav-link bordered_tab" id="v-pills-modify-visa3-tab" data-toggle="pill"
@@ -10805,7 +10805,7 @@
           </div>
           <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
               <div class="tab-content" id="modify-visa-tabContent">
-                  <div class="tab-pane fade show active" id="v-pills-modify-visa1" role="tabpanel"
+                  <div class="tab-pane fade show active start-process data" id="v-pills-modify-visa1" role="tabpanel"
                       aria-labelledby="v-pills-modify-visa1-tab">
                       <div class='rounded p-3 light-box-shadow'>
                         <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -10973,7 +10973,7 @@
           </div>
           <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
               <div class="tab-content" id="modify-emirates-tabContent">
-                  <div class="tab-pane fade show active" id="v-pills-modify-emirates1" role="tabpanel"
+                  <div class="tab-pane fade show active start-process" id="v-pills-modify-emirates1" role="tabpanel"
                       aria-labelledby="v-pills-modify-emirates1-tab">
                       <div class='rounded p-3 light-box-shadow'>
                         <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -11143,13 +11143,13 @@
         </ul>
         <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
             <!--  Visa Cancel Tab -->
-            <div class="tab-pane active show" id="pills-visa-cancel" role="tabpanel"
+            <div class="tab-pane active show start-process" id="pills-visa-cancel" role="tabpanel"
                 aria-labelledby="pills-visa-cancel-tab">
                 <div class="row ">
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                             id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active bordered_tab" id="v-pills-visa-cancel0-tab" data-toggle="pill"
+                            <a class="nav-link active bordered_tab start-btn" id="v-pills-visa-cancel0-tab" data-toggle="pill"
                                 href="#v-pills-visa-cancel0" role="tab" aria-controls="v-pills-visa-cancel0"
                                 aria-selected="true">Start Process</a>
                                 <a class="nav-link   bordered_tab" id="v-pills-visa-cancel1-tab" data-toggle="pill"
@@ -11171,7 +11171,7 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                         <div class="tab-content" id="visa-cancel-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-visa-cancel0" role="tabpanel"
+                            <div class="tab-pane fade show active start-process data" id="v-pills-visa-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel0-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -12397,7 +12397,7 @@
             </div>
             <!-- Visa Cancel tab end -->
             <!-- WorkPermit Cancel tab -->
-            <div class="tab-pane" id="pills-work-permit-cancel" role="tabpanel"
+            <div class="tab-pane start-process" id="pills-work-permit-cancel" role="tabpanel"
                 aria-labelledby="pills-work-permit-cancel-tab">
                 <div class="row ">
                     <div class="col-xl-3 col-lg-4">
@@ -12422,7 +12422,7 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
                         <div class="tab-content" id="work-permit-cancel-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-permit-cancel0" role="tabpanel"
+                            <div class="tab-pane fade show active start-process data" id="v-pills-permit-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel0-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
@@ -13448,16 +13448,21 @@
         //changes
         function helper(){
             $('.tab-pane').each(function(){
+                if($(this).hasClass('start-process')){
+
+                }else{
                 $(this).removeClass('show');
                 $(this).removeClass('active');
+                }
+
             });
         };
         let helperCount=0;
         let flag=false;
         $('.process-status-input').each(function(){
-        helper();
         helperCount++;
         if($(this).val()=='process started'){
+            helper();
             let c=$(this).closest('.tab-content').find('.status-selector-select').each(function(){
                 if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
                    let a= $(this).closest('.tab-pane').attr('aria-labelledby');
