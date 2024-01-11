@@ -13391,10 +13391,12 @@
             $('.Over-stay-fine').removeClass('d-none');
         }
 
-        if ($('.biometric-file-container .biometric-select').val() == 'required') {
-            let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
-            a.removeClass('d-none');
-        }
+        $('.biometric-select').each(function(){
+                    if($(this).val() == 'required'){
+                        let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
+                        a.removeClass('d-none');
+                    }        
+                });
 
         $('.biometric-file-container').on('change', '.biometric-select', function () {
             let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
