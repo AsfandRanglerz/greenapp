@@ -13469,7 +13469,6 @@
                 $(this).removeClass('show');
                 $(this).removeClass('active');
                 }
-
             });
         };
         let helperCount=0;
@@ -13482,6 +13481,7 @@
                 if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
                    let a= $(this).closest('.tab-pane').attr('aria-labelledby');
                     $('#'+a).click();
+                    console.log(a);
                     flag=true;
                     return false;
                 }
