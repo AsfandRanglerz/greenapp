@@ -4638,7 +4638,7 @@
                                             <label for="new-visa-123">Transaction
                                                 Fee</label>
                                             <input type="text" class="form-control"
-                                                id="new-visa-123" placeholder="..." name="contract_sub_tranc_no" value="{{$renewal_process->contract_sub_tranc_no}}">
+                                                id="new-visa-123" placeholder="..." name="contract_sub_tranc_fee" value="{{$renewal_process->contract_sub_tranc_fee}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6">
@@ -4944,7 +4944,7 @@
                                     </div>
                                     <div class="col-12">
                                         <button
-                                            class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                            class='btn btn-success d-block mx-auto px-5 py-2' type="submit">Add</button>
                                     </div>
                                 </div>
                             </form>

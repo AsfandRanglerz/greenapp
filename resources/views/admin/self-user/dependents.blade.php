@@ -29,63 +29,30 @@
                                         <tr>
                                             <th>Sr.</th>
                                             <th>Name</th>
-                                            <th>Image</th>
-                                            <th>Email</th>
-                                            {{-- <th>Phone</th>
-                                            <th>DOB</th>
-                                            <th>Gender</th>
-                                            <th>Nationality</th>
-                                            <th>Religion</th>
-                                            <th>Father Name</th>
-                                            <th>Mother Name</th>
-                                            <th>Passport Number</th>
-                                            <th>Unified Number</th>
-                                            <th>Emirates ID Number</th>
-                                            <th>Work Permit Number</th>
-                                            <th>Person Code</th> --}}
-                                            <th>Dependents</th>
-                                            <th>Document</th>
+                                            <th>Request</th>
+                                            <th>File</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $employee)
+                                        @foreach ($individual_dependents as $dependent)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $employee->name }}</td>
-                                                <td><a target="_black" href="{{ asset('') . '/' . $employee->image }}">
-                                                        <img src="{{ asset('') . '/' . $employee->image }}" alt=""
+                                                <td>{{ $dependent->dependent_type }}</td>
+                                                <td>{{ $dependent->request_type }}</td>
+                                                <td><a target="_black" href="{{ asset('') . '/' . $dependent->file }}">
+                                                        <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
                                                             height="50" width="50" class="image"></a>
                                                 </td>
-                                                <td>{{ $employee->email }}</td>
-                                                {{-- <td>{{ $employee->phone }}</td>
-                                                <td>{{ $employee->dob }}</td>
-                                                <td>{{ $employee->gender }}</td>
-                                                <td>{{ $employee->nationality }}</td>
-                                                <td>{{ $employee->religion }}</td>
-                                                <td>{{ $employee->father_name }}</td>
-                                                <td>{{ $employee->mother_name }}</td>
-                                                <td>{{ $employee->passport_number }}</td>
-                                                <td>{{ $employee->unified_number }}</td>
-                                                <td>{{ $employee->emirate_id_number }}</td>
-                                                <td>{{ $employee->work_permit_number }}</td>
-                                                <td>{{ $employee->person_code }}</td> --}}
-                                                <td>
-                                                    <a href="{{ route('individual-dependent-index', $employee->id) }}">View</a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('user-document.index', $employee->id) }}">View</a>
-                                                </td>
-
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
-                                                    <a id="{{ $employee->id }}" data-toggle="modal"
-                                                        data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
+                                                    <a id="{{ $dependent->id }}" data-toggle="modal"
+                                                        data-target=".bd-example-modal-lg" class="dependent-data btn_warning"><span
                                                             class="fa fa-eye text-white"></span></a>
                                                     <a class="btn btn-info"
-                                                        href="{{ route('selfemployee.edit', $employee->id) }}">Edit</a>
+                                                        href="{{ route('individual-dependent-index', $dependent->id) }}">Edit</a>
                                                     <form method="post"
-                                                        action="{{ route('selfemployee.destroy', $employee->id) }}">
+                                                        action="{{ route('individual-dependent-index', $dependent->id) }}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"

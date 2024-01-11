@@ -235,6 +235,15 @@ class NewVisaController extends Controller
                 ]);
             }
         }
+        if(  $permit_cancellation ||  $visa_cancellation ||   $modification_emirates)
+        $notify = AdminNotification::create([
+            'company_id' => $company_id,
+            'to_all' => 'Companies',
+            'title' => 'Visa Notification',
+            'message' => 'The ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
+                . ' process against ' . $employee->name .' has been started '. ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+        ]);
+
         return view('admin.visaprocess.newvisa', compact('ids', 'new_visa', 'renewal_process', 'spo_by_some', 'part_time', 'uae_gcc', 'modify_contract', 'modification_visa', 'modification_emirates', 'visa_cancellation', 'permit_cancellation'));
     }
 
@@ -1062,7 +1071,7 @@ class NewVisaController extends Controller
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
-                $file = $request->file('file');
+                $file = $request->file('medical_fitness_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $file->move('public/admin/assets/img/users', $filename);

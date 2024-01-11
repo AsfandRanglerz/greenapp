@@ -2102,7 +2102,7 @@
                                                     value="{{ $renewal_process_data->contract_sub_tranc_no }}"
                                                     placeholder="...">
                                             </div>
-                                        </div>
+                                                </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="#RenewalProcess4-transaction-fee">Transaction

@@ -238,6 +238,10 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('self-employee-view', [SelfUserController::class, 'view'])->middleware('permission:Individuals');
 
+    // individuals dependents routes
+
+    Route::get('self-employee-dependents/{id}', [SelfUserController::class, 'dependents'])->name('individual-dependent-index')->middleware('permission:Individuals');
+
     Route::resource('about-us', AboutUsController::class)->middleware('permission:About us');
 
     Route::resource('privacy-policy', PrivacyPolicyController::class)->middleware('permission:Privacy Policy');

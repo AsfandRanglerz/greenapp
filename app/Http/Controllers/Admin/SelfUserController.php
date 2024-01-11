@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\UserDocument;
+use App\Models\IndividualDependent;
 use Illuminate\Http\Request;
 use App\Mail\UserLoginPassword;
 use Illuminate\Validation\Rule;
@@ -26,6 +27,12 @@ class SelfUserController extends Controller
     {
         $users = User::whereempType('self')->orderBy('id', 'desc')->get();
         return view('admin.self-user.index', compact('users'));
+    }
+
+    public function dependents($id)
+    {
+        $individual_dependents = IndividualDependent::where('user_id',$id)->get(  );
+        return view('admin.self-user.dependents',compact('individual_dependents'));
     }
 
     /**
