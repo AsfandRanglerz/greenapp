@@ -196,11 +196,11 @@
                                                 {{-- <a href="" class='btn btn-success px-5 py-2'>Start Process</a> --}}
                                                 @php
                                                 $authId = Auth::guard('company')->id();
-                                                $n_visa =
-                                                App\Models\VisaProcessRequest::where('employee_id',$employee->id)->where('company_id',$authId)->first();
+                                                $n_visa = App\Models\NewVisaProcess::where('employee_id',$employee->id)->where('company_id',$authId)->first();
                                                 @endphp
                                                 <input type="hidden" value='new visa' name='process_name'>
-                                                @if (!$n_visa)
+                                                {{-- @dd($n_visa); --}}
+                                                @if(!$n_visa)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start
                                                     Process</button>
                                                 @endif
@@ -212,7 +212,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="#start-process-visa">Process status</label>
 
-                                                @if ($n_visa)
+                                                @if($n_visa)
                                                 <input type="text" id="tab-2" class="form-control process-status-input"
                                                     id="new-visa-1" disabled placeholder="..." value='process started'>
                                                 @else
@@ -4312,7 +4312,7 @@
                                 <div class="tab-pane fade" id="v-pills-modify-contract2" role="tabpanel"
                                     aria-labelledby="v-pills-modify-contract2-tab">
                                     <div class='rounded p-3 light-box-shadow'>
-                                        <form action="{{ route('company.modify-contract-company', $uae_national->id) }}"
+                                        <form action="{{ route('company.modify-contract-company', $modify_contract->id) }}"
                                             class='py-2' method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input type="text" value='step1' name='signed_mb' hidden>
@@ -4402,7 +4402,7 @@
                                 <div class="tab-pane fade" id="v-pills-modify-contract4" role="tabpanel"
                                     aria-labelledby="v-pills-modify-contract4-tab">
                                     <div class='rounded p-3 light-box-shadow'>
-                                        <form action="{{ route('company.uae-gcc-company', $uae_national->id) }}"
+                                        <form action="{{ route('company.modify-contract-company', $modify_contract->id) }}"
                                             class='py-2' method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <input type="text" value='step2' name='waiting' hidden>
@@ -6094,7 +6094,7 @@
                 }
                 if(flag){
                     return false;
-                }       
+                }
             });
 
 
