@@ -953,7 +953,7 @@ class NewVisaController extends Controller
         } elseif ($request->input('biometric') == 'step13') {
             // return $request;
             $status = NULL;
-            $file = NULl;
+            $file = NULL;
             if ($request->hasFile('biometric_file')) {
                 // return "ok";
                 $destination = 'public/admin/assets/img/users' . $new_visa->biometric_file;
@@ -978,12 +978,20 @@ class NewVisaController extends Controller
                 'biometric_date' => $request->biometric_date,
                 'biometric_tranc_no' => $request->biometric_tranc_no,
             ]);
+            if($request->biometric_status == 'Approved')
+            {
+                $new_visa->update([
+                    'status'=> 'completed',
+                ]);
+            }
             if ($request->biometric_status == 'Approved') {
                 $status = 'Approved';
             } elseif ($request->biometric_status == 'Skip') {
                 $status = 'Skip';
             } elseif ($request->biometric_status == 'Reject') {
                 $status = 'Reject';
+            }elseif ($request->biometric_status == 'Hold') {
+                $status = 'Hold';
             }
             if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
                 $notify = AdminNotification::create([
@@ -1503,14 +1511,25 @@ class NewVisaController extends Controller
             {
                 $status = 'Reject';
 
+            }elseif($request->emp_biometric_status == 'Hold')
+            {
+                $status = 'Hold';
+
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+
+            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject' || $status === 'Hold')
             {
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Employee Biometric step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->emp_biometric_status == 'Approved')
+            {
+                $renewal_process->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
@@ -1834,14 +1853,24 @@ class NewVisaController extends Controller
             {
                 $status = 'Reject';
 
+            }elseif($request->upload_wp_status == 'Hold')
+            {
+                $status = 'Hold';
+
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject' || $status === 'Hold')
             {
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Upload Work Permit step of Sponsored by Some one has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->upload_wp_status == 'Approved')
+            {
+                $sopnsored_by->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
@@ -1900,6 +1929,12 @@ class NewVisaController extends Controller
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Work permit application step of Part time and temporary process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->wp_app_status == 'Approved')
+            {
+                $sopnsored_by->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
@@ -2349,6 +2384,12 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload Work Permit step of UAE and GCC has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
+            if($request->upload_wp_status == 'Approved')
+            {
+                $uae_national->update([
+                    'status'=> 'completed',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
     }
@@ -2575,6 +2616,12 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload Work Permit step of Modify Contract Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
+            if($request->upload_wp_status == 'Approved')
+            {
+                $modify_contract->update([
+                    'status'=> 'completed',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
     }
@@ -2651,6 +2698,12 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Visa Modification step of Modification of Visa has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
+            if($request->application_status == 'Approved')
+            {
+                $modify_visa->update([
+                    'status'=> 'completed',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
     }
@@ -2719,6 +2772,12 @@ class NewVisaController extends Controller
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Modification of Emirates ID step of Modification of Emirates Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->application_status == 'Approved')
+            {
+                $emirates->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
@@ -2956,6 +3015,35 @@ class NewVisaController extends Controller
                 'residency_app_tranc_no' => $request->residency_app_tranc_no,
                 'residency_app_file_name' => $request->residency_app_file_name,
             ]);
+            $status = NULL;
+            if($request->residency_app_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->residency_app_status == 'Skip')
+            {
+                $status = 'Skip';
+
+            }elseif($request->residency_app_status == 'Reject')
+            {
+                $status = 'Reject';
+
+            }
+            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            {
+                $notify = AdminNotification::create([
+                    'company_id'=>$company_id,
+                    'to_all'=>'Companies',
+                    'title'=>'Visa Notification',
+                    'message'=>'This is inform you that the Residency step of Visa Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->residency_app_status == 'Approved')
+            {
+                $visa_cancellation->update([
+                    'status'=> 'completed',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
     }
@@ -3161,6 +3249,12 @@ class NewVisaController extends Controller
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Work permit cancellation approval step of Work Permit Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->waiting_for_approval_status == 'Approved')
+            {
+                $permit_can->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');

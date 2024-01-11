@@ -10984,7 +10984,7 @@
                               <div class="row">
                                   <div class="col-12 text-center">
                                     @php
-                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name','modification of visa')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name', 'modification of emirates Id')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                     @endphp
                                     @if (!$n_visa)
                                     <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>

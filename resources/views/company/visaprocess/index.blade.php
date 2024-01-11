@@ -5676,9 +5676,12 @@
                                                         @if($permit_cancellation->signed_cancellation_form)
                                                         <input type="text" hidden value='Approved'
                                                             class="process-container">
+                                                            <p>Approved</p>
+
                                                         @else
                                                         <input type="text" hidden value='Reject'
                                                             class="process-container">
+                                                            <p>Reject</p>
                                                         @endif
                                                     </div>
                                                     @php
@@ -5970,7 +5973,7 @@
             });
             if($('.entry-visa-select').val()=='yes'){
                 $('.Over-stay-fine').removeClass('d-none');
-                
+
             }
 
             if ($('.biometric-file-container').val() == 'required') {
@@ -5996,7 +5999,7 @@
             })
             if($('.select-tawjeeh-payment').val()=='yes'){
                 $('.tawjeeh-document').addClass('d-flex');
-               
+
             }
             // Initialize DataTable on elements with class 'employees'
             $('.employees').DataTable({
