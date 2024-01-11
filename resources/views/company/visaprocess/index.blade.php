@@ -5675,10 +5675,10 @@
                                                         </div>
                                                         @if($permit_cancellation->signed_cancellation_form)
                                                         <input type="text" hidden value='Approved'
-                                                            class="process-container">
+                                                            class="status-container">
                                                         @else
                                                         <input type="text" hidden value='Reject'
-                                                            class="process-container">
+                                                            class="status-container">
                                                         @endif
                                                     </div>
                                                     @php
