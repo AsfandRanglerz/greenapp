@@ -5994,9 +5994,10 @@
                     a.removeClass('d-flex');
                 }
             })
-            if ($('.select-tawjeeh-payment').val() == 'yes') {
-                $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document').addClass('d-flex');
-            };
+            if($('.select-tawjeeh-payment').val()=='yes'){
+                $('.tawjeeh-document').addClass('d-flex');
+               
+            }
             // Initialize DataTable on elements with class 'employees'
             $('.employees').DataTable({
                 "pageLength": 10,
