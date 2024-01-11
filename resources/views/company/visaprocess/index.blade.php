@@ -3226,10 +3226,9 @@
                                             </h6>
                                             <div class="row">
                                                 <div class="col-12 text-center">
-                                                    <input type="hidden">
-                                                    <input type="hidden" disabled value='work permit'
+                                                    <input type="text" hidden value='work permit'
                                                         name='process_name'>
-                                                    <input type="hidden" value='part time' name='sub_type'>
+                                                    <input type="text" hidden value='part time' name='sub_type'>
                                                     @php
                                                     $authId = Auth::guard('company')->id();
                                                     $par = App\Models\PartTimeAndTemporary::where('employee_id',
@@ -5977,7 +5976,7 @@
                     if($(this).val() == 'required'){
                         let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
                         a.removeClass('d-none');
-                    }        
+                    }
                 });
 
             $('.biometric-file-container').on('change', '.biometric-select', function () {
