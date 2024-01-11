@@ -106,7 +106,7 @@
                     <a class="nav-link" id="pills-work-permit-tab" data-toggle="pill" href="#pills-Work-permit"
                         role="tab" aria-controls="pills-work-permit" aria-selected="false">Work Permit</a>
                 </li>
-                <li class="nav-item " role="presentation">
+                <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-modify-visa-tab" data-toggle="pill" href="#pills-modify-visa"
                         role="tab" aria-controls="pills-modify-visa" aria-selected="false">Modification of visa</a>
                 </li>
@@ -129,52 +129,52 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-visa-tab"
                             role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
+                            <a class="nav-link active bordered_tab tabss" id="v-pills-start-tab" data-toggle="pill"
                                 href="#v-pills-start" role="tab" aria-controls="v-pills-start"
                                 aria-selected="true">Start
                                 Process</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa1-tab" data-toggle="pill" href="#v-pills-visa1"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa1-tab" data-toggle="pill" href="#v-pills-visa1"
                                 role="tab" aria-controls="v-pills-visa1" aria-selected="true">Job Offer</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa2-tab" data-toggle="pill" href="#v-pills-visa2"
+                            <a class="nav-link bordered_tab tabbs" id="v-pills-visa2-tab" data-toggle="pill" href="#v-pills-visa2"
                                 role="tab" aria-controls="v-visa2_1-profile" aria-selected="false">Upload Signed ST &
                                 MB</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa2_1-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa2_1-tab" data-toggle="pill"
                                 href="#v-pills-visa2_1" role="tab" aria-controls="v-visa2-profile"
                                 aria-selected="false">Waiting for Approval</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa3-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa3-tab" data-toggle="pill"
                                 href="#v-pills-visa3" role="tab" aria-controls="v-pills-visa3"
                                 aria-selected="false">Pay Dubai Insurance</a>
-                            <a class="nav-link bordered_tab" id="v-pills-preapproval-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-preapproval-tab" data-toggle="pill"
                                 href="#v-pills-preapproval" role="tab" aria-controls="v-pills-preapproval"
                                 aria-selected="false">Preapproval Work <br class='d-none d-lg-block'>Permit Fees & Upload
                                 <br class='d-none d-lg-block'>the documents</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa4-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa4-tab" data-toggle="pill"
                                 href="#v-pills-visa4" role="tab" aria-controls="v-pills-visa4"
                                 aria-selected="false">Entry Visa</a>
-                            <a class="nav-link bordered_tab change-visa-status" id="v-pills-visa5-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss change-visa-status" id="v-pills-visa5-tab" data-toggle="pill"
                                 href="#v-pills-visa-5" role="tab" aria-controls="v-pills-visa-5"
                                 aria-selected="false">Change of visa status</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa6-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa6-tab" data-toggle="pill"
                                 href="#v-pills-visa6" role="tab" aria-controls="v-pills-visa6"
                                 aria-selected="false">Medical Fitness</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa7-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa7-tab" data-toggle="pill"
                                 href="#v-pills-visa7" role="tab" aria-controls="v-pills-visa7"
                                 aria-selected="false">Tawjeeh Classes</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa8-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa8-tab" data-toggle="pill"
                                 href="#v-pills-visa8" role="tab" aria-controls="v-pills-visa8"
                                 aria-selected="false">Contract Submission</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa9-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa9-tab" data-toggle="pill"
                                 href="#v-pills-visa9" role="tab" aria-controls="v-pills-visa9"
                                 aria-selected="false">Health Insurance</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa10-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa10-tab" data-toggle="pill"
                                 href="#v-pills-visa10" role="tab" aria-controls="v-pills-visa10"
                                 aria-selected="false">Work
                                 Permit</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa11-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa11-tab" data-toggle="pill"
                                 href="#v-pills-visa11" role="tab" aria-controls="v-pills-visa11"
                                 aria-selected="false">Emirates ID & <br class='d-none d-lg-block'> Residency
                                 Application</a>
-                            <a class="nav-link bordered_tab" id="v-pills-visa12-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-visa12-tab" data-toggle="pill"
                                 href="#v-pills-visa12" role="tab" aria-controls="v-pills-visa12"
                                 aria-selected="false">Employee Biometric</a>
                         </div>
@@ -1662,33 +1662,33 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                             id="v-renewal-proces-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active bordered_tab" id="v-pills-renewal-process0-tab"
+                            <a class="nav-link active bordered_tab tabss" id="v-pills-renewal-process0-tab"
                                 data-toggle="pill" href="#v-pills-renewal-process0" role="tab"
                                 aria-controls="v-pills-renewal-process1" aria-selected="true">Start Process</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process1-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process1-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process1" role="tab"
                                 aria-controls="v-pills-renewal-process1" aria-selected="true">Medical Fitness</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process2-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process2-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process2" role="tab"
                                 aria-controls="v-pills-renewal-process2" aria-selected="false">Work Permit
                                 Application</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process3-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process3-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process3" role="tab"
                                 aria-controls="v-pills-renewal-process3" aria-selected="false">Upload Signed MB</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process4-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process4-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process4" role="tab"
                                 aria-controls="v-pills-renewal-process4" aria-selected="false">Pay Dubai Insurance</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process5-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process5-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process5" role="tab"
                                 aria-controls="v-pills-renewal-process5" aria-selected="false">Contract Submission</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process6-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process6-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process6" role="tab"
                                 aria-controls="v-pills-renewal-process6" aria-selected="false">Tawjeeh Classes</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process7-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process7-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process7" role="tab"
                                 aria-controls="v-pills-renewal-process7" aria-selected="false">Residency & ID
                                 Renewal</a>
-                            <a class="nav-link bordered_tab" id="v-pills-renewal-process8-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-renewal-process8-tab" data-toggle="pill"
                                 href="#v-pills-renewal-process8" role="tab"
                                 aria-controls="v-pills-renewal-process8" aria-selected="false">Employee Biometric</a>
                         </div>
@@ -2572,64 +2572,64 @@
             </div>
             <!-- Renewal Process End -->
 
-            <!-- Work Permit -->
-            <div class="tab-pane fade" id="pills-Work-permit" role="tabpanel"
+            <!-- Work Permit --> 
+            <div class="tab-pane fade tab-31" id="pills-Work-permit" role="tabpanel"
                 aria-labelledby="pills-work-permit-tab">
                 <ul class="nav nav-pills mb-3 work-permit-nav horizontal_tabs" id="work-permit-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active Work-permit-tabs " id="pills-sponsored-tab" data-toggle="pill"
+                        <a class="nav-link active Work-permit-tabs tabss" id="pills-sponsored-tab" data-toggle="pill"
                             href="#pills-sponsored" role="tab" aria-controls="pills-sponsored"
                             aria-selected="false">Sponsored
                             by someone/ Golden Visa</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link Work-permit-tabs" id="pills-part-time-tab" data-toggle="pill"
+                        <a class="nav-link Work-permit-tabs tabss" id="pills-part-time-tab" data-toggle="pill"
                             href="#pills-part-time" role="tab" aria-controls="pills-part-time"
                             aria-selected="false">Part
                             time & temporary</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link Work-permit-tabs" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
+                        <a class="nav-link Work-permit-tabs tabss" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
                             role="tab" aria-controls="pills-UAE" aria-selected="false">UAE & GCC National</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link Work-permit-tabs-last" id="pills-modify-contract-tab" data-toggle="pill"
+                        <a class="nav-link Work-permit-tabs-last tabss" id="pills-modify-contract-tab" data-toggle="pill"
                             href="#pills-modify-contract" role="tab" aria-controls="pills-modify-contract"
                             aria-selected="false">Modify contract</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="work-permit-tabContent">
                     <!-- Sponsored by someone tab -->
-                    <div class="tab-pane active show" id="pills-sponsored" role="tabpanel"
+                    <div class="tab-pane active show tab-71" id="pills-sponsored" role="tabpanel"
                         aria-labelledby="v-pills-sponsored-tab">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                                     id="v-sponsored-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-sponsored0-tab"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-sponsored0-tab"
                                         data-toggle="pill" href="#v-pills-sponsored0" role="tab"
                                         aria-controls="v-pills-sponsored0" aria-selected="true">
                                         Start Process
                                     </a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored1-tab" data-toggle="pill"
                                         href="#v-pills-sponsored1" role="tab" aria-controls="v-pills-sponsored1"
                                         aria-selected="true">
                                         Work Permit Application
                                     </a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored2-tab" data-toggle="pill"
                                         href="#v-pills-sponsored2" role="tab" aria-controls="v-pills-sponsored2"
                                         aria-selected="false">Upload Signed MB</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored2-1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored2-1-tab" data-toggle="pill"
                                         href="#v-pills-sponsored2-1" role="tab"
                                         aria-controls="v-pills-sponsored2-1" aria-selected="false">Waiting for
                                         Approval</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored3-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored3-tab" data-toggle="pill"
                                         href="#v-pills-sponsored3" role="tab" aria-controls="v-pills-sponsored3"
                                         aria-selected="false">Pay Dubai Insurance</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored4-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored4-tab" data-toggle="pill"
                                         href="#v-pills-sponsored4" role="tab" aria-controls="v-pills-sponsored4"
                                         aria-selected="false">Preapproval Work Permit Fees</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-sponsored5-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-sponsored5-tab" data-toggle="pill"
                                         href="#v-pills-sponsored5" role="tab" aria-controls="v-pills-sponsored5"
                                         aria-selected="false">Upload Work Permit
                                     </a>
@@ -3246,27 +3246,27 @@
                     </div>
                     <!-- Sponsored by someone tab end -->
                     <!--partime-tab -->
-                    <div class="tab-pane" id="pills-part-time" role="tabpanel"
+                    <div class="tab-pane tab-82" id="pills-part-time" role="tabpanel"
                         aria-labelledby="pills-part-time-tab">
                         <div class="row ">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                                     id="v-part-time-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-part-time0-tab"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-part-time0-tab"
                                         data-toggle="pill" href="#v-pills-part-time0" role="tab"
                                         aria-controls="v-pills-part-time0" aria-selected="true">Start Process</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-part-time1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-part-time1-tab" data-toggle="pill"
                                         href="#v-pills-part-time1" role="tab" aria-controls="v-pills-part-time1"
                                         aria-selected="true">Work Permit Application</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-part-time2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-part-time2-tab" data-toggle="pill"
                                         href="#v-pills-part-time2" role="tab" aria-controls="v-pills-part-time2"
                                         aria-selected="false">Upload Sign MB</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-part-time2-1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-part-time2-1-tab" data-toggle="pill"
                                         href="#v-pills-part-time2-1" role="tab"
                                         aria-controls="v-pills-part-time2-1" aria-selected="false">Part Time Temporary
                                         <br class="d-none d-lg-block"> Work Permit
                                         Status</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-part-time4-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-part-time4-tab" data-toggle="pill"
                                         href="#v-pills-part-time4" role="tab" aria-controls="v-pills-part-time4"
                                         aria-selected="false">Upload Work Permit </a>
                                 </div>
@@ -3708,27 +3708,27 @@
                     </div>
                     <!-- partime-tab end -->
                     <!-- UAE and Gcc tab -->
-                    <div class="tab-pane" id="pills-UAE" role="tabpanel" aria-labelledby="pills-UAE-tab">
+                    <div class="tab-pane tab-92" id="pills-UAE" role="tabpanel" aria-labelledby="pills-UAE-tab">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar horizontal_tabs flex-row flex-lg-column nav-pills"
                                     id="v-header-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-UAE0-tab" data-toggle="pill"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-UAE0-tab" data-toggle="pill"
                                         href="#v-pills-UAE0" role="tab" aria-controls="v-pills-UAE0"
                                         aria-selected="true">Start Process</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-UAE1-tab" data-toggle="pill"
                                         href="#v-pills-UAE1" role="tab" aria-controls="v-pills-UAE1"
                                         aria-selected="true">Work Permit Application</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-UAE2-tab" data-toggle="pill"
                                         href="#v-pills-UAE2" role="tab" aria-controls="v-pills-UAE2"
                                         aria-selected="false">Upload Signed MB</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE3-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-UAE3-tab" data-toggle="pill"
                                         href="#v-pills-UAE3" role="tab" aria-controls="v-pills-UAE3"
                                         aria-selected="false">Pay Dubai Insurance</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE3-1-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-UAE3-1-tab" data-toggle="pill"
                                         href="#v-pills-UAE3-1" role="tab" aria-controls="v-pills-UAE3-1"
                                         aria-selected="false">Waiting For Approval</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-UAE4-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-UAE4-tab" data-toggle="pill"
                                         href="#v-pills-UAE4" role="tab" aria-controls="v-pills-UAE4"
                                         aria-selected="false">Upload Work Permit</a>
                                 </div>
@@ -4251,28 +4251,28 @@
                     </div>
                     <!-- UAE and Gcc tab end -->
                     <!-- Modify Contract  -->
-                    <div class="tab-pane" id="pills-modify-contract" role="tabpanel"
+                    <div class="tab-pane tab-101" id="pills-modify-contract" role="tabpanel"
                         aria-labelledby="v-pills-modify-contract-tab">
                         <div class="row ">
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-lg-column flex-row horizontal_tabs nav-pills"
                                     id="modify-contract-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-modify-contract0-tab"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-modify-contract0-tab"
                                         data-toggle="pill" href="#v-pills-modify-contract0" role="tab"
                                         aria-controls="v-pills-modify-contract0" aria-selected="true">Start Process</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-modify-contract1-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract1-tab"
                                         data-toggle="pill" href="#v-pills-modify-contract1" role="tab"
                                         aria-controls="v-pills-modify-contract1" aria-selected="true">Work Permit
                                         Application</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-modify-contract2-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract2-tab"
                                         data-toggle="pill" href="#v-pills-modify-contract2" role="tab"
                                         aria-controls="v-pills-modify-contract2" aria-selected="false">Uplaod Signed
                                         MB</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-modify-contract4-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract4-tab"
                                         data-toggle="pill" href="#v-pills-modify-contract4" role="tab"
                                         aria-controls="v-pills-modify-contract4" aria-selected="false">Waiting For
                                         Approval</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-modify-contract5-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract5-tab"
                                         data-toggle="pill" href="#v-pills-modify-contract5" role="tab"
                                         aria-controls="v-pills-modify-contract5" aria-selected="false">Upload Work
                                         Permit</a>
@@ -4708,19 +4708,16 @@
             </div>
             <!-- Workit Permit End -->
 
-
-
-
             <!-- Modification Visa Tab -->
-            <div class="tab-pane" id="pills-modify-visa" role="tabpanel" aria-labelledby="pills-modify-visa-tab">
+            <div class="tab-pane tab-41" id="pills-modify-visa" role="tabpanel" aria-labelledby="pills-modify-visa-tab">
                 <div class="row ">
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="modify-visa-tab"
                             role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active bordered_tab" id="v-pills-modify-visa1-tab" data-toggle="pill"
+                            <a class="nav-link active bordered_tab tabss" id="v-pills-modify-visa1-tab" data-toggle="pill"
                                 href="#v-pills-modify-visa1" role="tab" aria-controls="v-pills-modify-visa1"
                                 aria-selected="true">Start process</a>
-                            <a class="nav-link bordered_tab" id="v-pills-modify-visa3-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-modify-visa3-tab" data-toggle="pill"
                                 href="#v-pills-modify-visa3" role="tab" aria-controls="v-pills-modify-visa3"
                                 aria-selected="false">Application status</a>
                         </div>
@@ -4895,16 +4892,16 @@
             <!--Modification VIsa Tab ENd  -->
             <!-- Main Header Tab content end -->
             <!-- Modification of Emirates -->
-            <div class="tab-pane" id="pills-modify-emirates" role="tabpanel"
+            <div class="tab-pane tab-51" id="pills-modify-emirates" role="tabpanel"
                 aria-labelledby="pills-modify-emirates-tab">
                 <div class="row ">
                     <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                             id="modify-emirates-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active bordered_tab" id="v-pills-modify-emirates1-tab"
+                            <a class="nav-link active bordered_tab tabss" id="v-pills-modify-emirates1-tab"
                                 data-toggle="pill" href="#v-pills-modify-emirates1" role="tab"
                                 aria-controls="v-pills-modify-emirates1" aria-selected="true">Start Process</a>
-                            <a class="nav-link bordered_tab" id="v-pills-modify-emirates3-tab" data-toggle="pill"
+                            <a class="nav-link bordered_tab tabss" id="v-pills-modify-emirates3-tab" data-toggle="pill"
                                 href="#v-pills-modify-emirates3" role="tab"
                                 aria-controls="v-pills-modify-emirates3" aria-selected="false">Application Status</a>
                         </div>
@@ -5079,17 +5076,17 @@
 
         <!-- Modification of Emirates End -->
             <!-- Cancelatoion Tab -->
-            <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
+            <div class="tab-pane fade tab-61 nav-bar" id="pills-cancelation" role="tabpanel"
                 aria-labelledby="pills-pills-cancelation-tab">
                 <ul class="nav nav-pills mb-3 horizontal_tabs" id="cancelation-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active Work-permit-tabs" id="pills-visa-cancel-tab" data-toggle="pill"
+                        <a class="nav-link active Work-permit-tabs tabss" id="pills-visa-cancel-tab" data-toggle="pill"
                             href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
                             aria-selected="false">Visa
                             cancelation</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link Work-permit-tabs-last" id="pills-work-permit-cancel-tab" data-toggle="pill"
+                        <a class="nav-link Work-permit-tabs-last tabss" id="pills-work-permit-cancel-tab" data-toggle="pill"
                             href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
                             aria-selected="false">Work permit cancelation</a>
                     </li>
@@ -5102,26 +5099,26 @@
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                                     id="visa-cancel-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-visa-cancel0-tab"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-visa-cancel0-tab"
                                         data-toggle="pill" href="#v-pills-visa-cancel0" role="tab"
                                         aria-controls="v-pills-visa-cancel0" aria-selected="true">Start Process</a>
-                                    <a class="nav-link   bordered_tab" id="v-pills-visa-cancel1-tab"
+                                    <a class="nav-link   bordered_tab tabss" id="v-pills-visa-cancel1-tab"
                                         data-toggle="pill" href="#v-pills-visa-cancel1" role="tab"
                                         aria-controls="v-pills-visa-cancel1" aria-selected="true">Work Permit Canclation
                                         Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel2-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-visa-cancel2-tab" data-toggle="pill"
                                         href="#v-pills-visa-cancel2" role="tab"
                                         aria-controls="v-pills-visa-cancel2" aria-selected="false">Upload Signed
                                         Cancelation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel3-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-visa-cancel3-tab" data-toggle="pill"
                                         href="#v-pills-visa-cancel3" role="tab"
                                         aria-controls="v-pills-visa-cancel3" aria-selected="false">Singed Cancelation
                                         Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel4-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-visa-cancel4-tab" data-toggle="pill"
                                         href="#v-pills-visa-cancel4" role="tab"
                                         aria-controls="v-pills-visa-cancel4" aria-selected="false">Work Permit
                                         Cancelation Approval</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-visa-cancel5-tab" data-toggle="pill"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-visa-cancel5-tab" data-toggle="pill"
                                         href="#v-pills-visa-cancel5" role="tab"
                                         aria-controls="v-pills-visa-cancel5" aria-selected="false">Residency
                                         Application</a>
@@ -5619,23 +5616,23 @@
                             <div class="col-xl-3 col-lg-4">
                                 <div class="nav side-bar flex-row horizonts_tabs flex-lg-column nav-pills"
                                     id="work-permit-cancel-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active bordered_tab" id="v-pills-work-permit-cancel0-tab"
+                                    <a class="nav-link active bordered_tab tabss" id="v-pills-work-permit-cancel0-tab"
                                         data-toggle="pill" href="#v-pills-work-permit-cancel0" role="tab"
                                         aria-controls="v-pills-work-permit-cancel0" aria-selected="false">Start
                                         Process</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel1-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-work-permit-cancel1-tab"
                                         data-toggle="pill" href="#v-pills-work-permit-cancel1" role="tab"
                                         aria-controls="v-pills-work-permit-cancel1" aria-selected="true">Work Permit<br
                                             class='d-none d-lg-block'> Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel2-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-work-permit-cancel2-tab"
                                         data-toggle="pill" href="#v-pills-work-permit-cancel2" role="tab"
                                         aria-controls="v-pills-work-permit-cancel2" aria-selected="false">Upload Singed
                                         <br class='d-none d-lg-block'>Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel3-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-work-permit-cancel3-tab"
                                         data-toggle="pill" href="#v-pills-work-permit-cancel3" role="tab"
                                         aria-controls="v-pills-work-permit-cancel3" aria-selected="false">Signed
                                         Cancellation Form</a>
-                                    <a class="nav-link bordered_tab" id="v-pills-work-permit-cancel4-tab"
+                                    <a class="nav-link bordered_tab tabss" id="v-pills-work-permit-cancel4-tab"
                                         data-toggle="pill" href="#v-pills-work-permit-cancel4" role="tab"
                                         aria-controls="v-pills-work-permit-cancel4" aria-selected="false">Work Permit
                                         <br class='d-none d-lg-block'>Cancelation Approval</a>
@@ -5899,7 +5896,7 @@
                                                             <div class="form-group mb-3 ">
                                                                 <label for="visa-cancel1-transaction-number3_3">Work Permit
                                                                     Cancellation Approval Status</label>
-                                                                <input type="text"
+                                                                <input type="text" id='54'
                                                                     class="form-control new-visa-signmbstatus status-container" readonly
                                                                     value="{{$permit_cancellation->waiting_for_approval_status}}" id="visa-cancel1-transaction-number3_3"
                                                                     placeholder="...">
@@ -6138,44 +6135,47 @@
                 };
                 //tabs movement
                 let count=0;
-                let flag=0;
+                let flag=false;
+                let baba=0;
                 $('.process-status-input').each(function(){
-                    $('.tab-pane').each(function(){
-                        $(this).removeClass('active show');
-                    })
-                    if($(this).val()=='prcess started'){
-                        $(this).closest('.tab-content').find('.status-contianer').each(function(){
-                            console.log($(this).val());
-                        })
-                    }
-                    count++;
                     let b=$(this).closest('.tab-pane').attr('aria-labelledby');
-                    if(count>=3 && count<=6){
-                        $('#pills-work-permit-tab').removeClass('active');
-                        $('#pills-work-permit-tab').click();
-                        $('#pills-Work-permit').addClass('show active')
-                    }else if(count>=9){
-                        $('#pills-cancelation-tab').removeClass('active');
-                        $('#pills-cancelation-tab').click();
+                    count++
+                    if($(this).val()=='process started'){
+                        let count2=0;
+                        $(this).closest('.tab-content').find('.status-container').each(function(){
+                            if($(this).val()=='Approved'){
+                                count2++;
+                            $('.tab-pane').each(function(){
+                            $(this).removeClass('show active');
+                           
+                         });
+                              let c= $(this).closest('.tab-pane').attr('aria-labelledby');
+                              $('#'+b).removeClass('active').click();
+                                $('#'+c).removeClass('active').click();
+                                $(this).closest('.tab-pane').addClass('active show');
+                                $('#'+(b.slice(0,-4))).addClass('active show');
+                                if(count>=3 && count<=6){
+                                    $('#pills-work-permit-tab').removeClass('active').click();
+                                    $('#pills-work-permit').addClass('active show');
+                                }
+                                if(count>=9){
+                                    $('#pills-cancelation-tab').removeClass('active').click();
+                                    $('#pills-cancelation').addClass('active show')
+                                }
+                                $('.tabss').each(function(){
+                               if($(this).hasClass('active')){
+                                    let b=$(this).attr('href')
+                                    $(b).addClass('active show');
+                               }
+                             })
+                                
+                            }
+                        })  
                     }
-                    $('.process-start').each(function(){
-                        $(this).addClass('active show');
-                    });
-                    if(count<4){
-                        $('#pills-sponsored').addClass('active show');
-                    }if(count>4){
-                        $('#pills-modify-contract').addClass('active show');
-                    }
-                     if(count<9){
-                        $('#pills-visa-cancel').addClass('active show');
-                    } if(count>9){
-                        $('#pills-work-permit-cancel').addClass('active show');
-                    }
-                    $('#'+b).removeClass('active');
-                        $('#'+b).click();
-                        $(this).closest('.tab-pane').addClass('active show');
-
+                    
                 })
+                
+                
                 // Handle click event on elements with class 'employee-data'
                 $(document).on('click', '.employee-don', function() {
                     var id = $(this).attr('id');
