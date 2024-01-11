@@ -5967,12 +5967,10 @@
                     a.addClass('d-none');
                     file_container.addClass('d-none');
                 }
-
             });
             if($('.entry-visa-select').val()=='yes'){
-                let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
-                console.log(1345);
-                a.removeClass('d-none');
+                $('.Over-stay-fine').removeClass('d-none');
+                
             }
 
             if ($('.biometric-file-container').val() == 'required') {
