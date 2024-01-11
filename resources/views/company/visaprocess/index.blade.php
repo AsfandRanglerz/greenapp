@@ -5971,6 +5971,7 @@
             });
             if($('.entry-visa-select').val()=='yes'){
                 let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+                console.log(1345);
                 a.removeClass('d-none');
             }
 
