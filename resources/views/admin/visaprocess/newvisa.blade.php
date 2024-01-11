@@ -5930,10 +5930,10 @@
                                                 <label for="new-visa-152">Process status</label>
                                                 @if ($sp)
                                                     @if($spo_by_some['upload_wp_status'] == 'Approved' || $spo_by_some['upload_wp_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-3" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-3" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -7564,10 +7564,10 @@
                                                 <label for="new-visa-187">Process status</label>
                                                  @if ($p_time)
                                                     @if($part_time['contract_status'] == 'Approved' || $part_time['contract_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-4" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-4" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -8591,10 +8591,10 @@
                                                 <label for="new-visa-215">Process status</label>
                                                 @if ($u_gcc)
                                                     @if($uae_gcc['upload_wp_status'] == 'Approved' || $uae_gcc['upload_wp_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-5" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-5" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -9898,10 +9898,10 @@
                                                 <label for="new-visa-243">Process status</label>
                                                 @if ($m_cont)
                                                     @if($modify_contract['upload_wp_status'] == 'Approved' || $modify_contract['upload_wp_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-6" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-6" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -10858,10 +10858,10 @@
                                               status</label>
                                               @if ($m_visa)
                                                     @if($modification_visa['application_status'] == 'Approved' || $modification_visa['application_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-7" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-7" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -11031,10 +11031,10 @@
                                               status</label>
                                                 @if ($m_emirates)
                                                     @if($modification_emirates['application_status'] == 'Approved' || $modification_emirates['application_status'] == 'Skip')
-                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        <input type="text" id="tab-8" class="form-control process-status-input"
                                                         disabled placeholder="..." value='process completed'>
                                                     @else
-                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        <input type="text" id="tab-8" class="form-control process-status-input"
                                                             id="new-visa-1" disabled placeholder="..." value='process started'>
                                                     @endif
                                                 @else
@@ -11233,10 +11233,10 @@
                                                     <label for="new-visa-275">Process status</label>
                                                     @if ($visa_can)
                                                         @if($visa_cancellation['residency_app_status'] == 'Approved' || $visa_cancellation['residency_app_status'] == 'Skip')
-                                                            <input type="text" id="tab-1" class="form-control process-status-input"
+                                                            <input type="text" id="tab-9" class="form-control process-status-input"
                                                             disabled placeholder="..." value='process completed'>
                                                         @else
-                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            <input type="text" id="tab-9" class="form-control process-status-input"
                                                                 id="new-visa-1" disabled placeholder="..." value='process started'>
                                                         @endif
                                                     @else
@@ -12495,10 +12495,10 @@
                                                     <label for="new-visa-300">Process status</label>
                                                     @if ($per_can)
                                                         @if($permit_cancellation['waiting_for_approval_status'] == 'Approved' || $permit_cancellation['waiting_for_approval_status'] == 'Skip')
-                                                            <input type="text" id="tab-1" class="form-control process-status-input"
+                                                            <input type="text" id="tab-10" class="form-control process-status-input"
                                                             disabled placeholder="..." value='process completed'>
                                                         @else
-                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            <input type="text" id="tab-10" class="form-control process-status-input"
                                                                 id="new-visa-1" disabled placeholder="..." value='process started'>
                                                         @endif
                                                     @else
