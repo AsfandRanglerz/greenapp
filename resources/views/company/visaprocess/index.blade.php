@@ -810,7 +810,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
                                             <div class="form-group">
-                                                <label for="#select-fine-file">Over Stay Fines?</label>
+                                                <label for="select-fine-file">Over Stay Fines?</label>
                                                 <select class="form-control fine-select" id="select-fine-file"
                                                     name="enter_visa_over_sf">
                                                     <option selected disabled>Select fine</option>
@@ -5969,6 +5969,10 @@
                 }
 
             });
+            if($('.entry-visa-select').val()=='yes'){
+                let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+                a.removeClass('d-none');
+            }
 
             if ($('.biometric-file-container').val() == 'required') {
                 let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
