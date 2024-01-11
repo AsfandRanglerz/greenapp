@@ -3,24 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Company;
 use App\Models\Receipt;
 use App\Mail\ProcessStarted;
 use Illuminate\Http\Request;
 use App\Models\ModifyContract;
 use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
+use App\Models\VisaCancelation;
+use App\Models\AdminNotification;
 use App\Models\UaeAndGccNational;
+use App\Models\PermitCancellation;
 use App\Models\SponsaredBySomeOne;
 use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
-use App\Models\AdminNotification;
 use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ModificationVisaEmiratesId;
-use App\Models\PermitCancellation;
-use App\Models\VisaCancelation;
 
 class NewVisaController extends Controller
 {
@@ -72,8 +73,18 @@ class NewVisaController extends Controller
     {
         // return 'ok';
         $status = VisaProcessRequest::find($id);
+        $company_id = $status->company_id;
+        $employee_id = $status->employee_id;
+        $company = Company::find($company_id);
+        $employee = User::find($employee_id);
         $status->update([
             'status' => 'approved',
+        ]);
+        $notify = AdminNotification::create([
+            'company_id' => $status->company_id,
+            'to_all' => 'Companies',
+            'title' => 'Visa Notification',
+            'message' => 'The visa process request has been approved.',
         ]);
         return redirect()->back()->with('success', 'Request approved successfully.');
         // return view('admin.visaprocess.newvisa');
@@ -235,14 +246,14 @@ class NewVisaController extends Controller
                 ]);
             }
         }
-        if(  $permit_cancellation ||  $visa_cancellation ||   $modification_emirates)
-        $notify = AdminNotification::create([
-            'company_id' => $company_id,
-            'to_all' => 'Companies',
-            'title' => 'Visa Notification',
-            'message' => 'The ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
-                . ' process against ' . $employee->name .' has been started '. ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
-        ]);
+        // if(  $permit_cancellation ||  $visa_cancellation ||   $modification_emirates)
+        // $notify = AdminNotification::create([
+        //     'company_id' => $company_id,
+        //     'to_all' => 'Companies',
+        //     'title' => 'Visa Notification',
+        //     'message' => 'The ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
+        //         . ' process against ' . $employee->name .' has been started '. ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+        // ]);
 
         return view('admin.visaprocess.newvisa', compact('ids', 'new_visa', 'renewal_process', 'spo_by_some', 'part_time', 'uae_gcc', 'modify_contract', 'modification_visa', 'modification_emirates', 'visa_cancellation', 'permit_cancellation'));
     }
