@@ -195,8 +195,13 @@
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-1">Process status</label>
                                                 @if ($n_visa)
-                                                    <input type="text" id="tab-1" class="form-control process-status-input"
-                                                     disabled placeholder="..." value='process started'>
+                                                    @if($new_visa['biometric_status'] == 'Approved' || $new_visa['biometric_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" id="tab-1" class="form-control process-status-input"
                                                      disabled placeholder="..." value='not started'>
@@ -3615,8 +3620,8 @@
                                                 <label for="new-visa-95">Employee Biometric</label>
                                                 <select class="form-control biometric-select" id="new-visa-95" name="employee_biometric">
                                                     <option>Employee Biometric</option>
-                                                    <option value='required'>Required</option>
-                                                    <option value='not required'>Not Required</option>
+                                                    <option value='required' {{$new_visa['employee_biometric'] == 'required' ? 'selected' : '' }}>Required</option>
+                                                    <option value='not required' {{$new_visa['employee_biometric'] == 'not required' ? 'selected' : '' }}>Not Required</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -3725,9 +3730,9 @@
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         @php
-                                            $n_visa = App\Models\RenewalProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            $r_pro = App\Models\RenewalProcess::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                         @endphp
-                                            @if (!$n_visa)
+                                            @if (!$r_pro)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                             @endif
 
@@ -3735,9 +3740,14 @@
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="new-visa-98">Process status</label>
-                                            @if ($n_visa)
-                                            <input type="text" id="tab-2" class="form-control process-status-input"
-                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                            @if ($r_pro)
+                                                @if($renewal_process['emp_biometric_status'] == 'Approved' || $renewal_process['emp_biometric_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                @else
+                                                    <input type="text" id="tab-2" class="form-control process-status-input"
+                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                @endif
                                             @else
                                                 <input type="text" id="tab-2" class="form-control process-status-input"
                                                 id="new-visa-1" disabled placeholder="..." value='not started'>
@@ -5908,9 +5918,9 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                                 @php
-                                                    $n_visa = App\Models\SponsaredBySomeOne::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                    $sp = App\Models\SponsaredBySomeOne::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                                 @endphp
-                                                @if (!$n_visa)
+                                                @if (!$sp)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                                 @endif
 
@@ -5918,9 +5928,14 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-152">Process status</label>
-                                                @if ($n_visa)
-                                                <input type="text" class="form-control process-status-input"
-                                                    id="tab-3" disabled placeholder="..." value='process started'>
+                                                @if ($sp)
+                                                    @if($spo_by_some['upload_wp_status'] == 'Approved' || $spo_by_some['upload_wp_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-3" disabled placeholder="..." value='not started'>
@@ -7538,18 +7553,23 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             @php
-                                            $n_visa = App\Models\PartTimeAndTemporary::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            $p_time = App\Models\PartTimeAndTemporary::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                             @endphp
-                                            @if (!$n_visa)
+                                            @if (!$p_time)
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                             @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-187">Process status</label>
-                                                 @if ($n_visa)
-                                                <input type="text" class="form-control process-status-input"
-                                                id="tab-4" disabled placeholder="..." value='process started'>
+                                                 @if ($p_time)
+                                                    @if($part_time['contract_status'] == 'Approved' || $part_time['contract_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-4" disabled placeholder="..." value='not started'>
@@ -8560,18 +8580,23 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             @php
-                                            $n_visa = App\Models\UaeAndGccNational::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            $u_gcc = App\Models\UaeAndGccNational::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                             @endphp
-                                            @if (!$n_visa)
+                                            @if (!$u_gcc)
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                             @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-215">Process status</label>
-                                                @if ($n_visa)
-                                                <input type="text" class="form-control process-status-input"
-                                                id="tab-5" disabled placeholder="..." value='process started'>
+                                                @if ($u_gcc)
+                                                    @if($uae_gcc['upload_wp_status'] == 'Approved' || $uae_gcc['upload_wp_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-5" disabled placeholder="..." value='not started'>
@@ -9862,18 +9887,23 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             @php
-                                            $n_visa = App\Models\ModifyContract::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                            $m_cont = App\Models\ModifyContract::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                             @endphp
-                                            @if (!$n_visa)
+                                            @if (!$m_cont)
                                             <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                             @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-243">Process status</label>
-                                                @if ($n_visa)
-                                                <input type="text" class="form-control process-status-input"
-                                                id="tab-6" disabled placeholder="..." value='process started'>
+                                                @if ($m_cont)
+                                                    @if($modify_contract['upload_wp_status'] == 'Approved' || $modify_contract['upload_wp_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-6" disabled placeholder="..." value='not started'>
@@ -10816,9 +10846,9 @@
                               <div class="row">
                                   <div class="col-12 text-center">
                                     @php
-                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name','modification of visa')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                    $m_visa = App\Models\ModificationVisaEmiratesId::where('process_name','modification of visa')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                     @endphp
-                                    @if (!$n_visa)
+                                    @if (!$m_visa)
                                     <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                     @endif
                                   </div>
@@ -10826,9 +10856,14 @@
                                       <div class="form-group mb-3">
                                           <label for="new-visa-265">Process
                                               status</label>
-                                              @if ($n_visa)
-                                              <input type="text" class="form-control process-status-input"
-                                              id="tab-7" disabled placeholder="..." value='process started'>
+                                              @if ($m_visa)
+                                                    @if($modification_visa['application_status'] == 'Approved' || $modification_visa['application_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-7" disabled placeholder="..." value='not started'>
@@ -10984,9 +11019,9 @@
                               <div class="row">
                                   <div class="col-12 text-center">
                                     @php
-                                    $n_visa = App\Models\ModificationVisaEmiratesId::where('process_name', 'modification of emirates Id')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                    $m_emirates = App\Models\ModificationVisaEmiratesId::where('process_name', 'modification of emirates Id')->where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                     @endphp
-                                    @if (!$n_visa)
+                                    @if (!$m_emirates)
                                     <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                     @endif
                                   </div>
@@ -10994,9 +11029,14 @@
                                       <div class="form-group mb-3">
                                           <label for="new-visa-270">Process
                                               status</label>
-                                              @if ($n_visa)
-                                              <input type="text" class="form-control process-status-input"
-                                              id="tab-8" disabled placeholder="..." value='process started'>
+                                                @if ($m_emirates)
+                                                    @if($modification_emirates['application_status'] == 'Approved' || $modification_emirates['application_status'] == 'Skip')
+                                                        <input type="text" id="tab-1" class="form-control process-status-input"
+                                                        disabled placeholder="..." value='process completed'>
+                                                    @else
+                                                        <input type="text" id="tab-2" class="form-control process-status-input"
+                                                            id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                    @endif
                                                 @else
                                                     <input type="text" class="form-control process-status-input"
                                                     id="tab-8" disabled placeholder="..." value='not started'>
@@ -11182,18 +11222,23 @@
                                         <div class="row">
                                             <div class="col-12 text-center">
                                                 @php
-                                                $n_visa = App\Models\VisaCancelation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                $visa_can = App\Models\VisaCancelation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                                 @endphp
-                                                @if (!$n_visa)
+                                                @if (!$visa_can)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                                 @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-275">Process status</label>
-                                                    @if ($n_visa)
-                                                    <input type="text" class="form-control process-status-input"
-                                                    id="tab-9" disabled placeholder="..." value='process started'>
+                                                    @if ($visa_can)
+                                                        @if($visa_cancellation['residency_app_status'] == 'Approved' || $visa_cancellation['residency_app_status'] == 'Skip')
+                                                            <input type="text" id="tab-1" class="form-control process-status-input"
+                                                            disabled placeholder="..." value='process completed'>
+                                                        @else
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                        @endif
                                                     @else
                                                         <input type="text" class="form-control process-status-input"
                                                         id="tab-9" disabled placeholder="..." value='not started'>
@@ -12439,18 +12484,23 @@
                                         <div class="row">
                                             <div class="col-12 text-center">
                                                 @php
-                                                    $n_visa = App\Models\PermitCancellation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
+                                                    $per_can = App\Models\PermitCancellation::where('employee_id',$ids['user_id'])->where('company_id',$ids['company_id'])->first();
                                                 @endphp
-                                                @if (!$n_visa)
+                                                @if (!$per_can)
                                                 <button class='btn btn-success px-5 py-2' type="submit">Start Process</button>
                                                 @endif
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-300">Process status</label>
-                                                    @if ($n_visa)
-                                                    <input type="text" class="form-control process-status-input"
-                                                        id="tab-10" disabled placeholder="..." value='process started'>
+                                                    @if ($per_can)
+                                                        @if($permit_cancellation['waiting_for_approval_status'] == 'Approved' || $permit_cancellation['waiting_for_approval_status'] == 'Skip')
+                                                            <input type="text" id="tab-1" class="form-control process-status-input"
+                                                            disabled placeholder="..." value='process completed'>
+                                                        @else
+                                                            <input type="text" id="tab-2" class="form-control process-status-input"
+                                                                id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                        @endif
                                                     @else
                                                         <input type="text" class="form-control process-status-input"
                                                         id="tab-10" disabled placeholder="..." value='not started'>
@@ -13395,7 +13445,7 @@
                     if($(this).val() == 'required'){
                         let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
                         a.removeClass('d-none');
-                    }        
+                    }
                 });
 
         $('.biometric-file-container').on('change', '.biometric-select', function () {

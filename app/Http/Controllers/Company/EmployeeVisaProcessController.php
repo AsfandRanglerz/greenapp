@@ -82,6 +82,7 @@ class EmployeeVisaProcessController extends Controller
                     // 'process_name'=>$process_name,
                 ]);
             }
+            // return $visa_process_request;
             return redirect()->route('company.employee.visa.process',$id)->with('success','Request send to admin successfully.');
         }
     }
