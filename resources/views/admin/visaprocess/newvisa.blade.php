@@ -11567,10 +11567,10 @@
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
                                                         @if($visa_cancellation->signed_cancellation_form)
-                                                        <input type="text" hidden value='Approved'>
+                                                        <input type="text" class="status-selector-select" hidden value='Approved'>
                                                         {{-- <p>Approved</p> --}}
                                                         @else
-                                                            <input type="text" hidden value='Reject'>
+                                                            <input type="text" class="status-selector-select" hidden value='Reject'>
                                                         {{-- <p>Reject</p> --}}
                                                         @endif
                                                     </div>
@@ -12826,10 +12826,10 @@
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
                                                         @if($permit_cancellation->signed_cancellation_form)
-                                                                <input type="text" hidden value='Approved'>
+                                                                <input type="text" class="status-selector-select" hidden value='Approved'>
                                                                 {{-- <p>Approved</p> --}}
                                                                 @else
-                                                                    <input type="text" hidden value='Reject'>
+                                                                    <input type="text" hidden class="status-selector-select" value='Reject'>
                                                                 {{-- <p>Reject</p> --}}
                                                                 @endif
                                                     </div>

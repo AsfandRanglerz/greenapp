@@ -201,7 +201,6 @@
                                                     <input type="text" id="tab-1" class="form-control process-status-input"
                                                      disabled placeholder="..." value='not started'>
                                                 @endif
-
                                             </div>
                                         </div>
                                 </div>
@@ -705,7 +704,7 @@
                         </div>
                         <!--waiting for Approval End -->
                         {{-- Upload signed mb and st section --}}
-                        
+
                         {{-- Dubai insurance section --}}
                         <div class="tab-pane fade" id="v-pills-visa3" role="tabpanel"
                             aria-labelledby="v-pills-visa3-tab">
@@ -11567,6 +11566,13 @@
                                                             <small class="input-group-text"><span
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
+                                                        @if($visa_cancellation->signed_cancellation_form)
+                                                        <input type="text" class="status-selector-select" hidden value='Approved'>
+                                                        {{-- <p>Approved</p> --}}
+                                                        @else
+                                                            <input type="text" class="status-selector-select" hidden value='Reject'>
+                                                        {{-- <p>Reject</p> --}}
+                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -12819,6 +12825,13 @@
                                                             <small class="input-group-text"><span
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
+                                                        @if($permit_cancellation->signed_cancellation_form)
+                                                                <input type="text" class="status-selector-select" hidden value='Approved'>
+                                                                {{-- <p>Approved</p> --}}
+                                                                @else
+                                                                    <input type="text" hidden class="status-selector-select" value='Reject'>
+                                                                {{-- <p>Reject</p> --}}
+                                                                @endif
                                                     </div>
                                                 </div>
 
@@ -13454,7 +13467,7 @@
                 $(this).removeClass('show');
                 $(this).removeClass('active');
                 }
-               
+
             });
         };
         let helperCount=0;
@@ -13463,7 +13476,7 @@
         helperCount++;
         if($(this).val()=='process started'){
             helper();
-            let c=$(this).closest('.tab-content').find('.status-selector-select').each(function(){            
+            let c=$(this).closest('.tab-content').find('.status-selector-select').each(function(){
                 if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
                    let a= $(this).closest('.tab-pane').attr('aria-labelledby');
                     $('#'+a).click();
@@ -13475,24 +13488,22 @@
             $('.'+a).removeClass('active').click();
                if(helperCount>=3 && helperCount<=6){
                     $('#pills-work-permit-tab').removeClass('active');
-                    $('#pills-work-permit-tab').click();            
+                    $('#pills-work-permit-tab').click();
                 }
                 else if(helperCount>=9 && helperCount<=10){
                     $('#pills-cancelation-tab').removeClass('active');
-                    $('#pills-cancelation-tab').click();  
+                    $('#pills-cancelation-tab').click();
                 }
-        
         };
-  
         if(flag===true){
             return false;
         }
-             
+
         })
         if(!flag){
             $('#pills-visa-tab').click();
         }
-    
+
 
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
