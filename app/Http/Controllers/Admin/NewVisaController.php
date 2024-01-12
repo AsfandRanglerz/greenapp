@@ -75,8 +75,11 @@ class NewVisaController extends Controller
         $status = VisaProcessRequest::find($id);
         $company_id = $status->company_id;
         $employee_id = $status->employee_id;
+        $status = VisaProcessRequest::find($id);
+
         $company = Company::find($company_id);
         $employee = User::find($employee_id);
+        // return $status;
         $status->update([
             'status' => 'approved',
         ]);
@@ -84,7 +87,8 @@ class NewVisaController extends Controller
             'company_id' => $status->company_id,
             'to_all' => 'Companies',
             'title' => 'Visa Notification',
-            'message' => 'The visa process request has been approved.',
+            'message' => 'The request of '. $status->process_name .' '.'('.($status->sub_type ? $status->sub_type : '').')'.' has been approved
+            against '.$employee->name.'.',
         ]);
         return redirect()->back()->with('success', 'Request approved successfully.');
         // return view('admin.visaprocess.newvisa');
@@ -173,6 +177,13 @@ class NewVisaController extends Controller
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         } elseif ($data['request_name'] == 'renewal process') {
             // return "ok renewal process";
@@ -181,12 +192,26 @@ class NewVisaController extends Controller
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'].' '.' has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'sponsored by some one') {
             if (!$spo_by_some) {
                 $spo_by_some = SponsaredBySomeOne::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'part time') {
@@ -195,12 +220,26 @@ class NewVisaController extends Controller
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc') {
             if (!$uae_gcc) {
                 $uae_gcc = UaeAndGccNational::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract') {
@@ -209,6 +248,13 @@ class NewVisaController extends Controller
                 $modify_contract = ModifyContract::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
         } elseif ($data['request_name'] == 'modification of visa') {
@@ -219,6 +265,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'process_name' => 'modification of visa',
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         } elseif ($data['request_name'] == 'modification of emirates Id') {
             // return "ok renewal process";
@@ -228,6 +281,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'process_name' => 'modification of emirates Id',
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.'process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         } elseif ($data['request_name'] == 'visa cancellation') {
             // return "ok renewal process";
@@ -235,6 +295,13 @@ class NewVisaController extends Controller
                 $visa_cancellation = VisaCancelation::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
         } elseif ($data['request_name'] == 'permit cancellation') {
@@ -244,17 +311,15 @@ class NewVisaController extends Controller
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'] .' '.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
             }
         }
-        // if(  $permit_cancellation ||  $visa_cancellation ||   $modification_emirates)
-        // $notify = AdminNotification::create([
-        //     'company_id' => $company_id,
-        //     'to_all' => 'Companies',
-        //     'title' => 'Visa Notification',
-        //     'message' => 'The ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
-        //         . ' process against ' . $employee->name .' has been started '. ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
-        // ]);
-
         return view('admin.visaprocess.newvisa', compact('ids', 'new_visa', 'renewal_process', 'spo_by_some', 'part_time', 'uae_gcc', 'modify_contract', 'modification_visa', 'modification_emirates', 'visa_cancellation', 'permit_cancellation'));
     }
 

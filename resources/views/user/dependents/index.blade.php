@@ -29,6 +29,7 @@
                             <th scope="col">Expiry Date</th>
                             <th scope="col">Response</th>
                             <th scope="col">Comment</th>
+                            <th scope="col">Visa Process</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -79,7 +80,9 @@
                             @else
                                 {{$dependent->comment}}
                            @endif</td>
-
+                                <td>
+                                    <a href="{{route('user.dependent-visa-process')}}">Click</a>
+                                </td>
                             <td>
                                 <a href="{{ route('user.edit-dependent', $dependent->id) }}" class="mx-2"><span
                                     class="fa fa-edit text-info"></span></a>
