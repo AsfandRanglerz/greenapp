@@ -82,7 +82,7 @@
 </style>
 <div class="mb-5 admin-main-content-inner">
     <h4>Individual Dashboard</h4>
-    <p><span class="fa fa-users"></span> - Individual Visa Process</p>
+    <p><span class="fa fa-users"></span> - Dependent Visa Process</p>
     <div class="text-right">
         {{-- <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
                 class="fa fa-plus mr-2"></span>Add

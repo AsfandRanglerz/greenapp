@@ -19,7 +19,10 @@ class DependentController extends Controller
         // return $dependents;
         return view('user.dependents.index',compact('dependents'));
     }
-
+    public function show_visa_process()
+    {
+        return view('user.dependents.visaprocess.index');
+    }
     public function create()
     {
         return view('user.dependents.create');

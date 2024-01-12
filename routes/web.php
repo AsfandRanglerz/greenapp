@@ -415,6 +415,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::delete('delete-dependent/{id}','DependentController@delete')->name('delete-dependent');
 
+    Route::get('dependent-visa-process','IndividualDependentVisaController@index')->name('dependent-visa-process');
+
     // Receipts
 
     Route::get('get-receipts','UserReceiptsController@index')->name('get-receipts');
