@@ -84,7 +84,7 @@
 </style>
 <div class="mb-5 admin-main-content-inner">
     <h4>Company Dashboard</h4>
-    <p><span class="fa fa-users"></span> - Employee Visa Process</p>
+    <p><span class="fa fa-users"></span> - {{$employee->name}} Visa Process</p>
     {{-- {{$new_visa_data->company_id}} --}}
     <div class="text-right">
         {{-- <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
@@ -295,7 +295,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{ $new_visa_data->job_offer_file_name }}</label>
+                                                <label for="#">{{ $new_visa_data->job_offer_file_name ? $new_visa_data->job_offer_file_name : ' ' }}</label>
                                                 @php
                                                 $file_name = $new_visa_data->job_offer_file;
                                                 $ext = explode('.', $file_name);
@@ -309,7 +309,7 @@
                                                                 @if ($ext[1] == 'pdf')
                                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                     style="height: 50px;width:50px">
-                                                                @elseif($ext[1] == 'doc')
+                                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                     style="height: 50px;width:50px">
                                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -435,7 +435,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -485,7 +485,9 @@
                                         <div
                                             class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
+                                                @if($new_visa_data->waiting_fappro_file)
+                                                     <label for="#">Attachment</label>
+                                                @endif
                                                 @php
                                                 $file_name = $new_visa_data->waiting_fappro_file;
                                                 $ext = explode('.', $file_name);
@@ -496,7 +498,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -516,20 +518,22 @@
                                         <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
                                             <label for='sponsor2-textareara-13'>Comments</label>
                                             <textarea type="text" id='sponsor2-textarear-13' name="comment"
-                                                placeholder="Enter Your Comments ..." class="form-control"
+                                                placeholder="Enter Your Comments ..." class="form-control" readonly
                                                 rows="5">{{ $new_visa_data->waiting_fappro_reason }}</textarea>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                             <div class="form-group mb-3">
+                                                {{-- @if ($new_visa_data->waiting_fappro_no) --}}
                                                 <label for="sponsor-approval-13">Approval No:</label>
                                                 <input type="text" class="form-control" id="sponsor-approval-13"
-                                                    placeholder="..." value="{{ $new_visa_data->waiting_fappro_no }}">
+                                                    placeholder="..." readonly value="{{ $new_visa_data->waiting_fappro_no }}">
+                                                {{-- @endif --}}
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload ST & MB</label>
+                                                <label for='visa2-file-bio_1'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-file-bio_1'
                                                         name="waiting_fappro_reason_file" style="line-height: 1"
@@ -550,7 +554,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -626,7 +630,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -703,7 +707,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -781,7 +785,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -854,7 +858,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -931,7 +935,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1019,7 +1023,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1126,7 +1130,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1203,7 +1207,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1278,7 +1282,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1353,7 +1357,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1429,7 +1433,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1501,7 +1505,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1608,7 +1612,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1814,7 +1818,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1894,7 +1898,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -1993,7 +1997,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2073,7 +2077,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2152,7 +2156,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2258,7 +2262,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2334,7 +2338,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2402,7 +2406,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2508,7 +2512,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2710,7 +2714,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2811,7 +2815,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2876,7 +2880,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -2938,7 +2942,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3019,7 +3023,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3098,7 +3102,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3176,7 +3180,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
 
@@ -3333,7 +3337,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3429,7 +3433,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3491,7 +3495,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3549,7 +3553,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3624,7 +3628,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3783,7 +3787,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3889,7 +3893,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -3969,7 +3973,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4027,7 +4031,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4084,7 +4088,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4162,7 +4166,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4321,7 +4325,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4408,7 +4412,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4469,7 +4473,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4529,7 +4533,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4606,7 +4610,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4744,7 +4748,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4798,7 +4802,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4931,7 +4935,7 @@
                                                     @if ($ext[1] == 'pdf')
                                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                         style="height: 50px;width:50px">
-                                                    @elseif($ext[1] == 'doc')
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                     <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                     @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -4986,7 +4990,7 @@
                                                 @if ($ext[1] == 'pdf')
                                                 <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                     style="height: 50px;width:50px">
-                                                @elseif($ext[1] == 'doc')
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                 <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                     style="height: 50px;width:50px">
                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5182,7 +5186,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5246,7 +5250,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5334,7 +5338,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5394,7 +5398,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5432,7 +5436,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5522,7 +5526,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5688,7 +5692,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5750,7 +5754,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5831,7 +5835,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5890,7 +5894,7 @@
                                                             @if ($ext[1] == 'pdf')
                                                             <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                                 style="height: 50px;width:50px">
-                                                            @elseif($ext[1] == 'doc')
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                             <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                                 style="height: 50px;width:50px">
                                                             @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
@@ -5949,7 +5953,7 @@
                                                         @if ($ext[1] == 'pdf')
                                                         <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
                                                             style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc')
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
                                                         <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
                                                             style="height: 50px;width:50px">
                                                         @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
