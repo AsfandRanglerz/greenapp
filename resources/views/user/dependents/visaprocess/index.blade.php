@@ -198,7 +198,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-9">Status</label>
                                                 <input class='m-0 form-control entry-visa-status' id="visa-id-9"
-                                                    type="text">Pending</input>
+                                                    type="text" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -267,14 +267,235 @@
 
                         </div>
                         <div class="tab-pane fade" id="v-pills-change-visa" role="tabpanel"
-                            aria-labelledby="v-pills-change-visa-tab">Change of Visa</div>
+                            aria-labelledby="v-pills-change-visa-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-14">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa-id-14"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-15">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa-id-15"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-16">Status</label>
+                                                <input class='m-0 form-control entry-visa-status' id="visa-id-16"
+                                                    type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-17">Date</label>
+                                                <input type="date" class="form-control" id="visa-id-17"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 gap-1 d-flex align-items-end mb-3">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-health-insurance" role="tabpanel"
-                            aria-labelledby="v-pills-health-insurance-tab">Health Insurance</div>
+                            aria-labelledby="v-pills-health-insurance-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Health Insurance</h6>
+                                    <div class="row align-items-end fine-select-container">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-18">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa-id-18"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-19">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa-id-19"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-20">Status</label>
+                                                <input class='m-0 form-control entry-visa-status' id="visa-id-20"
+                                                    type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-21">Date</label>
+                                                <input type="date" class="form-control" id="visa-id-21"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 gap-1 d-flex align-items-end mb-3">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-medical-fitness" role="tabpanel"
-                            aria-labelledby="v-pills-medical-fitness-tab">Medical Fitness</div>
+                            aria-labelledby="v-pills-medical-fitness-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Medical Fitness</h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-22">Transaction No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa-id-22" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-23">Transaction Fee</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa-id-23" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa-id-24">Status</label>
+                                            <input class='form-control m-0'placeholder='...' id="visa-id-24">
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-25">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="visa-id-25" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                          <div class="upload-file">
+                                            <label for='visa-id-27'>Upload Medical</label>
+                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                <input type="file" class="form-control" id='visa-id-27'
+                                                    name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                <div class="input-group-prepend">
+                                                    <small class="input-group-text"><span
+                                                            class="fa fa-paperclip"></span></small>
+                                                </div>
+                                            </div>
+                                          </div>
+                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                        
+                        </div>
                         <div class="tab-pane fade" id="v-pills-residency-id" role="tabpanel"
-                            aria-labelledby="v-pills-residency-id-tab">Emirates ID & Residency
-                            Application</div>
+                            aria-labelledby="v-pills-residency-id-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='pt-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Emirates ID</h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-28">Transaction No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa-id-28" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-29">Transaction Fee</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa-id-29" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa-id-31">Status</label>
+                                            <input class='form-control m-0' type="text" placeholder="..." id="visa-id-31"/>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-30">Date</label>
+                                                <input type="date" class="form-control"
+                                                    id="emirates-transaction-date" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+                                          <div class="d-flex flex-column">
+                                            <label for="#">Attachment</label>
+                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                          </div>
+                                    </div>
+                                  </div>
+                                </form>
+                                <form action="" class='pt-4 pb-2'>
+                                  <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application</h6>
+                                  <div class="row">
+                                      <div class="col-xl-6 col-lg-12 col-md-6">
+                                          <div class="form-group mb-3">
+                                              <label for="visa-id-32">Transaction No:</label>
+                                              <input type="text" class="form-control"
+                                                  id="visa-id-32" placeholder="...">
+                                          </div>
+                                      </div>
+                                      <div class="col-xl-6 col-lg-12 col-md-6">
+                                          <div class="form-group mb-3">
+                                              <label for="visa-id-33">Transaction Fee</label>
+                                              <input type="text" class="form-control"
+                                                  id="visa-id-33" placeholder="...">
+                                          </div>
+                                      </div>
+                                      <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                          <label for="visa-id-34">Status</label>
+                                          <input class='form-control m-0' type="text" placeholder="...." id="visa-id-34">
+                                      </div>
+                                      <div class="col-xl-6 col-lg-12 col-md-6">
+                                          <div class="form-group mb-3">
+                                              <label for="visa-id-35">Date</label>
+                                              <input type="date" class="form-control"
+                                                  id="visa-id-35" >
+                                          </div>
+                                      </div>
+                                      <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+                                        <div class="d-flex flex-column">
+                                          <label for="#">Attachment</label>
+                                       <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                        </div>
+                                  </div>
+                                </div>
+                                </form>
+                              </div>
+                        
+                        
+                        </div>
                         <div class="tab-pane fade" id="v-pills-biometric" role="tabpanel"
                             aria-labelledby="v-pills-biometric-tab">Biometric</div>
 
@@ -520,103 +741,103 @@
             else {
                 file_container.addClass('d-none');
             }
-        } 
-        else if($('.entry-visa-select').val() == 'no'){
+        }
+        else if ($('.entry-visa-select').val() == 'no') {
             let a = $('.Over-stay-fine');
-             let fine_select = a.find('.fine-select');
+            let fine_select = a.find('.fine-select');
             let file_container = $('.fine-files-container');
             a.addClass('d-none');
             file_container.addClass('d-none');
-     }
-    $('.entry-visa-select').change(function () {
-        let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
-        let fine_select = a.find('.fine-select');
-        let file_container = $('.fine-files-container');
-        if ($(this).val() == 'yes') {
-            a.removeClass('d-none');
-            if (fine_select.val() == 'yes') {
-                file_container.removeClass('d-none');
-            }
-        } else {
-            a.addClass('d-none');
-            file_container.addClass('d-none');
         }
-    });
-    if ($('.biometric-file-container').val() == 'required') {
-        let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
-        a.removeClass('d-none');
-    }
-
-    $('.biometric-file-container').on('change', '.biometric-select', function () {
-        let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
-        if ($(this).val() == 'required') {
-            a.removeClass('d-none');
-        } else {
-            a.addClass('d-none');
-        }
-    });
-    $('.select-tawjeeh-payment').change(function () {
-        let a = $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document');
-        if ($(this).val() == 'yes') {
-            a.addClass('d-flex');
-        } else {
-            a.removeClass('d-flex');
-        }
-    })
-    if ($('.select-tawjeeh-payment').val() == 'yes') {
-        $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document').addClass('d-flex');
-    };
-    // Initialize DataTable on elements with class 'employees'
-    $('.employees').DataTable({
-        "pageLength": 10,
-        aaSorting: [
-            [0, "asc"]
-        ]
-    });
-
-    // Handle click event on elements with class 'show_confirm'
-    $('.show_confirm').click(function (event) {
-        var form = $(this).closest("form");
-        var name = $(this).data("name");
-        event.preventDefault();
-        swal({
-            title: "Are you sure you want to delete this record?",
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
+        $('.entry-visa-select').change(function () {
+            let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+            let fine_select = a.find('.fine-select');
+            let file_container = $('.fine-files-container');
+            if ($(this).val() == 'yes') {
+                a.removeClass('d-none');
+                if (fine_select.val() == 'yes') {
+                    file_container.removeClass('d-none');
                 }
-            });
-    });
-
-    // Handle click event on elements with class 'employee-data'
-    $(document).on('click', '.employee-don', function () {
-        var id = $(this).attr('id');
-        // Perform an AJAX request
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            headers: {
-                'X-CSRF-Token': '{{ csrf_token() }}',
-            },
-            url: "{{ url('company/employee-data') }}",
-            data: {
-                'id': id,
-            },
-            success: function (response) {
-                // Handle the successful response here
-                console.log(response);
-            },
-            error: function (error) {
-                // Handle the error here
-                console.error(error);
+            } else {
+                a.addClass('d-none');
+                file_container.addClass('d-none');
             }
         });
-    });
+        if ($('.biometric-file-container').val() == 'required') {
+            let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
+            a.removeClass('d-none');
+        }
+
+        $('.biometric-file-container').on('change', '.biometric-select', function () {
+            let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
+            if ($(this).val() == 'required') {
+                a.removeClass('d-none');
+            } else {
+                a.addClass('d-none');
+            }
+        });
+        $('.select-tawjeeh-payment').change(function () {
+            let a = $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document');
+            if ($(this).val() == 'yes') {
+                a.addClass('d-flex');
+            } else {
+                a.removeClass('d-flex');
+            }
+        })
+        if ($('.select-tawjeeh-payment').val() == 'yes') {
+            $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document').addClass('d-flex');
+        };
+        // Initialize DataTable on elements with class 'employees'
+        $('.employees').DataTable({
+            "pageLength": 10,
+            aaSorting: [
+                [0, "asc"]
+            ]
+        });
+
+        // Handle click event on elements with class 'show_confirm'
+        $('.show_confirm').click(function (event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: "Are you sure you want to delete this record?",
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+
+        // Handle click event on elements with class 'employee-data'
+        $(document).on('click', '.employee-don', function () {
+            var id = $(this).attr('id');
+            // Perform an AJAX request
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-Token': '{{ csrf_token() }}',
+                },
+                url: "{{ url('company/employee-data') }}",
+                data: {
+                    'id': id,
+                },
+                success: function (response) {
+                    // Handle the successful response here
+                    console.log(response);
+                },
+                error: function (error) {
+                    // Handle the error here
+                    console.error(error);
+                }
+            });
+        });
 
     });
 </script>
