@@ -5991,52 +5991,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script>
         $(function () {
-            if ($('.entry-visa-select').val() == 'yes') {
-                let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
-                let fine_select = a.find('.fine-select');
-                let file_container = $('.fine-files-container');
-                if ($(this).val() == 'yes') {
-                    a.removeClass('d-none');
-                    if (fine_select.val() == 'yes') {
-                        file_container.removeClass('d-none');
-                    }
-                } else {
-                    a.addClass('d-none');
-                    file_container.addClass('d-none');
-                }
-            }
             if ($('.fine-select').val() == 'yes') {
-                let file_container = $('.fine-files-container');
+            let file_container = $('.fine-files-container');
+            file_container.removeClass('d-none');
+        }
+        $('.fine-select').change(function () {
+            let file_container = $('.fine-files-container');
+            if ($(this).val() == 'yes') {
+                file_container.removeClass('d-none');
+            } else {
+                file_container.addClass('d-none');
+            }
+        })
+        if ($('.entry-visa-select').val() == 'yes') {
+            let a = $('.Over-stay-fine');
+            let fine_select = a.find('.fine-select');
+            let file_container = $('.fine-files-container');
+            a.removeClass('d-none');
+            if (fine_select.val() == 'yes') {
                 file_container.removeClass('d-none');
             }
-            $('.fine-select').change(function () {
-                let file_container = $('.fine-files-container');
-                if ($(this).val() == 'yes') {
-                    file_container.removeClass('d-none');
-                } else {
-                    file_container.addClass('d-none');
-                }
-            })
-            $('.entry-visa-select').change(function () {
-                let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
-                let fine_select = a.find('.fine-select');
-                let file_container = $('.fine-files-container');
-                if ($(this).val() == 'yes') {
-                    a.removeClass('d-none');
-                    if (fine_select.val() == 'yes') {
-                        file_container.removeClass('d-none');
-                    }
-                } else {
-                    a.addClass('d-none');
-                    file_container.addClass('d-none');
-                }
-            });
-            if($('.entry-visa-select').val()=='yes'){
-                $('.Over-stay-fine').removeClass('d-none');
-
+            else {
+                file_container.addClass('d-none');
             }
-
-             $('.biometric-select').each(function(){
+        } 
+        else if($('.entry-visa-select').val() == 'no'){
+            let a = $('.Over-stay-fine');
+             let fine_select = a.find('.fine-select');
+            let file_container = $('.fine-files-container');
+            a.addClass('d-none');
+            file_container.addClass('d-none');
+     }
+    $('.entry-visa-select').change(function () {
+        let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+        let fine_select = a.find('.fine-select');
+        let file_container = $('.fine-files-container');
+        if ($(this).val() == 'yes') {
+            a.removeClass('d-none');
+            if (fine_select.val() == 'yes') {
+                file_container.removeClass('d-none');
+            }
+        } else {
+            a.addClass('d-none');
+            file_container.addClass('d-none');
+        }
+    });
+      $('.biometric-select').each(function(){
                     if($(this).val() == 'required'){
                         let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
                         a.removeClass('d-none');
