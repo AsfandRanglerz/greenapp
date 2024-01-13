@@ -373,49 +373,51 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-22">Transaction No:</label>
-                                                <input type="text" class="form-control"
-                                                    id="visa-id-22" placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-22"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-23">Transaction Fee</label>
-                                                <input type="text" class="form-control"
-                                                    id="visa-id-23" placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-23"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-24">Status</label>
-                                            <input class='form-control m-0'placeholder='...' id="visa-id-24">
+                                            <input class='form-control m-0' placeholder='...' id="visa-id-24">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-25">Date</label>
-                                                <input type="date" class="form-control"
-                                                    id="visa-id-25" placeholder="...">
+                                                <input type="date" class="form-control" id="visa-id-25"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                          <div class="upload-file">
-                                            <label for='visa-id-27'>Upload Medical</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                <input type="file" class="form-control" id='visa-id-27'
-                                                    name="file" style="line-height: 1" accept=".pdf,.doc,.excel">
-                                                <div class="input-group-prepend">
-                                                    <small class="input-group-text"><span
-                                                            class="fa fa-paperclip"></span></small>
+                                            <div class="upload-file">
+                                                <label for='visa-id-27'>Upload Medical</label>
+                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                    <input type="file" class="form-control" id='visa-id-27' name="file"
+                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
                                                 </div>
                                             </div>
-                                          </div>
-                                             <a href=""><img class="upload-img"  src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            <a href=""><img class="upload-img"
+                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                    alt=""></a>
                                         </div>
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
                                         </div>
                                     </div>
                                 </form>
-                                </div>
-                        
+                            </div>
+
                         </div>
                         <div class="tab-pane fade" id="v-pills-residency-id" role="tabpanel"
                             aria-labelledby="v-pills-residency-id-tab">
@@ -426,79 +428,150 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-28">Transaction No:</label>
-                                                <input type="text" class="form-control"
-                                                    id="visa-id-28" placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-28"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-29">Transaction Fee</label>
-                                                <input type="text" class="form-control"
-                                                    id="visa-id-29" placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-29"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-31">Status</label>
-                                            <input class='form-control m-0' type="text" placeholder="..." id="visa-id-31"/>
+                                            <input class='form-control m-0' type="text" placeholder="..."
+                                                id="visa-id-31" />
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-30">Date</label>
-                                                <input type="date" class="form-control"
-                                                    id="emirates-transaction-date" placeholder="...">
+                                                <input type="date" class="form-control" id="emirates-transaction-date"
+                                                    placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
-                                          <div class="d-flex flex-column">
-                                            <label for="#">Attachment</label>
-                                         <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
-                                          </div>
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
                                 </form>
                                 <form action="" class='pt-4 pb-2'>
-                                  <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application</h6>
-                                  <div class="row">
-                                      <div class="col-xl-6 col-lg-12 col-md-6">
-                                          <div class="form-group mb-3">
-                                              <label for="visa-id-32">Transaction No:</label>
-                                              <input type="text" class="form-control"
-                                                  id="visa-id-32" placeholder="...">
-                                          </div>
-                                      </div>
-                                      <div class="col-xl-6 col-lg-12 col-md-6">
-                                          <div class="form-group mb-3">
-                                              <label for="visa-id-33">Transaction Fee</label>
-                                              <input type="text" class="form-control"
-                                                  id="visa-id-33" placeholder="...">
-                                          </div>
-                                      </div>
-                                      <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                          <label for="visa-id-34">Status</label>
-                                          <input class='form-control m-0' type="text" placeholder="...." id="visa-id-34">
-                                      </div>
-                                      <div class="col-xl-6 col-lg-12 col-md-6">
-                                          <div class="form-group mb-3">
-                                              <label for="visa-id-35">Date</label>
-                                              <input type="date" class="form-control"
-                                                  id="visa-id-35" >
-                                          </div>
-                                      </div>
-                                      <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
-                                        <div class="d-flex flex-column">
-                                          <label for="#">Attachment</label>
-                                       <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-32">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa-id-32"
+                                                    placeholder="...">
+                                            </div>
                                         </div>
-                                  </div>
-                                </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-33">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa-id-33"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa-id-34">Status</label>
+                                            <input class='form-control m-0' type="text" placeholder="...."
+                                                id="visa-id-34">
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-id-35">Date</label>
+                                                <input type="date" class="form-control" id="visa-id-35">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
-                              </div>
-                        
-                        
+                            </div>
+
+
                         </div>
                         <div class="tab-pane fade" id="v-pills-biometric" role="tabpanel"
-                            aria-labelledby="v-pills-biometric-tab">Biometric</div>
-
+                            aria-labelledby="v-pills-biometric-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Biometric</h6>
+                                    <div class="row biometric-file-container">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-37-id">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa-37-id"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-38-id">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa-38-id"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa-38-id">Status</label>
+                                            <input class='form-control m-0' id="visa-38-id" type="text"
+                                                placeholder="..." />
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa-39-id">Date</label>
+                                                <input type="date" class="form-control" id="visa-39-id"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
+                                            <div class="form-group">
+                                                <label for="visa-40-id">Biometric</label>
+                                                <select class="form-control biometric-select" id="visa-40-id">
+                                                    <option selected disabled>Select Option</option>
+                                                    <option value='required'>Required</option>
+                                                    <option value='not required'>Not Required</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
+                                            <div class="mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='visa-41-id'>Uplaod File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa-41-id'
+                                                            name="file" style="line-height: 1"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -552,12 +625,230 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-renewal-medical-fitness" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-medical-fitness-tab">Medical Fitness</div>
+                            aria-labelledby="v-pills-renewal-medical-fitness-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Medical
+                                        Fitness</h6>
+                                    <div class="row align-items-end">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-1">Transaction
+                                                    No:</label>
+                                                <input type="text" class="form-control" id="visa1-id-1" disabled
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-2">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-id-2" disabled
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-3">Status</label>
+                                                <input type="text" class="form-control status-container" id="visa1-id-3"
+                                                    disabled placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-4">Date</label>
+                                                <input type="date" class="form-control" id="visa1-id-4"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 renewal-fitness-parent">
+                                            <div class="form-group">
+                                                <label for="visa1-id-5">Fitness Status</label>
+                                                <select class="form-control renewal-fitness" id="visa1-id-5"
+                                                    name="medical_fitness_st">
+                                                    <option selected disabled>select fitness</option>
+                                                    <option value="fit">
+                                                        Fit</option>
+                                                    <option value="not fit">
+                                                        Not Fit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 d-none renewal-medical-file align-items-end">
+                                            <div class="upload-file">
+                                                <label for='visa1-id-6'>Upload File</label>
+                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                    <input type="file" class="form-control" id='visa1-id-6'
+                                                        name="medical_fitness_file" style="line-height: 1"
+                                                        accept=".pdf,.doc,.excel">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href=""><img class="upload-img"
+                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                    alt=""></a>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-renewal-residency-id" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-residency-id-tab">Residency & ID Renewal</div>
-                        <div class="tab-pane fade" id="v-pills-renewal-biometric" role="tabpanel"
-                            aria-labelledby="v-pills-renewal-biometric-tab">Biometric</div>
+                            aria-labelledby="v-pills-renewal-residency-id-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='pt-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency</h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-7">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa1-id-7"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-8">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-id-8"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa1-id-9">Status</label>
+                                            <input class='form-control m-0' type="text" placeholder="..."
+                                                id="visa-id-31" />
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-9">Date</label>
+                                                <input type="date" class="form-control" id="visa1-id-9"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form action="" class='pt-4 pb-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> ID Renewal</h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-10">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa1-id-10"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-11">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-id-11"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa1-id-13">Status</label>
+                                            <input class='form-control m-0' type="text" placeholder="...."
+                                                id="visa1-id-13">
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-12">Date</label>
+                                                <input type="date" class="form-control" id="visa1-id-12">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-renewal-biometric" role="tabpanel"
+                            aria-labelledby="v-pills-renewal-biometric-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form action="" class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Biometric</h6>
+                                    <div class="row biometric-file-container">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-113">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa1-id-113"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-14">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-id-14"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa1-id-15">Status</label>
+                                            <input class='form-control m-0' id="visa1-id-15" type="text"
+                                                placeholder="..." />
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-16">Date</label>
+                                                <input type="date" class="form-control" id="visa1-id-16"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
+                                            <div class="form-group">
+                                                <label for="visa1-id-17">Biometric</label>
+                                                <select class="form-control biometric-select" id="visa1-id-17">
+                                                    <option selected disabled>Select Option</option>
+                                                    <option value='required'>Required</option>
+                                                    <option value='not required'>Not Required</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
+                                            <div class="mb-3 align-items-end d-flex">
+                                                <div class="upload-file">
+                                                    <label for='visa1-id-18'>Uplaod File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa1-id-18'
+                                                            name="file" style="line-height: 1"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href=""><img class="upload-img"
+                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
+                                                        alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -604,7 +895,66 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-modify-visa-entry" role="tabpanel"
-                            aria-labelledby="v-pills-modify-visa-entry-tab">Waiting For Approval</div>
+                            aria-labelledby="v-pills-modify-visa-entry-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form
+                                    class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                        Approval
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
+                                            <div class="form-group mb-3 ">
+                                                <label for="visa1-id-20">Application
+                                                    Status</label>
+                                                <input type="text"
+                                                    class="form-control status-container new-visa-signmbstatus" readonly
+                                                    id="visa1-id-20" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
+                                            <label for='visa1-id-21'>Comments</label>
+                                            <textarea type="text" id='visa1-id-21' name="comment"
+                                                placeholder="Enter Your Comments ..." class="form-control" disabled
+                                                rows="5"></textarea>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-id-22">Approval No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa1-id-22" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
+                                            <div class="upload-file">
+                                                <label for='visa1-id-23'>Upload File</label>
+                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                    <input type="file" class="form-control" id='visa1-id-23'
+                                                        name="application_reject_reason_file" style="line-height: 1"
+                                                        accept=".pdf,.doc,.excel">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                        </div>
+                                        <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -650,7 +1000,66 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-modify-id-entry" role="tabpanel"
-                            aria-labelledby="v-pills-modify-id-entry-tab">Waiting For Approval</div>
+                            aria-labelledby="v-pills-modify-id-entry-tab">
+                            <div class='rounded p-3 light-box-shadow'>
+                                <form
+                                    class='py-2'>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                        Approval
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
+                                            <div class="form-group mb-3 ">
+                                                <label for="visa2-id-20">Application
+                                                    Status</label>
+                                                <input type="text"
+                                                    class="form-control status-container new-visa-signmbstatus" readonly
+                                                    id="visa2-id-20" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
+                                            <div class="d-flex flex-column">
+                                                <label for="#">Attachment</label>
+                                                <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
+                                            <label for='visa2-id-21'>Comments</label>
+                                            <textarea type="text" id='visa2-id-21' name="comment"
+                                                placeholder="Enter Your Comments ..." class="form-control" disabled
+                                                rows="5"></textarea>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
+                                            <div class="form-group mb-3">
+                                                <label for="visa2-id-22">Approval No:</label>
+                                                <input type="text" class="form-control"
+                                                    id="visa2-id-22" placeholder="...">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
+                                            <div class="upload-file">
+                                                <label for='visa2-id-23'>Upload File</label>
+                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                    <input type="file" class="form-control" id='visa2-id-23'
+                                                        name="application_reject_reason_file" style="line-height: 1"
+                                                        accept=".pdf,.doc,.excel">
+                                                    <div class="input-group-prepend">
+                                                        <small class="input-group-text"><span
+                                                                class="fa fa-paperclip"></span></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a>
+                                        </div>
+                                        <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
+                                            <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -763,6 +1172,16 @@
                 file_container.addClass('d-none');
             }
         });
+        $('.renewal-fitness').change(function () {
+            if ($(this).val() == 'fit') {
+                $('.renewal-medical-file').addClass('d-flex');
+            } else {
+                $('.renewal-medical-file').removeClass('d-flex');
+            }
+        });
+        if ($('.renewal-fitness').val() == 'fit') {
+            $('.renewal-medical-file').addClass('d-flex');
+        };
         if ($('.biometric-file-container').val() == 'required') {
             let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
             a.removeClass('d-none');
@@ -787,6 +1206,19 @@
         if ($('.select-tawjeeh-payment').val() == 'yes') {
             $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document').addClass('d-flex');
         };
+        $('.new-visa-signmbstatus').each(function () {
+                let a = $(this).parents('.new-visa-signmbstatus-parent');
+                if ($(this).val().toLowerCase() == 'approved') {
+                    a.siblings('.new-visa-signmbstatus-attachment').addClass('d-flex');
+                    a.siblings('.new-visa-signmbstatus-approval').removeClass('d-none');
+                } else if ($(this).val().toLowerCase() == 'reject' || $(this).val().toLowerCase() ==
+                    'returned') {
+                    a.siblings('.new-visa-signmbstatus-file').addClass('d-flex');
+                    a.siblings('.new-visa-signmbstatus-comment').removeClass('d-none');
+                    a.siblings('.new-visa-signmbstatus-btn').removeClass('d-none');
+                }
+            });
+            
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,
