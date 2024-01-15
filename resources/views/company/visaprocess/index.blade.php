@@ -3,7 +3,7 @@
 <style>
     .nav-link {
         color: black;
-        white-space: nowrap;
+       white-space: nowrap;
     }
 
     .upload-img {
@@ -243,59 +243,59 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">Job Offer Transaction
+                                                <label for="visa1-1">Job Offer Transaction
                                                     No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-1" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_tran_no }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">MB Contracts
+                                                <label for="visa1-2">MB Contracts
                                                     Transaction No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-2" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_mb_trc_no }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">Preapproval of work
+                                                <label for="visa1-3">Preapproval of work
                                                     permit Transaction No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-3" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_preapproval_wp_t_no }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-fee">Transaction Fee</label>
+                                                <label for="visa1-4">Transaction Fee</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-fee" placeholder="..."
+                                                    id="visa1-4" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_tran_fees }}">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
+                                            <label for="visa1-5">Status</label>
                                             <input type="text" readonly class="form-control status-container"
-                                                id="start-process-transaction-fee" clas placeholder="..."
+                                                id="visa1-5" clas placeholder="..."
                                                 value="{{ $new_visa_data->job_offer_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-date">Date</label>
+                                                <label for="visa1-6">Date</label>
                                                 <input type="date" readonly class="form-control"
-                                                    id="start-process-transaction-date" placeholder="..."
+                                                    id="visa1-6" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_date }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{ $new_visa_data->job_offer_file_name ? $new_visa_data->job_offer_file_name : ' ' }}</label>
+                                                <label for="visa1-7">{{ $new_visa_data->job_offer_file_name ? $new_visa_data->job_offer_file_name : ' ' }}</label>
                                                 @php
                                                 $file_name = $new_visa_data->job_offer_file;
                                                 $ext = explode('.', $file_name);
@@ -349,64 +349,64 @@
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">Job Offer Transaction
+                                                <label for="visa1-8">Job Offer Transaction
                                                     No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-8" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_tran_no }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">MB Contracts
+                                                <label for="visa1-9">MB Contracts
                                                     Transaction No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-9" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_mb_trc_no }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number">Preapproval of work
+                                                <label for="visa1-10">Preapproval of work
                                                     permit Transaction No:</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="start-process-transaction-number" placeholder="..."
+                                                    id="visa1-10" placeholder="..."
                                                     value="{{ $new_visa_data->job_offer_preapproval_wp_t_no }}">
                                             </div>
                                         </div>
 
                                         {{-- <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="visa2-transaction-fee">Transaction Fee</label>
+                                                <label for="visa1-11">Transaction Fee</label>
                                                 <input type="text" readonly class="form-control"
-                                                    id="visa2-transaction-fee" placeholder="..."
+                                                    id="visa1-11" placeholder="..."
                                                     value="{{$new_visa_data->job_offer_preapproval_wp_t_no}}">
                                             </div>
                                         </div> --}}
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#">Status</label>
+                                                <label for="visa1-12">Status</label>
                                                 <input type="text" readonly class="form-control status-container"
-                                                    id="visa2-transaction-fee" placeholder="..."
+                                                    id="visa1-12" placeholder="..."
                                                     value="{{ $new_visa_data->signed_mb_st_status }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="StMB-transaction-date">Date</label>
+                                                <label for="visa1-13">Date</label>
                                                 <input type="date" readonly class="form-control"
-                                                    id="StMB-transaction-date" placeholder="..."
+                                                    id="visa1-13" placeholder="..."
                                                     value="{{ $new_visa_data->signed_mb_st_date }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-3 col-12">
                                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input"
-                                                    id="flexCheckDefault">
-                                                <label class="custom-control-label" for="flexCheckDefault">The
+                                                    id="visa1-14">
+                                                <label class="custom-control-label" for="visa1-14">The
                                                     contract
                                                     has been signed.</label>
                                             </div>
@@ -414,9 +414,9 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='visa2-file'>Upload ST & MB</label>
+                                                <label for='visa1-15'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file'
+                                                    <input type="file" class="form-control" id='visa1-15'
                                                         name="signed_mb_st_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -475,10 +475,10 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                             <div class="form-group mb-3 ">
-                                                <label for="visa3-transaction-number1">Sign MB Status</label>
+                                                <label for="visa1-19">Sign MB Status</label>
                                                 <input type="text"
                                                     class="form-control new-visa-signmbstatus status-container" readonly
-                                                    id="visa3-transaction-number1" placeholder="..."
+                                                    id="visa1-19" placeholder="..."
                                                     value="{{ $new_visa_data->waiting_for_approval_status }}">
                                             </div>
                                         </div>
@@ -516,16 +516,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                            <label for='sponsor2-textareara-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear-13' name="comment"
+                                            <label for='visa1-20'>Comments</label>
+                                            <textarea type="text" id='visa1-20' name="comment"
                                                 placeholder="Enter Your Comments ..." class="form-control" readonly
                                                 rows="5">{{ $new_visa_data->waiting_fappro_reason }}</textarea>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                             <div class="form-group mb-3">
                                                 {{-- @if ($new_visa_data->waiting_fappro_no) --}}
-                                                <label for="sponsor-approval-13">Approval No:</label>
-                                                <input type="text" class="form-control" id="sponsor-approval-13"
+                                                <label for="visa1-21">Approval No:</label>
+                                                <input type="text" class="form-control" id="visa1-21"
                                                     placeholder="..." readonly value="{{ $new_visa_data->waiting_fappro_no }}">
                                                 {{-- @endif --}}
                                             </div>
@@ -533,9 +533,9 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-file-bio_1'>Upload File</label>
+                                                <label for='visa1-22'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file-bio_1'
+                                                    <input type="file" class="form-control" id='visa1-22'
                                                         name="waiting_fappro_reason_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -589,30 +589,30 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-number"
+                                                <label for="visa1-23">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa1-23"
                                                     placeholder="..." disabled
                                                     value="{{ $new_visa_data->dubai_insurance_tran_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#visa3-transaction-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="visa3-transaction-fee"
+                                                <label for="visa1-24">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-24"
                                                     placeholder="..." disabled
                                                     value="{{ $new_visa_data->dubai_insurance_tran_fees }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="#status">Status</label>
+                                            <label for="visa1-25">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="dubai-insurance-date" placeholder="..." disabled
+                                                id="visa1-25" placeholder="..." disabled
                                                 value="{{ $new_visa_data->dubai_insurance_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#dubai-insurance-date">Date</label>
-                                                <input type="date" class="form-control" id="dubai-insurance-date"
+                                                <label for="visa1-26">Date</label>
+                                                <input type="date" class="form-control" id="visa1-26"
                                                     placeholder="..." disabled
                                                     value="{{ $new_visa_data->dubai_insurance_date }}">
                                             </div>
@@ -664,33 +664,33 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-number">Transaction
+                                                <label for="visa1-27">Transaction
                                                     No:</label>
                                                 {{-- {{dd($new_visa_data->pre_approved_wp_tran_no)}} --}}
                                                 <input type="text" class="form-control"
-                                                    id="preapproval-transaction-number" placeholder="..." disabled
+                                                    id="visa1-27" placeholder="..." disabled
                                                     value="{{ $new_visa_data->pre_approved_wp_tran_no }}" name="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="preapproval-transaction-fee"
+                                                <label for="visa1-28">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-28"
                                                     placeholder="..." disabled
                                                     value="{{ $new_visa_data->pre_approved_wp_tran_fees }}" name="">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
+                                            <label for="visa1-29">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="preapproval-transaction-date" placeholder="..." disabled
+                                                id="visa1-29" placeholder="..." disabled
                                                 value="{{ $new_visa_data->pre_approved_wp_status }}" name="">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#preapproval-transaction-date">Date</label>
+                                                <label for="visa1-30">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="preapproval-transaction-date" placeholder="..." disabled
+                                                    id="visa1-30" placeholder="..." disabled
                                                     value="{{ $new_visa_data->pre_approved_wp_date }}" name="">
                                             </div>
                                         </div>
@@ -742,32 +742,32 @@
                                     <div class="row align-items-end fine-select-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-visa-number">Transaction No:</label>
-                                                <input type="text" class="form-control" id="entry-visa-number"
+                                                <label for="visa1-31">Transaction No:</label>
+                                                <input type="text" class="form-control" id="visa1-31"
                                                     placeholder="..." disabled value={{ $new_visa_data->enter_visa_ts_no
                                                 }}>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-visa-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="entry-visa-fee"
+                                                <label for="visa1-32">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-32"
                                                     placeholder="..." disabled value={{
                                                     $new_visa_data->enter_visa_ts_fee }}>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#">Status</label>
+                                                <label for="visa1-33">Status</label>
                                                 <input type="text" class="form-control status-container"
-                                                    id="entry-transaction-date" placeholder="..." disabled value={{
+                                                    id="visa1-33" placeholder="..." disabled value={{
                                                     $new_visa_data->enter_visa_status }}>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#entry-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="entry-transaction-date"
+                                                <label for="visa1-34">Date</label>
+                                                <input type="date" class="form-control" id="visa1-34"
                                                     placeholder="..." disabled value={{ $new_visa_data->enter_visa_date
                                                 }}>
                                             </div>
@@ -804,8 +804,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
-                                                <label for="#select-entry-visa">Are u inside the country?</label>
-                                                <select class="form-control entry-visa-select" id="entry-visa-select"
+                                                <label for="visa1-35">Are u inside the country?</label>
+                                                <select class="form-control entry-visa-select" id="visa1-35"
                                                     name="enter_visa_country">
                                                     <option selected disabled>select status</option>
                                                     <option value='yes' {{ $new_visa_data->enter_visa_country == 'yes' ?
@@ -819,8 +819,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
                                             <div class="form-group">
-                                                <label for="select-fine-file">Over Stay Fines?</label>
-                                                <select class="form-control fine-select" id="select-fine-file"
+                                                <label for="visa1-36">Over Stay Fines?</label>
+                                                <select class="form-control fine-select" id="visa1-36"
                                                     name="enter_visa_over_sf">
                                                     <option selected disabled>Select fine</option>
                                                     <option value='yes' {{ $new_visa_data->enter_visa_over_sf == 'yes' ?
@@ -837,9 +837,9 @@
                                         <div class="row  align-items-end ">
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#over-stay-file'>Upload file</label>
+                                                    <label for='visa1-37'>Upload file</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='over-stay-file'
+                                                        <input type="file" class="form-control" id='visa1-37'
                                                             name="enter_visa_osf_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -894,31 +894,31 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-number5">Transaction
+                                                <label for="visa1-38">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number5" disabled placeholder="..."
+                                                    id="visa1-38" disabled placeholder="..."
                                                     value="{{ $new_visa_data->change_of_visa_tno }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="start-process-transaction-fee5">Transaction Fee</label>
+                                                <label for="visa1-39">Transaction Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee5" disabled placeholder="..."
+                                                    id="visa1-39" disabled placeholder="..."
                                                     value="{{ $new_visa_data->change_of_visa_tfee }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-40">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee5" disabled placeholder="..."
+                                                id="visa1-40" disabled placeholder="..."
                                                 value="{{ $new_visa_data->change_of_visa_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="change-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="change-date" disabled
+                                                <label for="visa1-41">Date</label>
+                                                <input type="date" class="form-control" id="visa1-41" disabled
                                                     placeholder="..." value="{{ $new_visa_data->change_of_visa_date }}">
                                             </div>
                                         </div>
@@ -969,42 +969,42 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number6">Transaction
+                                                <label for="visa1-42">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" disabled
+                                                    id="visa1-42" disabled
                                                     value="{{ $new_visa_data->medical_fitness_tno }}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee6">Transaction
+                                                <label for="visa1-43">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" disabled
+                                                    id="visa1-43" disabled
                                                     value="{{ $new_visa_data->medical_fitness_tfee }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-44">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee6" disabled
+                                                id="visa1-44" disabled
                                                 value="{{ $new_visa_data->medical_fitness_status }}" placeholder="...">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#change-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="change-date" disabled
+                                                <label for="visa1-45">Date</label>
+                                                <input type="date" class="form-control" id="visa1-45" disabled
                                                     value="{{ $new_visa_data->medical_fitness_date }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='#visa-medical'>Upload Medical</label>
+                                                <label for='visa1-46'>Upload Medical</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa-medical'
+                                                    <input type="file" class="form-control" id='visa1-46'
                                                         name="medical_fitness_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -1061,41 +1061,41 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number5">Transaction
+                                                <label for="visa1-47">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number6" placeholder="..."
+                                                    id="visa1-47" placeholder="..."
                                                     value="{{ $new_visa_data->tawjeeh_trans_no }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee6">Transaction
+                                                <label for="visa1-48">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee6" placeholder="..."
+                                                    id="visa1-48" placeholder="..."
                                                     value="{{ $new_visa_data->tawjeeh_trans_fee }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-49">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee6" placeholder="..."
+                                                id="visa1-49" placeholder="..."
                                                 value="{{ $new_visa_data->tawjeeh_status }}" disabled>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#tawjeeh-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="tawjeeh-date"
+                                                <label for="visa1-50">Date</label>
+                                                <input type="date" class="form-control" id="visa1-50"
                                                     placeholder="..." value="{{ $new_visa_data->tawjeeh_date }}"
                                                     disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="#select-tawjeeh-payment">Tawjeeh Payment</label>
+                                                <label for="visa1-51">Tawjeeh Payment</label>
                                                 <select class="form-control select-tawjeeh-payment"
-                                                    id="select-tawjeeh-payment" name="tawjeeh_payment">
+                                                    id="visa1-51" name="tawjeeh_payment">
                                                     <option selected disabled>Select Option</option>
                                                     <option value='yes' {{ $new_visa_data->tawjeeh_payment == 'yes' ?
                                                         'selected' : '' }}>
@@ -1109,9 +1109,9 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end ">
                                             <div class="upload-file">
-                                                <label for='#visa-tawjeeh-medical'>Upload Document</label>
+                                                <label for='visa1-52'>Upload Document</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa-tawjeeh-medical'
+                                                    <input type="file" class="form-control" id='visa1-52'
                                                         name="tawjeeh_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -1164,32 +1164,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number8">Transaction
+                                                <label for="visa1-53">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number8" placeholder="..."
+                                                    id="visa1-53" placeholder="..."
                                                     value="{{ $new_visa_data->contract_tran_no }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee8">Transaction
+                                                <label for="visa1-54">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee8" placeholder="..."
+                                                    id="visa1-54" placeholder="..."
                                                     value="{{ $new_visa_data->contract_tran_fee }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-55">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-number8" placeholder="..."
+                                                id="visa1-55" placeholder="..."
                                                 value="{{ $new_visa_data->contract_status }}" disabled>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#tawjeeh-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="tawjeeh-date"
+                                                <label for="visa1-56">Date</label>
+                                                <input type="date" class="form-control" id="visa1-56"
                                                     placeholder="..." value="{{ $new_visa_data->contract_date }}"
                                                     disabled>
                                             </div>
@@ -1239,32 +1239,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number9">Transaction
+                                                <label for="visa1-57">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number9" placeholder="..."
+                                                    id="visa1-57" placeholder="..."
                                                     value="{{ $new_visa_data->health_insur_tran_no }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee9">Transaction
+                                                <label for="visa1-58">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee9" placeholder="..."
+                                                    id="visa1-58" placeholder="..."
                                                     value="{{ $new_visa_data->health_insur_tran_fee }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-59">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-number9" placeholder="..."
+                                                id="visa1-59" placeholder="..."
                                                 value="{{ $new_visa_data->health_insur_status }}" disabled>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#health-insurance-date">Date</label>
-                                                <input type="date" class="form-control" id="health-insurance-date"
+                                                <label for="visa1-60">Date</label>
+                                                <input type="date" class="form-control" id="visa1-60"
                                                     placeholder="..." value="{{ $new_visa_data->health_insur_date }}"
                                                     disabled>
                                             </div>
@@ -1314,33 +1314,33 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number10">Transaction
+                                                <label for="visa1-61">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number10" placeholder="..."
+                                                    id="visa1-61" placeholder="..."
                                                     value="{{ $new_visa_data->work_permit_tran_no }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee10">Transaction
+                                                <label for="visa1-62">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee10" placeholder="..."
+                                                    id="visa1-62" placeholder="..."
                                                     value="{{ $new_visa_data->work_permit_tran_fee }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-63">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee10" placeholder="..."
+                                                id="visa1-63" placeholder="..."
                                                 value="{{ $new_visa_data->work_permit_status }}" disabled>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#work-permit-transaction-date">Date</label>
+                                                <label for="visa1-64">Date</label>
                                                 <input type="date" class="form-control"
-                                                    id="work-permit-transaction-date" placeholder="..."
+                                                    id="visa1-64" placeholder="..."
                                                     value="{{ $new_visa_data->work_permit_date }}" disabled>
                                             </div>
                                         </div>
@@ -1390,32 +1390,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number11">Transaction
+                                                <label for="visa1-65">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number11" placeholder="..."
+                                                    id="visa1-65" placeholder="..."
                                                     value="{{ $new_visa_data->emirates_tran_no }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee11">Transaction
+                                                <label for="visa1-66">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee11" placeholder="..."
+                                                    id="visa1-66" placeholder="..."
                                                     value="{{ $new_visa_data->emirates_tran_fee }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-67">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-number11" placeholder="..."
+                                                id="visa1-67" placeholder="..."
                                                 value="{{ $new_visa_data->emirates_status }}" disabled>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#emirates-transaction-date">Date</label>
-                                                <input type="date" class="form-control" id="emirates-transaction-date"
+                                                <label for="visa1-68">Date</label>
+                                                <input type="date" class="form-control" id="visa1-68"
                                                     placeholder="..." value="{{ $new_visa_data->emirates_date }}"
                                                     disabled>
                                             </div>
@@ -1459,35 +1459,35 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number111">Transaction
+                                                <label for="visa1-69">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number112"
+                                                    id="visa1-69"
                                                     value="{{ $new_visa_data->residency_tran_no }}" disabled
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee112">Transaction
+                                                <label for="visa1-70">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee112"
+                                                    id="visa1-70"
                                                     value="{{ $new_visa_data->residency_tran_fee }}" disabled
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-71">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee112"
+                                                id="visa1-71"
                                                 value="{{ $new_visa_data->residency_status }}" disabled
                                                 placeholder="...">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#emirates-transaction-date2">Date</label>
-                                                <input type="date" class="form-control" id="emirates-transaction-date2"
+                                                <label for="visa1-72">Date</label>
+                                                <input type="date" class="form-control" id="visa1-72"
                                                     value="{{ $new_visa_data->residency_date }}" disabled
                                                     placeholder="...">
                                             </div>
@@ -1540,43 +1540,43 @@
                                     <div class="row biometric-file-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number12">Transaction
+                                                <label for="visa1-73">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number12"
+                                                    id="visa1-73"
                                                     value="{{ $new_visa_data->biometric_tranc_no }}" disabled
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee12">Transaction
+                                                <label for="visa1-74">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee12"
+                                                    id="visa1-74"
                                                     value="{{ $new_visa_data->biometric_tranc_fee }}" disabled
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-75">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-number12"
+                                                id="visa1-75"
                                                 value="{{ $new_visa_data->biometric_status }}" disabled
                                                 placeholder="...">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#biometric1-date">Date</label>
-                                                <input type="date" class="form-control" id="#biometric1-date"
+                                                <label for="visa1-76">Date</label>
+                                                <input type="date" class="form-control" id="visa1-76"
                                                     value="{{ $new_visa_data->biometric_date }}" disabled
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="#select-biometric-file">Employee Biometric</label>
-                                                <select class="form-control biometric-select" id="select-biometric"
+                                                <label for="visa1-77">Employee Biometric</label>
+                                                <select class="form-control biometric-select" id="visa1-77  "
                                                     name="employee_biometric">
                                                     <option selected disabled>Select Option</option>
                                                     <option value='required' {{ $new_visa_data->employee_biometric ==
@@ -1591,9 +1591,9 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
                                             <div class="mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='#visa2-file-bio'>Uplaod File</label>
+                                                    <label for='visa1-78'>Uplaod File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file-bio'
+                                                        <input type="file" class="form-control" id='visa1-78'
                                                             name="biometric_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -1707,7 +1707,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-visa">Process status</label>
+                                                <label for="new-visa-1">Process status</label>
                                                 @if ($re_pro)
                                                     @if ($renewal_process_data['emp_biometric_status'] == 'Approved' || $renewal_process_data['emp_biometric_status'] == 'Skip' )
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
@@ -1740,18 +1740,18 @@
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-medical-transaction-number">Transaction
+                                                <label for="visa1-79">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="renewal-medical-transaction-number" disabled
+                                                    id="visa1-79" disabled
                                                     value="{{ $renewal_process_data->medical_fitness_tran_no }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-medical-fee">Transaction Fee</label>
-                                                <input type="text" class="form-control" id="renewal-medical-fee"
+                                                <label for="visa1-80">Transaction Fee</label>
+                                                <input type="text" class="form-control" id="visa1-80"
                                                     disabled
                                                     value="{{ $renewal_process_data->medical_fitness_tran_fees }}"
                                                     placeholder="...">
@@ -1759,25 +1759,25 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#">Status</label>
+                                                <label for="visa1-81">Status</label>
                                                 <input type="text" class="form-control status-container"
-                                                    id="renewal-process1-date" disabled
+                                                    id="visa1-81" disabled
                                                     value="{{ $renewal_process_data->medical_fitness_status }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-process1-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal-process1-date"
+                                                <label for="visa1-82">Date</label>
+                                                <input type="date" class="form-control" id="visa1-82"
                                                     disabled value="{{ $renewal_process_data->medical_fitness_date }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 renewal-fitness-parent">
                                             <div class="form-group">
-                                                <label for="fitness-renewal">Fitness Status</label>
-                                                <select class="form-control renewal-fitness" id="fitness-renewal"
+                                                <label for="visa1-83">Fitness Status</label>
+                                                <select class="form-control renewal-fitness" id="visa1-83"
                                                     name="medical_fitness_st">
                                                     <option selected disabled>select fitness</option>
                                                     {{-- <option value="Reject"
@@ -1797,9 +1797,9 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 d-none renewal-medical-file align-items-end">
                                             <div class="upload-file">
-                                                <label for='visa2-file'>Upload ST & MB</label>
+                                                <label for='visa1-84'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa2-file'
+                                                    <input type="file" class="form-control" id='visa1-84'
                                                         name="medical_fitness_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -1852,34 +1852,34 @@
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#work-permit-app-transaction-number">Transaction
+                                                <label for="visa1-86">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="work-permit-app-transaction-number" placeholder="..." disabled
+                                                    id="visa1-86" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->work_permit_tran_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#work-permit-app-transaction-fee">Transaction
+                                                <label for="visa1-87">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="work-permit-app-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-87" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->work_permit_tran_fee }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#">Status</label>
+                                                <label for="visa1-88">Status</label>
                                                 <input type="text" class="form-control status-container"
-                                                    id="work-permit-app-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-88" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->work_permit_status }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-process2-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal-process2-date"
+                                                <label for="visa1-89">Date</label>
+                                                <input type="date" class="form-control" id="visa1-89"
                                                     placeholder="..." disabled
                                                     value="{{ $renewal_process_data->work_permit_date }}">
                                             </div>
@@ -1933,34 +1933,34 @@
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#upload-signed-mb-transaction-number">Transaction
+                                                <label for="visa1-90">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="upload-signed-mb-transaction-number" placeholder="..." disabled
+                                                    id="visa1-90" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->signed_mb_tranc_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#upload-signed-mb-transaction-fee">Transaction
+                                                <label for="visa1-91">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="upload-signed-mb-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-91" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->signed_mb_tranc_fee }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#">Status</label>
+                                                <label for="visa1-92">Status</label>
                                                 <input type="text" class="form-control status-container"
-                                                    id="upload-signed-mb-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-92" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->signed_mb_status }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-process3-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal-process3-date"
+                                                <label for="visa1-93">Date</label>
+                                                <input type="date" class="form-control" id="visa1-93"
                                                     placeholder="..." disabled
                                                     value="{{ $renewal_process_data->signed_mb_date }}">
                                             </div>
@@ -1968,17 +1968,17 @@
                                         <div class="form-group mb-3 col-12">
                                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input"
-                                                    id="renwal-contract1">
-                                                <label class="custom-control-label" for="renwal-contract1">The
+                                                    id="visa1-94">
+                                                <label class="custom-control-label" for="visa1-94">The
                                                     contract
                                                     has been signed.</label>
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='renewal-process-file'>Upload ST & MB</label>
+                                                <label for='visa1-95'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='renewal-process-file'
+                                                    <input type="file" class="form-control" id='visa1-95'
                                                         name="signed_mb_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -2033,32 +2033,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-number12">Transaction
+                                                <label for="visa1-97">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-number12" disabled placeholder="..."
+                                                    id="visa1-97" disabled placeholder="..."
                                                     value='{{ $renewal_process_data->pay_dubai_insu_tran_no }}'>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-transaction-fee12">Transaction
+                                                <label for="visa1-98">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="start-process-transaction-fee12" disabled placeholder="..."
+                                                    id="visa1-98" disabled placeholder="..."
                                                     value='{{ $renewal_process_data->pay_dubai_insu_tran_fee }}'>
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-99">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="start-process-transaction-fee12" disabled placeholder="..."
+                                                id="visa1-99" disabled placeholder="..."
                                                 value='{{ $renewal_process_data->pay_dubai_insu_status }}'>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-process3-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal-process3-date"
+                                                <label for="visa1-100">Date</label>
+                                                <input type="date" class="form-control" id="visa1-100"
                                                     disabled placeholder="..."
                                                     value='{{ $renewal_process_data->pay_dubai_insu_date }}'>
                                             </div>
@@ -2109,35 +2109,35 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#RenewalProcess4-transaction-number">Transaction
+                                                <label for="visa1-101">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="RenewalProcess4-transaction-number" disabled
+                                                    id="visa1-101" disabled
                                                     value="{{ $renewal_process_data->contract_sub_tranc_no }}"
                                                     placeholder="...">
                                             </div>
                                                 </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#RenewalProcess4-transaction-fee">Transaction
+                                                <label for="visa1-102">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="RenewalProcess4-transaction-fee" disabled
+                                                    id="visa1-102" disabled
                                                     value="{{ $renewal_process_data->contract_sub_tranc_fee }}"
                                                     placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-103">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="RenewalProcess4-transaction-fee" disabled
+                                                id="visa1-103" disabled
                                                 value="{{ $renewal_process_data->contract_sub_status }}"
                                                 placeholder="...">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#renewal-process3-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal-process3-date"
+                                                <label for="visa1-104">Date</label>
+                                                <input type="date" class="form-control" id="visa1-104"
                                                     disabled value="{{ $renewal_process_data->contract_sub_date }}"
                                                     placeholder="...">
                                             </div>
@@ -2190,42 +2190,42 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#Renewal-process7-transaction-number">Transaction
+                                                <label for="visa1-106">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-process7-transaction-number" placeholder="..." disabled
+                                                    id="visa1-106" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->tawjeeh_tranc_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#Renewal-process7-transaction-fee">Transaction
+                                                <label for="visa1-107">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-process7-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-107" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->tawjeeh_tranc_fee }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-108">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="Renewal-process7-transaction-fee" placeholder="..." disabled
+                                                id="visa1-108" placeholder="..." disabled
                                                 value="{{ $renewal_process_data->tawjeeh_tranc_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal6-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal6-date"
+                                                <label for="visa1-109">Date</label>
+                                                <input type="date" class="form-control" id="visa1-109"
                                                     placeholder="..." disabled
                                                     value="{{ $renewal_process_data->tawjeeh_tranc_date }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="renewal-tawjeeh-payment-select">Tawjeeh
+                                                <label for="visa1-110">Tawjeeh
                                                     Payment</label>
                                                 <select class="form-control renewal-tawjeeh-payment-select1"
-                                                    id="renewal-tawjeeh-payment-select" name="tawjeeh_tranc_payment">
+                                                    id="visa1-110" name="tawjeeh_tranc_payment">
                                                     <option selected disabled>Select Option</option>
                                                     <option value='yes' {{
                                                         $renewal_process_data['tawjeeh_tranc_payment']=='yes'
@@ -2241,9 +2241,9 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end renewal-tawjeeh-payment-container d-none">
                                             <div class="upload-file">
-                                                <label for='renewal-tawjeeh-payment'>Upload Document</label>
+                                                <label for='visa1-111'>Upload Document</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='renewal-tawjeeh-payment'
+                                                    <input type="file" class="form-control" id='visa1-111'
                                                         name="tawjeeh_tranc_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -2295,32 +2295,32 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="Renewal-process7-transaction-number">Transaction
+                                                <label for="visa1-112">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-process7-transaction-number" placeholder="..." disabled
+                                                    id="visa1-112" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->residency_tran_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="Renewal-process7-transaction-fee">Transaction
+                                                <label for="visa1-112">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-process7-transaction-fee" placeholder="..." disabled
+                                                    id="visa1-112" placeholder="..." disabled
                                                     value="{{ $renewal_process_data->residency_tran_fees }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-113">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="Renewal-id-renewal-transaction-fee" placeholder="..." disabled
+                                                id="visa1-113" placeholder="..." disabled
                                                 value="{{ $renewal_process_data->residency_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal7-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal7-date"
+                                                <label for="visa1-114">Date</label>
+                                                <input type="date" class="form-control" id="visa1-114"
                                                     placeholder="..." disabled
                                                     value="{{ $renewal_process_data->residency_date }}">
                                             </div>
@@ -2363,33 +2363,33 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="Renewal-id-renewal-transaction-number">Transaction
+                                                <label for="visa1-115">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-id-renewal-transaction-number" disabled
+                                                    id="visa1-115" disabled
                                                     placeholder="..."
                                                     value="{{ $renewal_process_data->renewal_tran_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="Renewal-id-renewal-transaction-fee">Transaction
+                                                <label for="visa1-116">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="Renewal-id-renewal-transaction-fee" disabled placeholder="..."
+                                                    id="visa1-116" disabled placeholder="..."
                                                     value="{{ $renewal_process_data->renewal_tran_fees }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-117">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="Renewal-id-renewal-transaction-fee" disabled placeholder="..."
+                                                id="visa1-117" disabled placeholder="..."
                                                 value="{{ $renewal_process_data->renewal_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal7_1-date">Date</label>
-                                                <input type="date" class="form-control" id="renewal7_1-date" disabled
+                                                <label for="visa1-118">Date</label>
+                                                <input type="date" class="form-control" id="visa1-118" disabled
                                                     placeholder="..." value="{{ $renewal_process_data->renewal_date }}">
                                             </div>
                                         </div>
@@ -2440,42 +2440,42 @@
                                     <div class="row biometric-file-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal-process-transaction-number12">Transaction
+                                                <label for="visa1-119">Transaction
                                                     No:</label>
                                                 <input type="text" class="form-control"
-                                                    id="renewal-process-transaction-number12" disabled placeholder="..."
+                                                    id="visa1-119" disabled placeholder="..."
                                                     value="{{ $renewal_process_data->emp_biometric_tranc_no }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="renewal-process-transaction-fee12">Transaction
+                                                <label for="visa1-120">Transaction
                                                     Fee</label>
                                                 <input type="text" class="form-control"
-                                                    id="renewal-process-transaction-fee12" disabled placeholder="..."
+                                                    id="visa1-120" disabled placeholder="..."
                                                     value="{{ $renewal_process_data->emp_biometric_tranc_fee }}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                            <label for="">Status</label>
+                                            <label for="visa1-121">Status</label>
                                             <input type="text" class="form-control status-container"
-                                                id="#biometric1_2-date" disabled placeholder="..."
+                                                id="visa1-121" disabled placeholder="..."
                                                 value="{{ $renewal_process_data->emp_biometric_status }}">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="biometric1_2-date">Date</label>
-                                                <input type="date" class="form-control" id="#biometric1_2-date" disabled
+                                                <label for="visa1-122">Date</label>
+                                                <input type="date" class="form-control" id="visa1-122" disabled
                                                     placeholder="..."
                                                     value="{{ $renewal_process_data->emp_biometric_date }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
-                                                <label for="select-biometric-file-renewal">Employee
+                                                <label for="visa1-123">Employee
                                                     Biometric</label>
                                                 <select class="form-control biometric-select"
-                                                    id="select-biometric-file-renewal" name="emp_biometric">
+                                                    id="visa1-123" name="emp_biometric">
                                                     <option selected disabled>Select Option</option>
                                                     <option value='required' {{
                                                         $renewal_process_data['emp_biometric']=='required' ? 'selected'
@@ -2491,9 +2491,9 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
                                             <div class="mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='renewal-file-bio'>Uplaod File</label>
+                                                    <label for='visa1-124'>Uplaod File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='renewal-file-bio'
+                                                        <input type="file" class="form-control" id='visa1-124'
                                                             name="emp_biometric_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -2632,20 +2632,20 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored0-visa">Process status</label>
+                                                        <label for="visa1-125">Process status</label>
                                                         @if ($sp)
                                                             @if ($spo_by_some['upload_wp_status'] == 'Approved' || $spo_by_some['upload_wp_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa1-125"
                                                                 disabled placeholder="..." value='process completed'>
                                                             @else
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa1-125"
                                                                 disabled placeholder="..." value='process started'>
                                                             @endif
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa1-125"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
                                                     </div>
@@ -2666,36 +2666,36 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsored1-transacton1-number1">Transaction
+                                                        <label for="visa1-126">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1-number1" disabled
+                                                            id="visa1-126" disabled
                                                             value="{{ $spo_by_some->work_permit_app_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsored1-transacton1-fee1">Transaction
+                                                        <label for="visa1-127">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1" disabled
+                                                            id="visa1-127" disabled
                                                             value="{{ $spo_by_some->work_permit_app_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
                                                     class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 parent-of-approval-rejected">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-128">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored1-transacton1" disabled
+                                                        id="visa1-128" disabled
                                                         value="{{ $spo_by_some->work_permit_app_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsor1-date">Date</label>
-                                                        <input type="date" class="form-control" id="sponsor1-date"
+                                                        <label for="visa1-129">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-129"
                                                             disabled value="{{ $spo_by_some->work_permit_app_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -2750,35 +2750,35 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-number1">Transaction
+                                                        <label for="visa1-130">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1-number1" disabled
+                                                            id="visa1-130" disabled
                                                             value="{{ $spo_by_some->signed_mb_st_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        <label for="visa1-131">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1" disabled
+                                                            id="visa1-131" disabled
                                                             value="{{ $spo_by_some->signed_mb_st_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-132">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored1-transacton1" disabled
+                                                        id="visa1-132" disabled
                                                         value="{{ $spo_by_some->signed_mb_st_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsor2-date">Date</label>
-                                                        <input type="date" class="form-control" id="#sponsor2-date"
+                                                        <label for="visa1-133">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-133"
                                                             disabled value="{{ $spo_by_some->signed_mb_st_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -2786,17 +2786,17 @@
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
-                                                            id="flexCheck">
-                                                        <label class="custom-control-label" for="flexCheck">The
+                                                            id="visa1-134">
+                                                        <label class="custom-control-label" for="visa1-134">The
                                                             contract
                                                             has been signed.</label>
                                                     </div>
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa2-file_2_1'>Upload ST & MB</label>
+                                                        <label for='visa1-135'>Upload ST & MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                            <input type="file" class="form-control" id='visa2-file_2_1'
+                                                            <input type="file" class="form-control" id='visa1-135'
                                                                 name="signed_mb_st_file" style="line-height: 1"
                                                                 accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -2855,12 +2855,12 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
-                                                        <label for="visa3_12-transaction-number1">Signed MB
+                                                        <label for="visa1-136">Signed MB
                                                             Status</label>
                                                         {{-- @dd($spo_by_some->waiting_for_approval_status); --}}
                                                         <input type="text"
                                                             class="form-control new-visa-signmbstatus status-container"
-                                                            readonly id="visa3_12-transaction-number1"
+                                                            readonly id="visa1-136"
                                                             name="waiting_for_approval_status"
                                                             value='{{ $spo_by_some->waiting_for_approval_status }}'
                                                             placeholder="...">
@@ -2900,8 +2900,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                    <label for='visa3_12-transaction-textareara-13'>Comments</label>
-                                                    <textarea type="text" id='visa3_12-transaction-textarear-13'
+                                                    <label for='visa1-137'>Comments</label>
+                                                    <textarea type="text" id='visa1-137'
                                                         name="comment" name="" placeholder="Enter Your Comments ..."
                                                         class="form-control"
                                                         rows="5">{{ $spo_by_some->waiting_for_approval_reason }}</textarea>
@@ -2909,10 +2909,10 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa3_12-transaction-approval-13">Approval
+                                                        <label for="visa1-138">Approval
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="visa3_12-transaction-approval-13"
+                                                            id="visa1-138"
                                                             name="waiting_for_approval_no"
                                                             value='{{ $spo_by_some->waiting_for_approval_no }}'
                                                             placeholder="...">
@@ -2921,11 +2921,11 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa3_12-transaction-file-bio_1'>Upload ST &
+                                                        <label for='visa1-139'>Upload ST &
                                                             MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa3_12-transaction-file-bio_1'
+                                                                id='visa1-139'
                                                                 name="waiting_for_approval_reason_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -2978,34 +2978,34 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored3-transacton3-number1">Transaction
+                                                        <label for="visa1-140">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored3-transacton3-number1" disabled
+                                                            id="visa1-140" disabled
                                                             value="{{ $spo_by_some->pay_dubai_insu_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored3-transacton3-fee1">Transaction
+                                                        <label for="visa1-141">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored3-transacton3-fee1" disabled
+                                                            id="visa1-141" disabled
                                                             value="{{ $spo_by_some->pay_dubai_insu_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-142">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored3-transacton3-number1" disabled
+                                                        id="visa1-142" disabled
                                                         value="{{ $spo_by_some->pay_dubai_insu_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsor3-date">Date</label>
+                                                        <label for="visa1-143">Date</label>
                                                         <input type="date" class="form-control" id="sponsor3-date"
                                                             disabled value="{{ $spo_by_some->pay_dubai_insu_date }}"
                                                             placeholder="...">
@@ -3057,35 +3057,35 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored4-transacton3-number1">Transaction
+                                                        <label for="visa1-144">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored4-transacton3-number1" disabled
+                                                            id="visa1-144" disabled
                                                             value="{{ $spo_by_some->pre_approv_wp_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored4-transacton3-fee1">Transaction
+                                                        <label for="visa1-145">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored4-transacton3" disabled
+                                                            id="visa1-145" disabled
                                                             value="{{ $spo_by_some->pre_approv_wp_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-146">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored4-transacton3-number1" disabled
+                                                        id="visa1-146" disabled
                                                         value="{{ $spo_by_some->pre_approv_wp_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsor4-date">Date</label>
-                                                        <input type="date" class="form-control" id="sponsor4-date"
+                                                        <label for="visa1-147">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-147"
                                                             disabled value="{{ $spo_by_some->pre_approv_wp_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3137,34 +3137,34 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored4-transacton3-number1">Transaction
+                                                        <label for="visa1-148">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored4-transacton3-number1" disabled
+                                                            id="visa1-148" disabled
                                                             value="{{ $spo_by_some->upload_wp_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored4-transacton3-fee1">Transaction
+                                                        <label for="visa1-149">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored4-transacton3" disabled
+                                                            id="visa1-149" disabled
                                                             value="{{ $spo_by_some->upload_wp_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-150">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored4-transacton3-number1" disabled
+                                                        id="visa1-150" disabled
                                                         value="{{ $spo_by_some->upload_wp_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsor4-date">Date</label>
-                                                        <input type="date" class="form-control" id="sponsor4-date"
+                                                        <label for="visa1-151">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-151"
                                                             disabled value="{{ $spo_by_some->upload_wp_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3263,21 +3263,21 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime-visa">Process status</label>
+                                                        <label for="visa1-152">Process status</label>
 
                                                         @if ($par)
                                                             @if ($part_time['contract_status'] == 'Approved' || $part_time['contract_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa1-152"
                                                                 disabled placeholder="..." value='process completed'>
                                                             @else
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa1-152"
                                                                 disabled placeholder="..." value='process started'>
                                                             @endif
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa1-152"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
                                                     </div>
@@ -3298,30 +3298,30 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#part-time1-number1">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="part-time1-number1"
+                                                        <label for="visa1-153">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa1-153"
                                                             disabled value="{{ $part_time->wp_app_trnc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#part-time1-fee1">Transaction Fee</label>
+                                                        <label for="visa1-154">Transaction Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="part-time1-transacton3" disabled
+                                                            id="visa1-154" disabled
                                                             value="{{ $part_time->wp_app_trnc_fee }}" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-155">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="part-time1-number1" disabled
+                                                        id="visa1-155" disabled
                                                         value="{{ $part_time->wp_app_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#part-time1-date">Date</label>
-                                                        <input type="date" class="form-control" id="part-time1-date"
+                                                        <label for="visa1-156">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-156"
                                                             disabled value="{{ $part_time->wp_app_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3374,32 +3374,32 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime2-number1">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="parttime2-number1"
+                                                        <label for="visa1-157">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa1-157"
                                                             disabled value="{{ $part_time->signed_mb_st_trc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime2-transacton1-fee1">Transaction
+                                                        <label for="visa1-158">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="parttime2-transacton1-fee1" disabled
+                                                            id="visa1-158" disabled
                                                             value="{{ $part_time->signed_mb_st_trc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-159">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="parttime2-number1" disabled
+                                                        id="visa1-159" disabled
                                                         value="{{ $part_time->signed_mb_st_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime2-date">Date</label>
-                                                        <input type="date" class="form-control" id="#parttime2-date"
+                                                        <label for="visa1-160">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-160"
                                                             disabled value="{{ $part_time->signed_mb_st_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3407,17 +3407,17 @@
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
-                                                            id="flexCheckDefault1">
-                                                        <label class="custom-control-label" for="flexCheckDefault1">The
+                                                            id="visa1-161">
+                                                        <label class="custom-control-label" for="visa1-161">The
                                                             contract has been signed.</label>
                                                     </div>
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa2-file-bio_1'>Upload ST & MB</label>
+                                                        <label for='visa1-162'>Upload ST & MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa2-file-bio_1' name="signed_mb_st_file"
+                                                                id='visa1-162' name="signed_mb_st_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
                                                                 <small class="input-group-text"><span
@@ -3473,12 +3473,12 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
-                                                        <label for="visa3_14-transaction-number1">Temporary Work
+                                                        <label for="visa1-163">Temporary Work
                                                             Permit
                                                             Status</label>
                                                         <input type="text"
                                                             class="form-control new-visa-signmbstatus status-container"
-                                                            readonly id="visa3_14-transaction-number1" disabled
+                                                            readonly id="visa1-163" disabled
                                                             value="{{ $part_time->waiting_for_approval_status }}"
                                                             placeholder="...">
                                                     </div>
@@ -3517,8 +3517,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                    <label for='sponsor2_14-textareara-13'>Comments</label>
-                                                    <textarea type="text" id='sponsor2_14-textarear-13' name="comment"
+                                                    <label for='visa1-164'>Comments</label>
+                                                    <textarea type="text" id='visa1-164' name="comment"
                                                         disabled placeholder="Enter Your Comments ..."
                                                         class="form-control"
                                                         rows="5">{{ $part_time->waiting_for_approval_reason }}</textarea>
@@ -3526,8 +3526,8 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsor-approval-13">Approval No:</label>
-                                                        <input type="text" class="form-control" id="sponsor-approval-13"
+                                                        <label for="visa1-165">Approval No:</label>
+                                                        <input type="text" class="form-control" id="visa1-165"
                                                             disabled value="{{ $part_time->waiting_for_approval_no }}"
                                                             placeholder="...">
                                                     </div>
@@ -3535,10 +3535,10 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa2-file-bio_01'>Upload ST & MB</label>
+                                                        <label for='visa1-166'>Upload ST & MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa2-file-bio_01'
+                                                                id='visa1-166'
                                                                 name="waiting_for_approval_reason_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -3591,30 +3591,30 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="partime-4-number-1">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="partime-4-number-1"
+                                                        <label for="visa1-167">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa1-167"
                                                             disabled value="{{ $part_time->contract_tran_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#partime-4-fee-1">Transaction Fee</label>
-                                                        <input type="text" class="form-control" id="partime-4-fee-1"
+                                                        <label for="visa1-168">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="visa1-168"
                                                             disabled value="{{ $part_time->contract_tran_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-169">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="partime-4-fee-1" disabled
+                                                        id="visa1-169" disabled
                                                         value="{{ $part_time->contract_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#partime-4-date-1">Date</label>
-                                                        <input type="date" class="form-control" id="partime-4-date-1"
+                                                        <label for="visa1-170">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-170"
                                                             disabled value="{{ $part_time->contract_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3712,22 +3712,22 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime2-visa">Process status</label>
+                                                        <label for="visa1-171">Process status</label>
 
                                                         @if($ua)
                                                         @if ($uae_national['upload_wp_status'] == 'Approved' || $uae_national['upload_wp_status'] == 'Skip')
                                                             <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa1-171"
                                                             disabled placeholder="..." value='process completed'>
                                                         @else
                                                             <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa1-171"
                                                             disabled placeholder="..." value='process started'>
                                                         @endif
 
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa1-171"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
 
@@ -3748,33 +3748,33 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae-transacton1-number1">Transaction
+                                                        <label for="visa1-172">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="uae-transacton1-number1" disabled
+                                                            id="visa1-172" disabled
                                                             value="{{ $uae_national->wp_app_trnc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae-fee1">Transaction Fee</label>
-                                                        <input type="text" class="form-control" id="uae-fee1" disabled
+                                                        <label for="visa1-173">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="visa1-173" disabled
                                                             value="{{ $uae_national->wp_app_trnc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
                                                     class="form-group mb-0 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
-                                                    <label for="">Status</label>
+                                                    <label for="visa1-174">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="uae1-date" disabled
+                                                        id="visa1-174" disabled
                                                         value="{{ $uae_national->wp_app_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae1-date">Date</label>
-                                                        <input type="date" class="form-control" id="uae1-date" disabled
+                                                        <label for="visa1-175">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-175" disabled
                                                             value="{{ $uae_national->wp_app_date }}" placeholder="...">
                                                     </div>
                                                 </div>
@@ -3827,38 +3827,38 @@
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label
-                                                            for="#upload-signed-uae2-mb-transaction-number">Transaction
+                                                            for="visa1-176">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="upload-signed-uae2-mb-transaction-number" disabled
+                                                            id="visa1-176" disabled
                                                             value="{{ $uae_national->signed_mb_st_trc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#upload-signed-uae2-mb-transaction-fee">Transaction
+                                                        <label for="visa1-177">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="upload-signed-uae2-mb-transaction-fee" disabled
+                                                            id="visa1-177" disabled
                                                             value="{{ $uae_national->signed_mb_st_trc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#">Status</label>
+                                                        <label for="visa1-178">Status</label>
                                                         <input type="text" class="form-control status-container"
-                                                            id="upload-signed-uae2-mb-transaction-fee" disabled
+                                                            id="visa1-178" disabled
                                                             value="{{ $uae_national->signed_mb_st_status }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#upload-signed-uae2-date">Date</label>
+                                                        <label for="visa1-179">Date</label>
                                                         <input type="date" class="form-control"
-                                                            id="upload-signed-uae2-date" disabled
+                                                            id="visa1-179" disabled
                                                             value="{{ $uae_national->signed_mb_st_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -3866,17 +3866,17 @@
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
-                                                            id="flexCheckDefault-Uae">
+                                                            id="visa1-180">
                                                         <label class="custom-control-label"
-                                                            for="flexCheckDefault-Uae">The contract has been
+                                                            for="visa1-180">The contract has been
                                                             signed.</label>
                                                     </div>
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa2-file-3-1'>Upload ST & MB</label>
+                                                        <label for='visa1-181'>Upload ST & MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                            <input type="file" class="form-control" id='visa2-file-3-1'
+                                                            <input type="file" class="form-control" id='visa1-181'
                                                                 name="signed_mb_st_file" style="line-height: 1"
                                                                 accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -3931,34 +3931,34 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae3-transaction-number">Transaction
+                                                        <label for="visa1-182">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="uae3-transaction-number" disabled
+                                                            id="visa1-182" disabled
                                                             value="{{ $uae_national->pay_dubai_insu_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae3-transaction-fee">Transaction Fee</label>
+                                                        <label for="visa1-183">Transaction Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="uae3-transaction-fee" disabled
+                                                            id="visa1-183" disabled
                                                             value="{{ $uae_national->pay_dubai_insu_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="#status">Status</label>
+                                                    <label for="visa1-184">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="uae3-transaction-fee" disabled
+                                                        id="visa1-184" disabled
                                                         value="{{ $uae_national->pay_dubai_insu_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#uae3-insurance-date">Date</label>
-                                                        <input type="date" class="form-control" id="uae3-insurance-date"
+                                                        <label for="visa1-185">Date</label>
+                                                        <input type="date" class="form-control" id="visa1-185"
                                                             disabled value="{{ $uae_national->pay_dubai_insu_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -4011,12 +4011,12 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                 <div class="form-group mb-3 ">
-                                                    <label for="visa1-3-1-transaction-number1">Work Permit
+                                                    <label for="visa1-186">Work Permit
                                                         Application
                                                         Status</label>
                                                     <input type="text"
                                                         class="form-control status-container new-visa-signmbstatus"
-                                                        readonly id="visa1-3-1-transaction-number1"
+                                                        readonly id="visa1-186"
                                                         value="{{ $uae_national->waiting_for_approval_status }}"
                                                         placeholder="...">
                                                 </div>
@@ -4055,8 +4055,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                <label for='sponsor2-textareara1-13'>Comments</label>
-                                                <textarea type="text" id='sponsor2-textarear1-13' readonly
+                                                <label for='visa2-1'>Comments</label>
+                                                <textarea type="text" id='visa2-1' readonly
                                                     name="waiting_for_approval_reason"
                                                     placeholder="Enter Your Comments ..." class="form-control"
                                                     rows="5">{{ $uae_national->waiting_for_approval_reason }}</textarea>
@@ -4064,8 +4064,8 @@
                                             <div
                                                 class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                 <div class="form-group mb-3">
-                                                    <label for="sponsor-approval1-13">Approval No:</label>
-                                                    <input type="text" class="form-control" id="sponsor-approval1-13"
+                                                    <label for="visa2-2">Approval No:</label>
+                                                    <input type="text" class="form-control" id="visa2-2"
                                                         value="{{ $uae_national->waiting_for_approval_no }}" readonly
                                                         placeholder="...">
                                                 </div>
@@ -4073,9 +4073,9 @@
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                 <div class="upload-file">
-                                                    <label for='visa2-file-bio1_1'>Upload</label>
+                                                    <label for='visa2-3'>Upload</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa2-file-bio1_1'
+                                                        <input type="file" class="form-control" id='visa2-3'
                                                             name="waiting_for_approval_reason_file"
                                                             style="line-height: 1" accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
@@ -4126,35 +4126,35 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#UAE4-process-transaction-number10">Transaction
+                                                        <label for="visa2-4">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="UAE4-process-transaction-number10" disabled
+                                                            id="visa2-4" disabled
                                                             value="{{ $uae_national->upload_wp_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#UAE4-process-transaction-fee10">Transaction
+                                                        <label for="visa2-5">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="UAE4-process-transaction-fee10" disabled
+                                                            id="visa2-5" disabled
                                                             value="{{ $uae_national->upload_wp_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-6">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="UAE4-process-transaction-fee10" disabled
+                                                        id="visa2-6" disabled
                                                         value="{{ $uae_national->upload_wp_status }}" placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#UAE4-permit-transaction-date">Date</label>
+                                                        <label for="visa2-7">Date</label>
                                                         <input type="date" class="form-control"
-                                                            id="UAE4-permit-transaction-date" disabled
+                                                            id="visa2-7" disabled
                                                             value="{{ $uae_national->upload_wp_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -4254,21 +4254,21 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime3-visa">Process status</label>
+                                                        <label for="visa2-9">Process status</label>
 
                                                         @if($mc)
                                                             @if ($modify_contract['upload_wp_status'] == 'Approved' || $modify_contract['upload_wp_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-9"
                                                                 disabled placeholder="..." value='process completed'>
                                                             @else
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-9"
                                                                 disabled placeholder="..." value='process started'>
                                                             @endif
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa2-9"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
                                                     </div>
@@ -4289,31 +4289,31 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify1-number1">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="modify1-number1"
+                                                        <label for="visa2-10">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa2-10"
                                                             value="{{ $modify_contract->wp_app_trnc_no }}" disabled
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify1-fee1">Transaction Fee</label>
-                                                        <input type="text" class="form-control" id="modify1-fee1"
+                                                        <label for="visa2-11">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="visa2-11"
                                                             value="{{ $modify_contract->wp_app_trnc_fee }}" disabled
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-12">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="modify1-number1"
+                                                        id="visa2-12"
                                                         value="{{ $modify_contract->wp_app_status }}" disabled
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify1-date">Date</label>
-                                                        <input type="date" class="form-control" id="modify1-date"
+                                                        <label for="visa2-13">Date</label>
+                                                        <input type="date" class="form-control" id="visa2-13"
                                                             value="{{ $modify_contract->wp_app_date }}" disabled
                                                             placeholder="...">
                                                     </div>
@@ -4365,41 +4365,41 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify2-number1">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="modify2-number1"
+                                                        <label for="visa2-15">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa2-15"
                                                             disabled value="{{ $modify_contract->signed_mb_st_trc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify2-fee">Transaction Fee</label>
-                                                        <input type="text" class="form-control" id="modify2-fee"
+                                                        <label for="visa2-15">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="visa2-15"
                                                             disabled
                                                             value="{{ $modify_contract->signed_mb_st_trc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-16">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="modify2-fee" disabled
+                                                        id="visa2-16" disabled
                                                         value="{{ $modify_contract->signed_mb_st_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify2-date">Date</label>
-                                                        <input type="date" class="form-control" id="#modify2-date"
+                                                        <label for="visa2-17">Date</label>
+                                                        <input type="date" class="form-control" id="visa2-17"
                                                             disabled value="{{ $modify_contract->signed_mb_st_date }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='#visa2-file'>Upload ST & MB</label>
+                                                        <label for='visa2-18'>Upload ST & MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                            <input type="file" class="form-control" id='visa2-file'
+                                                            <input type="file" class="form-control" id='visa2-18'
                                                                 name="signed_mb_st_file" style="line-height: 1"
                                                                 accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -4456,13 +4456,13 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
-                                                        <label for="visa3-2-1-transaction-number1">Modify Contract
+                                                        <label for="visa2-19">Modify Contract
                                                             Status</label>
                                                         <input type="text"
                                                             class="form-control new-visa-signmbstatus status-container"
                                                             readonly
                                                             value="{{ $modify_contract->waiting_for_approval_status }}"
-                                                            id="visa3-2-1-transaction-number1" placeholder="...">
+                                                            id="visa2-19" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
@@ -4499,8 +4499,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                    <label for='sponsor21-textareara-13'>Comments</label>
-                                                    <textarea type="text" id='sponsor21-textarear-13'
+                                                    <label for='visa2-20'>Comments</label>
+                                                    <textarea type="text" id='visa2-20'
                                                         name="waiting_for_approval_reason"
                                                         placeholder="Enter Your Comments ..." disabled
                                                         class="form-control"
@@ -4509,9 +4509,9 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsor-approval21-13">Approval No:</label>
+                                                        <label for="visa2-21">Approval No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsor-approval21-13" disabled
+                                                            id="visa2-21" disabled
                                                             value="{{ $modify_contract->waiting_for_approval_no }}"
                                                             placeholder="...">
                                                     </div>
@@ -4519,10 +4519,10 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa2-file-bio23_1'>Upload</label>
+                                                        <label for='visa2-22'>Upload</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa2-file-bio23_1'
+                                                                id='visa2-22'
                                                                 name="waiting_for_approval_reason_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -4575,31 +4575,31 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify5-number10">Transaction No:</label>
-                                                        <input type="text" class="form-control" id="modify5-number10"
+                                                        <label for="visa2-23">Transaction No:</label>
+                                                        <input type="text" class="form-control" id="visa2-23"
                                                             disabled value="{{ $modify_contract->upload_wp_tranc_no }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify5-fee10">Transaction Fee</label>
-                                                        <input type="text" class="form-control" id="modify5-fee10"
+                                                        <label for="visa2-24">Transaction Fee</label>
+                                                        <input type="text" class="form-control" id="visa2-24"
                                                             disabled value="{{ $modify_contract->upload_wp_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-25">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="modify5-number10" disabled
+                                                        id="visa2-25" disabled
                                                         value="{{ $modify_contract->upload_wp_status }}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#modify5-date">Date</label>
-                                                        <input type="date" class="form-control" id="modify5-date"
+                                                        <label for="visa2-26">Date</label>
+                                                        <input type="date" class="form-control" id="visa2-26"
                                                             disabled value="{{ $modify_contract->upload_wp_date }}"
                                                             placeholder="...">
                                                     </div>
@@ -4697,19 +4697,19 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#parttime2-visa">Process status</label>
+                                                <label for="visa2-27">Process status</label>
                                                 @if ($mv)
                                                     @if ($modification_visa['application_status'] == 'Approved' || $modification_visa['application_status'] == 'Skip')
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
-                                                        id="new-visa-1" disabled placeholder="..." value='process completed'>
+                                                        id="visa2-27" disabled placeholder="..." value='process completed'>
                                                     @else
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
-                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                        id="visa2-27" disabled placeholder="..." value='process started'>
                                                     @endif
 
                                                 @else
                                                 <input type="text" id="tab-2" class="form-control process-status-input"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    id="visa2-27" disabled placeholder="..." value='not started'>
                                                 @endif
                                             </div>
                                         </div>
@@ -4733,12 +4733,12 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                             <div class="form-group mb-3 ">
-                                                <label for="visa3-3-transaction-number1">Application
+                                                <label for="visa2-28">Application
                                                     Status</label>
                                                 <input type="text"
                                                     class="form-control status-container new-visa-signmbstatus" readonly
                                                     value="{{ $modification_visa->application_status }}"
-                                                    id="visa3-3-transaction-number1" placeholder="...">
+                                                    id="visa2-28" placeholder="...">
                                             </div>
                                         </div>
                                         <div
@@ -4776,25 +4776,25 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                            <label for='sponsor2-textareara32-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear32-13' name="comment"
+                                            <label for='visa2-30'>Comments</label>
+                                            <textarea type="text" id='visa2-30' name="comment"
                                                 placeholder="Enter Your Comments ..." disabled class="form-control"
                                                 rows="5">{{ $modification_visa->application_reject_reason }}</textarea>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval32-13">Approval No:</label>
+                                                <label for="visa2-29">Approval No:</label>
                                                 <input type="text" disabled
                                                     value="{{ $modification_visa->application_approval_no }}"
-                                                    class="form-control" id="sponsor-approval32-13" placeholder="...">
+                                                    class="form-control" id="visa2-29" placeholder="...">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa232-file-bio_1'>Upload ST & MB</label>
+                                                <label for='visa2-31'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa232-file-bio_1'
+                                                    <input type="file" class="form-control" id='visa2-31'
                                                         name="application_reject_reason_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -4887,20 +4887,20 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="#start-process-modify-emirates-id">Process
+                                                <label for="visa2-33">Process
                                                     status</label>
                                                 @if ($me)
                                                     @if ($modification_emirates['application_status'] == 'Approved' || $modification_emirates['application_status'] == 'Skip')
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
-                                                        id="new-visa-1" disabled placeholder="..." value='process completed'>
+                                                        id="visa2-33" disabled placeholder="..." value='process completed'>
                                                     @else
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
-                                                        id="new-visa-1" disabled placeholder="..." value='process started'>
+                                                        id="visa2-33" disabled placeholder="..." value='process started'>
                                                     @endif
 
                                                 @else
                                                 <input type="text" id="tab-2" class="form-control process-status-input"
-                                                    id="new-visa-1" disabled placeholder="..." value='not started'>
+                                                    id="visa2-33" disabled placeholder="..." value='not started'>
                                                 @endif
                                             </div>
                                         </div>
@@ -4923,12 +4923,12 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                             <div class="form-group mb-3 ">
-                                                <label for="visa32-32-transaction-number1">Application
+                                                <label for="visa2-34">Application
                                                     Status</label>
                                                 <input type="text"
                                                     class="form-control status-container new-visa-signmbstatus" readonly
                                                     value="{{ $modification_emirates->application_status }}"
-                                                    id="visa32-32-transaction-number1" placeholder="...">
+                                                    id="visa2-34" placeholder="...">
                                             </div>
                                         </div>
                                         <div
@@ -4966,25 +4966,25 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                            <label for='sponsor2-textareara3-2-13'>Comments</label>
-                                            <textarea type="text" id='sponsor2-textarear3-2-13' name="comment"
+                                            <label for='visa2-35'>Comments</label>
+                                            <textarea type="text" id='visa2-35' name="comment"
                                                 placeholder="Enter Your Comments ..." class="form-control" disabled
                                                 rows="5">{{ $modification_emirates->application_reject_reason }}</textarea>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                             <div class="form-group mb-3">
-                                                <label for="sponsor-approval3-2-13">Approval No:</label>
+                                                <label for="visa2-36">Approval No:</label>
                                                 <input type="text" class="form-control"
                                                     value="{{ $modification_emirates->application_approval_no }}"
-                                                    id="sponsor-approval3-2-13" placeholder="...">
+                                                    id="visa2-36" placeholder="...">
                                             </div>
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa23-2-file-bio_1'>Upload</label>
+                                                <label for='visa2-37'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa23-2-file-bio_1'
+                                                    <input type="file" class="form-control" id='visa2-37'
                                                         name="application_reject_reason_file" style="line-height: 1"
                                                         accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
@@ -5110,21 +5110,21 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime3-visa">Process status</label>
+                                                        <label for="visa2-39">Process status</label>
                                                         @if ($vc)
                                                             @if ($visa_cancellation['residency_app_status'] == 'Approved' || $visa_cancellation['residency_app_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-39"
                                                                 disabled placeholder="..." value='process completed'>
                                                             @else
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-39"
                                                                 disabled placeholder="..." value='process started'>
                                                             @endif
 
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa2-39"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
                                                     </div>
@@ -5144,10 +5144,10 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-number1">Transaction
+                                                        <label for="visa2-40">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1-number1" disabled
+                                                            id="visa2-40" disabled
                                                             name="wp_app_can_trnc_no"
                                                             value="{{ $visa_cancellation->wp_app_can_trnc_no }}"
                                                             placeholder="...">
@@ -5155,19 +5155,19 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        <label for="visa2-41">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1" disabled
+                                                            id="visa2-41" disabled
                                                             name="wp_app_can_trnc_fee"
                                                             value="{{ $visa_cancellation->wp_app_can_trnc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-42">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored1-transacton1" disabled name="wp_app_can_status"
+                                                        id="visa2-42" disabled name="wp_app_can_status"
                                                         value="{{ $visa_cancellation->wp_app_can_status }}"
                                                         placeholder="...">
 
@@ -5176,9 +5176,9 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#start-process-transaction-date">Date</label>
+                                                        <label for="visa2-43">Date</label>
                                                         <input type="date" class="form-control"
-                                                            id="start-process-transaction-date"
+                                                            id="visa2-43"
                                                             value="{{ $visa_cancellation->wp_app_can_date }}"
                                                             placeholder="..." disabled name='wp_app_date'>
                                                     </div>
@@ -5296,10 +5296,10 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-number1">Transaction
+                                                        <label for="visa2-45">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1-number1" disabled
+                                                            id="visa2-45" disabled
                                                             name="wp_app_can_trnc_no"
                                                             value="{{ $visa_cancellation->signd_can_from_tranc_no }}"
                                                             placeholder="...">
@@ -5307,19 +5307,19 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        <label for="visa2-46">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1" disabled
+                                                            id="visa2-46" disabled
                                                             name="wp_app_can_trnc_fee"
                                                             value="{{ $visa_cancellation->signd_can_from_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-47">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored1-transacton1" disabled name="wp_app_can_status"
+                                                        id="visa2-47" disabled name="wp_app_can_status"
                                                         value="{{ $visa_cancellation->signd_can_from_status }}"
                                                         placeholder="...">
 
@@ -5328,9 +5328,9 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#start-process-transaction-date">Date</label>
+                                                        <label for="visa2-48">Date</label>
                                                         <input type="date" class="form-control"
-                                                            id="start-process-transaction-date"
+                                                            id="visa2-48"
                                                             value="{{ $visa_cancellation->signd_can_from_date }}"
                                                             placeholder="..." disabled name='wp_app_date'>
                                                     </div>
@@ -5388,15 +5388,15 @@
                                             {{-- <div class="row">
                                                 <div
                                                     class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                                    <label for="status-select1">Status</label>
+                                                    <label for="visa2-49">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsor-approval-13" placeholder="..."
+                                                        id="visa2-49" placeholder="..."
                                                         name="waiting_for_approval_status" disabled
                                                         value="{{ $visa_cancellation->waiting_for_approval_status }}">
                                                 </div>
                                                 <div class="form-group col-12 d-none status-select-comment">
-                                                    <label for='sponsor2-textareara-13'>Comments</label>
-                                                    <textarea type="text" id='sponsor2-textarear-13'
+                                                    <label for='visa2-50'>Comments</label>
+                                                    <textarea type="text" id='visa2-50'
                                                         name="waiting_for_approval_reason"
                                                         placeholder="Enter Your Comments ..." class="form-control"
                                                         rows="5">{{ $visa_cancellation->waiting_for_approval_reason }}</textarea>
@@ -5429,8 +5429,8 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 d-none status-select-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="sponsor-approval-13">Approval No:</label>
-                                                        <input type="text" class="form-control" id="sponsor-approval-13"
+                                                        <label for="visa2-51">Approval No:</label>
+                                                        <input type="text" class="form-control" id="visa2-51"
                                                             placeholder="..." disabled name="waiting_for_approval_no"
                                                             value="{{ $visa_cancellation->waiting_for_approval_no }}">
                                                     </div>
@@ -5474,13 +5474,13 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
-                                                        <label for="visa-cancel1-transaction-number3_3">Work Permit
+                                                        <label for="visa2-52">Work Permit
                                                             Cancellation Approval Status</label>
                                                         <input type="text" id='54'
                                                             class="form-control new-visa-signmbstatus status-container"
                                                             readonly
                                                             value="{{$visa_cancellation->waiting_for_approval_status}}"
-                                                            id="visa-cancel1-transaction-number3_3" placeholder="...">
+                                                            id="visa2-52" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
@@ -5515,8 +5515,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                    <label for='visa-cancel1-textarea-13_3'>Comments</label>
-                                                    <textarea type="text" id='visa-cancel1-textarea-13_3' name="comment"
+                                                    <label for='visa2-53'>Comments</label>
+                                                    <textarea type="text" id='visa2-53' name="comment"
                                                         disabled placeholder="Enter Your Comments ..."
                                                         class="form-control"
                                                         rows="5">{{$visa_cancellation->waiting_for_approval_reason}}</textarea>
@@ -5524,20 +5524,20 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa-cancel1-approval21_1-13">Approval No:</label>
+                                                        <label for="visa2-54">Approval No:</label>
                                                         <input type="text" class="form-control"
                                                             value="{{$visa_cancellation->waiting_for_approval_no}}"
-                                                            id="visa-cancel1-approval21_1-13" placeholder="...">
+                                                            id="visa2-54" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa-cancel1-file-bio23_13'>Upload
+                                                        <label for='visa2-55'>Upload
                                                             Document</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa-cancel1-file-bio23_13'
+                                                                id='visa2-55'
                                                                 name="waiting_for_approval_reason_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
@@ -5590,10 +5590,10 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-number1">Transaction
+                                                        <label for="visa2-56">Transaction
                                                             No:</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1-number1" disabled
+                                                            id="visa2-56" disabled
                                                             name="wp_app_can_trnc_no"
                                                             value="{{ $visa_cancellation->residency_app_tranc_no }}"
                                                             placeholder="...">
@@ -5601,30 +5601,28 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#sponsored1-transacton1-fee1">Transaction
+                                                        <label for="visa2-57">Transaction
                                                             Fee</label>
                                                         <input type="text" class="form-control"
-                                                            id="sponsored1-transacton1" disabled
+                                                            id="visa2-57" disabled
                                                             name="wp_app_can_trnc_fee"
                                                             value="{{ $visa_cancellation->residency_app_tranc_fee }}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-58">Status</label>
                                                     <input type="text" class="form-control status-container"
-                                                        id="sponsored1-transacton1" disabled name="wp_app_can_status"
+                                                        id="visa2-58" disabled name="wp_app_can_status"
                                                         value="{{ $visa_cancellation->residency_app_status }}"
                                                         placeholder="...">
-
-
                                                     </select>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#start-process-transaction-date">Date</label>
+                                                        <label for="visa2-59">Date</label>
                                                         <input type="date" class="form-control"
-                                                            id="start-process-transaction-date"
+                                                            id="visa2-59"
                                                             value="{{ $visa_cancellation->residency_app_date }}"
                                                             placeholder="..." disabled name='wp_app_date'>
                                                     </div>
@@ -5730,21 +5728,21 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="#parttime3-visa">Process status</label>
+                                                        <label for="visa2-60">Process status</label>
                                                         @if ($pc)
                                                             @if ($permit_cancellation['waiting_for_approval_status'] == 'Approved' || $permit_cancellation['waiting_for_approval_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-60"
                                                                 disabled placeholder="..." value='process started'>
                                                             @else
                                                                 <input type="text" id="tab-2"
-                                                                class="form-control process-status-input" id="new-visa-1"
+                                                                class="form-control process-status-input" id="visa2-60"
                                                                 disabled placeholder="..." value='process started'>
                                                             @endif
 
                                                         @else
                                                         <input type="text" id="tab-2"
-                                                            class="form-control process-status-input" id="new-visa-1"
+                                                            class="form-control process-status-input" id="visa2-60"
                                                             disabled placeholder="..." value='not started'>
                                                         @endif
                                                     </div>
@@ -5764,37 +5762,37 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="permit-cancle-transaction-number1">Transaction
+                                                        <label for="visa2-62">Transaction
                                                             No:</label>
                                                         <input type="text" readonly class="form-control"
-                                                            id="permit-cancle-transaction-number1"
+                                                            id="visa2-62"
                                                             value="{{$permit_cancellation->wp_app_can_trnc_no}}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="permit-cancle-transaction-fee1">Transaction
+                                                        <label for="visa2-63">Transaction
                                                             Fee</label>
                                                         <input type="text" readonly class="form-control"
-                                                            id="permit-cancle-transaction-number2"
+                                                            id="visa2-63"
                                                             value="{{$permit_cancellation->wp_app_can_trnc_fee}}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-64">Status</label>
                                                     <input type="text" readonly class="form-control status-container"
-                                                        id="permit-cancle-transaction-number1"
+                                                        id="visa2-64"
                                                         value="{{$permit_cancellation->wp_app_can_status}}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="permit-cancle-date1">Date</label>
+                                                        <label for="visa2-65">Date</label>
                                                         <input type="date" readonly
                                                             value="{{$permit_cancellation->wp_app_can_date}}"
-                                                            class="form-control" id="permit-cancle-date1">
+                                                            class="form-control" id="visa2-65">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
@@ -5845,10 +5843,10 @@
                                             <div class="row">
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='cancel11-file-bio_1'>Upload File</label>
+                                                        <label for='visa2-65'>Upload File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='cancel11-file-bio_1' name="signed_cancellation_form"
+                                                                id='visa2-65' name="signed_cancellation_form"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
                                                                 <small class="input-group-text"><span
@@ -5906,37 +5904,37 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa-cancle-transaction-number21">Transaction
+                                                        <label for="visa2-67">Transaction
                                                             No:</label>
                                                         <input type="text" readonly class="form-control"
-                                                            id="visa-cancle-transaction-number21"
+                                                            id="visa2-67"
                                                             value="{{$permit_cancellation->signd_can_from_tranc_no}}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa-cancle-transaction-fee21">Transaction
+                                                        <label for="visa2-68">Transaction
                                                             Fee</label>
                                                         <input type="text" readonly class="form-control"
-                                                            id="visa-cancle-transaction-number21"
+                                                            id="visa2-68"
                                                             value="{{$permit_cancellation->signd_can_from_tranc_fee}}"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label for="">Status</label>
+                                                    <label for="visa2-69">Status</label>
                                                     <input type="text" readonly class="form-control status-container"
-                                                        id="visa-cancle-transaction-number21"
+                                                        id="visa2-69"
                                                         value="{{$permit_cancellation->signd_can_from_status}}"
                                                         placeholder="...">
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa-cancle-date21">Date</label>
+                                                        <label for="visa2-70">Date</label>
                                                         <input type="date" readonly
                                                             value="{{$permit_cancellation->signd_can_from_date}}"
-                                                            class="form-control" id="visa-cancle-date21"
+                                                            class="form-control" id="visa2-70"
                                                             placeholder="...">
                                                     </div>
                                                 </div>
@@ -5990,13 +5988,13 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
                                                     <div class="form-group mb-3 ">
-                                                        <label for="visa-cancel1-transaction-number3_3">Work Permit
+                                                        <label for="visa2-71">Work Permit
                                                             Cancellation Approval Status</label>
                                                         <input type="text" id='54'
                                                             class="form-control new-visa-signmbstatus status-container"
                                                             readonly
                                                             value="{{$permit_cancellation->waiting_for_approval_status}}"
-                                                            id="visa-cancel1-transaction-number3_3" placeholder="...">
+                                                            id="visa2-71" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
@@ -6031,8 +6029,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
-                                                    <label for='visa-cancel1-textarea-13_3'>Comments</label>
-                                                    <textarea type="text" id='visa-cancel1-textarea-13_3' name="comment"
+                                                    <label for='visa2-72'>Comments</label>
+                                                    <textarea type="text" id='visa2-72' name="comment"
                                                         disabled placeholder="Enter Your Comments ..."
                                                         class="form-control"
                                                         rows="5">{{$permit_cancellation->waiting_for_approval_reason}}</textarea>
@@ -6040,20 +6038,20 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                                     <div class="form-group mb-3">
-                                                        <label for="visa-cancel1-approval21_1-13">Approval No:</label>
+                                                        <label for="visa2-73">Approval No:</label>
                                                         <input type="text" class="form-control"
                                                             value="{{$permit_cancellation->waiting_for_approval_no}}"
-                                                            id="visa-cancel1-approval21_1-13" placeholder="...">
+                                                            id="visa2-73" placeholder="...">
                                                     </div>
                                                 </div>
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa-cancel1-file-bio23_13'>Upload
+                                                        <label for='visa2-74'>Upload
                                                             Document</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
-                                                                id='visa-cancel1-file-bio23_13'
+                                                                id='visa2-74'
                                                                 name="waiting_for_approval_reason_file"
                                                                 style="line-height: 1" accept=".pdf,.doc,.excel">
                                                             <div class="input-group-prepend">
