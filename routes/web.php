@@ -9,19 +9,20 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\NewVisaController;
 use App\Http\Controllers\Admin\ReceiptsController;
 use App\Http\Controllers\Admin\SecurityController;
 use App\Http\Controllers\Admin\SelfUserController;
 use App\Http\Controllers\Admin\SubAdminController;
+use App\Http\Controllers\Admin\IndividualVisaProcess;
 use App\Http\Controllers\Admin\UserDocumentController;
+use App\Http\Controllers\Admin\AdminReceiptsController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\TermConditionController;
+use App\Http\Controllers\Admin\NewVisaProcessController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\ServicesResponseController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
-use App\Http\Controllers\Admin\NewVisaProcessController;
-use App\Http\Controllers\Admin\NewVisaController;
-use App\Http\Controllers\Admin\AdminReceiptsController;
 
 
 
@@ -142,7 +143,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('download-receipt/{id}', [ReceiptsController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
 
-    // New visa
+    //  visa process of employees
 
     Route::resource('visa', NewVisaController::class)/*->middleware('permission:Receipt')*/;
 
@@ -179,6 +180,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
     // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+
+    // visa process of dependents
+    Route::get('dependent-visa-section', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
 
 
     // Services Response
@@ -415,7 +419,11 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::delete('delete-dependent/{id}','DependentController@delete')->name('delete-dependent');
 
-    Route::get('dependent-visa-process','IndividualDependentVisaController@index')->name('dependent-visa-process');
+    // individual dependent visa process controller
+
+    Route::get('dependent-visa-process/{id}','IndividualDependentVisaController@index')->name('dependent-visa-process');
+
+    Route::post('individual-dependent-visa-request/{id}','IndividualDependentVisaController@send_request')->name('dependent-visa-request');
 
     // Receipts
 

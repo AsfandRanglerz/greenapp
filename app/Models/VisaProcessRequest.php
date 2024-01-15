@@ -17,4 +17,8 @@ class VisaProcessRequest extends Model
     {
         return $this->belongsTo(User::class,'employee_id','id');
     }
+    public function dependent()
+    {
+        return $this->belongsTo(IndividualDependent::class,'dependent_id','id');
+    }
 }

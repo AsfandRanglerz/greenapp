@@ -81,7 +81,7 @@
                                 {{$dependent->comment}}
                            @endif</td>
                                 <td>
-                                    <a href="{{route('user.dependent-visa-process')}}">Click</a>
+                                    <a href="{{route('user.dependent-visa-process',$dependent->id)}}">Click</a>
                                 </td>
                             <td>
                                 <a href="{{ route('user.edit-dependent', $dependent->id) }}" class="mx-2"><span

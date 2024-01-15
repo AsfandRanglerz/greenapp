@@ -53,6 +53,7 @@ class EmployeeVisaProcessController extends Controller
         // return $name;
         $get_request =  VisaProcessRequest::where('company_id',$authId)->where('employee_id',$id)
         ->where('process_name',$name)
+        ->where('request_for','employee')
         ->where(function ($query) use ($sub_name) {
             $query->where('sub_type', NULL)
                   ->orWhere('sub_type', $sub_name);
@@ -69,6 +70,7 @@ class EmployeeVisaProcessController extends Controller
                     'employee_id'=>$id,
                     'process_name'=>$name,
                     'sub_type'=>$sub_name,
+                    'request_for'=>'employee',
                     // 'process_name'=>$process_name,
                 ]);
             }
@@ -78,6 +80,7 @@ class EmployeeVisaProcessController extends Controller
                     'company_id'=>$authId,
                     'employee_id'=>$id,
                     'process_name'=>$name,
+                    'request_for'=>'employee',
                     // 'sub_type'=>$sub_name,
                     // 'process_name'=>$process_name,
                 ]);

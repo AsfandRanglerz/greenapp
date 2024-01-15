@@ -30,7 +30,7 @@
                                             <th>Sr.</th>
                                             <th>Name</th>
                                             <th>Request</th>
-                                            <th>File</th>
+                                            <th>Visa Process</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -40,9 +40,12 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $dependent->dependent_type }}</td>
                                                 <td>{{ $dependent->request_type }}</td>
-                                                <td><a target="_black" href="{{ asset('') . '/' . $dependent->file }}">
+                                                {{-- <td><a target="_black" href="{{ asset('') . '/' . $dependent->file }}">
                                                         <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
                                                             height="50" width="50" class="image"></a>
+                                                </td> --}}
+                                                <td>
+                                                    <a href="{{route('dependent-visa-section')}}">Click</a>
                                                 </td>
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">

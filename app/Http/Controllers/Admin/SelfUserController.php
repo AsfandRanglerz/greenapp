@@ -32,7 +32,7 @@ class SelfUserController extends Controller
     public function dependents($id)
     {
         $individual_dependents = IndividualDependent::where('user_id',$id)->get(  );
-        return view('admin.self-user.dependents',compact('individual_dependents'));
+        return view('admin.self-user.dependents.dependents',compact('individual_dependents'));
     }
 
     /**

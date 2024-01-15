@@ -86,7 +86,7 @@
 </style>
 <div class="mb-5 admin-main-content-inner">
     <h4>Individual Dashboard</h4>
-    <p><span class="fa fa-users"></span> - Dependent Visa Process</p>
+    <p><span class="fa fa-users"></span> - {{$dependent->name}} Visa Process</p>
     <div class="text-right">
         {{-- <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
                 class="fa fa-plus mr-2"></span>Add
@@ -155,7 +155,9 @@
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                <form action="{{ route('user.dependent-visa-request',$dependent->id) }}"
+                                     method="POST" class='py-2'>
+                                    @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
@@ -166,8 +168,10 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
+
                                                 <input type="text" class="form-control" id="visa-1-id"
                                                     placeholder="...">
+
                                             </div>
                                         </div>
                                     </div>
@@ -1256,7 +1260,7 @@
                     a.siblings('.new-visa-signmbstatus-btn').removeClass('d-none');
                 }
             });
-            
+
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,
