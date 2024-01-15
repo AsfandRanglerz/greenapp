@@ -13386,7 +13386,6 @@
 {{-- @section('script') --}}
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-
 <script>
     @if (\Illuminate\Support\Facades\Session:: has('success'))
     toastr.success('{{ \Illuminate\Support\Facades\Session::get('success') }}');
