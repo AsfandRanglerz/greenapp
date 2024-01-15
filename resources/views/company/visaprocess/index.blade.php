@@ -2869,7 +2869,9 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                                     <div class="d-flex flex-column">
+                                                        @if($spo_by_some->waiting_for_approval_file)
                                                         <label for="#">Attachment</label>
+                                                        @endif
                                                         @php
                                                         $file_name = $spo_by_some->waiting_for_approval_file;
                                                         $ext = explode('.', $file_name);
@@ -3484,7 +3486,9 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                                     <div class="d-flex flex-column">
-                                                        <label for="#">Attachment</label>
+                                                        @if($part_time->waiting_for_approval_file)
+                                                         <label for="#">Attachment</label>
+                                                        @endif
                                                         @php
                                                         $file_name = $part_time->waiting_for_approval_file;
                                                         $ext = explode('.', $file_name);
@@ -4020,7 +4024,9 @@
                                             <div
                                                 class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                                 <div class="d-flex flex-column">
-                                                    <label for="#">Attachment</label>
+                                                    @if($uae_national->waiting_for_approval_file)
+                                                        <label for="#">Attachment</label>
+                                                    @endif
                                                     @php
                                                     $file_name = $uae_national->waiting_for_approval_file;
                                                     $ext = explode('.', $file_name);
@@ -4462,7 +4468,9 @@
                                                 <div
                                                     class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                                     <div class="d-flex flex-column">
-                                                        <label for="#">Attachment</label>
+                                                        @if($modify_contract->waiting_for_approval_file)
+                                                            <label for="#">Attachment</label>
+                                                        @endif
                                                         @php
                                                         $file_name = $modify_contract->waiting_for_approval_file;
                                                         $ext = explode('.', $file_name);
@@ -4736,7 +4744,9 @@
                                         <div
                                             class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
+                                                @if($modification_visa->application_approval_file)
+                                                    <label for="#">Attachment</label>
+                                                @endif
 
                                                 @php
                                                 $file_name = $modification_visa->application_approval_file;
@@ -4924,7 +4934,10 @@
                                         <div
                                             class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
+                                                @if($modification_emirates->application_approval_file)
+                                                    <label for="#">Attachment</label>
+                                                @endif
+
                                                 @php
                                                 $file_name = $modification_emirates->application_approval_file;
                                                 $ext = explode('.', $file_name);
@@ -5372,7 +5385,7 @@
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Work
                                                 Permit Cancelation Approval
                                             </h6>
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div
                                                     class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                                     <label for="status-select1">Status</label>
@@ -5455,6 +5468,112 @@
                                                 </div>
                                                 <div class="col-12 text-center status-select-btn">
                                                     <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-12 col-md-6 new-visa-signmbstatus-parent">
+                                                    <div class="form-group mb-3 ">
+                                                        <label for="visa-cancel1-transaction-number3_3">Work Permit
+                                                            Cancellation Approval Status</label>
+                                                        <input type="text" id='54'
+                                                            class="form-control new-visa-signmbstatus status-container"
+                                                            readonly
+                                                            value="{{$visa_cancellation->waiting_for_approval_status}}"
+                                                            id="visa-cancel1-transaction-number3_3" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-xl-6 col-lg-12 gap-1 d-none new-visa-signmbstatus-attachment align-items-end col-md-6">
+                                                    <div class="d-flex flex-column">
+                                                        <label for="#">Attachment</label>
+                                                        @php
+                                                        $file_name = $visa_cancellation->waiting_for_approval_file;
+                                                        $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($visa_cancellation->waiting_for_approval_file)
+                                                        <a class="upload-img" target="_black"
+                                                            href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}">
+                                                            @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @else
+                                                            <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_file) }}"
+                                                                style="height: 50px;width:50px">
+                                                            @endif
+                                                        </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
+                                                    <label for='visa-cancel1-textarea-13_3'>Comments</label>
+                                                    <textarea type="text" id='visa-cancel1-textarea-13_3' name="comment"
+                                                        disabled placeholder="Enter Your Comments ..."
+                                                        class="form-control"
+                                                        rows="5">{{$visa_cancellation->waiting_for_approval_reason}}</textarea>
+                                                </div>
+                                                <div
+                                                    class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
+                                                    <div class="form-group mb-3">
+                                                        <label for="visa-cancel1-approval21_1-13">Approval No:</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{$visa_cancellation->waiting_for_approval_no}}"
+                                                            id="visa-cancel1-approval21_1-13" placeholder="...">
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
+                                                    <div class="upload-file">
+                                                        <label for='visa-cancel1-file-bio23_13'>Upload
+                                                            Document</label>
+                                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                            <input type="file" class="form-control"
+                                                                id='visa-cancel1-file-bio23_13'
+                                                                name="waiting_for_approval_reason_file"
+                                                                style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                            <div class="input-group-prepend">
+                                                                <small class="input-group-text"><span
+                                                                        class="fa fa-paperclip"></span></small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                    $file_name = $visa_cancellation->waiting_for_approval_reason_file;
+                                                    $ext = explode('.', $file_name);
+                                                    @endphp
+                                                    @if ($visa_cancellation->waiting_for_approval_reason_file)
+                                                    <a class="upload-img" target="_black"
+                                                        href="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @else
+                                                        <img src="{{ asset('' . '/' . $visa_cancellation->waiting_for_approval_reason_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                                <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
+                                                    <button class='btn btn-success px-5 py-2'>Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -6014,7 +6133,7 @@
             else {
                 file_container.addClass('d-none');
             }
-        } 
+        }
         else if($('.entry-visa-select').val() == 'no'){
             let a = $('.Over-stay-fine');
              let fine_select = a.find('.fine-select');
