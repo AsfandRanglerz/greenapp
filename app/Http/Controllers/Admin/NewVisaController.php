@@ -32,7 +32,8 @@ class NewVisaController extends Controller
      */
     public function index()
     {
-        $visa_requests = VisaProcessRequest::with('company', 'user')->orderBy('created_at', 'DESC')->get();
+        $visa_requests = VisaProcessRequest::with('company', 'user','dependent')->orderBy('created_at', 'DESC')->get();
+        // return   $visa_requests;
         foreach($visa_requests as $process_request)
         {
             $process_request->update([

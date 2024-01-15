@@ -36,6 +36,7 @@
                                             <th>Sr.</th>
                                             <th>Company Name</th>
                                             <th>Employee Name</th>
+                                            <th>Dependent Name</th>
                                             <th>Process Request</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -47,8 +48,9 @@
                                         @foreach ($visa_requests as $requests)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $requests->company->name }}</td>
+                                                <td>{{ $requests->company ? $requests->company->name : 'N/A' }}</td>
                                                 <td>{{ $requests->user->name }}</td>
+                                                <td>{{ $requests->dependent ? $requests->dependent->name : 'N/A' }}</td>
                                                 <td>{{ $requests->process_name }} <br>
                                                 @if ($requests->sub_type)
                                                        <span class='text-danger'>({{$requests->sub_type}})</span>
@@ -56,8 +58,14 @@
                                                 </td>
                                                 <td>
                                                     @php
-                                                        $user_id = $requests->user->id;
-                                                                $company_id = $requests->company->id;
+                                                                $user_id = $requests->user->id;
+                                                                if($requests->company)
+                                                                {
+                                                                    $company_id = $requests->company->id;
+                                                                }
+                                                                elseif($requests->dependent) {
+                                                                    $company_id = $requests->dependent->id;
+                                                                }
                                                                 $status = NULL;
                                                                 if($requests->process_name == 'new visa')
                                                                 {
@@ -147,7 +155,14 @@
                                                         @else
                                                             @php
                                                                 $user_id = $requests->user->id;
-                                                                $company_id = $requests->company->id;
+                                                                if($requests->company)
+                                                                {
+                                                                    $company_id = $requests->company->id;
+                                                                }
+                                                                elseif($requests->dependent) {
+                                                                    $company_id = $requests->dependent->id;
+                                                                }
+                                                                // $company_id = $requests->company->id;
                                                                 $con = NULL;
                                                                 if($requests->process_name == 'new visa')
                                                                 {

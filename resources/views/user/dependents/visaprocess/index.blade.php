@@ -609,11 +609,13 @@
                         <div class="tab-pane fade show active" id="v-pills-renewal-start" role="tabpanel"
                             aria-labelledby="v-pills-renewal-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                <form action="{{ route('user.dependent-visa-request',$dependent->id) }}"
+                                    method="POST" class='py-2'>
+                                   @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='new visa' name='process_name'>
+                                            <input type="hidden" value='renewal process' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
                                         </div>
@@ -883,7 +885,7 @@
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='new visa' name='process_name'>
+                                            <input type="hidden" value='modification of visa' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
                                         </div>
@@ -988,7 +990,7 @@
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='new visa' name='process_name'>
+                                            <input type="hidden" value='modification of emirates Id' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
                                         </div>
@@ -1093,7 +1095,7 @@
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='new visa' name='process_name'>
+                                            <input type="hidden" value='visa cancellation' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
                                         </div>
