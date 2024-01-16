@@ -742,7 +742,8 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('medical_fitness') == 'step7') {
+        }
+         elseif ($request->input('medical_fitness') == 'step7') {
             // return $request;
             $file = NULl;
             if ($request->hasFile('medical_fitness_file')) {
@@ -785,7 +786,9 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('tawjeeh_class') == 'step8') {
+        }
+
+        elseif ($request->input('tawjeeh_class') == 'step8') {
 
             $file = NULl;
             if ($request->hasFile('tawjeeh_file')) {
@@ -872,7 +875,8 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('health_insurance') == 'step10') {
+        }
+        elseif ($request->input('health_insurance') == 'step10') {
 
             $file = NULl;
             if ($request->hasFile('health_insur_file')) {
@@ -916,7 +920,8 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('work_permit') == 'step11') {
+        }
+        elseif ($request->input('work_permit') == 'step11') {
 
             $file = NULl;
             if ($request->hasFile('work_permit_file')) {
@@ -960,24 +965,25 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('emirates_residency_app') == 'step12') {
+        }
+        elseif ($request->input('emirates_residency_app') == 'step12') {
             // return $request;
             $e_status = NULL;
             $r_status = NULL;
             $file = NULl;
-            if ($request->hasFile('work_permit_file')) {
+            if ($request->hasFile('emirates_file')) {
                 // return "ok";
-                $destination = 'public/admin/assets/img/users' . $new_visa->work_permit_file;
+                $destination = 'public/admin/assets/img/users' . $new_visa->emirates_file;
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
-                $file = $request->file('work_permit_file');
+                $file = $request->file('emirates_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $file->move('public/admin/assets/img/users', $filename);
                 $file = 'public/admin/assets/img/users/' . $filename;
             } else {
-                $file = $new_visa->work_permit_file;
+                $file = $new_visa->emirates_file;
             }
             $rs_file = NULl;
             if ($request->hasFile('residency_file')) {
@@ -1042,7 +1048,8 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('biometric') == 'step13') {
+        }
+        elseif ($request->input('biometric') == 'step13') {
             // return $request;
             $status = NULL;
             $file = NULL;
@@ -1097,7 +1104,8 @@ class NewVisaController extends Controller
                 return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('waiting_for_approval') == 'waiting_for_approval') {
+        }
+        elseif ($request->input('waiting_for_approval') == 'waiting_for_approval') {
             $file = NULl;
             if ($request->hasFile('waiting_fappro_file')) {
                 // return "ok";
