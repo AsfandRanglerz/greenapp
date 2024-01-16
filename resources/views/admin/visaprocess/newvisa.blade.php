@@ -388,11 +388,10 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['job_offer_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['job_offer_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['job_offer_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['job_offer_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
+                                                    
                                                     <option value="Submission Form"
                                                         {{ $new_visa['job_offer_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -871,11 +870,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['dubai_insurance_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['dubai_insurance_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['dubai_insurance_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['dubai_insurance_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['dubai_insurance_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -1141,11 +1138,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['pre_approved_wp_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['pre_approved_wp_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['pre_approved_wp_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['pre_approved_wp_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['pre_approved_wp_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -1744,11 +1739,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['change_of_visa_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['change_of_visa_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['change_of_visa_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['change_of_visa_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['change_of_visa_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -2018,11 +2011,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['medical_fitness_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['medical_fitness_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['medical_fitness_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['medical_fitness_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -2395,11 +2386,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['contract_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['contract_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['contract_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['contract_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['contract_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -2665,11 +2654,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['health_insur_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['health_insur_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['health_insur_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['health_insur_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['health_insur_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -2936,11 +2923,9 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['work_permit_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['work_permit_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['work_permit_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['work_permit_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form"
                                                         {{ $new_visa['work_permit_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -3201,11 +3186,9 @@
                                                 <option value="Work Permit Renewal Application"
                                                     {{ $new_visa['emirates_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal"
-                                                    {{ $new_visa['emirates_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{ $new_visa['emirates_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                    Application</option>
+                                                <option value="Signed Work Permit Renewal Application"
+                                                    {{ $new_visa['emirates_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form"
                                                     {{ $new_visa['emirates_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                 </option>
@@ -3461,11 +3444,9 @@
                                                 <option value="Work Permit Renewal Application"
                                                     {{ $new_visa['residency_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal"
-                                                    {{ $new_visa['residency_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{ $new_visa['residency_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                    Application</option>
+                                                <option value="Signed Work Permit Renewal Application"
+                                                    {{ $new_visa['residency_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form"
                                                     {{ $new_visa['residency_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                 </option>
@@ -4062,14 +4043,10 @@
                                                     $renewal_process['work_permit_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $renewal_process['work_permit_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $renewal_process['work_permit_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $renewal_process['work_permit_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $renewal_process['work_permit_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -4489,14 +4466,10 @@
                                                 $renewal_process['pay_dubai_insu_file_name']=='Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Work
                                                 Permit Renewal Application</option>
-                                            <option value="Signed Work Permit Renewal" {{
-                                                $renewal_process['pay_dubai_insu_file_name']=='Signed Work Permit Renewal'
+                                            <option value="Signed Work Permit Renewal Application" {{
+                                                $renewal_process['pay_dubai_insu_file_name']=='Signed Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Signed
-                                                Work Permit Renewal</option>
-                                            <option value="Application" {{
-                                                $renewal_process['pay_dubai_insu_file_name']=='Application' ? 'selected'
-                                                : '' }}>
-                                                Application</option>
+                                                Work Permit Renewal Application</option>
                                             <option value="Submission Form" {{
                                                 $renewal_process['pay_dubai_insu_file_name']=='Submission Form'
                                                 ? 'selected' : '' }}>Submission Form
@@ -4827,14 +4800,10 @@
                                                     $renewal_process['contract_sub_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $renewal_process['contract_sub_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $renewal_process['contract_sub_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $renewal_process['contract_sub_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $renewal_process['contract_sub_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -5262,14 +5231,10 @@
                                                 $renewal_process['residency_file_name']=='Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Work
                                                 Permit Renewal Application</option>
-                                            <option value="Signed Work Permit Renewal" {{
-                                                $renewal_process['residency_file_name']=='Signed Work Permit Renewal'
+                                            <option value="Signed Work Permit Renewal Application" {{
+                                                $renewal_process['residency_file_name']=='Signed Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Signed
-                                                Work Permit Renewal</option>
-                                            <option value="Application" {{
-                                                $renewal_process['residency_file_name']=='Application' ? 'selected'
-                                                : '' }}>
-                                                Application</option>
+                                                Work Permit Renewal Application</option>
                                             <option value="Submission Form" {{
                                                 $renewal_process['residency_file_name']=='Submission Form'
                                                 ? 'selected' : '' }}>Submission Form
@@ -5588,14 +5553,10 @@
                                                 $renewal_process['renewal_file_name']=='Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Work
                                                 Permit Renewal Application</option>
-                                            <option value="Signed Work Permit Renewal" {{
-                                                $renewal_process['renewal_file_name']=='Signed Work Permit Renewal'
+                                            <option value="Signed Work Permit Renewal Application" {{
+                                                $renewal_process['renewal_file_name']=='Signed Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Signed
-                                                Work Permit Renewal</option>
-                                            <option value="Application" {{
-                                                $renewal_process['renewal_file_name']=='Application' ? 'selected'
-                                                : '' }}>
-                                                Application</option>
+                                                Work Permit Renewal Application</option>
                                             <option value="Submission Form" {{
                                                 $renewal_process['renewal_file_name']=='Submission Form'
                                                 ? 'selected' : '' }}>Submission Form
@@ -6149,14 +6110,10 @@
                                                         $spo_by_some['work_permit_app_file_name']=='Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal" {{
-                                                        $spo_by_some['work_permit_app_file_name']=='Signed Work Permit Renewal'
+                                                    <option value="Signed Work Permit Renewal Application" {{
+                                                        $spo_by_some['work_permit_app_file_name']=='Signed Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{
-                                                        $spo_by_some['work_permit_app_file_name']=='Application' ? 'selected'
-                                                        : '' }}>
-                                                        Application</option>
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form" {{
                                                         $spo_by_some['work_permit_app_file_name']=='Submission Form'
                                                         ? 'selected' : '' }}>Submission Form
@@ -6697,14 +6654,10 @@
                                                 $spo_by_some['pay_dubai_insu_file_name']=='Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Work
                                                 Permit Renewal Application</option>
-                                            <option value="Signed Work Permit Renewal" {{
-                                                $spo_by_some['pay_dubai_insu_file_name']=='Signed Work Permit Renewal'
+                                            <option value="Signed Work Permit Renewal Application" {{
+                                                $spo_by_some['pay_dubai_insu_file_name']=='Signed Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Signed
-                                                Work Permit Renewal</option>
-                                            <option value="Application" {{
-                                                $spo_by_some['pay_dubai_insu_file_name']=='Application' ? 'selected'
-                                                : '' }}>
-                                                Application</option>
+                                                Work Permit Renewal Application</option>
                                             <option value="Submission Form" {{
                                                 $spo_by_some['pay_dubai_insu_file_name']=='Submission Form'
                                                 ? 'selected' : '' }}>Submission Form
@@ -7036,14 +6989,10 @@
                                                 $spo_by_some['pre_approv_wp_file_name']=='Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Work
                                                 Permit Renewal Application</option>
-                                            <option value="Signed Work Permit Renewal" {{
-                                                $spo_by_some['pre_approv_wp_file_name']=='Signed Work Permit Renewal'
+                                            <option value="Signed Work Permit Renewal Application" {{
+                                                $spo_by_some['pre_approv_wp_file_name']=='Signed Work Permit Renewal Application'
                                                 ? 'selected' : '' }}>Signed
-                                                Work Permit Renewal</option>
-                                            <option value="Application" {{
-                                                $spo_by_some['pre_approv_wp_file_name']=='Application' ? 'selected'
-                                                : '' }}>
-                                                Application</option>
+                                                Work Permit Renewal Application</option>
                                             <option value="Submission Form" {{
                                                 $spo_by_some['pre_approv_wp_file_name']=='Submission Form'
                                                 ? 'selected' : '' }}>Submission Form
@@ -7375,14 +7324,10 @@
                                                     $spo_by_some['upload_wp_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $spo_by_some['upload_wp_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $spo_by_some['upload_wp_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $spo_by_some['upload_wp_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $spo_by_some['upload_wp_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -7852,14 +7797,10 @@
                                                         $part_time['wp_app_file_name']=='Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal" {{
-                                                        $part_time['wp_app_file_name']=='Signed Work Permit Renewal'
+                                                    <option value="Signed Work Permit Renewal Application" {{
+                                                        $part_time['wp_app_file_name']=='Signed Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{
-                                                        $part_time['wp_app_file_name']=='Application' ? 'selected'
-                                                        : '' }}>
-                                                        Application</option>
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form" {{
                                                         $part_time['wp_app_file_name']=='Submission Form'
                                                         ? 'selected' : '' }}>Submission Form
@@ -8393,14 +8334,10 @@
                                                         $part_time['contract_file_name']=='Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal" {{
-                                                        $part_time['contract_file_name']=='Signed Work Permit Renewal'
+                                                    <option value="Signed Work Permit Renewal Application" {{
+                                                        $part_time['contract_file_name']=='Signed Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{
-                                                        $part_time['contract_file_name']=='Application' ? 'selected'
-                                                        : '' }}>
-                                                        Application</option>
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form" {{
                                                         $part_time['contract_file_name']=='Submission Form'
                                                         ? 'selected' : '' }}>Submission Form
@@ -8810,14 +8747,10 @@
                                                             $uae_gcc['wp_app_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $uae_gcc['wp_app_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $uae_gcc['wp_app_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $uae_gcc['wp_app_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
                                                         <option value="Submission Form" {{
                                                             $uae_gcc['wp_app_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -9250,14 +9183,10 @@
                                                     $uae_gcc['pay_dubai_insu_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $uae_gcc['pay_dubai_insu_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $uae_gcc['pay_dubai_insu_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $uae_gcc['pay_dubai_insu_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -9701,14 +9630,10 @@
                                                     $uae_gcc['upload_wp_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $uae_gcc['upload_wp_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $uae_gcc['upload_wp_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $uae_gcc['upload_wp_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $uae_gcc['upload_wp_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -10119,14 +10044,10 @@
                                                         $modify_contract['wp_app_file_name']=='Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal" {{
-                                                        $modify_contract['wp_app_file_name']=='Signed Work Permit Renewal'
+                                                    <option value="Signed Work Permit Renewal Application" {{
+                                                        $modify_contract['wp_app_file_name']=='Signed Work Permit Renewal Application'
                                                         ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{
-                                                        $modify_contract['wp_app_file_name']=='Application' ? 'selected'
-                                                        : '' }}>
-                                                        Application</option>
+                                                        Work Permit Renewal Application</option>
                                                     <option value="Submission Form" {{
                                                         $modify_contract['wp_app_file_name']=='Submission Form'
                                                         ? 'selected' : '' }}>Submission Form
@@ -10667,14 +10588,10 @@
                                                     $modify_contract['upload_wp_file_name']=='Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Work
                                                     Permit Renewal Application</option>
-                                                <option value="Signed Work Permit Renewal" {{
-                                                    $modify_contract['upload_wp_file_name']=='Signed Work Permit Renewal'
+                                                <option value="Signed Work Permit Renewal Application" {{
+                                                    $modify_contract['upload_wp_file_name']=='Signed Work Permit Renewal Application'
                                                     ? 'selected' : '' }}>Signed
-                                                    Work Permit Renewal</option>
-                                                <option value="Application" {{
-                                                    $modify_contract['upload_wp_file_name']=='Application' ? 'selected'
-                                                    : '' }}>
-                                                    Application</option>
+                                                    Work Permit Renewal Application</option>
                                                 <option value="Submission Form" {{
                                                     $modify_contract['upload_wp_file_name']=='Submission Form'
                                                     ? 'selected' : '' }}>Submission Form
@@ -11453,14 +11370,10 @@
                                                             $visa_cancellation['wp_app_can_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $visa_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $visa_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $visa_cancellation['wp_app_can_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
                                                         <option value="Submission Form" {{
                                                             $visa_cancellation['wp_app_can_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -11857,14 +11770,10 @@
                                                             $visa_cancellation['signd_can_from_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $visa_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $visa_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $visa_cancellation['signd_can_from_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
                                                         <option value="Submission Form" {{
                                                             $visa_cancellation['signd_can_from_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -12304,14 +12213,11 @@
                                                             $visa_cancellation['residency_app_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $visa_cancellation['residency_app_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $visa_cancellation['residency_app_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $visa_cancellation['residency_app_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
+                                                    
                                                         <option value="Submission Form" {{
                                                             $visa_cancellation['residency_app_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -12716,14 +12622,10 @@
                                                             $permit_cancellation['wp_app_can_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $permit_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $permit_cancellation['wp_app_can_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $permit_cancellation['wp_app_can_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
                                                         <option value="Submission Form" {{
                                                             $permit_cancellation['wp_app_can_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -13121,14 +13023,10 @@
                                                             $permit_cancellation['signd_can_from_file_name']=='Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Work
                                                             Permit Renewal Application</option>
-                                                        <option value="Signed Work Permit Renewal" {{
-                                                            $permit_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal'
+                                                        <option value="Signed Work Permit Renewal Application" {{
+                                                            $permit_cancellation['signd_can_from_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
-                                                            Work Permit Renewal</option>
-                                                        <option value="Application" {{
-                                                            $permit_cancellation['signd_can_from_file_name']=='Application' ? 'selected'
-                                                            : '' }}>
-                                                            Application</option>
+                                                            Work Permit Renewal Application</option>
                                                         <option value="Submission Form" {{
                                                             $permit_cancellation['signd_can_from_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
