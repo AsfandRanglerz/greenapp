@@ -210,7 +210,7 @@
                                                 <select id="visa-id-9" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -491,7 +491,7 @@
                                                 <select id="visa-id-16" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -729,7 +729,7 @@
                                                 <select id="visa-id-20" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -966,7 +966,7 @@
                                             <select id="visa-id-24" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>                                        </div>
@@ -1202,7 +1202,7 @@
                                             <select id="visa-id-31" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -1431,7 +1431,7 @@
                                             <select id="visa-id-34" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -1664,7 +1664,7 @@
                                             <select id="visa-38-id" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -1790,7 +1790,7 @@
                                                 <select id="visa1-id-3_1" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -1866,7 +1866,7 @@
                                             <select id="visa1-id-9" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -2094,7 +2094,7 @@
                                             <select id="visa1-id-13" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -2326,7 +2326,7 @@
                                             <select id="visa1-id-15" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>
@@ -2635,7 +2635,7 @@
                                                 <select id="new-visa-id-16" class="form-control status-selector-select category" name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                         <option value="Approved" >Approved</option>
-                                                        <option value="Hold" >Hold</option>
+                                                        <option value="UnderProcess" >Under Process</option>
                                                          <option value="Skip" >Skip</option>
                                                         <option value="Reject">Reject</option>
                                                         </select>

@@ -190,7 +190,7 @@
                                                     name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved">Approved</option>
-                                                    <option value="Hold">Hold</option>
+                                                    <option value="UnderProcess">Under Process</option>
                                                     <option value="Skip">Skip</option>
                                                     <option value="Reject">Reject</option>
                                                 </select>
@@ -473,7 +473,7 @@
                                                     name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved">Approved</option>
-                                                    <option value="Hold">Hold</option>
+                                                    <option value="UnderProcess">Under Process</option>
                                                     <option value="Skip">Skip</option>
                                                     <option value="Reject">Reject</option>
                                                 </select>
@@ -713,7 +713,7 @@
                                                     name="job_offer_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved">Approved</option>
-                                                    <option value="Hold">Hold</option>
+                                                    <option value="UnderProcess">Under Process</option>
                                                     <option value="Skip">Skip</option>
                                                     <option value="Reject">Reject</option>
                                                 </select>
@@ -952,7 +952,7 @@
                                                 name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
+                                                <option value="UnderProcess">Under Process</option>
                                                 <option value="Skip">Skip</option>
                                                 <option value="Reject">Reject</option>
                                             </select>
@@ -1015,7 +1015,7 @@
                                                 name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
+                                                <option value="UnderProcess">Under Process</option>
                                                 <option value="Skip">Skip</option>
                                                 <option value="Reject">Reject</option>
                                             </select>
@@ -1246,7 +1246,7 @@
                                                 name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
+                                                <option value="UnderProcess">Under Process</option>
                                                 <option value="Skip">Skip</option>
                                                 <option value="Reject">Reject</option>
                                             </select>
@@ -1482,7 +1482,7 @@
                                                 name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved">Approved</option>
-                                                <option value="Hold">Hold</option>
+                                                <option value="UnderProcess">Under Process</option>
                                                 <option value="Skip">Skip</option>
                                                 <option value="Reject">Reject</option>
                                             </select>
