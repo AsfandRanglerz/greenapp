@@ -260,7 +260,7 @@
                                             <select id="new-visa-6" class="form-control status-selector-select category" name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['job_offer_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['job_offer_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['job_offer_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['job_offer_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['job_offer_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -582,7 +582,7 @@
                                             <select id="selectDocument" class="form-control category status-selector-select" name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -614,7 +614,7 @@
                                             <select id="new-visa-10" name="waiting_for_approval_status" class="form-control category status-selector-select status-select" id="status-select1">
                                                 <option value="" selected disabled>select</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Approved' ? 'selected':''}} value="Approved">Approved</option>
-                                                <option {{$new_visa->waiting_for_approval_status == 'Hold' ? 'selected':''}} value="Hold" >Hold</option>
+                                                <option {{$new_visa->waiting_for_approval_status == 'UnderProcess' ? 'selected':''}} value="UnderProcess" >Under Processd</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Skip' ? 'selected':''}} value="Skip">Skip</option>
                                                 <option {{$new_visa->waiting_for_approval_status == 'Rejected' ? 'selected':''}} value="Reject">Reject</option>
                                             </select>
@@ -740,7 +740,7 @@
                                             <select id="new-visa-23" class="form-control category status-selector-select" name="dubai_insurance_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['dubai_insurance_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['dubai_insurance_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['dubai_insurance_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['dubai_insurance_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['dubai_insurance_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -1012,7 +1012,7 @@
                                                 <select id="new-visa-29" class="form-control category status-selector-select" name="pre_approved_wp_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['pre_approved_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$new_visa['pre_approved_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$new_visa['pre_approved_wp_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$new_visa['pre_approved_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$new_visa['pre_approved_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                                 </select>
@@ -1278,7 +1278,7 @@
                                                 <select id="new-visa-35" class="form-control category status-selector-select" name="enter_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['enter_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$new_visa['enter_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$new_visa['enter_visa_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$new_visa['enter_visa_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$new_visa['enter_visa_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                                 </select>
@@ -1615,7 +1615,7 @@
                                                 <select id="new-visa-45" class="form-control category status-selector-select" name="change_of_visa_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$new_visa['change_of_visa_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$new_visa['change_of_visa_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$new_visa['change_of_visa_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$new_visa['change_of_visa_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$new_visa['change_of_visa_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                                 </select>
@@ -1888,7 +1888,7 @@
                                             <select id="new-visa-51" class="form-control category status-selector-select" name="medical_fitness_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['medical_fitness_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['medical_fitness_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['medical_fitness_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -2168,7 +2168,7 @@
                                             <select id="new-visa-58" class="form-control category status-selector-select" name="tawjeeh_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['tawjeeh_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['tawjeeh_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['tawjeeh_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['tawjeeh_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['tawjeeh_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -2265,7 +2265,7 @@
                                             <select id="new-visa-64" class="form-control category status-selector-select" name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['contract_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -2535,7 +2535,7 @@
                                             <select id="new-visa-70" class="form-control category status-selector-select" name="health_insur_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['health_insur_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['health_insur_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['health_insur_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['health_insur_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['health_insur_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -2807,7 +2807,7 @@
                                             <select id="new-visa-76" class="form-control category status-selector-select" name="work_permit_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['work_permit_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['work_permit_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['work_permit_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -3072,7 +3072,7 @@
                                           <select id="new-visa-81" class="form-control category status-selector-select" name="emirates_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['emirates_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$new_visa['emirates_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$new_visa['emirates_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$new_visa['emirates_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$new_visa['emirates_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -3332,7 +3332,7 @@
                                         <select id="new-visa-87" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$new_visa['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$new_visa['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$new_visa['residency_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$new_visa['residency_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$new_visa['residency_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -3603,7 +3603,7 @@
                                             <select id="new-visa-93" class="form-control category status-selector-select" name="biometric_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['biometric_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$new_visa['biometric_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$new_visa['biometric_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$new_visa['biometric_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['biometric_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -3791,7 +3791,7 @@
                                             class="form-control category status-selector-select status-select" id="status-select1" name="medical_fitness_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['medical_fitness_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['medical_fitness_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['medical_fitness_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['medical_fitness_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['medical_fitness_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -3892,7 +3892,7 @@
                                             class="form-control category status-selector-select status-select" id="status-select1" name="work_permit_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['work_permit_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['work_permit_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['work_permit_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['work_permit_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['work_permit_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -4229,7 +4229,7 @@
                                             id="new-visa-113" name="signed_mb_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['signed_mb_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['signed_mb_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['signed_mb_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['signed_mb_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['signed_mb_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -4319,7 +4319,7 @@
                                             id="new-visa-118" name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['pay_dubai_insu_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['pay_dubai_insu_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['pay_dubai_insu_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['pay_dubai_insu_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -4657,7 +4657,7 @@
                                             class="form-control status-selector-select category" name="contract_sub_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['contract_sub_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['contract_sub_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['contract_sub_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['contract_sub_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['contract_sub_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -4992,7 +4992,7 @@
                                         <select id="new-visa-129" class="form-control category status-selector-select" name="tawjeeh_tranc_status">
                                             <option value="" selected disabled>select</option>
                                          <option value="Approved" {{$renewal_process['tawjeeh_tranc_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                         <option value="Hold" {{$renewal_process['tawjeeh_tranc_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                         <option value="UnderProcess" {{$renewal_process['tawjeeh_tranc_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                          <option value="Skip" {{$renewal_process['tawjeeh_tranc_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                          <option value="Reject" {{$renewal_process['tawjeeh_tranc_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                          </select>
@@ -5090,7 +5090,7 @@
                                         <select id="new-visa-136" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['residency_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['residency_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['residency_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['residency_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['residency_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -5417,7 +5417,7 @@
                                         <select id="new-visa-142" class="form-control status-selector-select category" name="renewal_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['renewal_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$renewal_process['renewal_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$renewal_process['renewal_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$renewal_process['renewal_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$renewal_process['renewal_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -5757,8 +5757,8 @@
                                 <option value="" selected disabled>select</option>
                                 <option value="Approved" {{$renewal_process['emp_biometric_status']=='Approved'
                                 ? 'selected' : '' }}>Approved</option>
-                                <option value="Hold" {{$renewal_process['emp_biometric_status']=='Hold'
-                                ? 'selected' : '' }}>Hold</option>
+                                <option value="UnderProcess" {{$renewal_process['emp_biometric_status']=='UnderProcess'
+                                ? 'selected' : '' }}>Under Process</option>
                                 <option value="Skip" {{$renewal_process['emp_biometric_status']=='Skip'
                                 ? 'selected' : '' }}>Skip</option>
                                 <option value="Reject" {{$renewal_process['emp_biometric_status']=='Reject'
@@ -5980,7 +5980,7 @@
                                             <select id="new-visa-155" class="form-control status-selector-select category" name="work_permit_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['work_permit_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['work_permit_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['work_permit_app_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['work_permit_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['work_permit_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -6320,7 +6320,7 @@
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -6400,7 +6400,7 @@
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -6525,7 +6525,7 @@
                                         name="pay_dubai_insu_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['pay_dubai_insu_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['pay_dubai_insu_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['pay_dubai_insu_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['pay_dubai_insu_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -6866,7 +6866,7 @@
                                         name="pre_approv_wp_status">
                                         <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['pre_approv_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['pre_approv_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['pre_approv_wp_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['pre_approv_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['pre_approv_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                     </select>
@@ -7203,7 +7203,7 @@
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select Document</option>
                                                 <option value="Approved" {{$spo_by_some['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$spo_by_some['upload_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$spo_by_some['upload_wp_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$spo_by_some['upload_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$spo_by_some['upload_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -7683,7 +7683,7 @@
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$part_time['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$part_time['wp_app_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$part_time['wp_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$part_time['wp_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -8021,7 +8021,7 @@
                                                 name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$part_time['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$part_time['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$part_time['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$part_time['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -8103,7 +8103,7 @@
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$part_time['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$part_time['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$part_time['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$part_time['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -8224,7 +8224,7 @@
                                                 name="contract_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$part_time['contract_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$part_time['contract_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$part_time['contract_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$part_time['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$part_time['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -8641,7 +8641,7 @@
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$uae_gcc['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$uae_gcc['wp_app_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$uae_gcc['wp_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$uae_gcc['wp_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -8981,7 +8981,7 @@
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$uae_gcc['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$uae_gcc['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$uae_gcc['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$uae_gcc['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                     </select>
@@ -9079,7 +9079,7 @@
                                             name="pay_dubai_insu_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$uae_gcc['pay_dubai_insu_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$uae_gcc['pay_dubai_insu_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$uae_gcc['pay_dubai_insu_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$uae_gcc['pay_dubai_insu_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$uae_gcc['pay_dubai_insu_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -9404,7 +9404,7 @@
                                                 id="status-select1" name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$uae_gcc['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$uae_gcc['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$uae_gcc['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$uae_gcc['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$uae_gcc['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -9528,7 +9528,7 @@
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$uae_gcc['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$uae_gcc['upload_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$uae_gcc['upload_wp_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$uae_gcc['upload_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$uae_gcc['upload_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -9948,7 +9948,7 @@
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$modify_contract['wp_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$modify_contract['wp_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$modify_contract['wp_app_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$modify_contract['wp_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$modify_contract['wp_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -10289,7 +10289,7 @@
                                             name="signed_mb_st_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modify_contract['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$modify_contract['signed_mb_st_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$modify_contract['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$modify_contract['signed_mb_st_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$modify_contract['signed_mb_st_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                     </select>
@@ -10373,7 +10373,7 @@
                                                  name="waiting_for_approval_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$modify_contract['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$modify_contract['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$modify_contract['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$modify_contract['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$modify_contract['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -10495,7 +10495,7 @@
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
                                                 <option value="Approved" {{$modify_contract['upload_wp_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                <option value="Hold" {{$modify_contract['upload_wp_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                <option value="UnderProcess" {{$modify_contract['upload_wp_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                 <option value="Skip" {{$modify_contract['upload_wp_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$modify_contract['upload_wp_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
@@ -10893,7 +10893,7 @@
                                          name="application_status">
                                         <option value="" selected disabled>select</option>
                                         <option value="Approved" {{$modification_visa['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                        <option value="Hold" {{$modification_visa['application_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                        <option value="UnderProcess" {{$modification_visa['application_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                         <option value="Skip" {{$modification_visa['application_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                         <option value="Reject" {{$modification_visa['application_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                     </select>
@@ -11065,7 +11065,7 @@
                                             name="application_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$modification_emirates['application_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                            <option value="Hold" {{$modification_emirates['application_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                            <option value="UnderProcess" {{$modification_emirates['application_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                             <option value="Skip" {{$modification_emirates['application_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                             <option value="Reject" {{$modification_emirates['application_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                         </select>
@@ -11282,7 +11282,7 @@
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$visa_cancellation['wp_app_can_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="Under Process" {{$visa_cancellation['wp_app_can_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$visa_cancellation['wp_app_can_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$visa_cancellation['wp_app_can_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -11686,7 +11686,7 @@
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$visa_cancellation['signd_can_from_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$visa_cancellation['signd_can_from_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$visa_cancellation['signd_can_from_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$visa_cancellation['signd_can_from_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -12011,7 +12011,7 @@
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$visa_cancellation['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$visa_cancellation['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$visa_cancellation['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$visa_cancellation['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                                 </select>
@@ -12133,7 +12133,7 @@
                                                     name="residency_app_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$visa_cancellation['residency_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$visa_cancellation['residency_app_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$visa_cancellation['residency_app_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$visa_cancellation['residency_app_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$visa_cancellation['residency_app_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -12545,7 +12545,7 @@
                                                     name="wp_app_can_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['wp_app_can_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$permit_cancellation['wp_app_can_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$permit_cancellation['wp_app_can_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$permit_cancellation['wp_app_can_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$permit_cancellation['wp_app_can_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -12950,7 +12950,7 @@
                                                     name="signd_can_from_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['signd_can_from_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$permit_cancellation['signd_can_from_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$permit_cancellation['signd_can_from_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$permit_cancellation['signd_can_from_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$permit_cancellation['signd_can_from_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
 
@@ -13275,7 +13275,7 @@
                                                     name="waiting_for_approval_status">
                                                     <option value="" selected disabled>select</option>
                                                     <option value="Approved" {{$permit_cancellation['waiting_for_approval_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                                    <option value="Hold" {{$permit_cancellation['waiting_for_approval_status'] == 'Hold' ? 'selected' : '' }}>Hold</option>
+                                                    <option value="UnderProcess" {{$permit_cancellation['waiting_for_approval_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
                                                     <option value="Skip" {{$permit_cancellation['waiting_for_approval_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                     <option value="Reject" {{$permit_cancellation['waiting_for_approval_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                                 </select>
