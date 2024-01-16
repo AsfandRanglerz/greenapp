@@ -11,4 +11,9 @@ class IndividualVisaProcess extends Controller
     {
         return view('admin.self-user.dependents.visaprocess.visaprocess');
     }
+
+    public function visa_process_individual_by_admin()
+    {
+        return view('admin.self-user.visaprocess.individualvisa');
+    }
 }

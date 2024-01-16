@@ -183,6 +183,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // visa process of dependents
     Route::get('dependent-visa-section', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
+    Route::get('individual-visa-process-index', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
 
 
     // Services Response
