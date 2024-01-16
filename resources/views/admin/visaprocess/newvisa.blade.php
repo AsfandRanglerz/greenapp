@@ -1406,11 +1406,12 @@
                                                     <option value="Work Permit Renewal Application"
                                                         {{ $new_visa['enter_visa_file_name'] == 'Work Permit Renewal Application' ? 'selected' : '' }}>Work
                                                         Permit Renewal Application</option>
-                                                    <option value="Signed Work Permit Renewal"
-                                                        {{ $new_visa['enter_visa_file_name'] == 'Signed Work Permit Renewal' ? 'selected' : '' }}>Signed
-                                                        Work Permit Renewal</option>
-                                                    <option value="Application" {{ $new_visa['enter_visa_file_name'] == 'Application' ? 'selected' : '' }}>
-                                                        Application</option>
+
+                                                    <option value="Signed Work Permit Renewal Application"
+                                                        {{ $new_visa['enter_visa_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
+                                                        Work Permit Renewal Application</option>
+
+
                                                     <option value="Submission Form"
                                                         {{ $new_visa['enter_visa_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>

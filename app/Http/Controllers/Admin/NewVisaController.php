@@ -499,7 +499,9 @@ class NewVisaController extends Controller
             }
             // return $notify;
             return redirect()->back()->with('success', 'Data Added Successfully and notify to the company.');
-        } elseif ($request->input('sign_mb') == "step2") {
+        }
+
+        elseif ($request->input('sign_mb') == "step2") {
             $file = NULL;
             if ($request->hasFile('signed_mb_st_file')) {
                 $destination = 'public/admin/assets/img/users' . $new_visa->signed_mb_st_file;
@@ -627,7 +629,9 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('entry_visa') == 'step5') {
+        }
+
+        elseif ($request->input('entry_visa') == 'step5') {
             // return $request;
             $file = Null;
             if ($request->hasFile('enter_visa_file')) {
@@ -692,7 +696,9 @@ class NewVisaController extends Controller
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
-        } elseif ($request->input('change_of') == 'step6') {
+        }
+
+        elseif ($request->input('change_of') == 'step6') {
             // return $request;
             $file = NULl;
             if ($request->hasFile('change_of_visa_file')) {

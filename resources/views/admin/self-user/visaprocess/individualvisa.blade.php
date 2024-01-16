@@ -150,7 +150,7 @@
                                             <input type="hidden" value='new visa' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
-                                        </div>
+                                        </div>                                               
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
@@ -208,7 +208,7 @@
                                                 <select id="new-visa8_5-9" class="form-control category" name="job_offer_file_name"
                                                         value="" >
                                                         <option value="" selected disabled>Select Document</option>
-                                                        {{--<!--  
+                                                        {{--<!--
                                                         <option value="Personal Photo"
                                                             {{ $new_visa['job_offer_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
                                                         </option>
@@ -491,7 +491,7 @@
                                                 <select id="new-visa8_4-9" class="form-control category" name="job_offer_file_name"
                                                         value="" >
                                                         <option value="" selected disabled>Select Document</option>
-                                                        {{--<!--  
+                                                        {{--<!--
                                                         <option value="Personal Photo"
                                                             {{ $new_visa['job_offer_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
                                                         </option>
@@ -731,7 +731,7 @@
                                                 <select id="new-visa8_3-9" class="form-control category" name="job_offer_file_name"
                                                         value="" >
                                                         <option value="" selected disabled>Select Document</option>
-                                                        {{--<!--  
+                                                        {{--<!--
                                                         <option value="Personal Photo"
                                                             {{ $new_visa['job_offer_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
                                                         </option>
@@ -1032,7 +1032,7 @@
                                                 <select id="new-visa8_1-9" class="form-control category" name="job_offer_file_name"
                                                         value="" >
                                                         <option value="" selected disabled>Select Document</option>
-                                                        {{--<!--  
+                                                        {{--<!--
                                                         <option value="Personal Photo"
                                                             {{ $new_visa['job_offer_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
                                                         </option>
@@ -1262,7 +1262,7 @@
                                                 <select id="new-visa8-9" class="form-control category" name="job_offer_file_name"
                                                         value="" >
                                                         <option value="" selected disabled>Select Document</option>
-                                                        {{--<!--  
+                                                        {{--<!--
                                                         <option value="Personal Photo"
                                                             {{ $new_visa['job_offer_file_name'] == 'Personal Photo' ? 'selected' : '' }}>Personal Photo
                                                         </option>

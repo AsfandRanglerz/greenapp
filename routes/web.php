@@ -182,7 +182,19 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
     // visa process of dependents
-    Route::get('dependent-visa-section', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
+    Route::get('dependent-visa-section', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
+
+    Route::get('admin-start-visa-process', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('admin-start-visa-process')/*->middleware('permission:Receipt')*/;
+    
+    Route::post('dependent-new_visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'new_visa_of_dependent'])->name('dependent-new-visa-process')/*->middleware('permission:Receipt')*/;
+
+    Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')/*->middleware('permission:Receipt')*/;
+
+
+
+
+
+
     Route::get('individual-visa-process-index', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
 
 

@@ -881,7 +881,9 @@
                         <div class="tab-pane fade show active" id="v-pills-modify-visa-start" role="tabpanel"
                             aria-labelledby="v-pills-modify-visa-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                <form action="{{ route('user.dependent-visa-request',$dependent->id) }}"
+                                    method="POST" class='py-2'>
+                                   @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
@@ -986,7 +988,9 @@
                         <div class="tab-pane fade show active" id="v-pills-modify-id-start" role="tabpanel"
                             aria-labelledby="v-pills-modify-id-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                <form action="{{ route('user.dependent-visa-request',$dependent->id) }}"
+                                    method="POST" class='py-2'>
+                                   @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
@@ -1091,7 +1095,9 @@
                         <div class="tab-pane fade show active" id="v-pills-residency-cancel-start" role="tabpanel"
                             aria-labelledby="v-pills-residency-cancel-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                <form action="{{ route('user.dependent-visa-request',$dependent->id) }}"
+                                    method="POST" class='py-2'>
+                                   @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
                                         <div class="col-12 text-center">

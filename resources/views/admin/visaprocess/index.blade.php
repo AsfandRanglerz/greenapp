@@ -160,19 +160,30 @@
                                                                     $company_id = $requests->company->id;
                                                                 }
                                                                 elseif($requests->dependent) {
-                                                                    $company_id = $requests->dependent->id;
+                                                                    $dependent_id = $requests->dependent->id;
                                                                 }
                                                                 // $company_id = $requests->company->id;
                                                                 $con = NULL;
                                                                 if($requests->process_name == 'new visa')
                                                                 {
-                                                                    $new_visa = App\Models\NewVisaProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $new_visa = App\Models\NewVisaProcess::where('employee_id', $user_id)
+                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
+                                                                        $query->where('company_id', $company_id)
+                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    })
+                                                                    ->first();
                                                                     if($new_visa)
                                                                     {
                                                                         $con = "yes";
                                                                     }
+
                                                                 }elseif ($requests->process_name == 'renewal process') {
-                                                                    $renewal_process = App\Models\RenewalProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $renewal_process = App\Models\RenewalProcess::where('employee_id', $user_id)
+                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
+                                                                        $query->where('company_id', $company_id)
+                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    })
+                                                                    ->first();
                                                                             if($renewal_process)
                                                                     {
                                                                         $con = "yes";
@@ -207,21 +218,38 @@
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'modification of visa') {
-                                                                    $modification_visa = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of visa')->first();
+                                                                    $modification_visa = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)
+                                                                    ->where('process_name', 'modification of visa')
+                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
+                                                                        $query->where('company_id', $company_id)
+                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    })
+                                                                    ->first();
                                                                             if($modification_visa)
                                                                     {
                                                                         $con = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'modification of emirates Id') {
-                                                                    $modification_emirates = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of emirates Id')->first();
+                                                                    $modification_emirates = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)
+                                                                    ->where('process_name', 'modification of emirates Id')
+                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
+                                                                        $query->where('company_id', $company_id)
+                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    })
+                                                                    ->first();
                                                                             if($modification_emirates)
                                                                     {
                                                                         $con = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'visa cancellation') {
-                                                                    $visa_cancellation = App\Models\VisaCancelation::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $visa_cancellation = App\Models\VisaCancelation::where('employee_id', $user_id)
+                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
+                                                                        $query->where('company_id', $company_id)
+                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    })
+                                                                    ->first();
                                                                             if($visa_cancellation)
                                                                     {
                                                                         $con = "yes";
@@ -235,12 +263,19 @@
                                                                     }
                                                                      }
                                                             @endphp
-
                                                                 @if($con == 'yes')
-                                                                    <a href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='btn btn-success'>View</a>
+                                                                     @if ($requests->company)
+                                                                        <a href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='text-success'>View</a>
+                                                                     @elseif($requests->dependent)
+                                                                        <a href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-success'>View</a>
+                                                                     @endif
                                                                 @else
-                                                                 <a class="btn btn-primary"
-                                                                 href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
+                                                                     @if ($requests->company)
+                                                                        <a class="btn btn-primary"
+                                                                        href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
+                                                                    @elseif($requests->dependent)
+                                                                        <a href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='btn btn-primary'>Start Process</a>
+                                                                    @endif
                                                                 @endif
                                                             @endif
                                                     </div>
