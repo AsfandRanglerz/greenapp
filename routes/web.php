@@ -182,11 +182,19 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
     // visa process of dependents
-    Route::get('dependent-visa-section', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
+    Route::get('dependent-visa-section/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
 
-    Route::get('admin-start-visa-process', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('admin-start-visa-process')/*->middleware('permission:Receipt')*/;
+    Route::post('admin-start-visa-process/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('admin-start-visa-process')/*->middleware('permission:Receipt')*/;
 
     Route::post('dependent-new_visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'new_visa_of_dependent'])->name('dependent-new-visa-process')/*->middleware('permission:Receipt')*/;
+
+    Route::post('dependent-renewal-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'renewal_of_dependent'])->name('dependent-renewal-process')/*->middleware('permission:Receipt')*/;
+
+    Route::post('dependent-modification-visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_visa_of_dependent'])->name('dependent-modification-visa-process')/*->middleware('permission:Receipt')*/;
+
+    Route::post('dependent-modification-emirates-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_emirates_dependent'])->name('dependent-modification-emirates-process')/*->middleware('permission:Receipt')*/;
+
+    Route::post('dependent-visa-cancellation-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'visa_cancellation_dependent'])->name('dependent-visa-cancellation-process')/*->middleware('permission:Receipt')*/;
 
     Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')/*->middleware('permission:Receipt')*/;
 
@@ -453,9 +461,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::delete('delete-receipt/{id}','UserReceiptsController@delete')->name('delete-receipt');
 
     // individual visa process
-
-
     Route::resource('visa-process','IndividualVisaProcessController');
+
+    Route::post('individual-visa-process/{id}','IndividualVisaProcessController@send_request')->name('individual-visa-process');
 
     // Route::resource('document', 'DocumentController');
 

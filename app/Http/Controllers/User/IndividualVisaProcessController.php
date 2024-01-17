@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\VisaProcessRequest;
 
 class IndividualVisaProcessController extends Controller
 {
@@ -14,6 +16,7 @@ class IndividualVisaProcessController extends Controller
      */
     public function index()
     {
+        // return "ok";
         return view('user.visaprocess.index');
     }
 
@@ -46,9 +49,27 @@ class IndividualVisaProcessController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
+    public function send_request(Request $request ,$id)
+    {
+        $individual = User::find($id);
+        $process_name = $request->input('process_name');
+        $exist_request = VisaProcessRequest::where('employee_id',$id)->where('process_name',$process_name)->first();
+        if(!$exist_request)
+        {
+            $individual_request = VisaProcessRequest::create([
+                'employee_id'=>$id,
+                'process_name'=>$process_name,
+            ]);
+            return redirect()->back()->with('success','Request send to admin successfully.');
+        }
+        else
+        {
+            return redirect()->back()->with('success','This request is already in process.');
+        }
 
+    }
     /**
      * Show the form for editing the specified resource.
      *

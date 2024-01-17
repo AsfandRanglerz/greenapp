@@ -131,11 +131,15 @@
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" method="" class='py-2'>
+                                @php
+                                    $user_id = Auth::guard('web')->id();
+                                @endphp
+                                <form action="{{route('user.individual-visa-process',$user_id)}}" method="POST" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
+                                    @csrf
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='new visa' name='process_name'>
+                                            <input type="hidden" value='golden visa individual' name='process_name'>
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
                                         </div>
@@ -617,7 +621,7 @@
                 a.addClass('d-none');
             }
         });
-      
+
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,

@@ -41,11 +41,11 @@
                                                 <td>{{ $dependent->dependent_type }}</td>
                                                 <td>{{ $dependent->request_type }}</td>
                                                 {{-- <td><a target="_black" href="{{ asset('') . '/' . $dependent->file }}">
-                                                        <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
+                                                              <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
                                                             height="50" width="50" class="image"></a>
                                                 </td> --}}
                                                 <td>
-                                                    <a href="{{route('dependent-visa-section')}}">Click</a>
+                                                    <a href="{{route('dependent-visa-section',['user_id'=>$id,'dependent_id'=>$dependent->id])}}">Click</a>
                                                 </td>
                                                 <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">

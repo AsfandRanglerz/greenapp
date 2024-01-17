@@ -61,77 +61,123 @@
                                                                 $user_id = $requests->user->id;
                                                                 if($requests->company)
                                                                 {
-                                                                    $company_id = $requests->company->id;
+                                                                    $id = $requests->company->id;
                                                                 }
                                                                 elseif($requests->dependent) {
-                                                                    $company_id = $requests->dependent->id;
+                                                                    $id = $requests->dependent->id;
                                                                 }
                                                                 $status = NULL;
                                                                 if($requests->process_name == 'new visa')
                                                                 {
-                                                                    $new_visa = App\Models\NewVisaProcess::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $new_visa = App\Models\NewVisaProcess::
+                                                                    where('employee_id', $user_id)
+                                                                    ->orWhere('company_id', $id)
+                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                     if($new_visa)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                 }elseif ($requests->process_name == 'renewal process') {
-                                                                    $renewal_process = App\Models\RenewalProcess::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $renewal_process = App\Models\RenewalProcess::
+                                                                    where('employee_id', $user_id)
+                                                                    ->orWhere('company_id', $id)
+                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($renewal_process)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'sponsored by some one') {
-                                                                    $spo_by_some = App\Models\SponsaredBySomeOne::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $spo_by_some = App\Models\SponsaredBySomeOne::
+                                                                    where('employee_id', $user_id)
+                                                                    ->where('company_id', $idid)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($spo_by_some)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'part time') {
-                                                                    $part_time = App\Models\PartTimeAndTemporary::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $part_time = App\Models\PartTimeAndTemporary::
+                                                                    where('employee_id', $user_id)
+                                                                    ->where('company_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($part_time)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'uae and gcc') {
-                                                                    $uae_gcc = App\Models\UaeAndGccNational::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $uae_gcc = App\Models\UaeAndGccNational::
+                                                                    where('employee_id', $user_id)
+                                                                    ->where('company_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($uae_gcc)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'modify contract') {
-                                                                    $modify_contract = App\Models\ModifyContract::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $modify_contract = App\Models\ModifyContract::
+                                                                    where('employee_id', $user_id)
+                                                                    ->where('company_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($modify_contract)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'modification of visa') {
-                                                                    $modification_visa = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of visa')->where('status','completed')->first();
+                                                                    $modification_visa = App\Models\ModificationVisaEmiratesId::
+                                                                    where('employee_id', $user_id)
+                                                                    ->orWhere('company_id', $id)
+                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where('process_name', 'modification of visa')
+                                                                    ->where('status','completed')->first();
                                                                             if($modification_visa)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'modification of emirates Id') {
-                                                                    $modification_emirates = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)->where('company_id', $company_id)->where('process_name', 'modification of emirates Id')->where('status','completed')->first();
+                                                                    $modification_emirates = App\Models\ModificationVisaEmiratesId::
+                                                                    where('employee_id', $user_id)
+                                                                    ->orWhere('company_id', $id)
+                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where('process_name', 'modification of emirates Id')
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($modification_emirates)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'visa cancellation') {
-                                                                    $visa_cancellation = App\Models\VisaCancelation::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $visa_cancellation = App\Models\VisaCancelation::
+                                                                    where('employee_id', $user_id)
+                                                                    ->orWhere('company_id', $id)
+                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($visa_cancellation)
                                                                     {
                                                                         $status = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'permit cancellation') {
-                                                                    $permit_cancellation = App\Models\PermitCancellation::where('employee_id', $user_id)->where('company_id', $company_id)->where('status','completed')->first();
+                                                                    $permit_cancellation = App\Models\PermitCancellation::
+                                                                    where('employee_id', $user_id)
+                                                                    ->where('company_id', $id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
                                                                             if($permit_cancellation)
                                                                     {
                                                                         $status = "yes";
@@ -157,19 +203,19 @@
                                                                 $user_id = $requests->user->id;
                                                                 if($requests->company)
                                                                 {
-                                                                    $company_id = $requests->company->id;
+                                                                    $id = $requests->company->id;
                                                                 }
                                                                 elseif($requests->dependent) {
-                                                                    $dependent_id = $requests->dependent->id;
+                                                                    $id = $requests->dependent->id;
                                                                 }
                                                                 // $company_id = $requests->company->id;
                                                                 $con = NULL;
                                                                 if($requests->process_name == 'new visa')
                                                                 {
                                                                     $new_visa = App\Models\NewVisaProcess::where('employee_id', $user_id)
-                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
-                                                                        $query->where('company_id', $company_id)
-                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
                                                                     })
                                                                     ->first();
                                                                     if($new_visa)
@@ -179,9 +225,9 @@
 
                                                                 }elseif ($requests->process_name == 'renewal process') {
                                                                     $renewal_process = App\Models\RenewalProcess::where('employee_id', $user_id)
-                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
-                                                                        $query->where('company_id', $company_id)
-                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
                                                                     })
                                                                     ->first();
                                                                             if($renewal_process)
@@ -190,28 +236,28 @@
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'sponsored by some one') {
-                                                                    $spo_by_some = App\Models\SponsaredBySomeOne::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $spo_by_some = App\Models\SponsaredBySomeOne::where('employee_id', $user_id)->where('company_id', $id)->first();
                                                                             if($spo_by_some)
                                                                     {
                                                                         $con = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'part time') {
-                                                                    $part_time = App\Models\PartTimeAndTemporary::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $part_time = App\Models\PartTimeAndTemporary::where('employee_id', $user_id)->where('company_id', $id)->first();
                                                                             if($part_time)
                                                                     {
                                                                         $con = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'uae and gcc') {
-                                                                    $uae_gcc = App\Models\UaeAndGccNational::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $uae_gcc = App\Models\UaeAndGccNational::where('employee_id', $user_id)->where('company_id', $id)->first();
                                                                             if($uae_gcc)
                                                                     {
                                                                         $con = "yes";
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'modify contract') {
-                                                                    $modify_contract = App\Models\ModifyContract::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $modify_contract = App\Models\ModifyContract::where('employee_id', $user_id)->where('company_id', $id)->first();
                                                                             if($modify_contract)
                                                                     {
                                                                         $con = "yes";
@@ -220,9 +266,9 @@
                                                                 elseif ($requests->process_name == 'modification of visa') {
                                                                     $modification_visa = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)
                                                                     ->where('process_name', 'modification of visa')
-                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
-                                                                        $query->where('company_id', $company_id)
-                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->orWhere('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
                                                                     })
                                                                     ->first();
                                                                             if($modification_visa)
@@ -233,9 +279,9 @@
                                                                 elseif ($requests->process_name == 'modification of emirates Id') {
                                                                     $modification_emirates = App\Models\ModificationVisaEmiratesId::where('employee_id', $user_id)
                                                                     ->where('process_name', 'modification of emirates Id')
-                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
-                                                                        $query->where('company_id', $company_id)
-                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->orWhere('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
                                                                     })
                                                                     ->first();
                                                                             if($modification_emirates)
@@ -245,9 +291,9 @@
                                                                      }
                                                                 elseif ($requests->process_name == 'visa cancellation') {
                                                                     $visa_cancellation = App\Models\VisaCancelation::where('employee_id', $user_id)
-                                                                    ->where(function ($query) use ($company_id, $dependent_id) {
-                                                                        $query->where('company_id', $company_id)
-                                                                            ->orWhere('dependent_id', $dependent_id);
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
                                                                     })
                                                                     ->first();
                                                                             if($visa_cancellation)
@@ -256,7 +302,7 @@
                                                                     }
                                                                      }
                                                                 elseif ($requests->process_name == 'permit cancellation') {
-                                                                    $permit_cancellation = App\Models\PermitCancellation::where('employee_id', $user_id)->where('company_id', $company_id)->first();
+                                                                    $permit_cancellation = App\Models\PermitCancellation::where('employee_id', $user_id)->where('company_id', $id)->first();
                                                                             if($permit_cancellation)
                                                                     {
                                                                         $con = "yes";
