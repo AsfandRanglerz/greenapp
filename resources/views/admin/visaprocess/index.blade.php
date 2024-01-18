@@ -37,9 +37,10 @@
                                             <th>Company Name</th>
                                             <th>Employee Name</th>
                                             <th>Dependent Name</th>
-                                            <th>Process Request</th>
+                                            <th>Request Name</th>
+                                            <th>Request Of</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th class='pl-5 pr-5'>Action</th>
                                             {{-- <th scope="col">Action</th> --}}
                                             {{-- <th scope="col">Action</th> --}}
                                         </tr>
@@ -48,14 +49,15 @@
                                         @foreach ($visa_requests as $requests)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $requests->company ? $requests->company->name : 'N/A' }}</td>
+                                                <td>{{ $requests->company ? $requests->company->name : '--' }}</td>
                                                 <td>{{ $requests->user->name }}</td>
-                                                <td>{{ $requests->dependent ? $requests->dependent->name : 'N/A' }}</td>
+                                                <td>{{ $requests->dependent ? $requests->dependent->name : '--' }}</td>
                                                 <td>{{ $requests->process_name }} <br>
                                                 @if ($requests->sub_type)
                                                        <span class='text-danger'>({{$requests->sub_type}})</span>
                                                 @endif
                                                 </td>
+                                                <td>{{ $requests->request_for }}</td>
                                                 <td>
                                                     @php
                                                                 $user_id = $requests->user->id;
@@ -308,19 +310,32 @@
                                                                         $con = "yes";
                                                                     }
                                                                      }
+                                                                 elseif ($requests->user->emp_type == 'self' && $requests->request_for == 'individual') {
+                                                                    $golden_visa = App\Models\IndividualGoldenVisa::
+                                                                    where('individual_id', $user_id)
+                                                                    ->first();
+                                                                            if($golden_visa)
+                                                                    {
+                                                                        $con = "yes";
+                                                                    }
+                                                                 }
                                                             @endphp
                                                                 @if($con == 'yes')
                                                                      @if ($requests->company)
                                                                         <a href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='text-success'>View</a>
                                                                      @elseif($requests->dependent)
                                                                         <a href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-success'>View</a>
-                                                                     @endif
+                                                                    @elseif($requests->user->emp_type == 'self')
+                                                                        <a href="{{route('individual-visa-process-start',['individual_id'=>$requests->user->id,'request_id'=>$requests->id])}}"  class='text-success'>View</a>
+                                                                    @endif
                                                                 @else
                                                                      @if ($requests->company)
                                                                         <a class="btn btn-primary"
                                                                         href="{{ route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}">Start Process</a>
                                                                     @elseif($requests->dependent)
                                                                         <a href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='btn btn-primary'>Start Process</a>
+                                                                    @elseif($requests->user->emp_type == 'self')
+                                                                        <a href="{{route('individual-visa-process-start',['individual_id'=>$requests->user->id,'request_id'=>$requests->id])}}" class='btn btn-primary'>Start Process</a>
                                                                     @endif
                                                                 @endif
                                                             @endif

@@ -72,7 +72,7 @@
                                                 <td>{{ $employee->work_permit_number }}</td>
                                                 <td>{{ $employee->person_code }}</td> --}}
                                                 <td>
-                                                    <a href="{{ route('individual-visa-process-index', $employee->id) }}">View</a>
+                                                    <a href="{{ route('individual-visa-process-start', ['individual_id'=>$employee->id,'request_id'=>0]) }}">View</a>
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('individual-dependent-index', $employee->id) }}">View</a>

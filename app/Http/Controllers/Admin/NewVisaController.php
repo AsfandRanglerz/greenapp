@@ -17,6 +17,7 @@ use App\Models\PermitCancellation;
 use App\Models\SponsaredBySomeOne;
 use App\Models\VisaProcessRequest;
 use App\Http\Controllers\Controller;
+use App\Models\IndividualDependent;
 use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -76,21 +77,49 @@ class NewVisaController extends Controller
         $status = VisaProcessRequest::find($id);
         $company_id = $status->company_id;
         $employee_id = $status->employee_id;
+        $dependent_id = $status->dependent_id;
         $status = VisaProcessRequest::find($id);
 
         $company = Company::find($company_id);
         $employee = User::find($employee_id);
+        $dependent = IndividualDependent::find($dependent_id);
         // return $status;
         $status->update([
             'status' => 'approved',
         ]);
-        $notify = AdminNotification::create([
-            'company_id' => $status->company_id,
-            'to_all' => 'Companies',
-            'title' => 'Visa Notification',
-            'message' => 'The request of '. $status->process_name .' '.'('.($status->sub_type ? $status->sub_type : '').')'.' has been approved
-            against '.$employee->name.'.',
-        ]);
+        // notify to company of his employee
+        if($company_id && $employee_id)
+        {
+            $notify = AdminNotification::create([
+                'company_id' => $status->company_id,
+                'to_all' => 'Companies',
+                'title' => 'Visa Notification',
+                'message' => 'The request of '. $status->process_name .' '.'('.($status->sub_type ? $status->sub_type : '').')'.' has been approved
+                against '.$employee->name.'<a href="' . route('company.employee.visa.process',$employee->id) . '">' . ' click here. ' . '</a>.',
+            ]);
+        }
+        // notify to individual of his dependent
+        elseif($employee_id && $dependent_id)
+        {
+            $notify = AdminNotification::create([
+                'employee_id' => $status->employee_id,
+                'to_all' => 'Individuals',
+                'title' => 'Visa Notification',
+                'message' => 'The request of '. $status->process_name . ' has been approved
+                 against '.$dependent->name.'<a href="' . route('user.dependent-visa-process',$dependent->id) . '">' . ' click here. ' . '</a>.',
+            ]);
+        }
+        // notify to individual
+        elseif($employee_id && VisaProcessRequest::where('employee_id',$employee_id)->where('request_for','individual')->first())
+        {
+            $notify = AdminNotification::create([
+                'employee_id' => $status->employee_id,
+                'to_all' => 'Individuals',
+                'title' => 'Visa Notification',
+                'message' => 'Your request of '. $status->process_name . ' has been approved by admin.'.'<a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Request approved successfully.');
         // return view('admin.visaprocess.newvisa');
     }

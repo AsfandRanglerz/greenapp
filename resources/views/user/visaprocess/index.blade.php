@@ -139,80 +139,163 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <input type="hidden" value='golden visa individual' name='process_name'>
+                                            <input hidden  value='golden visa' name='process_name'>
+                                            <input hidden  value='individual' name='sub_type'>
+                                            @if(!$visa_data)
                                             <button class='btn btn-success px-5 py-2' type="submit">Start
                                                 Process</button>
+                                            @endif
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
-                                                <input type="text" class="form-control" id="visa-1-id"
-                                                    placeholder="...">
+                                                @if($visa_data && $visa_data['biometric_status'] =='Approved')
+                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    disabled placeholder="..." value="process completed" >
+                                                @elseif($visa_data )
+                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    disabled placeholder="..." value="process started" >
+                                                @else
+                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    disabled placeholder="..." value="not started" >
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        @php
+                            $authId = Auth::guard('web')->id();
+                        @endphp
+                        @if($visa_data)
                         <div class="tab-pane fade" id="v-pills-entry" role="tabpanel"
                             aria-labelledby="v-pills-entry-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('user.visa-process-update',$authId)}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='entry_visa' name='entry_visa' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Entry Visa</h6>
                                     <div class="row align-items-end fine-select-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-7">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-7"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->enter_visa_ts_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-8">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-8"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->enter_visa_ts_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-9">Status</label>
                                                 <input class='m-0 form-control entry-visa-status' id="visa-id-9"
-                                                    type="text" />
+                                                disabled value="{{$visa_data->enter_visa_status}}"  type="text" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-10">Date</label>
-                                                <input type="date" class="form-control" id="visa-id-10"
-                                                    placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-10"
+                                                disabled value="{{$visa_data->enter_visa_date}}"   placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                <label for="#">{{$visa_data->enter_visa_file_name}}</label>
+                                                @php
+                                                $file_name = $visa_data->enter_visa_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->enter_visa_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->enter_visa_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->enter_visa_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
+                                        @if($visa_data['enter_visa_status'] == 'Approved' || $visa_data['enter_visa_status'] == 'Skip')
+                                        <div class="col-xl-6 col-lg-12 col-md-6  ">
+                                            <div class="form-group">
+                                                <label for="visa-id-11">Are u inside the country?</label>
+                                                <input type="text" class="form-control" id="visa-id-8"
+                                                disabled value="{{$visa_data->enter_visa_over_sf}}" placeholder="...">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-12 col-md-6  ">
+                                            <div class="form-group">
+                                                <label for="visa-id-12">Over Stay Fines?</label>
+                                                <input type="text" class="form-control" id="visa-id-8"
+                                                disabled value="{{$visa_data->enter_visa_over_sf}}" placeholder="...">
+                                            </div>
+                                        </div>
+
+
+                                        @php
+                                        $file_name = $visa_data->enter_visa_osf_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($visa_data->enter_visa_osf_file)
+                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->enter_visa_osf_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                    style="height: 50px;width:50px">
+                                            @else
+                                                <img src="{{ asset('' . '/' . $visa_data->enter_visa_osf_file) }}"
+                                                    style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
                                                 <label for="visa-id-11">Are u inside the country?</label>
-                                                <select class="form-control entry-visa-select" id="visa-id-11">
+                                                <select class="form-control entry-visa-select" id="visa-id-11" name="enter_visa_country">
                                                     <option selected disabled>select status</option>
-                                                    <option value='yes'>Yes</option>
-                                                    <option value='no'>No</option>
+                                                    <option value='yes' {{$visa_data['enter_visa_country'] == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                    <option value='no' {{$visa_data['enter_visa_country'] == 'no' ? 'selected' : '' }}>No</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
                                             <div class="form-group">
                                                 <label for="visa-id-12">Over Stay Fines?</label>
-                                                <select class="form-control fine-select" id="visa-id-12">
+                                                <select class="form-control fine-select" id="visa-id-12" name="enter_visa_over_sf">
                                                     <option selected disabled>Select fine</option>
-                                                    <option value='yes'>Yes</option>
-                                                    <option value='no'>No</option>
+                                                    <option value='yes' {{$visa_data['enter_visa_over_sf'] == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                    <option value='no' {{$visa_data['enter_visa_over_sf'] == 'no' ? 'selected' : '' }}>No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -220,32 +303,60 @@
                                     <div class="fine-files-container d-none ">
                                         <div class="row  align-items-end ">
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
-                                                    <label for='visa-id-13'>Upload file</label>
-                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                        <input type="file" class="form-control" id='visa-id-13'
-                                                            name="file" style="line-height: 1"
-                                                            accept=".pdf,.doc,.excel">
-                                                        <div class="input-group-prepend">
-                                                            <small class="input-group-text"><span
-                                                                    class="fa fa-paperclip"></span></small>
+
+                                                    <div class="upload-file">
+                                                        <label for='visa-id-13'>Upload file</label>
+                                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                            <input type="file" class="form-control" id='visa-id-13'
+                                                                name="enter_visa_osf_file" style="line-height: 1"
+                                                                accept=".pdf,.doc,.excel">
+                                                            <div class="input-group-prepend">
+                                                                <small class="input-group-text"><span
+                                                                        class="fa fa-paperclip"></span></small>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+
+                                                @php
+                                                $file_name = $visa_data->enter_visa_osf_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->enter_visa_osf_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->enter_visa_osf_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->enter_visa_osf_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($visa_data['enter_visa_status'] == 'Reject' || $visa_data['enter_visa_status'] == 'UnderProcess')
                                     <div class="col-12 text-center">
-                                        <button class='btn btn-success px-5 py-2'>Submit</button>
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                     </div>
+                                    @endif
+
                                 </form>
                             </div>
 
 
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-change-visa" role="tabpanel"
                             aria-labelledby="v-pills-change-visa-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -256,45 +367,67 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-14">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-14"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->change_of_visa_tno}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-15">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-15"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->change_of_visa_tfee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-16">Status</label>
                                                 <input class='m-0 form-control entry-visa-status' id="visa-id-16"
-                                                    type="text" />
+                                                disabled value="{{$visa_data->change_of_visa_status}}" type="text" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-17">Date</label>
-                                                <input type="date" class="form-control" id="visa-id-17"
-                                                    placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-17"
+                                                disabled value="{{$visa_data->change_of_visa_date}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                <label for="#">{{$visa_data->change_of_visa_file_name}}</label>
+                                                @php
+                                                $file_name = $visa_data->change_of_visa_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->change_of_visa_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->change_of_visa_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->change_of_visa_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
-                                        <div class="col-12 text-center">
+                                        {{-- <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </form>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-health-insurance" role="tabpanel"
                             aria-labelledby="v-pills-health-insurance-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -305,81 +438,105 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-18">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-18"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->health_insur_tran_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-19">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-19"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->health_insur_tran_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-20">Status</label>
                                                 <input class='m-0 form-control entry-visa-status' id="visa-id-20"
-                                                    type="text" />
+                                                disabled value="{{$visa_data->health_insur_status}}" type="text" />
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-21">Date</label>
-                                                <input type="date" class="form-control" id="visa-id-21"
-                                                    placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-21"
+                                                disabled value="{{$visa_data->health_insur_date}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                <label for="#">{{$visa_data->health_insur_file_name}}</label>
+                                                @php
+                                                $file_name = $visa_data->health_insur_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->health_insur_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->health_insur_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->health_insur_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
-                                        <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+
                                     </div>
                                 </form>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-medical-fitness" role="tabpanel"
                             aria-labelledby="v-pills-medical-fitness-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('user.visa-process-update',$authId)}}"
+                                class='py-2' method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" value='medical' name='medical' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Medical Fitness</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-22">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-22"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->medical_fitness_tno}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-23">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-23"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->medical_fitness_tfee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-24">Status</label>
-                                            <input class='form-control m-0' placeholder='...' id="visa-id-24">
+                                            <input class='form-control m-0' disabled value="{{$visa_data->medical_fitness_status}}" placeholder='...' id="visa-id-24">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-25">Date</label>
-                                                <input type="date" class="form-control" id="visa-id-25"
-                                                    placeholder="...">
+                                                <input type="text" class="form-control" id="visa-id-25"
+                                                    disabled value="{{$visa_data->medical_fitness_date}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                            @if(!($visa_data['medical_fitness_status'] == 'Approved' || $visa_data['medical_fitness_status'] == 'Skip'))
                                             <div class="upload-file">
                                                 <label for='visa-id-27'>Upload Medical</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa-id-27' name="file"
+                                                    <input type="file" class="form-control" id='visa-id-27' name="medical_fitness_file"
                                                         style="line-height: 1" accept=".pdf,.doc,.excel">
                                                     <div class="input-group-prepend">
                                                         <small class="input-group-text"><span
@@ -387,18 +544,41 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href=""><img class="upload-img"
-                                                    src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                    alt=""></a>
+                                            @endif
+                                            @php
+                                            $file_name = $visa_data->medical_fitness_file;
+                                            $ext = explode('.', $file_name);
+                                            @endphp
+                                            @if ($visa_data->medical_fitness_file)
+                                            <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->medical_fitness_file) }}">
+                                                @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                @else
+                                                    <img src="{{ asset('' . '/' . $visa_data->medical_fitness_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                @endif
+                                            </a>
+                                            @endif
                                         </div>
                                         <div class="col-12">
-                                            <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                            <button class='btn btn-success d-block mx-auto px-5 py-2' type="submit">Add</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
 
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-residency-id" role="tabpanel"
                             aria-labelledby="v-pills-residency-id-tab">
                             <div class='rounded p-3 light-box-shadow'>
@@ -409,34 +589,55 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-28">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-28"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->emirates_tran_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-29">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-29"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->emirates_tran_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-31">Status</label>
-                                            <input class='form-control m-0' type="text" placeholder="..."
+                                            <input class='form-control m-0' type="text" disabled value="{{$visa_data->emirates_status}}" placeholder="..."
                                                 id="visa-id-31" />
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-30">Date</label>
                                                 <input type="date" class="form-control" id="emirates-transaction-date"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->emirates_date}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                <label for="#">{{$visa_data->emirates_file_name}}</label>
+                                                @php
+                                                $file_name = $visa_data->emirates_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->emirates_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->emirates_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->emirates_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -449,33 +650,54 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-32">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-id-32"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->residency_tran_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-33">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-id-33"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->residency_tran_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-34">Status</label>
-                                            <input class='form-control m-0' type="text" placeholder="...."
+                                            <input class='form-control m-0' type="text" disabled value="{{$visa_data->residency_status}}" placeholder="...."
                                                 id="visa-id-34">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-35">Date</label>
-                                                <input type="date" class="form-control" id="visa-id-35">
+                                                <input type="text" disabled value="{{$visa_data->residency_date}}" class="form-control" id="visa-id-35">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">Attachment</label>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                <label for="#">{{$visa_data->residency_file_name}}</label>
+                                                @php
+                                                $file_name = $visa_data->residency_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($visa_data->residency_file)
+                                                <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->residency_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                    @else
+                                                        <img src="{{ asset('' . '/' . $visa_data->residency_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -484,55 +706,71 @@
 
 
                         </div>
+
                         <div class="tab-pane fade" id="v-pills-biometric" role="tabpanel"
                             aria-labelledby="v-pills-biometric-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="" class='py-2'>
+                                <form action="{{route('user.visa-process-update',$authId)}}"
+                                    class='py-2' method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" value='biometric' name='biometric' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Biometric</h6>
                                     <div class="row biometric-file-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-37-id">Transaction No:</label>
                                                 <input type="text" class="form-control" id="visa-37-id"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->biometric_tranc_no}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-38-id">Transaction Fee</label>
                                                 <input type="text" class="form-control" id="visa-38-id"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->biometric_tranc_fee}}" placeholder="...">
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-38-id">Status</label>
                                             <input class='form-control m-0' id="visa-38-id" type="text"
-                                                placeholder="..." />
+                                                disabled value="{{$visa_data->biometric_status}}" placeholder="..." />
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-39-id">Date</label>
                                                 <input type="date" class="form-control" id="visa-39-id"
-                                                    placeholder="...">
+                                                    disabled value="{{$visa_data->biometric_date}}" placeholder="...">
                                             </div>
                                         </div>
+                                        @if($visa_data['biometric_status'] =='Approved' || $visa_data['biometric_status'] =='Skip')
+                                            <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
+                                                <div class="form-group">
+                                                    <label for="visa-40-id">Biometric</label>
+                                                    <input type="text" class="form-control" id="visa-39-id"
+                                                    disabled value="{{$visa_data->employee_biometric}}" placeholder="...">
+                                                </div>
+                                            </div>
+                                        @else
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="visa-40-id">Biometric</label>
-                                                <select class="form-control biometric-select" id="visa-40-id">
+                                                <select class="form-control biometric-select" id="visa-40-id" name="employee_biometric">
                                                     <option selected disabled>Select Option</option>
-                                                    <option value='required'>Required</option>
-                                                    <option value='not required'>Not Required</option>
+                                                    <option value='required' {{$visa_data['employee_biometric'] == 'required' ? 'selected' : '' }}>Required</option>
+                                                    <option value='not required' {{$visa_data['employee_biometric'] == 'not required' ? 'selected' : '' }}>Not Required</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
+                                        @endif
+
+                                        <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
                                             <div class="mb-3 align-items-end d-flex">
+                                                @if(!($visa_data['biometric_status'] =='Approved' || $visa_data['biometric_status'] =='Skip'))
                                                 <div class="upload-file">
                                                     <label for='visa-41-id'>Uplaod File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa-41-id'
-                                                            name="file" style="line-height: 1"
+                                                            name="biometric_file" style="line-height: 1"
                                                             accept=".pdf,.doc,.excel">
                                                         <div class="input-group-prepend">
                                                             <small class="input-group-text"><span
@@ -540,18 +778,46 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href=""><img class="upload-img"
-                                                        src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y="
-                                                        alt=""></a>
+                                                @endif
+                                                  @php
+                                                        $file_name = $visa_data->biometric_file;
+                                                        $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($visa_data->biometric_file)
+                                                        <a class="upload-img" target="_black" href="{{ asset('' . '/' . $visa_data->biometric_file) }}">
+                                                            @if ($ext[1] == 'pdf')
+                                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'pptx')
+                                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                            @else
+                                                                <img src="{{ asset('' . '/' . $visa_data->biometric_file) }}"
+                                                                    style="height: 50px;width:50px">
+                                                            @endif
+                                                        </a>
+                                                        @endif
                                             </div>
                                         </div>
-                                        <div class="col-12 text-center">
-                                            <button class='btn btn-success px-5 py-2'>Submit</button>
-                                        </div>
+                                        @if(!($visa_data['biometric_status'] =='Approved' || $visa_data['biometric_status'] =='Skip'))
+                                            <div class="col-12 text-center">
+                                                <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                            </div>
+                                        @endif
+
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        @endif
+
+
                     </div>
                 </div>
             </div>

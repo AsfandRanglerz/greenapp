@@ -12,6 +12,7 @@ use App\Models\AdminNotification;
 use App\Models\VisaProcessRequest;
 use App\Models\IndividualDependent;
 use App\Http\Controllers\Controller;
+use App\Models\IndividualGoldenVisa;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ModificationVisaEmiratesId;
@@ -30,11 +31,394 @@ class IndividualVisaProcess extends Controller
         return view('admin.self-user.dependents.visaprocess.visaprocess', compact('ids', 'new_visa', 'renewal_process', 'modification_visa', 'modification_emirates', 'visa_cancellation'));
     }
 
-    public function visa_process_individual_by_admin()
+    public function visa_process_individual_by_admin($id)
     {
-        return view('admin.self-user.visaprocess.individualvisa');
+        $visa_data = IndividualGoldenVisa::where('individual_id',$id)->first();
+        return view('admin.self-user.visaprocess.individualvisa',compact('visa_data'));
     }
 
+    // start individual visa process
+    public function start_individual_process(Request $request ,$individual_id,$request_id)
+    {
+         $name = VisaProcessRequest::where('id', $request_id)->where('request_for','individual')->value('process_name');
+         $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
+         if($name == 'golden visa')
+         {
+            if(!$visa_data)
+            {
+               $visa_data = IndividualGoldenVisa::create([
+                   'individual_id'=>$individual_id,
+               ]);
+                 $notify = AdminNotification::create([
+                       'employee_id' => $individual_id,
+                       'to_all' => 'Individuals',
+                       'title' => 'Visa Notification',
+                       'message' => 'Your '. $name.' '.'process has been started '.' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                   ]);
+            }
+         }
+         return view('admin.self-user.visaprocess.individualvisa',compact('visa_data','individual_id'));
+    }
+
+    // admin start visa process
+    public function admin_starts_individual_visa_process(Request $request ,$individual_id)
+    {
+         $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
+            if(!$visa_data)
+            {
+               $visa_data = IndividualGoldenVisa::create([
+                   'individual_id'=>$individual_id,
+               ]);
+                 $notify = AdminNotification::create([
+                       'employee_id' => $individual_id,
+                       'to_all' => 'Individuals',
+                       'title' => 'Visa Notification',
+                       'message' => 'Your Golden Visa process has been started by Admin '.' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                   ]);
+            }
+         return view('admin.self-user.visaprocess.individualvisa',compact('visa_data','individual_id'));
+    }
+
+    // add data against individual
+    public function add_individual_process_data(Request $request ,$individual_id)
+    {
+        $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
+        // return [$visa_data ? 'yes':'no'];
+        if ($request->input('entry_visa') == 'entry_visa') {
+            $file = Null;
+            if ($request->hasFile('enter_visa_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_data->enter_visa_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('enter_visa_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+                // return $file;
+
+            } else {
+                $file = $visa_data->enter_visa_file;
+            }
+            $over_stay = NULL;
+            if ($request->hasFile('enter_visa_osf_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_data->over_stay_fines_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $over_stay = $request->file('enter_visa_osf_file');
+                $extension = $over_stay->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $over_stay->move('public/admin/assets/img/users', $filename);
+                $over_stay = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $over_stay = $visa_data->over_stay_fines_file;
+            }
+            if ($request->enter_visa_country == 'no') {
+                $over_stay = NULL;
+            }
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'enter_visa_file' => $file,
+                'enter_visa_osf_file' => $over_stay,
+                'enter_visa_status' => $request->enter_visa_status,
+                'enter_visa_file_name' => $request->enter_visa_file_name,
+                'enter_visa_ts_fee' => $request->enter_visa_ts_fee,
+                'enter_visa_date' => $request->enter_visa_date,
+                'enter_visa_ts_no' => $request->enter_visa_ts_no,
+                'enter_visa_over_sf' => $request->enter_visa_over_sf,
+                'enter_visa_country' => $request->enter_visa_country,
+            ]);
+            $status = NULL;
+            if ($request->enter_visa_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->enter_visa_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->enter_visa_status == 'Reject') {
+                $status = 'Reject';
+            }
+            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Entry Visa step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+        elseif ($request->input('change_of_visa') == 'change_of_visa') {
+            // return "ok";
+            $file = NULl;
+            if ($request->hasFile('change_of_visa_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_data->change_of_visa_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('change_of_visa_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $file = $visa_data->change_of_visa_file;
+            }
+            // return $request->change_of_visa_file;
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'change_of_visa_file' => $file,
+                'change_of_visa_status' => $request->change_of_visa_status,
+                'change_of_visa_file_name' => $request->change_of_visa_file_name,
+                'change_of_visa_tfee' => $request->change_of_visa_tfee,
+                'change_of_visa_date' => $request->change_of_visa_date,
+                'change_of_visa_tno' => $request->change_of_visa_tno,
+            ]);
+            $status = NULL;
+            if ($request->change_of_visa_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->change_of_visa_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->change_of_visa_status == 'Reject') {
+                $status = 'Reject';
+            }
+            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Change of Visa step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+        elseif ($request->input('health_insurance') == 'health_insurance') {
+
+            $file = NULl;
+            if ($request->hasFile('health_insur_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $visa_data->health_insur_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('health_insur_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $file = $visa_data->health_insur_file;
+            }
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'health_insur_file' => $file,
+                'health_insur_status' => $request->health_insur_status,
+                'health_insur_file_name' => $request->health_insur_file_name,
+                'health_insur_tran_fee' => $request->health_insur_tran_fee,
+                'health_insur_date' => $request->health_insur_date,
+                'health_insur_tran_no' => $request->health_insur_tran_no,
+            ]);
+            $status = NULL;
+            if ($request->health_insur_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->health_insur_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->health_insur_status == 'Reject') {
+                $status = 'Reject';
+            }
+            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Health Insurance step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+        elseif ($request->input('medical_fitness') == 'medical_fitness') {
+            // return $request;
+            $file = NULl;
+            if ($request->hasFile('medical_fitness_file')) {
+                $destination = 'public/admin/assets/img/users' . $visa_data->medical_fitness_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('medical_fitness_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $file = $visa_data->medical_fitness_file;
+            }
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'medical_fitness_file' => $file,
+                'medical_fitness_status' => $request->medical_fitness_status,
+                // 'medical_fitness_file_name' => $request->medical_fitness_file_name,
+                'medical_fitness_tfee' => $request->medical_fitness_tfee,
+                'medical_fitness_date' => $request->medical_fitness_date,
+                'medical_fitness_tno' => $request->medical_fitness_tno,
+            ]);
+            $status = NULL;
+            if ($request->medical_fitness_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->medical_fitness_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->medical_fitness_status == 'Reject') {
+                $status = 'Reject';
+            }
+            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Medical Fitness step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+        elseif ($request->input('emirates_residency_app') == 'emirates_residency_app') {
+            // return "working";
+            $e_status = NULL;
+            $r_status = NULL;
+            $file = NULl;
+            if ($request->hasFile('emirates_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $visa_data->emirates_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('emirates_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $file = $visa_data->emirates_file;
+            }
+            $rs_file = NULl;
+            if ($request->hasFile('residency_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $visa_data->residency_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $rs_file = $request->file('residency_file');
+                $extension = $rs_file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $rs_file->move('public/admin/assets/img/users', $filename);
+                $rs_file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $rs_file = $visa_data->residency_file;
+            }
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'emirates_file' => $file,
+                'emirates_status' => $request->emirates_status,
+                'emirates_file_name' => $request->emirates_file_name,
+                'emirates_tran_fee' => $request->emirates_tran_fee,
+                'emirates_date' => $request->emirates_date,
+                'emirates_tran_no' => $request->emirates_tran_no,
+                'residency_file' => $rs_file,
+                'residency_status' => $request->residency_status,
+                'residency_file_name' => $request->residency_file_name,
+                'residency_tran_fee' => $request->residency_tran_fee,
+                'residency_date' => $request->residency_date,
+                'residency_tran_no' => $request->residency_tran_no,
+            ]);
+            if ($request->emirates_status == 'Approved') {
+                $e_status = 'Approved';
+            } elseif ($request->emirates_status == 'Skip') {
+                $e_status = 'Skip';
+            } elseif ($request->emirates_status == 'Reject') {
+                $e_status = 'Reject';
+            }
+            if ($e_status === 'Approved' || $e_status === 'Skip' || $e_status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Emirates Id step of Golden Visa Process has been ' . $e_status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+
+            if ($request->residency_status == 'Approved') {
+                $r_status = 'Approved';
+            } elseif ($request->residency_status == 'Skip') {
+                $r_status = 'Skip';
+            } elseif ($request->residency_status == 'Reject') {
+                $r_status = 'Reject';
+            }
+            if ($r_status === 'Approved' || $r_status === 'Skip' || $r_status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Residency Application step of Golden Visa Process has been ' . $r_status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+        elseif ($request->input('biometric') == 'biometric') {
+            // return $request;
+            $status = NULL;
+            $file = NULL;
+            if ($request->hasFile('biometric_file')) {
+                // return "ok";
+                $destination = 'public/admin/assets/img/users' . $visa_data->biometric_file;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('biometric_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('public/admin/assets/img/users', $filename);
+                $file = 'public/admin/assets/img/users/' . $filename;
+            } else {
+                $file = $visa_data->biometric_file;
+            }
+            $visa_data->update([
+                'individual_id'=>$individual_id,
+                'biometric_file' => $file,
+                'biometric_status' => $request->biometric_status,
+                'employee_biometric' => $request->employee_biometric,
+                'biometric_tranc_fee' => $request->biometric_tranc_fee,
+                'biometric_date' => $request->biometric_date,
+                'biometric_tranc_no' => $request->biometric_tranc_no,
+            ]);
+            if($request->biometric_status == 'Approved')
+            {
+                $visa_data->update([
+                    'status'=> 'completed',
+                ]);
+            }
+            if ($request->biometric_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->biometric_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->biometric_status == 'Reject') {
+                $status = 'Reject';
+            }elseif ($request->biometric_status == 'Hold') {
+                $status = 'Hold';
+            }
+            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+                $notify = AdminNotification::create([
+                    'employee_id' => $individual_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that your Biometric step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            if ($request->biometric_status == "Approved") {
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
+            }
+            return redirect()->back()->with('success', 'Data Added Successfully.');
+        }
+    }
+
+    // admin start visa process of dependents by himself
     public function visa_process_by_admin(Request $request ,$user_id ,$dependent_id)
     {
         // return "ok";
@@ -125,6 +509,7 @@ class IndividualVisaProcess extends Controller
         return view('admin.self-user.dependents.visaprocess.visaprocess', compact('ids', 'new_visa', 'renewal_process', 'modification_visa', 'modification_emirates', 'visa_cancellation'));
     }
 
+    // admin start dependent process by accepting request
     public function start_dependent_process(Request $request ,$request_id,$user_id ,$dependent_id)
     {
         $dependent = IndividualDependent::find($dependent_id);

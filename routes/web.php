@@ -203,7 +203,13 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 
 
-    Route::get('individual-visa-process-index', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
+    Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
+
+    Route::post('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
+
+    Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')/*->middleware('permission:Receipt')*/;
+
+    Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')/*->middleware('permission:Receipt')*/;
 
 
     // Services Response
@@ -462,6 +468,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     // individual visa process
     Route::resource('visa-process','IndividualVisaProcessController');
+
+    Route::post('visa-process/{id}','IndividualVisaProcessController@update')->name('visa-process-update');
 
     Route::post('individual-visa-process/{id}','IndividualVisaProcessController@send_request')->name('individual-visa-process');
 
