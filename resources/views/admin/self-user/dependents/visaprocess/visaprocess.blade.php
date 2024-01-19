@@ -2826,7 +2826,7 @@
                                             </div>
                                             <div class="form-group col-12 d-none status-select-comment">
                                                 <label for='new-visa-11'>Comments</label>
-                                                <textarea type="text" id='new-visa-11' name="waiting_fappro_reason"
+                                                <textarea type="text" id='new-visa-11' name="application_reject_reason"
                                                     name="application_reject_reason" value="{{$modification_visa->application_reject_reason}}" placeholder="Enter Your Comments ..." class="form-control"
                                                     rows="5"></textarea>
                                                     @php
@@ -3000,9 +3000,9 @@
                                             </div>
                                             <div class="form-group col-12 d-none status-select-comment">
                                                 <label for='new1-visa-11'>Comments</label>
-                                                <textarea type="text" id='new1-visa-11' name="waiting_fappro_reason"
+                                                <textarea type="text" id='new1-visa-11' name="application_reject_reason"
                                                     placeholder="Enter Your Comments ..." class="form-control"
-                                                    rows="5"></textarea>
+                                                    rows="5">{{$modification_emirates->application_reject_reason}}</textarea>
                                                     @php
                                                     $file_name = $modification_emirates->application_reject_reason_file;
                                                     $ext = explode('.', $file_name);
@@ -3111,7 +3111,7 @@
                             Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-residency-cancel-tab" data-toggle="pill"
                             href="#v-pills-residency-cancel" role="tab" aria-controls="v-pills-residency-cancel"
-                            aria-selected="false">Residency  Cancelation Application</a>
+                            aria-selected="false">Residency Cancelation Application</a>
                     </div>
                 </div>
                 <div class="col-9">
@@ -3160,7 +3160,7 @@
                                         class='py-2'>
                                         @csrf
                                         <input type="hidden" value="residency" name="residency">
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Residency Application</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>Residency Canceletion Application</h6>
                                         <div class="row align-items-end fine-select-container">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
@@ -3173,7 +3173,7 @@
                                                 <div class="form-group mb-3">
                                                     <label for="new-visa-id-15">Transaction Fee</label>
                                                     <input type="text" class="form-control" id="new-visa-id-15"
-                                                        value="{{$visa_cancellation->residency_app_tranc_no}}" name="residency_app_tranc_no" placeholder="...">
+                                                        value="{{$visa_cancellation->residency_app_tranc_fee}}" name="residency_app_tranc_fee" placeholder="...">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">

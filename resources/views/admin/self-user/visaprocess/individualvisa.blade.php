@@ -1722,6 +1722,8 @@
                                                         @endif
                                                     </a>
                                                     @endif
+                                                    {{-- <a class="btn btn-success" href="{{ route('user-document.download', $ext[1]) }}"><span
+                                                        class="fa fa-download text-white"></span></a> --}}
                                                 </div>
                                             </div>
                                             <div class="col-12 text-center">

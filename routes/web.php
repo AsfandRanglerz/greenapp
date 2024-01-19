@@ -452,6 +452,14 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::post('individual-dependent-visa-request/{id}','IndividualDependentVisaController@send_request')->name('dependent-visa-request');
 
+    Route::post('individual-dependent-entry-visa/{id}','IndividualDependentVisaController@entry_visa_updation')->name('individual-dependent-entry-visa');
+
+    Route::post('individual-dependent-renewal-process/{id}','IndividualDependentVisaController@renewal_process_updation')->name('individual-dependent-renewal-process');
+
+    Route::post('individual-dependent-modification-visa-process/{id}','IndividualDependentVisaController@modification_visa_updation')->name('individual-dependent-modification-visa-process');
+
+    Route::post('individual-dependent-modification-emirates-process/{id}','IndividualDependentVisaController@modification_emirates_updation')->name('individual-dependent-modification-emirates-process');
+
     // Receipts
 
     Route::get('get-receipts','UserReceiptsController@index')->name('get-receipts');

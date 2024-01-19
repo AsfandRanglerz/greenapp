@@ -184,7 +184,17 @@
                                                                     {
                                                                         $status = "yes";
                                                                     }
-                                                                     }
+                                                                     }elseif ($requests->user->emp_type == 'self' && $requests->request_for == 'individual') {
+                                                                    $golden_visa = App\Models\IndividualGoldenVisa::
+                                                                    where('individual_id', $user_id)
+                                                                    ->where('status','completed')
+                                                                    ->first();
+                                                                            if($golden_visa)
+                                                                    {
+                                                                        $status = "yes";
+
+                                                                    }
+                                                                 }
                                                     @endphp
                                                             @if($status == 'yes')
                                                                 <div class='badge p-2 badge-shadow bg-dark text-white'>Completed</div>

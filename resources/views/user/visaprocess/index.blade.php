@@ -159,7 +159,6 @@
                                                     <input type="text" class="form-control" id="visa-1-id"
                                                     disabled placeholder="..." value="not started" >
                                                 @endif
-
                                             </div>
                                         </div>
                                     </div>

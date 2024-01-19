@@ -620,6 +620,7 @@ class IndividualVisaProcess extends Controller
     {
         $user = User::find($user_id);
         $new_visa = NewVisaProcess::find($process_id);
+        $dependent = IndividualDependent::find($dependent_id);
         if ($request->input('entry_visa') == 'step1') {
             // return $request;
             // return "ok";
@@ -669,22 +670,25 @@ class IndividualVisaProcess extends Controller
                 'enter_visa_over_sf' => $request->enter_visa_over_sf,
                 'enter_visa_country' => $request->enter_visa_country,
             ]);
-            // $status = NULL;
-            // if ($request->enter_visa_status == 'Approved') {
-            //     $status = 'Approved';
-            // } elseif ($request->enter_visa_status == 'Skip') {
-            //     $status = 'Skip';
-            // } elseif ($request->enter_visa_status == 'Reject') {
-            //     $status = 'Reject';
-            // }
-            // if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->enter_visa_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->enter_visa_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->enter_visa_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->enter_visa_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('change_of_visa') == 'change_of_visa') {
@@ -714,22 +718,26 @@ class IndividualVisaProcess extends Controller
                 'change_of_visa_date' => $request->change_of_visa_date,
                 'change_of_visa_tno' => $request->change_of_visa_tno,
             ]);
-            // $status = NULL;
-            // if ($request->change_of_visa_status == 'Approved') {
-            //     $status = 'Approved';
-            // } elseif ($request->change_of_visa_status == 'Skip') {
-            //     $status = 'Skip';
-            // } elseif ($request->change_of_visa_status == 'Reject') {
-            //     $status = 'Reject';
-            // }
-            // if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Visa status step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->change_of_visa_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->change_of_visa_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->change_of_visa_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->change_of_visa_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            // return $status;
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Change of Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('health_insurance') == 'health_insurance') {
@@ -759,22 +767,25 @@ class IndividualVisaProcess extends Controller
                 'health_insur_date' => $request->health_insur_date,
                 'health_insur_tran_no' => $request->health_insur_tran_no,
             ]);
-            // $status = NULL;
-            // if ($request->health_insur_status == 'Approved') {
-            //     $status = 'Approved';
-            // } elseif ($request->health_insur_status == 'Skip') {
-            //     $status = 'Skip';
-            // } elseif ($request->health_insur_status == 'Reject') {
-            //     $status = 'Reject';
-            // }
-            // if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Health Insurance step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->health_insur_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->health_insur_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->health_insur_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->health_insur_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Health Insurance step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('medical_fitness') == 'medical_fitness') {
@@ -803,22 +814,25 @@ class IndividualVisaProcess extends Controller
                 'medical_fitness_date' => $request->medical_fitness_date,
                 'medical_fitness_tno' => $request->medical_fitness_tno,
             ]);
-            // $status = NULL;
-            // if ($request->medical_fitness_status == 'Approved') {
-            //     $status = 'Approved';
-            // } elseif ($request->medical_fitness_status == 'Skip') {
-            //     $status = 'Skip';
-            // } elseif ($request->medical_fitness_status == 'Reject') {
-            //     $status = 'Reject';
-            // }
-            // if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Medical Fitness step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->medical_fitness_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->medical_fitness_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->medical_fitness_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->medical_fitness_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Medical Fitness step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('emirates_residency_app') == 'emirates_residency_app') {
@@ -871,37 +885,45 @@ class IndividualVisaProcess extends Controller
                 'residency_date' => $request->residency_date,
                 'residency_tran_no' => $request->residency_tran_no,
             ]);
-            // if ($request->emirates_status == 'Approved') {
-            //     $e_status = 'Approved';
-            // } elseif ($request->emirates_status == 'Skip') {
-            //     $e_status = 'Skip';
-            // } elseif ($request->emirates_status == 'Reject') {
-            //     $e_status = 'Reject';
-            // }
-            // if ($e_status === 'Approved' || $e_status === 'Skip' || $e_status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Emirates ID step of New Visa Process has been ' . $e_status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->emirates_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->emirates_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->emirates_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->emirates_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Emirates ID step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
 
-            // if ($request->residency_status == 'Approved') {
-            //     $r_status = 'Approved';
-            // } elseif ($request->residency_status == 'Skip') {
-            //     $r_status = 'Skip';
-            // } elseif ($request->residency_status == 'Reject') {
-            //     $r_status = 'Reject';
-            // }
-            // if ($r_status === 'Approved' || $r_status === 'Skip' || $r_status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Residency Application step of New Visa Process has been ' . $r_status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->residency_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->residency_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->residency_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->residency_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the  Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('biometric') == 'biometric') {
@@ -938,23 +960,25 @@ class IndividualVisaProcess extends Controller
                     'status'=> 'completed',
                 ]);
             }
-            // if ($request->biometric_status == 'Approved') {
-            //     $status = 'Approved';
-            // } elseif ($request->biometric_status == 'Skip') {
-            //     $status = 'Skip';
-            // } elseif ($request->biometric_status == 'Reject') {
-            //     $status = 'Reject';
-            // }elseif ($request->biometric_status == 'Hold') {
-            //     $status = 'Hold';
-            // }
-            // if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
-            //     $notify = AdminNotification::create([
-            //         'company_id' => $company_id,
-            //         'to_all' => 'Companies',
-            //         'title' => 'Visa Notification',
-            //         'message' => 'This is inform you that the Change of Employee Biometric step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
-            //     ]);
-            // }
+            $status = NULL;
+            if ($request->biometric_status == 'Approved') {
+                $status = 'Approved';
+            } elseif ($request->biometric_status == 'Skip') {
+                $status = 'Skip';
+            } elseif ($request->biometric_status == 'Reject') {
+                $status = 'Reject';
+            }
+            elseif ($request->biometric_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if ($status) {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Biometric step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             if ($request->biometric_status == "Approved") {
                 return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
@@ -966,6 +990,7 @@ class IndividualVisaProcess extends Controller
     public function renewal_of_dependent(Request $request ,$user_id,$dependent_id,$process_id)
     {
         $user = User::find($user_id);
+        $dependent = IndividualDependent::find($dependent_id);
         $renewal_process = RenewalProcess::find($process_id);
         if ($request->input('medical_fitness') == 'medical_fitness') {
             $file = NULL;
@@ -993,29 +1018,31 @@ class IndividualVisaProcess extends Controller
                 'medical_fitness_tran_no' => $request->medical_fitness_tran_no,
                 'medical_fitness_st' => $request->medical_fitness_st,
             ]);
-            // $status = NULL;
-            // if($request->medical_fitness_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->medical_fitness_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->medical_fitness_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->medical_fitness_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->medical_fitness_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->medical_fitness_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Medical Fitness step of Renewal Visa Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
+            }elseif ($request->medical_fitness_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Medical Fitness step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('residency') == 'residency') {
@@ -1066,29 +1093,56 @@ class IndividualVisaProcess extends Controller
                 'renewal_tran_no' => $request->renewal_tran_no,
                 'renewal_file_name' => $request->renewal_file_name,
             ]);
-            // $status = NULL;
-            // if($request->residency_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->residency_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->residency_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->residency_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->residency_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->residency_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Residency step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
+            }elseif ($request->residency_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Residency step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            $status = NULL;
+            if($request->renewal_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->renewal_status == 'Skip')
+            {
+                $status = 'Skip';
+
+            }elseif($request->renewal_status == 'Reject')
+            {
+                $status = 'Reject';
+
+            }elseif ($request->renewal_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the  ID Renewal step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('biometric') == 'biometric') {
@@ -1118,34 +1172,31 @@ class IndividualVisaProcess extends Controller
                 'emp_biometric_tranc_no' => $request->emp_biometric_tranc_no,
                 'emp_biometric' => $request->emp_biometric,
             ]);
-            // $status = NULL;
-            // if($request->emp_biometric_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->emp_biometric_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->emp_biometric_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->emp_biometric_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->emp_biometric_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->emp_biometric_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }elseif($request->emp_biometric_status == 'Hold')
-            // {
-            //     $status = 'Hold';
-
-            // }
-
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject' || $status === 'Hold')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Employee Biometric step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
+            }elseif ($request->emp_biometric_status == 'UnderProcess') {
+                $status = 'UnderProcess';
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Biometric step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             if($request->emp_biometric_status == 'Approved')
             {
                 $renewal_process->update([
@@ -1159,6 +1210,8 @@ class IndividualVisaProcess extends Controller
     public function modification_visa_of_dependent(Request $request ,$user_id,$dependent_id,$process_id)
     {
         $user = User::find($user_id);
+        $dependent = IndividualDependent::find($dependent_id);
+
         $modify_visa = ModificationVisaEmiratesId::find($process_id);
         if ($request->input('application') == 'application') {
             // return $modify_visa;
@@ -1204,29 +1257,34 @@ class IndividualVisaProcess extends Controller
                 'application_reject_reason' => $request->application_reject_reason,
                 'application_reject_reason_file' => $reason_file,
             ]);
-            // $status = NULL;
-            // if($request->application_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->application_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->application_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->application_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->application_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->application_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Visa Modification step of Modification of Visa has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
+            }
+            elseif($request->application_status == 'UnderProcess')
+            {
+                $status = 'UnderProcess';
+
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                    'message' => 'This is inform you that the Waiting for Approval step of Modification of Visa has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             if($request->application_status == 'Approved')
             {
                 $modify_visa->update([
@@ -1239,7 +1297,9 @@ class IndividualVisaProcess extends Controller
 
     public function modification_emirates_dependent(Request $request ,$user_id,$dependent_id,$process_id)
     {
+        // return $request->application_reject_reason;
         $user = User::find($user_id);
+        $dependent = IndividualDependent::find($dependent_id);
         $emirates = ModificationVisaEmiratesId::find($process_id);
         if ($request->input('application') == 'application') {
             $file = NULL;
@@ -1281,35 +1341,40 @@ class IndividualVisaProcess extends Controller
                 'application_reject_reason' => $request->application_reject_reason,
                 'application_reject_reason_file' => $reason_file,
             ]);
-            // $status = NULL;
-            // if($request->application_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->application_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->application_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->application_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->application_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->application_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Modification of Emirates ID step of Modification of Emirates Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
-            // if($request->application_status == 'Approved')
-            // {
-            //     $emirates->update([
-            //         'status'=> 'completed',
-            //     ]);
-            // }
+            }
+            elseif($request->application_status == 'UnderProcess')
+            {
+                $status = 'UnderProcess';
+
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                     'message' => 'This is inform you that the the Waiting for Approval step of Modification of Emirates has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
+            if($request->application_status == 'Approved')
+            {
+                $emirates->update([
+                    'status'=> 'completed',
+                ]);
+            }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
     }
@@ -1317,9 +1382,10 @@ class IndividualVisaProcess extends Controller
     public function visa_cancellation_dependent(Request $request ,$user_id,$dependent_id,$process_id)
     {
         $user = User::find($user_id);
+        $dependent = IndividualDependent::find($dependent_id);
         $visa_cancellation = VisaCancelation::find($process_id);
         if ($request->input('residency') == 'residency') {
-            // return "ok";
+            // return  $request->residency_app_tranc_fee;
             $file = NULL;
             if ($request->hasfile('residency_app_file')) {
                 $destination = 'public/admin/assets/img/users' . $visa_cancellation->residency_app_file;
@@ -1345,29 +1411,34 @@ class IndividualVisaProcess extends Controller
                 'residency_app_tranc_no' => $request->residency_app_tranc_no,
                 'residency_app_file_name' => $request->residency_app_file_name,
             ]);
-            // $status = NULL;
-            // if($request->residency_app_status == 'Approved')
-            // {
-            //     $status = 'Approved';
-            // }
-            // elseif($request->residency_app_status == 'Skip')
-            // {
-            //     $status = 'Skip';
+            $status = NULL;
+            if($request->residency_app_status == 'Approved')
+            {
+                $status = 'Approved';
+            }
+            elseif($request->residency_app_status == 'Skip')
+            {
+                $status = 'Skip';
 
-            // }elseif($request->residency_app_status == 'Reject')
-            // {
-            //     $status = 'Reject';
+            }elseif($request->residency_app_status == 'Reject')
+            {
+                $status = 'Reject';
 
-            // }
-            // if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
-            // {
-            //     $notify = AdminNotification::create([
-            //         'company_id'=>$company_id,
-            //         'to_all'=>'Companies',
-            //         'title'=>'Visa Notification',
-            //         'message'=>'This is inform you that the Residency step of Visa Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
-            //     ]);
-            // }
+            }
+            elseif($request->application_status == 'UnderProcess')
+            {
+                $status = 'UnderProcess';
+
+            }
+            if($status)
+            {
+                $notify = AdminNotification::create([
+                    'employee_id' => $user_id,
+                    'to_all' => 'Individuals',
+                    'title' => 'Visa Notification',
+                     'message' => 'This is inform you that the Residency Cancelation Application step of Visa Cancelation has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                ]);
+            }
             if($request->residency_app_status == 'Approved')
             {
                 $visa_cancellation->update([
@@ -1378,5 +1449,10 @@ class IndividualVisaProcess extends Controller
         }
     }
 
+    // public function download($id)
+    // {
+    //     $path = public_path('admin/assets/img/users/' . $id);
+    //     return response()->download($path);
+    // }
 
 }
