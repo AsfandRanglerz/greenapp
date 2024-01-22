@@ -97,7 +97,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <!-- New Visa -->
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active parent-tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
                 <div class="col-3">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
@@ -150,13 +150,13 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
                                                 @if($visa_data && $visa_data['biometric_status'] =='Approved')
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
                                                     disabled placeholder="..." value="process completed" >
                                                 @elseif($visa_data )
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
                                                     disabled placeholder="..." value="process started" >
                                                 @else
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
                                                     disabled placeholder="..." value="not started" >
                                                 @endif
                                             </div>
@@ -195,7 +195,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-9">Status</label>
-                                                <input class='m-0 form-control entry-visa-status' id="visa-id-9"
+                                                <input class='m-0 form-control entry-visa-status status-container' id="visa-id-9"
                                                 disabled value="{{$visa_data->enter_visa_status}}"  type="text" />
                                             </div>
                                         </div>
@@ -379,7 +379,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-16">Status</label>
-                                                <input class='m-0 form-control entry-visa-status' id="visa-id-16"
+                                                <input class='m-0 form-control entry-visa-status status-container' id="visa-id-16"
                                                 disabled value="{{$visa_data->change_of_visa_status}}" type="text" />
                                             </div>
                                         </div>
@@ -450,7 +450,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-id-20">Status</label>
-                                                <input class='m-0 form-control entry-visa-status' id="visa-id-20"
+                                                <input class='m-0 form-control entry-visa-status status-container' id="visa-id-20"
                                                 disabled value="{{$visa_data->health_insur_status}}" type="text" />
                                             </div>
                                         </div>
@@ -521,7 +521,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-24">Status</label>
-                                            <input class='form-control m-0' disabled value="{{$visa_data->medical_fitness_status}}" placeholder='...' id="visa-id-24">
+                                            <input class='form-control m-0 status-container' disabled value="{{$visa_data->medical_fitness_status}}" placeholder='...' id="visa-id-24">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -600,7 +600,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-31">Status</label>
-                                            <input class='form-control m-0' type="text" disabled value="{{$visa_data->emirates_status}}" placeholder="..."
+                                            <input class='form-control m-0 status-container' type="text" disabled value="{{$visa_data->emirates_status}}" placeholder="..."
                                                 id="visa-id-31" />
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -661,7 +661,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-id-34">Status</label>
-                                            <input class='form-control m-0' type="text" disabled value="{{$visa_data->residency_status}}" placeholder="...."
+                                            <input class='form-control m-0 status-container' type="text" disabled value="{{$visa_data->residency_status}}" placeholder="...."
                                                 id="visa-id-34">
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -731,7 +731,7 @@
                                         </div>
                                         <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa-38-id">Status</label>
-                                            <input class='form-control m-0' id="visa-38-id" type="text"
+                                            <input class='form-control m-0 status-container' id="visa-38-id" type="text"
                                                 disabled value="{{$visa_data->biometric_status}}" placeholder="..." />
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -886,7 +886,60 @@
                 a.addClass('d-none');
             }
         });
+        if ($('.entry-visa-select').val() == 'yes') {
+            let a = $('.Over-stay-fine');
+            let fine_select = a.find('.fine-select');
+            let file_container = $('.fine-files-container');
+            a.removeClass('d-none');
+            if (fine_select.val() == 'yes') {
+                file_container.removeClass('d-none');
+            }
+            else {
+                file_container.addClass('d-none');
+            }
+        }
+        else if($('.entry-visa-select').val() == 'no'){
+            let a = $('.Over-stay-fine');
+             let fine_select = a.find('.fine-select');
+            let file_container = $('.fine-files-container');
+            a.addClass('d-none');
+            file_container.addClass('d-none');
+     }
+    $('.entry-visa-select').change(function () {
+        let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+        let fine_select = a.find('.fine-select');
+        let file_container = $('.fine-files-container');
+        if ($(this).val() == 'yes') {
+            a.removeClass('d-none');
+            if (fine_select.val() == 'yes') {
+                file_container.removeClass('d-none');
+            }
+        } else {
+            a.addClass('d-none');
+            file_container.addClass('d-none');
+        }
+    });
 
+        if($('.process-status-input').val()=='process started'){
+            function helper(){
+            $('.tab-pane').removeClass('active show');
+        }
+        let flag=false;
+        $('.status-container').each(function(){
+         let a=$(this).closest('.tab-pane').attr('aria-labelledby');
+            if($(this).val()!=='Approved' && $(this).val()!=='Skip' ){
+                 flag=true;
+                helper();
+            $('#'+a).click();
+            $('.parent-tab-pane').addClass('active show')
+            $(this).closest('.tab-pane').addClass('active show')
+            }
+            if(flag){
+                return false;
+            };
+        });
+        }
+        
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
             "pageLength": 10,

@@ -1976,7 +1976,7 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
-                                                <label for='visa1-95'>Upload ST & MB</label>
+                                                <label for='visa1-95'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa1-95'
                                                         name="signed_mb_file" style="line-height: 1"
@@ -2794,7 +2794,7 @@
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa1-135'>Upload ST & MB</label>
+                                                        <label for='visa1-135'>Upload File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa1-135'
                                                                 name="signed_mb_st_file" style="line-height: 1"
@@ -2921,8 +2921,8 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa1-139'>Upload ST &
-                                                            MB</label>
+                                                        <label for='visa1-139'>Upload File
+                                                            </label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
                                                                 id='visa1-139'
@@ -3414,7 +3414,7 @@
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa1-162'>Upload ST & MB</label>
+                                                        <label for='visa1-162'>Upload Signed MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
                                                                 id='visa1-162' name="signed_mb_st_file"
@@ -3535,7 +3535,7 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa1-166'>Upload ST & MB</label>
+                                                        <label for='visa1-166'>Upload File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
                                                                 id='visa1-166'
@@ -3874,7 +3874,7 @@
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa1-181'>Upload ST & MB</label>
+                                                        <label for='visa1-181'>Upload Signed MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa1-181'
                                                                 name="signed_mb_st_file" style="line-height: 1"
@@ -4073,7 +4073,7 @@
                                             <div
                                                 class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                 <div class="upload-file">
-                                                    <label for='visa2-3'>Upload</label>
+                                                    <label for='visa2-3'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa2-3'
                                                             name="waiting_for_approval_reason_file"
@@ -4215,7 +4215,7 @@
                                     Application</a>
                                 <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract2-tab"
                                     data-toggle="pill" href="#v-pills-modify-contract2" role="tab"
-                                    aria-controls="v-pills-modify-contract2" aria-selected="false">Uplaod Signed
+                                    aria-controls="v-pills-modify-contract2" aria-selected="false">Upload Signed
                                     MB</a>
                                 <a class="nav-link bordered_tab tabss" id="v-pills-modify-contract4-tab"
                                     data-toggle="pill" href="#v-pills-modify-contract4" role="tab"
@@ -4397,7 +4397,7 @@
                                                 </div>
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
-                                                        <label for='visa2-18'>Upload ST & MB</label>
+                                                        <label for='visa2-18'>Upload Signed MB</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa2-18'
                                                                 name="signed_mb_st_file" style="line-height: 1"
@@ -4519,7 +4519,7 @@
                                                 <div
                                                     class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                                     <div class="upload-file">
-                                                        <label for='visa2-22'>Upload</label>
+                                                        <label for='visa2-22'>Upload File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control"
                                                                 id='visa2-22'
@@ -4792,7 +4792,7 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-31'>Upload ST & MB</label>
+                                                <label for='visa2-31'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-31'
                                                         name="application_reject_reason_file" style="line-height: 1"
@@ -4982,7 +4982,7 @@
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end new-visa-signmbstatus-file d-none">
                                             <div class="upload-file">
-                                                <label for='visa2-37'>Upload</label>
+                                                <label for='visa2-37'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='visa2-37'
                                                         name="application_reject_reason_file" style="line-height: 1"

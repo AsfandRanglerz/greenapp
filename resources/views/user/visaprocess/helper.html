@@ -2073,6 +2073,10 @@
         if ($('.renewal-fitness').val() == 'fit') {
             $('.renewal-medical-file').addClass('d-flex');
         };
+        if ($('.biometric-file-container').val() == 'required') {
+            let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
+            a.removeClass('d-none');
+        }
 
         $('.biometric-file-container').on('change', '.biometric-select', function () {
             let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
@@ -2082,14 +2086,6 @@
                 a.addClass('d-none');
             }
         });
-        $('.biometric-select').each(function () {
-            let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
-            if ($(this).val() == 'required') {
-                a.removeClass('d-none');
-            } else {
-                a.addClass('d-none');
-            }
-        })
         $('.select-tawjeeh-payment').change(function () {
             let a = $(this).parents('.tawjeeh-parent').siblings('.tawjeeh-document');
             if ($(this).val() == 'yes') {
@@ -2120,25 +2116,25 @@
         };
         $('.process-input-status').each(function () {
             count++;
-            if ($(this).val() == 'process started') {
+            if($(this).val() == 'process started' ){
                 $(this).closest('.tab-content').find('.status-container-input').each(function () {
-                    if ($(this).val() !== 'Approved' && $(this).val() !== 'Skip') {
-                        helper();
-                        $('.parent-tab-' + count + '1').click();
-                        $('.parent-tab-' + count).addClass('active show');
-                        $('.tabs').addClass('active show');
-                        let a = $(this).closest('.tab-pane');
-                        let e = a.siblings('.tabs').attr('id');
-                        $('#' + e).removeClass('active show');
-                        let b = a.attr('aria-labelledby');
-                        $('#' + b).click();
-                        a.addClass('active show');
-                        flag = true;
-                        return false;
-                    };
-                });
+                if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
+                    helper();
+                $('.parent-tab-' + count + '1').click();
+                $('.parent-tab-' + count).addClass('active show');
+                $('.tabs').addClass('active show');
+                let a = $(this).closest('.tab-pane');
+                let e = a.siblings('.tabs').attr('id');
+                $('#' + e).removeClass('active show');
+                let b = a.attr('aria-labelledby');
+                $('#' + b).click();
+                a.addClass('active show');
+                flag=true;
+                return false;
+                };
+            });
             };
-            if (flag) {
+            if(flag){
                 return false;
             }
         })
