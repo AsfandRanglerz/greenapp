@@ -1454,5 +1454,12 @@ class IndividualVisaProcess extends Controller
     //     $path = public_path('admin/assets/img/users/' . $id);
     //     return response()->download($path);
     // }
-
+    public function view_excel_file_dependent($employee_id,$dependent_id)
+    {
+        return "dependent visa ok ";
+    }
+      public function view_excel_file_individual($individual_id)
+    {
+        return "individual visa ok ";
+    }
 }

@@ -181,6 +181,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Route::get('download-receipt/{id}', [NewVisaProcessController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
 
+
     // visa process of dependents
     Route::get('dependent-visa-section/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
 
@@ -199,9 +200,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')/*->middleware('permission:Receipt')*/;
 
 
-
-
-
+    // individual visa process
 
     Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
 
@@ -210,6 +209,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')/*->middleware('permission:Receipt')*/;
 
     Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')/*->middleware('permission:Receipt')*/;
+
+    // visa excel files
+    Route::get('employee-excel-file/{request_id}/{company_id}/{employee_id}', [NewVisaController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
+
+    Route::get('individual-excel-file/{request_id}/{employee_id}/{dependent_id}', [IndividualVisaProcess::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
+
+    Route::get('individual-excel-file/{request_id}/{individual_id}', [IndividualVisaProcess::class,'view_excel_file_individual'])->name('individual-excel-file')/*->middleware('permission:Receipt')*/;
+
 
 
     // Services Response

@@ -59,6 +59,8 @@
                                                 </td>
                                                 <td>{{ $requests->request_for }}</td>
                                                 <td>
+                                                    <div
+                                                        style="display:flex;align-items: center;justify-content: center;column-gap: 8px;">
                                                     @php
                                                                 $user_id = $requests->user->id;
                                                                 if($requests->company)
@@ -73,8 +75,10 @@
                                                                 {
                                                                     $new_visa = App\Models\NewVisaProcess::
                                                                     where('employee_id', $user_id)
-                                                                    ->orWhere('company_id', $id)
-                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
+                                                                    })
                                                                     ->where('status','completed')
                                                                     ->first();
                                                                     if($new_visa)
@@ -197,14 +201,17 @@
                                                                  }
                                                     @endphp
                                                             @if($status == 'yes')
-                                                                <div class='badge p-2 badge-shadow bg-dark text-white'>Completed</div>
+                                                                <div class='badge p-1 badge-shadow bg-dark text-white'><span class="d-inline-block p-1">Completed</span></div>
+
+
                                                             @else
                                                                 <div class='badge p-2 badge-shadow bg-warning text-white'>Pending</div>
                                                             @endif
+                                                        </div>
                                                 </td>
                                                  <td>
                                                     <div
-                                                        style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                        style="display:flex;align-items: center;justify-content: center;column-gap: 8px;">
                                                         @if ($requests->status == 'pending')
                                                             <a class="btn btn-info"
                                                                 href="{{ route('visa.show', $requests->id) }}">Approve</a>
@@ -332,11 +339,11 @@
                                                             @endphp
                                                                 @if($con == 'yes')
                                                                      @if ($requests->company)
-                                                                        <a href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='text-success'>View</a>
+                                                                        <a class='text-white d-inlin-block btn btn-success' style="white-space:nowrap" href="{{route('start-process',['request_id'=>$requests->id ,'user_id'=>$requests->user->id ,'company_id'=>$requests->company->id])}}" class='text-success'>View</a>
                                                                      @elseif($requests->dependent)
-                                                                        <a href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-success'>View</a>
+                                                                        <a class='text-white d-inlin-block btn btn-success' href="{{route('dependent-start-process',['request_id'=>$requests->id , 'user_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-success'>View</a>
                                                                     @elseif($requests->user->emp_type == 'self')
-                                                                        <a href="{{route('individual-visa-process-start',['individual_id'=>$requests->user->id,'request_id'=>$requests->id])}}"  class='text-success'>View</a>
+                                                                        <a class='text-white d-inlin-block btn btn-success' href="{{route('individual-visa-process-start',['individual_id'=>$requests->user->id,'request_id'=>$requests->id])}}"  class='text-success'>View</a>
                                                                     @endif
                                                                 @else
                                                                      @if ($requests->company)
@@ -347,8 +354,18 @@
                                                                     @elseif($requests->user->emp_type == 'self')
                                                                         <a href="{{route('individual-visa-process-start',['individual_id'=>$requests->user->id,'request_id'=>$requests->id])}}" class='btn btn-primary'>Start Process</a>
                                                                     @endif
+
                                                                 @endif
                                                             @endif
+                                                                @if($status == 'yes')
+                                                                    @if ($requests->company)
+                                                                             <a href="{{route('employee-excel-file',['request_id'=>$requests->id,'company_id'=>$requests->company->id,'employee_id'=>$requests->user->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
+                                                                    @elseif($requests->dependent)
+                                                                             <a href="{{route('dependent-excel-file',['request_id'=>$requests->id,'employee_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
+                                                                    @elseif($requests->user->emp_type == 'self')
+                                                                            <a href="{{route('individual-excel-file',['request_id'=>$requests->id,'individual_id'=>$requests->user->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
+                                                                    @endif
+                                                                @endif
                                                     </div>
                                                 </td>
                                             </tr>

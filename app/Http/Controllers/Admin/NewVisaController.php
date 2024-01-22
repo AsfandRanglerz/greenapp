@@ -11,16 +11,18 @@ use App\Models\ModifyContract;
 use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
 use App\Models\VisaCancelation;
+use App\Exports\MultiTableExport;
 use App\Models\AdminNotification;
 use App\Models\UaeAndGccNational;
 use App\Models\PermitCancellation;
 use App\Models\SponsaredBySomeOne;
 use App\Models\VisaProcessRequest;
-use App\Http\Controllers\Controller;
 use App\Models\IndividualDependent;
+use App\Http\Controllers\Controller;
 use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ModificationVisaEmiratesId;
 
@@ -3420,5 +3422,88 @@ class NewVisaController extends Controller
         //     ]);
         //     return redirect()->back()->with('success','Data Added Successfully.');
         // }
+    }
+
+    public function view_excel_file($request_id,$company_id,$employee_id)
+    {
+        $process = VisaProcessRequest::find($request_id);
+        // return $process;
+        if($process->process_name == 'new visa') {
+            // return "ok";
+            $new_visa = NewVisaProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // return $new_visa;
+            $table = 'NewVisaProcess';
+            return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+        }
+        elseif ($process->process_name == 'renewal process')
+        {
+            $renewal_process = RenewalProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            return view('admin.visaprocess.excel');
+            // // return $renewal_process;
+            // $table = 'RenewalProcess';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+        elseif ($process->process_name == 'work permit' && $process->sub_type == 'sponsored by some one')
+        {
+
+            $spo_by_some = SponsaredBySomeOne::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'SponsaredBySomeOne';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+        elseif ($process->process_name == 'work permit' && $process->sub_type == 'part time')
+        {
+
+            $part_time = PartTimeAndTemporary::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'PartTimeAndTemporary';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+
+        elseif ($process->process_name == 'work permit' && $process->sub_type == 'uae and gcc')
+        {
+
+            $uae_gcc = UaeAndGccNational::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'UaeAndGccNational';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+        elseif ($process->process_name == 'work permit' && $process->sub_type == 'modify contract')
+        {
+
+            $modify_contract = ModifyContract::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'ModifyContract';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+        elseif ($process->process_name == 'modification of visa')
+        {
+
+            $modification_visa = ModificationVisaEmiratesId::where('employee_id', $employee_id)->where('company_id', $company_id)->where('process_name', 'modification of visa')->first();
+            // $table = 'ModificationVisaEmiratesId';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+        }
+        elseif ($process->process_name == 'modification of emirates Id')
+        {
+            $modification_emirates = ModificationVisaEmiratesId::where('employee_id', $employee_id)->where('company_id', $company_id)->where('process_name', 'modification of emirates Id')->first();
+            // $table = 'ModificationVisaEmiratesId';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+
+        }
+        elseif ($process->process_name == 'visa cancellation')
+        {
+            $visa_cancellation =  VisaCancelation::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'VisaCancelation';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+        }
+        elseif ($process->process_name == 'permit cancellation')
+        {
+            $permit_cancellation =  PermitCancellation::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
+            // $table = 'PermitCancellation';
+            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+        }
+
+
     }
 }
