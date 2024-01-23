@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\TermConditionController;
 use App\Http\Controllers\Admin\NewVisaProcessController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
+use App\Http\Controllers\Admin\AllProcessHandelController;
 use App\Http\Controllers\Admin\ServicesResponseController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
 
@@ -211,7 +212,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')/*->middleware('permission:Receipt')*/;
 
     // visa excel files
-    Route::get('employee-excel-file/{request_id}/{company_id}/{employee_id}', [NewVisaController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::get('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
+
+    Route::get('get-complete-processes', [AllProcessHandelController::class,'complete_processes'])->name('get-complete-processes')/*->middleware('permission:Receipt')*/;
 
     Route::get('individual-excel-file/{request_id}/{employee_id}/{dependent_id}', [IndividualVisaProcess::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
 

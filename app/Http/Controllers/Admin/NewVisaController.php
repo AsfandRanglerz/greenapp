@@ -2063,12 +2063,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit application step of Part time and temporary process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            if($request->wp_app_status == 'Approved')
-            {
-                $sopnsored_by->update([
-                    'status'=> 'completed',
-                ]);
-            }
+
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
         elseif ($request->input('signed_st') == 'step2') {
@@ -2216,15 +2211,15 @@ class NewVisaController extends Controller
                 'contract_status' => $request->contract_status,
             ]);
             $status = NULL;
-            if($request->work_permit_app_status == 'Approved')
+            if($request->contract_status == 'Approved')
             {
                 $status = 'Approved';
             }
-            elseif($request->work_permit_app_status == 'Skip')
+            elseif($request->contract_status == 'Skip')
             {
                 $status = 'Skip';
 
-            }elseif($request->work_permit_app_status == 'Reject')
+            }elseif($request->contract_status == 'Reject')
             {
                 $status = 'Reject';
 
@@ -2236,6 +2231,12 @@ class NewVisaController extends Controller
                     'to_all'=>'Companies',
                     'title'=>'Visa Notification',
                     'message'=>'This is inform you that the Upload Contract step of Part time and temporary process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
+                ]);
+            }
+            if($request->contract_status == 'Approved')
+            {
+                $sopnsored_by->update([
+                    'status'=> 'completed',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
@@ -3425,86 +3426,5 @@ class NewVisaController extends Controller
         // }
     }
 
-    public function view_excel_file($request_id,$company_id,$employee_id)
-    {
-        $process = VisaProcessRequest::find($request_id);
-        // return $process;
-        if($process->process_name == 'new visa') {
-            // return "ok";
-            $new_visa = NewVisaProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            return view('admin.visaprocess.excel',compact('new_visa'));
-            // $table = 'NewVisaProcess';
-            // return Excel::download(new MultiTableExport($table, $employee_id), "{$table}_data_{$employee_id}.xlsx");
-        }
-        elseif ($process->process_name == 'renewal process')
-        {
-            $renewal_process = RenewalProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            return view('admin.visaprocess.excel',compact('new_visa'));
-            // // return $renewal_process;
-            // $table = 'RenewalProcess';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-        elseif ($process->process_name == 'work permit' && $process->sub_type == 'sponsored by some one')
-        {
-
-            $spo_by_some = SponsaredBySomeOne::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'SponsaredBySomeOne';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-        elseif ($process->process_name == 'work permit' && $process->sub_type == 'part time')
-        {
-
-            $part_time = PartTimeAndTemporary::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'PartTimeAndTemporary';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-
-        elseif ($process->process_name == 'work permit' && $process->sub_type == 'uae and gcc')
-        {
-
-            $uae_gcc = UaeAndGccNational::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'UaeAndGccNational';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-        elseif ($process->process_name == 'work permit' && $process->sub_type == 'modify contract')
-        {
-
-            $modify_contract = ModifyContract::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'ModifyContract';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-        elseif ($process->process_name == 'modification of visa')
-        {
-
-            $modification_visa = ModificationVisaEmiratesId::where('employee_id', $employee_id)->where('company_id', $company_id)->where('process_name', 'modification of visa')->first();
-            // $table = 'ModificationVisaEmiratesId';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-        }
-        elseif ($process->process_name == 'modification of emirates Id')
-        {
-            $modification_emirates = ModificationVisaEmiratesId::where('employee_id', $employee_id)->where('company_id', $company_id)->where('process_name', 'modification of emirates Id')->first();
-            // $table = 'ModificationVisaEmiratesId';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-
-        }
-        elseif ($process->process_name == 'visa cancellation')
-        {
-            $visa_cancellation =  VisaCancelation::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'VisaCancelation';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-        }
-        elseif ($process->process_name == 'permit cancellation')
-        {
-            $permit_cancellation =  PermitCancellation::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // $table = 'PermitCancellation';
-            // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
-        }
-
-
-    }
+    
 }

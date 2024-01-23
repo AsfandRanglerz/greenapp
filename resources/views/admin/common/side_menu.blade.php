@@ -108,6 +108,36 @@
             </li>
             @endif
 
+
+            @if (auth()->guard('web')->check() &&
+            auth()->guard('web')->user()->can('Receipt'))
+            <li class="dropdown {{ request()->is('admin/completeprocesses*') ? 'active' : '' }}">
+                <a href="{{ route('get-complete-processes') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Complete Processes</span>
+                        {{-- @if ($request_count)
+                        <span class="badge badge-danger text-white">
+                            {{ $request_count }}
+                        </span>
+                        @endif --}}
+                    </a>
+
+            </li>
+            @elseif(auth()->guard('admin')->check())
+
+            <li class="dropdown {{ request()->is('admin/completeprocesses*') ? 'active' : '' }}">
+                <a href="{{ route('get-complete-processes') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Complete Processes</span>
+                        {{-- @if ($request_count)
+                        <span class="badge badge-danger text-white">
+                            {{ $request_count }}
+                        </span>
+                        @endif --}}
+
+                    </a>
+            </li>
+            @endif
+
+
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipt'))
             <li class="dropdown {{ request()->is('admin/receipt-user-index*') ? 'active' : '' }}">

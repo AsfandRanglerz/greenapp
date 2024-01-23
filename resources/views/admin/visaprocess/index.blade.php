@@ -100,7 +100,7 @@
                                                                 elseif ($requests->process_name == 'work permit' && $requests->sub_type == 'sponsored by some one') {
                                                                     $spo_by_some = App\Models\SponsaredBySomeOne::
                                                                     where('employee_id', $user_id)
-                                                                    ->where('company_id', $idid)
+                                                                    ->where('company_id', $id)
                                                                     ->where('status','completed')
                                                                     ->first();
                                                                             if($spo_by_some)
