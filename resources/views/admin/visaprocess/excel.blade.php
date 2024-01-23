@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="main-content" style="min-height: 562px;" >
-        <button onclick="exportToExcel()">Excel</button>
+
 
           <div class="card-body table-striped table-bordered table-responsive" id="table-conatainer">
 
@@ -13,23 +13,17 @@
                       <thead>
                           <tr>
                               <th>Sr.</th>
-                              <th>Company Name</th>
-                              <th>Employee Name</th>
-                              <th>Dependent Name</th>
-                              <th>Request Name</th>
-                              <th>Request Of</th>
-                              <th>Status</th>
+                              <th>Process Name</th>
+                              <th>Transaction No</th>
+                              <th>Transaction Fee</th>
                           </tr>
                       </thead>
                       <tbody>
                         <tr>
-                            <th>1</th>
-                            <th>Company Name</th>
-                            <th>Employee Name</th>
-                            <th>Dependent Name</th>
-                            <th>Request Name</th>
-                            <th>Request Of</th>
-                            <th>Status</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>   <tr>
                             <th>2</th>
                             <th>Company Name</th>

@@ -208,6 +208,7 @@ class NewVisaController extends Controller
                 $new_visa = NewVisaProcess::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'name' => $employee->name,
                 ]);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
@@ -3431,14 +3432,14 @@ class NewVisaController extends Controller
         if($process->process_name == 'new visa') {
             // return "ok";
             $new_visa = NewVisaProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            // return $new_visa;
-            $table = 'NewVisaProcess';
-            return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");
+            return view('admin.visaprocess.excel',compact('new_visa'));
+            // $table = 'NewVisaProcess';
+            // return Excel::download(new MultiTableExport($table, $employee_id), "{$table}_data_{$employee_id}.xlsx");
         }
         elseif ($process->process_name == 'renewal process')
         {
             $renewal_process = RenewalProcess::where('employee_id', $employee_id)->where('company_id', $company_id)->first();
-            return view('admin.visaprocess.excel');
+            return view('admin.visaprocess.excel',compact('new_visa'));
             // // return $renewal_process;
             // $table = 'RenewalProcess';
             // return Excel::download(new MultiTableExport($table, $employee_id,), "{$table}_data_{$employee_id}.xlsx");

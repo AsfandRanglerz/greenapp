@@ -35,9 +35,12 @@ class MultiTableExport implements FromCollection , WithHeadings
     {
         // Fetch data based on the table name and user ID
         $data = $this->getDataForTable($this->table, $this->employee_id);
+        return collect([$data->toArray()]);
 
         // Organize data into categories and select specific columns
-        return $this->organizeData($data);
+        // return $this->organizeData($data);
+
+
     }
 
     public function headings(): array
@@ -49,9 +52,13 @@ class MultiTableExport implements FromCollection , WithHeadings
     protected function getDataForTable($tableName, $employee_id)
     {
         // Fetch data based on the table name and user ID
+        $employee = User::find($employee_id);
         switch ($tableName) {
             case 'NewVisaProcess':
-                return NewVisaProcess::where('employee_id', $employee_id)->get();
+                return NewVisaProcess::where('employee_id', $employee_id)->get(['name','job_offer_tran_no','job_offer_mb_trc_no',
+            'job_offer_preapproval_wp_t_no','job_offer_tran_fees','dubai_insurance_tran_no','dubai_insurance_tran_fees',
+            'pre_approved_wp_tran_no','pre_approved_wp_tran_fees','enter_visa_ts_no','enter_visa_ts_fee','change_of_visa_tno',
+            'change_of_visa_tfee']);
 
             case 'RenewalProcess':
                 return RenewalProcess::where('employee_id', $employee_id)->get();
@@ -89,35 +96,46 @@ class MultiTableExport implements FromCollection , WithHeadings
         }
     }
 
-    protected function organizeData(Collection $data)
-    {
-        // Organize data into categories and select specific columns
-        switch ($this->table) {
-            case 'NewVisaProcess':
-                return collect([
-                    'Personal Information' => $data->only(['job_offer_tran_no', 'job_offer_mb_trc_no', 'job_offer_tran_no'])->toArray(),
-                    'Dubai Insurance' => $data->only(['dubai_insurance_tran_no','dubai_insurance_tran_fees'])->toArray(),
-                ]);
-                case 'RenewalProcess':
-                    return collect($data->toArray());
+    // protected function organizeData(Collection $data)
+    // {
+    //     // Organize data into categories and select specific columns
+    //     switch ($this->table) {
+    //         case 'NewVisaProcess':
+    //             return collect([
 
-            case 'orders':
-                return collect(['Order Information' => $data->toArray()]);
-            case 'prices':
-                return collect(['Price Information' => $data->toArray()]);
-            default:
-                return collect(); // Return an empty collection if the table is not recognized
-        }
-    }
+    //             ]);
+    //             case 'RenewalProcess':
+    //                 return collect($data->toArray());
+
+    //         case 'orders':
+    //             return collect(['Order Information' => $data->toArray()]);
+    //         case 'prices':
+    //             return collect(['Price Information' => $data->toArray()]);
+    //         default:
+    //             return collect(); // Return an empty collection if the table is not recognized
+    //     }
+    // }
 
     protected function getHeadingsForTable($tableName)
     {
         // Define column headers based on the table name
         switch ($tableName) {
             case 'NewVisaProcess':
-                return [
-                    'Personal Information' => ['job_offer_tran_no', 'job_offer_mb_trc_no', 'job_offer_tran_no'],
-                    'Dubai Insurance' => ['dubai_insurance_tran_no','dubai_insurance_tran_fees'],
+                return
+                [
+                    'Employee Name',
+                    'Job Offer TSN',
+                    'MB Contracts TNS',
+                    'Pre-Approval Of Work Permit TNS',
+                    'Transaction Fee',
+                    'Dubai Insurance TSN',
+                    'Transaction Fee',
+                    'Preapproval Work Permit Fees TSN',
+                    'Transaction Fee',
+                    'Entry Visa TSN',
+                    'Transaction Fee',
+                    'Change of Visa Status TSN',
+                    'Transaction Fee'
                 ];
             case 'RenewalProcess':
                 return [
