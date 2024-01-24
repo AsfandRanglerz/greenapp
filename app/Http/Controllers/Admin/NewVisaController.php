@@ -12,6 +12,7 @@ use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
 use App\Models\VisaCancelation;
 use App\Exports\MultiTableExport;
+use App\Helper\Helper;
 use App\Models\AdminNotification;
 use App\Models\UaeAndGccNational;
 use App\Models\PermitCancellation;
@@ -210,13 +211,11 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'name' => $employee->name,
                 ]);
-                $notify = AdminNotification::create([
-                    'company_id' => $company_id,
-                    'to_all' => 'Companies',
-                    'title' => 'Visa Notification',
-                    'message' => 'The '. $data['request_name'] .' '.' process has been started
-                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
-                ]);
+                $process = 'new visa';
+                $type = Null;
+                $employee_name = $employee->name;
+                Helper::admin_notification($company_id,$employee->id,$process,$type,$employee_name);
+
             }
         } elseif ($data['request_name'] == 'renewal process') {
             // return "ok renewal process";
@@ -3426,5 +3425,5 @@ class NewVisaController extends Controller
         // }
     }
 
-    
+
 }

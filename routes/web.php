@@ -212,13 +212,17 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')/*->middleware('permission:Receipt')*/;
 
     // visa excel files
-    Route::get('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::post('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
 
     Route::get('get-complete-processes', [AllProcessHandelController::class,'complete_processes'])->name('get-complete-processes')/*->middleware('permission:Receipt')*/;
 
-    Route::get('individual-excel-file/{request_id}/{employee_id}/{dependent_id}', [IndividualVisaProcess::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-excel-file/{request_id}/{employee_id}/{dependent_id}', [AllProcessHandelController::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
 
-    Route::get('individual-excel-file/{request_id}/{individual_id}', [IndividualVisaProcess::class,'view_excel_file_individual'])->name('individual-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::post('individual-excel-file/{request_id}/{individual_id}', [AllProcessHandelController::class,'view_excel_file_individual'])->name('individual-excel-file')/*->middleware('permission:Receipt')*/;
+
+    // Route::post('employee-excel-file-complete/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_complete'])->name('employee-excel-file-complete')/*->middleware('permission:Receipt')*/;
+
+    // Route::post('dependent-excel-file-complete/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_complete'])->name('dependent-excel-file-complete')/*->middleware('permission:Receipt')*/;
 
 
 

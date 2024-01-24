@@ -12,7 +12,14 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="col-12">
-                                <h4>Visa Process Data</h4>
+                                <h4>Visa Process Data of <span>
+                                    {{-- @php
+                                        if ($new_visa || $renewal_process || $spo_by_some ||
+                                        $part_time || $uae_gcc $$$$) {
+                                            # code...
+                                        }
+                                    @endphp --}}
+                                </span> </h4>
                                 <button id="exportButton" class="btn btn-primary">Export Table</button>
 
                             </div>
@@ -177,158 +184,157 @@
                                     @endif
 
                                     @if(isset($spo_by_some))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work permit application</td>
-                                            <td>{{$spo_by_some->work_permit_app_tranc_no}}</td>
-                                            <td>{{$spo_by_some->work_permit_app_tranc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Upload ST & MB</td>
-                                            <td>{{$spo_by_some->signed_mb_st_tranc_no}}</td>
-                                            <td>{{$spo_by_some->signed_mb_st_tranc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pay Dubai insurance</td>
-                                            <td>{{$spo_by_some->pay_dubai_insu_tranc_no}}</td>
-                                            <td>{{$spo_by_some->pay_dubai_insu_tranc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td> Preapproval Work Permit Fees</td>
-                                            <td>{{$spo_by_some->pre_approv_wp_tranc_no}}</td>
-                                            <td>{{$spo_by_some->pre_approv_wp_tranc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                                <td>5</td>
-                                                <td>Upload Work Permit</td>
-                                                <td>{{$spo_by_some->upload_wp_tranc_no}}</td>
-                                                <td>{{$spo_by_some->upload_wp_tranc_fee}}</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work permit application</td>
+                                                <td>{{$spo_by_some->work_permit_app_tranc_no}}</td>
+                                                <td>{{$spo_by_some->work_permit_app_tranc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Upload ST & MB</td>
+                                                <td>{{$spo_by_some->signed_mb_st_tranc_no}}</td>
+                                                <td>{{$spo_by_some->signed_mb_st_tranc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Pay Dubai insurance</td>
+                                                <td>{{$spo_by_some->pay_dubai_insu_tranc_no}}</td>
+                                                <td>{{$spo_by_some->pay_dubai_insu_tranc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td> Preapproval Work Permit Fees</td>
+                                                <td>{{$spo_by_some->pre_approv_wp_tranc_no}}</td>
+                                                <td>{{$spo_by_some->pre_approv_wp_tranc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td>5</td>
+                                                    <td>Upload Work Permit</td>
+                                                    <td>{{$spo_by_some->upload_wp_tranc_no}}</td>
+                                                    <td>{{$spo_by_some->upload_wp_tranc_fee}}</td>
+                                            </tr>
 
-                                    </tbody>
+                                        </tbody>
                                     @endif
 
                                     @if(isset($part_time))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work permit application</td>
-                                            <td>{{$part_time->wp_app_trnc_no}}</td>
-                                            <td>{{$part_time->wp_app_trnc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Upload ST & MB</td>
-                                            <td>{{$part_time->signed_mb_st_trc_no}}</td>
-                                            <td>{{$part_time->signed_mb_st_trc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Upload Contract</td>
-                                            <td>{{$part_time->contract_tran_no}}</td>
-                                            <td>{{$part_time->contract_tran_fee}}</td>
-                                        </tr>
-                                    </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work permit application</td>
+                                                <td>{{$part_time->wp_app_trnc_no}}</td>
+                                                <td>{{$part_time->wp_app_trnc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Upload ST & MB</td>
+                                                <td>{{$part_time->signed_mb_st_trc_no}}</td>
+                                                <td>{{$part_time->signed_mb_st_trc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Upload Contract</td>
+                                                <td>{{$part_time->contract_tran_no}}</td>
+                                                <td>{{$part_time->contract_tran_fee}}</td>
+                                            </tr>
+                                        </tbody>
                                     @endif
 
-
                                     @if(isset($uae_gcc))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work permit application</td>
-                                            <td>{{$uae_gcc->wp_app_trnc_no}}</td>
-                                            <td>{{$uae_gcc->wp_app_trnc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Upload ST & MB</td>
-                                            <td>{{$uae_gcc->signed_mb_st_trc_no}}</td>
-                                            <td>{{$uae_gcc->signed_mb_st_trc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pay Dubai insurance</td>
-                                            <td>{{$uae_gcc->pay_dubai_insu_tranc_no}}</td>
-                                            <td>{{$uae_gcc->pay_dubai_insu_tranc_fee}}</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work permit application</td>
+                                                <td>{{$uae_gcc->wp_app_trnc_no}}</td>
+                                                <td>{{$uae_gcc->wp_app_trnc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Upload ST & MB</td>
+                                                <td>{{$uae_gcc->signed_mb_st_trc_no}}</td>
+                                                <td>{{$uae_gcc->signed_mb_st_trc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Pay Dubai insurance</td>
+                                                <td>{{$uae_gcc->pay_dubai_insu_tranc_no}}</td>
+                                                <td>{{$uae_gcc->pay_dubai_insu_tranc_fee}}</td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Upload Work Permit</td>
-                                            <td>{{$uae_gcc->upload_wp_tranc_no}}</td>
-                                            <td>{{$uae_gcc->upload_wp_tranc_fee}}</td>
-                                        </tr>
-                                    </tbody>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Upload Work Permit</td>
+                                                <td>{{$uae_gcc->upload_wp_tranc_no}}</td>
+                                                <td>{{$uae_gcc->upload_wp_tranc_fee}}</td>
+                                            </tr>
+                                        </tbody>
                                     @endif
 
                                     @if(isset($modify_contract))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work permit application</td>
-                                            <td>{{$modify_contract->wp_app_trnc_no}}</td>
-                                            <td>{{$modify_contract->wp_app_trnc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Upload ST & MB</td>
-                                            <td>{{$modify_contract->signed_mb_st_trc_no}}</td>
-                                            <td>{{$modify_contract->signed_mb_st_trc_fee}}</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work permit application</td>
+                                                <td>{{$modify_contract->wp_app_trnc_no}}</td>
+                                                <td>{{$modify_contract->wp_app_trnc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Upload ST & MB</td>
+                                                <td>{{$modify_contract->signed_mb_st_trc_no}}</td>
+                                                <td>{{$modify_contract->signed_mb_st_trc_fee}}</td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Upload Work Permit</td>
-                                            <td>{{$modify_contract->upload_wp_tranc_no}}</td>
-                                            <td>{{$modify_contract->upload_wp_tranc_fee}}</td>
-                                        </tr>
-                                    </tbody>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Upload Work Permit</td>
+                                                <td>{{$modify_contract->upload_wp_tranc_no}}</td>
+                                                <td>{{$modify_contract->upload_wp_tranc_fee}}</td>
+                                            </tr>
+                                        </tbody>
                                     @endif
 
                                     @if(isset($visa_cancellation))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work Permit Cancellation Form</td>
-                                            <td>{{$visa_cancellation->wp_app_can_trnc_no}}</td>
-                                            <td>{{$visa_cancellation->wp_app_can_trnc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Signed Cancellation Form</td>
-                                            <td>{{$visa_cancellation->signd_can_from_tranc_no}}</td>
-                                            <td>{{$visa_cancellation->signd_can_from_tranc_fee}}</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work Permit Cancellation Form</td>
+                                                <td>{{$visa_cancellation->wp_app_can_trnc_no}}</td>
+                                                <td>{{$visa_cancellation->wp_app_can_trnc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Signed Cancellation Form</td>
+                                                <td>{{$visa_cancellation->signd_can_from_tranc_no}}</td>
+                                                <td>{{$visa_cancellation->signd_can_from_tranc_fee}}</td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Residency Application</td>
-                                            <td>{{$visa_cancellation->residency_app_tranc_no}}</td>
-                                            <td>{{$visa_cancellation->residency_app_tranc_fee}}</td>
-                                        </tr>
-                                    </tbody>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Residency Application</td>
+                                                <td>{{$visa_cancellation->residency_app_tranc_no}}</td>
+                                                <td>{{$visa_cancellation->residency_app_tranc_fee}}</td>
+                                            </tr>
+                                        </tbody>
                                     @endif
 
                                     @if(isset($permit_cancellation))
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Work Permit Cancellation Form</td>
-                                            <td>{{$permit_cancellation->wp_app_can_trnc_no}}</td>
-                                            <td>{{$permit_cancellation->wp_app_can_trnc_fee}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Signed Cancellation Form</td>
-                                            <td>{{$permit_cancellation->signd_can_from_tranc_no}}</td>
-                                            <td>{{$permit_cancellation->signd_can_from_tranc_fee}}</td>
-                                        </tr>
-                                    </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Work Permit Cancellation Form</td>
+                                                <td>{{$permit_cancellation->wp_app_can_trnc_no}}</td>
+                                                <td>{{$permit_cancellation->wp_app_can_trnc_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Signed Cancellation Form</td>
+                                                <td>{{$permit_cancellation->signd_can_from_tranc_no}}</td>
+                                                <td>{{$permit_cancellation->signd_can_from_tranc_fee}}</td>
+                                            </tr>
+                                        </tbody>
                                     @endif
                             </table>
                         </div>

@@ -88,8 +88,10 @@
                                                                 }elseif ($requests->process_name == 'renewal process') {
                                                                     $renewal_process = App\Models\RenewalProcess::
                                                                     where('employee_id', $user_id)
-                                                                    ->orWhere('company_id', $id)
-                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
+                                                                    })
                                                                     ->where('status','completed')
                                                                     ->first();
                                                                             if($renewal_process)
@@ -144,8 +146,10 @@
                                                                 elseif ($requests->process_name == 'modification of visa') {
                                                                     $modification_visa = App\Models\ModificationVisaEmiratesId::
                                                                     where('employee_id', $user_id)
-                                                                    ->orWhere('company_id', $id)
-                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
+                                                                    })
                                                                     ->where('process_name', 'modification of visa')
                                                                     ->where('status','completed')->first();
                                                                             if($modification_visa)
@@ -156,8 +160,10 @@
                                                                 elseif ($requests->process_name == 'modification of emirates Id') {
                                                                     $modification_emirates = App\Models\ModificationVisaEmiratesId::
                                                                     where('employee_id', $user_id)
-                                                                    ->orWhere('company_id', $id)
-                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
+                                                                    })
                                                                     ->where('process_name', 'modification of emirates Id')
                                                                     ->where('status','completed')
                                                                     ->first();
@@ -169,8 +175,10 @@
                                                                 elseif ($requests->process_name == 'visa cancellation') {
                                                                     $visa_cancellation = App\Models\VisaCancelation::
                                                                     where('employee_id', $user_id)
-                                                                    ->orWhere('company_id', $id)
-                                                                    ->orWhere('dependent_id', $id)
+                                                                    ->where(function ($query) use ($id) {
+                                                                        $query->where('company_id', $id)
+                                                                            ->orWhere('dependent_id', $id);
+                                                                    })
                                                                     ->where('status','completed')
                                                                     ->first();
                                                                             if($visa_cancellation)
@@ -359,11 +367,24 @@
                                                             @endif
                                                                 @if($status == 'yes')
                                                                     @if ($requests->company)
-                                                                             <a href="{{route('employee-excel-file',['request_id'=>$requests->id,'company_id'=>$requests->company->id,'employee_id'=>$requests->user->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
-                                                                    @elseif($requests->dependent)
-                                                                             <a href="{{route('dependent-excel-file',['request_id'=>$requests->id,'employee_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
-                                                                    @elseif($requests->user->emp_type == 'self')
-                                                                            <a href="{{route('individual-excel-file',['request_id'=>$requests->id,'individual_id'=>$requests->user->id])}}" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</a>
+                                                                            @if(!($requests->process_name == 'modification of visa' || $requests->process_name == 'modification of emirates Id'))
+                                                                                <form action="{{route('employee-excel-file',['request_id'=>$requests->id,'company_id'=>$requests->company->id,'employee_id'=>$requests->user->id])}}" method="POST">
+                                                                                    @csrf
+                                                                                    <button class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap" type="submit">Excel File</button>
+                                                                                </form>
+                                                                            @endif
+                                                                @elseif($requests->dependent)
+                                                                      @if(!($requests->process_name == 'modification of visa' || $requests->process_name == 'modification of emirates Id'))
+                                                                        <form action="{{route('dependent-excel-file',['request_id'=>$requests->id,'employee_id'=>$requests->user->id,'dependent_id'=>$requests->dependent->id])}}" method="POST">
+                                                                            @csrf
+                                                                            <button class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap" type="submit">Excel File</button>
+                                                                        </form>
+                                                                      @endif
+                                                                @elseif($requests->user->emp_type == 'self')
+                                                                        <form action="{{route('individual-excel-file',['request_id'=>$requests->id,'individual_id'=>$requests->user->id])}}" method="POST">
+                                                                            @csrf
+                                                                            <button class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap" type="submit">Excel File</button>
+                                                                        </form>
                                                                     @endif
                                                                 @endif
                                                     </div>

@@ -35,39 +35,44 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="spo-tab" data-toggle="tab" href="#spo" role="tab"
-                                            aria-controls="spo" aria-selected="false">Sponsaer By Some One</a>
+                                            aria-controls="spo" aria-selected="false">Sponsoared By Some One / Golden Visa</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="partime-tab" data-toggle="tab" href="#partime" role="tab"
                                             aria-controls="partime" aria-selected="false">Part time</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="UaE-tab" data-toggle="tab" href="#UaE" role="tab"
+                                            aria-controls="UaE" aria-selected="false">UaE & GCC</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="Modify_Contract-tab" data-toggle="tab" href="#Modify_Contract" role="tab"
+                                            aria-controls="Modify_Contract" aria-selected="false">Modify Contract</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="modification_visa-tab" data-toggle="tab" href="#modification_visa" role="tab"
+                                            aria-controls="modification_visa" aria-selected="false">Modification of Visa</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="modification_emirates-tab" data-toggle="tab" href="#modification_emirates" role="tab"
+                                            aria-controls="modification_emirates" aria-selected="false">Modification of Emirates</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="visa_cancelation-tab" data-toggle="tab" href="#visa_cancelation" role="tab"
+                                            aria-controls="visa_cancelation" aria-selected="false">Visa Cancelation</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                            aria-controls="profile" aria-selected="false">Renewal Process</a>
+                                        <a class="nav-link" id="permit_cancelation-tab" data-toggle="tab" href="#permit_cancelation" role="tab"
+                                            aria-controls="permit_cancelation" aria-selected="false">Permit Cancelation</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="individual-tab" data-toggle="tab" href="#individual" role="tab"
+                                            aria-controls="individual" aria-selected="false">Individuals Golden Visa</a>
                                     </li>
                                 </ul>
                                 {{-- owner --}}
                                 <div class="tab-content" id="myTabContent">
+                                    {{-- new visa --}}
                                     <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="card-body table-striped table-bordered table-responsive">
                                                 <table class="table text-center" id="table_id_1">
@@ -77,16 +82,44 @@
                                                             <th>Company Name</th>
                                                             <th>Employee Name</th>
                                                             <th>Dependent Name</th>
+                                                            <th>Process Name</th>
                                                             <th class='pl-5 pr-5'>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($data['new_visa'] as $visa)
+                                                            <tr>
+                                                                <td>{{$loop->iteration}}</td>
+                                                                <td>{{ $visa->company->name ?? '--' }}</td>
+                                                                <td>{{$visa->user->name}}</td>
+                                                                <td>{{$visa->dependent->name ??  '--'}}</td>
+                                                                <td>New Visa</td>
+
+                                                                <td>
+                                                                    @if ($visa->company)
+                                                                    <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$visa->company->id,'employee_id'=>$visa->user->id])}}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="text" hidden name='name' value='new visa'>
+                                                                             <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                    </form>
+                                                                    @elseif($visa->dependent)
+                                                                        <form action="{{route('dependent-excel-file',['request_id'=>0,'dependent_id'=>$visa->dependent->id,'employee_id'=>$visa->user->id])}}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <input type="text" hidden name='name' value='new visa'>
+                                                                                <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                        </form>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                         </div>
 
                                     </div>
-                                    {{-- driver --}}
+                                    {{-- renewal --}}
                                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="card-body table-striped table-bordered table-responsive">
                                             <table class="table" id="table_id_2">
@@ -99,10 +132,349 @@
                                                         <th class='pl-5 pr-5'>Action</th>
                                                     </tr>
                                                 </thead>
-
+                                                    <tbody>
+                                                        @foreach ($data['renewal_process'] as $renewal)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$renewal->company->name ?? '--' }}</td>
+                                                            <td>{{$renewal->user->name}}</td>
+                                                            <td>{{$renewal->dependent->name ??  '--'}}</td>
+                                                            <td>
+                                                                @if($renewal->company)
+                                                                    <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$renewal->company->id,'employee_id'=>$renewal->user->id])}}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="text" hidden name='name' value='renewal process'>
+                                                                            <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                    </form>
+                                                                @elseif($renewal->dependent)
+                                                                    <form action="{{route('dependent-excel-file',['request_id'=>0,'dependent_id'=>$renewal->dependent->id,'employee_id'=>$renewal->user->id])}}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="text" hidden name='name' value='renewal process'>
+                                                                            <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                    </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
                                             </table>
                                         </div>
                                     </div>
+                                    {{-- sponsoared by some one --}}
+                                    <div class="tab-pane fade" id="spo" role="tabpanel" aria-labelledby="spo-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_3">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        {{-- <th>Process Name</th> --}}
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+
+                                                        @foreach ($data['spo_by_some'] as $sp)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$sp->company->name ?? '--' }}</td>
+                                                            <td>{{$sp->user->name}}</td>
+                                                            {{-- <td>Sponsord</td> --}}
+                                                            <td>
+                                                                @if ($sp->company)
+                                                                <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$sp->company->id,'employee_id'=>$sp->user->id])}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" hidden name='name' value='sponsored by some one'>
+                                                                         <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- part time --}}
+                                    <div class="tab-pane fade" id="partime" role="tabpanel" aria-labelledby="partime-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_4">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['part_time'] as $partime)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$partime->company->name ?? '--' }}</td>
+                                                            <td>{{$partime->user->name}}</td>
+                                                            <td>
+                                                                @if ($partime->company)
+                                                                <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$partime->company->id,'employee_id'=>$partime->user->id])}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" hidden name='name' value='part time'>
+                                                                         <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- uae and gcc --}}
+                                    <div class="tab-pane fade" id="UaE" role="tabpanel" aria-labelledby="UaE-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_5">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['uae_gcc'] as $uae)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$uae->company->name ?? '--' }}</td>
+                                                            <td>{{$uae->user->name}}</td>
+                                                            <td>
+                                                                @if ($uae->company)
+                                                                <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$uae->company->id,'employee_id'=>$uae->user->id])}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" hidden name='name' value='uae and gcc'>
+                                                                         <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- modify contract --}}
+                                    <div class="tab-pane fade" id="Modify_Contract" role="tabpanel" aria-labelledby="Modify_Contract-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_6">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['modify_contract'] as $m_c)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$m_c->company->name ?? '--' }}</td>
+                                                            <td>{{$m_c->user->name}}</td>
+                                                            <td>
+                                                                @if ($m_c->company)
+                                                                <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$m_c->company->id,'employee_id'=>$m_c->user->id])}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" hidden name='name' value='modify contract'>
+                                                                         <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- modification of visa --}}
+
+                                    <div class="tab-pane fade" id="modification_visa" role="tabpanel" aria-labelledby="modification_visa-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_7">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Dependent Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['modification_visa'] as $m_v)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$m_v->company->name ?? '--' }}</td>
+                                                            <td>{{$m_v->user->name}}</td>
+                                                            <td>{{$m_v->dependent->name ?? '--' }}</td>
+                                                            <td>
+                                                                <a href="#" class='btn btn-primary'>Click</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- modification of emirates --}}
+
+                                    <div class="tab-pane fade" id="modification_emirates" role="tabpanel" aria-labelledby="modification_emirates-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_8">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Dependent Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['modification_emirates'] as $m_e)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$m_e->company->name ?? '--' }}</td>
+                                                            <td>{{$m_e->user->name}}</td>
+                                                            <td>{{$m_e->dependent->name ?? '--' }}</td>
+                                                            <td>                                                                <a href="#" class='btn btn-primary'>Click</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- visa cancelation --}}
+
+                                    <div class="tab-pane fade" id="visa_cancelation" role="tabpanel" aria-labelledby="visa_cancelation-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_9">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Dependent Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($data['visa_cancellation'] as $data)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$data->company->name ?? '--' }}</td>
+                                                            <td>{{$data->user->name}}</td>
+                                                            <td>{{$data->dependent->name ?? '--' }}</td>
+                                                            <td>
+                                                                @if ($data->company)
+                                                                    <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$data->company->id,'employee_id'=>$data->user->id])}}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="text" hidden name='name' value='visa cancellation'>
+                                                                             <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                    </form>
+                                                                @elseif($data->dependent)
+                                                                    <form action="{{route('dependent-excel-file',['request_id'=>0,'employee_id'=>$data->user->id,'dependent_id'=>$data->dependent->id])}}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="text" hidden name='name' value='visa cancellation'>
+                                                                            <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                    </form>
+                                                                 @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {{-- permit cancelation --}}
+
+                                    <div class="tab-pane fade" id="permit_cancelation" role="tabpanel" aria-labelledby="permit_cancelation-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_10">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Company Name</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Dependent Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($permit as $permits)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$permits->company->name ?? '--' }}</td>
+                                                            <td>{{$permits->user->name}}</td>
+                                                            <td>{{$permits->dependent->name ?? '--' }}</td>
+                                                            <td>
+                                                                @if ($permits->company)
+                                                                <form action="{{route('employee-excel-file',['request_id'=>0,'company_id'=>$permits->company->id,'employee_id'=>$permits->user->id])}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" hidden name='name' value='permit cancellation'>
+                                                                         <button type="submit" class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap">Excel File</button>
+                                                                </form>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    {{-- individual visa --}}
+                                    <div class="tab-pane fade" id="individual" role="tabpanel" aria-labelledby="individual-tab">
+                                        <div class="card-body table-striped table-bordered table-responsive">
+                                            <table class="table" id="table_id_11">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Process Name</th>
+                                                        <th class='pl-5 pr-5'>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        @foreach ($individual_golden as $golden)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$golden->user->name}}</td>
+                                                            <td>Golden Visa</td>
+                                                            <td>
+                                                                 <form action="{{route('individual-excel-file',['request_id'=>0,'individual_id'=>$golden->user->id])}}" method="POST">
+                                                                     @csrf
+                                                                     <input type="text" hidden value="golden_visa" name="name">
+                                                                     <button class='text-white d-inlin-block btn btn-danger' style="white-space: nowrap" type="submit">Excel File</button>
+                                                                 </form>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
 
@@ -128,6 +500,14 @@
         $('#table_id_1').DataTable();
         $('#table_id_2').DataTable();
         $('#table_id_3').DataTable();
+        $('#table_id_4').DataTable();
+        $('#table_id_5').DataTable();
+        $('#table_id_6').DataTable();
+        $('#table_id_7').DataTable();
+        $('#table_id_8').DataTable();
+        $('#table_id_9').DataTable();
+        $('#table_id_10').DataTable();
+        $('#table_id_11').DataTable();
     });
 </script>
     <script>
