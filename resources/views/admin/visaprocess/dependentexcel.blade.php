@@ -11,8 +11,17 @@
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
+                            @php
+                                $dependent = App\Models\IndividualDependent::find($dependent_id);
+                                $dependent_name = $dependent->name;
+                                $employee = App\Models\User::find($employee_id);
+                                $employee_name = $employee->name;
+                            @endphp
                             <div class="col-12">
-                                <h4>Visa Process Data</h4>
+                                <h4>Visa Process Data of <span class='font-weight-bold text-uppercase'>
+                                    {{$dependent_name}}
+
+                                </span></h4>
                                 <button id="exportButton" class="btn btn-primary">Export Table</button>
 
                             </div>
@@ -23,6 +32,27 @@
 
                             <table class="table text-center" id="yourTableId">
                                 <thead>
+                                    <tr class="border-bottom">
+                                        <th colspan="2">
+                                            Individual Name:
+                                        </th>
+                                        <th colspan="2">
+                                            <span class='font-weight-bold text-uppercase'>
+                                                {{$employee_name}}
+                                            </span>
+                                        </th>
+                                    </tr>
+                                    <tr class="border-bottom">
+                                        <th colspan="2">
+                                            Dependent Name:
+                                        </th>
+
+                                        <th colspan="2">
+                                            <span class='font-weight-bold text-uppercase'>
+                                                {{$dependent_name}}
+                                            </span>
+                                        </th>
+                                    </tr>
                                     <tr>
                                         <th>Sr.</th>
                                         <th>Process Name</th>
@@ -163,7 +193,7 @@
 
 <script>
     document.getElementById('exportButton').addEventListener('click', function () {
-        exportTableToExcel('yourTableId', 'exported_table_data.xlsx');
+        exportTableToExcel('yourTableId', 'exported_table_data_dependent.xlsx');
     });
 
     function exportTableToExcel(tableId, fileName) {

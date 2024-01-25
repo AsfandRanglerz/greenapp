@@ -11,8 +11,12 @@
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
+                            @php
+                            $individual = App\Models\User::find($individual_id);
+                            $name = $individual->name;
+                        @endphp
                             <div class="col-12">
-                                <h4>Visa Process Data</h4>
+                                <h4>Visa Process Data of {{$name}}</h4>
                                 <button id="exportButton" class="btn btn-primary">Export Table</button>
 
                             </div>
@@ -23,6 +27,16 @@
 
                             <table class="table text-center" id="yourTableId">
                                 <thead>
+                                    <tr class="border-bottom">
+                                        <th colspan="2">
+                                            Individual Name:
+                                        </th>
+                                        <th colspan="2">
+                                            <span class='font-weight-bold text-uppercase'>
+                                                {{$name}}
+                                            </span>
+                                        </th>
+                                    </tr>
                                     <tr>
                                         <th>Sr.</th>
                                         <th>Process Name</th>
@@ -102,7 +116,7 @@
 
 <script>
     document.getElementById('exportButton').addEventListener('click', function () {
-        exportTableToExcel('yourTableId', 'exported_table_data.xlsx');
+        exportTableToExcel('yourTableId', 'exported_table_data_individual.xlsx');
     });
 
     function exportTableToExcel(tableId, fileName) {

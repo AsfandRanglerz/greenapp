@@ -74,7 +74,7 @@ Route::get('/admin-delete-company/{id}', [CompanyController::class, 'company_del
 
 Route::prefix('admin')->middleware('admin')->group(function () {
 
-    Route::get('dashboard', [AdminController::class, 'getdashboard'])/*->middleware('permission:Dashboard')*/;
+    Route::get('dashboard', [AdminController::class, 'getdashboard'])->middleware('permission:Dashboard');
 
     Route::get('profile', [AdminController::class, 'getProfile']);
 
@@ -279,13 +279,13 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::resource('inquiry', InquiryController::class)->middleware('permission:Employees');
 
-    Route::resource('selfemployee', SelfUserController::class);//->middleware('permission:Individuals');
+    Route::resource('selfemployee', SelfUserController::class)->middleware('permission:Individuals');
 
-    Route::get('self-employee-view', [SelfUserController::class, 'view']);//->middleware('permission:Individuals');
+    Route::get('self-employee-view', [SelfUserController::class, 'view'])->middleware('permission:Individuals');
 
     // individuals dependents routes
 
-    Route::get('self-employee-dependents/{id}', [SelfUserController::class, 'dependents'])->name('individual-dependent-index');//->middleware('permission:Individuals');
+    Route::get('self-employee-dependents/{id}', [SelfUserController::class, 'dependents'])->name('individual-dependent-index')->middleware('permission:Individuals');
 
     Route::resource('about-us', AboutUsController::class)->middleware('permission:About us');
 

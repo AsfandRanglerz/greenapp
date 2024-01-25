@@ -10,9 +10,15 @@
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="card">
+                        @php
+                        $company = App\Models\Company::find($company_id);
+                        $company_name = $company->name;
+                        $employee = App\Models\User::find($employee_id);
+                        $employee_name = $employee->name;
+                    @endphp
                         <div class="card-header">
                             <div class="col-12">
-                                <h4>Visa Process Data of <span>
+                                <h4>Visa Process Data of {{$employee_name}}<span>
                                     {{-- @php
                                         if ($new_visa || $renewal_process || $spo_by_some ||
                                         $part_time || $uae_gcc $$$$) {
@@ -30,6 +36,27 @@
 
                             <table class="table text-center" id="yourTableId">
                                 <thead>
+                                    <tr class="border-bottom">
+                                        <th colspan="2">
+                                            Company Name:
+                                        </th>
+                                        <th colspan="2">
+                                            <span class='font-weight-bold text-uppercase'>
+                                                {{$company_name}}
+                                            </span>
+                                        </th>
+                                    </tr>
+                                    <tr class="border-bottom">
+                                        <th colspan="2">
+                                            Employee Name:
+                                        </th>
+
+                                        <th colspan="2">
+                                            <span class='font-weight-bold text-uppercase'>
+                                                {{$employee_name}}
+                                            </span>
+                                        </th>
+                                    </tr>
                                     <tr>
                                         <th>Sr.</th>
                                         <th>Process Name</th>
@@ -355,7 +382,7 @@
 
 <script>
     document.getElementById('exportButton').addEventListener('click', function () {
-        exportTableToExcel('yourTableId', 'exported_table_data.xlsx');
+        exportTableToExcel('yourTableId', 'exported_table_data_employee.xlsx');
     });
 
     function exportTableToExcel(tableId, fileName) {
