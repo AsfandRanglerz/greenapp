@@ -18,9 +18,11 @@
                     <div class="col-12 col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="col-12">
+                                <div class="">
                                     <h4>Visa Process Requests</h4>
-
+                                </div>
+                                <div>
+                                    <a href="{{route('get-complete-processes')}}" class="btn btn-success">Complete Processes</a>
                                 </div>
                                 {{-- @dd($data) --}}
                             </div>

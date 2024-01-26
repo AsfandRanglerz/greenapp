@@ -97,7 +97,9 @@
                                     <div id="faqCollapse-{{ $data->id }}" class="collapse"
                                         aria-labelledby="faqHeading-1" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>{!! $data->message ?? '' !!}</p>
+                                            <p>{!! $data->message ?? '' !!}
+                                                <span class="badge p-2 badge-shadow bg-danger text-white">({{ \Carbon\Carbon::parse($data['created_at'])->format('d M, Y') }})</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
