@@ -99,21 +99,21 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('logout', [AdminController::class, 'logout']);
 
     //Sub-Admin routes
-    Route::get('get-sub-admins', [SubAdminController::class, 'index'])->name('get-sub-admins')->middleware('permission:Sub Admin');
+    Route::get('get-sub-admins', [SubAdminController::class, 'index'])->name('get-sub-admins')->middleware('permission:SubAdmin');
 
-    Route::get('create-sub-admin', [SubAdminController::class, 'create'])->name('create-sub-admin')->middleware('permission:Sub Admin');
+    Route::get('create-sub-admin', [SubAdminController::class, 'create'])->name('create-sub-admin')->middleware('permission:SubAdmin');
 
     Route::post('add-sub-admin', [SubAdminController::class, 'store'])->name('add-sub-admin')->middleware('permission:Sub Admin');
 
-    Route::post('add-sub-admin-permission/{id}', [SubAdminController::class, 'add_permission'])->name('add-sub-admin-permission')->middleware('permission:Sub Admin');
+    Route::post('add-sub-admin-permission/{id}', [SubAdminController::class, 'add_permission'])->name('add-sub-admin-permission')->middleware('permission:SubAdmin');
 
-    Route::get('update-sub-admin-permission/{id}', [SubAdminController::class, 'update_permission'])->name('update-sub-admin-permission')->middleware('permission:Sub Admin');
+    Route::get('update-sub-admin-permission/{id}', [SubAdminController::class, 'update_permission'])->name('update-sub-admin-permission')->middleware('permission:SubAdmin');
 
-    Route::get('edit-sub-admin/{id}', [SubAdminController::class, 'edit'])->name('edit-sub-admin')->middleware('permission:Sub Admin');
+    Route::get('edit-sub-admin/{id}', [SubAdminController::class, 'edit'])->name('edit-sub-admin')->middleware('permission:SubAdmin');
 
-    Route::post('update-sub-admin/{id}', [SubAdminController::class, 'update'])->name('update-sub-admin')->middleware('permission:Sub Admin');
+    Route::post('update-sub-admin/{id}', [SubAdminController::class, 'update'])->name('update-sub-admin')->middleware('permission:SubAdmin');
 
-    Route::delete('delete-sub-admin/{id}', [SubAdminController::class, 'delete'])->name('delete-sub-admin')->middleware('permission:Sub Admin');
+    Route::delete('delete-sub-admin/{id}', [SubAdminController::class, 'delete'])->name('delete-sub-admin')->middleware('permission:SubAdmin');
 
 
     // Notifications Routes
@@ -148,31 +148,31 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::resource('visa', NewVisaController::class)/*->middleware('permission:Receipt')*/;
 
-    Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')/*->middleware('permission:Receipt')*/;
+    Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')->middleware('permission:Visa Process');
 
-    Route::post('visa-visa/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process_by_admin'])->name('start-process-admin')/*->middleware('permission:Receipt')*/;
+    Route::post('visa-visa/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process_by_admin'])->name('start-process-admin')->middleware('permission:Visa Process');
 
-    Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process')/*->middleware('permission:Receipt')*/;
+    Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Visa Process');
 
-    Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Visa Process');
 
-    Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation')->middleware('permission:Visa Process');
 
-    Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation')->middleware('permission:Visa Process');
 
-    Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation')->middleware('permission:Visa Process');
 
-    Route::post('uae-national-process/{user_id}/{company_id}/{uae_gcc}/{req_id}', [NewVisaController::class,'uae_gcc_process'])->name('uae-gcc-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('uae-national-process/{user_id}/{company_id}/{uae_gcc}/{req_id}', [NewVisaController::class,'uae_gcc_process'])->name('uae-gcc-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-contract-process/{user_id}/{company_id}/{modify_cn}/{req_id}', [NewVisaController::class,'modify_cnt'])->name('modify-contract-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('modify-contract-process/{user_id}/{company_id}/{modify_cn}/{req_id}', [NewVisaController::class,'modify_cnt'])->name('modify-contract-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-visa-process/{user_id}/{company_id}/{modify_visa}/{req_id}', [NewVisaController::class,'modification_visa'])->name('modify-visa-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('modify-visa-process/{user_id}/{company_id}/{modify_visa}/{req_id}', [NewVisaController::class,'modification_visa'])->name('modify-visa-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-emirates-process/{user_id}/{company_id}/{modify_emirates}/{req_id}', [NewVisaController::class,'modification_emirates'])->name('modify-emirates-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('modify-emirates-process/{user_id}/{company_id}/{modify_emirates}/{req_id}', [NewVisaController::class,'modification_emirates'])->name('modify-emirates-updation')->middleware('permission:Visa Process');
 
-    Route::post('visa-cancellation-process/{user_id}/{company_id}/{visa_can}/{req_id}', [NewVisaController::class,'visa_cancellation'])->name('visa-cancellation-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('visa-cancellation-process/{user_id}/{company_id}/{visa_can}/{req_id}', [NewVisaController::class,'visa_cancellation'])->name('visa-cancellation-updation')->middleware('permission:Visa Process');
 
-    Route::post('permit-cancellation-process/{user_id}/{company_id}/{permit_can}/{req_id}', [NewVisaController::class,'permit_cancellation'])->name('permit-cancellation-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('permit-cancellation-process/{user_id}/{company_id}/{permit_can}/{req_id}', [NewVisaController::class,'permit_cancellation'])->name('permit-cancellation-updation')->middleware('permission:Visa Process');
 
     // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
 

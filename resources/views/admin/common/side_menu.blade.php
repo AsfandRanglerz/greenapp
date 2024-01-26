@@ -81,7 +81,7 @@
             $request_count = App\Models\VisaProcessRequest::where('seen_by_admin', '0')->count();
             @endphp
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Receipt'))
+            auth()->guard('web')->user()->can('Visa Process'))
             <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span>
@@ -110,7 +110,7 @@
 
 
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Receipt'))
+            auth()->guard('web')->user()->can('CompleteProcesses'))
             <li class="dropdown {{ request()->is('admin/completeprocesses*') ? 'active' : '' }}">
                 <a href="{{ route('get-complete-processes') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Complete Processes</span>
