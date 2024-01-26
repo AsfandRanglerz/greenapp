@@ -3,7 +3,6 @@
 @section('title', 'index')
 
 @section('content')
-
 <style>
     .nav-link {
         color: black;
@@ -102,27 +101,27 @@
         </div>
         <ul class="nav nav-tabs nav-bar horizontal_tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                    aria-selected="true">
+                <a class="nav-link active tab-1" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true">
                     New Visa
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                <a class="nav-link tab-2" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                     aria-controls="profile" aria-selected="false">
                     Renewal Process
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                <a class="nav-link tab-3" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                     aria-controls="contact" aria-selected="false">Modification of Visa</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="modify-id-tab" data-toggle="tab" href="#modify-id" role="tab"
+                <a class="nav-link tab-4" id="modify-id-tab" data-toggle="tab" href="#modify-id" role="tab"
                     aria-controls="modify" aria-selected="false">Modification of Emirates ID</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="cancelation-tab" data-toggle="tab" href="#cancelation" role="tab"
+                <a class="nav-link tab-5" id="cancelation-tab" data-toggle="tab" href="#cancelation" role="tab"
                     aria-controls="cancel" aria-selected="false">Visa Cancelation</a>
             </li>
         </ul>
@@ -162,7 +161,7 @@
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="visa-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
+                            <div class="tab-pane fade show active process-starter" id="v-pills-start" role="tabpanel"
                                 aria-labelledby="v-pills-start-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form
@@ -182,14 +181,16 @@
                                                 <div class="form-group mb-3">
                                                     <label for="visa-1-id">Process status</label>
                                                     @if($new_visa && $new_visa['biometric_status'] == 'Approved')
-                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
-                                                        placeholder="..." disabled value="process completed">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-1-id" placeholder="..." disabled
+                                                        value="process completed">
                                                     @elseif($new_visa)
-                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
-                                                        placeholder="..." disabled value="process started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-1-id" placeholder="..." disabled
+                                                        value="process started">
                                                     @else
-                                                    <input type="text" class="form-control process-status-input" id="visa-1-id"
-                                                        placeholder="..." disabled value="not started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-1-id" placeholder="..." disabled value="not started">
                                                     @endif
                                                 </div>
                                             </div>
@@ -2495,7 +2496,7 @@
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="renewal-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-renewal-start" role="tabpanel"
+                            <div class="tab-pane fade show active process-starter" id="v-pills-renewal-start" role="tabpanel"
                                 aria-labelledby="v-pills-renewal-start-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form
@@ -2516,14 +2517,16 @@
                                                     <label for="visa-2-id">Process status</label>
                                                     @if($renewal_process && $renewal_process['emp_biometric_status'] ==
                                                     'Approved')
-                                                    <input type="text" class="form-control process-status-input" id="visa-2-id"
-                                                        placeholder="..." disabled value="process completed">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-2-id" placeholder="..." disabled
+                                                        value="process completed">
                                                     @elseif($renewal_process)
-                                                    <input type="text" class="form-control process-status-input" id="visa-2-id"
-                                                        placeholder="..." disabled value="process started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-2-id" placeholder="..." disabled
+                                                        value="process started">
                                                     @else
-                                                    <input type="text" class="form-control process-status-input" id="visa-2-id"
-                                                        placeholder="..." disabled value="not started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-2-id" placeholder="..." disabled value="not started">
                                                     @endif
                                                 </div>
                                             </div>
@@ -3489,7 +3492,7 @@
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="modification-visa-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-modify-visa-start" role="tabpanel"
+                            <div class="tab-pane fade show active process-starter" id="v-pills-modify-visa-start" role="tabpanel"
                                 aria-labelledby="v-pills-modify-visa-start-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form
@@ -3510,14 +3513,16 @@
                                                     <label for="visa-3-id">Process status</label>
                                                     @if($modification_visa && $modification_visa['application_status']
                                                     == 'Approved')
-                                                    <input type="text" class="form-control process-status-input" id="visa-3-id"
-                                                        placeholder="..." disabled value="process completed">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-3-id" placeholder="..." disabled
+                                                        value="process completed">
                                                     @elseif($modification_visa)
-                                                    <input type="text" class="form-control process-status-input" id="visa-3-id"
-                                                        placeholder="..." disabled value="process started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-3-id" placeholder="..." disabled
+                                                        value="process started">
                                                     @else
-                                                    <input type="text" class="form-control process-status-input" id="visa-3-id"
-                                                        placeholder="..." disabled value="not started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-3-id" placeholder="..." disabled value="not started">
                                                     @endif
 
                                                 </div>
@@ -3683,7 +3688,7 @@
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="modification-id-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-modify-id-start" role="tabpanel"
+                            <div class="tab-pane fade show active process-starter" id="v-pills-modify-id-start" role="tabpanel"
                                 aria-labelledby="v-pills-modify-id-start-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form
@@ -3706,14 +3711,16 @@
                                                     <label for="visa-4-id">Process status</label>
                                                     @if ($modification_emirates &&
                                                     $modification_emirates['application_status'] == 'Approved')
-                                                    <input type="text" class="form-control process-status-input" id="visa-4-id"
-                                                        placeholder="..." disabled value="process completed">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-4-id" placeholder="..." disabled
+                                                        value="process completed">
                                                     @elseif($modification_emirates)
-                                                    <input type="text" class="form-control process-status-input" id="visa-4-id"
-                                                        placeholder="..." disabled value="process started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-4-id" placeholder="..." disabled
+                                                        value="process started">
                                                     @else
-                                                    <input type="text" class="form-control process-status-input" id="visa-4-id"
-                                                        placeholder="..." disabled value="not started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-4-id" placeholder="..." disabled value="not started">
                                                     @endif
                                                 </div>
                                             </div>
@@ -3877,7 +3884,7 @@
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="visa-cancel-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-residency-cancel-start" role="tabpanel"
+                            <div class="tab-pane fade show active process-starter" id="v-pills-residency-cancel-start" role="tabpanel"
                                 aria-labelledby="v-pills-residency-cancel-start-tab">
                                 <div class='rounded p-3 light-box-shadow'>
                                     <form
@@ -3898,14 +3905,16 @@
                                                     <label for="visa-5-id">Process status</label>
                                                     @if($visa_cancellation && $visa_cancellation['residency_app_status']
                                                     == 'Approved' )
-                                                    <input type="text" class="form-control process-status-input" id="visa-5-id"
-                                                        placeholder="..." disabled value="process completed">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-5-id" placeholder="..." disabled
+                                                        value="process completed">
                                                     @elseif($visa_cancellation)
-                                                    <input type="text" class="form-control process-status-input" id="visa-5-id"
-                                                        placeholder="..." disabled value="process started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-5-id" placeholder="..." disabled
+                                                        value="process started">
                                                     @else
-                                                    <input type="text" class="form-control process-status-input" id="visa-5-id"
-                                                        placeholder="..." disabled value="not started">
+                                                    <input type="text" class="form-control process-status-input"
+                                                        id="visa-5-id" placeholder="..." disabled value="not started">
                                                     @endif
 
 
@@ -4381,6 +4390,36 @@
                 $('.renewal-medical-file').removeClass('d-flex');
             }
         });
+        let count = 0;
+        $('.process-status-input').each(function () {
+            count++;
+            let flag=false;
+            let helper=$(this).closest('.tab-pane');
+            if ($(this).val() == 'process started') {
+                $(this).closest('.tab-content').find('.status-selector-select').each(function () {
+                    if($(this).val()!=='Approved' && $(this).val()!=='Skip'){
+                        $('.tab-pane').each(function(){
+                            $(this).removeClass('show active');
+                        });
+                        $('.process-starter').each(function(){
+                            $(this).addClass('active show');
+                        });
+                        helper.removeClass('active show');
+                        let c=$(this).closest('.tab-pane').attr('aria-labelledby');
+                        $('#'+c).click();
+                        $('.tab-'+count).click();
+                        $(this).parents('.tab-pane').addClass('show active');
+                        $(this).closest('.tab-pane').addClass('show active');
+                        flag=true;
+                        return false;
+                    }
+                })
+            };
+            alert(''+flag)
+            if(flag){
+                return false;
+            };
+        })
         //changes
 
 
