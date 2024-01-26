@@ -957,18 +957,18 @@
             }
         });
 
-//         if ($('.process-status-input').val() == 'process started') {
-//     $('.status-container').each(function () {
-//         let a = $(this).closest('.tab-pane').attr('aria-labelledby');
-//         if ($(this).val() !== 'Approved' && $(this).val() !== 'Skip') {
-//             $('.tab-pane').removeClass('active show');
-//             $('#' + a).removeClass('active').click();
-//             $('.parent-tab-pane').addClass('active show');
-//             $(this).parents('.tab-pane').addClass('active show');
-//             return false;
-//         }
-//     });
-// }
+     if ($('.process-status-input').val() == 'process started') {
+     $('.status-container').each(function () {
+        let a = $(this).closest('.tab-pane').attr('aria-labelledby');
+         if ($(this).val() !== 'Approved' && $(this).val() !== 'Skip') {
+             $('.tab-pane').removeClass('active show');
+             $('#' + a).removeClass('active').click();
+             $('.parent-tab-pane').addClass('active show');
+             $(this).parents('.tab-pane').addClass('active show');
+             return false;
+         }
+     });
+ }
 
         // Initialize DataTable on elements with class 'employees'
         $('.employees').DataTable({
