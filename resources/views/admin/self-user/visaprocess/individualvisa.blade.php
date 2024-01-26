@@ -117,7 +117,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <!-- New Visa -->
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active parent-tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
                 <div class="col-3">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
@@ -166,13 +166,13 @@
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
                                                 @if ($visa_data && $visa_data->status == 'completed')
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-input-status" id="visa-1-id"
                                                     disabled placeholder="..." value="process completed" >
                                                 @elseif($visa_data)
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-input-status" id="visa-1-id"
                                                     disabled placeholder="..." value="process started" >
                                                 @else
-                                                    <input type="text" class="form-control" id="visa-1-id"
+                                                    <input type="text" class="form-control process-input-status" id="visa-1-id"
                                                     disabled placeholder="..." value="not started" >
                                                 @endif
                                             </div>
@@ -1804,6 +1804,24 @@
             a.addClass('d-none');
         }
     });
+        $('.process-input-status').each(function(){
+        if($(this).val()==='process started'){
+            $(this).closest('.tab-content').find('.status-selector-select').each(function(){
+                if($(this).val()!=='Skip' && $(this).val()!=='Approved'){
+                    $('.tab-pane').each(function(){
+                        $(this).removeClass('active show');
+                    });
+                    $('.parent-tab-pane').addClass('active show');
+                    $(this).closest('.tab-pane').addClass('active show');
+                    let a=$(this).closest('.tab-pane').attr('aria-labelledby');
+                    $('#'+a).click();
+                    return false;
+                }
+            });
+        }
+    });
+
+    
 
 </script>
 
