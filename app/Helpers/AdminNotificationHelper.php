@@ -4,7 +4,7 @@ namespace App\Helper;
 
 use App\Models\AdminNotification;
 
-class Helper
+class AdminNotificationHelper
 {
     public static function admin_notification($company_id,$employee_id,$process,$type,$employee_name)
     {

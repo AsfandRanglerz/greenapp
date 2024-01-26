@@ -12,7 +12,7 @@ use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
 use App\Models\VisaCancelation;
 use App\Exports\MultiTableExport;
-use App\Helper\Helper;
+use App\Helper\AdminNotificationHelper;
 use App\Models\AdminNotification;
 use App\Models\UaeAndGccNational;
 use App\Models\PermitCancellation;
@@ -97,8 +97,8 @@ class NewVisaController extends Controller
                 'company_id' => $status->company_id,
                 'to_all' => 'Companies',
                 'title' => 'Visa Notification',
-                'message' => 'The request of '. $status->process_name .' '.'('.($status->sub_type ? $status->sub_type : '').')'.' has been approved
-                against '.$employee->name.'<a href="' . route('company.employee.visa.process',$employee->id) . '">' . ' click here. ' . '</a>.',
+                'message' => 'The request of '. $status->process_name .' '.($status->sub_type ? $status->sub_type : '').' has been approved
+                against '.$employee->name.'<a href="' . route('company.employee.visa.process',$employee->id) . '">' . ' click here. ' . '</a>',
             ]);
         }
         // notify to individual of his dependent
@@ -211,10 +211,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'name' => $employee->name,
                 ]);
-                $process = 'new visa';
-                $type = Null;
-                $employee_name = $employee->name;
-                Helper::admin_notification($company_id,$employee->id,$process,$type,$employee_name);
+                $notify = AdminNotification::create([
+                    'company_id' => $company_id,
+                    'to_all' => 'Companies',
+                    'title' => 'Visa Notification',
+                    'message' => 'The '. $data['request_name'].' '.' process has been started
+                    against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+                ]);
 
             }
         } elseif ($data['request_name'] == 'renewal process') {
@@ -238,6 +241,7 @@ class NewVisaController extends Controller
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -457,7 +461,17 @@ class NewVisaController extends Controller
                 ]);
             }
         }
-        if ($data['request_name']) {
+        if ($data['request_name'] == 'renewal process') {
+            $notify = AdminNotification::create([
+                'company_id' => $company_id,
+                'to_all' => 'Companies',
+                'title' => 'Visa Notification',
+                'message' => 'This is inform you that admin started the ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '')
+                    . ' against ' . $employee->name . ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
+            ]);
+        }
+        else
+        {
             $notify = AdminNotification::create([
                 'company_id' => $company_id,
                 'to_all' => 'Companies',
@@ -466,9 +480,6 @@ class NewVisaController extends Controller
                     . ' process against ' . $employee->name . ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
             ]);
         }
-
-
-
         return redirect()->back()->with('success', 'Process has been started successfully.');
     }
 
@@ -1113,6 +1124,12 @@ class NewVisaController extends Controller
                 $new_visa->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your New Visa Process has been Completed.!',
+                ]);
             }
             if ($request->biometric_status == 'Approved') {
                 $status = 'Approved';
@@ -1662,6 +1679,13 @@ class NewVisaController extends Controller
                 $renewal_process->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Renewal Process has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2003,6 +2027,13 @@ class NewVisaController extends Controller
                 $sopnsored_by->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Sponsored By / Golden Visa Process of Work Permit has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2237,6 +2268,13 @@ class NewVisaController extends Controller
                 $sopnsored_by->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Part Time / Temporary Process of Work Permit has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2521,6 +2559,13 @@ class NewVisaController extends Controller
                 $uae_national->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your UAE / GCC Process of Work Permit has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2753,6 +2798,13 @@ class NewVisaController extends Controller
                 $modify_contract->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Modify Contract Process of Work Permit has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2835,6 +2887,13 @@ class NewVisaController extends Controller
                 $modify_visa->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Modification of Visa Process it has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -2911,6 +2970,13 @@ class NewVisaController extends Controller
                 $emirates->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Modification of Emirates Process has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -3175,6 +3241,13 @@ class NewVisaController extends Controller
                 $visa_cancellation->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Visa Cancelation Process has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
@@ -3388,41 +3461,16 @@ class NewVisaController extends Controller
                 $permit_can->update([
                     'status'=> 'completed',
                 ]);
+                $notify = AdminNotification::create([
+                    'employee_id'=>$user_id,
+                    'to_all'=>'Employees',
+                    'title'=>'Visa Notification',
+                    'message' => 'Your Permit Cancelation Process has been Completed.!',
+                ]);
+                return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
             return redirect()->back()->with('success', 'Data Added Successfully.');
         }
-        // elseif($request->input('residency') == 'step5')
-        // {
-        //     // return "ok";
-        //     $file = NULL;
-        //     if ($request->hasfile('residency_app_file')) {
-        //         $destination = 'public/admin/assets/img/users' . $permit_can->residency_app_file;
-        //         if (File::exists($destination)) {
-        //             File::delete($destination);
-        //         }
-        //         $file = $request->file('residency_app_file');
-        //         $extension = $file->getClientOriginalExtension();
-        //         $filename = time() . '.' . $extension;
-        //         $file->move('public/admin/assets/img/users', $filename);
-        //         $file = 'public/admin/assets/img/users/' . $filename;
-        //     }
-        //     else
-        //     {
-        //         // return "ok";
-        //         $file =  $permit_can->residency_app_file;
-        //     }
-        //     $permit_can->update([
-        //         'company_id'=>$company_id,
-        //         'employee_id'=>$user_id,
-        //         'residency_app_file'=>$file,
-        //         'residency_app_date'=>$request->residency_app_date,
-        //         'residency_app_status'=>$request->residency_app_status,
-        //         'residency_app_tranc_fee'=>$request->residency_app_tranc_fee,
-        //         'residency_app_tranc_no'=>$request->residency_app_tranc_no,
-        //         'residency_app_file_name'=>$request->residency_app_file_name,
-        //     ]);
-        //     return redirect()->back()->with('success','Data Added Successfully.');
-        // }
     }
 
 
