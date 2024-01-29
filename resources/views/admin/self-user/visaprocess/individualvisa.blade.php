@@ -61,7 +61,9 @@
         overflow-X: auto;
         flex-wrap: nowrap;
     }
-
+    .side-bar a{
+        white-space: nowrap!important;
+    }
     /* borderd Tabs */
     .bordered_tab {
         border: 1px solid #0f172b;
@@ -79,7 +81,12 @@
         border-right: none;
     }
 
-
+    @media(max-width:575px){
+        .main-content{
+            padding-left:10px!important;
+            margin-right:10px!important;
+        }
+    }
     @media (max-width: 991.2px) {
         .bordered_tab:not(:last-child) {
             border-right: none;
@@ -112,14 +119,14 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                 aria-selected="true">
-                Golden Visa
+                Golden Visa 
             </a>
     </ul>
     <div class="tab-content" id="myTabContent">
         <!-- New Visa -->
         <div class="tab-pane fade show active parent-tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
@@ -146,11 +153,11 @@
 
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="visa-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('individual-visa-process-by-admin',$individual_id)}}"
                                  method="POST" class='py-2'>
                                    @csrf
@@ -186,7 +193,7 @@
                                 {{-- entry visa --}}
                             <div class="tab-pane fade" id="v-pills-entry" role="tabpanel"
                                 aria-labelledby="v-pills-entry-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     {{-- @dd($visa_data->individual->id) --}}
                                     <form action="{{route('individual-visa-process-updation',$individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
@@ -230,7 +237,7 @@
                                                         value="{{$visa_data->enter_visa_date}}" name="enter_visa_date"  placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 form-group mb-3 col-md-6 gap-1 align-items-end">
                                                     <label for="new-visa8_5-9">Select File</label>
                                                     <select id="new-visa-8" class="form-control category" name="enter_visa_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -400,8 +407,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3_5-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3_5-41-id8'
@@ -462,8 +469,8 @@
                                         </div>
                                         <div class="fine-files-container d-none ">
                                             <div class="row  align-items-end ">
-                                                <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                    <div class="upload-file">
+                                                <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                    <div class="upload-file form-group mb-3">
                                                         <label for='visa-id-13'>Upload file</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa-id-13'
@@ -513,7 +520,7 @@
                             {{-- change  of visa status --}}
                             <div class="tab-pane fade" id="v-pills-change-visa" role="tabpanel"
                                 aria-labelledby="v-pills-change-visa-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('individual-visa-process-updation',$individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
                                         class='py-2'>
@@ -556,7 +563,7 @@
                                                         value="{{$visa_data->change_of_visa_date}}" name="change_of_visa_date" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end form-group mb-3">
                                                     <label for="new-visa8_4-9">Select File</label>
                                                       <select id="new-visa-8" class="form-control category" name="change_of_visa_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -726,8 +733,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3_4-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3_4-41-id8'
@@ -775,7 +782,7 @@
                             {{-- Health Insurance --}}
                             <div class="tab-pane fade" id="v-pills-health-insurance" role="tabpanel"
                                 aria-labelledby="v-pills-health-insurance-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('individual-visa-process-updation',$individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
                                         class='py-2'>
@@ -818,7 +825,7 @@
                                                         value="{{$visa_data->health_insur_date}}" name="health_insur_date" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end form-group mb-3">
                                                     <label for="new-visa8_3-9">Select File</label>
                                                     <select id="new-visa-8" class="form-control category" name="health_insur_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -988,8 +995,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3_2-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3_2-41-id8'
@@ -1037,7 +1044,7 @@
                             {{-- medical fitness --}}
                             <div class="tab-pane fade" id="v-pills-medical-fitness" role="tabpanel"
                                 aria-labelledby="v-pills-medical-fitness-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('individual-visa-process-updation',$visa_data->individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
                                         class='py-2'>
@@ -1059,7 +1066,7 @@
                                                        name="medical_fitness_tfee" value="{{$visa_data->medical_fitness_tfee}} " placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group  col-xl-6 col-lg-12 col-md-6 mb-3">
                                                 <label for="visa1-i3-15">Status</label>
                                                 <select id="visa1-i3-15"
                                                     class="form-control status-selector-select category"
@@ -1078,8 +1085,8 @@
                                                        name="medical_fitness_date" value="{{$visa_data->medical_fitness_date}}"  placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='visa-id-27'>Upload Medical</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa-id-27' name="medical_fitness_file"
@@ -1126,7 +1133,7 @@
                             {{-- emirates_residency_app --}}
                             <div class="tab-pane fade" id="v-pills-residency-id" role="tabpanel"
                                 aria-labelledby="v-pills-residency-id-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('individual-visa-process-updation',$visa_data->individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
                                         class='py-2'>
@@ -1148,7 +1155,7 @@
                                                         value="{{$visa_data->emirates_tran_fee}}" name="emirates_tran_fee" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                                 <label for="visa1-i4-15">Status</label>
                                                 <select id="visa1-i4-15"
                                                     class="form-control status-selector-select category"
@@ -1167,7 +1174,7 @@
                                                         value="{{$visa_data->emirates_date}}" name="emirates_date" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 form-group col-md-6 gap-1 form-group align-items-end mb-3">
                                                     <label for="new-visa8_1-9">Select File</label>
                                                     <select id="new-visa-8" class="form-control category" name="emirates_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -1337,8 +1344,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3_1-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3_1-41-id8'
@@ -1395,7 +1402,7 @@
                                                         value="{{$visa_data->residency_tran_fee}}" name="residency_tran_fee" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                                 <label for="visa1-i5-15">Status</label>
                                                 <select id="visa1-i5-15"
                                                     class="form-control status-selector-select category"
@@ -1413,7 +1420,7 @@
                                                     <input type="date"  value="{{$visa_data->residency_date}}" name="residency_date" class="form-control" id="visa-id-35">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 form-group align-items-end mb-3">
                                                     <label for="new-visa8-9">Select File</label>
                                                     <select id="new-visa-8" class="form-control category" name="residency_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -1583,8 +1590,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3-41-id8'
@@ -1634,7 +1641,7 @@
                             {{-- biometric --}}
                             <div class="tab-pane fade" id="v-pills-biometric" role="tabpanel"
                                 aria-labelledby="v-pills-biometric-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('individual-visa-process-updation',$visa_data->individual_id)}}"
                                         method="POST" enctype="multipart/form-data"
                                         class='py-2'>
@@ -1656,7 +1663,7 @@
                                                     value="{{$visa_data->biometric_tranc_fee}}" name="biometric_tranc_fee" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                                 <label for="visa1-id-16">Status</label>
                                                 <select id="visa1-i6-15"
                                                     class="form-control status-selector-select category"
@@ -1676,7 +1683,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label for="visa-40-id">Biometric</label>
                                                     <select class="form-control biometric-select" id="visa-40-id" name="employee_biometric">
                                                         <option selected disabled>Select Option</option>
@@ -1686,8 +1693,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                <div class="mb-3 align-items-end d-flex">
-                                                    <div class="upload-file">
+                                                <div class="align-items-end d-flex">
+                                                    <div class="upload-file form-group mb-3">
                                                         <label for='visa-41-id'>Uplaod File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa-41-id'
@@ -1751,33 +1758,31 @@
     @if (\Illuminate\Support\Facades\Session:: has('error'))
     toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
     @endif
+    $(document).ready(function() {
     if ($('.entry-visa-select').val() == 'yes') {
-        let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
+        let a = $('.Over-stay-fine').removeClass('d-none');
         let fine_select = a.find('.fine-select');
         let file_container = $('.fine-files-container');
-        if ($(this).val() == 'yes') {
-            a.removeClass('d-none');
             if (fine_select.val() == 'yes') {
                 file_container.removeClass('d-none');
             }
-        } else {
-            a.addClass('d-none');
-            file_container.addClass('d-none');
         }
-    }
+
     if ($('.fine-select').val() == 'yes') {
         let file_container = $('.fine-files-container');
         file_container.removeClass('d-none');
     }
-    $('.fine-select').change(function () {
+
+    $('.fine-select').change(function() {
         let file_container = $('.fine-files-container');
         if ($(this).val() == 'yes') {
             file_container.removeClass('d-none');
         } else {
             file_container.addClass('d-none');
         }
-    })
-    $('.entry-visa-select').change(function () {
+    });
+
+    $('.entry-visa-select').change(function() {
         let a = $(this).parents('.entry-visa-country').siblings('.Over-stay-fine');
         let fine_select = a.find('.fine-select');
         let file_container = $('.fine-files-container');
@@ -1790,14 +1795,14 @@
             a.addClass('d-none');
             file_container.addClass('d-none');
         }
-
     });
+
     if ($('.biometric-file-container').val() == 'required') {
         let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
         a.removeClass('d-none');
     }
 
-    $('.biometric-file-container').on('change', '.biometric-select', function () {
+    $('.biometric-file-container').on('change', '.biometric-select', function() {
         let a = $(this).parents('.biometric-select-parent').siblings('.biometric-files-container');
         if ($(this).val() == 'required') {
             a.removeClass('d-none');
@@ -1805,24 +1810,24 @@
             a.addClass('d-none');
         }
     });
-        $('.process-input-status').each(function(){
-        if($(this).val()==='process started'){
-            $(this).closest('.tab-content').find('.status-selector-select').each(function(){
-                if($(this).val()!=='Skip' && $(this).val()!=='Approved'){
-                    $('.tab-pane').each(function(){
+
+    $('.process-input-status').each(function() {
+        if ($(this).val() === 'process started') {
+            $(this).closest('.tab-content').find('.status-selector-select').each(function() {
+                if ($(this).val() !== 'Skip' && $(this).val() !== 'Approved') {
+                    $('.tab-pane').each(function() {
                         $(this).removeClass('active show');
                     });
                     $('.parent-tab-pane').addClass('active show');
                     $(this).closest('.tab-pane').addClass('active show');
-                    let a=$(this).closest('.tab-pane').attr('aria-labelledby');
-                    $('#'+a).click();
+                    let a = $(this).closest('.tab-pane').attr('aria-labelledby');
+                    $('#' + a).click();
                     return false;
                 }
             });
         }
     });
-
-
+});
 
 </script>
 
