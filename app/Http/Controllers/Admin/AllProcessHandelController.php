@@ -276,18 +276,35 @@ class AllProcessHandelController extends Controller
 
     public function complete_processes()
     {
-        $data['new_visa'] = NewVisaProcess::with('user','company','dependent')->where('status','completed')->get();
+        $data['new_visa'] = NewVisaProcess::with('user','company','dependent')->where('status','completed')->orderBy('created_at', 'desc')->get();
         // return $data['new_visa'];
-        $data['renewal_process'] = RenewalProcess::with('user','company','dependent')->where('status','completed')->get();
-        $data['spo_by_some'] = SponsaredBySomeOne::with('user','company')->where('status','completed')->get();
-        $data['part_time'] = PartTimeAndTemporary::with('user','company')->where('status','completed')->get();
-        $data['uae_gcc'] = UaeAndGccNational::with('user','company')->where('status','completed')->get();
-        $data['modify_contract'] = ModifyContract::with('user','company')->where('status','completed')->get();
-        $data['modification_emirates'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of emirates Id')->where('status','completed')->get();
-        $data['modification_visa'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of visa')->where('status','completed')->get();
-        $data['visa_cancellation'] =  VisaCancelation::with('user','company','dependent')->where('status','completed')->get();
-        $permit =  PermitCancellation::with('user','company')->where('status','completed')->get();
-        $individual_golden =  IndividualGoldenVisa::with('user')->where('status','completed')->get();
+        $data['renewal_process'] = RenewalProcess::with('user','company','dependent')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['spo_by_some'] = SponsaredBySomeOne::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['part_time'] = PartTimeAndTemporary::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['uae_gcc'] = UaeAndGccNational::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['modify_contract'] = ModifyContract::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['modification_emirates'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of emirates Id')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['modification_visa'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of visa')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $data['visa_cancellation'] =  VisaCancelation::with('user','company','dependent')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $permit =  PermitCancellation::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        $individual_golden =  IndividualGoldenVisa::with('user')->where('status','completed')->orderBy('created_at', 'desc')->get();
         return view('admin.completeprocesses.completeprocess',compact('data','permit','individual_golden'));
+    }
+
+    public function admin_start_processes()
+    {
+        $data['new_visa'] = NewVisaProcess::with('user','company','dependent')->where('start_by','admin')->get();
+        // return $data['new_visa'];
+        $data['renewal_process'] = RenewalProcess::with('user','company','dependent')->where('start_by','admin')->get();
+        $data['spo_by_some'] = SponsaredBySomeOne::with('user','company')->where('start_by','admin')->get();
+        $data['part_time'] = PartTimeAndTemporary::with('user','company')->where('start_by','admin')->get();
+        $data['uae_gcc'] = UaeAndGccNational::with('user','company')->where('start_by','admin')->get();
+        $data['modify_contract'] = ModifyContract::with('user','company')->where('start_by','admin')->get();
+        $data['modification_emirates'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of emirates Id')->where('start_by','admin')->get();
+        $data['modification_visa'] = ModificationVisaEmiratesId::with('user','company','dependent')->where('process_name', 'modification of visa')->where('start_by','admin')->get();
+        $data['visa_cancellation'] =  VisaCancelation::with('user','company','dependent')->where('start_by','admin')->get();
+        $permit =  PermitCancellation::with('user','company')->where('start_by','admin')->get();
+        $individual_golden =  IndividualGoldenVisa::with('user')->where('start_by','admin')->get();
+        return view('admin.startprocesses.startprocesses',compact('data','permit','individual_golden'));
     }
 }

@@ -151,7 +151,8 @@
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
                             <div class='rounded p-3 light-box-shadow'>
-                                <form action="{{route('individual-visa-process-by-admin',$individual_id)}}" method="POST" class='py-2'>
+                                <form action="{{route('individual-visa-process-by-admin',$individual_id)}}"
+                                 method="POST" class='py-2'>
                                    @csrf
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                     <div class="row">
@@ -165,7 +166,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa-1-id">Process status</label>
-                                                @if ($visa_data && $visa_data->status == 'completed')
+                                                @if ($visa_data && $visa_data['biometric_status'] =='Approved')
                                                     <input type="text" class="form-control process-input-status" id="visa-1-id"
                                                     disabled placeholder="..." value="process completed" >
                                                 @elseif($visa_data)
@@ -1821,7 +1822,7 @@
         }
     });
 
-    
+
 
 </script>
 

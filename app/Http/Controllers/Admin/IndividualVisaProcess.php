@@ -68,6 +68,7 @@ class IndividualVisaProcess extends Controller
             {
                $visa_data = IndividualGoldenVisa::create([
                    'individual_id'=>$individual_id,
+                   'start_by'=>'admin',
                ]);
                  $notify = AdminNotification::create([
                        'employee_id' => $individual_id,

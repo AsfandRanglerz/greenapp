@@ -246,10 +246,11 @@
                                             <div class="form-group">
                                                 <label for="visa-id-11">Are u inside the country?</label>
                                                 <input type="text" class="form-control" id="visa-id-8" disabled
-                                                    value="{{$visa_data->enter_visa_over_sf}}" placeholder="...">
+                                                    value="{{$visa_data->enter_visa_country}}" placeholder="...">
 
                                             </div>
                                         </div>
+                                        @if($visa_data['enter_visa_country'] == 'yes')
                                         <div class="col-xl-6 col-lg-12 col-md-6  ">
                                             <div class="form-group">
                                                 <label for="visa-id-12">Over Stay Fines?</label>
@@ -282,6 +283,7 @@
                                             @endif
                                         </a>
                                         @endif
+                                        @endif
                                         @else
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
@@ -309,7 +311,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    
+
                                     <div class="fine-files-container d-none ">
                                         <div class="row  align-items-end ">
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
