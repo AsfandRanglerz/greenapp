@@ -61,7 +61,9 @@
         overflow-X: auto;
         flex-wrap: nowrap;
     }
-
+    .side-bar a{
+        white-space: nowrap!important;
+    }
     /* borderd Tabs */
     .bordered_tab {
         border: 1px solid #0f172b;
@@ -79,7 +81,12 @@
         border-right: none;
     }
 
-
+    @media(max-width:575px){
+        .main-content{
+            padding-left:10px!important;
+            margin-right:10px!important;
+        }
+    }
     @media (max-width: 991.2px) {
         .bordered_tab:not(:last-child) {
             border-right: none;
@@ -112,14 +119,14 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                 aria-selected="true">
-                Golden Visa
+                Golden Visa 
             </a>
     </ul>
     <div class="tab-content" id="myTabContent">
         <!-- New Visa -->
         <div class="tab-pane fade show active parent-tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-lg-3">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
@@ -146,7 +153,7 @@
 
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-lg-9">
                     <div class="tab-content" id="visa-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
@@ -229,7 +236,7 @@
                                                         value="{{$visa_data->enter_visa_date}}" name="enter_visa_date"  placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-6 col-lg-12 col-md-6 gap-1 align-items-end mb-3">
+                                            <div class="col-xl-6 col-lg-12 form-group mb-3 col-md-6 gap-1 align-items-end">
                                                     <label for="new-visa8_5-9">Select File</label>
                                                     <select id="new-visa-8" class="form-control category" name="enter_visa_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -399,8 +406,8 @@
                                             </select>
                                             </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
-                                                    <div class="mb-3 align-items-end d-flex">
-                                                        <div class="upload-file">
+                                                    <div class="align-items-end d-flex">
+                                                        <div class="upload-file form-group mb-3">
                                                             <label for='visa3_5-41-id8'>Uplaod File</label>
                                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                                 <input type="file" class="form-control" id='visa3_5-41-id8'
