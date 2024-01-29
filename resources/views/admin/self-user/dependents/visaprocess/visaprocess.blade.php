@@ -135,7 +135,7 @@
             <!-- New Visa -->
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                             role="tablist" aria-orientation="vertical">
                             <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
@@ -164,7 +164,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-xl-9 col-lg-8">
                         <div class="tab-content" id="visa-tabContent">
                             <div class="tab-pane fade show active process-starter" id="v-pills-start" role="tabpanel"
                                 aria-labelledby="v-pills-start-tab">
@@ -2479,7 +2479,7 @@
             <!-- Renewal Process Start -->
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                             role="tablist" aria-orientation="vertical">
                             <a class="nav-link active bordered_tab" id="v-pills-renewal-start-tab" data-toggle="pill"
@@ -2499,7 +2499,7 @@
                                 aria-selected="false">Biometric</a>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-xl-9 col-lg-8">
                         <div class="tab-content" id="renewal-tabContent">
                             <div class="tab-pane fade show active process-starter" id="v-pills-renewal-start" role="tabpanel"
                                 aria-labelledby="v-pills-renewal-start-tab">
@@ -3483,7 +3483,7 @@
             <!-- Modification of Visa -->
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                             role="tablist" aria-orientation="vertical">
                             <a class="nav-link active bordered_tab" id="v-pills-modify-visa-start-tab"
@@ -3495,7 +3495,7 @@
                                 aria-selected="false">Waiting For Approval</a>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-xl-9 col-lg-8">
                         <div class="tab-content" id="modification-visa-tabContent">
                             <div class="tab-pane fade show active process-starter" id="v-pills-modify-visa-start" role="tabpanel"
                                 aria-labelledby="v-pills-modify-visa-start-tab">
@@ -3679,7 +3679,7 @@
             <!-- Modification of Emirates id -->
             <div class="tab-pane fade" id="modify-id" role="tabpanel" aria-labelledby="modify-id-tab">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                             role="tablist" aria-orientation="vertical">
                             <a class="nav-link active bordered_tab" id="v-pills-modify-id-start-tab" data-toggle="pill"
@@ -3691,7 +3691,7 @@
                                 aria-selected="false">Waiting For Approval</a>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-xl-9 col-lg-8">
                         <div class="tab-content" id="modification-id-tabContent">
                             <div class="tab-pane fade show active process-starter" id="v-pills-modify-id-start" role="tabpanel"
                                 aria-labelledby="v-pills-modify-id-start-tab">
@@ -3875,7 +3875,7 @@
             <!-- Visa Cancelation -->
             <div class="tab-pane fade" id="cancelation" role="tabpanel" aria-labelledby="cancelation-tab">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                             role="tablist" aria-orientation="vertical">
                             <a class="nav-link active bordered_tab" id="v-pills-residency-cancel-start-tab"
@@ -3887,7 +3887,7 @@
                                 aria-selected="false">Residency Cancelation Application</a>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-xl-9 col-lg-8">
                         <div class="tab-content" id="visa-cancel-tabContent">
                             <div class="tab-pane fade show active process-starter" id="v-pills-residency-cancel-start" role="tabpanel"
                                 aria-labelledby="v-pills-residency-cancel-start-tab">
