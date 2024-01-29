@@ -22,13 +22,14 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Dependent Name</th>
                             <th scope="col">Dependent type</th>
-                            <th scope="col">Request type</th>
-                            <th scope="col">File</th>
-                            <th scope="col">Issue Date</th>
-                            <th scope="col">Expiry Date</th>
-                            <th scope="col">Response</th>
-                            <th scope="col">Comment</th>
+                            {{-- <th scope="col">Request type</th> --}}
+                            {{-- <th scope="col">File</th> --}}
+                            {{-- <th scope="col">Issue Date</th> --}}
+                            {{-- <th scope="col">Expiry Date</th> --}}
+                            {{-- <th scope="col">Response</th> --}}
+                            {{-- <th scope="col">Comment</th> --}}
                             <th scope="col">Visa Process</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -44,7 +45,7 @@
                             $file_name = $dependent->file;
                             $ext = explode('.', $file_name);
                         @endphp
-                        <td>
+                        {{-- <td>
                             <a target="_black" href="{{ asset('' . '/' . $dependent->file) }}">
                                 @if ($ext[1] == 'pdf')
                                     <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
@@ -63,23 +64,23 @@
                                         style="height: 50px;width:50px">
                                 @endif
                             </a>
-                        </td>
-                            <td>{{ $dependent->issue_date }}</td>
-                            <td>{{ $dependent->expiry_date }}</td>
+                        </td> --}}
+                            {{-- <td>{{ $dependent->issue_date }}</td> --}}
+                            {{-- <td>{{ $dependent->expiry_date }}</td> --}}
 
-                            <td>
+                            {{-- <td>
                                 @if(!$dependent->response)
                                     <span class="text-danger">Waiting for admin response.</span>
                                 @else
                                     {{ $dependent->response }}
                                @endif
-                            </td>
+                            </td> --}}
 
-                            <td>@if(!$dependent->comment)
+                            {{-- <td>@if(!$dependent->comment)
                                 <span class="text-danger">Waiting for admin response.</span>
                             @else
                                 {{$dependent->comment}}
-                           @endif</td>
+                           @endif</td> --}}
                                 <td>
                                     <a href="{{route('user.dependent-visa-process',$dependent->id)}}">Click</a>
                                 </td>

@@ -19,35 +19,35 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-12">
-                                    <h4>Individual</h4>
+                                    <h4>Dependents</h4>
                                 </div>
                             </div>
                             <div class="card-body table-striped table-bordered table-responsive">
-                                <a class="btn btn-success mb-3" href="{{ route('selfemployee.create') }}">Add Individual</a>
+
                                 <table class="table text-center" id="table_id_events">
                                     <thead>
                                         <tr>
                                             <th>Sr.</th>
                                             <th>Name</th>
-                                            <th>Request</th>
+                                            <th>Type</th>
                                             <th>Visa Process</th>
-                                            <th scope="col">Action</th>
+                                            {{-- <th scope="col">Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($individual_dependents as $dependent)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $dependent->name }}</td>
                                                 <td>{{ $dependent->dependent_type }}</td>
-                                                <td>{{ $dependent->request_type }}</td>
                                                 {{-- <td><a target="_black" href="{{ asset('') . '/' . $dependent->file }}">
                                                               <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
                                                             height="50" width="50" class="image"></a>
                                                 </td> --}}
                                                 <td>
-                                                    <a href="{{route('dependent-visa-section',['user_id'=>$id,'dependent_id'=>$dependent->id])}}">Click</a>
+                                                    <a class='btn btn-primary' href="{{route('dependent-visa-section',['user_id'=>$id,'dependent_id'=>$dependent->id])}}">Click</a>
                                                 </td>
-                                                <td
+                                                {{-- <td
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                     <a id="{{ $dependent->id }}" data-toggle="modal"
                                                         data-target=".bd-example-modal-lg" class="dependent-data btn_warning"><span
@@ -61,7 +61,7 @@
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
 

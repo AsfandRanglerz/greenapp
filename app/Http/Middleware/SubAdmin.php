@@ -17,10 +17,10 @@ class SubAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth::guard('web')->check()) {
-            return $next($request);
-        } else {
-            return redirect()->route('login');
-        }
+        // if (auth::guard('web')->check()) {
+        //     return $next($request);
+        // } else {
+        //     return redirect()->route('login');
+        // }
     }
 }

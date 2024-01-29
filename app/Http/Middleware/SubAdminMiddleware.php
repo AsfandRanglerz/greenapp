@@ -20,13 +20,13 @@ class SubAdminMiddleware
 
 
 
-        if (auth()->guard('web')->check() && auth()->user()->emp_type === 'subadmin') {
+        // if (auth()->guard('web')->check() && auth()->user()->emp_type === 'subadmin') {
 
-            return "hello";
-        } else {
+        //     return "hello";
+        // } else {
 
-            return redirect('admin-login');
-        }
+        //     return redirect('admin-login');
+        // }
 
 
 

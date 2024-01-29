@@ -72,16 +72,17 @@
                                                 <td>{{ $employee->work_permit_number }}</td>
                                                 <td>{{ $employee->person_code }}</td> --}}
                                                 <td>
-                                                    <a href="{{ route('individual-visa-process-start', ['individual_id'=>$employee->id,'request_id'=>0]) }}">View</a>
+                                                    <a class="btn btn-primary" href="{{ route('individual-visa-process-start', ['individual_id'=>$employee->id,'request_id'=>0]) }}">View</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('individual-dependent-index', $employee->id) }}">View</a>
+                                                    <a class="btn btn-primary" href="{{ route('individual-dependent-index', $employee->id) }}">View</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('user-document.index', $employee->id) }}">View</a>
+                                                    <a class="btn btn-primary" href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>
 
-                                                <td
+                                                <td>
+                                                <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                     <a id="{{ $employee->id }}" data-toggle="modal"
                                                         data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
@@ -95,7 +96,8 @@
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
-                                                </td>
+                                                </div>
+                                            </td>
                                             </tr>
                                         @endforeach
 

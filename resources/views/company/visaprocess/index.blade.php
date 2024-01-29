@@ -402,16 +402,16 @@
                                                     value="{{ $new_visa_data->signed_mb_st_date }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-3 col-12">
-                                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="visa1-14">
-                                                <label class="custom-control-label" for="visa1-14">The
-                                                    contract
-                                                    has been signed.</label>
+                                        @if (!($new_visa_data['signed_mb_st_status'] == 'Approved' || $new_visa_data['signed_mb_st_status'] == 'Skip'))
+                                            <div class="form-group mb-3 col-12">
+                                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="visa1-14">
+                                                    <label class="custom-control-label" for="visa1-14">The
+                                                        contract
+                                                        has been signed.</label>
+                                                </div>
                                             </div>
-                                        </div>
-
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file">
                                                 <label for='visa1-15'>Upload ST & MB</label>
@@ -455,6 +455,39 @@
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Submit</button>
                                         </div>
+                                        @else
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="visa1-12">File:</label>
+                                                    @php
+                                                    $file_name = $new_visa_data->signed_mb_st_file;
+                                                    $ext = explode('.', $file_name);
+                                                    @endphp
+                                                    @if ($new_visa_data->signed_mb_st_file)
+                                                    <a target="_black"
+                                                        href="{{ asset('' . '/' . $new_visa_data->signed_mb_st_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @else
+                                                        <img src="{{ asset('' . '/' . $new_visa_data->signed_mb_st_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div>
                                         </div>
                                     </div>

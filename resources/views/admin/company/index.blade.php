@@ -63,14 +63,14 @@
 
                                                 <td>
 
-                                                    <a href="{{ route('company-document.index', $company->id) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('company-document.index', $company->id) }}">View</a>
                                                 </td>
                                                 <td>
 
-                                                    <a href="{{ route('company.show', $company->id) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('company.show', $company->id) }}">View</a>
                                                 </td>
-
-                                                <td
+                                                <td>
+                                                <div
                                                     style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
 
 
@@ -101,6 +101,7 @@
                                                                 data-toggle="tooltip">Delete</button>
                                                         </form>
                                                     @endif
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

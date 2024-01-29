@@ -61,35 +61,37 @@
                                                 <td>{{ $employee->email }}</td>
                                                 {{-- <td>{{ $employee->phone }}</td> --}}
                                                 @if (!isset($company))
-                                                    <td>{{ $employee->usercompany->name }} {{ $employee->usercompany->id }}</td>
+                                                    <td>{{ $employee->usercompany->name }}</td>
                                                 @endif
                                                 {{-- <td>{{ $employee->dob }}</td>
                                                 <td>{{ $employee->nationality }}</td>
                                                 <td>{{ $employee->religion }}</td> --}}
                                                 <td>
-                                                    <a class="btn btn-primary"
-                                                                 href="{{ route('start-process',['request_id'=>0 ,'user_id'=>$employee->id ,'company_id'=>$employee->usercompany->id])}}">Go</a>
+                                                    <a class="btn btn-success"
+                                                                 href="{{ route('start-process',['request_id'=>0 ,'user_id'=>$employee->id ,'company_id'=>$employee->usercompany->id])}}">View</a>
                                                 </td>
                                                  <td>
-                                                    <a href="{{ route('user-document.index', $employee->id) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>
+                                                <td>
 
-                                                <td
-                                                    style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                    <div
+                                                        style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                            <a id="{{ $employee->id }}" data-toggle="modal"
+                                                                data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
+                                                                    class="fa fa-eye text-white"></span></a>
+                                                            <a class="btn btn-info"
+                                                                href="{{ route('user.edit', $employee->id) }}">Edit</a>
+                                                            <form method="post"
+                                                                action="{{ route('user.destroy', $employee->id) }}">
+                                                                @csrf
+                                                                <input name="_method" type="hidden" value="DELETE">
+                                                                <button type="submit" class="btn btn-danger btn-flat show_confirm"
+                                                                    data-toggle="tooltip">Delete</button>
+                                                            </form>
+                                                </div>
 
-                                                    <a id="{{ $employee->id }}" data-toggle="modal"
-                                                        data-target=".bd-example-modal-lg" class="employee-data btn_warning"><span
-                                                            class="fa fa-eye text-white"></span></a>
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('user.edit', $employee->id) }}">Edit</a>
-                                                    <form method="post"
-                                                        action="{{ route('user.destroy', $employee->id) }}">
-                                                        @csrf
-                                                        <input name="_method" type="hidden" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger btn-flat show_confirm"
-                                                            data-toggle="tooltip">Delete</button>
-                                                    </form>
-                                                </td>
+                                                        </td>
                                             </tr>
                                         @endforeach
 
