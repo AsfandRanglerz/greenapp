@@ -69,7 +69,12 @@
         border-right: none;
     }
 
-
+    @media (max-width:575px) {
+        .main-content{
+            padding-left:10px!important;
+        padding-right:10px!important;
+        }
+    }
 
     @media (max-width: 991.2px) {
         .bordered_tab:not(:last-child) {
@@ -174,7 +179,7 @@
                     <div class="tab-content" id="v-visa-tabContent">
                         <div class="tab-pane fade show active start-process" id="v-pills-start" role="tabpanel"
                         aria-labelledby="v-pills-start-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             {{-- <form action="" method="POST" class='py-2'> --}}
                                 <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Process</h6>
                                 <div class="row">
@@ -219,7 +224,7 @@
                         @if ($new_visa)
                         <div class="tab-pane fade" id="v-pills-visa1" role="tabpanel"
                             aria-labelledby="v-pills-visa1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     {{-- @method('GET') --}}
@@ -255,7 +260,7 @@
                                                     id="new-visa-5"  placeholder="..." value="{{$new_visa->job_offer_tran_fees}}" name='job_offer_tran_fees'>
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             <label for="new-visa-6">Status</label>
                                             <select id="new-visa-6" class="form-control status-selector-select category" name="job_offer_status">
                                                 <option value="" selected disabled>select</option>
@@ -448,9 +453,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-12 gap-1  col-md-6">
-                                          <div class="d-flex flex-column">
-                                            {{-- <label for="new-visa-9">Attachment</label> --}}
+                                        <div class="col-xl-6 col-lg-12 gap-1 col-md-6">
+                                          <div class="d-flex flex-column mb-3 form-group">
+                                             <label for="new-visa-9">Upload File</label> 
                                             <input type="file" class="form-control"
                                                     id="new-visa-9" placeholder="..." value="{{$new_visa->job_offer_file}}" name='file'>
                                          {{-- <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
@@ -499,7 +504,7 @@
                         <!--Waiting for Approval Start-->
                         <div class="tab-pane fade" id="v-pills-visa2" role="tabpanel"
                             aria-labelledby="v-pills-visa2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -528,8 +533,8 @@
                                             </div>
                                         </div>
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                               <label for='new-visa-17'>Upload ST & MB</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                   <input type="file" class="form-control" id='new-visa-17'
@@ -576,9 +581,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="">Status</label>
-                                            <select id="selectDocument" class="form-control category status-selector-select" name="signed_mb_st_status">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
+                                            <label for="selectDocument1">Status</label>
+                                            <select id="selectDocument1" class="form-control category status-selector-select" name="signed_mb_st_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$new_visa['signed_mb_st_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
                                                 <option value="UnderProcess" {{$new_visa['signed_mb_st_status'] == 'UnderProcess' ? 'selected' : '' }}>Under Process</option>
@@ -597,9 +602,9 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-visa2-1" role="tabpanel"
+                        <div    class="tab-pane fade" id="v-pills-visa2-1" role="tabpanel"
                             aria-labelledby="v-pills-visa2-1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     {{-- @method('GET') --}}
@@ -662,8 +667,8 @@
                                             </div>
                                         </div>
                                         <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
+                                            class=" col-xl-6 col-lg-12 col-md-6 align-items-end status-select-file d-none">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-13'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-13'
@@ -712,7 +717,7 @@
                         {{-- Dubai insurance section --}}
                         <div class="tab-pane fade" id="v-pills-visa3" role="tabpanel"
                             aria-labelledby="v-pills-visa3-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -734,7 +739,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             <label for="new-visa-23">Status</label>
                                             <select id="new-visa-23" class="form-control category status-selector-select" name="dubai_insurance_status">
                                                 <option value="" selected disabled>select</option>
@@ -929,12 +934,9 @@
                                                 </select>
                                             </div>
                                         </div>
-
-
-
-                                <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                    <div class="upload-file">
-                                      {{-- <label for='new-visa-26'>Upload File</label> --}}
+                                <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                    <div class="upload-file form-group mb-3">
+                                      <label for='new-visa-26'>Upload File</label> 
                                       <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                           <input type="file" class="form-control" id='new-visa-26'
                                               name="dubai_insurance_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->dubai_insurance_file}}">
@@ -982,7 +984,7 @@
                         {{--Preapproval work permit--}}
                         <div class="tab-pane fade" id="v-pills-preapproval" role="tabpanel"
                             aria-labelledby="v-pills-preapproval-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -1003,7 +1005,7 @@
                                                     id="new-visa-28" placeholder="..." name="pre_approved_wp_tran_fees" value={{$new_visa->pre_approved_wp_tran_fees}}>
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             {{-- <div class="form-group col-xl-6 col-lg-12 col-md-6"> --}}
                                                 <label for="new-visa-29">Status</label>
                                                 <select id="new-visa-29" class="form-control category status-selector-select" name="pre_approved_wp_status">
@@ -1198,9 +1200,9 @@
                                             </div>
                                         </div>
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-32'>Upload File</label> --}}
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                             <label for='new-visa-32'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-32'
                                                     name="pre_approved_wp_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->pre_approved_wp_file}}">
@@ -1246,7 +1248,7 @@
                         {{--Entry visa section--}}
                         <div class="tab-pane fade" id="v-pills-visa4" role="tabpanel"
                             aria-labelledby="v-pills-visa4-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -1288,8 +1290,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-37'>Upload file</label>
-
+                                          <label for='new-visa-37'>Select File</label>
                                                  <select id="new-visa-37" class="form-control category" name="enter_visa_file_name"
                                                     value="{{$new_visa->enter_visa_file_name}}" >
                                                     <option value="" selected disabled>Select Document</option>
@@ -1464,9 +1465,9 @@
                                             </div>
                                         </div>
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-38'>Upload File</label> --}}
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                             <label for='new-visa-38'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-38'
                                                     name="enter_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->enter_visa_file}}">
@@ -1521,7 +1522,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
-                                            <div class="form-group">
+                                            <div class="form-group mb-3">
                                                 <label for="new-visa-41">Over Stay Fines?</label>
                                                 <select class="form-control fine-select" id="new-visa-41" name="enter_visa_over_sf">
                                                     <option selected disabled>Select fine</option>
@@ -1533,8 +1534,8 @@
                                     </div>
                                     <div class="fine-files-container d-none ">
                                     <div class="row  align-items-end ">
-                                      <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="new-visa-42">
+                                      <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="new-visa-42 from-group mb-3">
                                           <label for='#over-stay-file'>Upload file</label>
                                           <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                               <input type="file" class="form-control" id='new-visa-42'
@@ -1584,7 +1585,7 @@
                         {{--Change of visa status--}}
                         <div class="tab-pane fade" id="v-pills-visa-5" role="tabpanel"
                             aria-labelledby="v-pills-visa5-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -1626,7 +1627,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-47'>Upload file</label>
+                                          <label for='new-visa-47'>Select File</label>
 
                                                  <select id="new-visa-47" class="form-control category" name="change_of_visa_file_name"
                                                     value="{{$new_visa->change_of_visa_file_name}}" >
@@ -1799,9 +1800,9 @@
                                             </div>
                                         </div>
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-48'>Upload File</label> --}}
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                             <label for='new-visa-48'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-48'
                                                     name="change_of_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->change_of_visa_file}}">
@@ -1855,7 +1856,7 @@
                         {{--medical fitness--}}
                         <div class="tab-pane fade" id="v-pills-visa6" role="tabpanel"
                             aria-labelledby="v-pills-visa6-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -1877,7 +1878,7 @@
                                                     id="new-visa-50" placeholder="..." name="medical_fitness_tfee" value="{{$new_visa->medical_fitness_tfee}}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-51">Status</label>
                                             <select id="new-visa-51" class="form-control category status-selector-select" name="medical_fitness_status">
                                                 <option value="" selected disabled>select</option>
@@ -1894,12 +1895,9 @@
                                                     id="new-visa-52" placeholder="..." name="medical_fitness_date" value="{{$new_visa->medical_fitness_date}}">
                                             </div>
                                         </div>
-
-
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-53'>Upload file</label>
-
+                                          <label for='new-visa-53'>Select File</label>
                                                  <select id="new-visa-53" class="form-control category" name="medical_fitness_file_name"
                                                     value="{{$new_visa->medical_fitness_file_name}}">
                                                     <option value="" selected disabled>Select Document</option>
@@ -2072,8 +2070,8 @@
                                         </div>
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-54'>Upload File</label> --}}
+                                            <div class="upload-file form-group mb-3">
+                                             <label for='new-visa-54'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-54'
                                                     name="medical_fitness_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->medical_fitness_file}}">
@@ -2134,12 +2132,12 @@
                         {{--Tawjeeh tranning--}}
                         <div class="tab-pane fade" id="v-pills-visa7" role="tabpanel"
                             aria-labelledby="v-pills-visa7-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step8' name='tawjeeh_class' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh training classes</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh Training classes</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -2155,7 +2153,7 @@
                                                     id="new-visa-57" placeholder="..." name="tawjeeh_trans_fee" value="{{$new_visa->tawjeeh_trans_fee}}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-58">Status</label>
                                             <select id="new-visa-58" class="form-control category status-selector-select" name="tawjeeh_status">
                                                 <option value="" selected disabled>select</option>
@@ -2173,7 +2171,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mb-3">
                                                 <label for="new-visa-60">Tawjeeh Payment</label>
                                                 <select class="form-control select-tawjeeh-payment" id="new-visa-60" name="tawjeeh_payment">
                                                     <option>Tawjeeh Payment</option>
@@ -2182,8 +2180,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end">
-                                          <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 align-items-end">
+                                          <div class="upload-file form-group mb-3">
                                             <label for='new-visa-61'>Upload Document</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-61'
@@ -2231,7 +2229,7 @@
                         {{--Contract submission--}}
                         <div class="tab-pane fade" id="v-pills-visa8" role="tabpanel"
                             aria-labelledby="v-pills-visa8-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -2252,7 +2250,7 @@
                                                     id="new-visa-63" placeholder="..." name="contract_tran_fee" value="{{$new_visa->contract_tran_fee}}">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             <label for="new-visa-64">Status</label>
                                             <select id="new-visa-64" class="form-control category status-selector-select" name="contract_status">
                                                 <option value="" selected disabled>select</option>
@@ -2261,7 +2259,6 @@
                                                 <option value="Skip" {{$new_visa['contract_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['contract_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
-
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -2273,8 +2270,7 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-66'>Upload file</label>
-
+                                          <label for='new-visa-66'>Select File</label>
                                                  <select id="new-visa-66" class="form-control category" name="contract_file_name"
                                                     value="{{$new_visa->contract_file_name}}">
                                                     <option value="" selected disabled>Select Document</option>
@@ -2445,10 +2441,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-67'>Upload File</label> --}}
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                            <label for='new-visa-67'>Upload File</label> 
+                                            <div class="input-group mb-xl-  0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-67'
                                                     name="contract_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->contract_file}}">
                                                 <div class="input-group-prepend">
@@ -2499,7 +2495,7 @@
                         {{--Health insurance--}}
                         <div class="tab-pane fade" id="v-pills-visa9" role="tabpanel"
                             aria-labelledby="v-pills-visa9-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -2520,7 +2516,7 @@
                                                     id="new-visa-69" placeholder="..." name="health_insur_tran_fee" value="{{$new_visa->health_insur_tran_fee}}">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             <label for="new-visa-70">Status</label>
                                             <select id="new-visa-70" class="form-control category status-selector-select" name="health_insur_status">
                                                 <option value="" selected disabled>select</option>
@@ -2541,8 +2537,7 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-72'>Upload file</label>
-
+                                          <label for='new-visa-72'>Select File</label>
                                                  <select id="new-visa-72" class="form-control category" name="health_insur_file_name"
                                                     value="{{$new_visa->health_insur_file_name}}">
                                                     <option value="" selected disabled>Select Document</option>
@@ -2715,9 +2710,9 @@
                                         </div>
 
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-73'>Upload File</label> --}}
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file mb-3 form-group">
+                                            <label for='new-visa-73'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-73'
                                                     name="health_insur_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->health_insur_file}}">
@@ -2769,7 +2764,7 @@
                         {{--Work permit--}}
                         <div class="tab-pane fade" id="v-pills-visa10" role="tabpanel"
                             aria-labelledby="v-pills-visa10-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -2790,7 +2785,7 @@
                                                     id="new-visa-75" placeholder="..." name="work_permit_tran_fee" value="{{$new_visa->work_permit_tran_fee}}">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                             <label for="new-visa-76">Status</label>
                                             <select id="new-visa-76" class="form-control category status-selector-select" name="work_permit_status">
                                                 <option value="" selected disabled>select</option>
@@ -2810,8 +2805,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                          <label for='new-visa-77'>Upload file</label>
-
+                                          <label for='new-visa-77'>Select File</label>
                                                  <select id="new-visa-77" class="form-control category" name="work_permit_app_file_name"
                                                     value="{{$new_visa->work_permit_app_file_name}}">
                                                     <option value="" selected disabled>Select Document</option>
@@ -2984,9 +2978,9 @@
                                         </div>
 
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                            {{-- <label for='new-visa-78'>Upload File</label> --}}
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file mb-3 form-group">
+                                             <label for='new-visa-78'>Upload File</label> 
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-78'
                                                     name="work_permit_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->work_permit_file}}">
@@ -3032,7 +3026,7 @@
                         {{--Emrates ID--}}
                         <div class="tab-pane fade" id="v-pills-visa11" role="tabpanel"
                             aria-labelledby="v-pills-visa11-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -3053,7 +3047,7 @@
                                                   id="new-visa-80" placeholder="..." name="emirates_tran_fee" value="{{$new_visa->emirates_tran_fee}}">
                                           </div>
                                       </div>
-                                      <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                      <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                           <label for="new-visa-81">Status</label>
                                           <select id="new-visa-81" class="form-control category status-selector-select" name="emirates_status">
                                             <option value="" selected disabled>select</option>
@@ -3073,8 +3067,7 @@
 
                                       <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                      <label for='new-visa-83'>Upload file</label>
-
+                                      <label for='new-visa-83'>Select File</label>
                                              <select id="new-visa-83" class="form-control category" name="emirates_file_name"
                                                 value="{{$new_visa->emirates_file_name}}">
                                                 <option value="" selected disabled>Select Document</option>
@@ -3245,11 +3238,9 @@
                                             </select>
                                         </div>
                                     </div>
-
-
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
-                                        {{-- <label for='new-visa-84'>Upload File</label> --}}
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file mb-3 form-group">
+                                        <label for='new-visa-84'>Upload File</label> 
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                             <input type="file" class="form-control" id='new-visa-84'
                                                 name="emirates_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->emirates_file}}">
@@ -3311,7 +3302,7 @@
                                                 id="new-visa-86" placeholder="..." name="residency_tran_fee" value="{{$new_visa->residency_tran_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-87">Status</label>
                                         <select id="new-visa-87" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
@@ -3331,8 +3322,7 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                      <label for='new-visa-89'>Upload file</label>
-
+                                      <label for='new-visa-89'>Select File</label>
                                              <select id="new-visa-89" class="form-control category" name="residency_file_name"
                                                 value="{{$new_visa->residency_file_name}}">
                                                 <option value="" selected disabled>Select Document</option>
@@ -3506,8 +3496,8 @@
 
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
-                                        {{-- <label for='new-visa-90'>Upload File</label> --}}
+                                        <div class="upload-file mb-3 form-group">
+                                        <label for='new-visa-90'>Upload File</label> 
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                             <input type="file" class="form-control" id='new-visa-90'
                                                 name="residency_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->residency_file}}">
@@ -3559,7 +3549,7 @@
                         {{--Employee Biometric--}}
                         <div class="tab-pane fade" id="v-pills-visa12" role="tabpanel"
                             aria-labelledby="v-pills-visa12-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -3608,8 +3598,8 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
-                                          <div class="mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                          <div class="align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                               <label for='new-visa-96'>Uplaod File</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                   <input type="file" class="form-control" id='new-visa-96'
@@ -3703,7 +3693,7 @@
                 <div class="tab-content" id="v-renewal-process-tabContent">
                     <div class="tab-pane fade show active start-process" id="v-pills-renewal-process0" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process0-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                 @csrf
                                 <input type="hidden" value='renewal process' name='process_name'>
@@ -3744,7 +3734,7 @@
                     {{--medical fitness--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process1" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process1-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -3767,7 +3757,7 @@
                                                 placeholder="..." name="medical_fitness_tran_fees" value="{{$renewal_process->medical_fitness_tran_fees}}">
                                         </div>
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-101">Status</label>
                                         <select id="new-visa-101"
                                             class="form-control category status-selector-select status-select" id="status-select1" name="medical_fitness_status">
@@ -3786,7 +3776,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6 renewal-fitness-parent">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="new-visa-103">Fitness Status</label>
                                             <select class="form-control renewal-fitness" id="new-visa-103" name="medical_fitness_st">
                                                 <option selected disabled>select fitness</option>
@@ -3796,10 +3786,10 @@
                                         </div>
                                     </div>
                                     <div
-                                        class=" col-xl-6 col-lg-12 col-md-6 mb-3 d-none renewal-medical-file align-items-end">
-                                        <div class="upload-file">
+                                        class=" col-xl-6 col-lg-12 col-md-6 d-none renewal-medical-file align-items-end">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-104'>Upload ST & MB</label>
-                                            <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                            <div class="input-group">
                                                 <input type="file" class="form-control" id='new-visa-104'
                                                     name="medical_fitness_file" style="line-height: 1"
                                                     accept=".pdf,.doc,.excel">
@@ -3844,7 +3834,7 @@
                     {{--work permit--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process2" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process2-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -3869,7 +3859,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
-                                        <label for="new-visa-107">Status</label>
+                                        <label for="new-visa-107 mb-3 form-group">Status</label>
                                         <select id="new-visa-107"
                                             class="form-control category status-selector-select status-select" id="status-select1" name="work_permit_status">
                                             <option value="" selected disabled>select</option>
@@ -4127,8 +4117,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-110'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
@@ -4177,7 +4167,7 @@
                     {{--sign st & mb--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process3" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process3-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -4201,7 +4191,7 @@
                                                 id="new-visa-112" placeholder="..." name="signed_mb_tranc_fee" value="{{$renewal_process->signed_mb_tranc_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                    <div class="form-group col-xl-6 col-lg-12 mb-3 col-md-6 status-select-parent">
                                         <label for="status-select1-renewal-3">Status</label>
                                         <select id="new-visa-113" class="form-control category status-selector-select status-select"
                                             id="new-visa-113" name="signed_mb_status">
@@ -4219,8 +4209,8 @@
                                                 placeholder="..." name="signed_mb_date" value="{{$renewal_process->signed_mb_date}}">
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-115'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-115'
@@ -4267,7 +4257,7 @@
                     {{--dubai insurance--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process4" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process4-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -4291,7 +4281,7 @@
                                                 id="new-visa-117" placeholder="..." name="pay_dubai_insu_tran_fee" value="{{$renewal_process->pay_dubai_insu_tran_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-118">Status</label>
                                         <select class="form-control category status-select status-selector-select"
                                             id="new-visa-118" name="pay_dubai_insu_status">
@@ -4550,8 +4540,8 @@
                                         </select>
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex ">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex ">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-121'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-121'
@@ -4599,7 +4589,7 @@
                     {{--contract submission--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process5" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process5-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -4625,7 +4615,7 @@
                                                 id="new-visa-123" placeholder="..." name="contract_sub_tranc_fee" value="{{$renewal_process->contract_sub_tranc_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 mb-3">
                                         <label for="new-visa-124">Status</label>
                                         <select id="new-visa-124"
                                             class="form-control status-selector-select category" name="contract_sub_status">
@@ -4884,8 +4874,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex ">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex ">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-126'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
@@ -4933,7 +4923,7 @@
                     {{--tawjeeh classes--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process6" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process6-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -4957,7 +4947,7 @@
                                                 id="new-visa-128" placeholder="..." name="tawjeeh_tranc_fee" value="{{$renewal_process->tawjeeh_tranc_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                         <label for="new-visa-129">Status</label>
                                         <select id="new-visa-129" class="form-control category status-selector-select" name="tawjeeh_tranc_status">
                                             <option value="" selected disabled>select</option>
@@ -4975,7 +4965,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="new-visa-131">Tawjeeh Payment</label>
                                             <select class="form-control select-tawjeeh-payment"
                                                 id="new-visa-131" name="tawjeeh_tranc_payment">
@@ -4986,8 +4976,8 @@
                                         </div>
                                     </div>
                                     <div
-                                        class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 mb-3 align-items-end">
-                                        <div class="upload-file">
+                                        class=" col-xl-6 col-lg-12 tawjeeh-document d-none col-md-6 align-items-end">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-132'>Upload Document</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control"
@@ -5034,7 +5024,7 @@
                     {{--residency--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process7" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process7-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -5055,7 +5045,7 @@
                                             <input type="text" class="form-control" id="new-visa-135" placeholder="..." name="residency_tran_fees" value="{{$renewal_process->residency_tran_fees}}">
                                         </div>
                                     </div>
-                                    <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-136">Status</label>
                                         <select id="new-visa-136" class="form-control category status-selector-select" name="residency_status">
                                             <option value="" selected disabled>select</option>
@@ -5076,7 +5066,7 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='new-visa-138'>Upload file</label>
+                                            <label for='new-visa-138'>Select File</label>
                                             <select id="new-visa-138" class="form-control category"
                                             name="residency_file_name"
                                             value="{{$renewal_process->residency_file_name}}">
@@ -5315,8 +5305,8 @@
                                         </select>
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-139'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-139' style="line-height: 1"
@@ -5378,7 +5368,7 @@
                                                 name="renewal_tran_fees" value="{{$renewal_process->renewal_tran_fees}}">
                                         </div>
                                     </div>
-                                    <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                         <label for="new-visa-142">Status</label>
                                         <select id="new-visa-142" class="form-control status-selector-select category" name="renewal_status">
                                             <option value="" selected disabled>select</option>
@@ -5398,7 +5388,7 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='new-visa-144'>Upload file</label>
+                                            <label for='new-visa-144'>Select File</label>
                                             <select id="new-visa-144" class="form-control category"
                                             name="renewal_file_name"
                                             value="{{$renewal_process->renewal_file_name}}">
@@ -5637,8 +5627,8 @@
                                         </select>
                                         </div>
                                     </div>
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-145'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-145' name="renewal_file"
@@ -5683,7 +5673,7 @@
                     {{--employee biometric--}}
                     <div class="tab-pane fade" id="v-pills-renewal-process8" role="tabpanel"
                         aria-labelledby="v-pills-renewal-process8-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             @if ($renewal_process)
                             <form action="{{route('renewal-process-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'renewal_id'=>$renewal_process->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
@@ -5712,7 +5702,7 @@
                                 value="{{$renewal_process->emp_biometric_tranc_fee}}">
                                 </div>
                                 </div>
-                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                 <label for="new-visa-148">Status</label>
                                 <select id="new-visa-148" class="form-control status-selector-select category"
                                 name="emp_biometric_status">
@@ -5736,7 +5726,7 @@
                                 </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
-                                <div class="form-group">
+                                <div class="form-group mb-3">
                                 <label for="new-visa-150">Employee Biometric</label>
                                 <select class="form-control biometric-select" id="new-visa-150"
                                 name="emp_biometric">
@@ -5747,8 +5737,8 @@
                                 </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
-                                <div class="mb-3 align-items-end d-flex">
-                                <div class="upload-file">
+                                <div class="align-items-end d-flex">
+                                <div class="upload-file form-group mb-3">
                                 <label for='new-visa-151'>Uplaod File</label>
                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                     <input type="file" class="form-control" id='new-visa-151'
@@ -5870,7 +5860,7 @@
                     <div class="tab-content" id="v-sponsored-tabContent">
                         <div class="tab-pane fade show active start-process data" id="v-pills-sponsored0" role="tabpanel"
                             aria-labelledby="v-pills-sponsored0-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                     @csrf
                                     <input type="hidden" value='work permit' name='process_name'>
@@ -5913,13 +5903,13 @@
                         {{--work permit application--}}
                         <div class="tab-pane fade " id="v-pills-sponsored1" role="tabpanel"
                             aria-labelledby="v-pills-sponsored1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step1' name='work_permit' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                        application</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                        Application</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -5937,8 +5927,8 @@
                                                     id="new-visa-154" name="work_permit_app_tranc_fee" value="{{$spo_by_some->work_permit_app_tranc_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="new-visa-155">Status</label>
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
+                                            <label for="new-visa-155 ">Status</label>
                                             <select id="new-visa-155" class="form-control status-selector-select category" name="work_permit_app_status">
                                                 <option value="" selected disabled>select</option>
                                                 <option value="Approved" {{$spo_by_some['work_permit_app_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -5957,7 +5947,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="new-visa-157">Upload File</label>
+                                                <label for="new-visa-157">Select File</label>
                                                 <select id="new-visa-157" class="form-control category" name="work_permit_app_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
@@ -6194,8 +6184,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-158'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" name="work_permit_app_file" class="form-control" id='new-visa-158'
@@ -6246,7 +6236,7 @@
                         {{--upload signed st and mb--}}
                         <div class="tab-pane fade" id="v-pills-sponsored2" role="tabpanel"
                             aria-labelledby="v-pills-sponsored2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -6272,7 +6262,7 @@
                                                 name="signed_mb_st_tranc_fee" value="{{$spo_by_some->signed_mb_st_tranc_fee}}">
                                         </div>
                                     </div>
-                                    <div class="form-group col-xl-6  col-lg-12 col-md-6">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                         <label for="new-visa-161">Status</label>
                                         <select id="new-visa-161" class="form-control status-selector-select category"
                                             name="signed_mb_st_status">
@@ -6292,8 +6282,8 @@
                                     </div>
 
 
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file mb-3 form-group">
                                             <label for='new-visa-163'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-163'
@@ -6343,7 +6333,7 @@
                         {{--waiting for approval--}}
                         <div class="tab-pane fade" id="v-pills-sponsored1_2" role="tabpanel"
                             aria-labelledby="v-pills-sponsored1_2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -6352,7 +6342,7 @@
                                         Approval
                                     </h6>
                                     <div class="row">
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-164">Status</label>
                                             <select id="new-visa-164" class="form-control status-selector-select category status-select"
                                                  name="waiting_for_approval_status">
@@ -6402,8 +6392,8 @@
                                             </div>
                                         </div>
                                         <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
+                                            class=" col-xl-6 col-lg-12 col-md-6 align-items-end status-select-file d-none">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-167'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-167'
@@ -6451,7 +6441,7 @@
                         {{--Dubai insurance--}}
                         <div class="tab-pane fade" id="v-pills-sponsored3" role="tabpanel"
                             aria-labelledby="v-pills-sponsored3-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -6477,7 +6467,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                     <label for="new-visa-171">Status</label>
                                     <select id="new-visa-171" class="form-control status-selector-select category"
                                         name="pay_dubai_insu_status">
@@ -6500,7 +6490,7 @@
 
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="new-visa-173">Upload File</label>
+                                        <label for="new-visa-173">Select File</label>
                                         <select id="new-visa-173" class="form-control category"
                                             name="pay_dubai_insu_file_name">
                                             <option value="" selected disabled>Select Document</option>
@@ -6739,8 +6729,8 @@
                                     </div>
                                 </div>
                                 <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end  d-flex">
-                                            <div class="upload-file">
+                                            class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-174'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-174'
@@ -6783,14 +6773,13 @@
                                         type="submit">Add</button>
                                 </div>
                             </div>
-
                                 </form>
                             </div>
                         </div>
                         {{-- preapproval work permit --}}
                         <div class="tab-pane fade" id="v-pills-sponsored4" role="tabpanel"
                             aria-labelledby="v-pills-sponsored4-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -6814,7 +6803,7 @@
                                             name="pre_approv_wp_tranc_fee">
                                     </div>
                                 </div>
-                                <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                     <label for="new-visa-176">Status</label>
                                     <select id="new-visa-176" class="form-control status-selector-select category"
                                         name="pre_approv_wp_status">
@@ -6835,7 +6824,7 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="new-visa-178">select file</label>
+                                        <label for="new-visa-178">Select File</label>
                                         <select id="new-visa-178" class="form-control category"
                                             name="pre_approv_wp_file_name">
                                             <option value="" selected disabled>Select Document</option>
@@ -7073,8 +7062,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                    <div class="upload-file">
+                                <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                    <div class="upload-file form-group mb-3">
                                         <label for='new-visa-179'>Upload File</label>
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                             <input type="file" class="form-control" id='new-visa-179'
@@ -7122,7 +7111,7 @@
                         {{-- upload work permit--}}
                         <div class="tab-pane fade" id="v-pills-sponsored5" role="tabpanel"
                             aria-labelledby="v-pills-sponsored5-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('sponsored-by-some-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'sponsored_id'=>$spo_by_some->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -7148,7 +7137,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="new-visa-183">select file</label>
+                                            <label for="new-visa-183">Status</label>
                                             <select id="new-visa-183" class="form-control status-selector-select category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select Document</option>
@@ -7408,9 +7397,8 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                              <label for='new-visa-186'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-186'
@@ -7489,7 +7477,7 @@
                     <div class="tab-content" id="v-part-time-tabContent">
                         <div class="tab-pane fade show active start-process data" id="v-pills-part-time0" role="tabpanel"
                             aria-labelledby="v-pills-part-time0-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                     @csrf
                                     <input type="hidden" value='work permit' name='process_name'>
@@ -7530,7 +7518,7 @@
                         {{--work permit application--}}
                         <div class="tab-pane fade " id="v-pills-part-time1" role="tabpanel"
                             aria-labelledby="v-pills-part-time1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('part-time-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'part_time'=>$part_time->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -7581,8 +7569,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-193'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-193'
@@ -7623,8 +7611,8 @@
                                                     id="new-visa-195" name="wp_app_trnc_fee" value="{{$part_time->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                            <label for="new-visa-196">Status</label>
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
+                                            <label for="new-visa-196 ">Status</label>
                                             <select id="new-visa-196" class="form-control status-selector-select category"
                                                 name="wp_app_status">
                                                 <option value="" selected disabled>select</option>
@@ -7644,7 +7632,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="new-visa-198">Upload File</label>
+                                                <label for="new-visa-198">Select File</label>
                                                 <select id="new-visa-198" class="form-control category" name="wp_app_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
@@ -7881,9 +7869,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                                <label for='new-visa-199'>Upload</label>
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                                <label for='new-visa-199'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" name="wp_app_file" class="form-control" id='new-visa-199'
                                                          style="line-height: 1"
@@ -7933,7 +7921,7 @@
                         {{--upload signed st--}}
                         <div class="tab-pane fade" id="v-pills-part-time2" role="tabpanel"
                             aria-labelledby="v-pills-part-time2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('part-time-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'part_time'=>$part_time->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -7957,7 +7945,7 @@
                                                     id="new-visa-201" name="signed_mb_st_trc_fee" value="{{$part_time->signed_mb_st_trc_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-202">Status</label>
                                             <select id="new-visa-202" class="form-control status-selector-select category"
                                                 name="signed_mb_st_status">
@@ -7977,8 +7965,8 @@
                                             </div>
                                         </div>
 
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-204'>Upload Signed ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" name="signed_mb_st_file" class="form-control" id='new-visa-204'
@@ -8030,7 +8018,7 @@
                         {{--waiting for approval--}}
                         <div class="tab-pane fade" id="v-pills-part-time3" role="tabpanel"
                             aria-labelledby="v-pills-part-time3-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('part-time-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'part_time'=>$part_time->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -8039,7 +8027,7 @@
                                         Approval
                                     </h6>
                                     <div class="row">
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-205">Status</label>
                                             <select id="new-visa-205" class="form-control category status-selector-select status-select"
                                                  name="waiting_for_approval_status">
@@ -8089,7 +8077,7 @@
                                         </div>
                                         <div
                                             class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
+                                            <div class="upload-file form-group">
                                                 <label for='new-visa-208'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-208'
@@ -8136,7 +8124,7 @@
                         {{--contract submission--}}
                         <div class="tab-pane fade" id="v-pills-part-time4" role="tabpanel"
                             aria-labelledby="v-pills-part-time4-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('part-time-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'part_time'=>$part_time->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -8160,7 +8148,7 @@
                                                     id="new-visa-210" name="contract_tran_fee" value="{{$part_time->contract_tran_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-211">Status</label>
                                             <select id="new-visa-211" class="form-control status-selector-select category"
                                                 name="contract_status">
@@ -8181,7 +8169,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="new-visa-213">Upload File</label>
+                                                <label for="new-visa-213">Select File</label>
                                                 <select id="new-visa-213" class="form-control category" name="contract_file_name">
                                                     <option value="" selected disabled>Select Document</option>
                                                     <option value="Personal Photo" {{
@@ -8418,9 +8406,9 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                                <label for='new-visa-214'>Upload</label>
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
+                                                <label for='new-visa-214'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" name="contract_file" class="form-control" id='new-visa-214'
                                                          style="line-height: 1"
@@ -8464,8 +8452,6 @@
                                             </div>
                                         </div>
                                     {{-- </div> --}}
-
-
                                     <div>
                                     </div>
                                 </div>
@@ -8508,7 +8494,7 @@
                     <div class="tab-content" id="v-header-tabContent">
                         <div class="tab-pane fade show active start-process data" id="v-pills-UAE0" role="tabpanel"
                             aria-labelledby="v-pills-UAE0-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                     @csrf
                                      <input type="hidden" value='work permit' name='process_name'>
@@ -8549,7 +8535,7 @@
                         {{-- wp application --}}
                         <div class="tab-pane fade" id="v-pills-UAE1" role="tabpanel"
                             aria-labelledby="v-pills-UAE1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -8573,7 +8559,7 @@
                                                     id="new-visa-217" name="wp_app_trnc_fee" value="{{$uae_gcc->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-218">Status</label>
                                             <select id="new-visa-218" class="form-control status-selector-select category"
                                                 name="wp_app_status">
@@ -8831,8 +8817,8 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-221'>Upload</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-221'
@@ -8884,7 +8870,7 @@
                         {{-- signed mb--}}
                         <div class="tab-pane fade" id="v-pills-UAE2" role="tabpanel"
                             aria-labelledby="v-pills-UAE2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -8929,8 +8915,8 @@
                                         </div>
                                     </div>
 
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6  align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-226'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-226'
@@ -8981,7 +8967,7 @@
                         {{-- pay dubai --}}
                         <div class="tab-pane fade" id="v-pills-UAE3" role="tabpanel"
                             aria-labelledby="v-pills-UAE3-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -9007,7 +8993,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                    <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                         <label for="new-visa-229">Status</label>
                                         <select id="new-visa-229" class="form-control category status-selector-select"
                                             name="pay_dubai_insu_status">
@@ -9029,7 +9015,7 @@
 
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="new-visa-231">Upload File</label>
+                                            <label for="new-visa-231">Select File</label>
                                             <select id="new-visa-231" class="form-control category"
                                                 name="pay_dubai_insu_file_name">
                                                 <option value="" selected disabled>Select Document</option>
@@ -9319,7 +9305,7 @@
                         {{-- waiting for approval --}}
                         <div class="tab-pane fade" id="v-pills-UAE3-1" role="tabpanel"
                             aria-labelledby="v-pills-UAE3-1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -9328,7 +9314,7 @@
                                         Approval
                                     </h6>
                                     <div class="row">
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                        <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-233">Status</label>
                                             <select id="new-visa-233" class="form-control status-selector-select category status-select"
                                                 id="status-select1" name="waiting_for_approval_status">
@@ -9378,8 +9364,8 @@
                                             </div>
                                         </div>
                                         <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
+                                            class=" col-xl-6 col-lg-12 col-md-6 align-items-end status-select-file d-none">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-236'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-236'
@@ -9427,7 +9413,7 @@
                         {{-- upload work permit --}}
                         <div class="tab-pane fade" id="v-pills-UAE4" role="tabpanel"
                             aria-labelledby="v-pills-UAE4-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('uae-gcc-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'uae_gcc'=>$uae_gcc->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -9453,7 +9439,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="new-visa-239">select file</label>
+                                            <label for="new-visa-239">Status</label>
                                             <select id="new-visa-239" class="form-control category status-selector-select"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
@@ -9715,8 +9701,8 @@
                                         </div>
                                     </div>
 
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class="col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                              <label for='new-visa-242'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-242'
@@ -9729,9 +9715,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                         @php
                                         $file_name = $uae_gcc->upload_wp_file;
                                         $ext = explode('.', $file_name);
@@ -9803,7 +9786,7 @@
                     <div class="tab-content" id="modify-contract-tabContent">
                         <div class="tab-pane fade show active start-process data" id="v-pills-modify-contract0" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract0-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                     @csrf
                                      <input type="hidden" value='work permit' name='process_name'>
@@ -9844,7 +9827,7 @@
                         @if ($modify_contract)
                         <div class="tab-pane fade" id="v-pills-modify-contract1" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract1-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -9868,7 +9851,7 @@
                                                     id="new-visa-245" name="wp_app_trnc_fee" value="{{$modify_contract->wp_app_trnc_fee}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                        <div class="form-group  mb-3 col-xl-6 col-lg-12 col-md-6">
                                             <label for="new-visa-246">Status</label>
                                             <select id="new-visa-246" class="form-control status-selector-select category"
                                                 name="wp_app_status">
@@ -10128,8 +10111,8 @@
                                                             </select>
                                             </div>
                                         </div>
-                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
+                                        <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-249'>Upload ST & MB</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-249'
@@ -10179,7 +10162,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-modify-contract2" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract2-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -10226,8 +10209,8 @@
                                     </div>
 
 
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file mb-3 form-group">
                                             <label for='new-visa-254'>Upload ST & MB</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-254'
@@ -10280,7 +10263,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-modify-contract4" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract4-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -10289,7 +10272,7 @@
                                         Approval
                                     </h6>
                                     <div class="row">
-                                        <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                             <label for="new-visa-255">Status</label>
                                             <select id="new-visa-255" class="form-control category status-selector-select status-select"
                                                  name="waiting_for_approval_status">
@@ -10338,8 +10321,8 @@
                                             </div>
                                         </div>
                                         <div
-                                            class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                            <div class="upload-file">
+                                            class=" col-xl-6 col-lg-12 col-md-6 align-items-end status-select-file d-none">
+                                            <div class="upload-file form-group mb-3">
                                                 <label for='new-visa-258'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-258'
@@ -10386,7 +10369,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-modify-contract5" role="tabpanel"
                             aria-labelledby="v-pills-modify-contract5-tab">
-                            <div class='rounded p-3 light-box-shadow'>
+                            <div class='rounded py-3 light-box-shadow'>
                                 <form action="{{route('modify-contract-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_cn'=>$modify_contract->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -10672,9 +10655,8 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                        <div class="upload-file">
+                                    <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                        <div class="upload-file form-group mb-3">
                                              <label for='new-visa-264'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-264'
@@ -10687,8 +10669,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         @php
                                         $file_name = $modify_contract->upload_wp_file;
                                         $ext = explode('.', $file_name);
@@ -10754,7 +10734,7 @@
               <div class="tab-content" id="modify-visa-tabContent">
                   <div class="tab-pane fade show active start-process data" id="v-pills-modify-visa1" role="tabpanel"
                       aria-labelledby="v-pills-modify-visa1-tab">
-                      <div class='rounded p-3 light-box-shadow'>
+                      <div class='rounded py-3 light-box-shadow'>
                         <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                             @csrf
                              <input type="hidden" value='modification of visa' name='process_name'>
@@ -10795,7 +10775,7 @@
                   @if ($modification_visa)
                   <div class="tab-pane fade" id="v-pills-modify-visa3" role="tabpanel"
                       aria-labelledby="v-pills-modify-visa3-tab">
-                      <div class='rounded p-3 light-box-shadow'>
+                      <div class='rounded py-3 light-box-shadow'>
                         <form action="{{route('modify-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_visa'=>$modification_visa->id,'req_id'=>$ids['req_id']])}}"
                             class='py-2' method="POST" enctype="multipart/form-data">
                             @csrf
@@ -10805,7 +10785,7 @@
                                 Approval
                             </h6>
                             <div class="row">
-                                <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6 status-select-parent">
                                     <label for="new-visa-266">Status</label>
                                     <select id="new-visa-266" class="form-control category status-selector-select status-select"
                                          name="application_status">
@@ -10927,7 +10907,7 @@
               <div class="tab-content" id="modify-emirates-tabContent">
                   <div class="tab-pane fade show active start-process" id="v-pills-modify-emirates1" role="tabpanel"
                       aria-labelledby="v-pills-modify-emirates1-tab">
-                      <div class='rounded p-3 light-box-shadow'>
+                      <div class='rounded py-3 light-box-shadow'>
                         <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                             @csrf
                              <input type="hidden" value='modification of emirates Id' name='process_name'>
@@ -10968,7 +10948,7 @@
                   @if ($modification_emirates)
                     <div class="tab-pane fade" id="v-pills-modify-emirates3" role="tabpanel"
                         aria-labelledby="v-pills-modify-emirates3-tab">
-                        <div class='rounded p-3 light-box-shadow'>
+                        <div class='rounded py-3 light-box-shadow'>
                             <form action="{{route('modify-emirates-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'modify_emirates'=>$modification_emirates->id,'req_id'=>$ids['req_id']])}}"
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -10977,7 +10957,7 @@
                                     Approval
                                 </h6>
                                 <div class="row">
-                                    <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                    <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6 status-select-parent">
                                         <label for="new-visa-271">Status</label>
                                         <select id="new-visa-271" class="form-control category status-select status-selector-select"
                                             name="application_status">
@@ -11028,7 +11008,7 @@
                                     </div>
                                     <div
                                         class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                        <div class="upload-file">
+                                        <div class="upload-file form-group mb-3">
                                             <label for='new-visa-274'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-274'
@@ -11081,7 +11061,6 @@
 
   <!-- Modification of Emirates End -->
 
-
         <!-- Cancelatoion Tab -->
         <div class="tab-pane fade nav-bar" id="pills-cancelation" role="tabpanel"
         aria-labelledby="pills-pills-cancelation-tab">
@@ -11130,7 +11109,7 @@
                         <div class="tab-content" id="visa-cancel-tabContent">
                             <div class="tab-pane fade show active start-process data" id="v-pills-visa-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel0-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                         @csrf
                                          <input type="hidden" value='visa cancellation' name='process_name'>
@@ -11170,7 +11149,7 @@
                             @if ($visa_cancellation)
                             <div class="tab-pane fade" id="v-pills-visa-cancel1" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel1-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -11194,7 +11173,7 @@
                                                         id="new-visa-277" name="wp_app_can_trnc_fee" value="{{$visa_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-278">Status</label>
                                                 <select id="new-visa-278" class="form-control category status-selector-select"
                                                     name="wp_app_can_status">
@@ -11454,8 +11433,8 @@
                                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='new-visa-281'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-281'
@@ -11507,7 +11486,7 @@
                             </div>
                             <div class="tab-pane fade" id="v-pills-visa-cancel2" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel2-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -11515,8 +11494,8 @@
                                         <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed Cancellation Form </h6>
                                         <div class="row">
                                             <div
-                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                                class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='new-visa-282'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-282'
@@ -11570,7 +11549,7 @@
 
                             <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel3-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -11594,7 +11573,7 @@
                                                         id="new-visa-284" name="signd_can_from_tranc_fee" value="{{$visa_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-285">Status</label>
                                                 <select id="new-visa-285" class="form-control status-selector-select category"
                                                     name="signd_can_from_status">
@@ -11854,8 +11833,8 @@
                                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                            <div class=" col-xl-6 col-lg-12 col-md-6  align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='new-visa-288'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-288'
@@ -11906,7 +11885,7 @@
 
                             <div class="tab-pane fade" id="v-pills-visa-cancel4" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel4-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -11915,7 +11894,7 @@
                                             Approval
                                         </h6>
                                         <div class="row">
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                            <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6 status-select-parent">
                                                 <label for="new-visa-289">Status</label>
                                                 <select id="new-visa-289" class="form-control category status-selector-select status-select"
                                                     name="waiting_for_approval_status">
@@ -12014,7 +11993,7 @@
 
                             <div class="tab-pane fade" id="v-pills-visa-cancel5" role="tabpanel"
                                 aria-labelledby="v-pills-visa-cancel5-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -12037,7 +12016,7 @@
                                                         id="new-visa-295" name="residency_app_tranc_fee" value="{{$visa_cancellation->residency_app_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6">
                                                 <label for="new-visa-296">Status</label>
                                                 <select id="new-visa-296" class="form-control status-selector-select category"
                                                     name="residency_app_status">
@@ -12298,8 +12277,8 @@
                                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file mb-3 form-group">
                                                     <label for='new-visa-299'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-299'
@@ -12382,7 +12361,7 @@
                         <div class="tab-content" id="work-permit-cancel-tabContent">
                             <div class="tab-pane fade show active start-process data" id="v-pills-permit-cancel0" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel0-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('start-process-admin',['user_id'=>$ids['user_id'] ,'company_id'=>$ids['company_id']])}}" method="POST">
                                         @csrf
                                          <input type="hidden" value='permit cancellation' name='process_name'>
@@ -12422,7 +12401,7 @@
                             @if ($permit_cancellation)
                             <div class="tab-pane fade" id="v-pills-permit-cancel1" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel1-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -12446,7 +12425,7 @@
                                                         id="new-visa-302" name="wp_app_can_trnc_fee" value="{{$permit_cancellation->wp_app_can_trnc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
                                                 <label for="new-visa-303">Status</label>
                                                 <select id="new-visa-303" class="form-control status-selector-select category"
                                                     name="wp_app_can_status">
@@ -12706,8 +12685,8 @@
                                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file mb-3 form-group">
                                                     <label for='new-visa-306'>Upload ST & MB</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-306'
@@ -12760,7 +12739,7 @@
 
                             <div class="tab-pane fade" id="v-pills-permit-cancel2" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel2-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -12768,8 +12747,8 @@
                                         <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed Cancellation Form </h6>
                                         <div class="row">
                                             <div
-                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
+                                                class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='new-visa-308'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-308'
@@ -12823,7 +12802,7 @@
 
                             <div class="tab-pane fade" id="v-pills-permit-cancel3" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel3-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -12847,7 +12826,7 @@
                                                         id="new-visa-310" name="signd_can_from_tranc_fee" value="{{$permit_cancellation->signd_can_from_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group col-xl-6 mb-3 col-lg-12 col-md-6">
                                                 <label for="new-visa-311">Status</label>
                                                 <select id="new-visa-311" class="form-control status-selector-select category"
                                                     name="signd_can_from_status">
@@ -12869,7 +12848,7 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="new-visa-313">Slect File</label>
+                                                    <label for="new-visa-313">Select File</label>
                                                     <select id="new-visa-313" class="form-control category"
                                                         name="signd_can_from_file_name">
                                                         <option value="" selected disabled>Select Document</option>
@@ -13107,9 +13086,9 @@
                                                                 </select>
                                                 </div>
                                             </div>
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                <div class="upload-file">
-                                                    <label for='new-visa-314'>Upload ST & MB</label>
+                                            <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
+                                                    <label for='new-visa-314'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-314'
                                                              style="line-height: 1" name="signd_can_from_file"
@@ -13159,7 +13138,7 @@
 
                             <div class="tab-pane fade" id="v-pills-permit-cancel4" role="tabpanel"
                                 aria-labelledby="v-pills-permit-cancel4-tab">
-                                <div class='rounded p-3 light-box-shadow'>
+                                <div class='rounded py-3 light-box-shadow'>
                                     <form action="{{route('permit-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'permit_can'=>$permit_cancellation->id,'req_id'=>$ids['req_id']])}}"
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -13168,7 +13147,7 @@
                                             Approval
                                         </h6>
                                         <div class="row">
-                                            <div class="form-group col-xl-6 col-lg-12 col-md-6 status-select-parent">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 status-select-parent">
                                                 <label for="new-visa-315">Status</label>
                                                 <select id="new-visa-315" class="form-control category status-selector-select status-select"
                                                     name="waiting_for_approval_status">
@@ -13218,8 +13197,8 @@
                                                 </div>
                                             </div>
                                             <div
-                                                class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end status-select-file d-none">
-                                                <div class="upload-file">
+                                                class=" col-xl-6 col-lg-12 col-md-6 align-items-end status-select-file d-none">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='new-visa-318'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-318'
@@ -13511,3 +13490,4 @@
 </script>
 @endsection
 
+    
