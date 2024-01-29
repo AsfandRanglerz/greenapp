@@ -91,14 +91,14 @@
                                             <h6 class="faq-title" data-toggle="collapse"
                                                 data-target="#faqCollapse-{{ $data->id }}" data-aria-expanded="true"
                                                 data-aria-controls="faqCollapse-{{ $data->id }}">
-                                                <span class="badge">1</span>{!! $data->title ?? '' !!}
+                                                <span class="badge">{{$loop->iteration}}</span>{!! $data->title ?? '' !!}
                                             </h6>
                                         </div>
                                     </div>
                                     <div id="faqCollapse-{{ $data->id }}" class="collapse"
                                         aria-labelledby="faqHeading-1" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>{!! $data->message ?? '' !!}</p>
+                                            <p>{!! $data->message ?? '' !!} <span class="badge p-2 badge-shadow bg-danger text-white">({{ \Carbon\Carbon::parse($data['created_at'])->format('d M, Y') }})</span></p>
                                         </div>
                                     </div>
                                 </div>

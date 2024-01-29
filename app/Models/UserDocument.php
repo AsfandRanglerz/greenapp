@@ -10,7 +10,7 @@ class UserDocument extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $fillable = ['user_id', 'doc_type', 'issue_date', 'expiry_date', 'comment', 'file','receipt'];
+    protected $fillable = ['user_id', 'doc_type', 'issue_date', 'expiry_date', 'comment', 'file','receipt','notification_sent'];
 
     public function user()
     {

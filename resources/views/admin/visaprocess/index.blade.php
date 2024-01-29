@@ -18,10 +18,18 @@
                     <div class="col-12 col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="col-12">
+                                <div class="col-3">
                                     <h4>Visa Process Requests</h4>
-
                                 </div>
+                                <div class='col-4' style="display:flex;align-items: center;justify-content: center;column-gap: 8px;">
+                                    <div>
+                                        <a href="{{route('get-complete-processes')}}" class="btn btn-dark">Complete Processes</a>
+                                    </div>
+                                    <div>
+                                        <a href="{{route('get-admin-start-processes')}}" class="btn btn-dark">Start Processes</a>
+                                    </div>
+                                </div>
+
                                 {{-- @dd($data) --}}
                             </div>
                             {{-- @dd($data) --}}
@@ -210,8 +218,6 @@
                                                     @endphp
                                                             @if($status == 'yes')
                                                                 <div class='badge p-1 badge-shadow bg-dark text-white'><span class="d-inline-block p-1">Completed</span></div>
-
-
                                                             @else
                                                                 <div class='badge p-2 badge-shadow bg-warning text-white'>Pending</div>
                                                             @endif

@@ -74,6 +74,8 @@ class NewVisaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     // approve the requests of visa processes
     public function show($id)
     {
         // return 'ok';
@@ -383,6 +385,7 @@ class NewVisaController extends Controller
                 $new_visa = NewVisaProcess::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'renewal process') {
@@ -391,6 +394,7 @@ class NewVisaController extends Controller
                 $renewal_process = RenewalProcess::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'sponsored by some one') {
@@ -399,6 +403,7 @@ class NewVisaController extends Controller
                 $spo_by_some = SponsaredBySomeOne::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'part time') {
@@ -407,6 +412,7 @@ class NewVisaController extends Controller
                 $part_time = PartTimeAndTemporary::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc') {
@@ -415,6 +421,7 @@ class NewVisaController extends Controller
                 $uae_gcc = UaeAndGccNational::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract') {
@@ -424,6 +431,7 @@ class NewVisaController extends Controller
                 $modify_contract = ModifyContract::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'modification of visa') {
@@ -432,6 +440,7 @@ class NewVisaController extends Controller
                 $modification_visa = ModificationVisaEmiratesId::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                     'process_name' => 'modification of visa',
                 ]);
             }
@@ -441,6 +450,7 @@ class NewVisaController extends Controller
                 $modification_emirates = ModificationVisaEmiratesId::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                     'process_name' => 'modification of emirates Id',
                 ]);
             }
@@ -450,6 +460,7 @@ class NewVisaController extends Controller
                 $visa_cancellation = VisaCancelation::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         } elseif ($data['request_name'] == 'permit cancellation') {
@@ -458,6 +469,7 @@ class NewVisaController extends Controller
                 $permit_cancellation = PermitCancellation::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
+                    'start_by'=>'admin',
                 ]);
             }
         }

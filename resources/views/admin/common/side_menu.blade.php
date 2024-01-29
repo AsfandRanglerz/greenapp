@@ -21,12 +21,12 @@
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('SubAdmin'))
-            <li class="dropdown {{ request()->is('admin/subadmin*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-sub-admins*') ? 'active' : '' }}">
                 <a href="{{ route('get-sub-admins') }}" class="nav-link"><i
                         class="fa fa-users"></i><span>Sub Admins</span></a>
             </li>
             @elseif(auth()->guard('admin')->check())
-            <li class="dropdown {{ request()->is('admin/subadmin*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-sub-admins*') ? 'active' : '' }}">
                 <a href="{{ route('get-sub-admins') }}" class="nav-link"><i
                         class="fa fa-users"></i><span>Sub Admins</span></a>
             </li>
@@ -111,28 +111,32 @@
 
             @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('CompleteProcesses'))
-            <li class="dropdown {{ request()->is('admin/completeprocesses*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-complete-processes*') ? 'active' : '' }}">
                 <a href="{{ route('get-complete-processes') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Complete Processes</span>
-                        {{-- @if ($request_count)
-                        <span class="badge badge-danger text-white">
-                            {{ $request_count }}
-                        </span>
-                        @endif --}}
                     </a>
-
             </li>
             @elseif(auth()->guard('admin')->check())
 
-            <li class="dropdown {{ request()->is('admin/completeprocesses*') ? 'active' : '' }}">
+            <li class="dropdown {{ request()->is('admin/get-complete-processes*') ? 'active' : '' }}">
                 <a href="{{ route('get-complete-processes') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Complete Processes</span>
-                        {{-- @if ($request_count)
-                        <span class="badge badge-danger text-white">
-                            {{ $request_count }}
-                        </span>
-                        @endif --}}
+                    </a>
+            </li>
+            @endif
 
+
+            @if(auth()->guard('web')->check() &&
+            auth()->guard('web')->user()->can('StartProcesses'))
+            <li class="dropdown {{ request()->is('admin/admin-start-processes*') ? 'active' : '' }}">
+                <a href="{{ route('get-admin-start-processes') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Start Processes</span>
+                    </a>
+            </li>
+            @elseif(auth()->guard('admin')->check())
+            <li class="dropdown {{ request()->is('admin/admin-start-processes*') ? 'active' : '' }}">
+                <a href="{{ route('get-admin-start-processes') }}" class="nav-link"><i
+                        class="fa fa-briefcase"></i><span>Start Processes</span>
                     </a>
             </li>
             @endif

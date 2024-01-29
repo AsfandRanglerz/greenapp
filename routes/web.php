@@ -205,7 +205,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
 
-    Route::post('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
+    Route::get('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
 
     Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')/*->middleware('permission:Receipt')*/;
 
@@ -215,6 +215,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::post('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
 
     Route::get('get-complete-processes', [AllProcessHandelController::class,'complete_processes'])->name('get-complete-processes')/*->middleware('permission:Receipt')*/;
+
+    Route::get('admin-start-processes', [AllProcessHandelController::class,'admin_start_processes'])->name('get-admin-start-processes')/*->middleware('permission:Receipt')*/;
 
     Route::post('dependent-excel-file/{request_id}/{employee_id}/{dependent_id}', [AllProcessHandelController::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
 
