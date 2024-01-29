@@ -453,7 +453,7 @@
                                         </div>
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
-                                                type="submit">Submit</button>
+                                                type="submit">Add</button>
                                         </div>
                                         @else
                                             <div class="col-xl-6 col-lg-12 col-md-6">
@@ -548,12 +548,14 @@
                                                 @endif
                                             </div>
                                         </div>
+
                                         <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
                                             <label for='visa1-20'>Comments</label>
                                             <textarea type="text" id='visa1-20' name="comment"
                                                 placeholder="Enter Your Comments ..." class="form-control" readonly
                                                 rows="5">{{ $new_visa_data->waiting_fappro_reason }}</textarea>
                                         </div>
+
                                         <div class="col-xl-6 col-lg-12 col-md-6 d-none new-visa-signmbstatus-approval">
                                             <div class="form-group mb-3">
                                                 {{-- @if ($new_visa_data->waiting_fappro_no) --}}
@@ -835,6 +837,55 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        @if($new_visa_data['enter_visa_status'] == 'Approved' || $new_visa_data['enter_visa_status'] == 'Skip')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-33">Are you inside the country?</label>
+                                                <input type="text" class="form-control status-container"
+                                                    id="visa1-33" placeholder="..." disabled value={{
+                                                   $new_visa_data->enter_visa_country }}>
+                                            </div>
+                                        </div>
+                                        @if ($new_visa_data['enter_visa_country'] == 'yes')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-33">Are you inside the country?</label>
+                                                <input type="text" class="form-control status-container"
+                                                    id="visa1-33" placeholder="..." disabled value={{
+                                                  $new_visa_data->enter_visa_over_sf }}>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if ($new_visa_data['enter_visa_over_sf'] == 'yes')
+                                        @php
+                                        $file_name = $new_visa_data->enter_visa_osf_file;
+                                        $ext = explode('.', $file_name);
+                                        @endphp
+                                        @if ($new_visa_data->enter_visa_osf_file)
+                                        <a target="_black"
+                                            href="{{ asset('' . '/' . $new_visa_data->enter_visa_osf_file) }}">
+                                            @if ($ext[1] == 'pdf')
+                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                            @elseif($ext[1] == 'pptx')
+                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                style="height: 50px;width:50px">
+                                            @else
+                                            <img src="{{ asset('' . '/' . $new_visa_data->enter_visa_osf_file) }}"
+                                                style="height: 50px;width:50px">
+                                            @endif
+                                        </a>
+                                        @endif
+                                        @endif
+
+
+                                        @else
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
                                                 <label for="visa1-35">Are u inside the country?</label>
@@ -865,7 +916,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @endif
                                     </div>
+                                    @if(!($new_visa_data['enter_visa_status'] == 'Approved' || $new_visa_data['enter_visa_status'] == 'Skip'))
                                     <div class="fine-files-container d-none ">
                                         <div class="row  align-items-end ">
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
@@ -912,6 +965,8 @@
                                     <div class="col-12 text-center">
                                         <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                     </div>
+                                    @endif
+
                                 </form>
                             </div>
                         </div>
@@ -1124,6 +1179,46 @@
                                                     disabled>
                                             </div>
                                         </div>
+                                        @if($new_visa_data['tawjeeh_status'] == 'Approved' || $new_visa_data['tawjeeh_status'] == 'Skip')
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="visa1-50">Tawjeeh Payment</label>
+                                                    <input type="text" class="form-control" id="visa1-50"
+                                                        placeholder="..." value="{{  $new_visa_data->tawjeeh_payment }}"
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                            @if ($new_visa_data['tawjeeh_payment'] == 'yes')
+                                                <div>
+                                                    <label for="visa1-50">File</label>
+                                                    @php
+                                                    $file_name = $new_visa_data->tawjeeh_file;
+                                                    $ext = explode('.', $file_name);
+                                                    @endphp
+                                                    @if ($new_visa_data->tawjeeh_file)
+                                                    <a target="_black"
+                                                        href="{{ asset('' . '/' . $new_visa_data->tawjeeh_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @else
+                                                        <img src="{{ asset('' . '/' . $new_visa_data->tawjeeh_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                            @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 tawjeeh-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="visa1-51">Tawjeeh Payment</label>
@@ -1182,6 +1277,7 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -1606,6 +1702,48 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
+                                        @if ($new_visa_data['biometric_status'] == 'Approved' || $new_visa_data['biometric_status'] == 'Skip')
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="visa1-76">Employee Biometric</label>
+                                                    <input type="text" class="form-control" id="visa1-76"
+                                                        value="{{ $new_visa_data->employee_biometric}}" disabled
+                                                        placeholder="...">
+                                                </div>
+                                            </div>
+                                                @if ($new_visa_data['employee_biometric'] == 'required')
+                                                    <div class="col-xl-6 col-lg-12 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="visa1-76">File</label>
+                                                            @php
+                                                            $file_name = $new_visa_data->biometric_file;
+                                                            $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($new_visa_data->biometric_file)
+                                                            <a target="_black"
+                                                                href="{{ asset('' . '/' . $new_visa_data->biometric_file) }}">
+                                                                @if ($ext[1] == 'pdf')
+                                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'pptx')
+                                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @else
+                                                                <img src="{{ asset('' . '/' . $new_visa_data->biometric_file) }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @endif
+                                                            </a>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="visa1-77">Employee Biometric</label>
@@ -1665,6 +1803,7 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -1807,6 +1946,49 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
+                                        @if ($renewal_process_data['medical_fitness_status'] == 'Approved' || $renewal_process_data['medical_fitness_status'] == 'Skip')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-82">Fitness Status</label>
+                                                <input type="text" class="form-control" id="visa1-82"
+                                                    disabled value="{{ $renewal_process_data->medical_fitness_st }}"
+                                                    placeholder="...">
+                                            </div>
+                                        </div>
+                                            @if ($renewal_process_data['medical_fitness_st'] == 'fit')
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
+                                                    @php
+                                                    $file_name = $renewal_process_data->medical_fitness_file;
+                                                    $ext = explode('.', $file_name);
+                                                    @endphp
+                                                    @if ($renewal_process_data->medical_fitness_file)
+                                                    <label for="visa1-82">File</label>
+
+                                                    <a class="upload-img" target="_black"
+                                                        href="{{ asset('' . '/' . $renewal_process_data->medical_fitness_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @else
+                                                        <img src="{{ asset('' . '/' . $renewal_process_data->medical_fitness_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 col-md-6 renewal-fitness-parent">
                                             <div class="form-group">
                                                 <label for="visa1-83">Fitness Status</label>
@@ -1870,6 +2052,9 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
+                                        @endif
+
+
                                     </div>
                                 </form>
                             </div>
@@ -1919,13 +2104,14 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 gap-1 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{ $renewal_process_data->work_permit_file_name
-                                                    }}</label>
+
                                                 @php
                                                 $file_name = $renewal_process_data->work_permit_file;
                                                 $ext = explode('.', $file_name);
                                                 @endphp
                                                 @if ($renewal_process_data->work_permit_file)
+                                                <label for="#">{{ $renewal_process_data->work_permit_file_name
+                                                }}</label>
                                                 <a class="upload-img" target="_black"
                                                     href="{{ asset('' . '/' . $renewal_process_data->work_permit_file) }}">
                                                     @if ($ext[1] == 'pdf')
@@ -1998,6 +2184,39 @@
                                                     value="{{ $renewal_process_data->signed_mb_date }}">
                                             </div>
                                         </div>
+                                        @if ($renewal_process_data['signed_mb_status'] == 'Approved' || $renewal_process_data['signed_mb_status'] == 'Skip')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                @php
+                                                $file_name = $renewal_process_data->signed_mb_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($renewal_process_data->signed_mb_file)
+                                                <label for="visa1-93">Signed St & MB</label>
+
+                                                <a class="upload-img" target="_black"
+                                                    href="{{ asset('' . '/' . $renewal_process_data->signed_mb_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @else
+                                                    <img src="{{ asset('' . '/' . $renewal_process_data->signed_mb_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @else
                                         <div class="form-group mb-3 col-12">
                                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input"
@@ -2050,7 +2269,7 @@
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Add</button>
                                         </div>
-
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -2253,6 +2472,48 @@
                                                     value="{{ $renewal_process_data->tawjeeh_tranc_date }}">
                                             </div>
                                         </div>
+                                        @if ( $renewal_process_data['tawjeeh_tranc_status'] == 'Approved' || $renewal_process_data['tawjeeh_tranc_status'] == 'Skip')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-109">Date</label>
+                                                <input type="text" class="form-control" id="visa1-109"
+                                                    placeholder="..." disabled
+                                                    value="{{ $renewal_process_data->tawjeeh_tranc_payment }}">
+                                            </div>
+                                        </div>
+                                        @if ($renewal_process_data['tawjeeh_tranc_payment'] == 'yes')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                @php
+                                                $file_name = $renewal_process_data->tawjeeh_tranc_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($renewal_process_data->tawjeeh_tranc_file)
+                                                <label for="visa1-109">File</label>
+                                                <a class="upload-img" target="_black"
+                                                    href="{{ asset('' . '/' . $renewal_process_data->tawjeeh_tranc_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @else
+                                                    <img src="{{ asset('' . '/' . $renewal_process_data->tawjeeh_tranc_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="visa1-110">Tawjeeh
@@ -2314,6 +2575,9 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
+                                        @endif
+
+
                                     </div>
                                 </form>
                             </div>
@@ -2503,6 +2767,47 @@
                                                     value="{{ $renewal_process_data->emp_biometric_date }}">
                                             </div>
                                         </div>
+                                        @if($renewal_process_data['emp_biometric_status'] == 'Approved' || $renewal_process_data['emp_biometric_status'] == 'Skip')
+                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <label for="visa1-121">Employee
+                                                Biometric</label>
+                                            <input type="text" class="form-control status-container"
+                                                id="visa1-121" disabled placeholder="..."
+                                                value="{{ $renewal_process_data->emp_biometric }}">
+                                        </div>
+                                        @if ($renewal_process_data['emp_biometric'] == 'required')
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="visa1-122">File</label>
+                                                @php
+                                                $file_name = $renewal_process_data->emp_biometric_file;
+                                                $ext = explode('.', $file_name);
+                                                @endphp
+                                                @if ($renewal_process_data->emp_biometric_file)
+                                                <a class="upload-img" target="_black"
+                                                    href="{{ asset('' . '/' . $renewal_process_data->emp_biometric_file) }}">
+                                                    @if ($ext[1] == 'pdf')
+                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @elseif($ext[1] == 'pptx')
+                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                        style="height: 50px;width:50px">
+                                                    @else
+                                                    <img src="{{ asset('' . '/' . $renewal_process_data->emp_biometric_file) }}"
+                                                        style="height: 50px;width:50px">
+                                                    @endif
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @else
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="visa1-123">Employee
@@ -2565,6 +2870,8 @@
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>
+                                        @endif
+
                                     </div>
                                 </form>
                             </div>
@@ -2816,6 +3123,37 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
+                                                @if ( $spo_by_some['signed_mb_st_status'] == 'Approved' || $spo_by_some['signed_mb_st_status'] == 'Skip')
+                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                    @php
+                                                    $file_name = $spo_by_some->signed_mb_st_file;
+                                                    $ext = explode('.', $file_name);
+                                                    @endphp
+                                                    @if ($spo_by_some->signed_mb_st_file)
+                                                    <label for="visa1-132">Signed ST & MB:</label>
+                                                    <a class="upload-img" target="_black"
+                                                        href="{{ asset('' . '/' . $spo_by_some->signed_mb_st_file) }}">
+                                                        @if ($ext[1] == 'pdf')
+                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @elseif($ext[1] == 'pptx')
+                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                            style="height: 50px;width:50px">
+                                                        @else
+                                                        <img src="{{ asset('' . '/' . $spo_by_some->signed_mb_st_file) }}"
+                                                            style="height: 50px;width:50px">
+                                                        @endif
+                                                    </a>
+                                                    @endif
+
+                                                </div>
+                                                @else
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
@@ -2866,8 +3204,10 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <button class='btn btn-success d-block mx-auto px-5 py-2'
-                                                        type="submit">Addd</button>
+                                                        type="submit">Add</button>
                                                 </div>
+                                                @endif
+
                                             </div>
                                         </form>
                                     </div>
@@ -2935,7 +3275,7 @@
                                                 <div class="form-group col-12 d-none new-visa-signmbstatus-comment">
                                                     <label for='visa1-137'>Comments</label>
                                                     <textarea type="text" id='visa1-137'
-                                                        name="comment" name="" placeholder="Enter Your Comments ..."
+                                                        name="comment" disabled placeholder="Enter Your Comments ..."
                                                         class="form-control"
                                                         rows="5">{{ $spo_by_some->waiting_for_approval_reason }}</textarea>
                                                 </div>
@@ -3437,6 +3777,38 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
+                                                @if ($part_time['signed_mb_st_status'] == 'Approved' ||  $part_time['signed_mb_st_status'] == 'Skip')
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        @php
+                                                        $file_name = $part_time->signed_mb_st_file;
+                                                        $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($part_time->signed_mb_st_file)
+                                                        <label for="visa1-160">Signed ST & MB:</label>
+                                                        <a class="upload-img" target="_black"
+                                                            href="{{ asset('' . '/' . $part_time->signed_mb_st_file) }}">
+                                                            @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @else
+                                                            <img src="{{ asset('' . '/' . $part_time->signed_mb_st_file) }}"
+                                                                style="height: 50px;width:50px">
+                                                            @endif
+                                                        </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                @else
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
@@ -3487,6 +3859,7 @@
                                                 <div class="col-12 text-center">
                                                     <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                                 </div>
+                                                @endif
                                             </div>
                                         </form>
                                     </div>
@@ -3896,6 +4269,38 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
+                                                @if ($uae_national['signed_mb_st_status'] == 'Approved' ||  $uae_national['signed_mb_st_status'] == 'skip')
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        @php
+                                                        $file_name = $uae_national->signed_mb_st_file;
+                                                        $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($uae_national->signed_mb_st_file)
+                                                        <label for="visa1-179">Signed ST & MB:</label>
+                                                        <a class="upload-img" target="_black"
+                                                            href="{{ asset('' . '/' . $uae_national->signed_mb_st_file) }}">
+                                                            @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @else
+                                                            <img src="{{ asset('' . '/' . $uae_national->signed_mb_st_file) }}"
+                                                                style="height: 50px;width:50px">
+                                                            @endif
+                                                        </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                @else
                                                 <div class="form-group mb-3 col-12">
                                                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                                         <input type="checkbox" class="custom-control-input"
@@ -3950,6 +4355,9 @@
                                                     <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                         type="submit">Add</button>
                                                 </div>
+                                                @endif
+
+
                                             </div>
                                         </form>
                                     </div>
@@ -4428,6 +4836,38 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
+                                                @if ($modify_contract['signed_mb_st_status'] == 'Approved' ||  $modify_contract['signed_mb_st_status'] == 'skip')
+                                                <div class="col-xl-6 col-lg-12 col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        @php
+                                                        $file_name = $modify_contract->signed_mb_st_file;
+                                                        $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($modify_contract->signed_mb_st_file)
+                                                        <label for="visa1-179">Signed ST & MB:</label>
+                                                        <a class="upload-img" target="_black"
+                                                            href="{{ asset('' . '/' . $modify_contract->signed_mb_st_file) }}">
+                                                            @if ($ext[1] == 'pdf')
+                                                            <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                            <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                            <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @elseif($ext[1] == 'pptx')
+                                                            <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                style="height: 50px;width:50px">
+                                                            @else
+                                                            <img src="{{ asset('' . '/' . $modify_contract->signed_mb_st_file) }}"
+                                                                style="height: 50px;width:50px">
+                                                            @endif
+                                                        </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                @else
                                                 <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                     <div class="upload-file">
                                                         <label for='visa2-18'>Upload Signed MB</label>
@@ -4469,8 +4909,11 @@
                                                 </div>
                                                 <div class="col-12 text-center">
                                                     <button class='btn btn-success px-5 py-2'
-                                                        type="submit">Submit</button>
+                                                        type="submit">Add</button>
                                                 </div>
+                                                @endif
+
+
                                             </div>
                                         </form>
                                     </div>
@@ -5286,6 +5729,7 @@
                                                             class="status-container">
                                                         @endif
                                                     </div>
+                                                    @if()
                                                     @php
                                                     $file_name = $visa_cancellation->signed_cancellation_form;
                                                     $ext = explode('.', $file_name);

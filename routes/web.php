@@ -158,6 +158,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation');//->middleware('permission:Visa Process');
 
+    
     Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation');//->middleware('permission:Visa Process');
 
     Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation');//->middleware('permission:Visa Process');
