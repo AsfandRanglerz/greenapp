@@ -5729,7 +5729,7 @@
                                                             class="status-container">
                                                         @endif
                                                     </div>
-                                                    @if()
+                                                    
                                                     @php
                                                     $file_name = $visa_cancellation->signed_cancellation_form;
                                                     $ext = explode('.', $file_name);
