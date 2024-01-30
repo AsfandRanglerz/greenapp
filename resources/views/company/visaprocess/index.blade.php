@@ -154,7 +154,7 @@
                             Visa</a>
                         <a class="nav-link bordered_tab tabss change-visa-status" id="v-pills-visa5-tab"
                             data-toggle="pill" href="#v-pills-visa-5" role="tab" aria-controls="v-pills-visa-5"
-                            aria-selected="false">Change of visa status</a>
+                            aria-selected="false">Change of Visa Status</a>
                         <a class="nav-link bordered_tab tabss" id="v-pills-visa6-tab" data-toggle="pill"
                             href="#v-pills-visa6" role="tab" aria-controls="v-pills-visa6" aria-selected="false">Medical
                             Fitness</a>
@@ -638,7 +638,7 @@
                                                     value="{{ $new_visa_data->dubai_insurance_tran_fees }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-25">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-25" placeholder="..." disabled
@@ -923,7 +923,7 @@
                                         <div class="row  align-items-end ">
                                             <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                                 <div class="upload-file">
-                                                    <label for='visa1-37'>Upload file</label>
+                                                    <label for='visa1-37'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa1-37'
                                                             name="enter_visa_osf_file" style="line-height: 1"
@@ -977,7 +977,7 @@
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa
-                                        status
+                                        Status
                                     </h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -997,7 +997,7 @@
                                                     value="{{ $new_visa_data->change_of_visa_tfee }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-40">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-40" disabled placeholder="..."
@@ -1074,7 +1074,7 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-44">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-44" disabled
@@ -1144,8 +1144,8 @@
                                     @csrf
                                     <input type="text" value='step4' name='tawjeeh_classes' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh
-                                        training
-                                        classes</h6>
+                                        Training
+                                        Classes</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -1165,7 +1165,7 @@
                                                     value="{{ $new_visa_data->tawjeeh_trans_fee }}" disabled>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-49">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-49" placeholder="..."
@@ -1535,7 +1535,7 @@
                                                     value="{{ $new_visa_data->emirates_tran_fee }}" disabled>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-67">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-67" placeholder="..."
@@ -1606,7 +1606,7 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-71">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-71"
@@ -1687,7 +1687,7 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-75">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-75"
@@ -1859,8 +1859,8 @@
                                 <form action="{{ route('company.sent-new-visa-request', $employee->id) }}" method="POST"
                                     class='py-2'>
                                     @csrf
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start renewal
-                                        process
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Start Renewal
+                                        Process
                                     </h6>
                                     <div class="row">
                                         <div class="col-12 text-center">
@@ -2064,8 +2064,8 @@
                             aria-labelledby="v-pills-renewal-process2-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                        application
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                        Application
                                     </h6>
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -2147,7 +2147,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step2' name='signed_mb' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed
                                         MB</h6>
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -2280,7 +2280,7 @@
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai
-                                        insurance
+                                        Insurance
                                     </h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -2301,7 +2301,7 @@
                                                     value='{{ $renewal_process_data->pay_dubai_insu_tran_fee }}'>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-99">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-99" disabled placeholder="..."
@@ -2356,7 +2356,7 @@
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract
-                                        submission
+                                        Submission
                                     </h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -2438,7 +2438,7 @@
                                     @csrf
                                     <input type="text" value='step3' name='tawjeeh_class' hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh
-                                        classes</h6>
+                                        Classes</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -2458,7 +2458,7 @@
                                                     value="{{ $renewal_process_data->tawjeeh_tranc_fee }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-108">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-108" placeholder="..." disabled
@@ -2608,7 +2608,7 @@
                                                     value="{{ $renewal_process_data->residency_tran_fees }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-113">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-113" placeholder="..." disabled
@@ -2677,7 +2677,7 @@
                                                     value="{{ $renewal_process_data->renewal_tran_fees }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-117">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-117" disabled placeholder="..."
@@ -2753,7 +2753,7 @@
                                                     value="{{ $renewal_process_data->emp_biometric_tranc_fee }}">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-121">Status</label>
                                             <input type="text" class="form-control status-container"
                                                 id="visa1-121" disabled placeholder="..."
@@ -2768,7 +2768,7 @@
                                             </div>
                                         </div>
                                         @if($renewal_process_data['emp_biometric_status'] == 'Approved' || $renewal_process_data['emp_biometric_status'] == 'Skip')
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-121">Employee
                                                 Biometric</label>
                                             <input type="text" class="form-control status-container"
@@ -2891,12 +2891,12 @@
                     <a class="nav-link active Work-permit-tabs tabss" id="pills-sponsored-tab" data-toggle="pill"
                         href="#pills-sponsored" role="tab" aria-controls="pills-sponsored"
                         aria-selected="false">Sponsored
-                        by someone/ Golden Visa</a>
+                    By Someone/ Golden Visa</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link Work-permit-tabs tabss" id="pills-part-time-tab" data-toggle="pill"
                         href="#pills-part-time" role="tab" aria-controls="pills-part-time" aria-selected="false">Part
-                        time & temporary</a>
+                        Time & Temporary</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link Work-permit-tabs tabss" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
@@ -3001,8 +3001,8 @@
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
-                                                permit
-                                                application</h6>
+                                                Permit
+                                                Application</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -3025,7 +3025,7 @@
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 parent-of-approval-rejected">
+                                                    class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 parent-of-approval-rejected">
                                                     <label for="visa1-128">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-128" disabled
@@ -3108,7 +3108,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-132">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-132" disabled
@@ -3124,7 +3124,7 @@
                                                     </div>
                                                 </div>
                                                 @if ( $spo_by_some['signed_mb_st_status'] == 'Approved' || $spo_by_some['signed_mb_st_status'] == 'Skip')
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     @php
                                                     $file_name = $spo_by_some->signed_mb_st_file;
                                                     $ext = explode('.', $file_name);
@@ -3347,7 +3347,7 @@
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay
                                                 Dubai
-                                                insurance</h6>
+                                                Insurance</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -3369,7 +3369,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-142">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-142" disabled
@@ -3448,7 +3448,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-146">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-146" disabled
@@ -3528,7 +3528,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-150">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-150" disabled
@@ -3685,7 +3685,7 @@
                                                             value="{{ $part_time->wp_app_trnc_fee }}" placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-155">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-155" disabled
@@ -3742,7 +3742,7 @@
                                             @csrf
                                             <input type="text" value='step1' name='signed_mb' hidden>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
-                                                Upload signed
+                                                Upload Signed
                                                 MB</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -3763,7 +3763,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-159">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-159" disabled
@@ -4149,8 +4149,8 @@
                                     <div class='rounded p-3 light-box-shadow'>
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
-                                                permit
-                                                application</h6>
+                                                Permit
+                                                Application</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -4171,7 +4171,7 @@
                                                     </div>
                                                 </div>
                                                 <div
-                                                    class="form-group mb-0 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
+                                                    class="form-group mb-3 col-xl-6 col-lg-12 col-md-6  parent-of-approval-rejected">
                                                     <label for="visa1-174">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-174" disabled
@@ -4368,7 +4368,7 @@
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay
                                                 Dubai
-                                                insurance</h6>
+                                                Insurance</h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -4389,7 +4389,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa1-184">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa1-184" disabled
@@ -4446,7 +4446,7 @@
                                         @csrf
                                         <input type="text" value='step2' name='waiting' hidden>
                                         <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting
-                                            for
+                                            For
                                             Approval
                                         </h6>
                                         <div class="row">
@@ -4725,7 +4725,7 @@
                                         <form action="" class='py-2'>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work
                                                 Permit
-                                                application
+                                                Application
                                             </h6>
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
@@ -4744,7 +4744,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa2-12">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa2-12"
@@ -4821,7 +4821,7 @@
                                                             placeholder="...">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                                <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                     <label for="visa2-16">Status</label>
                                                     <input type="text" class="form-control status-container"
                                                         id="visa2-16" disabled
@@ -5139,10 +5139,10 @@
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab tabss" id="v-pills-modify-visa1-tab" data-toggle="pill"
                             href="#v-pills-modify-visa1" role="tab" aria-controls="v-pills-modify-visa1"
-                            aria-selected="true">Start process</a>
+                            aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab tabss" id="v-pills-modify-visa3-tab" data-toggle="pill"
                             href="#v-pills-modify-visa3" role="tab" aria-controls="v-pills-modify-visa3"
-                            aria-selected="false">Application status</a>
+                            aria-selected="false">Application Status</a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 px-lg-3 mt-lg-0 mt-3">
@@ -5173,7 +5173,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="visa2-27">Process status</label>
+                                                <label for="visa2-27">Process Status</label>
                                                 @if ($mv)
                                                     @if ($modification_visa['application_status'] == 'Approved' || $modification_visa['application_status'] == 'Skip')
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
@@ -5203,7 +5203,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step1' name='waiting' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                         Approval
                                     </h6>
                                     <div class="row">
@@ -5364,7 +5364,7 @@
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="visa2-33">Process
-                                                    status</label>
+                                                    Status</label>
                                                 @if ($me)
                                                     @if ($modification_emirates['application_status'] == 'Approved' || $modification_emirates['application_status'] == 'Skip')
                                                         <input type="text" id="tab-2" class="form-control process-status-input"
@@ -5519,12 +5519,12 @@
                     <a class="nav-link active Work-permit-tabs tabss" id="pills-visa-cancel-tab" data-toggle="pill"
                         href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
                         aria-selected="false">Visa
-                        cancelation</a>
+                        Cancelation</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link Work-permit-tabs-last tabss" id="pills-work-permit-cancel-tab" data-toggle="pill"
                         href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
-                        aria-selected="false">Work permit cancelation</a>
+                        aria-selected="false">Work Permit Cancelation</a>
                 </li>
             </ul>
             <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
@@ -6062,8 +6062,6 @@
                                         <form action="">
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span>
                                                 Residency Application</h6>
-
-
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-12 col-md-6">
                                                     <div class="form-group mb-3">
@@ -6154,7 +6152,7 @@
                     aria-labelledby="pills-work-permit-cancel-tab">
                     <div class="row ">
                         <div class="col-xl-3 col-lg-4">
-                            <div class="nav side-bar flex-row horizonts_tabs flex-lg-column nav-pills"
+                            <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills"
                                 id="work-permit-cancel-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link active bordered_tab tabss" id="v-pills-work-permit-cancel0-tab"
                                     data-toggle="pill" href="#v-pills-work-permit-cancel0" role="tab"
@@ -6459,7 +6457,7 @@
                                             @csrf
                                             <input type="text" value='step2' name='waiting' hidden>
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting
-                                                for
+                                                For
                                                 Approval
                                             </h6>
                                             <div class="row">
