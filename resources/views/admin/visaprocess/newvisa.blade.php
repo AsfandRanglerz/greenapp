@@ -229,7 +229,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     {{-- @method('GET') --}}
                                     @csrf
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Job Offer, MB Contracts + Preapproval of work permit</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Job Offer, MB Contracts + Preapproval of Work Permit</h6>
                                     <div class="row">
                                         <input type="text" value='step1' name='job_offer' hidden>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -721,7 +721,7 @@
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai Insurance</h6>
                                     <input type="text" value='step3' name='dubai_ins' hidden>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -763,7 +763,7 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for='new-visa-25'>Select-File</label>
+                                                <label for='new-visa-25'>Select File</label>
                                                  <select id="new-visa-25" class="form-control category" name="dubai_insurance_file_name"
                                                     value="{{$new_visa->dubai_insurance_file_name}}">
                                                     <option value="" selected disabled>Select Document</option>
@@ -1536,7 +1536,7 @@
                                     <div class="row  align-items-end ">
                                       <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                         <div class="new-visa-42 from-group mb-3">
-                                          <label for='#over-stay-file'>Upload file</label>
+                                          <label for='#over-stay-file'>Upload File</label>
                                           <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                               <input type="file" class="form-control" id='new-visa-42'
                                                   name="enter_visa_osf_file" style="line-height: 1" accept=".pdf,.doc,.excel">
@@ -1589,7 +1589,7 @@
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa status</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa Status</h6>
                                     <input type="text" value='step6' name='change_of' hidden>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -2137,7 +2137,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step8' name='tawjeeh_class' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh Training classes</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh Training Classes</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -3839,8 +3839,8 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step2' name='work_permit' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                    application</h6>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                    Application</h6>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
@@ -4172,7 +4172,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step3' name='signed_st' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload signed MB
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB
                                 </h6>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -4192,8 +4192,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-xl-6 col-lg-12 mb-3 col-md-6 status-select-parent">
-                                        <label for="status-select1-renewal-3">Status</label>
-                                        <select id="new-visa-113" class="form-control category status-selector-select status-select"
+                                        <label for="new-visa-113">Status</label>
+                                        <select  class="form-control category status-selector-select status-select"
                                             id="new-visa-113" name="signed_mb_status">
                                             <option value="" selected disabled>select</option>
                                             <option value="Approved" {{$renewal_process['signed_mb_status'] == 'Approved' ? 'selected' : '' }}>Approved</option>
@@ -4262,7 +4262,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step4' name='dubai_insur' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai Insurance
                                 </h6>
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -4301,7 +4301,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='new-visa-120'>Select file</label>
+                                            <label for='new-visa-120'>Select File</label>
                                             <select id="new-visa-120" class="form-control category"
                                             name="pay_dubai_insu_file_name"
                                             value="{{$renewal_process->pay_dubai_insu_file_name}}">
@@ -4594,7 +4594,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step5' name='contract_sub' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract submission
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Contract Submission
                                 </h6>
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -4635,7 +4635,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for='new-visa-125'>Select file</label>
+                                            <label for='new-visa-125'>Select File</label>
                                             <select id="new-visa-125" class="form-control category"
                                                 name="contract_sub_file_name"
                                                 value="{{$renewal_process->contract_sub_file_name}}">
@@ -4928,7 +4928,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step6' name='tawjeeh_class' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh classes
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Tawjeeh Classes
                                 </h6>
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -5801,13 +5801,13 @@
             <a class="nav-link active tab-3 Work-permit-tabs" id="pills-sponsored-tab" data-toggle="pill"
                 href="#pills-sponsored" role="tab" aria-controls="pills-sponsored"
                 aria-selected="false">Golden Visa/Sponsored
-                by someone</a>
+                By Someone</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link Work-permit-tabs tab-4" id="pills-part-time-tab" data-toggle="pill"
                 href="#pills-part-time" role="tab" aria-controls="pills-part-time"
                 aria-selected="false">Part
-                time & temporary</a>
+                Time & Temporary</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link Work-permit-tabs tab-5" id="pills-UAE-tab" data-toggle="pill" href="#pills-UAE"
@@ -5816,7 +5816,7 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link Work-permit-tabs-last tab-6" id="pills-modify-contract-tab" data-toggle="pill"
                 href="#pills-modify-contract" role="tab" aria-controls="pills-modify-contract"
-                aria-selected="false">Modify contract</a>
+                aria-selected="false">Modify Contract</a>
         </li>
 
     </ul>
@@ -5840,13 +5840,13 @@
                         </a>
                         <a class="nav-link bordered_tab" id="v-pills-sponsored2-tab" data-toggle="pill"
                             href="#v-pills-sponsored2" role="tab" aria-controls="v-pills-sponsored2"
-                            aria-selected="false">Upload signed MB</a>
+                            aria-selected="false">Upload Signed MB</a>
                             <a class="nav-link bordered_tab" id="v-pills-sponsored1_2-tab" data-toggle="pill"
                             href="#v-pills-sponsored1_2" role="tab" aria-controls="v-pills-sponsored1_2"
-                            aria-selected="false">Waiting for Approval</a>
+                            aria-selected="false">Waiting For Approval</a>
                         <a class="nav-link bordered_tab" id="v-pills-sponsored3-tab" data-toggle="pill"
                             href="#v-pills-sponsored3" role="tab" aria-controls="v-pills-sponsored3"
-                            aria-selected="false">Pay Dubai insurance</a>
+                            aria-selected="false">Pay Dubai Insurance</a>
                         <a class="nav-link bordered_tab" id="v-pills-sponsored4-tab" data-toggle="pill"
                             href="#v-pills-sponsored4" role="tab" aria-controls="v-pills-sponsored4"
                             aria-selected="false">Preapproval Work Permit Fees</a>
@@ -5879,7 +5879,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="new-visa-152">Process status</label>
+                                                <label for="new-visa-152">Process Status</label>
                                                 @if ($sp)
                                                     @if($spo_by_some['upload_wp_status'] == 'Approved' || $spo_by_some['upload_wp_status'] == 'Skip')
                                                         <input type="text" id="tab-3" class="form-control process-status-input"
@@ -7523,8 +7523,8 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step1' name='work_p' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                        application</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                        Application</h6>
                                     {{-- <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -7560,7 +7560,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="new-visa-192">select File</label>
+                                                <label for="new-visa-192">Select File</label>
                                                 <select id="new-visa-192" class="form-control category"
                                                     name="job_offer_file_name"
                                                     >
@@ -8023,7 +8023,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step3' name='waiting_for' hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                         Approval
                                     </h6>
                                     <div class="row">
@@ -8475,16 +8475,16 @@
                             aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-UAE1-tab" data-toggle="pill"
                             href="#v-pills-UAE1" role="tab" aria-controls="v-pills-UAE1"
-                            aria-selected="true">Work permit application</a>
+                            aria-selected="true">Work Permit application</a>
                         <a class="nav-link bordered_tab" id="v-pills-UAE2-tab" data-toggle="pill"
                             href="#v-pills-UAE2" role="tab" aria-controls="v-pills-UAE2"
-                            aria-selected="false">Upload sign MB</a>
+                            aria-selected="false">Upload Sign MB</a>
                         <a class="nav-link bordered_tab" id="v-pills-UAE3-tab" data-toggle="pill"
                             href="#v-pills-UAE3" role="tab" aria-controls="v-pills-UAE3"
-                            aria-selected="false">Pay Dubi insurance</a>
+                            aria-selected="false">Pay Dubai Insurance</a>
                             <a class="nav-link bordered_tab" id="v-pills-UAE3-1-tab" data-toggle="pill"
                             href="#v-pills-UAE3-1" role="tab" aria-controls="v-pills-UAE3-1"
-                            aria-selected="false">Waiting for Approval</a>
+                            aria-selected="false">Waiting For Approval</a>
                         <a class="nav-link bordered_tab" id="v-pills-UAE4-tab" data-toggle="pill"
                             href="#v-pills-UAE4" role="tab" aria-controls="v-pills-UAE4"
                             aria-selected="false">Upload Work Permit</a>
@@ -8541,7 +8541,7 @@
                                     @csrf
                                     <input type="text" name="work_p" value="step1" hidden>
                                     <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                        application</h6>
+                                        Application</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -8819,7 +8819,7 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                                <label for='new-visa-221'>Upload</label>
+                                                <label for='new-visa-221'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-221'
                                                          style="line-height: 1" name="wp_app_file"
@@ -8972,7 +8972,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="dubai_insu" value="step3" hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai insurance
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Pay Dubai Insurance
                                 </h6>
 
                                 <div class="row">
@@ -9310,7 +9310,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="waiting_for" value="step4" hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                         Approval
                                     </h6>
                                     <div class="row">
@@ -9766,15 +9766,15 @@
                             aria-controls="v-pills-modify-contract0" aria-selected="true">Start Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-modify-contract1-tab"
                             data-toggle="pill" href="#v-pills-modify-contract1" role="tab"
-                            aria-controls="v-pills-modify-contract1" aria-selected="true">work permit
-                            application</a>
+                            aria-controls="v-pills-modify-contract1" aria-selected="true">work Permit
+                            Application</a>
                         <a class="nav-link bordered_tab" id="v-pills-modify-contract2-tab"
                             data-toggle="pill" href="#v-pills-modify-contract2" role="tab"
-                            aria-controls="v-pills-modify-contract2" aria-selected="false">Uplaod signed
+                            aria-controls="v-pills-modify-contract2" aria-selected="false">Uplaod Signed
                             MB</a>
                         <a class="nav-link bordered_tab" id="v-pills-modify-contract4-tab"
                             data-toggle="pill" href="#v-pills-modify-contract4" role="tab"
-                            aria-controls="v-pills-modify-contract4" aria-selected="false">Modify contract
+                            aria-controls="v-pills-modify-contract4" aria-selected="false">Modify Contract
                             status</a>
                         <a class="nav-link bordered_tab" id="v-pills-modify-contract5-tab"
                             data-toggle="pill" href="#v-pills-modify-contract5" role="tab"
@@ -9832,8 +9832,8 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="work_permit_app" value="step1" hidden>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                        application</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                        Application</h6>
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -10395,7 +10395,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="new-visa-261">status</label>
+                                            <label for="new-visa-261">Status</label>
                                             <select id="new-visa-261" class="form-control status-selector-select category"
                                                 name="upload_wp_status">
                                                 <option value="" selected disabled>Select</option>
@@ -10781,7 +10781,7 @@
                             @csrf
                             <input type="text" name="application" value="step1" hidden>
 
-                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                 Approval
                             </h6>
                             <div class="row">
@@ -10926,7 +10926,7 @@
                                   <div class="col-xl-6 col-lg-12 col-md-6">
                                       <div class="form-group mb-3">
                                           <label for="new-visa-270">Process
-                                              status</label>
+                                              Status</label>
                                                 @if ($m_emirates)
                                                     @if($modification_emirates['application_status'] == 'Approved' || $modification_emirates['application_status'] == 'Skip')
                                                         <input type="text" id="tab-8" class="form-control process-status-input"
@@ -10953,7 +10953,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step1' name='application' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                     Approval
                                 </h6>
                                 <div class="row">
@@ -11069,12 +11069,12 @@
                 <a class="nav-link active Work-permit-tabs tab-9" id="pills-visa-cancel-tab" data-toggle="pill"
                     href="#pills-visa-cancel" role="tab" aria-controls="pills-visa-cancel"
                     aria-selected="false">Visa
-                    cancelation</a>
+                    Cancelation</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link Work-permit-tabs-last tab-10" id="pills-work-permit-cancel-tab" data-toggle="pill"
                     href="#pills-work-permit-cancel" role="tab" aria-controls="pills-work-permit-cancel"
-                    aria-selected="false">Work permit cancelation</a>
+                    aria-selected="false">Work Permit Cancelation</a>
             </li>
         </ul>
         <div class="tab-content" id="cancelation-tabContent" aria-labelledby="pills-cancelation-tab">
@@ -11127,7 +11127,7 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="new-visa-275">Process status</label>
+                                                    <label for="new-visa-275">Process Status</label>
                                                     @if ($visa_can)
                                                         @if($visa_cancellation['residency_app_status'] == 'Approved' || $visa_cancellation['residency_app_status'] == 'Skip')
                                                             <input type="text" id="tab-9" class="form-control process-status-input"
@@ -11154,8 +11154,8 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="work_permit_app_cancellation" value="step1" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                            application</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                            Application</h6>
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
@@ -11554,8 +11554,8 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="signd_can_form_det" value="step3" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                            application</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                            Application</h6>
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
@@ -11890,7 +11890,7 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="waiting_for" value="step4" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting Fsor
                                             Approval
                                         </h6>
                                         <div class="row">
@@ -12378,7 +12378,7 @@
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="new-visa-300">Process status</label>
+                                                    <label for="new-visa-300">Process Status</label>
                                                     @if ($per_can)
                                                         @if($permit_cancellation['waiting_for_approval_status'] == 'Approved' || $permit_cancellation['waiting_for_approval_status'] == 'Skip')
                                                             <input type="text" id="tab-10" class="form-control process-status-input"
@@ -12406,8 +12406,8 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="work_permit_app_cancellation" value="step1" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                            application</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                            Application</h6>
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
@@ -12807,8 +12807,8 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="signd_can_form_det" value="step3" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work permit
-                                            application</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
+                                            Application</h6>
                                         <div class="row">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
@@ -13143,7 +13143,7 @@
                                         class='py-2' method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="text" name="waiting_for" value="step4" hidden>
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting for
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Waiting For
                                             Approval
                                         </h6>
                                         <div class="row">
