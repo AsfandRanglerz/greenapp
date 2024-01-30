@@ -123,7 +123,7 @@
         <!-- New Visa -->
         <div class="tab-pane fade show active parent-tab-1" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
@@ -150,7 +150,7 @@
 
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="visa-tabContent">
                         <div class="tab-pane fade show active tabs" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
@@ -282,7 +282,7 @@
 
                                             @else
                                             <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label for="visa-id-11">Are u inside the country?</label>
                                                     <select class="form-control entry-visa-select" id="visa-id-11"
                                                         name="enter_visa_country">
@@ -295,7 +295,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6 d-none Over-stay-fine">
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label for="visa-id-12">Over Stay Fines?</label>
                                                     <select class="form-control fine-select" id="visa-id-12"
                                                         name="enter_visa_over_sf">
@@ -312,11 +312,11 @@
 
                                         @if(!($new_visa['enter_visa_status'] == 'Approved' || $new_visa['enter_visa_status']
                                         == 'Skip'))
-                                        <div class="fine-files-container d-none ">
-                                            <div class="row  align-items-end ">
-                                                <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                    <div class="upload-file">
-                                                        <label for='visa-id-13'>Upload file</label>
+                                        <div class="fine-files-container col-xl-6 col-lg-12 col-md-6 d-none ">
+                                            <div class="row  align-items-end m-0">
+                                                <div class="align-items-end d-flex">
+                                                    <div class="upload-file form-group mb-3">
+                                                        <label for='visa-id-13'>Upload File</label>
                                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                             <input type="file" class="form-control" id='visa-id-13'
                                                                 name="enter_visa_osf_file" style="line-height: 1"
@@ -678,7 +678,7 @@
                                                         value="{{$new_visa->emirates_tran_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                 <label for="visa-id-31">Status</label>
                                                 <input class='form-control m-0 status-container-input' type="text" disabled
                                                     value="{{$new_visa->emirates_status}}" placeholder="..."
@@ -746,7 +746,7 @@
                                                         value="{{$new_visa->residency_tran_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                                 <label for="visa-id-34">Status</label>
                                                 <input class='form-control m-0 status-container-input' type="text" disabled
                                                     value="{{$new_visa->residency_status}}" placeholder="...."
@@ -825,7 +825,7 @@
                                                         value="{{$new_visa->biometric_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="form-group mb-3col-xl-6 col-lg-12 col-md-6 ">
                                                 <label for="visa-38-id">Status</label>
                                                 <input class='form-control m-0 status-container-input' id="visa-38-id"
                                                     type="text" disabled value="{{$new_visa->biometric_status}}"
@@ -841,7 +841,7 @@
                                             <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                                 @if($new_visa['biometric_status'] == 'Approved' ||
                                                 $new_visa['biometric_status'] == 'Skip')
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label for="visa-40-id">Biometric</label>
                                                     <input type="text" class="form-control" id="visa-39-id" disabled
                                                         value="{{$new_visa->employee_biometric}}" placeholder="...">
@@ -880,7 +880,7 @@
                                                     @endif
                                                 </div>
                                                 @else
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label for="visa-40-id">Biometric</label>
                                                     <select class="form-control biometric-select" id="visa-40-id"
                                                         name="employee_biometric">
@@ -965,7 +965,7 @@
         <!-- Renewal Process Start -->
         <div class="tab-pane fade parent-tab-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-renewal-start-tab" data-toggle="pill"
@@ -983,7 +983,7 @@
                             aria-selected="false">Biometric</a>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-8 col-lg-9">
                     <div class="tab-content" id="renewal-tabContent">
                         <div class="tab-pane fade show active tabs" id="v-pills-renewal-start" role="tabpanel"
                             aria-labelledby="v-pills-renewal-start-tab">
@@ -1193,7 +1193,7 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="visa1-id-7">Transaction No:</label>
+                                                <label for="visa1-id-7">Transaction No</label>
                                                 <input type="text" class="form-control" id="visa1-id-7" disabled
                                                     value="{{$renewal_process->residency_tran_no}}" placeholder="...">
                                             </div>
@@ -1274,7 +1274,7 @@
                                                     value="{{$renewal_process->renewal_tran_fees}}" placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-id-13">Status</label>
                                             <input class='form-control m-0 status-container-input' type="text" disabled
                                                 value="{{$renewal_process->renewal_status}}" placeholder="...."
@@ -1355,7 +1355,7 @@
                                                     placeholder="...">
                                             </div>
                                         </div>
-                                        <div class="form-group mb-0 col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="form-group mb-3 col-xl-6 col-lg-12 col-md-6 ">
                                             <label for="visa1-id-15">Status</label>
                                             <input class='form-control m-0 status-container-input' id="visa1-id-15"
                                                 type="text" disabled value="{{$renewal_process->emp_biometric_status}}"
@@ -1410,7 +1410,7 @@
                                                 @endif
                                             </div>
                                             @else
-                                            <div class="form-group">
+                                            <div class="form-group mb-3">
                                                 <label for="visa1-id-17">Biometric</label>
                                                 <select class="form-control biometric-select" id="visa1-id-17"
                                                     name="emp_biometric">
@@ -1428,10 +1428,10 @@
 
                                         </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container d-none">
-                                            <div class="mb-3 align-items-end d-flex">
+                                            <div class="align-items-end d-flex">
                                                 @if(!($renewal_process['emp_biometric_status'] == 'Approved' ||
                                                 $renewal_process['emp_biometric_status'] == 'Skip'))
-                                                <div class="upload-file">
+                                                <div class="upload-file form-group mb-3">
                                                     <label for='visa1-id-18'>Uplaod File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa1-id-18'
@@ -1498,7 +1498,7 @@
         <!-- Modification of Visa -->
         <div class="tab-pane fade parent-tab-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-modify-visa-start-tab" data-toggle="pill"
@@ -1510,7 +1510,7 @@
                             aria-selected="false">Waiting For Approval</a>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="modification-visa-tabContent">
                         <div class="tab-pane fade show active tabs" id="v-pills-modify-visa-start" role="tabpanel"
                             aria-labelledby="v-pills-modify-visa-start-tab">
@@ -1686,7 +1686,7 @@
         <!-- Modification of Emirates id -->
         <div class="tab-pane fade parent-tab-4" id="modify-id" role="tabpanel" aria-labelledby="modify-id-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-modify-id-start-tab" data-toggle="pill"
@@ -1698,7 +1698,7 @@
                             aria-selected="false">Waiting For Approval</a>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="modification-id-tabContent">
                         <div class="tab-pane fade show active tabs" id="v-pills-modify-id-start" role="tabpanel"
                             aria-labelledby="v-pills-modify-id-start-tab">
@@ -1873,7 +1873,7 @@
         <!-- Visa Cancelation -->
         <div class="tab-pane fade parent-tab-5" id="cancelation" role="tabpanel" aria-labelledby="cancelation-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-residency-cancel-start-tab"
@@ -1882,10 +1882,10 @@
                             Process</a>
                         <a class="nav-link bordered_tab" id="v-pills-residency-cancel-tab" data-toggle="pill"
                             href="#v-pills-residency-cancel" role="tab" aria-controls="v-pills-residency-cancel"
-                            aria-selected="false">Residency Cancelation Application</a>
+                            aria-selected="false">Residency Cancelation <br class='d-none d-lg-block'> Application</a>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="visa-cancel-tabContent">
                         <div class="tab-pane fade show active tabs" id="v-pills-residency-cancel-start" role="tabpanel"
                             aria-labelledby="v-pills-residency-cancel-start-tab">

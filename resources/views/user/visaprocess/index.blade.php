@@ -48,7 +48,7 @@
 
     /* All tabs that are in vertical form */
     .horizontal_tabs {
-        overflow-X: auto;
+        overflow-X: auto!important;
         flex-wrap: nowrap;
     }
 
@@ -90,7 +90,7 @@
                 class="fa fa-plus mr-2"></span>Add
             Employee</a> --}}
     </div>
-    <ul class="nav nav-tabs nav-bar horizontal_tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs nav-bar" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                 aria-selected="true">
@@ -101,7 +101,7 @@
         <!-- New Visa -->
         <div class="tab-pane fade show active parent-tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
-                <div class="col-3">
+                <div class="col-xl-3 col-lg-4">
                     <div class="nav side-bar flex-row horizontal_tabs flex-lg-column nav-pills" id="v-pills-tab"
                         role="tablist" aria-orientation="vertical">
                         <a class="nav-link active bordered_tab" id="v-pills-start-tab" data-toggle="pill"
@@ -128,7 +128,7 @@
 
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-xl-9 col-lg-8">
                     <div class="tab-content" id="visa-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-start" role="tabpanel"
                             aria-labelledby="v-pills-start-tab">
@@ -251,8 +251,8 @@
                                             </div>
                                         </div>
                                         @if($visa_data['enter_visa_country'] == 'yes')
-                                        <div class="col-xl-6 col-lg-12 col-md-6  ">
-                                            <div class="form-group">
+                                        <div class="col-xl-6 col-lg-12 col-md-6">
+                                            <div class="form-group mb-3">
                                                 <label for="visa-id-12">Over Stay Fines?</label>
                                                 <input type="text" class="form-control" id="visa-id-8" disabled
                                                     value="{{$visa_data->enter_visa_over_sf}}" placeholder="...">
@@ -312,12 +312,11 @@
                                             </div>
                                         </div>
 
-                                    <div class="fine-files-container d-none ">
-                                        <div class="row  align-items-end ">
-                                            <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-
-                                                <div class="upload-file">
-                                                    <label for='visa-id-13'>Upload file</label>
+                                    <div class="fine-files-container d-none col-xl-6 col-lg-12 col-md-6 ">
+                                        <div class="row m-0 align-items-end">
+                                            <div class="align-items-end d-flex">
+                                                <div class="upload-file form-group mb-3">
+                                                    <label for='visa-id-13'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='visa-id-13'
                                                             name="enter_visa_osf_file" style="line-height: 1"
