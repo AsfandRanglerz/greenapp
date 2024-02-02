@@ -32,7 +32,8 @@
                                                 <td>{{ $inquiry->user->email }}</td>
                                                 <td>{{ $inquiry->question }} </td>
                                                 <td>{!! $inquiry->answer !!}</td>
-                                                <td style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
+                                                <td>
+                                                <div style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
                                                     <a class="btn btn-info" href="{{ route('inquiry.edit', $inquiry->id) }}">{{isset($inquiry->answer) ? 'Responded' : 'Respond' }}</a>
                                                     <form method="POST"
                                                         action="{{ route('inquiry.destroy', $inquiry->id) }}">
@@ -41,7 +42,8 @@
                                                         <button type="submit" class="btn btn-danger btn-flat show_confirm"
                                                             data-toggle="tooltip">Delete</button>
                                                     </form>
-                                                </td>
+                                                </div>
+                                            </td>
                                             </tr>
                                         @endforeach
 

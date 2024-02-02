@@ -41,8 +41,8 @@
 
                                                 <td>{!!$fax->question!!}</td>
                                                 <td>{!!$fax->answer!!}</td>
-
-                                                <td
+                                            <td>
+                                                <div
                                                 style="display: flex;align-items: center;justify-content: center;column-gap: 8px">
 
 
@@ -53,7 +53,8 @@
                                                             <input name="_method" type="hidden" value="DELETE">
                                                             <button type="submit" class="btn btn-danger btn-flat show_confirm" data-toggle="tooltip" >Delete</button>
                                                         </form>
-                                                           </td>
+                                                           </div>
+                                                        </td>
                                                         </tr>
                                       @endforeach
 

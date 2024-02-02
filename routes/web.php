@@ -158,7 +158,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation');//->middleware('permission:Visa Process');
 
-    
+
     Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation');//->middleware('permission:Visa Process');
 
     Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation');//->middleware('permission:Visa Process');
@@ -206,7 +206,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
 
-    Route::get('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
+    Route::post('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
 
     Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')/*->middleware('permission:Receipt')*/;
 

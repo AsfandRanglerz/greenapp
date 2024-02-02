@@ -218,8 +218,8 @@
                         </div>
                     </div>
                      {{-- Job Offer, MB Contracts + Preapproval of work permit section --}}
-                     {{$ids['company_id']}}
-                     {{$ids['user_id']}}
+                     {{-- {{$ids['company_id']}}
+                     {{$ids['user_id']}} --}}
                      {{-- {{$new_visa->id}} --}}
                         @if ($new_visa)
                         <div class="tab-pane fade" id="v-pills-visa1" role="tabpanel"
@@ -396,7 +396,7 @@
                                                     <option value="Signed Work Permit Renewal Application"
                                                         {{ $new_visa['job_offer_file_name'] == 'Signed Work Permit Renewal Application' ? 'selected' : '' }}>Signed
                                                         Work Permit Renewal Application</option>
-                                                    
+
                                                     <option value="Submission Form"
                                                         {{ $new_visa['job_offer_file_name'] == 'Submission Form' ? 'selected' : '' }}>Submission Form
                                                     </option>
@@ -455,7 +455,7 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 gap-1 col-md-6">
                                           <div class="d-flex flex-column mb-3 form-group">
-                                             <label for="new-visa-9">Upload File</label> 
+                                             <label for="new-visa-9">Upload File</label>
                                             <input type="file" class="form-control"
                                                     id="new-visa-9" placeholder="..." value="{{$new_visa->job_offer_file}}" name='file'>
                                          {{-- <a href=""><img class="upload-img" src="https://media.istockphoto.com/id/1386446426/photo/badshahi-mosque.jpg?s=612x612&w=0&k=20&c=vShhc9rb17q_5k-tx_HJnlDvlE4YjCNNlOCEWplI2_Y=" alt=""></a> --}}
@@ -936,7 +936,7 @@
                                         </div>
                                 <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                     <div class="upload-file form-group mb-3">
-                                      <label for='new-visa-26'>Upload File</label> 
+                                      <label for='new-visa-26'>Upload File</label>
                                       <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                           <input type="file" class="form-control" id='new-visa-26'
                                               name="dubai_insurance_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->dubai_insurance_file}}">
@@ -1202,7 +1202,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                             <label for='new-visa-32'>Upload File</label> 
+                                             <label for='new-visa-32'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-32'
                                                     name="pre_approved_wp_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->pre_approved_wp_file}}">
@@ -1467,7 +1467,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                             <label for='new-visa-38'>Upload File</label> 
+                                             <label for='new-visa-38'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-38'
                                                     name="enter_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->enter_visa_file}}">
@@ -1802,7 +1802,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                             <label for='new-visa-48'>Upload File</label> 
+                                             <label for='new-visa-48'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-48'
                                                     name="change_of_visa_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->change_of_visa_file}}">
@@ -2071,7 +2071,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                             <label for='new-visa-54'>Upload File</label> 
+                                             <label for='new-visa-54'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-54'
                                                     name="medical_fitness_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->medical_fitness_file}}">
@@ -2443,7 +2443,7 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                            <label for='new-visa-67'>Upload File</label> 
+                                            <label for='new-visa-67'>Upload File</label>
                                             <div class="input-group mb-xl-  0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-67'
                                                     name="contract_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->contract_file}}">
@@ -2712,7 +2712,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file mb-3 form-group">
-                                            <label for='new-visa-73'>Upload File</label> 
+                                            <label for='new-visa-73'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-73'
                                                     name="health_insur_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->health_insur_file}}">
@@ -2980,7 +2980,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file mb-3 form-group">
-                                             <label for='new-visa-78'>Upload File</label> 
+                                             <label for='new-visa-78'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-78'
                                                     name="work_permit_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->work_permit_file}}">
@@ -3240,7 +3240,7 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                         <div class="upload-file mb-3 form-group">
-                                        <label for='new-visa-84'>Upload File</label> 
+                                        <label for='new-visa-84'>Upload File</label>
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                             <input type="file" class="form-control" id='new-visa-84'
                                                 name="emirates_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->emirates_file}}">
@@ -3497,7 +3497,7 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                         <div class="upload-file mb-3 form-group">
-                                        <label for='new-visa-90'>Upload File</label> 
+                                        <label for='new-visa-90'>Upload File</label>
                                         <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                             <input type="file" class="form-control" id='new-visa-90'
                                                 name="residency_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->residency_file}}">
@@ -12196,7 +12196,7 @@
                                                             $visa_cancellation['residency_app_file_name']=='Signed Work Permit Renewal Application'
                                                             ? 'selected' : '' }}>Signed
                                                             Work Permit Renewal Application</option>
-                                                    
+
                                                         <option value="Submission Form" {{
                                                             $visa_cancellation['residency_app_file_name']=='Submission Form'
                                                             ? 'selected' : '' }}>Submission Form
@@ -13490,4 +13490,3 @@
 </script>
 @endsection
 
-    
