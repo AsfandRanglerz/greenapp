@@ -356,13 +356,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($visa_data['enter_visa_status'] == 'Reject' || $visa_data['enter_visa_status']
-                                    == 'UnderProcess')
                                     <div class="col-12 text-center">
                                         <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                     </div>
                                     @endif
+                                    {{-- @if($visa_data['enter_visa_status'] == 'Reject' || $visa_data['enter_visa_status']
+                                    == 'UnderProcess')
+                                    <div class="col-12 text-center">
+                                        <button class='btn btn-success px-5 py-2' type="submit">Add</button>
+                                    </div>
+                                    @endif --}}
                                     </div>
                                 </form>
                             </div>
@@ -407,12 +410,12 @@
                                         </div>
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{$visa_data->change_of_visa_file_name}}</label>
                                                 @php
                                                 $file_name = $visa_data->change_of_visa_file;
                                                 $ext = explode('.', $file_name);
                                                 @endphp
                                                 @if ($visa_data->change_of_visa_file)
+                                                <label for="#">{{$visa_data->change_of_visa_file_name}}</label>
                                                 <a class="upload-img" target="_black"
                                                     href="{{ asset('' . '/' . $visa_data->change_of_visa_file) }}">
                                                     @if ($ext[1] == 'pdf')
@@ -480,12 +483,12 @@
                                         </div>
                                         <div class="col-12 gap-1 d-flex align-items-end mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{$visa_data->health_insur_file_name}}</label>
                                                 @php
                                                 $file_name = $visa_data->health_insur_file;
                                                 $ext = explode('.', $file_name);
                                                 @endphp
                                                 @if ($visa_data->health_insur_file)
+                                                <label for="#">{{$visa_data->health_insur_file_name}}</label>
                                                 <a class="upload-img" target="_black"
                                                     href="{{ asset('' . '/' . $visa_data->health_insur_file) }}">
                                                     @if ($ext[1] == 'pdf')
@@ -592,10 +595,13 @@
                                             </a>
                                             @endif
                                         </div>
+                                        @if(!($visa_data['medical_fitness_status'] == 'Approved' ||
+                                            $visa_data['medical_fitness_status'] == 'Skip'))
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Add</button>
                                         </div>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -637,12 +643,12 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{$visa_data->emirates_file_name}}</label>
                                                 @php
                                                 $file_name = $visa_data->emirates_file;
                                                 $ext = explode('.', $file_name);
                                                 @endphp
                                                 @if ($visa_data->emirates_file)
+                                                <label for="#">{{$visa_data->emirates_file_name}}</label>
                                                 <a class="upload-img" target="_black"
                                                     href="{{ asset('' . '/' . $visa_data->emirates_file) }}">
                                                     @if ($ext[1] == 'pdf')
@@ -700,12 +706,12 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-12 d-flex align-items-end col-md-6">
                                             <div class="d-flex flex-column">
-                                                <label for="#">{{$visa_data->residency_file_name}}</label>
                                                 @php
                                                 $file_name = $visa_data->residency_file;
                                                 $ext = explode('.', $file_name);
                                                 @endphp
                                                 @if ($visa_data->residency_file)
+                                                <label for="#">{{$visa_data->residency_file_name}}</label>
                                                 <a class="upload-img" target="_black"
                                                     href="{{ asset('' . '/' . $visa_data->residency_file) }}">
                                                     @if ($ext[1] == 'pdf')

@@ -35,17 +35,11 @@
                             </select>
                         </div>
                         <div class="form-group col-xl-4 col-lg-6 col-md-4">
-                        <label>Select Request<span class="required"> *</span></label>
-                            <select id="selectDocument" name="request_type[]" value="{{ old('doc_type[]') }}"
-                                class="form-control" required>
-                                <option value="" disabled selected>Select Request</option>
-                                <option value="Personal Photo">Parents</option>
-                                <option value="Passport">Wife</option>
-                                <option value="Visit Visa">Son</option>
-                                <option value="Offer Letter">Daughter</option>
-                            </select>
+                            <label>Name<span class="required"> *</span></label>
+                            <input type="text" name="name[]" placeholder="name" class='form-control'>
                         </div>
-                        <div class="form-group col-xl-4 col-lg-6 col-md-4">
+
+                        {{-- <div class="form-group col-xl-4 col-lg-6 col-md-4">
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="file" class="form-control" name="file[]" value="{{ old('file[]') }}"
@@ -54,9 +48,9 @@
                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group col-xl-4 col-lg-6 col-md-4">
+                        {{-- <div class="form-group col-xl-4 col-lg-6 col-md-4">
                             <label>Issue Date</label>
                             <div class="input-group">
                                 <input type="date" name="issue_date[]" placeholder="dd.mm.yyyy"
@@ -75,7 +69,7 @@
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Save</button>

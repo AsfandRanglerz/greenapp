@@ -28,46 +28,32 @@ class DependentController extends Controller
         return view('user.dependents.create');
     }
 
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
-        // return "running".$id;
         $validator = Validator::make($request->all(), [
-            'dependent_type'=>'required',
-            'request_type'=>'required',
-            'file'=>'required',
+            'dependent_type' => 'required',
+            'name' => 'required',
         ]);
-        // return $request;
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-                $dependent_type = $request->input('dependent_type');
-                $request_type = $request->input('request_type');
-                $files = $request->file('file');
-                $file_issue = $request->input('issue_date');
-                $file_expiry = $request->input('expiry_date');
-                $user_id = $id;
-                 for ($i = 0; $i < count($dependent_type); $i++) {
-                $dependent = new IndividualDependent;
-                $dependent->dependent_type = $dependent_type[$i];
-                $dependent->request_type = $request_type[$i];
-                $dependent->issue_date = $file_issue[$i];
-                $dependent->expiry_date = $file_expiry[$i];
-                $dependent->user_id = $user_id;
-                if ($request->hasFile('file.' . $i)) {
-                    $extension = $files[$i]->getClientOriginalExtension();
-                    $file_name = time() . $i . '.' . $extension;
-                    $path = $files[$i]->move('public/admin/assets/img/users', $file_name);
-                    $dependent->file = 'public/admin/assets/img/users/' . $file_name;
-                }
-                $dependent->save();
-                // return $dependent;
 
-            }
+        $dependent_type = $request->input('dependent_type');
+        $names = $request->input('name');
+        $user_id = $id;
 
-            // return $dependent;
-            return redirect()->route('user.get-dependent')->with('success','Dependent added successfully.');
+        for ($i = 0; $i < count($dependent_type); $i++) {
+            $dependent = new IndividualDependent;
+            $dependent->dependent_type = $dependent_type[$i];
+            $dependent->name = $names[$i];
+            $dependent->user_id = $user_id;
+            $dependent->save();
+        }
+
+        return redirect()->route('user.get-dependent')->with('success', 'Dependents added successfully.');
     }
 
 

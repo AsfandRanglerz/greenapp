@@ -825,12 +825,14 @@
                                                         value="{{$new_visa->biometric_tranc_fee}}" placeholder="...">
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-3col-xl-6 col-lg-12 col-md-6 ">
+                                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                                <div class="form-group mb-3">
                                                 <label for="visa-38-id">Status</label>
                                                 <input class='form-control m-0 status-container-input' id="visa-38-id"
                                                     type="text" disabled value="{{$new_visa->biometric_status}}"
                                                     placeholder="..." />
                                             </div>
+                                        </div>
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for="visa-39-id">Date</label>

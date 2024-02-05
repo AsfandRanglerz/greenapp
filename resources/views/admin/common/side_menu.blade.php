@@ -143,7 +143,7 @@
 
 
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Receipt'))
+            auth()->guard('web')->user()->can('Receipts'))
             <li class="dropdown {{ request()->is('admin/receipt-user-index*') ? 'active' : '' }}">
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Receipts</span></a>

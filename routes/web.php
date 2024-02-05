@@ -74,7 +74,7 @@ Route::get('/admin-delete-company/{id}', [CompanyController::class, 'company_del
 
 Route::prefix('admin')->middleware('admin')->group(function () {
 
-    Route::get('dashboard', [AdminController::class, 'getdashboard']);//->middleware('permission:Dashboard');
+    Route::get('dashboard', [AdminController::class, 'getdashboard'])->middleware('permission:Dashboard');
 
     Route::get('profile', [AdminController::class, 'getProfile']);
 
@@ -127,53 +127,53 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Route::resource('receipts', AdminReceiptsController::class)->middleware('permission:Receipt');
 
-    Route::get('receipt-user-index', [ReceiptsController::class, 'index'])->name('receipt-user-index')->middleware('permission:Receipt');
+    Route::get('receipt-user-index', [ReceiptsController::class, 'index'])->name('receipt-user-index')->middleware('permission:Receipts');
 
-    Route::get('receipt-index/{id}', [ReceiptsController::class, 'receipts_index'])->name('user-receipts')->middleware('permission:Receipt');
+    Route::get('receipt-index/{id}', [ReceiptsController::class, 'receipts_index'])->name('user-receipts')->middleware('permission:Receipts');
 
-    Route::get('create-receipt/{id}', [ReceiptsController::class, 'create'])->name('create-receipt')->middleware('permission:Receipt');
+    Route::get('create-receipt/{id}', [ReceiptsController::class, 'create'])->name('create-receipt')->middleware('permission:Receipts');
 
-    Route::post('store-receipt/{id}', [ReceiptsController::class, 'store'])->name('store-receipt')->middleware('permission:Receipt');
+    Route::post('store-receipt/{id}', [ReceiptsController::class, 'store'])->name('store-receipt')->middleware('permission:Receipts');
 
-    Route::get('edit-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'edit'])->name('edit-receipt')->middleware('permission:Receipt');
+    Route::get('edit-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'edit'])->name('edit-receipt')->middleware('permission:Receipts');
 
-    Route::post('update-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'update'])->name('update-receipt')->middleware('permission:Receipt');
+    Route::post('update-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'update'])->name('update-receipt')->middleware('permission:Receipts');
 
-    Route::delete('delete-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'delete'])->name('delete-receipt')->middleware('permission:Receipt');
+    Route::delete('delete-receipt/{id}/{receipt_id}', [ReceiptsController::class, 'delete'])->name('delete-receipt')->middleware('permission:Receipts');
 
-    Route::get('download-receipt/{id}', [ReceiptsController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipt');
+    Route::get('download-receipt/{id}', [ReceiptsController::class, 'download'])->name('user-receipt.download')->middleware('permission:Receipts');
 
 
     //  visa process of employees
 
     Route::resource('visa', NewVisaController::class)/*->middleware('permission:Receipt')*/;
 
-    Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process');//->middleware('permission:Visa Process');
+    Route::get('visa/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process'])->name('start-process')->middleware('permission:Visa Process');
 
-    Route::post('visa-visa/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process_by_admin'])->name('start-process-admin');//->middleware('permission:Visa Process');
+    Route::post('visa-visa/{user_id}/{company_id}', [NewVisaController::class,'start_visa_process_by_admin'])->name('start-process-admin')->middleware('permission:Visa Process');
 
-    Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process');//->middleware('permission:Visa Process');
+    Route::get('view-process/{request_id}/{user_id}/{company_id}', [NewVisaController::class,'view'])->name('view-process')->middleware('permission:Visa Process');
 
-    Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation');//->middleware('permission:Visa Process');
+    Route::post('new-visa-process/{user_id}/{company_id}/{newvisa_id}/{req_id}', [NewVisaController::class,'new_visa_updation'])->name('new-visa-updation')->middleware('permission:Visa Process');
 
-    Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation');//->middleware('permission:Visa Process');
+    Route::post('renewal-process/{user_id}/{company_id}/{renewal_id}/{req_id}', [NewVisaController::class,'start_renewal_process'])->name('renewal-process-updation')->middleware('permission:Visa Process');
 
 
-    Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation');//->middleware('permission:Visa Process');
+    Route::post('work-permit-process/{user_id}/{company_id}/{sponsored_id}/{req_id}', [NewVisaController::class,'sponsored_by_some'])->name('sponsored-by-some-updation')->middleware('permission:Visa Process');
 
-    Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation');//->middleware('permission:Visa Process');
+    Route::post('part-time-process/{user_id}/{company_id}/{part_time}/{req_id}', [NewVisaController::class,'part_time'])->name('part-time-updation')->middleware('permission:Visa Process');
 
-    Route::post('uae-national-process/{user_id}/{company_id}/{uae_gcc}/{req_id}', [NewVisaController::class,'uae_gcc_process'])->name('uae-gcc-updation');//->middleware('permission:Visa Process');
+    Route::post('uae-national-process/{user_id}/{company_id}/{uae_gcc}/{req_id}', [NewVisaController::class,'uae_gcc_process'])->name('uae-gcc-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-contract-process/{user_id}/{company_id}/{modify_cn}/{req_id}', [NewVisaController::class,'modify_cnt'])->name('modify-contract-updation');//->middleware('permission:Visa Process');
+    Route::post('modify-contract-process/{user_id}/{company_id}/{modify_cn}/{req_id}', [NewVisaController::class,'modify_cnt'])->name('modify-contract-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-visa-process/{user_id}/{company_id}/{modify_visa}/{req_id}', [NewVisaController::class,'modification_visa'])->name('modify-visa-updation');//->middleware('permission:Visa Process');
+    Route::post('modify-visa-process/{user_id}/{company_id}/{modify_visa}/{req_id}', [NewVisaController::class,'modification_visa'])->name('modify-visa-updation')->middleware('permission:Visa Process');
 
-    Route::post('modify-emirates-process/{user_id}/{company_id}/{modify_emirates}/{req_id}', [NewVisaController::class,'modification_emirates'])->name('modify-emirates-updation');//->middleware('permission:Visa Process');
+    Route::post('modify-emirates-process/{user_id}/{company_id}/{modify_emirates}/{req_id}', [NewVisaController::class,'modification_emirates'])->name('modify-emirates-updation')->middleware('permission:Visa Process');
 
-    Route::post('visa-cancellation-process/{user_id}/{company_id}/{visa_can}/{req_id}', [NewVisaController::class,'visa_cancellation'])->name('visa-cancellation-updation');//->middleware('permission:Visa Process');
+    Route::post('visa-cancellation-process/{user_id}/{company_id}/{visa_can}/{req_id}', [NewVisaController::class,'visa_cancellation'])->name('visa-cancellation-updation')->middleware('permission:Visa Process');
 
-    Route::post('permit-cancellation-process/{user_id}/{company_id}/{permit_can}/{req_id}', [NewVisaController::class,'permit_cancellation'])->name('permit-cancellation-updation');//->middleware('permission:Visa Process');
+    Route::post('permit-cancellation-process/{user_id}/{company_id}/{permit_can}/{req_id}', [NewVisaController::class,'permit_cancellation'])->name('permit-cancellation-updation')->middleware('permission:Visa Process');
 
     // Route::get('get-visa-requests', [NewVisaProcessController::class, 'index'])->name('get-visa-requests')->middleware('permission:Receipt');
 
@@ -185,41 +185,41 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
 
     // visa process of dependents
-    Route::get('dependent-visa-section/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')/*->middleware('permission:Receipt')*/;
+    Route::get('dependent-visa-section/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'dependent_visa_section'])->name('dependent-visa-section')->middleware('permission:Individuals');
 
-    Route::post('admin-start-visa-process/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('admin-start-visa-process')/*->middleware('permission:Receipt')*/;
+    Route::post('admin-start-visa-process/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'visa_process_by_admin'])->name('admin-start-visa-process')->middleware('permission:Individuals');
 
-    Route::post('dependent-new_visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'new_visa_of_dependent'])->name('dependent-new-visa-process')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-new_visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'new_visa_of_dependent'])->name('dependent-new-visa-process')->middleware('permission:Individuals');
 
-    Route::post('dependent-renewal-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'renewal_of_dependent'])->name('dependent-renewal-process')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-renewal-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'renewal_of_dependent'])->name('dependent-renewal-process')->middleware('permission:Individuals');
 
-    Route::post('dependent-modification-visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_visa_of_dependent'])->name('dependent-modification-visa-process')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-modification-visa-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_visa_of_dependent'])->name('dependent-modification-visa-process')->middleware('permission:Individuals');
 
-    Route::post('dependent-modification-emirates-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_emirates_dependent'])->name('dependent-modification-emirates-process')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-modification-emirates-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'modification_emirates_dependent'])->name('dependent-modification-emirates-process')->middleware('permission:Individuals');
 
-    Route::post('dependent-visa-cancellation-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'visa_cancellation_dependent'])->name('dependent-visa-cancellation-process')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-visa-cancellation-process/{user_id}/{dependent_id}/{process_id}', [IndividualVisaProcess::class,'visa_cancellation_dependent'])->name('dependent-visa-cancellation-process')->middleware('permission:Individuals');
 
-    Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')/*->middleware('permission:Receipt')*/;
+    Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')->middleware('permission:Individuals');
 
 
     // individual visa process
 
-    Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')/*->middleware('permission:Receipt')*/;
+    Route::get('individual-visa-process-index/{id}', [IndividualVisaProcess::class,'visa_process_individual_by_admin'])->name('individual-visa-process-index')->middleware('permission:Individuals');
 
-    Route::post('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')/*->middleware('permission:Receipt')*/;
+    Route::post('individual-visa-process-start-by-admin/{id}', [IndividualVisaProcess::class,'admin_starts_individual_visa_process'])->name('individual-visa-process-by-admin')->middleware('permission:Individuals');
 
-    Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')/*->middleware('permission:Receipt')*/;
+    Route::get('individual-visa-process-start/{individual_id}/{request_id}', [IndividualVisaProcess::class,'start_individual_process'])->name('individual-visa-process-start')->middleware('permission:Individuals');
 
-    Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')/*->middleware('permission:Receipt')*/;
+    Route::post('individual-visa-process-updation/{individual_id}', [IndividualVisaProcess::class,'add_individual_process_data'])->name('individual-visa-process-updation')->middleware('permission:Individuals');
 
     // visa excel files
-    Route::post('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::post('employee-excel-file/{request_id}/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_file'])->name('employee-excel-file')->middleware('permission:Individuals');
 
-    Route::get('get-complete-processes', [AllProcessHandelController::class,'complete_processes'])->name('get-complete-processes')/*->middleware('permission:Receipt')*/;
+    Route::get('get-complete-processes', [AllProcessHandelController::class,'complete_processes'])->name('get-complete-processes')->middleware('permission:Individuals');
 
-    Route::get('admin-start-processes', [AllProcessHandelController::class,'admin_start_processes'])->name('get-admin-start-processes')/*->middleware('permission:Receipt')*/;
+    Route::get('admin-start-processes', [AllProcessHandelController::class,'admin_start_processes'])->name('get-admin-start-processes')->middleware('permission:Individuals');
 
-    Route::post('dependent-excel-file/{request_id}/{employee_id}/{dependent_id}', [AllProcessHandelController::class,'view_excel_file_dependent'])->name('dependent-excel-file')/*->middleware('permission:Receipt')*/;
+    Route::post('dependent-excel-file/{request_id}/{employee_id}/{dependent_id}', [AllProcessHandelController::class,'view_excel_file_dependent'])->name('dependent-excel-file')->middleware('permission:Individuals');
 
     Route::post('individual-excel-file/{request_id}/{individual_id}', [AllProcessHandelController::class,'view_excel_file_individual'])->name('individual-excel-file')/*->middleware('permission:Receipt')*/;
 
@@ -288,7 +288,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // individuals dependents routes
 
-    Route::get('self-employee-dependents/{id}', [SelfUserController::class, 'dependents'])->name('individual-dependent-index');//->middleware('permission:Individuals');
+    Route::get('self-employee-dependents/{id}', [SelfUserController::class, 'dependents'])->name('individual-dependent-index')->middleware('permission:Individuals');
 
     Route::resource('about-us', AboutUsController::class)->middleware('permission:About us');
 

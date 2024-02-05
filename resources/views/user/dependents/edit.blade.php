@@ -20,9 +20,9 @@
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         @if (Auth::guard('web')->user()->emp_type == 'self')
-                            <h6><span class="fa fa-book"></span> - Documents</h6>
+                            <h6><span class="fa fa-book"></span> - Dependents</h6>
                         @else
-                            <h6><span class="fa fa-book"></span> - Employee Documents</h6>
+                            <h6><span class="fa fa-book"></span> - Employee Dependents</h6>
                         @endif
                     </div>
                     <div class="form-row position-relative doc-fields" id="docField1">
@@ -43,19 +43,12 @@
                         </div>
                         <div class="form-group col-xl-6 col-lg-6 col-md-4">
                             <label>Select Request<span class="required"> *</span></label>
-                                <select id="selectDocument" name="request_type[]" value="{{ old('request_type[]') }}"
-                                    class="form-control" required>
-                                    <option value="" disabled selected>Select Request</option>
-                                    <option value="Parents"{{ $dependent->dependent_type == 'Parents' ? 'selected' : '' }}>Parents</option>
-                                    <option value="Wife"{{ $dependent->dependent_type == 'Wife' ? 'selected' : '' }}>Wife</option>
-                                    <option value="Son"{{ $dependent->dependent_type == 'Son' ? 'selected' : '' }}>Son</option>
-                                    <option value="Daughter"{{ $dependent->dependent_type == 'Daughter' ? 'selected' : '' }}>Daughter</option>
-                                </select>
-                                @error('request_type')
+                                <input type="text" value="{{$dependent->name}}" name='name' class='form-control'>
+                                @error('name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                             </div>
-                        <div class="form-group col-md-6">
+                        {{-- <div class="form-group col-md-6">
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="file" class="form-control" name="file" value="{{ $dependent->file }}"
@@ -67,9 +60,9 @@
                             @error('file')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group col-md-6 other-none">
+                        {{-- <div class="form-group col-md-6 other-none">
                             <label>Issue Date</label>
                             <div class="input-group">
                                 <input type="date" name="issue_date" placeholder="dd.mm.yyyy"
@@ -88,7 +81,7 @@
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">

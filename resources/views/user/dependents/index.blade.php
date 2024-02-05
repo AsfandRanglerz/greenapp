@@ -39,8 +39,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
-                            <td>{{ $dependent->dependent_type }}</td>
-                            <td class="word_wrap">{{ $dependent->request_type }}</td>
+                            <td>{{ $dependent->name }}</td>
+                            <td class="word_wrap">{{ $dependent->dependent_type }}</td>
                             @php
                             $file_name = $dependent->file;
                             $ext = explode('.', $file_name);
@@ -85,8 +85,8 @@
                                     <a href="{{route('user.dependent-visa-process',$dependent->id)}}">Click</a>
                                 </td>
                             <td>
-                                <a href="{{ route('user.edit-dependent', $dependent->id) }}" class="mx-2"><span
-                                    class="fa fa-edit text-info"></span></a>
+                                {{-- <a href="{{ route('user.edit-dependent', $dependent->id) }}" class="mx-2"><span
+                                    class="fa fa-edit text-info"></span></a> --}}
                             <form class="d-inline" method="post"
                                 action="{{ route('user.delete-dependent', $dependent->id) }}">
                                 @csrf

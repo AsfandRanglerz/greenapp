@@ -46,6 +46,7 @@ class NewVisaController extends Controller
         }
         return view('admin.visaprocess.index', compact('visa_requests'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -211,7 +212,7 @@ class NewVisaController extends Controller
                 $new_visa = NewVisaProcess::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
-                    
+
                 ]);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
