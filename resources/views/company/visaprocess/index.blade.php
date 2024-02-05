@@ -6213,7 +6213,7 @@
                                                             @if ($permit_cancellation['waiting_for_approval_status'] == 'Approved' || $permit_cancellation['waiting_for_approval_status'] == 'Skip')
                                                                 <input type="text" id="tab-2"
                                                                 class="form-control process-status-input" id="visa2-60"
-                                                                disabled placeholder="..." value='process started'>
+                                                                disabled placeholder="..." value='process completed'>
                                                             @else
                                                                 <input type="text" id="tab-2"
                                                                 class="form-control process-status-input" id="visa2-60"
@@ -6567,7 +6567,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="col-12 text-center new-visa-signmbstatus-btn d-none">
-                                                    <button class='btn btn-success px-5 py-2'>Submit</button>
+                                                    <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                                 </div>
                                             </div>
                                         </form>
