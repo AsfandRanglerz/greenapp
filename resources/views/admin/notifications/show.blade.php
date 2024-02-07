@@ -31,7 +31,7 @@
                                             <th>Sr.</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Actions</th>
+                                            {{-- <th>Actions</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,9 +42,9 @@
                                                 <td>{{ $data->message }} <br> <a href="{{$data->route}}">Click Here.</a>
                                                     <span class="badge p-2 badge-shadow bg-danger text-white">({{ \Carbon\Carbon::parse($data['created_at'])->format('d M, Y') }})</span>
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <a href="#">ok</a>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>

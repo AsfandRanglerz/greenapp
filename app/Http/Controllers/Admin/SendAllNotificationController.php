@@ -62,10 +62,8 @@ class SendAllNotificationController extends Controller
                     'to_all' => $user,
                     'company_id' => $company->id,
                 ]);
-                // return $notification;
             }
-            // $companies = Company::orderBy('id', 'desc')->get();
-
+            Notification::send($companies, new PushNotification($data));
             return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
         }
         elseif ($user == 'Employees') {

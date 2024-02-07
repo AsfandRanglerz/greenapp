@@ -82,7 +82,6 @@
                                                             <th>Company Name</th>
                                                             <th>Employee Name</th>
                                                             <th>Dependent Name</th>
-                                                            <th>Process Name</th>
                                                             <th class='pl-5 pr-5'>Action</th>
                                                         </tr>
                                                     </thead>
@@ -93,7 +92,6 @@
                                                                 <td>{{ $visa->company->name ?? '--' }}</td>
                                                                 <td>{{$visa->user->name}}</td>
                                                                 <td>{{$visa->dependent->name ??  '--'}}</td>
-                                                                <td>New Visa</td>
 
                                                                 <td>
                                                                     @if ($visa->company)
@@ -312,7 +310,7 @@
                                                         <th>Company Name</th>
                                                         <th>Employee Name</th>
                                                         <th>Dependent Name</th>
-                                                        <th class='pl-5 pr-5'>Action</th>
+                                                        {{-- <th class='pl-5 pr-5'>Action</th> --}}
                                                     </tr>
                                                 </thead>
                                                     <tbody>
@@ -322,9 +320,9 @@
                                                             <td>{{$m_v->company->name ?? '--' }}</td>
                                                             <td>{{$m_v->user->name}}</td>
                                                             <td>{{$m_v->dependent->name ?? '--' }}</td>
-                                                            <td>
+                                                            {{-- <td>
                                                                 <a href="#" class='btn btn-primary'>Click</a>
-                                                            </td>
+                                                            </td> --}}
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
@@ -342,7 +340,7 @@
                                                         <th>Company Name</th>
                                                         <th>Employee Name</th>
                                                         <th>Dependent Name</th>
-                                                        <th class='pl-5 pr-5'>Action</th>
+                                                        {{-- <th class='pl-5 pr-5'>Action</th> --}}
                                                     </tr>
                                                 </thead>
                                                     <tbody>
@@ -352,8 +350,7 @@
                                                             <td>{{$m_e->company->name ?? '--' }}</td>
                                                             <td>{{$m_e->user->name}}</td>
                                                             <td>{{$m_e->dependent->name ?? '--' }}</td>
-                                                            <td>                                                                <a href="#" class='btn btn-primary'>Click</a>
-                                                            </td>
+
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
