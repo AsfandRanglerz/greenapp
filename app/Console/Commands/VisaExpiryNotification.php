@@ -56,12 +56,12 @@ class VisaExpiryNotification extends Command
                 $data['document'] = $document;
                 Mail::to($user->email)->send(new VisaExpiryEmail($data));
                 $document->update(['notification_sent' => 'yes']);
-                $notify = AdminNotification::create([
-                    'employee_id'=>$user->id,
-                    'to_all'=>'Individuals',
-                    'title'=>'Visa Expiry Notification',
-                    'message' => 'Your Visa is expiring within 7 days.!',
-                ]);
+                // $notify = AdminNotification::create([
+                //     'employee_id'=>$user->id,
+                //     'to_all'=>'Employees',
+                //     'title'=>'Visa Expiry Notification',
+                //     'message' => 'Your Visa is expiring within 7 days.!',
+                // ]);
             }
         }
 

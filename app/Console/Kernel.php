@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\DeleteDataFromJobs;
 use App\Console\Commands\VisaExpiryNotification;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         VisaExpiryNotification::class,
+        DeleteDataFromJobs::class,
     ];
 
     /**
@@ -25,7 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('visa:expiryNotification')->everyMinute();
+        $schedule->command('visa:expiryNotification')->everyFiveMinutes();
+        // $schedule->command('visa:DeleteDataFromJobs')->everyFiveMinutes();
     }
 
     /**
