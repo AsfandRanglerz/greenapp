@@ -50,6 +50,35 @@
                 <button type="submit" class="w-100 btn-bg">Login</button>
                 <p class="text-center text-dark font-weight-600 mt-2 mb-0">Don't have an account? <a
                         href="{{ url('register') }}" class="green-link">Register</a></p>
+                        <script>
+                            // Wrap your code in a function to ensure it runs after the page has loaded
+                      function initializeForm() {
+                          // Function to get the user data
+                          function getUserData() {
+                              var email = document.getElementById('userEmail').value;
+                              var userData = {
+                                  email: email,
+                              };
+                              return userData;
+                          }
+                          // Event listener for form submission
+                          document.getElementById('authForm').addEventListener('submit', function(event) {
+                              event.preventDefault();
+                              var userData = getUserData();
+                              // Check if window.ReactNativeWebView is available before using it
+                              if (window.ReactNativeWebView) {
+                                  window.ReactNativeWebView.postMessage(JSON.stringify(userData));
+                              } else {
+                                  console.error("window.ReactNativeWebView is not available");
+                              }
+                              this.submit();
+                          });
+                      }
+
+                      // Use DOMContentLoaded event to ensure the DOM has fully loaded before executing the script
+                      document.addEventListener('DOMContentLoaded', initializeForm);
+
+                          </script>
             </div>
         </form>
     </div>
