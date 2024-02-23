@@ -58,6 +58,7 @@
                                         <th>Process Name</th>
                                         <th>Transaction No</th>
                                         <th>Transaction Fee</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
 
@@ -70,18 +71,21 @@
                                             <td>Entry Visa</td>
                                             <td>{{$new_visa->enter_visa_ts_no}}</td>
                                             <td>{{$new_visa->enter_visa_ts_fee}}</td>
+                                            <td>{{$new_visa->enter_visa_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>Change of Visa status</td>
                                             <td>{{$new_visa->change_of_visa_tno}}</td>
                                             <td>{{$new_visa->change_of_visa_tfee}}</td>
+                                            <td>{{$new_visa->change_of_visa_status}}</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>Medical Fitness</td>
                                             <td>{{$new_visa->medical_fitness_tno}}</td>
                                             <td>{{$new_visa->medical_fitness_tfee}}</td>
+                                            <td>{{$new_visa->medical_fitness_date}}</td>
                                         </tr>
 
 
@@ -90,6 +94,7 @@
                                             <td>Health Insurance</td>
                                             <td>{{$new_visa->health_insur_tran_no}}</td>
                                             <td>{{$new_visa->health_insur_tran_fee}}</td>
+                                            <td>{{$new_visa->health_insur_date}}</td>
                                         </tr>
 
                                         <tr>
@@ -97,18 +102,21 @@
                                             <td>Emirates ID</td>
                                             <td>{{$new_visa->emirates_tran_no}}</td>
                                             <td>{{$new_visa->emirates_tran_fee}}</td>
+                                            <td>{{$new_visa->emirates_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
                                             <td>Residency Application</td>
                                             <td>{{$new_visa->residency_tran_no}}</td>
                                             <td>{{$new_visa->residency_tran_fee}}</td>
+                                            <td>{{$new_visa->residency_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>7</td>
                                             <td>Biometric</td>
                                             <td>{{$new_visa->biometric_tranc_no}}</td>
                                             <td>{{$new_visa->biometric_tranc_fee}}</td>
+                                            <td>{{$new_visa->biometric_date}}</td>
                                         </tr>
                                         </tbody>
                                     @endif
@@ -120,6 +128,7 @@
                                             <td>Medical Fitness</td>
                                             <td>{{$renewal_process->medical_fitness_tran_no}}</td>
                                             <td>{{$renewal_process->medical_fitness_tran_fees}}</td>
+                                            <td>{{$renewal_process->medical_fitness_date}}</td>
                                         </tr>
 
 
@@ -127,18 +136,21 @@
                                             <td>Residency</td>
                                             <td>{{$renewal_process->residency_tran_no}}</td>
                                             <td>{{$renewal_process->residency_tran_fees}}</td>
+                                            <td>{{$renewal_process->residency_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>ID Renewal</td>
                                             <td>{{$renewal_process->renewal_tran_no}}</td>
                                             <td>{{$renewal_process->renewal_tran_fees}}</td>
+                                            <td>{{$renewal_process->renewal_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
                                             <td>Biometric</td>
                                             <td>{{$renewal_process->emp_biometric_tranc_no}}</td>
                                             <td>{{$renewal_process->emp_biometric_tranc_fee}}</td>
+                                            <td>{{$renewal_process->emp_biometric_date}}</td>
                                         </tr>
 
                                         </tbody>

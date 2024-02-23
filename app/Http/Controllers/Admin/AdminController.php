@@ -43,7 +43,14 @@ class AdminController extends Controller
     }
     public function getProfile()
     {
-        $data = Admin::find(Auth::guard('admin')->id());
+        if(Auth::guard('admin')->check())
+        {
+            $data = Admin::find(Auth::guard('admin')->id());
+        }
+        elseif(Auth::guard('web')->check())
+        {
+            $data = User::find(Auth::guard('web')->id());
+        }
         return view('admin.auth.profile', compact('data'));
     }
     public function update_profile(Request $request)

@@ -97,7 +97,10 @@
 
 <div class="main-content" style="min-height: 562px;">
     <div class="mb-5 admin-main-content-inner">
-        <p><span class="fa fa-users"></span> Dependent Visa Process</p>
+        @php
+            $current_user = App\Models\IndividualDependent::find($ids['dependent_id']);
+        @endphp
+        <p><span class="fa fa-users"></span> Dependent {{$current_user->name}} Visa Process</p>
         <div class="text-right">
             {{-- <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
                     class="fa fa-plus mr-2"></span>Add
@@ -4234,7 +4237,7 @@
                                                             <div class="input-group-prepend">
                                                                 <small class="input-group-text"><span
                                                                         class="fa fa-paperclip"></span></small>
-                                                            </div>  
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     @php

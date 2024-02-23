@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Mail\SubAdminUpdate;
 use Illuminate\Http\Request;
+use App\Mail\UserLoginPassword;
 use App\Http\Controllers\Controller;
 use App\Models\Permission_component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Permission;
 
 class SubAdminController extends Controller
@@ -16,7 +19,7 @@ class SubAdminController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        $sub_admins = User::where('emp_type','subadmin')->get();
+        $sub_admins = User::where('emp_type','subadmin')->orderBy('created_at','desc')->get();
         foreach ($sub_admins as $sub) {
             $permissions_subadmin = Permission_component::where('user_id', $sub->id)->get();
             $sub->permissions = $permissions_subadmin;
@@ -38,25 +41,19 @@ class SubAdminController extends Controller
             'email' => 'required|unique:users,email|email',
             'password' => 'required',
         ]);
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('public/admin/assets/img/users', $filename);
-            $image = 'public/admin/assets/img/users/' . $filename;
-        } else {
-            $image = 'public/admin/assets/img/users/1675332882.jpg';
-        }
-        $password =  Hash::make($request->password);
+        $password = encrypt($request->password);
+        $message['name'] =  $request->name;
+        $message['email'] =  $request->email;
+        $message['password'] =  $request->password;
+        $message['user'] =  'subadmin';
         $subAdmin = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
-            'image'=>$image,
             'emp_type'=>'subadmin',
         ]);
+        Mail::to($request->email)->send(new UserLoginPassword($message));
         return redirect()->route('get-sub-admins')->with('success','Sub-Admin created successfully.');
-        // return $subAdmin;
     }
 
     public function add_permission(Request $request,$id)
@@ -69,7 +66,6 @@ class SubAdminController extends Controller
                 'permission_id'=>$permission_id,
             ]);
          }
-        //  return $add_permissions;
          if(!$add_permissions)
          {
             return redirect()->back()->with('error', 'An error occurred while adding permissions.');
@@ -119,27 +115,17 @@ class SubAdminController extends Controller
             // 'password' => 'required',
         ]);
         $user = User::where('emp_type','subadmin')->find($id);
-        if ($request->hasfile('image')) {
-            $destination = 'public/admin/assets/img/users' . $user->image;
-            if (File::exists($destination)) {
-                File::delete($destination);
-            }
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('public/admin/assets/img/users', $filename);
-            $image = 'public/admin/assets/img/users/' . $filename;
-        } else {
-            $image = 'public/admin/assets/img/users/1675332882.jpg';
-        }
-        // $password =  Hash::make($request->password);
+        $password = encrypt($request->password);
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            // 'password' => $password,
-            'image'=>$image,
-            // 'emp_type'=>'subadmin',
+            'password' => $password,
         ]);
+        $message['name'] =  $request->name;
+        $message['email'] =  $request->email;
+        $message['password'] =  $request->password;
+        $message['user'] =  'subadmin';
+        Mail::to($request->email)->send(new SubAdminUpdate($message));
         return redirect()->route('get-sub-admins')->with('success','Sub-Admin updated successfully.');
     }
 

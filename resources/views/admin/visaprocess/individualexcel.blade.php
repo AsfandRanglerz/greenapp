@@ -42,6 +42,7 @@
                                         <th>Process Name</th>
                                         <th>Transaction No</th>
                                         <th>Transaction Fee</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
 
@@ -52,18 +53,21 @@
                                             <td>Entry Visa</td>
                                             <td>{{$golden_visa->enter_visa_ts_no}}</td>
                                             <td>{{$golden_visa->enter_visa_ts_fee}}</td>
+                                            <td>{{$golden_visa->enter_visa_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>Change of Visa status</td>
                                             <td>{{$golden_visa->change_of_visa_tno}}</td>
                                             <td>{{$golden_visa->change_of_visa_tfee}}</td>
+                                            <td>{{$golden_visa->change_of_visa_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>Medical Fitness</td>
                                             <td>{{$golden_visa->medical_fitness_tno}}</td>
                                             <td>{{$golden_visa->medical_fitness_tfee}}</td>
+                                            <td>{{$golden_visa->medical_fitness_date}}</td>
                                         </tr>
 
 
@@ -72,6 +76,7 @@
                                             <td>Health Insurance</td>
                                             <td>{{$golden_visa->health_insur_tran_no}}</td>
                                             <td>{{$golden_visa->health_insur_tran_fee}}</td>
+                                            <td>{{$golden_visa->health_insur_date}}</td>
                                         </tr>
 
                                         <tr>
@@ -79,18 +84,21 @@
                                             <td>Emirates ID</td>
                                             <td>{{$golden_visa->emirates_tran_no}}</td>
                                             <td>{{$golden_visa->emirates_tran_fee}}</td>
+                                            <td>{{$golden_visa->emirates_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
                                             <td>Residency Application</td>
                                             <td>{{$golden_visa->residency_tran_no}}</td>
                                             <td>{{$golden_visa->residency_tran_fee}}</td>
+                                            <td>{{$golden_visa->residency_date}}</td>
                                         </tr>
                                         <tr>
                                             <td>7</td>
                                             <td>Biometric</td>
                                             <td>{{$golden_visa->biometric_tranc_no}}</td>
                                             <td>{{$golden_visa->biometric_tranc_fee}}</td>
+                                            <td>{{$golden_visa->biometric_date}}</td>
                                         </tr>
                                         </tbody>
                                     @endif

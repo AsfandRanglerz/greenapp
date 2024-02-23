@@ -25,11 +25,15 @@
                                             <br>
                                             <p class="text-muted">{{$data->name}}</p>
                                         </div>
+                                        @if (Auth::guard('admin')->check())
+
                                         <div class="col-md-3 col-6 b-r">
                                             <strong>Mobile</strong>
                                             <br>
                                             <p class="text-muted">{{$data->phone}}</p>
                                         </div>
+                                        @endif
+
                                         <div class="col-md-3 col-6 b-r">
                                             <strong>Email</strong>
                                             <br>
@@ -68,6 +72,8 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            @if (Auth::guard('admin')->check())
+
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Profile Image</label>
@@ -89,41 +95,46 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+
                                             </div>
+                                            @endif
+
                                         </div>
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-success">Save Changes</button>
                                         </div>
                                     </form>
-                                    <form method="post" action="{{ route('profile.change-password',[$data->id,$data->slug]) }}" enctype="multipart/form-data">
-                                        @csrf
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="form-group col-md-6 col-12">
-                                                <label>Old Password</label>
-                                                <input type="password" placeholder="Old Password" name="current_password" id="current_password" value="" class="form-control" >
-                                                {{-- @error('current_password')
-                                                <div class="text-danger">
-                                                    The old password is incorrect
-                                                </div>
-                                                @enderror --}}
-                                            </div>
-                                            <div class="form-group col-md-6 col-12">
-                                                <label>New Password</label>
-                                                <input type="password" name="new_password" placeholder="New Password" id="new_password" value="" class="form-control">
-                                                @error('new_password')
-                                                <div class="text-danger">
-                                                    Please fill the new password
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-4 justify-content-center">
-                                        <button type="submit"  class="btn btn-success">Update Password</button>
-                                    </div>
-                                </div>
-                            </form>
+                                        @if (Auth::guard('admin')->check())
+                                            <form method="post" action="{{ route('profile.change-password',[$data->id,$data->slug]) }}" enctype="multipart/form-data">
+                                                            @csrf
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6 col-12">
+                                                                    <label>Old Password</label>
+                                                                    <input type="password" placeholder="Old Password" name="current_password" id="current_password" value="" class="form-control" >
+                                                                    {{-- @error('current_password')
+                                                                    <div class="text-danger">
+                                                                        The old password is incorrect
+                                                                    </div>
+                                                                    @enderror --}}
+                                                                </div>
+                                                                <div class="form-group col-md-6 col-12">
+                                                                    <label>New Password</label>
+                                                                    <input type="password" name="new_password" placeholder="New Password" id="new_password" value="" class="form-control">
+                                                                    @error('new_password')
+                                                                    <div class="text-danger">
+                                                                        Please fill the new password
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-4 justify-content-center">
+                                                            <button type="submit"  class="btn btn-success">Update Password</button>
+                                                        </div>
+                                                    </div>
+                                            </form>
+                                        @endif
                                 </div>
                             </div>
                         </div>

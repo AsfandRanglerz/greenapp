@@ -7,7 +7,8 @@
             <section class="section">
                 <div class="section-body">
                     <a class="btn btn-primary mb-3" href="{{ route('get-sub-admins') }}">Back</a>
-                    <form id="add_student" action="{{ route('update-sub-admin', $subadmin->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="add_student" action="{{ route('update-sub-admin', $subadmin->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         {{-- @method('PATCH') --}}
                         @csrf
                         <div class="row justify-content-center">
@@ -19,7 +20,7 @@
                                             <div class="form-group mb-2">
                                                 <label>Name<span class="required"> *</span></label>
                                                 <input type="text" placeholder="Name" name="name" id="name"
-                                                    value="{{$subadmin->name}}" class="form-control">
+                                                    value="{{ $subadmin->name }}" class="form-control">
                                                 @error('name')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -28,20 +29,38 @@
                                         <div class="col-sm-12 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Email<span class="required"> *</span></label>
-                                                <input type="email" placeholder="Enter Your Email" name="email" id="email"
-                                                    value="{{ $subadmin->email }}" class="form-control" />
+                                                <input type="email" placeholder="Enter Your Email" name="email"
+                                                    id="email" value="{{ $subadmin->email }}" class="form-control" />
                                                 @error('email')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-12 pl-sm-0 pr-sm-2">
+                                        {{-- <div class="col-sm-12 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Choose Image</label>
                                                 <input type="file" name="image" value="{{ $subadmin->image }}"
                                                     class="form-control">
                                                 @error('image')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div> --}}
+
+                                        <div class="col-sm-12 pl-sm-0 pr-sm-2">
+                                            <div class="form-group mb-2">
+                                                @php
+                                                    try {
+                                                        $decrypted = decrypt($subadmin->password);
+                                                    } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                                                        $decrypted = ''; 
+                                                    }
+                                                @endphp
+                                                <label>Password</label>
+                                                <input type="text" name="password" value="{{ $decrypted }}"
+                                                    class="form-control">
+                                                @error('password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -56,8 +75,8 @@
                                         </div>
                                     </div>
 
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </section>
