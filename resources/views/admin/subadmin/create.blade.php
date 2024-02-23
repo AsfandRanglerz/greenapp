@@ -56,14 +56,14 @@
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
                                                 <label>Password<span class="required"> *</span></label>
-                                                <input type="text" placeholder="Enter Password" name="password"
+                                                <input type="password" placeholder="Enter Password" name="password"
                                                     id="password" value="{{ old('password') }}" class="form-control" />
                                                 @error('password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
+                                        {{-- <div class="col-sm-6 pl-sm-0 pr-sm-3">
                                             <div class="form-group mb-2">
                                                 <label>Image<span class="required"> *</span></label>
                                                 <input type="file" placeholder="Image" name="image"
@@ -72,7 +72,7 @@
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         {{-- <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2 position-relative">
                                                 <label class="d-flex justify-content-between align-items-center"><span>Permissions<span class="required" >*</span></span>
