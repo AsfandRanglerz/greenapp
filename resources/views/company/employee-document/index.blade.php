@@ -21,10 +21,10 @@
                             <th scope="col">Document</th>
                             <th scope="col">Type</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Receipt</th>
+                            {{-- <th scope="col">Receipt</th> --}}
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
-                            <th scope="col">Comment</th>
+                            {{-- <th scope="col">Comment</th> --}}
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -58,10 +58,10 @@
                                 </td>
                                 <td>{{ $document->doc_type }}</td>
                                 <td class="word_wrap">{{ $document->doc_name }}</td>
-                                <td class="word_wrap">{{ $document->receipt }}</td>
+                                {{-- <td class="word_wrap">{{ $document->receipt }}</td> --}}
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
-                                <td>{{ $document->comment }}</td>
+                                {{-- <td>{{ $document->comment }}</td> --}}
                                 <td class="text-center">
                                     @php
                                         $file_name = $document->file;

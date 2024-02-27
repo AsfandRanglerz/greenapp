@@ -27,7 +27,7 @@
                         <select class="form-control" name="role" id="selRole">
                             <option value=""></option>
                             <option value="company">Company</option>
-                            <option value="employee">Employee</option>
+                            <option value="individual">Individual</option>
                         </select>
                     </div>
                     @error('role')

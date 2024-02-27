@@ -221,24 +221,31 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Salary Details</label>
-                            <select name="salary_detail" id="salDetails" class="form-control" disabled>
-                                <option value=""></option>
-                                <option value="Basic Salary"{{ old('salary_detail') == "Basic Salary" ||  $employee->salary_detail =="Basic Salary" ? "selected" : '' }}>Basic Salary</option>
-                                <option value="Other Allowance"{{ old('salary_detail') == "Other Allowance" ||  $employee->salary_detail =="Other Allowance" ? "selected" : '' }} >Other Allowance</option>
-                                <option value="Total"{{ old('salary_detail') == "Total" ||  $employee->salary_detail =="Total" ? "selected" : '' }}>Total</option>
-                            </select>
-                        </div>
-                        {{-- @dd($employee->salary); --}}
-                        <div class="form-group col-md-6">
-                            <label>Salary</label>
-                            <input type="text" class="form-control" name="salary"
-                            value="{{ old('salary') ?? $employee->salary }}" placeholder="Enter Salary" disabled>
-                            @error('salary')
+                            <label>Basic Salary</label>
+                            <input type="text" class="form-control" name="basic_salary" id='basicSalary' onchange="salaryCalculate()"
+                            value="{{ old('basic_salary') ?? $employee->basic_salary }}" placeholder="Basic Salary" disabled>
+                            @error('basic_salary')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        
+                        {{-- @dd($employee->salary); --}}
+                        <div class="form-group col-md-6">
+                            <label>Other Allowance</label>
+                            <input type="text" class="form-control" name="other_allowance" id="otherAllownce" onchange="salaryCalculate()"
+                            value="{{ old('other_allowance') ?? $employee->other_allowance }}" placeholder="Allownce" disabled>
+                            @error('other_allowance')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Total Salary</label>
+                            <input type="text" class="form-control" name="total" id="total"
+                            value="{{ old('total') ?? $employee->total }}" placeholder="" disabled>
+                            @error('total')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                     {{-- @endif --}}
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
@@ -256,6 +263,7 @@
             $(document).on('click', '#editProfButton', function(event) {
                 event.preventDefault();
                 $(this).closest('form').find('input, select').removeAttr('disabled');
+                $('#total').prop('disabled', true);
                 $(this).closest('form').find('.upload-button').css('cursor', 'pointer');
             });
             /*single-select-dropdowns*/
@@ -298,5 +306,13 @@
             });
         });
         /*Avatar upload*/
+        function salaryCalculate()
+        {
+            var basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            var allowance = parseFloat(document.getElementById('otherAllownce').value);
+            var total = basicSalary + allowance;
+            document.getElementById('total').value = total;
+        }
     </script>
+
 @endsection

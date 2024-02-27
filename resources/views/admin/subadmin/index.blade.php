@@ -30,7 +30,7 @@
                                             <th>Sr.</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Image</th>
+                                            {{-- <th>Image</th> --}}
                                             <th scope="col">Permissions</th>
                                             <th scope="col">Actions</th>
                                         </tr>
@@ -41,10 +41,10 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $sub_admin->name }}</td>
                                                 <td>{{ $sub_admin->email }}</td>
-                                                <td><a target="_black" href="{{ asset('') . '/' . $sub_admin->image }}">
+                                                {{-- <td><a target="_black" href="{{ asset('') . '/' . $sub_admin->image }}">
                                                         <img src="{{ asset('') . '/' . $sub_admin->image }}" alt=""
                                                             height="50" width="50" class="image"></a>
-                                                </td>
+                                                </td> --}}
 
                                                 <td>
                                                     <div class="d-flex justify-content-center align-items-center">

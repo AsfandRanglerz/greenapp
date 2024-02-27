@@ -76,7 +76,7 @@ class EmployeeController extends Controller
         }else{
             $image = 'public/admin/assets/img/users/1675332882.jpg';
         }
-
+        $total = $request->basic_salary + $request->other_allowance;
         $user = User::create([
             'name' => $request->name,
             'phone' => $request->phone,
@@ -99,8 +99,9 @@ class EmployeeController extends Controller
             'marital_status' => $request->marital_status,
             'residence_no' => $request->residence_no,
             'insurance_no' => $request->insurance_no,
-            'salary_detail' => $request->salary_detail,
-            'salary' => $request->salary,
+            'basic_salary' => $request->basic_salary,
+            'other_allowance' => $request->other_allowance,
+            'total' => $total,
             'company_id' => Auth::guard('company')->id(),
             'image' => $image,
             'emp_type' =>'company',
@@ -190,7 +191,7 @@ public function update(Request $request, $id)
     } else {
         $image = $employee->image;
     }
-
+    $total = $request->basic_salary + $request->other_allowance;
     $updateData = [
         'name' => $request->name,
         'phone' => $request->phone,
@@ -211,8 +212,9 @@ public function update(Request $request, $id)
         'marital_status' => $request->marital_status,
         'residence_no' => $request->residence_no,
         'insurance_no' => $request->insurance_no,
-        'salary_detail' => $request->salary_detail,
-        'salary' => $request->salary,
+        'basic_salary' => $request->basic_salary,
+        'other_allowance' => $request->other_allowance,
+        'total' => $total,
         'company_id' => Auth::guard('company')->id(),
         // 'company_name' => Auth::guard('company')->name(),
         'image' => $image,

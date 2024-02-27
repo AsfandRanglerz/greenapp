@@ -29,9 +29,9 @@
                             {{-- <th scope="col">Receipt</th> --}}
                             <th scope="col">Issue Date</th>
                             <th scope="col">Expiry Date</th>
-                            @if (Auth::guard('web')->user()->emp_type == 'company')
+                            {{-- @if (Auth::guard('web')->user()->emp_type == 'company')
                                 <th scope="col">Comment</th>
-                            @endif
+                            @endif --}}
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -68,9 +68,9 @@
                                 {{-- <td class="word_wrap">{{ $document->receipt }}</td> --}}
                                 <td>{{ $document->issue_date }}</td>
                                 <td>{{ $document->expiry_date }}</td>
-                                @if (Auth::guard('web')->user()->emp_type == 'company')
+                                {{-- @if (Auth::guard('web')->user()->emp_type == 'company')
                                     <td>{{ $document->comment }}</td>
-                                @endif
+                                @endif --}}
                                 <td class="text-center">
                                     @php
                                         $file_name = $document->file;

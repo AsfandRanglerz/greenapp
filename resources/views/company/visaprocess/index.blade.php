@@ -6321,56 +6321,90 @@
                                             <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload
                                                 Signed Cancellation Form </h6>
                                             <div class="row">
-                                                <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                                    <div class="upload-file">
-                                                        <label for='visa2-65'>Upload File</label>
-                                                        <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                            <input type="file" class="form-control"
-                                                                id='visa2-65' name="signed_cancellation_form"
-                                                                style="line-height: 1" accept=".pdf,.doc,.excel">
-                                                            <div class="input-group-prepend">
-                                                                <small class="input-group-text"><span
-                                                                        class="fa fa-paperclip"></span></small>
+                                                @if ($permit_cancellation->wp_app_can_status != NULL)
+                                                    @if (!($permit_cancellation->signed_cancellation_form))
+                                                        <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
+                                                            <div class="upload-file">
+                                                                <label for='visa2-65'>Upload File</label>
+                                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                                    <input type="file" class="form-control"
+                                                                        id='visa2-65' name="signed_cancellation_form"
+                                                                        style="line-height: 1" accept=".pdf,.doc,.excel">
+                                                                    <div class="input-group-prepend">
+                                                                        <small class="input-group-text"><span
+                                                                                class="fa fa-paperclip"></span></small>
+                                                                    </div>
+                                                                </div>
+                                                                @if($permit_cancellation->signed_cancellation_form)
+                                                                <input type="text" hidden value='Approved'
+                                                                    class="status-container">
+                                                                @else
+                                                                <input type="text" hidden value='Reject'
+                                                                    class="status-container">
+                                                                @endif
                                                             </div>
+                                                            @php
+                                                            $file_name = $permit_cancellation->signed_cancellation_form;
+                                                            $ext = explode('.', $file_name);
+                                                            @endphp
+                                                            @if ($permit_cancellation->signed_cancellation_form)
+                                                            <a class="upload-img" target="_black"
+                                                                href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
+                                                                @if ($ext[1] == 'pdf')
+                                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'pptx')
+                                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @else
+                                                                <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @endif
+                                                            </a>
+                                                            @endif
                                                         </div>
-                                                        @if($permit_cancellation->signed_cancellation_form)
-                                                        <input type="text" hidden value='Approved'
-                                                            class="status-container">
-                                                        @else
-                                                        <input type="text" hidden value='Reject'
-                                                            class="status-container">
+                                                        <div class="col-12 text-center">
+                                                            <button class='btn btn-success px-5 py-2'
+                                                                type="submit">Submit</button>
+                                                        </div>
+                                                    @else
+                                                        @php
+                                                            $file_name = $permit_cancellation->signed_cancellation_form;
+                                                            $ext = explode('.', $file_name);
+                                                        @endphp
+                                                        @if ($permit_cancellation->signed_cancellation_form)
+                                                            <a class="upload-img" target="_black"
+                                                                href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
+                                                                @if ($ext[1] == 'pdf')
+                                                                <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
+                                                                <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
+                                                                <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @elseif($ext[1] == 'pptx')
+                                                                <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @else
+                                                                <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
+                                                                    style="height: 50px;width:50px">
+                                                                @endif
+                                                            </a>
                                                         @endif
-                                                    </div>
-                                                    @php
-                                                    $file_name = $permit_cancellation->signed_cancellation_form;
-                                                    $ext = explode('.', $file_name);
-                                                    @endphp
-                                                    @if ($permit_cancellation->signed_cancellation_form)
-                                                    <a class="upload-img" target="_black"
-                                                        href="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}">
-                                                        @if ($ext[1] == 'pdf')
-                                                        <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'doc' || $ext[1] == 'docx')
-                                                        <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                        <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                        @elseif($ext[1] == 'pptx')
-                                                        <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                            style="height: 50px;width:50px">
-                                                        @else
-                                                        <img src="{{ asset('' . '/' . $permit_cancellation->signed_cancellation_form) }}"
-                                                            style="height: 50px;width:50px">
-                                                        @endif
-                                                    </a>
                                                     @endif
-                                                </div>
-                                                <div class="col-12 text-center">
-                                                    <button class='btn btn-success px-5 py-2'
-                                                        type="submit">Submit</button>
-                                                </div>
+                                                @else
+                                                    <div class='col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex'>
+                                                            <p class='text-danger'>You`r not able to add form until getting action on previous step by Admin.</p>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </form>
                                     </div>

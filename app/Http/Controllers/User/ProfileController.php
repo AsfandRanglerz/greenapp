@@ -84,7 +84,6 @@ class ProfileController extends Controller
             'nationality' => 'required',
             'religion' => 'required',
         ]);
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -94,7 +93,7 @@ class ProfileController extends Controller
         } else {
             $image = Auth::guard('web')->user()->image;
         }
-
+        $total =  $request->other_allowance + $request->basic_salary;
         User::find($id)->update([
             'name' => $request->name,
             'dob' => $request->dob,
@@ -116,8 +115,9 @@ class ProfileController extends Controller
             'marital_status' => $request->marital_status,
             'residence_no' => $request->residence_no,
             'insurance_no' => $request->insurance_no,
-            'salary_detail' => $request->salary_detail,
-            'salary' => $request->salary,
+            'basic_salary' => $request->basic_salary,
+            'other_allowance' => $request->other_allowance,
+            'total' => $total,
         ]);
         return redirect()->route('user.profile.index')->with('success', 'Updated Successfully');
     }

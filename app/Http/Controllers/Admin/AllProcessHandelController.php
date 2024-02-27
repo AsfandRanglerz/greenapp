@@ -288,6 +288,7 @@ class AllProcessHandelController extends Controller
         $data['visa_cancellation'] =  VisaCancelation::with('user','company','dependent')->where('status','completed')->orderBy('created_at', 'desc')->get();
         $permit =  PermitCancellation::with('user','company')->where('status','completed')->orderBy('created_at', 'desc')->get();
         $individual_golden =  IndividualGoldenVisa::with('user')->where('status','completed')->orderBy('created_at', 'desc')->get();
+        // return $data['modification_visa'];
         return view('admin.completeprocesses.completeprocess',compact('data','permit','individual_golden'));
     }
 

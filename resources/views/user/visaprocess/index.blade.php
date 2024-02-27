@@ -84,7 +84,8 @@
 </style>
 <div class="mb-5 admin-main-content-inner">
     <h4>Individual Dashboard</h4>
-    <p><span class="fa fa-users"></span> - Individual Visa Process</p>
+
+    <p><span class="fa fa-users"></span> - Individual  Visa Process</p>
     <div class="text-right">
         {{-- <a href="{{ route('company.employee.create') }}" class="mb-3 btn btn-success"><span
                 class="fa fa-plus mr-2"></span>Add
@@ -285,6 +286,7 @@
                                         @endif
                                         @endif
                                         @else
+                                        @if ($visa_data->enter_visa_status != Null)
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
                                                 <label for="visa-id-11">Are u inside the country?</label>
@@ -311,6 +313,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @endif
 
                                     <div class="fine-files-container d-none col-xl-6 col-lg-12 col-md-6 ">
                                         <div class="row m-0 align-items-end">
@@ -555,7 +558,8 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             @if(!($visa_data['medical_fitness_status'] == 'Approved' ||
-                                            $visa_data['medical_fitness_status'] == 'Skip'))
+                                            $visa_data['medical_fitness_status'] == 'Skip') &&
+                                            $visa_data->medical_fitness_status != NULL)
                                             <div class="upload-file">
                                                 <label for='visa-id-27'>Upload Medical</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
@@ -786,27 +790,28 @@
                                             </div>
                                         </div>
                                         @else
-                                        <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
-                                            <div class="form-group">
-                                                <label for="visa-40-id">Biometric</label>
-                                                <select class="form-control biometric-select" id="visa-40-id"
-                                                    name="employee_biometric">
-                                                    <option selected disabled>Select Option</option>
-                                                    <option value='required'
-                                                        {{$visa_data['employee_biometric']=='required' ? 'selected' : ''
-                                                        }}>Required</option>
-                                                    <option value='not required'
-                                                        {{$visa_data['employee_biometric']=='not required' ? 'selected'
-                                                        : '' }}>Not Required</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                            @if($visa_data->biometric_status != NULL)
+                                                <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="visa-40-id">Biometric</label>
+                                                        <select class="form-control biometric-select" id="visa-40-id"
+                                                            name="employee_biometric">
+                                                            <option selected disabled>Select Option</option>
+                                                            <option value='required'
+                                                                {{$visa_data['employee_biometric']=='required' ? 'selected' : ''
+                                                                }}>Required</option>
+                                                            <option value='not required'
+                                                                {{$visa_data['employee_biometric']=='not required' ? 'selected'
+                                                                : '' }}>Not Required</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @endif
-
                                         <div class="col-xl-6 col-lg-12 col-md-6 biometric-files-container">
                                             <div class="mb-3 align-items-end d-flex">
                                                 @if(!($visa_data['biometric_status'] =='Approved' ||
-                                                $visa_data['biometric_status'] =='Skip'))
+                                                $visa_data['biometric_status'] =='Skip') && $visa_data->biometric_status != NULL)
                                                 <div class="upload-file">
                                                     <label for='visa-41-id'>Uplaod File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">

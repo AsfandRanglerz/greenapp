@@ -71,8 +71,8 @@
                                 <option value="Modify MOL Contract">Modify MOL Contract</option>
                                 <option value="Work Permit Application">Work Permit Application</option>
                                 <option value="Work Permit Renewal Application">Work Permit Renewal Application</option>
-                                <option value="Signed Work Permit Renewal">Signed Work Permit Renewal</option>
-                                <option value="Application">Application</option>
+                                <option value="Signed Work Permit Renewal Application">Signed Work Permit Renewal Application</option>
+                                {{-- <option value="Application"></option> --}}
                                 <option value="Submission Form">Submission Form</option>
                                 {{-- <option value="Receipts">Receipts</option> --}}
                                 <option value="Other">Other</option>
@@ -165,13 +165,13 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        @if (Auth::guard('web')->user()->emp_type == 'company')
+                        {{-- @if (Auth::guard('web')->user()->emp_type == 'company')
                             <div class="form-group w-100">
                                 <label>Comments</label>
                                 <textarea type="text" name="comment[]" placeholder="Enter Your Comments ..." value="{{ old('comment[]') }}"
                                     class="form-control" rows="5"></textarea>
                             </div>
-                        @endif
+                        @endif --}}
                         <div class="form-group col-12">
                             <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span
                                     class="fa fa-trash mr-2"></span>Remove</a>
@@ -210,7 +210,7 @@
                     'Work Permit Cancellation Approval' || $(this).val() ==
                     'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this)
                     .val() == 'Work Permit Application' || $(this).val() ==
-                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(
+                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal Application' || $(
                         this).val() == 'Application' || $(this).val() == 'Submission Form';
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')

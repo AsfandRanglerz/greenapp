@@ -23,11 +23,11 @@
                 <a href="{{ route('user.document.index') }}" class="sidebar-links"><span
                         class="fa fa-book text-white pr-2 sidebar-link-icons"></span>Documents/Attachments</a>
             </li>
-
+{{-- 
             <li class="position-relative {{ request()->is('user/receipts*') ? 'active' : '' }}">
                 <a href="{{ route('user.get-receipts') }}" class="sidebar-links"><span
                         class="fa fa-key text-white pr-2 sidebar-link-icons"></span>Receipts</a>
-            </li>
+            </li> --}}
 
             @if (Auth::guard('web')->user()->emp_type == 'self')
             <li class="position-relative {{ request()->is('user/generateCV/mycv_index*') ? 'active' : '' }}">

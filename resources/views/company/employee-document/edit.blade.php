@@ -243,10 +243,10 @@
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group col-12 w-100">
+                        {{-- <div class="form-group col-12 w-100">
                             <label>Comments</label>
                             <textarea type="text" name="comment" placeholder="Enter Your Comments ..." class="form-control" rows="5">{{ $data['comment'] ?? '' }}</textarea>
-                        </div>
+                        </div> --}}
                         <div class="form-group col-12">
                             <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span
                                     class="fa fa-trash mr-2"></span>Remove</a>

@@ -13,7 +13,7 @@
             <p><span class="fa fa-home"></span> - Main Overview</p>
 
 
-            <div class="row mb-3">
+            {{-- <div class="row mb-3">
                  @if (Auth::guard('web')->user()->emp_type == 'self')
                  @if (isset($user->passport_number))
                  <div class="col-sm-4 mb-sm-3 mb-1 wow fadeInUp" data-wow-duration="2s">
@@ -50,7 +50,7 @@
                         </div>
                     @endif
                 @endif
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
@@ -59,6 +59,7 @@
                         <span class="block-badge">{{ $document }}</span>
                     </a>
                 </div>
+                @if (Auth::guard('web')->user()->emp_type == 'self')
 
                 <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
                     <a href="{{ route('user.get-services.index') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
@@ -73,6 +74,21 @@
                         <span class="block-badge">{{ $dependent }}</span>
                     </a>
                 </div>
+
+                @php
+                    $authId =Auth::guard('web')->user()->id;
+                    $count = App\Models\Inquiry::where('user_id',$authId)->count();
+
+                @endphp
+                <div class="col-sm-4 col-8 mx-auto mb-3 wow fadeInUp" data-wow-duration="2s">
+                    <a href="{{ route('user.inquiry.index') }}" class="p-3 text-decoration-none rounded light-box-shadow d-flex flex-column justify-content-center align-items-center total-block-section">
+                        <h5 class="text-center mb-4 theme-color">Inquires</h5>
+                        <span class="block-badge">{{ $count }}</span>
+                    </a>
+                </div>
+
+                @endif
+
             </div>
         </div>
 

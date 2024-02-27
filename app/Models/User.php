@@ -42,8 +42,9 @@ class User extends Authenticatable
         'marital_status',
         'residence_no',
         'insurance_no',
-        'salary_detail',
-        'salary',
+        'basic_salary',
+        'other_allowance',
+        'total',
     ];
 
     public function usercompany()

@@ -328,7 +328,7 @@
                                                     </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div>                                                  
                                     {{-- modification of emirates --}}
 
                                     <div class="tab-pane fade" id="modification_emirates" role="tabpanel" aria-labelledby="modification_emirates-tab">

@@ -228,13 +228,28 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Salary Details</label>
-                        <select name="salary_detail" id="salDetails" class="form-control" disabled>
-                            <option value=""></option>
-                            <option value="Basic Salary"   {{ $data->salary_detail =="Basic Salary" ? "selected" : '' }}>Basic Salary</option>
-                            <option value="Other Allowance"{{ $data->salary_detail =="Other Allowance" ? "selected" : '' }} >Other Allowance</option>
-                            <option value="Total"          {{ $data->salary_detail =="Total" ? "selected" : '' }}>Total</option>
-                        </select>
+                        <label>Basic Salary</label>
+                        <input type="text" class="form-control" name="basic_salary" id="basicSalary" onchange="salaryFind()"
+                        value="{{ old('basic_salary') ??  $data->basic_salary }}" placeholder="Basic Salary" disabled>
+                        @error('basic_salary')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Other Allowance</label>
+                        <input type="text" class="form-control" name="other_allowance" id="otherAllownce" onchange="salaryFind()"
+                        value="{{ old('other_allowance') ?? $data->other_allowance }}" placeholder="Other Allowance" disabled>
+                            @error('other_allowance')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Total Salary</label>
+                        <input type="text" class="form-control"  name="total" id="total"
+                        value="{{ old('total') ?? $data->total }}" placeholder="" disabled>
+                        @error('total')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-100 mt-3 mb-sm-2 mb-0" align="center">
                         <button type="submit" class="btn-bg">Update</button>
@@ -243,9 +258,8 @@
             </form>
         </div>
     </div>
-    </div>
-
-    </div>
+ </div>
+</div>
 @endsection
 @section('script')
     <script type="text/javascript">
@@ -253,6 +267,7 @@
             $(document).on('click', '#editProfButton', function(event) {
                 event.preventDefault();
                 $(this).closest('form').find('input, select').removeAttr('disabled');
+                $('#total').prop('disabled', true);
                 $(this).closest('form').find('.upload-button').css('cursor', 'pointer');
             });
             /*single-select-dropdowns*/
@@ -294,6 +309,14 @@
                 $(this).siblings('.file-upload').click();
             });
             /*Avatar upload*/
+
         });
+        function salaryFind()
+            {
+                var basicSalary = parseFloat(document.getElementById('basicSalary').value);
+                var allowance = parseFloat(document.getElementById('otherAllownce').value);
+                var total = basicSalary + allowance;
+                document.getElementById('total').value = total;
+            }
     </script>
 @endsection

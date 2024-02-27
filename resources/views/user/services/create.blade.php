@@ -18,7 +18,7 @@
                     <div
                         class="form-group col-12 d-flex flex-sm-row flex-column justify-content-between align-items-sm-start align-items-center">
                         @if (Auth::guard('web')->user()->emp_type == 'self')
-                        <h6><span class="fa fa-bell"></span> - Requests</h6>
+                        <h6><span class="fa fa-bell"></span> - Request</h6>
                         @else
                         <h6><span class="fa fa-book"></span> - Employee Documents</h6>
                         @endif
@@ -42,7 +42,7 @@
                                 <option value="Traffic services">Traffic services</option>
                                 <option value="New Business setup inquiry">New Business setup inquiry</option>
                                 <option value="Request for Vehicle Insurance">Request for Vehicle Insurance</option>
-                                <option value="other">Other</option>
+                                <option value="other">Any other request</option>
                             </select>
                             @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>

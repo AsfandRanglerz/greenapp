@@ -210,20 +210,26 @@
                             @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Salary Details</label>
-                        <select name="salary_detail" id="salDetails" class="form-control">
-                            <option value=""></option>
-                            <option value="Basic Salary">Basic Salary</option>
-                            <option value="Other Allowance" >Other Allowance</option>
-                            <option value="Total">Total</option>
-                        </select>
+                        <label>Basic Salary</label>
+                        <input type="text" class="form-control" onchange="salaryCalculate()" name="basic_salary"
+                        value="{{ old('basic_salary')}}" placeholder="Basic Salary" >
+                        @error('basic_salary')
+                            <div class="text-danger p-2">{{ $message }}</div>
+                        @enderror
                     </div>
-
                     <div class="form-group col-md-6">
-                        <label>Salary</label>
-                        <input type="text" class="form-control" name="salary"
-                            value="{{ old('salary')}}" placeholder="Enter salary" >
-                            @error('salary')
+                        <label>Other Allowance</label>
+                        <input type="text" class="form-control" onchange="salaryCalculate()" name="other_allowance"
+                            value="{{ old('other_allowance')}}" placeholder="Other Allowance" >
+                            @error('other_allowance')
+                                <div class="text-danger p-2">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Total</label>
+                        <input type="text" class="form-control" name="total"
+                            value="{{ old('total')}}" placeholder="total" disabled>
+                            @error('total')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
                     </div>
@@ -280,6 +286,13 @@
                 $(this).siblings('.file-upload').click();
             });
             /*Avatar upload*/
+            function salaryCalculate()
+        {
+            var basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            var allowance = parseFloat(document.getElementById('otherAllownce').value);
+            var total = basicSalary + allowance;
+            document.getElementById('total').value = total;
+        }
         });
     </script>
 @endsection

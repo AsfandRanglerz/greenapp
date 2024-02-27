@@ -12,10 +12,6 @@ We hope this message finds you well. We would like to remind you that the expira
 @endcomponent
 
 
-
-{{-- Additional Information --}}
-If you have already renewed your visa or have any questions, please feel free to [contact us](mailto:no-reply@ranglerzclients.pw).
-
 {{-- Closing --}}
 Thanks for choosing {{ config('app.name') }}!
 

@@ -54,11 +54,11 @@
                                                     try {
                                                         $decrypted = decrypt($subadmin->password);
                                                     } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-                                                        $decrypted = ''; 
+                                                        $decrypted = '';
                                                     }
                                                 @endphp
                                                 <label>Password</label>
-                                                <input type="text" name="password" value="{{ $decrypted }}"
+                                                <input type="text" name="password" value="" placeholder="enter password"
                                                     class="form-control">
                                                 @error('password')
                                                     <div class="text-danger">{{ $message }}</div>

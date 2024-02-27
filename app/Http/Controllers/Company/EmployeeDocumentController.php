@@ -58,7 +58,7 @@ class EmployeeDocumentController extends Controller
         $receipt = $request->input('receipt');
         $issue_date = $request->input('issue_date');
         $expiry_date = $request->input('expiry_date');
-        $comment = $request->input('comment');
+        // $comment = $request->input('comment');
         $files = $request->file('file');
         for ($i = 0; $i < count($doc_type); $i++) {
 
@@ -70,7 +70,7 @@ class EmployeeDocumentController extends Controller
             }
             $document->issue_date = $issue_date[$i];
             $document->expiry_date = $expiry_date[$i];
-            $document->comment = $comment[$i];
+            // $document->comment = $comment[$i];
             $document->user_id = $request->employee_id;
 
             if ($request->hasFile('file.' . $i)) {

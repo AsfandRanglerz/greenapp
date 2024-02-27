@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-//use Faker\Provider\ar_EG\Company;
-use App\Mail\CompanyDelete;
-use App\Mail\CompanyEmailUpdated;
-use App\Mail\UserLoginPassword;
-use App\Models\Company;
 use App\Models\User;
+//use Faker\Provider\ar_EG\Company;
+use App\Models\Admin;
+use App\Models\Company;
+use App\Mail\CompanyDelete;
 use Illuminate\Http\Request;
+use App\Mail\UserLoginPassword;
+use Illuminate\Validation\Rule;
+use App\Mail\CompanyEmailUpdated;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\storage;
-use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
 {
@@ -227,6 +229,14 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
+
+        if(auth()->guard('admin')->check()) {
+            $authId = auth()->guard('admin')->id();
+            $admin = Admin::find($authId);
+        } elseif(auth()->guard('web')->check()) {
+            $admin = Admin::first();
+        }
+
         $company = Company::find($id);
         $company->admin_delete = '1';
         $company->save();
@@ -236,7 +246,7 @@ class CompanyController extends Controller
         $message['id'] = $company->id;
 
         try {
-            Mail::to($company->email)->send(new CompanyDelete($message));
+            Mail::to($admin->email)->send(new CompanyDelete($message));
             return redirect()->back()->with('success', 'Deletion request sent to the company successfully');
         } catch (\Throwable $th) {
             return back()->with(['status' => false, 'message' => $th->getMessage()]);

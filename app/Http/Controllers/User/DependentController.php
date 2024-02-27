@@ -33,6 +33,8 @@ class DependentController extends Controller
         $validator = Validator::make($request->all(), [
             'dependent_type' => 'required',
             'name' => 'required',
+            'doc_type' => 'required',
+            'file' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -43,6 +45,11 @@ class DependentController extends Controller
 
         $dependent_type = $request->input('dependent_type');
         $names = $request->input('name');
+        $doc_type = $request->input('doc_type');
+        $doc_name = $request->input('doc_name');
+        $issue_date = $request->input('issue_date');
+        $expiry_date = $request->input('expiry_date');
+        $files = $request->file('file');
         $user_id = $id;
 
         for ($i = 0; $i < count($dependent_type); $i++) {
@@ -50,6 +57,16 @@ class DependentController extends Controller
             $dependent->dependent_type = $dependent_type[$i];
             $dependent->name = $names[$i];
             $dependent->user_id = $user_id;
+            $dependent->doc_type = $doc_type[$i];
+            $dependent->doc_name = $doc_name[$i];
+            $dependent->issue_date = $issue_date[$i];
+            $dependent->expiry_date = $expiry_date[$i];
+            if ($request->hasFile('file.' . $i)) {
+                $extension = $files[$i]->getClientOriginalExtension();
+                $file_name = time() . $i . '.' . $extension;
+                $path = $files[$i]->move('public/admin/assets/img/users', $file_name);
+                $dependent->file = 'public/admin/assets/img/users/' . $file_name;
+            }
             $dependent->save();
         }
 
@@ -75,7 +92,7 @@ class DependentController extends Controller
     {
         // return "running";
         IndividualDependent::destroy($id);
-        return redirect()->route('user.get-dependent')->with('success','Dependent deleted successfully.');
+        return redirect()->route('user.get-dependent')->with('success','Dependent Deleted Successfully');
 
     }
 

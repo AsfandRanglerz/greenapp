@@ -42,7 +42,7 @@ class VisaExpiryNotification extends Command
      */
     public function handle()
     {
-        $visaDocuments = UserDocument::where('doc_type', 'visit visa')->where('notification_sent','none')->get();
+        $visaDocuments = UserDocument::whereNotNull('issue_date')->whereNotNull('expiry_date')->where('notification_sent','none')->get();
         // return $visaDocuments;
         // $remainingDays = $currentDate->diffInDays($expiryDate);
         foreach ($visaDocuments as $document) {
@@ -57,12 +57,25 @@ class VisaExpiryNotification extends Command
                 $data['document'] = $document;
                 Mail::to($user->email)->send(new VisaExpiryEmail($data));
                 $document->update(['notification_sent' => 'yes']);
-                $notify = AdminNotification::create([
-                    'employee_id'=>$user->id,
-                    'to_all'=>'Employees',
-                    'title'=>'Visa Expiry Notification',
-                    'message' => 'Your Visa is expiring within 7 days.!',
-                ]);
+                if($user->emp_type == 'company')
+                {
+                    $notify = AdminNotification::create([
+                        'employee_id'=>$user->id,
+                        'to_all'=>'Employees',
+                        'title'=>'Visa Expiry Notification',
+                        'message' => 'Your Visa is expiring within 7 days.!',
+                    ]);
+                }
+                elseif($user->emp_type == 'self')
+                {
+                    $notify = AdminNotification::create([
+                        'employee_id'=>$user->id,
+                        'to_all'=>'Individuals',
+                        'title'=>'Visa Expiry Notification',
+                        'message' => 'Your Visa is expiring within 7 days.!',
+                    ]);
+                }
+
             }
         }
 

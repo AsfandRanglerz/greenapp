@@ -41,19 +41,31 @@ class SubAdminController extends Controller
             'email' => 'required|unique:users,email|email',
             'password' => 'required',
         ]);
-        $password = encrypt($request->password);
-        $message['name'] =  $request->name;
-        $message['email'] =  $request->email;
-        $message['password'] =  $request->password;
-        $message['user'] =  'subadmin';
+
+        // Hash the password securely
+        $password = Hash::make($request->password);
+
+        // Create the user
+        $image = 'public/admin/assets/img/users/1701409238.png';
         $subAdmin = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $password,
-            'emp_type'=>'subadmin',
+            'password' => $password, // Store hashed password
+            'emp_type' => 'subadmin',
+            'image' => $image,
         ]);
+
+        // Prepare data for email
+        $message['name'] = $request->name;
+        $message['email'] = $request->email;
+        $message['password'] = $request->password;
+        $message['user'] = 'subadmin';
+
+        // Send email with login details
         Mail::to($request->email)->send(new UserLoginPassword($message));
-        return redirect()->route('get-sub-admins')->with('success','Sub-Admin created successfully.');
+
+        // Redirect with success message
+        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin Created Successfully.');
     }
 
     public function add_permission(Request $request,$id)
@@ -107,26 +119,36 @@ class SubAdminController extends Controller
         return view('admin.subadmin.edit',compact('subadmin'));
     }
 
-    public function update(Request $request , $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            // 'password' => 'required',
+            'password' => 'required',
         ]);
-        $user = User::where('emp_type','subadmin')->find($id);
-        $password = encrypt($request->password);
+
+        $user = User::where('emp_type', 'subadmin')->find($id);
+
+        // Hash the new password
+        $password = Hash::make($request->password);
+
+        // Update the user's information
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $password,
+            'password' => $password, // Update hashed password
         ]);
-        $message['name'] =  $request->name;
-        $message['email'] =  $request->email;
-        $message['password'] =  $request->password;
-        $message['user'] =  'subadmin';
+
+        // Prepare data for email
+        $message['name'] = $request->name;
+        $message['email'] = $request->email;
+        $message['password'] = $request->password;
+        $message['user'] = 'subadmin';
+
+        // Send email notification
         Mail::to($request->email)->send(new SubAdminUpdate($message));
-        return redirect()->route('get-sub-admins')->with('success','Sub-Admin updated successfully.');
+
+        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin updated successfully.');
     }
 
     public function delete($id)
