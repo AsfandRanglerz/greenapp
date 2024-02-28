@@ -65,7 +65,7 @@ class SubAdminController extends Controller
         Mail::to($request->email)->send(new UserLoginPassword($message));
 
         // Redirect with success message
-        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin Created Successfully.');
+        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin Created Successfully');
     }
 
     public function add_permission(Request $request,$id)
@@ -84,7 +84,7 @@ class SubAdminController extends Controller
          }
          else
          {
-            return redirect()->route('get-sub-admins')->with('success','Permissions assign successfully.');
+            return redirect()->route('get-sub-admins')->with('success','Permissions Assign Successfully');
          }
 
     }
@@ -109,7 +109,7 @@ class SubAdminController extends Controller
 
         $user->syncPermissions($permissions);
 
-        return redirect()->route('get-sub-admins')->with('success','Permissions updated successfully.');
+        return redirect()->route('get-sub-admins')->with('success','Permissions Updated Successfully');
 
     }
 
@@ -148,7 +148,7 @@ class SubAdminController extends Controller
         // Send email notification
         Mail::to($request->email)->send(new SubAdminUpdate($message));
 
-        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin updated successfully.');
+        return redirect()->route('get-sub-admins')->with('success', 'Sub-Admin Updated Successfully');
     }
 
     public function delete($id)
@@ -156,11 +156,11 @@ class SubAdminController extends Controller
         $user = User::where('emp_type','subadmin')->first();
         if(!$user)
         {
-            return redirect()->route('get-sub-admins')->with('success','Admin not found.');
+            return redirect()->route('get-sub-admins')->with('success','Admin Not Found');
         }
         else{
             User::destroy($id);
-            return redirect()->route('get-sub-admins')->with('success','Admin deleted successfully.');
+            return redirect()->route('get-sub-admins')->with('success','Admin Deleted Successfully');
         }
 
     }

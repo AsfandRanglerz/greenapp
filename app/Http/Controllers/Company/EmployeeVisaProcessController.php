@@ -60,7 +60,7 @@ class EmployeeVisaProcessController extends Controller
         })->first();
         if($get_request)
         {
-            return redirect()->route('company.employee.visa.process',$id)->with('success','This request is already in process.');
+            return redirect()->route('company.employee.visa.process',$id)->with('success','This Request Is Already In Process');
         }
         else
         {   if($request->input('process_name') == 'work permit' || $request->input('process_name') == 'visa cancelation')
@@ -86,7 +86,7 @@ class EmployeeVisaProcessController extends Controller
                 ]);
             }
             // return $visa_process_request;
-            return redirect()->route('company.employee.visa.process',$id)->with('success','Request send to admin successfully.');
+            return redirect()->route('company.employee.visa.process',$id)->with('success','Request Send To Admin Successfully');
         }
     }
 

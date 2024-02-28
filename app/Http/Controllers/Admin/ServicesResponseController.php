@@ -36,7 +36,7 @@ class ServicesResponseController extends Controller
             $response_req->update([
                 'response'=>$request->response,
             ]);
-            return redirect()->route('get-services-requests')->with('success','Response send to individual successfully.');
+            return redirect()->route('get-services-requests')->with('success','Response Send To Individual Successfully');
         }
         else if($request->response == 'Completed')
         {
@@ -61,7 +61,7 @@ class ServicesResponseController extends Controller
             $user_email = User::where('id',$user_id)->value('email');
             // return $user_email;
             Mail::to($user_email)->send(new ServicesRequest);
-            return redirect()->route('get-services-requests')->with('success','Response send to individual successfully.');
+            return redirect()->route('get-services-requests')->with('success','Response Send To Individual Successfully');
         }
         else
         {
@@ -83,7 +83,7 @@ class ServicesResponseController extends Controller
                 'reason'=>$request->reason,
                 'seen_by_user'=>0,
             ]);
-            return redirect()->route('get-services-requests')->with('success','Response send to individual successfully.');
+            return redirect()->route('get-services-requests')->with('success','Response Send To Individual Successfully');
 
         }
     }
@@ -91,7 +91,7 @@ class ServicesResponseController extends Controller
     public function delete_request($id)
     {
         IndividualService::destroy($id);
-        return redirect()->route('get-services-requests')->with('success','Request deleted successfully.');
+        return redirect()->route('get-services-requests')->with('success','Request Deleted Successfully.');
 
     }
 }

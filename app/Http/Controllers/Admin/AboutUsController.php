@@ -79,7 +79,7 @@ class AboutUsController extends Controller
         $data->description = $request->input('description');
 
         $data->update();
-        return redirect()->route('about-us.index')->with('success' , 'Updated Sucessfully');
+        return redirect()->route('about-us.index')->with('success' , 'Updated Successfully');
     }
 
     /**

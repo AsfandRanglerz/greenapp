@@ -107,7 +107,7 @@ class AdminReceiptsController extends Controller
         }
         else
         {
-            return redirect()->route('receipt-user-index')->with('success', 'No receipt exist');
+            return redirect()->route('receipt-user-index')->with('success', 'No Receipt Exist');
         }
     }
 
@@ -121,7 +121,7 @@ class AdminReceiptsController extends Controller
     {
         $receipt = Receipt::find($receipt_id);
         // return $receipt;
-        return view('admin.user.receipt.edit',compact('receipt','id'));
+        return view('admin.user.receipt.edit',compact('eceipt','id'));
     }
 
     /**
@@ -157,7 +157,7 @@ class AdminReceiptsController extends Controller
             'file'=>$file,
             'receipt'=>$request->receipt,
         ]);
-        return redirect()->route('user-receipts',$id)->with('success', 'Recept created Successfully');
+        return redirect()->route('user-receipts',$id)->with('success', 'Recept Created Successfully');
     }
 
     /**

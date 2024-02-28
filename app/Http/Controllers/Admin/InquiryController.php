@@ -89,7 +89,7 @@ class InquiryController extends Controller
         $data['answer'] = $request->input('answer');
         $user = User::where('id', $inquiry->user_id)->first();
         Mail::to($user->email)->send(new \App\Mail\RespondInquiry($data));
-        return redirect()->route('inquiry.index')->with('success', 'Successfully responded');
+        return redirect()->route('inquiry.index')->with('success', 'Successfully Responded');
 
 
     }

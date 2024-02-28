@@ -142,7 +142,7 @@
             @endif
 
 
-            @if (auth()->guard('web')->check() &&
+            {{-- @if (auth()->guard('web')->check() &&
             auth()->guard('web')->user()->can('Receipts'))
             <li class="dropdown {{ request()->is('admin/receipt-user-index*') ? 'active' : '' }}">
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
@@ -155,7 +155,7 @@
                 <a href="{{ route('receipt-user-index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Receipts</span></a>
             </li>
-            @endif
+            @endif --}}
 
             @php
             $notificationCount = App\Models\NotifyToAdmin::where('seen', '0')->count();

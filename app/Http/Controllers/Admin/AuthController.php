@@ -40,6 +40,10 @@ class AuthController extends Controller
         if(auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password])){
             return redirect('admin/dashboard');
         }
+        else
+        {
+            return "wrong passwprd";
+        }
         if(auth()->guard('web')->attempt(['email'=>$request->email,'password'=>$request->password])){
             return redirect('admin/dashboard');
         }

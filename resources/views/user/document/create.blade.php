@@ -223,7 +223,11 @@
                 } else if ($(this).val() == 'Receipts') {
                     $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
                     $(this).closest('.doc-fields').find('.receipts-show').removeClass('d-none');
-                } else {
+                }
+                else if($(this).val() == 'Medical Fitness Receipt'){
+                    $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
+                }
+                else {
                     $(this).closest('.doc-fields').find('.receipts-show').addClass('d-none');
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);

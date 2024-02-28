@@ -31,7 +31,7 @@
                                         <th colspan="2">
                                             Individual Name:
                                         </th>
-                                        <th colspan="2">
+                                        <th colspan="3">
                                             <span class='font-weight-bold text-uppercase'>
                                                 {{$name}}
                                             </span>

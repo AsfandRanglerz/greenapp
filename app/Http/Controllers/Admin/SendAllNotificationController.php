@@ -64,7 +64,7 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($companies, new PushNotification($data));
-            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully');
         }
         elseif ($user == 'Employees') {
             $employees = User::with('usercompany')->whereempType('company')->orderBy('id', 'desc')->get();
@@ -81,7 +81,7 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($employees, new PushNotification($data));
-            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully');
         }
         elseif ($user == 'Individuals') {
             $self_employees = User::whereempType('self')->orderBy('id', 'desc')->get();
@@ -98,7 +98,7 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($self_employees, new PushNotification($data));
-            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully');
         }
         elseif ($user == 'All Employees') {
             $all_employees = User::orderBy('id', 'desc')->get();
@@ -116,12 +116,12 @@ class SendAllNotificationController extends Controller
                 ]);
             }
             Notification::send($all_employees, new PushNotification($data));
-            return redirect()->route('notification-index')->with('success', 'Sended Successfully.');
+            return redirect()->route('notification-index')->with('success', 'Sended Successfully');
         }
 
         else
         {
-            return redirect()->back()->with(['status' => false, 'message' => 'You enter wrong data.']);
+            return redirect()->back()->with(['status' => false, 'message' => 'You Enter Wrong Data']);
         }
     }
 

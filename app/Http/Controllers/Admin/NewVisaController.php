@@ -46,7 +46,7 @@ class NewVisaController extends Controller
         }
         return view('admin.visaprocess.index', compact('visa_requests'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -126,7 +126,7 @@ class NewVisaController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Request approved successfully.');
+        return redirect()->back()->with('success', 'Request Approved Successfully');
         // return view('admin.visaprocess.newvisa');
     }
     /**
@@ -493,7 +493,7 @@ class NewVisaController extends Controller
                     . ' process against ' . $employee->name . ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
             ]);
         }
-        return redirect()->back()->with('success', 'Process has been started successfully.');
+        return redirect()->back()->with('success', 'Process Has Been Started Successfully');
     }
 
     // new visa action
@@ -553,7 +553,7 @@ class NewVisaController extends Controller
                 ]);
             }
             // return $notify;
-            return redirect()->back()->with('success', 'Data Added Successfully and notify to the company.');
+            return redirect()->back()->with('success', 'Data Added Successfully And Notify To The Company');
         }
 
         elseif ($request->input('sign_mb') == "step2") {
@@ -596,7 +596,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Signed MB & ST step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('dubai_ins') == "step3") {
             $file = NULl;
             if ($request->hasFile('dubai_insurance_file')) {
@@ -638,7 +638,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Dubai Insurance step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('preapproval') == "step4") {
             $file = NULl;
             // return $request;
@@ -683,7 +683,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Preapproval Work Permit Fees step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('entry_visa') == 'step5') {
@@ -750,7 +750,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('change_of') == 'step6') {
@@ -796,7 +796,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Visa status step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
          elseif ($request->input('medical_fitness') == 'step7') {
             // return $request;
@@ -840,7 +840,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Medical Fitness step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('tawjeeh_class') == 'step8') {
@@ -885,7 +885,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Tawjeeh Training Classes step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('contract_subm') == 'step9') {
 
             $file = NULl;
@@ -929,7 +929,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Contract Submission step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('health_insurance') == 'step10') {
 
@@ -974,7 +974,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Health Insurance step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('work_permit') == 'step11') {
 
@@ -1019,7 +1019,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Work Permit step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('emirates_residency_app') == 'step12') {
             // return $request;
@@ -1102,7 +1102,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Change of Residency Application step of New Visa Process has been ' . $r_status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('biometric') == 'step13') {
             // return $request;
@@ -1162,9 +1162,9 @@ class NewVisaController extends Controller
                 ]);
             }
             if ($request->biometric_status == "Approved") {
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('waiting_for_approval') == 'waiting_for_approval') {
             $file = NULl;
@@ -1207,7 +1207,7 @@ class NewVisaController extends Controller
                     'message' => 'This is inform you that the Waiting For Approval step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
     // renewal process
@@ -1265,7 +1265,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Medical Fitness step of Renewal Visa Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('work_permit') == 'step2') {
             $file = NULL;
@@ -1316,7 +1316,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit application step of Renewal Visa Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('signed_st') == 'step3') {
@@ -1368,7 +1368,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload signed MB step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('dubai_insur') == 'step4') {
@@ -1420,7 +1420,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Pay Dubai insurance step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('contract_sub') == 'step5') {
@@ -1472,7 +1472,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Contract submission step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('tawjeeh_class') == 'step6') {
@@ -1524,7 +1524,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Tawjeeh classes step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('residency') == 'step7') {
@@ -1576,7 +1576,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Residency step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('renewal') == 'step8') {
@@ -1629,7 +1629,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the  ID Renewal step of Renewal Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('emp_bio') == 'step9') {
@@ -1698,9 +1698,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Renewal Process has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -1758,7 +1758,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work Permit step of Sponsored by Some one process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('sign_mb') == 'step2') {
             $file = NULL;
@@ -1810,7 +1810,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Signed MB & ST step of Sponsored by Some one has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('waiting_for') == 'step3') {
             // return $request->waiting_for_approval_reason;
@@ -1877,7 +1877,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Waiting of approval step of Sponsored by Some one has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('dubai_insu') == 'step4') {
@@ -1929,7 +1929,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Dubai Insurance step of Sponsored by Some one has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('pre_approval') == 'step5') {
             $file = NULL;
@@ -1980,7 +1980,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Pre-Approval Work Permit step of Sponsored by Some one has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('upload_wp') == 'step6') {
             $file = NULL;
@@ -2046,9 +2046,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Sponsored By / Golden Visa Process of Work Permit has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -2107,7 +2107,7 @@ class NewVisaController extends Controller
                 ]);
             }
 
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('signed_st') == 'step2') {
             $file = NULL;
@@ -2158,7 +2158,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the  Upload ST & MB application step of Part time and temporary process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('waiting_for') == 'step3') {
@@ -2225,7 +2225,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Waiting for Approval step of Part time and temporary process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('contract') == 'step4') {
             $file = NULL;
@@ -2287,9 +2287,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Part Time / Temporary Process of Work Permit has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -2348,7 +2348,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit application step of UAE and GCC has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
         elseif ($request->input('signed_st') == 'step2') {
@@ -2400,7 +2400,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload ST & MB step of UAE and GCC has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('dubai_insu') == 'step3') {
             $file = NULL;
             if ($request->hasfile('pay_dubai_insu_file')) {
@@ -2450,7 +2450,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Pay Dubai insurance step of UAE and GCC has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('waiting_for') == 'step4') {
             $file = NULL;
@@ -2516,7 +2516,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Waiting for Approval step of UAE and GCC has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('upload_wp') == 'step5') {
             $file = NULL;
@@ -2578,9 +2578,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your UAE / GCC Process of Work Permit has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
     //work permit (modify contract)
@@ -2638,7 +2638,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit application step of Modify Contract Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('signed_st') == 'step2') {
             $file = NULL;
@@ -2689,7 +2689,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload ST & MB step of Modify Contract Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('waiting_for') == 'step3') {
             $file = NULL;
@@ -2755,7 +2755,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Waiting for Approval step of Modify Contract Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('upload_wp') == 'step4') {
             $file = NULL;
@@ -2817,9 +2817,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Modify Contract Process of Work Permit has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -2906,9 +2906,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Modification of Visa Process it has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
     public function modification_emirates(Request $request, $user_id, $company_id, $modify_emirates, $req_id)
@@ -2989,9 +2989,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Modification of Emirates Process has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
     public function visa_cancellation(Request $request, $user_id, $company_id, $visa_can, $req_id)
@@ -3048,7 +3048,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit cancellation form step of Visa Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('signed_cancellation') == 'step2') {
             // return "ok";
             $file = NULL;
@@ -3081,7 +3081,7 @@ class NewVisaController extends Controller
                     'message'=>'Admin upload signed cancellation form of Visa Cancellation Process against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('signd_can_form_det') == 'step3') {
             // return "ok";
             $file = NULL;
@@ -3132,7 +3132,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Signed Cancellation step of Visa Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('waiting_for') == 'step4') {
             // return "ok";
             $file = NULL;
@@ -3198,7 +3198,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work Permit Cancellation Approval step of Visa Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('residency') == 'step5') {
             // return "ok";
             $file = NULL;
@@ -3260,9 +3260,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Visa Cancelation Process has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
     public function permit_cancellation(Request $request, $user_id, $company_id, $permit_can, $req_id)
@@ -3320,7 +3320,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Work permit cancellation form step of Work Permit Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('signed_cancellation') == 'step2') {
             // return "ok";
             $file = NULL;
@@ -3352,7 +3352,7 @@ class NewVisaController extends Controller
                     'message'=>'Admin upload signed cancellation form of Work Permit Cancellation Process against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('signd_can_form_det') == 'step3') {
             // return "ok";
             $file = NULL;
@@ -3403,7 +3403,7 @@ class NewVisaController extends Controller
                     'message'=>'This is inform you that the Upload signed cancellation form step of Work Permit Cancellation Process has been '.$status.' against '.$user->name.' <a href="'.route('company.employee.visa.process',$user->id).'">'.' click here. '.'</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('waiting_for') == 'step4') {
             // return "ok";
             $file = NULL;
@@ -3480,9 +3480,9 @@ class NewVisaController extends Controller
                     'title'=>'Visa Notification',
                     'message' => 'Your Permit Cancelation Process has been Completed.!',
                 ]);
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 

@@ -800,14 +800,12 @@
                                                         name='job_offer_date'>
                                                 </div>
                                             </div>
-<<<<<<< HEAD
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
                                                     <label for='new-visa-8'>Select Document</label>
                                                     <select id="new-visa-8" class="form-control category"
                                                         name="job_offer_file_name"
                                                         value="{{$new_visa->job_offer_file_name}}">
-=======
                                             </div>
                                             @php
                                             $file_name = $new_visa->pre_approved_wp_file;

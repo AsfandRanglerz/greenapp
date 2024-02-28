@@ -600,7 +600,8 @@
                                             @endif
                                         </div>
                                         @if(!($visa_data['medical_fitness_status'] == 'Approved' ||
-                                            $visa_data['medical_fitness_status'] == 'Skip'))
+                                            $visa_data['medical_fitness_status'] == 'Skip') &&
+                                            $visa_data->medical_fitness_status != NULL)
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Add</button>
@@ -853,7 +854,7 @@
                                             </div>
                                         </div>
                                         @if(!($visa_data['biometric_status'] =='Approved' ||
-                                        $visa_data['biometric_status'] =='Skip'))
+                                        $visa_data['biometric_status'] =='Skip') && $visa_data->biometric_status != NULL)
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>

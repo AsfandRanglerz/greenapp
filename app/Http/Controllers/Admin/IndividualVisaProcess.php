@@ -139,7 +139,7 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->enter_visa_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -147,7 +147,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that your Entry Visa step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('change_of_visa') == 'change_of_visa') {
             // return "ok";
@@ -183,7 +183,7 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->change_of_visa_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -191,7 +191,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that your Change of Visa step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('health_insurance') == 'health_insurance') {
 
@@ -227,7 +227,7 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->health_insur_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -235,7 +235,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that your Health Insurance step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('medical_fitness') == 'medical_fitness') {
             // return $request;
@@ -270,7 +270,7 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->medical_fitness_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -278,7 +278,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that your Medical Fitness step of Golden Visa Process has been ' . $status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('emirates_residency_app') == 'emirates_residency_app') {
             // return "working";
@@ -360,7 +360,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that your Residency Application step of Golden Visa Process has been ' . $r_status . ' <a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('biometric') == 'biometric') {
             // return $request;
@@ -404,7 +404,7 @@ class IndividualVisaProcess extends Controller
             }elseif ($request->biometric_status == 'Hold') {
                 $status = 'Hold';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -413,9 +413,9 @@ class IndividualVisaProcess extends Controller
                 ]);
             }
             if ($request->biometric_status == "Approved") {
-                return redirect()->back()->with('success', 'This process is completed Successfully.');
+                return redirect()->back()->with('success', 'This Process is Completed Successfully');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -690,7 +690,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('change_of_visa') == 'change_of_visa') {
             // return "ok";
@@ -739,7 +739,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the Change of Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('health_insurance') == 'health_insurance') {
 
@@ -787,7 +787,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the Health Insurance step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('medical_fitness') == 'medical_fitness') {
             // return $request;
@@ -834,7 +834,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the Medical Fitness step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('emirates_residency_app') == 'emirates_residency_app') {
             // return "working";
@@ -925,7 +925,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the  Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('biometric') == 'biometric') {
             // return $request;
@@ -983,7 +983,7 @@ class IndividualVisaProcess extends Controller
             if ($request->biometric_status == "Approved") {
                 return redirect()->back()->with('success', 'This process is completed Successfully.');
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
 
     }
@@ -1044,7 +1044,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the Medical Fitness step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('residency') == 'residency') {
             // return "ok";
@@ -1144,7 +1144,7 @@ class IndividualVisaProcess extends Controller
                     'message' => 'This is inform you that the  ID Renewal step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
         elseif ($request->input('biometric') == 'biometric') {
             // return "ok";
@@ -1204,7 +1204,7 @@ class IndividualVisaProcess extends Controller
                     'status'=> 'completed',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -1292,7 +1292,7 @@ class IndividualVisaProcess extends Controller
                     'status'=> 'completed',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -1376,7 +1376,7 @@ class IndividualVisaProcess extends Controller
                     'status'=> 'completed',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 
@@ -1446,7 +1446,7 @@ class IndividualVisaProcess extends Controller
                     'status'=> 'completed',
                 ]);
             }
-            return redirect()->back()->with('success', 'Data Added Successfully.');
+            return redirect()->back()->with('success', 'Data Added Successfully');
         }
     }
 

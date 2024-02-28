@@ -28,7 +28,7 @@ class ReceiptsController extends Controller
             }
             else
             {
-                return redirect()->route('receipt-user-index')->with('success', 'No receipt exist');
+                return redirect()->route('receipt-user-index')->with('success', 'No Receipt Exist');
             }
     }
 

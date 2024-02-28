@@ -36,7 +36,7 @@
                                         <th colspan="2">
                                             Individual Name:
                                         </th>
-                                        <th colspan="2">
+                                        <th colspan="3">
                                             <span class='font-weight-bold text-uppercase'>
                                                 {{$employee_name}}
                                             </span>
@@ -47,7 +47,7 @@
                                             Dependent Name:
                                         </th>
 
-                                        <th colspan="2">
+                                        <th colspan="3">
                                             <span class='font-weight-bold text-uppercase'>
                                                 {{$dependent_name}}
                                             </span>
@@ -159,7 +159,7 @@
                                     @if(isset($visa_cancellation))
                                         <tbody>
                                             <tr>
-                                                <td colspan="4">
+                                                <td colspan="5">
                                                     <h4>No such Transaction no. or fee found.!!</h4>
                                                 </td>
                                             </tr>
