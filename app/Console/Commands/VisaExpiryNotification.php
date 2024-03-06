@@ -75,7 +75,6 @@ class VisaExpiryNotification extends Command
                         'message' => 'Your Visa is expiring within 7 days.!',
                     ]);
                 }
-
             }
         }
 

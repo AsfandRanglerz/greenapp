@@ -10,6 +10,7 @@ use App\Models\RenewalProcess;
 use App\Models\VisaCancelation;
 use App\Models\AdminNotification;
 use App\Models\VisaProcessRequest;
+use App\Helpers\NotificationHelper;
 use App\Models\IndividualDependent;
 use App\Http\Controllers\Controller;
 use App\Models\IndividualGoldenVisa;
@@ -42,6 +43,7 @@ class IndividualVisaProcess extends Controller
     {
          $name = VisaProcessRequest::where('id', $request_id)->where('request_for','individual')->value('process_name');
          $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
+         $individual = User::find($individual_id);
          if($name == 'golden visa')
          {
             if(!$visa_data)
@@ -49,6 +51,13 @@ class IndividualVisaProcess extends Controller
                $visa_data = IndividualGoldenVisa::create([
                    'individual_id'=>$individual_id,
                ]);
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'Your '. $name.' '.'process has been started.';
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                  $notify = AdminNotification::create([
                        'employee_id' => $individual_id,
                        'to_all' => 'Individuals',
@@ -64,12 +73,20 @@ class IndividualVisaProcess extends Controller
     public function admin_starts_individual_visa_process(Request $request ,$individual_id)
     {
          $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
+         $individual = User::find($individual_id);
             if(!$visa_data)
             {
                $visa_data = IndividualGoldenVisa::create([
                    'individual_id'=>$individual_id,
                    'start_by'=>'admin',
                ]);
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'Your Golden Visa process has been started by Admin.';
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                  $notify = AdminNotification::create([
                        'employee_id' => $individual_id,
                        'to_all' => 'Individuals',
@@ -85,6 +102,7 @@ class IndividualVisaProcess extends Controller
     {
         $visa_data = IndividualGoldenVisa::where('individual_id',$individual_id)->first();
         // return [$visa_data ? 'yes':'no'];
+        $individual = User::find($individual_id);
         if ($request->input('entry_visa') == 'entry_visa') {
             $file = Null;
             if ($request->hasFile('enter_visa_file')) {
@@ -140,6 +158,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'Reject';
             }
             if ($status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Entry Visa step of Golden Visa Process has been ' . $status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -184,6 +209,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'Reject';
             }
             if ($status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Change of Visa step of Golden Visa Process has been ' . $status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -228,6 +260,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'Reject';
             }
             if ($status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Health Insurance step of Golden Visa Process has been ' . $status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -271,6 +310,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'Reject';
             }
             if ($status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Medical Fitness step of Golden Visa Process has been ' . $status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -336,7 +382,14 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->emirates_status == 'Reject') {
                 $e_status = 'Reject';
             }
-            if ($e_status === 'Approved' || $e_status === 'Skip' || $e_status === 'Reject') {
+            if ($e_status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Emirates Id step of Golden Visa Process has been ' . $e_status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -352,7 +405,14 @@ class IndividualVisaProcess extends Controller
             } elseif ($request->residency_status == 'Reject') {
                 $r_status = 'Reject';
             }
-            if ($r_status === 'Approved' || $r_status === 'Skip' || $r_status === 'Reject') {
+            if ($r_status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Residency Application step of Golden Visa Process has been ' . $r_status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -405,6 +465,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'Hold';
             }
             if ($status) {
+                $user = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that your Biometric step of Golden Visa Process has been ' . $status;
+                $notificationData  = [
+                    'user'=>$user,
+                ];
+                NotificationHelper::admin_notification($individual->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $individual_id,
                     'to_all' => 'Individuals',
@@ -683,6 +750,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -732,6 +806,13 @@ class IndividualVisaProcess extends Controller
             }
             // return $status;
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -780,6 +861,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Health Insurance step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -827,6 +915,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Medical Fitness step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -898,6 +993,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Emirates ID step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -918,11 +1020,18 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name ;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
                     'title' => 'Visa Notification',
-                    'message' => 'This is inform you that the  Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                    'message' => 'This is inform you that the Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully');
@@ -973,6 +1082,13 @@ class IndividualVisaProcess extends Controller
                 $status = 'UnderProcess';
             }
             if ($status) {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Biometric step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name ;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1037,6 +1153,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Medical Fitness step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1112,6 +1235,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Residency step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1137,6 +1267,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the  ID Renewal step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1191,6 +1328,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Biometric step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1279,6 +1423,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting for Approval step of Modification of Visa has been ' . $status . ' against dependent ' . $dependent->name;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
@@ -1363,11 +1514,18 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that Waiting for Approval step of Modification of Emirates has been ' . $status . ' against dependent ' . $dependent->name ;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',
                     'title' => 'Visa Notification',
-                     'message' => 'This is inform you that the the Waiting for Approval step of Modification of Emirates has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
+                    'message' => 'This is inform you that Waiting for Approval step of Modification of Emirates has been ' . $status . ' against dependent ' . $dependent->name . ' <a href="' . route('user.dependent-visa-process', $dependent->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
             if($request->application_status == 'Approved')
@@ -1433,6 +1591,13 @@ class IndividualVisaProcess extends Controller
             }
             if($status)
             {
+                $type = 'individual';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Residency Cancelation Application step of Visa Cancelation has been ' . $status . ' against dependent ' . $dependent->name ;
+                $notificationData  = [
+                    'user'=>$type,
+                ];
+                NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id' => $user_id,
                     'to_all' => 'Individuals',

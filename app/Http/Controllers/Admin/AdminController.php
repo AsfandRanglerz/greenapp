@@ -55,20 +55,36 @@ class AdminController extends Controller
     }
     public function update_profile(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-        ]);
-        $data = $request->only(['name', 'email', 'phone']);
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = time() . '.' . $extension;
-            $file->move(public_path('/admin/assets/img'), $filename);
-            $data['image'] = 'public/admin/assets/img/' . $filename;
+        if(Admin::find(Auth::guard('admin')->id()))
+        {
+        // return "admin";
+
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+            ]);
+            $data = $request->only(['name', 'email', 'phone']);
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension(); // getting image extension
+                $filename = time() . '.' . $extension;
+                $file->move(public_path('/admin/assets/img'), $filename);
+                $data['image'] = 'public/admin/assets/img/' . $filename;
+            }
+            Admin::find(Auth::guard('admin')->id())->update($data);
         }
-        Admin::find(Auth::guard('admin')->id())->update($data);
+        elseif(User::find(Auth::guard('web')->id()))
+        {
+        // return "subadmin";
+
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+            ]);
+            $data = $request->only(['name', 'email']);
+            User::find(Auth::guard('web')->id())->update($data);
+        }
         return back()->with('success', 'Updated Successfully');
     }
     public function forgetPassword()

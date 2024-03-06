@@ -12,9 +12,9 @@ use App\Models\NewVisaProcess;
 use App\Models\RenewalProcess;
 use App\Models\VisaCancelation;
 use App\Exports\MultiTableExport;
-use App\Helper\AdminNotificationHelper;
 use App\Models\AdminNotification;
 use App\Models\UaeAndGccNational;
+use App\Helpers\NotificationHelper;
 use App\Models\PermitCancellation;
 use App\Models\SponsaredBySomeOne;
 use App\Models\VisaProcessRequest;
@@ -24,6 +24,7 @@ use App\Models\PartTimeAndTemporary;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Helper\AdminNotificationHelper;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ModificationVisaEmiratesId;
 
@@ -93,13 +94,24 @@ class NewVisaController extends Controller
         $status->update([
             'status' => 'approved',
         ]);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $user = NULL;
         // notify to company of his employee
         if($company_id && $employee_id)
         {
+            $user = 'company';
+            $title = 'Visa Notification';
+            $description = 'The request of '. $status->process_name .' '.($status->sub_type ? $status->sub_type : '').' has been approved against '.$employee->name.'.';
+            $notificationData  = [
+                'user'=>$user,
+            ];
+            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'company_id' => $status->company_id,
                 'to_all' => 'Companies',
-                'title' => 'Visa Notification',
+                'title' => $title,
                 'message' => 'The request of '. $status->process_name .' '.($status->sub_type ? $status->sub_type : '').' has been approved
                 against '.$employee->name.'<a href="' . route('company.employee.visa.process',$employee->id) . '">' . ' click here. ' . '</a>',
             ]);
@@ -107,10 +119,17 @@ class NewVisaController extends Controller
         // notify to individual of his dependent
         elseif($employee_id && $dependent_id)
         {
+            $user = 'individual';
+            $title = 'Visa Notification';
+            $description = 'The request of '. $status->process_name . ' has been approved against '.$dependent->name.'.';
+            $notificationData  = [
+                'user'=>$user,
+            ];
+            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'employee_id' => $status->employee_id,
                 'to_all' => 'Individuals',
-                'title' => 'Visa Notification',
+                'title' => $title,
                 'message' => 'The request of '. $status->process_name . ' has been approved
                  against '.$dependent->name.'<a href="' . route('user.dependent-visa-process',$dependent->id) . '">' . ' click here. ' . '</a>.',
             ]);
@@ -118,10 +137,17 @@ class NewVisaController extends Controller
         // notify to individual
         elseif($employee_id && VisaProcessRequest::where('employee_id',$employee_id)->where('request_for','individual')->first())
         {
+            $user = 'individual';
+            $title = 'Visa Notification';
+            $description = 'Your request of '. $status->process_name . ' has been approved by admin.';
+            $notificationData  = [
+                'user'=>$user,
+            ];
+            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'employee_id' => $status->employee_id,
                 'to_all' => 'Individuals',
-                'title' => 'Visa Notification',
+                'title' => $title,
                 'message' => 'Your request of '. $status->process_name . ' has been approved by admin.'.'<a href="' . route('user.visa-process.index') . '">' . ' click here. ' . '</a>',
             ]);
         }

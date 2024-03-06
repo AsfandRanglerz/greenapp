@@ -261,7 +261,7 @@
 
                                             </div>
                                         </div>
-                                        @if ($document->user->emp_type == 'company')
+                                        {{-- @if ($document->user->emp_type == 'company')
                                             <div class="row mx-0 px-4">
                                                 <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                                     <div class="form-group mb-2">
@@ -273,7 +273,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        @endif --}}
 
                                     </div>
                                     <div class="card-footer text-center row">

@@ -81,7 +81,7 @@
             $request_count = App\Models\VisaProcessRequest::where('seen_by_admin', '0')->count();
             @endphp
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Visa Process'))
+            auth()->guard('web')->user()->can('VisaProcess'))
             <li class="dropdown {{ request()->is('admin/visa*') ? 'active' : '' }}">
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span>
@@ -256,7 +256,7 @@
             @endif
 
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('About us'))
+            auth()->guard('web')->user()->can('AboutUs'))
             <li class="dropdown {{ request()->is('admin/about-us*') ? 'active' : '' }}">
                 <a href="{{ route('about-us.index') }}" class="nav-link"><i class="fa fa-info-circle"></i><span>About
                         Us</span></a>
@@ -270,7 +270,7 @@
             @endif
 
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Privacy Policy'))
+            auth()->guard('web')->user()->can('PrivacyPolicy'))
             <li class="dropdown {{ request()->is('admin/privacy-policy*') ? 'active' : '' }}">
                 <a href="{{ route('privacy-policy.index') }}" class="nav-link"><i class="fa fa-lock"></i><span>Privacy
                         Policy</span></a>
@@ -283,7 +283,7 @@
             @endif
 
             @if (auth()->guard('web')->check() &&
-            auth()->guard('web')->user()->can('Terms & Conditions'))
+            auth()->guard('web')->user()->can('Terms&Conditions'))
             <li class="dropdown {{ request()->is('admin/term-condition*') ? 'active' : '' }}">
                 <a href="{{ route('term-condition.index') }}" class="nav-link"><i class="fa fa-key"></i><span>Terms &
                         Conditions</span></a>

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Helper;
+namespace App\Helpers;
 
-use App\Models\AdminNotification;
 use Illuminate\Support\Facades\Http;
 
-class AdminNotificationHelper
+class NotificationHelper
 {
     public static function admin_notification($fcmtoken, $title, $description, $notificationData = [])
     {
+        // return    $notificationData;
         $response = Http::withHeaders([
             'Authorization' => 'key=AAAAMWE6ZJ8:APA91bEywjrM4M7tCC1gp5rigjeHjySlFK_gmhqkqeAzh1ohQyPrXR7Dr6cce7dfOisjG7fNPh75FUpICRO6LURqmP63c2UIkunloLDheW4UVv2cga9LajbTzYHTRjemwybEPVBcckxY',
             'Content-Type' => 'application/json',

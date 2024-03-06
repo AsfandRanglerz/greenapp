@@ -33,8 +33,29 @@ Here You can save your data, this option allows you to send request for these se
                 <div class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
                     <b class="text-muted text-uppercase d-block mb-2 user-name-text">Company Menu</b>
                     <hr class="my-1">
-                    <a class="dropdown-item" href="{{ route('company.logout') }}"><span
+                    <a class="dropdown-item logout" href="{{ route('company.logout') }}"><span
                             class="fa fa-sign-out-alt mr-2"></span>Logout</a>
+                            <script>
+                                function logout() {
+                                    window.ReactNativeWebView.postMessage(JSON.stringify({
+                                        logout: true
+                                    }));
+                                }
+                                // Ensure the DOM is fully loaded before attaching the click event handler
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Select the .logout element using vanilla JavaScript
+                                    var logoutButton = document.querySelector('.logout');
+
+                                    // Check if the logoutButton exists
+                                    if (logoutButton) {
+                                        // Attach a click event handler
+                                        logoutButton.addEventListener('click', function() {
+                                            // alert('ytui'); // Alert to test if the click event is triggered
+                                            logout(); // Call the logout function
+                                        });
+                                    }
+                                });
+                            </script>
                 </div>
             </div>
         </div>

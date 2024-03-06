@@ -31,9 +31,9 @@
                                             {{-- <th>Receipt</th> --}}
                                             <th>Issue Date</th>
                                             <th>Expiry Date</th>
-                                            @if ($user->emp_type == 'company')
+                                            {{-- @if ($user->emp_type == 'company')
                                                 <th>Comment</th>
-                                            @endif
+                                            @endif --}}
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -70,9 +70,9 @@
                                                 {{-- <td>{{ $document->receipt }}</td> --}}
                                                 <td>{{ $document->issue_date }}</td>
                                                 <td>{{ $document->expiry_date }}</td>
-                                                @if ($documents[0]->user->emp_type == 'company')
+                                                {{-- @if ($documents[0]->user->emp_type == 'company')
                                                     <td>{{ $document->comment }}</td>
-                                                @endif
+                                                @endif --}}
                                                 @php
                                                     $file_name = $document->file;
                                                     $ext = explode('users/', $file_name);

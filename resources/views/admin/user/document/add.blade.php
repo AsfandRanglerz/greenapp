@@ -159,8 +159,8 @@
                                                             <option value="Work Permit Renewal Application">Work Permit
                                                                 Renewal Application</option>
                                                             <option value="Signed Work Permit Renewal">Signed Work Permit
-                                                                Renewal</option>
-                                                            <option value="Application">Application</option>
+                                                                Renewal Application</option>
+                                                            {{-- <option value="Application">Application</option> --}}
                                                             <option value="Submission Form">Submission Form</option>
                                                             {{-- <option value="Receipts">Receipts</option> --}}
                                                             <option value="Other">Other</option>
@@ -253,7 +253,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @if ($user->emp_type == 'company')
+                                        {{-- @if ($user->emp_type == 'company')
                                             <div class="row mx-0 px-4">
                                                 <div class="col-sm-12 pl-sm-0 pr-sm-3">
                                                     <div class="form-group mb-2">
@@ -266,7 +266,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="row mx-0 px-4 py-4">
                                             <button type="button" class="btn btn-danger remove-btn"><span
                                                     class="fa fa-trash mr-2"></span>Remove</button>
@@ -312,7 +312,7 @@
                     'Work Permit Cancellation Approval' || $(this).val() ==
                     'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this)
                     .val() == 'Work Permit Application' || $(this).val() ==
-                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(
+                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal Application' || $(
                         this).val() == 'Application' || $(this).val() == 'Submission Form';
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
@@ -325,7 +325,11 @@
                 } else if ($(this).val() == 'Receipts') {
                     $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
                     $(this).closest('.doc-fields').find('.receipts-show').removeClass('d-none');
-                } else {
+                }
+                else if($(this).val() == 'Medical Fitness Receipt'){
+                    $(this).closest('.doc-fields').find('.other-show, .other-none').addClass('d-none');
+                }
+                else {
                     $(this).closest('.doc-fields').find('.receipts-show').addClass('d-none');
                     $(this).closest('.doc-fields').find('.other-show').addClass('d-none').find('input')
                         .attr('required', false);

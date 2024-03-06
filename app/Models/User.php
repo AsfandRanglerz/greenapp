@@ -45,6 +45,7 @@ class User extends Authenticatable
         'basic_salary',
         'other_allowance',
         'total',
+        'fcmtoken',
     ];
 
     public function usercompany()
