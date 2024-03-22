@@ -61,8 +61,8 @@
                                 <option value="Modify MOL Contract">Modify MOL Contract</option>
                                 <option value="Work Permit Application">Work Permit Application</option>
                                 <option value="Work Permit Renewal Application">Work Permit Renewal Application</option>
-                                <option value="Signed Work Permit Renewal">Signed Work Permit Renewal</option>
-                                <option value="Application">Application</option>
+                                <option value="Signed Work Permit Renewal Application">Signed Work Permit Renewal Application</option>
+                                {{-- <option value="Application">Application</option> --}}
                                 <option value="Submission Form">Submission Form</option>
                                 <option value="Receipts">Receipts</option>
                                 <option value="Other">Other</option>
@@ -175,8 +175,8 @@
                     'Work Permit Cancellation Approval' || $(this).val() ==
                     'Residency Cancellation Approval' || $(this).val() == 'Modify MOL Contract' || $(this)
                     .val() == 'Work Permit Application' || $(this).val() ==
-                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal' || $(
-                        this).val() == 'Application' || $(this).val() == 'Submission Form';
+                    'Work Permit Renewal Application' || $(this).val() == 'Signed Work Permit Renewal Application'
+                    || $(this).val() == 'Submission Form';
                 if ($(this).val() == 'Other') {
                     $(this).closest('.doc-fields').find('.other-show').removeClass('d-none').find('input')
                         .attr('required', true);

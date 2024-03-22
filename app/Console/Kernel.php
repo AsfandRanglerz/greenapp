@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        VisaExpiryNotification::class,
+        Commands\VisaExpiryNotification::class,
     ];
 
     /**
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('visa:expiryNotification')->everyFiveMinutes();
+        $schedule->command('visa:expiryNotification')->daily();
     }
 
     /**

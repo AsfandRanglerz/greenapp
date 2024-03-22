@@ -21464,28 +21464,6 @@
                                         </form>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                @if ($visa_cancellation)
-                                <div class="tab-pane fade" id="v-pills-visa-cancel1" role="tabpanel"
-                                    aria-labelledby="v-pills-visa-cancel1-tab">
-                                    <div class='rounded py-3 light-box-shadow'>
-                                        <form
-                                            action="{{route('visa-cancellation-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'visa_can'=>$visa_cancellation->id,'req_id'=>$ids['req_id']])}}"
-                                            class='py-2' method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <input type="text" name="work_permit_app_cancellation" value="step1" hidden>
-                                            <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Work Permit
-                                                Application</h6>
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-12 col-md-6">
-                                                    <div class="form-group mb-3">
-                                                        <label for="new-visa-276">Transaction
-                                                            No:</label>
-                                                        <input type="text" class="form-control" id="new-visa-276"
-                                                            name="wp_app_can_trnc_no"
-                                                            value="{{$visa_cancellation->wp_app_can_trnc_no}}"
-                                                            placeholder="...">
-=======
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-visa-cancel3" role="tabpanel"
@@ -21785,7 +21763,6 @@
                                                             <small class="input-group-text"><span
                                                                     class="fa fa-paperclip"></span></small>
                                                         </div>
->>>>>>> c59844d7ce7eace4f836aa771ff1304009c23e6c
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12 col-md-6">

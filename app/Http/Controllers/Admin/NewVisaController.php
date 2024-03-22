@@ -105,7 +105,7 @@ class NewVisaController extends Controller
             $title = 'Visa Notification';
             $description = 'The request of '. $status->process_name .' '.($status->sub_type ? $status->sub_type : '').' has been approved against '.$employee->name.'.';
             $notificationData  = [
-                'user'=>$user,
+                'type'=>$user,
             ];
             NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
@@ -123,7 +123,7 @@ class NewVisaController extends Controller
             $title = 'Visa Notification';
             $description = 'The request of '. $status->process_name . ' has been approved against '.$dependent->name.'.';
             $notificationData  = [
-                'user'=>$user,
+                'type'=>$user,
             ];
             NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
@@ -141,7 +141,7 @@ class NewVisaController extends Controller
             $title = 'Visa Notification';
             $description = 'Your request of '. $status->process_name . ' has been approved by admin.';
             $notificationData  = [
-                'user'=>$user,
+                'type'=>$user,
             ];
             NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
@@ -221,6 +221,16 @@ class NewVisaController extends Controller
         $ids['user_id'] = $user_id;
         $ids['company_id'] = $company_id;
         $ids['req_id'] = $request_id;
+
+
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $user = NULL;
+
         $new_visa = NewVisaProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
         $renewal_process = RenewalProcess::where('employee_id', $user_id)->where('company_id', $company_id)->first();
         $spo_by_some = SponsaredBySomeOne::where('employee_id', $user_id)->where('company_id', $company_id)->first();
@@ -240,6 +250,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
 
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'].' '.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -249,13 +266,21 @@ class NewVisaController extends Controller
                 ]);
 
             }
-        } elseif ($data['request_name'] == 'renewal process') {
+        }
+        elseif ($data['request_name'] == 'renewal process') {
             // return "ok renewal process";
             if (!$renewal_process) {
                 $renewal_process = RenewalProcess::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'].' '.' has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -264,13 +289,20 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'sponsored by some one') {
+        }
+        elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'sponsored by some one') {
             if (!$spo_by_some) {
                 $spo_by_some = SponsaredBySomeOne::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
-
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -279,12 +311,20 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'part time') {
+        }
+        elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'part time') {
             if (!$part_time) {
                 $part_time = PartTimeAndTemporary::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -293,12 +333,20 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc') {
+        }
+        elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'uae and gcc') {
             if (!$uae_gcc) {
                 $uae_gcc = UaeAndGccNational::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -307,13 +355,21 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract') {
+        }
+        elseif ($data['request_name'] == 'work permit' && $data['request_type'] == 'modify contract') {
             if (!$modify_contract) {
                 // return "ok";
                 $modify_contract = ModifyContract::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.'('.($data['request_type'] ? $data['request_type'] : '').')'.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -322,7 +378,8 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'modification of visa') {
+        }
+        elseif ($data['request_name'] == 'modification of visa') {
             // return "ok renewal process";
             if (!$modification_visa) {
                 $modification_visa = ModificationVisaEmiratesId::create([
@@ -330,6 +387,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'process_name' => 'modification of visa',
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -338,7 +402,8 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'modification of emirates Id') {
+        }
+        elseif ($data['request_name'] == 'modification of emirates Id') {
             // return "ok renewal process";
             if (!$modification_emirates) {
                 $modification_emirates = ModificationVisaEmiratesId::create([
@@ -346,6 +411,13 @@ class NewVisaController extends Controller
                     'employee_id' => $user_id,
                     'process_name' => 'modification of emirates Id',
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.'process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -354,13 +426,21 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'visa cancellation') {
+        }
+        elseif ($data['request_name'] == 'visa cancellation') {
             // return "ok renewal process";
             if (!$visa_cancellation) {
                 $visa_cancellation = VisaCancelation::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -369,13 +449,21 @@ class NewVisaController extends Controller
                     against '.$employee->name.  ' <a href="' . route('company.employee.visa.process', $employee->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
-        } elseif ($data['request_name'] == 'permit cancellation') {
+        }
+        elseif ($data['request_name'] == 'permit cancellation') {
             // return "ok renewal process";
             if (!$permit_cancellation) {
                 $permit_cancellation = PermitCancellation::create([
                     'company_id' => $company_id,
                     'employee_id' => $user_id,
                 ]);
+                $user = 'company';
+                $title = 'Visa Notification';
+                $description = 'The '. $data['request_name'] .' '.' process has been started against '.$employee->name;
+                $notificationData  = [
+                    'type'=>$user,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -500,7 +588,21 @@ class NewVisaController extends Controller
                 ]);
             }
         }
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $user = NULL;
         if ($data['request_name'] == 'renewal process') {
+            $user = 'company';
+            $title = 'Visa Notification';
+            $description = 'This is inform you that admin started the ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : ''). ' against ' . $employee->name;
+            $notificationData  = [
+                'type'=>$user,
+            ];
+            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'company_id' => $company_id,
                 'to_all' => 'Companies',
@@ -511,6 +613,13 @@ class NewVisaController extends Controller
         }
         else
         {
+            $user = 'company';
+            $title = 'Visa Notification';
+            $description = 'This is inform you that admin started the ' . $data['request_name'] . ($data['request_type'] ? $data['request_type'] : '') . ' process against ' . $employee->name;
+            $notificationData  = [
+                'type'=>$user,
+            ];
+            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'company_id' => $company_id,
                 'to_all' => 'Companies',
@@ -527,9 +636,11 @@ class NewVisaController extends Controller
     {
         $user = User::find($user_id);
         $new_visa = NewVisaProcess::find($newvisa_id);
-        // $employee_receipt = Receipt::where('user_id',$user_id)->first();
-        // return $employee_receipt;
-
+        $company = Company::find($company_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         if ($request->input('job_offer') == "step1") {
             $file = NULL;
             if ($request->hasfile('file')) {
@@ -543,10 +654,8 @@ class NewVisaController extends Controller
                 $file->move('public/admin/assets/img/users', $filename);
                 $file = 'public/admin/assets/img/users/' . $filename;
             } else {
-                // return "ok";
                 $file =  $new_visa->job_offer_file;
             }
-            // return $request;
             $new_visa->update([
                 'company_id' => $company_id,
                 'employee_id' => $user_id,
@@ -570,7 +679,14 @@ class NewVisaController extends Controller
             } elseif ($request->job_offer_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Job Offer step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -614,7 +730,14 @@ class NewVisaController extends Controller
             } elseif ($request->signed_mb_st_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Signed MB & ST step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -656,7 +779,14 @@ class NewVisaController extends Controller
             } elseif ($request->dubai_insurance_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Dubai Insurance step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -701,12 +831,19 @@ class NewVisaController extends Controller
             } elseif ($request->pre_approved_wp_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Pre-approval Work Permit Fees step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
                     'title' => 'Visa Notification',
-                    'message' => 'This is inform you that the Preapproval Work Permit Fees step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
+                    'message' => 'This is inform you that the Pre-approval Work Permit Fees step of New Visa Process has been ' . $status . ' against ' . $user->name . ' <a href="' . route('company.employee.visa.process', $user->id) . '">' . ' click here. ' . '</a>',
                 ]);
             }
             return redirect()->back()->with('success', 'Data Added Successfully');
@@ -768,7 +905,14 @@ class NewVisaController extends Controller
             } elseif ($request->enter_visa_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -814,7 +958,14 @@ class NewVisaController extends Controller
             } elseif ($request->change_of_visa_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Visa status step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -858,7 +1009,14 @@ class NewVisaController extends Controller
             } elseif ($request->medical_fitness_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Medical Fitness step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -903,7 +1061,14 @@ class NewVisaController extends Controller
             } elseif ($request->tawjeeh_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Tawjeeh Training Classes step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -947,7 +1112,14 @@ class NewVisaController extends Controller
             } elseif ($request->contract_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Contract Submission step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -992,7 +1164,14 @@ class NewVisaController extends Controller
             } elseif ($request->health_insur_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Health Insurance step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1037,7 +1216,14 @@ class NewVisaController extends Controller
             } elseif ($request->work_permit_status == 'Reject') {
                 $status = 'Reject';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Work Permit step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1104,7 +1290,14 @@ class NewVisaController extends Controller
             } elseif ($request->emirates_status == 'Reject') {
                 $e_status = 'Reject';
             }
-            if ($e_status === 'Approved' || $e_status === 'Skip' || $e_status === 'Reject') {
+            if ($e_status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Emirates ID step of New Visa Process has been ' . $e_status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1120,7 +1313,14 @@ class NewVisaController extends Controller
             } elseif ($request->residency_status == 'Reject') {
                 $r_status = 'Reject';
             }
-            if ($r_status === 'Approved' || $r_status === 'Skip' || $r_status === 'Reject') {
+            if ($r_status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Residency Application step of New Visa Process has been ' . $r_status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1163,6 +1363,13 @@ class NewVisaController extends Controller
                 $new_visa->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your New Visa Process has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -1179,7 +1386,14 @@ class NewVisaController extends Controller
             }elseif ($request->biometric_status == 'Hold') {
                 $status = 'Hold';
             }
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Change of Employee Biometric step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1225,7 +1439,14 @@ class NewVisaController extends Controller
                 $status = 'Reject';
             }
             // return $status;
-            if ($status === 'Approved' || $status === 'Skip' || $status === 'Reject') {
+            if ($status) {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting For Approval step of New Visa Process has been ' . $status . ' against ' . $user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id' => $company_id,
                     'to_all' => 'Companies',
@@ -1241,6 +1462,12 @@ class NewVisaController extends Controller
     {
         // return "ok";
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $renewal_process = RenewalProcess::find($renewal_id);
         if ($request->input('medical_fitness') == 'step1') {
             $file = NULL;
@@ -1282,8 +1509,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Medical Fitness step of Renewal Visa Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1333,8 +1567,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit application step of Renewal Visa Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1385,8 +1626,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload signed MB step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1437,8 +1685,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Pay Dubai insurance step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1489,8 +1744,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Contract submission step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1541,8 +1803,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Tawjeeh classes step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1593,8 +1862,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Residency step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1646,8 +1922,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the  ID Renewal step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1704,8 +1987,15 @@ class NewVisaController extends Controller
 
             }
 
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject' || $status === 'Hold')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Employee Biometric step of Renewal Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1718,6 +2008,13 @@ class NewVisaController extends Controller
                 $renewal_process->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Renewal Process has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -1734,6 +2031,12 @@ class NewVisaController extends Controller
     public function sponsored_by_some(Request $request, $user_id, $company_id, $sponsored_id, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $sopnsored_by = SponsaredBySomeOne::find($sponsored_id);
         if ($request->input('work_permit') == 'step1') {
             $file = NULL;
@@ -1775,8 +2078,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work Permit step of Sponsored by Some one process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1827,8 +2137,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Signed MB & ST step of Sponsored by Some one has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1894,8 +2211,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting of approval step of Sponsored by Some one has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1946,8 +2270,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Dubai Insurance step of Sponsored by Some one has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -1997,8 +2328,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Pre-Approval Work Permit step of Sponsored by Some one has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2052,8 +2390,15 @@ class NewVisaController extends Controller
                 $status = 'Hold';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject' || $status === 'Hold')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload Work Permit step of Sponsored by Some one has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2066,6 +2411,13 @@ class NewVisaController extends Controller
                 $sopnsored_by->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Sponsored By / Golden Visa Process of Work Permit has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -2082,6 +2434,12 @@ class NewVisaController extends Controller
     public function part_time(Request $request, $user_id, $company_id, $part_time, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $sopnsored_by = PartTimeAndTemporary::find($part_time);
         if ($request->input('work_p') == 'step1') {
             $file = NULL;
@@ -2123,8 +2481,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit application step of Part time and temporary process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2175,8 +2540,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the  Upload ST & MB application step of Part time and temporary process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2242,8 +2614,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting for Approval step of Part time and temporary process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2293,8 +2672,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload Contract step of Part time and temporary process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2307,6 +2693,13 @@ class NewVisaController extends Controller
                 $sopnsored_by->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Part Time / Temporary Process of Work Permit has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -2323,6 +2716,12 @@ class NewVisaController extends Controller
     public function uae_gcc_process(Request $request, $user_id, $company_id, $uae_gcc, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $uae_national = UaeAndGccNational::find($uae_gcc);
         if ($request->input('work_p') == 'step1') {
             // return "ok";
@@ -2365,8 +2764,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit application step of UAE and GCC has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2417,8 +2823,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload ST & MB step of UAE and GCC has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2467,8 +2880,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Pay Dubai insurance step of UAE and GCC has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2533,8 +2953,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting for Approval step of UAE and GCC has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2584,8 +3011,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload Work Permit step of UAE and GCC has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2598,6 +3032,13 @@ class NewVisaController extends Controller
                 $uae_national->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your UAE / GCC Process of Work Permit has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -2613,6 +3054,12 @@ class NewVisaController extends Controller
     public function modify_cnt(Request $request, $user_id, $company_id, $modify_cn, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $modify_contract = ModifyContract::find($modify_cn);
         if ($request->input('work_permit_app') == 'step1') {
             // return $request;
@@ -2655,8 +3102,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit application step of Modify Contract Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2706,8 +3160,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload ST & MB step of Modify Contract Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2772,8 +3233,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Waiting for Approval step of Modify Contract Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2823,8 +3291,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload Work Permit step of Modify Contract Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2837,6 +3312,13 @@ class NewVisaController extends Controller
                 $modify_contract->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Modify Contract Process of Work Permit has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -2852,6 +3334,12 @@ class NewVisaController extends Controller
     public function modification_visa(Request $request, $user_id, $company_id, $modify_visa, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $modify_visa = ModificationVisaEmiratesId::find($modify_visa);
         // return $modify_visa;
         if ($request->input('application') == 'step1') {
@@ -2912,8 +3400,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Visa Modification step of Modification of Visa has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -2926,6 +3421,13 @@ class NewVisaController extends Controller
                 $modify_visa->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Modification of Visa Process it has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -2940,6 +3442,12 @@ class NewVisaController extends Controller
     public function modification_emirates(Request $request, $user_id, $company_id, $modify_emirates, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $emirates = ModificationVisaEmiratesId::find($modify_emirates);
         if ($request->input('application') == 'step1') {
             $file = NULL;
@@ -2995,8 +3503,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Modification of Emirates ID step of Modification of Emirates Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3009,6 +3524,13 @@ class NewVisaController extends Controller
                 $emirates->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Modification of Emirates Process has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -3023,6 +3545,12 @@ class NewVisaController extends Controller
     public function visa_cancellation(Request $request, $user_id, $company_id, $visa_can, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $visa_cancellation = VisaCancelation::find($visa_can);
         if ($request->input('work_permit_app_cancellation') == 'step1') {
             // return "ok";
@@ -3065,8 +3593,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit cancellation form step of Visa Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3149,8 +3684,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Signed Cancellation step of Visa Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3215,8 +3757,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work Permit Cancellation Approval step of Visa Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3266,8 +3815,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Residency step of Visa Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3280,6 +3836,13 @@ class NewVisaController extends Controller
                 $visa_cancellation->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Visa Cancelation Process has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
@@ -3294,6 +3857,12 @@ class NewVisaController extends Controller
     public function permit_cancellation(Request $request, $user_id, $company_id, $permit_can, $req_id)
     {
         $user = User::find($user_id);
+        $company = Company::find($company_id);
+        // $employee = User::find($employee_id);
+        $title = NULL;
+        $description = Null;
+        $notificationData = NUll;
+        $type = NULL;
         $permit_can = PermitCancellation::find($permit_can);
         if ($request->input('work_permit_app_cancellation') == 'step1') {
             // return "ok";
@@ -3337,8 +3906,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit cancellation form step of Work Permit Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3371,6 +3947,13 @@ class NewVisaController extends Controller
             ]);
             if($request->signed_cancellation_form)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'Admin upload signed cancellation form of Work Permit Cancellation Process against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3420,8 +4003,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Upload signed cancellation form step of Work Permit Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3486,8 +4076,15 @@ class NewVisaController extends Controller
                 $status = 'Reject';
 
             }
-            if($status === 'Approved'|| $status === 'Skip' || $status === 'Reject')
+            if($status)
             {
+                $type = 'company';
+                $title = 'Visa Notification';
+                $description = 'This is inform you that the Work permit cancellation approval step of Work Permit Cancellation Process has been '.$status.' against '.$user->name;
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'company_id'=>$company_id,
                     'to_all'=>'Companies',
@@ -3500,6 +4097,13 @@ class NewVisaController extends Controller
                 $permit_can->update([
                     'status'=> 'completed',
                 ]);
+                $type = 'employee';
+                $title = 'Visa Notification';
+                $description = 'Your Permit Cancelation Process has been Completed.!';
+                $notificationData  = [
+                    'type'=>$type,
+                ];
+                NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
                     'employee_id'=>$user_id,
                     'to_all'=>'Employees',
