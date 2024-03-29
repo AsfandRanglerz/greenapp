@@ -111,25 +111,22 @@
                                                         $ext = explode('.', $file_name);
                                                     @endphp
                                                     <td>
-                                                        @if ($ext)
+                                                        @if ($ext && isset($ext[1]))
                                                             <a target="_black" href="{{ asset('' . '/' . $req->file) }}">
                                                                 @if ($ext[1] == 'pdf')
-                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
+                                                                    <img src="{{ asset('public/admin/assets/img/pdf-icon.png') }}" style="height: 50px;width:50px">
                                                                 @elseif($ext[1] == 'docx')
-                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
+                                                                    <img src="{{ asset('public/admin/assets/img/docx-icon.png') }}" style="height: 50px;width:50px">
                                                                 @elseif($ext[1] == 'xls' || $ext[1] == 'xlsx')
-                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
+                                                                    <img src="{{ asset('public/admin/assets/img/excel-icon.png') }}" style="height: 50px;width:50px">
                                                                 @elseif($ext[1] == 'pptx')
-                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
-                                                                        style="height: 50px;width:50px">
+                                                                    <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}" style="height: 50px;width:50px">
                                                                 @else
-                                                                    <img src="{{ asset('' . '/' . $req->file) }}"
-                                                                        style="height: 50px;width:50px">
+                                                                    <img src="{{ asset('' . '/' . $req->file) }}" style="height: 50px;width:50px">
                                                                 @endif
                                                             </a>
+                                                        @else
+                                                            <p>N/A</p>
                                                         @endif
                                                     </td>
                                                     <td>

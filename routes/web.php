@@ -308,6 +308,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     });
 
+
     Route::view('login', 'auth.login');
 
     Route::view('register', 'auth.register');
@@ -516,5 +517,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
 //privacy-policy
      Route::get('/privacy-policy-page', [AuthController::class, 'privacyPolicyPage']);
+
+    Route::get('homepage',[App\Http\Controllers\AuthController::class,'homePage'])->name('homepage');
+
 
 

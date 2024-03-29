@@ -82,8 +82,9 @@ class UserController extends Controller
             'marital_status',
             'residence_no',
             'insurance_no',
-            'salary',
-            'salary_detail']);
+            'basic_salary',
+            'other_allowance',
+            'total']);
              $data['emp_type'] = 'company';
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
@@ -196,8 +197,9 @@ class UserController extends Controller
             'marital_status' => $request->input('marital_status'),
             'residence_no' => $request->input('residence_no'),
             'insurance_no' => $request->input('insurance_no'),
-            'salary_detail' => $request->input('salary_detail'),
-            'salary' => $request->input('salary'),
+            'basic_salary' => $request->input('basic_salary'),
+            'other_allowance' => $request->input('other_allowance'),
+            'total' => $request->input('total'),
             'image' => $image,
         ];
         if ($request->email !== $user->email) {

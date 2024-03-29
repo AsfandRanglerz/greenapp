@@ -698,6 +698,7 @@ class NewVisaController extends Controller
             return redirect()->back()->with('success', 'Data Added Successfully And Notify To The Company');
         }
 
+
         elseif ($request->input('sign_mb') == "step2") {
             $file = NULL;
             if ($request->hasFile('signed_mb_st_file')) {
@@ -796,7 +797,7 @@ class NewVisaController extends Controller
             }
             return redirect()->back()->with('success', 'Data Added Successfully');
         } elseif ($request->input('preapproval') == "step4") {
-            $file = NULl;
+            $file = NULL;
             // return $request;
             if ($request->hasFile('pre_approved_wp_file')) {
                 $destination = 'public/admin/assets/img/users' . $new_visa->pre_approved_wp_file;

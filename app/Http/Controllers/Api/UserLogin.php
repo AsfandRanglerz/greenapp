@@ -72,6 +72,7 @@ class UserLogin extends Controller
             if ($company) {
                 $company->update(['fcmtoken' => $newFcmToken]);
                 return response()->json([
+                    'user_type'=>'company',
                     'company' => $company,
                     'message' => 'FCM Token updated successfully'
                 ], 200);
@@ -81,10 +82,23 @@ class UserLogin extends Controller
             $user = User::where('email', $email)->first();
             if ($user) {
                 $user->update(['fcmtoken' => $newFcmToken]);
-                return response()->json([
-                    'user' => $user,
-                    'message' => 'FCM Token updated successfully'
-                ], 200);
+                if($user->emp_type == 'company')
+                {
+                    return response()->json([
+                        'user_type'=>'employee',
+                        'user' => $user,
+                        'message' => 'FCM Token updated successfully'
+                    ], 200);
+                }
+                elseif($user->emp_type == 'self')
+                {
+                    return response()->json([
+                        'user_type'=>'individual',
+                        'user' => $user,
+                        'message' => 'FCM Token updated successfully'
+                    ], 200);
+                }
+
             }
 
             // If neither company nor user is found with the given email

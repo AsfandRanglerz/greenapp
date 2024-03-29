@@ -180,4 +180,9 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Updated Successfully');
     }
 
+    public function homePage()
+    {
+        return view('auth.home');
+    }
+
 }

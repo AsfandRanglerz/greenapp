@@ -3791,7 +3791,7 @@
                                     <div
                                         class=" col-xl-6 col-lg-12 col-md-6 d-none renewal-medical-file align-items-end">
                                         <div class="upload-file form-group mb-3">
-                                            <label for='new-visa-104'>Upload ST & MB</label>
+                                            <label for='new-visa-104'>Upload File</label>
                                             <div class="input-group">
                                                 <input type="file" class="form-control" id='new-visa-104'
                                                     name="medical_fitness_file" style="line-height: 1"
@@ -6244,7 +6244,7 @@
                                 class='py-2' method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" value='step2' name='sign_mb' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB</h6>
                                 <input type="text" value='step2' name='sign_mb' hidden>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -6287,7 +6287,7 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                         <div class="upload-file mb-3 form-group">
-                                            <label for='new-visa-163'>Upload ST & MB</label>
+                                            <label for='new-visa-163'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-163'
                                                      style="line-height: 1" name="signed_mb_st_file"
