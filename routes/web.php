@@ -329,6 +329,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     Route::post('change-password', 'AuthController@changePassword')->name('resets-password');
 
+    // login form routes
+
+    Route::get('faqs','AuthController@faqs')->name('login-form-page-faq');
+    Route::get('privacy-policy','AuthController@privacy')->name('login-form-page-privacy');
+    Route::get('term-&-conditions','AuthController@term')->name('login-form-page-term');
+    Route::get('about-us','AuthController@about')->name('login-form-page-about');
+    Route::get('contact-us','AuthController@contact')->name('login-form-page-contact');
+
 
 });
 
@@ -519,6 +527,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
      Route::get('/privacy-policy-page', [AuthController::class, 'privacyPolicyPage']);
 
     Route::get('homepage',[App\Http\Controllers\AuthController::class,'homePage'])->name('homepage');
+
+    Route::get('employee/dashboard', [App\Http\Controllers\User\HomeController::class,'employee'])->name('employee.dashboard');
+    Route::get('individual/dashboard',[App\Http\Controllers\User\HomeController::class,'individual'])->name('individual.dashboard');
+
 
 
 

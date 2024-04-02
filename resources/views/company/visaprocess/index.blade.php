@@ -1089,18 +1089,21 @@
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            <div class="upload-file">
-                                                <label for='visa1-46'>Upload File</label>
-                                                <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
-                                                    <input type="file" class="form-control" id='visa1-46'
-                                                        name="medical_fitness_file" style="line-height: 1"
-                                                        accept=".pdf,.doc,.excel">
-                                                    <div class="input-group-prepend">
-                                                        <small class="input-group-text"><span
-                                                                class="fa fa-paperclip"></span></small>
+                                           @if ($new_visa_data['medical_fitness_file'] == 'Approved')
+                                                <div class="upload-file">
+                                                    <label for='visa1-46'>Upload File</label>
+                                                    <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
+                                                        <input type="file" class="form-control" id='visa1-46'
+                                                            name="medical_fitness_file" style="line-height: 1"
+                                                            accept=".pdf,.doc,.excel">
+                                                        <div class="input-group-prepend">
+                                                            <small class="input-group-text"><span
+                                                                    class="fa fa-paperclip"></span></small>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
+
                                             @php
                                             $file_name = $new_visa_data->medical_fitness_file;
                                             $ext = explode('.', $file_name);
@@ -1127,9 +1130,12 @@
                                             </a>
                                             @endif
                                         </div>
+                                        @if ($new_visa_data['medical_fitness_file'] == 'Approved')
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
                                         </div>
+                                        @endif
+
                                     </div>
                                 </form>
                             </div>
@@ -5729,7 +5735,7 @@
                                                             class="status-container">
                                                         @endif
                                                     </div>
-                                                    
+
                                                     @php
                                                     $file_name = $visa_cancellation->signed_cancellation_form;
                                                     $ext = explode('.', $file_name);

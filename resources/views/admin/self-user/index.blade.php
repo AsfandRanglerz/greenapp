@@ -72,13 +72,13 @@
                                                 <td>{{ $employee->work_permit_number }}</td>
                                                 <td>{{ $employee->person_code }}</td> --}}
                                                 <td>
-                                                    <a class="btn btn-primary" href="{{ route('individual-visa-process-start', ['individual_id'=>$employee->id,'request_id'=>0]) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('individual-visa-process-start', ['individual_id'=>$employee->id,'request_id'=>0]) }}">View</a>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary" href="{{ route('individual-dependent-index', $employee->id) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('individual-dependent-index', $employee->id) }}">View</a>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary" href="{{ route('user-document.index', $employee->id) }}">View</a>
+                                                    <a class="btn btn-success" href="{{ route('user-document.index', $employee->id) }}">View</a>
                                                 </td>
 
                                                 <td>

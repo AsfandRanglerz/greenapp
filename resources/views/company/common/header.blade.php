@@ -10,8 +10,30 @@ if ($authId) { // Check if the user is authenticated
     <div id="sideNavOverlay" class="position-fixed d-none"></div>
     <div class="col-6">
         <button class="btn p-0" id="menuToggle"><span class="fa fa-bars text-white"></span></button>
-        <button onclick="history.back()" class="btn btn-success ml-3 back-btn"><span
+
+        <button onclick="history.back()" class="btn btn-success ml-3 back-btn backNavigate"><span
                 class="fa fa-angle-left mr-2"></span>Back</button>
+                <script>
+                    function backNavigate() {
+                        window.ReactNativeWebView.postMessage(JSON.stringify({
+                            backNavigate: true
+                        }));
+                    }
+                    // Ensure the DOM is fully loaded before attaching the click event handler
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Select the .logout element using vanilla JavaScript
+                        var backNavigateButton = document.querySelector('.backNavigate');
+
+                        // Check if the logoutButton exists
+                        if (backNavigateButton) {
+                            // Attach a click event handler
+                            backNavigateButton.addEventListener('click', function() {
+                                // alert('ytui'); // Alert to test if the click event is triggered
+                                backNavigate(); // Call the logout function
+                            });
+                        }
+                    });
+                </script>
     </div>
     <div class="col-6">
         <div class="navbar p-0">

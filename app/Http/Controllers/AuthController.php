@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Mail\CompanyRegistered;
 use App\Mail\ResetPasswordUser;
+use App\Models\AboutUs;
 use App\Models\Company;
+use App\Models\Faq;
+use App\Models\PrivacyPolicy;
+use App\Models\TermCondition;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -70,7 +74,7 @@ class AuthController extends Controller
             $company->save();
         }
 
-        /**Afer registered send confirmation  mail */
+        /**After registered send confirmation  mail */
         $message = [
             'name' => $request->name,
             'email' => $request->email,
@@ -93,12 +97,25 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            Auth::guard('web')->logout();
-            return redirect()->route('company.dashboard')->with('success', "You've Login Successfully");
+            // Auth::guard('web')->logout();
+            // return redirect()->url('company/dashboard')->with('success', "You've Login Successfully");
+            return redirect()->to('company/dashboard')->with('success', "You've Login Successfully");
+
         }
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            Auth::guard('company')->logout();
-            return redirect()->route('user.dashboard')->with('success', "You've Login Successfully");
+            // Auth::guard('company')->logout();
+            // return redirect()->url('user/dashboard')->with('success', "You've Login Successfully");
+            $user = User::where('email',$request->email)->first();
+            if($user->emp_type == 'company')
+            {
+                return redirect()->route('employee.dashboard')->with('success', "You've Login Successfully");
+            }
+            elseif($user->emp_type == 'self')
+            {
+                return redirect()->route('individual.dashboard')->with('success', "You've Login Successfully");
+            }
+            // return redirect()->to('user/dashboard')->with('success', "You've Login Successfully");
+
         }
         return redirect()->back()->with('error', "Your Email Or Password Invalid!");
     }
@@ -183,6 +200,32 @@ class AuthController extends Controller
     public function homePage()
     {
         return view('auth.home');
+    }
+
+    // login form pages
+    public function faqs()
+    {
+        $faqs = Faq::all();
+        return view('pages.faqs',compact('faqs'));
+    }
+    public function privacy()
+    {
+        $privacy = PrivacyPolicy::all();
+        return view('pages.privacy',compact('privacy'));
+    }
+    public function term()
+    {
+        $term = TermCondition::all();
+        return view('pages.termCondition',compact('term'));
+    }
+    public function about()
+    {
+        $about = AboutUs::all();
+        return view('pages.about',compact('about'));
+    }
+    public function contact()
+    {
+        return view('pages.contact');
     }
 
 }

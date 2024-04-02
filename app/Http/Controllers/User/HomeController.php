@@ -17,12 +17,37 @@ class HomeController extends Controller
     public function index()
     {
         $authId = Auth::guard('web')->id();
-       $data['user'] =  User::find($authId);
+        $data['user'] =  User::find($authId);
         $data['document'] = UserDocument::whereUser_id($authId)->count();
         $data['dependent'] = IndividualDependent::whereUser_id($authId)->count();
         $data['service'] = IndividualService::whereUser_id($authId)->count();
         return view('user.dashboard', $data);
     }
+
+    // for web views
+    public function employee()
+    {
+        // return "employee";
+        $authId = Auth::guard('web')->id();
+        $data['user'] =  User::find($authId);
+        $data['document'] = UserDocument::whereUser_id($authId)->count();
+        $data['dependent'] = IndividualDependent::whereUser_id($authId)->count();
+        $data['service'] = IndividualService::whereUser_id($authId)->count();
+        return view('user.dashboard', $data);
+    }
+
+    public function individual()
+    {
+        // return "individual";
+        $authId = Auth::guard('web')->id();
+        $data['user'] =  User::find($authId);
+        $data['document'] = UserDocument::whereUser_id($authId)->count();
+        $data['dependent'] = IndividualDependent::whereUser_id($authId)->count();
+        $data['service'] = IndividualService::whereUser_id($authId)->count();
+        return view('user.dashboard', $data);
+    }
+    // end for web views
+
 
     public function logout()
     {

@@ -33,7 +33,7 @@ class DependentController extends Controller
         $validator = Validator::make($request->all(), [
             'dependent_type' => 'required',
             'name' => 'required',
-            'doc_type' => 'required',
+            // 'doc_type' => 'required',
             'file' => 'required',
         ]);
 

@@ -247,7 +247,7 @@ class CompanyController extends Controller
 
         try {
             Mail::to($admin->email)->send(new CompanyDelete($message));
-            return redirect()->back()->with('success', 'Deletion Request Sent To The Company Successfully');
+            return redirect()->back()->with('success', 'Deletion Request Sent To The Admin Successfully');
         } catch (\Throwable $th) {
             return back()->with(['status' => false, 'message' => $th->getMessage()]);
         }
