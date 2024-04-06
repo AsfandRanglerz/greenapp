@@ -9,9 +9,34 @@ if ($authId) {
 <nav class="row mx-0 position-sticky top-0 d-flex align-items-center admin-panel-header">
     <div id="sideNavOverlay" class="position-fixed d-none"></div>
     <div class="col-6">
-        <button class="btn p-0" id="menuToggle"><span class="fa fa-bars text-white "></span></button>
+        <button class="btn p-0 menuToggle" id="menuToggle"><span class="fa fa-bars text-white "></span></button>
+        <script>
+            function menuToggleFunction() {
+                // alert('as');
+                window.ReactNativeWebView.postMessage(JSON.stringify({
+                    drawer: true
+                }));
+            }
+
+            // Ensure the DOM is fully loaded before attaching the click event handler
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select the .menuToggle element using vanilla JavaScript
+                var menuToggleButton = document.querySelector('.menuToggle');
+
+                // Check if the menuToggleButton exists
+                if (menuToggleButton) {
+                    // Attach a click event handler
+                    menuToggleButton.addEventListener('click', function() {
+                        // alert('ytui'); // Alert to test if the click event is triggered
+                        menuToggleFunction(); // Call the menuToggleFunction
+                    });
+                }
+            });
+        </script>
+
+
         <button onclick="history.back()" class="btn btn-success ml-3 back-btn backNavigate"><span
-                class="fa fa-angle-left mr-2"></span>BackBack</button>
+                class="fa fa-angle-left mr-2"></span>Back</button>
                 <script>
                     function backNavigate() {
                         // alert('sjdh ')
