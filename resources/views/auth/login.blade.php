@@ -50,6 +50,7 @@
                 <button type="submit" class="w-100 btn-bg">Login</button>
                 <p class="text-center text-dark font-weight-600 mt-2 mb-0">Don't have an account? <a
                         href="{{ url('register') }}" class="green-link">Register</a></p>
+                <p class="small text-center text-dark font-weight-bold mt-1 mb-0">You can contact us at <a href="mailto:greenapptyping@gmail.com" class="green-link">greenapptyping@gmail.com</a></p>
                         <script>
                             // Wrap your code in a function to ensure it runs after the page has loaded
                       function initializeForm() {

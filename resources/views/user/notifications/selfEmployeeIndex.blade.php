@@ -72,6 +72,16 @@
     .faq .card .card-body p {
         margin-bottom: 0;
     }
+
+    @media (max-width: 991px) {
+        #menuToggle {
+            display: none;
+        }
+
+        .back-btn.backNavigate {
+            margin-left: 0 !important;
+        }
+    }
 </style>
 @extends('user.layout.master')
 @section('content')
