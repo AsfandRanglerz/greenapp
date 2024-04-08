@@ -472,6 +472,17 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
 
     Route::delete('delete-dependent/{id}','DependentController@delete')->name('delete-dependent');
 
+    // dependents documents section
+    Route::get('dependent-document-index/{id}','DependentController@document_index')->name('dependent-document-index');
+    Route::get('dependent-document-create/{id}','DependentController@document_create')->name('dependent-document-create');
+    Route::post('dependent-document-store/{id}','DependentController@document_store')->name('dependent-document-store');
+    Route::get('dependent-document-edit/{id}','DependentController@document_edit')->name('dependent-document-edit');
+    Route::patch('dependent-document-update/{document}','DependentController@document_dependent_update')->name('dependent-document-update');
+    Route::delete('dependent-document-destroy/{id}','DependentController@document_delete')->name('dependent-document-destroy');
+    Route::get('dependent-document-download/{id}','DependentController@document_dependent_download')->name('dependent-document-download');
+
+
+
     // individual dependent visa process controller
 
     Route::get('dependent-visa-process/{id}','IndividualDependentVisaController@index')->name('dependent-visa-process');

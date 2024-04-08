@@ -125,7 +125,7 @@ class NewVisaController extends Controller
             $notificationData  = [
                 'type'=>$user,
             ];
-            NotificationHelper::admin_notification($company->fcmtoken, $title, $description, $notificationData);
+            NotificationHelper::admin_notification($employee->fcmtoken, $title, $description, $notificationData);
             $notify = AdminNotification::create([
                 'employee_id' => $status->employee_id,
                 'to_all' => 'Individuals',

@@ -322,7 +322,7 @@
                                         </div> --}}
                                         <div class="form-group col-md-6">
                                             <label>Basic Salary</label>
-                                            <input type="text" class="form-control" name="basic_salary" id="basicSalary" onchange="salaryFind()"
+                                            <input type="text" class="form-control" name="basic_salary" id="basicSalary" onchange="salaryCalculate()"
                                             value="{{ old('basic_salary') ??  $data->basic_salary }}" placeholder="Basic Salary">
                                             @error('basic_salary')
                                                 <div class="text-danger p-2">{{ $message }}</div>
@@ -330,7 +330,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Other Allowance</label>
-                                            <input type="text" class="form-control" name="other_allowance" id="otherAllownce" onchange="salaryFind()"
+                                            <input type="text" class="form-control" name="other_allowance" id="otherAllownce" onchange="salaryCalculate()"
                                             value="{{ old('other_allowance') ?? $data->other_allowance }}" placeholder="Other Allowance">
                                                 @error('other_allowance')
                                                     <div class="text-danger p-2">{{ $message }}</div>
@@ -384,5 +384,13 @@
                 placeholder: 'Salary Detail'
             });
         });
+        function salaryCalculate()
+        {
+            // alert('ok')
+            var basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            var allowance = parseFloat(document.getElementById('otherAllownce').value);
+            var total = basicSalary + allowance;
+            document.getElementById('total').value = total;
+        }
     </script>
 @endsection

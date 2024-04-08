@@ -276,28 +276,29 @@
                                         </div>
                                     </div>
                                     <div class="row mx-0 px-4">
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
-                                            <div class="form-group mb-2">
-                                                <label>Salary Details</label>
-                                                <select name="salary_detail" id="salDetails" class="form-control">
-                                                    <option value=""></option>
-                                                    <option value="Basic Salary">Basic Salary</option>
-                                                    <option value="Other Allowance">Other Allowance</option>
-                                                    <option value="Total">Total</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Basic Salary</label>
+                                            <input type="text" class="form-control" name="basic_salary"
+                                                id="basicSalary" placeholder="Basic Salary">
+                                            @error('basic_salary')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
-
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
-                                            <div class="form-group mb-2">
-                                                <label>Salary</label>
-                                                <input type="text" class="form-control" name="salary"
-                                                    value="{{ old('salary') }}"
-                                                    placeholder="Enter salary">
-                                                @error('salary')
-                                                    <div class="text-danger p-2">{{ $message }}</div>
-                                                @enderror
-                                            </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Other Allowance</label>
+                                            <input type="text" class="form-control" name="other_allowance"
+                                                id="otherAllownce" placeholder="Other Allowance">
+                                            @error('other_allowance')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Total</label>
+                                            <input type="text" class="form-control" id='total' name="total"
+                                                value="{{ old('total') }}" placeholder="total" disabled>
+                                            @error('total')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
@@ -346,6 +347,22 @@
                 placeholder: 'Salary Detail'
             });
         });
+        $('#otherAllownce').change(function() {
+    // This function is executed when the value of the input field with ID 'otherAllownce' changes.
+    let value = $(this).val(); // Get the value of the 'otherAllownce' input field.
+    value = parseInt(value); // Parse the value as an integer.
+    let value2 = $('#basicSalary').val(); // Get the value of the 'basicSalary' input field.
+    value2 = parseInt(value2); // Parse the value as an integer.
+    $('#total').val(value + value2); // Set the value of the 'total' input field as the sum of 'otherAllownce' and 'basicSalary'.
+})
+
+$('#basicSalary').change(function() {
+    // This function is executed when the value of the input field with ID 'basicSalary' changes.
+    let value = $(this).val(); // Get the value of the 'basicSalary' input field.
+    value = parseInt(value); // Parse the value as an integer.
+    let value2 = $('#otherAllownce').val(); // Get the value of the 'otherAllownce' input field.
+    value2 = parseInt(value2); // Parse the value as an integer.
+    $('#total').val(value + value2); // Set the value of the 'total' input field as the sum of 'basicSalary' and 'otherAllownce'.
+})
     </script>
 @endsection
-

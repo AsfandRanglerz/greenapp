@@ -14,7 +14,7 @@
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow my-cv">
                     {{-- @dd($data) --}}
                     <div class="form-group col-md-12">
-                        <label for="">Carrier Objectives<span class="required"> *</span></label>
+                        <label for="">Career Objectives<span class="required"> *</span></label>
                         <textarea type="text" name="carrier_objectives" class="form-control" placeholder="Objectives" rows="4">{{ $data->carrier_objectives }}</textarea>
                     </div>
                     <div class="form-group col-md-12">

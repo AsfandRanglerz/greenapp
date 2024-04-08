@@ -30,6 +30,7 @@
                             <th scope="col">Expiry Date</th>
                             {{-- <th scope="col">Response</th> --}}
                             {{-- <th scope="col">Comment</th> --}}
+                            <th scope="col">Documents</th>
                             <th scope="col">Visa Process</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -71,6 +72,11 @@
                             {{-- <td>{{ $dependent->doc_type }}</td> --}}
                             <td>{{ $dependent->issue_date }}</td>
                             <td>{{ $dependent->expiry_date }}</td>
+                            <td>
+                                <a href="{{route('user.dependent-document-index',$dependent->id)}}" class='btn btn-success'>
+                                    view
+                                </a>
+                            </td>
                             <td>
                                 <a href="{{route('user.dependent-visa-process',$dependent->id)}}">Click</a>
                             </td>

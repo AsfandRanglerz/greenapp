@@ -309,23 +309,37 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="row mx-0 px-4">
-                                        <div class="col-sm-6 pl-sm-0 pr-sm-3">
-                                            <div class="form-group mb-2">
-                                                <label>Salary Details</label>
-                                                <select name="salary_detail" id="salDetails" class="form-control">
-                                                    <option value=""></option>
-                                                    <option
-                                                        value="Basic Salary"{{ $data['salary_detail'] == 'Basic Salary' ? 'selected' : '' }}>
-                                                        Basic Salary</option>
-                                                    <option
-                                                        value="Other Allowance"{{ $data['salary_detail'] == 'Other Allowance' ? 'selected' : '' }}>
-                                                        Other Allowance</option>
-                                                    <option
-                                                        value="Total"{{ $data['salary_detail'] == 'Total' ? 'selected' : '' }}>
-                                                        Total</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Basic Salary</label>
+                                            <input type="text" class="form-control" name="basic_salary" id="basicSalary" onchange="salaryCalculate()"
+                                            value="{{ old('basic_salary') ??  $data->basic_salary }}" placeholder="Basic Salary">
+                                            @error('basic_salary')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Other Allowance</label>
+                                            <input type="text" class="form-control" name="other_allowance" id="otherAllownce" onchange="salaryCalculate()"
+                                            value="{{ old('other_allowance') ?? $data->other_allowance }}" placeholder="Other Allowance">
+                                                @error('other_allowance')
+                                                    <div class="text-danger p-2">{{ $message }}</div>
+                                                @enderror
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row mx-0 px-4">
+                                        <div class="form-group col-md-6">
+                                            <label>Total Salary</label>
+                                            <input type="text" class="form-control"  name="total" id="total"
+                                            value="{{ old('total') ?? $data->total }}" placeholder="" readonly>
+                                            @error('total')
+                                                <div class="text-danger p-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-sm-6 pl-sm-0 pr-sm-2">
                                             <div class="form-group mb-2">
@@ -372,5 +386,14 @@
                 placeholder: 'Salary Detail'
             });
         });
+
+        function salaryCalculate()
+        {
+            // alert('ok')
+            var basicSalary = parseFloat(document.getElementById('basicSalary').value);
+            var allowance = parseFloat(document.getElementById('otherAllownce').value);
+            var total = basicSalary + allowance;
+            document.getElementById('total').value = total;
+        }
     </script>
 @endsection
