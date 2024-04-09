@@ -40,7 +40,7 @@
                         </div>
 
 
-                        <div class="form-group col-md-6">
+                        {{-- <div class="form-group col-md-6">
                             <label>Select Document Type<span class="required"> *</span></label>
                             <select id="selectDocument" name="doc_type[]" value="{{ old('doc_type[]') }}"
                                 class="form-control" required>
@@ -87,14 +87,14 @@
                                 <option value="Application">Application</option>
                                 <option value="Submission Form">Submission Form</option>
                                 {{-- <option value="Receipts">Receipts</option> --}}
-                                <option value="Other">Other</option>
+                                {{-- <option value="Other">Other</option>
                             </select>
                             @error('doc_type')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group col-xl-6 col-lg-6 col-md-4">
+                        {{-- <div class="form-group col-xl-6 col-lg-6 col-md-4">
                             <label>Select File<span class="required"> *</span></label>
                             <div class="input-group">
                                 <input type="file" class="form-control" name="file[]" value="{{ old('file[]') }}"
@@ -103,17 +103,17 @@
                                     <small class="input-group-text"><span class="fa fa-paperclip"></span></small>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group col-md-6 other-show d-none">
+                        {{-- <div class="form-group col-md-6 other-show d-none">
                             <label>Document Name<span class="required"> *</span></label>
                             <input type="text" name="doc_name[]" value="{{ old('doc_name[]') }}"
                                 placeholder="Enter Document Name" class="form-control">
                             @error('doc_name')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
-
+                        </div> --}}
+{{--
                         <div class="form-group col-xl-6 col-lg-6 col-md-4 other-none d-none">
                             <label>Issue Date</label>
                             <div class="input-group">
@@ -123,8 +123,8 @@
                             @error('issue_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
-                        <div class="form-group col-xl-6 col-lg-6 col-md-4 other-none d-none">
+                        </div> --}}
+                        {{-- <div class="form-group col-xl-6 col-lg-6 col-md-4 other-none d-none">
                             <label>Expiry Date</label>
                             <div class="input-group">
                                 <input type="date" name="expiry_date[]" placeholder="dd.mm.yyyy"
@@ -133,7 +133,7 @@
                             @error('expiry_date')
                                 <div class="text-danger p-2">{{ $message }}</div>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group col-12">
                             <a type="button" class="btn btn-danger remove-btn" style="position: unset"><span
                                     class="fa fa-trash mr-2"></span>Remove</a>

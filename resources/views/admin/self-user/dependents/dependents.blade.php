@@ -30,6 +30,7 @@
                                             <th>Sr.</th>
                                             <th>Name</th>
                                             <th>Type</th>
+                                            <th>Document</th>
                                             <th>Visa Process</th>
                                             {{-- <th scope="col">Action</th> --}}
                                         </tr>
@@ -44,6 +45,9 @@
                                                               <img src="{{ asset('') . '/' . $dependent->file }}" alt=""
                                                             height="50" width="50" class="image"></a>
                                                 </td> --}}
+                                                <td>
+                                                    <a class='btn btn-success' href="{{route('dependent-document-section',$dependent->id)}}">View</a>
+                                                </td>
                                                 <td>
                                                     <a class='btn btn-primary' href="{{route('dependent-visa-section',['user_id'=>$id,'dependent_id'=>$dependent->id])}}">Click</a>
                                                 </td>

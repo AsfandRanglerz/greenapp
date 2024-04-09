@@ -24,10 +24,10 @@
                             <th scope="col">#</th>
                             <th scope="col">Dependent Name</th>
                             <th scope="col">Dependent Type</th>
-                            <th scope="col">Document Type</th>
-                            <th scope="col">File</th>
+                            {{-- <th scope="col">Document Type</th> --}}
+                            {{-- <th scope="col">File</th>
                             <th scope="col">Issue Date</th>
-                            <th scope="col">Expiry Date</th>
+                            <th scope="col">Expiry Date</th> --}}
                             {{-- <th scope="col">Response</th> --}}
                             {{-- <th scope="col">Comment</th> --}}
                             <th scope="col">Documents</th>
@@ -42,9 +42,9 @@
 
                             <td>{{ $dependent->name }}</td>
                             <td class="word_wrap">{{ $dependent->dependent_type }}</td>
-                            <td>{{ $dependent->doc_type }}</td>
+                            {{-- <td>{{ $dependent->doc_type }}</td> --}}
 
-                            @php
+                            {{-- @php
                                 $file_name = $dependent->file;
                                 $ext = explode('.', $file_name);
                                 // dd($ext[1]);
@@ -68,17 +68,17 @@
                                             style="height: 50px;width:50px">
                                     @endif
                                 </a>
-                            </td>
+                            </td> --}}
                             {{-- <td>{{ $dependent->doc_type }}</td> --}}
-                            <td>{{ $dependent->issue_date }}</td>
-                            <td>{{ $dependent->expiry_date }}</td>
+                            {{-- <td>{{ $dependent->issue_date }}</td>
+                            <td>{{ $dependent->expiry_date }}</td> --}}
                             <td>
                                 <a href="{{route('user.dependent-document-index',$dependent->id)}}" class='btn btn-success'>
                                     view
                                 </a>
                             </td>
                             <td>
-                                <a href="{{route('user.dependent-visa-process',$dependent->id)}}">Click</a>
+                                <a href="{{route('user.dependent-visa-process',$dependent->id)}}" class='btn btn-primary'>click</a>
                             </td>
                             <td>
                                 <form class="d-inline" method="post"

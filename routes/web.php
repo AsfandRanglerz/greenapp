@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\NewVisaProcessController;
 use App\Http\Controllers\Admin\CompanyDocumentController;
 use App\Http\Controllers\Admin\AllProcessHandelController;
 use App\Http\Controllers\Admin\ServicesResponseController;
+use App\Http\Controllers\Admin\DependentDocumentController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
 
 
@@ -201,6 +202,14 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('dependent-start-process/{request_id}/{user_id}/{dependent_id}', [IndividualVisaProcess::class,'start_dependent_process'])->name('dependent-start-process')->middleware('permission:Individuals');
 
+    // dependents documents section
+    Route::get('dependent-document-section/{id}',[DependentDocumentController::class,'index'])->name('dependent-document-section');
+    Route::get('dependent-document-create/{id}',[DependentDocumentController::class,'create'])->name('dependent-document-create');
+    Route::post('dependent-document-store/{id}',[DependentDocumentController::class,'store'])->name('dependent-document-store');
+    Route::get('dependent-document-edit/{id}',[DependentDocumentController::class,'edit'])->name('dependent-document-edit');
+    Route::post('dependent-document-update/{id}',[DependentDocumentController::class,'update'])->name('dependent-document-update');
+    Route::get('dependent-document-delete/{id}',[DependentDocumentController::class,'delete'])->name('dependent-document-delete');
+    Route::get('dependent-document-download/{id}',[DependentDocumentController::class,'download'])->name('dependent-document-download');
 
     // individual visa process
 

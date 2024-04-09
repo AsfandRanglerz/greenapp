@@ -511,7 +511,7 @@
                                 <form action="{{route('new-visa-updation',['user_id'=>$ids['user_id'],'company_id'=>$ids['company_id'],'newvisa_id'=>$new_visa->id,'req_id'=>$ids['req_id']])}}"
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB</h6>
                                     <input type="text" value='step2' name='sign_mb' hidden>
                                     <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -538,7 +538,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                              <label for='new-visa-17'>Upload ST & MB</label>
+                                              <label for='new-visa-17'>Upload File</label>
                                               <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                   <input type="file" class="form-control" id='new-visa-17'
                                                       name="signed_mb_st_file" style="line-height: 1" accept=".pdf,.doc,.excel" value="{{$new_visa->signed_mb_st_file}}">
@@ -1516,7 +1516,7 @@
 
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
-                                                <label for="new-visa-40">Are u inside the country?</label>
+                                                <label for="new-visa-40">Are you inside the country?</label>
                                                 <select class="form-control entry-visa-select" id="new-visa-40" name='enter_visa_country'>
                                                     <option>select status</option>
                                                     <option value='yes' {{$new_visa['enter_visa_country'] == 'yes' ? 'selected' : ''}}>Yes</option>
@@ -4214,7 +4214,7 @@
                                     </div>
                                     <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                         <div class="upload-file form-group mb-3">
-                                            <label for='new-visa-115'>Upload ST & MB</label>
+                                            <label for='new-visa-115'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-115'
                                                     name="signed_mb_file" style="line-height: 1"
@@ -7929,7 +7929,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" value='step2' name='signed_st' hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
@@ -7970,7 +7970,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                                <label for='new-visa-204'>Upload Signed ST & MB</label>
+                                                <label for='new-visa-204'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" name="signed_mb_st_file" class="form-control" id='new-visa-204'
                                                          style="line-height: 1"
@@ -8878,7 +8878,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="signed_st" value="step2" hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -8920,7 +8920,7 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6  align-items-end d-flex">
                                         <div class="upload-file form-group mb-3">
-                                            <label for='new-visa-226'>Upload ST & MB</label>
+                                            <label for='new-visa-226'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-226'
                                                     name="signed_mb_st_file" style="line-height: 1"
@@ -10116,7 +10116,7 @@
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                             <div class="upload-file form-group mb-3">
-                                                <label for='new-visa-249'>Upload ST & MB</label>
+                                                <label for='new-visa-249'>Upload File</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                     <input type="file" class="form-control" id='new-visa-249'
                                                          style="line-height: 1" name="wp_app_file"
@@ -10170,7 +10170,7 @@
                                     class='py-2' method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="signed_st" value="step2" hidden>
-                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload ST & MB</h6>
+                                <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Upload Signed MB</h6>
                                 <input type="text"  hidden>
                                 <div class="row align-items-end">
                                     <div class="col-xl-6 col-lg-12 col-md-6">
@@ -10214,7 +10214,7 @@
 
                                     <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                         <div class="upload-file mb-3 form-group">
-                                            <label for='new-visa-254'>Upload ST & MB</label>
+                                            <label for='new-visa-254'>Upload File</label>
                                             <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                 <input type="file" class="form-control" id='new-visa-254'
                                                     name="signed_mb_st_file" style="line-height: 1"
@@ -11438,7 +11438,7 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                                 <div class="upload-file form-group mb-3">
-                                                    <label for='new-visa-281'>Upload ST & MB</label>
+                                                    <label for='new-visa-281'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-281'
                                                              style="line-height: 1" name="wp_app_can_file"
@@ -11838,7 +11838,7 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6  align-items-end d-flex">
                                                 <div class="upload-file form-group mb-3">
-                                                    <label for='new-visa-288'>Upload ST & MB</label>
+                                                    <label for='new-visa-288'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-288'
                                                              style="line-height: 1" name="signd_can_from_file"
@@ -12282,7 +12282,7 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                                 <div class="upload-file mb-3 form-group">
-                                                    <label for='new-visa-299'>Upload ST & MB</label>
+                                                    <label for='new-visa-299'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-299'
                                                              style="line-height: 1" name="residency_app_file"
@@ -12690,7 +12690,7 @@
                                             </div>
                                             <div class=" col-xl-6 col-lg-12 col-md-6 align-items-end d-flex">
                                                 <div class="upload-file mb-3 form-group">
-                                                    <label for='new-visa-306'>Upload ST & MB</label>
+                                                    <label for='new-visa-306'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
                                                         <input type="file" class="form-control" id='new-visa-306'
                                                              style="line-height: 1" name="wp_app_can_file"
