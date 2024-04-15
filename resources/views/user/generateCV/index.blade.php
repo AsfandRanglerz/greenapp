@@ -11,7 +11,7 @@
                 <div class="d-sm-flex justify-content-start">
                     <div class="d-flex flex-column align-items-center">
                         <div class="bg-light CV_dp">
-                            <img src="{{ asset($employee->image) }}" alt="" class="img-fluid cv_dp_inner"/>
+                            <img src="{{ asset($employee->image) }}" alt="" class="img-fluid cv_dp_inner" />
                         </div>
                         <div class="my-sm-3 my-2">
                             <h5 class="mb-0">{{ $employee->name }}</h5>
@@ -50,8 +50,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="form-group align-items-center row mb-0">
-                                        <label for="Nationality"
-                                            class="col-form-label col-sm-5 col-12">Nationality</label>
+                                        <label for="Nationality" class="col-form-label col-sm-5 col-12">Nationality</label>
                                         <p class="mb-0">{{ $employee->nationality }}</p>
                                     </div>
                                 </div>
@@ -113,65 +112,67 @@
                         <div class="CV_border">
                             <div class="row mx-0 px-sm-0 px-3 py-2">
                                 <div class="col-lg-12">
-                                        @foreach ($document as $documents)
-                                            <div class="form-group align-items-center row mb-0">
-                                                @if ($documents->doc_type == 'Passport')
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group align-items-center row mb-0">
-                                                            <label for="Nationality"
-                                                                class="col-form-label col-12">Passport
-                                                                No # {{ $employee->passport_number }}</label>
-                                                        </div>
+                                    @foreach ($document as $documents)
+                                        <div class="form-group align-items-center row mb-0">
+                                            @if ($documents->doc_type == 'Passport')
+                                                <div class="col-lg-12">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="Nationality" class="col-form-label col-12">Passport
+                                                            No # {{ $employee->passport_number }}</label>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group align-items-center row mb-0">
-                                                            <label for="email"
-                                                                class="col-sm-7 col-12 col-form-label">Passport
-                                                                Issue Date:</label>
-                                                            <p class="mb-0">{{ $documents->doc_type == 'Passport' ? $documents->issue_date : '' }}
-                                                            </p>
-                                                        </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email"
+                                                            class="col-sm-7 col-12 col-form-label">Passport
+                                                            Issue Date:</label>
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Passport' ? $documents->issue_date : '' }}
+                                                        </p>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group align-items-center row mb-0">
-                                                            <label for="email"
-                                                                class="col-sm-7 col-12 col-form-label">Passport Expiry
-                                                                Date:</label>
-                                                            <p class="mb-0">{{ $documents->doc_type == 'Passport' ? $documents->expiry_date : '' }}
-                                                            </p>
-                                                        </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email"
+                                                            class="col-sm-7 col-12 col-form-label">Passport Expiry
+                                                            Date:</label>
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Passport' ? $documents->expiry_date : '' }}
+                                                        </p>
                                                     </div>
-                                                @endif
-                                                {{-- <p>{{$documents->doc_type}}</p> --}}
+                                                </div>
+                                            @endif
+                                            {{-- <p>{{$documents->doc_type}}</p> --}}
 
-                                                @if ($documents->doc_type == 'Visit Visa')
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group align-items-center row mb-0">
-                                                            <label for="email"
-                                                                class="col-sm-7 col-12 col-form-label">Visa
-                                                                Issue Date:</label>
-                                                            <p class="mb-0">{{ $documents->doc_type == 'Visit Visa' ? $documents->issue_date : '' }}
-                                                            </p>
-                                                        </div>
+                                            @if ($documents->doc_type == 'Visit Visa')
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email" class="col-sm-7 col-12 col-form-label">Visa
+                                                            Issue Date:</label>
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Visit Visa' ? $documents->issue_date : '' }}
+                                                        </p>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group align-items-center row mb-0">
-                                                            <label for="email"
-                                                                class="col-sm-7 col-12 col-form-label">Visa
-                                                                Expiry Date:</label>
-                                                            <p class="mb-0">{{ $documents->doc_type == 'Visit Visa' ? $documents->expiry_date : '' }}
-                                                            </p>
-                                                        </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group align-items-center row mb-0">
+                                                        <label for="email" class="col-sm-7 col-12 col-form-label">Visa
+                                                            Expiry Date:</label>
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Visit Visa' ? $documents->expiry_date : '' }}
+                                                        </p>
                                                     </div>
-                                                @endif
+                                                </div>
+                                            @endif
 
-                                                @if ($documents->doc_type == 'Residence Visa')
+                                            @if ($documents->doc_type == 'Residence Visa')
                                                 <div class="col-lg-6">
                                                     <div class="form-group align-items-center row mb-0">
                                                         <label for="email"
                                                             class="col-sm-7 col-12 col-form-label">Residence Visa
                                                             Issue Date:</label>
-                                                        <p class="mb-0">{{ $documents->doc_type == 'Residence Visa' ? $documents->issue_date : '' }}
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Residence Visa' ? $documents->issue_date : '' }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -180,13 +181,14 @@
                                                         <label for="email"
                                                             class="col-sm-7 col-12 col-form-label">Residence Visa
                                                             Expiry Date:</label>
-                                                        <p class="mb-0">{{ $documents->doc_type == 'Residence Visa' ? $documents->expiry_date : '' }}
+                                                        <p class="mb-0">
+                                                            {{ $documents->doc_type == 'Residence Visa' ? $documents->expiry_date : '' }}
                                                         </p>
                                                     </div>
                                                 </div>
                                             @endif
-                                            </div>
-                                        @endforeach
+                                        </div>
+                                    @endforeach
 
                                 </div>
                             </div>
@@ -201,13 +203,13 @@
                                         {{-- <p for="fullName" class="col-sm-1 col-form-label">{{ $employee->skills }}</p> --}}
                                         <ol class="pl-3 mb-0">
 
-                         @php
-                            //  $skills=explode(',',$employee->skills);
-                             $skills=explode(',',$employee->skills);
-                         @endphp
-                         @foreach ( $skills as $skill)
-                         <li>{{$skill}}</li>
-                         @endforeach
+                                            @php
+                                                //  $skills=explode(',',$employee->skills);
+                                                $skills = explode(',', $employee->skills);
+                                            @endphp
+                                            @foreach ($skills as $skill)
+                                                <li>{{ $skill }}</li>
+                                            @endforeach
 
                                         </ol>
                                     </div>
@@ -261,13 +263,16 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function myFunction() {
-
-            // console.log('usman');
-            // Hide everything except .CV_format_section
-            $("#hide_content,#dashboardSidebar,#menuToggle,.back-btn").hide();
-            window.print();
-            // Show everything back
-            $("body > *").show();
+            if (window.ReactNativeWebView) {
+                window.ReactNativeWebView.postMessage(JSON.stringify({
+                    generateCv : true
+                }));
+                window.print();
+            } else {
+                $("#hide_content,#dashboardSidebar,#menuToggle,.back-btn").hide();
+                window.print();
+                $("body > *").show();
+            }
         }
     </script>
 @endsection
