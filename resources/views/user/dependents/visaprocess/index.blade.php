@@ -133,7 +133,7 @@
                             role="tab" aria-controls="v-pills-entry" aria-selected="false">Entry Visa</a>
                         <a class="nav-link bordered_tab" id="v-pills-change-visa-tab" data-toggle="pill"
                             href="#v-pills-change-visa" role="tab" aria-controls="v-pills-change-visa"
-                            aria-selected="false">Change of Visa</a>
+                            aria-selected="false">Change of Visa Status</a>
                         <a class="nav-link bordered_tab" id="v-pills-health-insurance-tab" data-toggle="pill"
                             href="#v-pills-health-insurance" role="tab" aria-controls="v-pills-health-insurance"
                             aria-selected="false">Health Insurance</a>
@@ -408,7 +408,7 @@
                             aria-labelledby="v-pills-change-visa-tab">
                             <div class='rounded p-3 light-box-shadow'>
                                 <form action="" class='py-2'>
-                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa</h6>
+                                    <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa Status</h6>
                                     <div class="row align-items-end fine-select-container">
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
@@ -882,6 +882,7 @@
                                                 @endif
                                             </div>
                                             @else
+                                            @if ($new_visa->emirates_status != NULL && $new_visa->residency_status!= NULL)
                                             <div class="form-group mb-3">
                                                 <label for="visa-40-id">Biometric</label>
                                                 <select class="form-control biometric-select" id="visa-40-id"
@@ -895,6 +896,8 @@
                                                         : '' }}>Not Required</option>
                                                 </select>
                                             </div>
+                                            @endif
+
                                             @endif
 
                                         </div>
@@ -946,7 +949,7 @@
                                             </div>
                                         </div>
                                         @if(!($new_visa['biometric_status'] == 'Approved' ||
-                                        $new_visa['biometric_status'] == 'Skip'))
+                                        $new_visa['biometric_status'] == 'Skip') && ($new_visa->emirates_status != NULL && $new_visa->residency_status!= NULL))
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
                                         </div>

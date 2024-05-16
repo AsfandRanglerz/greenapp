@@ -103,6 +103,7 @@ class UserController extends Controller
         $message['name'] = $request->name;
         $message['email'] = $request->email;
         $message['password'] = $password;
+        $message['user'] = 'employee';
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));

@@ -307,7 +307,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Sr.</th>
-                                                        <th>Company Name</th>
+                                                         <th>Company Name</th>
                                                         <th>Employee Name</th>
                                                         <th>Dependent Name</th>
                                                         {{-- <th class='pl-5 pr-5'>Action</th> --}}
@@ -328,7 +328,7 @@
                                                     </tbody>
                                             </table>
                                         </div>
-                                    </div>                                                  
+                                    </div>
                                     {{-- modification of emirates --}}
 
                                     <div class="tab-pane fade" id="modification_emirates" role="tabpanel" aria-labelledby="modification_emirates-tab">
@@ -348,7 +348,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$m_e->company->name ?? '--' }}</td>
-                                                            <td>{{$m_e->user->name}}</td>
+                                                            <td>{{$m_e->user->name  ?? '--' }}</td>
                                                             <td>{{$m_e->dependent->name ?? '--' }}</td>
 
                                                         </tr>
@@ -376,7 +376,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$data->company->name ?? '--' }}</td>
-                                                            <td>{{$data->user->name}}</td>
+                                                            <td>{{$data->user->name ?? '--'}}</td>
                                                             <td>{{$data->dependent->name ?? '--' }}</td>
                                                             <td>
                                                                 @if ($data->company)

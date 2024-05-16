@@ -283,7 +283,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$m_v->company->name ?? '--' }}</td>
-                                                            <td>{{$m_v->user->name}}</td>
+                                                            <td>{{$m_v->user->name ?? '--'}}</td>
                                                             <td>{{$m_v->dependent->name ?? '--' }}</td>
                                                             <td>
                                                                 @if ($m_v->company)
@@ -317,7 +317,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$m_e->company->name ?? '--' }}</td>
-                                                            <td>{{$m_e->user->name}}</td>
+                                                            <td>{{$m_e->user->name ?? '--'}}</td>
                                                             <td>{{$m_e->dependent->name ?? '--' }}</td>
                                                             <td>
                                                                 @if ($m_e->company)

@@ -50,6 +50,7 @@
     <script src="{{ asset('public/admin/assets/js/custom.js') }}"></script>
     <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js') }}"></script>
     <script src="{{ asset('public/admin/assets/js/datatables.js') }}"></script>
+    {{-- {!! RecaptchaV3::initJs() !!} --}}
     <script>
         // notes section
         var textarea = $('.notes-section');

@@ -83,8 +83,9 @@ class SelfUserController extends Controller
         'marital_status',
         'residence_no',
         'insurance_no',
-        'salary',
-        'salary_detail']);
+        'basic_salary',
+        'other_allowance',
+        'total']);
         $password = random_int(10000000, 99999999);
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -108,6 +109,8 @@ class SelfUserController extends Controller
         $message['name'] = $request->name;
         $message['email'] = $request->email;
         $message['password'] = $password;
+        $message['user'] = 'individual';
+
 
         try {
             Mail::to($request->email)->send(new UserLoginPassword($message));
@@ -202,8 +205,9 @@ class SelfUserController extends Controller
             'marital_status' => $request->input('marital_status'),
             'residence_no' => $request->input('residence_no'),
             'insurance_no' => $request->input('insurance_no'),
-            'salary_detail' => $request->input('salary_detail'),
-            'salary' => $request->input('salary'),
+            'basic_salary' => $request->input('basic_salary'),
+            'other_allowance' => $request->input('other_allowance'),
+            'total' => $request->input('total'),
             'image' => $image,
         ];
         if ($request->email !== $user->email) {

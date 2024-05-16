@@ -99,8 +99,16 @@
                     <input type="text" class="form-control" value="{{ $data->insurance_no }}" readonly>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-sm-3 mb-2">
-                    <label>Salary Details</label>
-                    <input type="text" class="form-control" value="{{ $data->salary_detail }}" readonly>
+                    <label>Basic Salary</label>
+                    <input type="text" class="form-control" value="{{ $data->basic_salary }}" readonly>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-sm-3 mb-2">
+                    <label>Other Allownce</label>
+                    <input type="text" class="form-control" value="{{ $data->other_allowance }}" readonly>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-sm-3 mb-2">
+                    <label>Total</label>
+                    <input type="text" class="form-control" value="{{ $data->total }}" readonly>
                 </div>
             </div>
         </div>

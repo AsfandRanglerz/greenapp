@@ -4,7 +4,7 @@
         <form action="">
             <div class="col-lg-12 mx-auto py-3 rounded light-box-shadow">
                 <div class="form-group text-right">
-                    <button class="btn btn-success" onclick="myFunction()" id="hide_content"><span
+                    <button class="d-lg-inline-block btn btn-success" onclick="myFunction()" id="hide_content"><span
                             class="fa fa-print mr-2"></span>Generate CV</button>
                 </div>
                 {{-- @dd($employee) --}}
@@ -264,6 +264,7 @@
     <script>
         function myFunction() {
             if (window.ReactNativeWebView) {
+                // $('#')
                 window.ReactNativeWebView.postMessage(JSON.stringify({
                     generateCv : true
                 }));
@@ -275,4 +276,20 @@
             }
         }
     </script>
+    {{-- <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script>
+        function myFunction() {
+            // Check if running in a web view
+            if(window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) {
+                // If running in a web view (standalone mode), use Print.js to print
+                printJS({ printable: 'hide_content', type: 'html' }); // Replace 'your-content-id' with the ID of the content you want to print
+            } else {
+                // If running in a browser, use standard window.print() function
+                $("#hide_content,#dashboardSidebar,#menuToggle,.back-btn").hide();
+                window.print();
+                $("body > *").show();
+            }
+        }
+    </script> --}}
+
 @endsection

@@ -119,7 +119,7 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                 aria-selected="true">
-                Golden Visa 
+                Golden Visa
             </a>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -136,7 +136,7 @@
                             role="tab" aria-controls="v-pills-entry" aria-selected="false">Entry Visa</a>
                         <a class="nav-link bordered_tab" id="v-pills-change-visa-tab" data-toggle="pill"
                             href="#v-pills-change-visa" role="tab" aria-controls="v-pills-change-visa"
-                            aria-selected="false">Change of Visa</a>
+                            aria-selected="false">Change of Visa Status</a>
                         <a class="nav-link bordered_tab" id="v-pills-health-insurance-tab" data-toggle="pill"
                             href="#v-pills-health-insurance" role="tab" aria-controls="v-pills-health-insurance"
                             aria-selected="false">Health Insurance</a>
@@ -526,7 +526,7 @@
                                         class='py-2'>
                                             @csrf
                                             <input type="text" hidden name='change_of_visa' value="change_of_visa">
-                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa</h6>
+                                        <h6 class="mb-3"><span class="fa fa-solid fa-folder"></span> Change of Visa Status</h6>
                                         <div class="row align-items-end fine-select-container">
                                             <div class="col-xl-6 col-lg-12 col-md-6">
                                                 <div class="form-group mb-3">
