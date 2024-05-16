@@ -33,7 +33,7 @@
 <!-- Sweet Alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-{{-- {!! RecaptchaV3::initJs() !!} --}}
+{!! RecaptchaV3::initJs() !!}
 </body>
 
 <!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->

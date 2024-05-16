@@ -43,7 +43,7 @@
     <script src="{{ asset('public/user/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('public/admin/assets/toastr/js/toastr.min.js') }}"></script>
     <script src="{{ asset('public/user/js/custom.js') }}"></script>
-    {{-- {!! RecaptchaV3::initJs() !!} --}}
+    {!! RecaptchaV3::initJs() !!}
     <script type="text/javascript">
         $(function() {
             // notes section
