@@ -318,7 +318,7 @@
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$m_v->company->name ?? '--' }}</td>
-                                                            <td>{{$m_v->user->name}}</td>
+                                                            <td>{{$m_v->user->name ?? '--'}}</td>
                                                             <td>{{$m_v->dependent->name ?? '--' }}</td>
                                                             {{-- <td>
                                                                 <a href="#" class='btn btn-primary'>Click</a>

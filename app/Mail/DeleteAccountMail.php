@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ProcessStarted extends Mailable
+class DeleteAccountMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,9 @@ class ProcessStarted extends Mailable
      *
      * @return void
      */
-    protected $data;
-    public function __construct($data)
+    public function __construct()
     {
-        return $this->data = $data;
+        //
     }
 
     /**
@@ -29,6 +28,6 @@ class ProcessStarted extends Mailable
      */
     public function build()
     {
-        return $this->subject('Visa Process Status')->markdown('emails.ProcessStartedmail')->with(['data'=>$this->data]);
+        return $this->subject('Account Deletion')->markdown('emails.DeleteAccountMail');
     }
 }

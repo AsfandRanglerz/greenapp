@@ -53,7 +53,7 @@ class UserController extends Controller
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
@@ -151,7 +151,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
@@ -220,6 +220,7 @@ class UserController extends Controller
             $updateData['email'] = $user->email;
         }
         $user->update($updateData);
+        // return $user;
         return redirect()->route('user.index')->with('success', 'Updated Successfully');
     }
 

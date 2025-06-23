@@ -29,6 +29,6 @@ class EmployeeEmailUpdated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.employee_email_updated')->with('message',$this->message);
+        return $this->subject('Employee Account Updation')->markdown('emails.employee_email_updated')->with('message',$this->message);
     }
 }

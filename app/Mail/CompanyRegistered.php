@@ -16,6 +16,7 @@ class CompanyRegistered extends Mailable
      *
      * @return void
      */
+    protected $data;
     public function __construct($data)
     {
         $this->data=$data;
@@ -28,6 +29,6 @@ class CompanyRegistered extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.company_register')->with('data',$this->data);
+        return $this->subject('Account Registration')->markdown('emails.company_register')->with('data',$this->data);
     }
 }

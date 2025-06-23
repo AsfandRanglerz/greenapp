@@ -16,6 +16,7 @@ class ResetPasswordUser extends Mailable
      *
      * @return void
      */
+    protected $data;
     public function __construct($data)
     {
         $this->data=$data;
@@ -28,6 +29,6 @@ class ResetPasswordUser extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reset_password_user')->with('data',$this->data);
+        return $this->subject('Password Resets Request Otp')->markdown('emails.reset_password_user')->with('data',$this->data);
     }
 }

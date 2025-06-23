@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Models\Country;
 use App\Models\User;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Models\DeleteRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -79,7 +80,7 @@ class ProfileController extends Controller
         // return $request;
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
@@ -155,5 +156,32 @@ class ProfileController extends Controller
             $user->save();
             return back()->with('success', 'Updated Successfully');
         }
+    }
+
+
+    public function deleteRequest(Request $request)
+    {
+        $user = User::where('id',$request->userId)->first();
+        if($user)
+        {
+            if(DeleteRequest::where('user_id',$user->id)->first())
+            {
+                return response()->json([
+                    'status'=>'failed',
+                    'message'=>'request already sended',
+                    'flag'=>false,
+                ]);
+            }
+            $delete_request = DeleteRequest::create([
+                'user_id'=>$user->id,
+                'delete_request'=>'requested',
+            ]);
+        }
+        return response()->json([
+            'status'=>'success',
+            'message'=>'request sended',
+            'data'=>$delete_request,
+        ]);
+
     }
 }

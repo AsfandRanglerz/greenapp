@@ -754,7 +754,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Entry Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -810,7 +810,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Change of Visa step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -865,7 +865,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Health Insurance step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -919,7 +919,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Medical Fitness step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -997,7 +997,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Emirates ID step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1024,7 +1024,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Residency Application step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name ;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1086,7 +1086,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Biometric step of New Visa Process has been ' . $status . ' against dependent ' . $dependent->name ;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1157,7 +1157,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Medical Fitness step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1239,7 +1239,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Residency step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1271,7 +1271,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the  ID Renewal step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1332,7 +1332,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Biometric step of Renewal Process has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1427,7 +1427,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Waiting for Approval step of Modification of Visa has been ' . $status . ' against dependent ' . $dependent->name;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1518,7 +1518,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that Waiting for Approval step of Modification of Emirates has been ' . $status . ' against dependent ' . $dependent->name ;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([
@@ -1595,7 +1595,7 @@ class IndividualVisaProcess extends Controller
                 $title = 'Visa Notification';
                 $description = 'This is inform you that the Residency Cancelation Application step of Visa Cancelation has been ' . $status . ' against dependent ' . $dependent->name ;
                 $notificationData  = [
-                    'user'=>$type,
+                    'type'=>$type,
                 ];
                 NotificationHelper::admin_notification($user->fcmtoken, $title, $description, $notificationData);
                 $notify = AdminNotification::create([

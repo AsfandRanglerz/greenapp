@@ -849,7 +849,7 @@
                                         @if ($new_visa_data['enter_visa_country'] == 'yes')
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="visa1-33">Are you inside the country?</label>
+                                                <label for="visa1-33">Over Stay Fines?</label>
                                                 <input type="text" class="form-control"
                                                     id="visa1-33" placeholder="..." disabled value="{{
                                                   $new_visa_data->enter_visa_over_sf }}">
@@ -1089,7 +1089,8 @@
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                           {{-- @if ($new_visa_data['medical_fitness_file'] == 'Approved') --}}
+                                           @if (($new_visa_data['medical_fitness_status'] == 'Reject' || $new_visa_data['medical_fitness_status'] == 'UnderProcess'
+                                           || $new_visa_data['medical_fitness_status'] == NULL) && $new_visa_data->change_of_visa_status != NULL)
                                                 <div class="upload-file">
                                                     <label for='visa1-46'>Upload File</label>
                                                     <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
@@ -1102,7 +1103,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            {{-- @endif --}}
+                                            @endif
 
                                             @php
                                             $file_name = $new_visa_data->medical_fitness_file;
@@ -1130,11 +1131,12 @@
                                             </a>
                                             @endif
                                         </div>
-                                        {{-- @if ($new_visa_data['medical_fitness_file'] == 'Approved') --}}
-                                        <div class="col-12">
-                                            <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
-                                        </div>
-                                        {{-- @endif --}}
+                                        @if (($new_visa_data['medical_fitness_status'] == 'Reject' && $new_visa_data['medical_fitness_status'] == 'UnderProcess'
+                                        || $new_visa_data['medical_fitness_status'] == NULL) && $new_visa_data->change_of_visa_status != NULL)
+                                           <div class="col-12">
+                                               <button class='btn btn-success d-block mx-auto px-5 py-2'>Submit</button>
+                                           </div>
+                                        @endif
 
                                     </div>
                                 </form>
@@ -1750,7 +1752,8 @@
                                                     </div>
                                                 @endif
                                         @else
-                                        @if($new_visa_data->emirates_status != NULL && $new_visa_data->residency_status != NULL)
+                                        @if($new_visa_data->emirates_status != NULL && $new_visa_data->residency_status != NULL ||
+                                        ($new_visa_data['biometric_status'] == 'UnderProcess' ||  $new_visa_data['biometric_status'] == 'Reject'))
                                         <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                             <div class="form-group">
                                                 <label for="visa1-77">Employee Biometric</label>
@@ -1808,7 +1811,8 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        @if($new_visa_data->emirates_status != NULL && $new_visa_data->residency_status != NULL)
+                                        @if($new_visa_data->emirates_status != NULL && $new_visa_data->residency_status != NULL ||
+                                        ($new_visa_data['biometric_status'] == 'UnderProcess' ||  $new_visa_data['biometric_status'] == 'Reject'))
 
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>

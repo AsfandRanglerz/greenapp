@@ -29,6 +29,6 @@ class VisaExpiryEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.VisaExpiryMail')->with('data',$this->data);
+        return $this->subject('Visa Expiry')->markdown('emails.VisaExpiryMail')->with('data',$this->data);
     }
 }

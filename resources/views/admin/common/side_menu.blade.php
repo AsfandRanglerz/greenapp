@@ -1,3 +1,4 @@
+
 <div class="main-sidebar sidebar-style-2" style="overflow: auto">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand ">
@@ -76,6 +77,34 @@
             </li>
             @endif
 
+            @php
+            $del_req = App\Models\DeleteRequest::where('seen_by_admin', '0')->count();
+            @endphp
+            @if (auth()->guard('web')->check() &&
+            auth()->guard('web')->user()->can('SubAdmin'))
+            <li class="dropdown {{ request()->is('admin/get-all-delete-requests*') ? 'active' : '' }}">
+                <a href="{{ route('get-all-delete-requests') }}" class="nav-link"><i
+                        class="fa fa-users"></i><span>Delete Requests</span>
+                        @if ($del_req)
+                        <span class="badge badge-danger text-white rounded-circle">
+                            {{ $del_req }}
+                        </span>
+                        @endif
+                    </a>
+            </li>
+            @elseif(auth()->guard('admin')->check())
+            <li class="dropdown {{ request()->is('admin/get-all-delete-requests*') ? 'active' : '' }}">
+                <a href="{{ route('get-all-delete-requests') }}" class="nav-link"><i
+                        class="fa fa-users"></i><span>Delete Requests</span>
+                        @if ($del_req)
+                        <div class="badge badge-danger text-white rounded-circle">
+                            {{ $del_req }}
+                        </div>
+                        @endif
+                    </a>
+            </li>
+            @endif
+
 
             @php
             $request_count = App\Models\VisaProcessRequest::where('seen_by_admin', '0')->count();
@@ -86,9 +115,9 @@
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span>
                         @if ($request_count)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $request_count }}
-                        </span>
+                        </div>
                         @endif
                     </a>
 
@@ -99,9 +128,9 @@
                 <a href="{{ route('visa.index') }}" class="nav-link"><i
                         class="fa fa-briefcase"></i><span>Visa Process</span>
                         @if ($request_count)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $request_count }}
-                        </span>
+                        </div>
                         @endif
 
                     </a>
@@ -166,9 +195,9 @@
                 <a href="{{ route('notification-index') }}" class="nav-link"><i
                         class="fas fa-bell"></i><span>Notifications</span>
                         @if ($notificationCount)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $notificationCount }}
-                        </span>
+                        </div>
                     @endif
                     </a>
             </li>
@@ -177,9 +206,9 @@
                 <a href="{{ route('notification-index') }}" class="nav-link"><i
                         class="fas fa-bell"></i><span>Notifications</span>
                         @if ($notificationCount)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $notificationCount }}
-                        </span>
+                        </div>
                     @endif
                     </a>
             </li>
@@ -194,9 +223,9 @@
                 <a href="{{ route('inquiry.index') }}" class="nav-link">
                     <i class="fa fa-users"></i><span>Inquiry</span>
                     @if ($notificationCount)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $notificationCount }}
-                        </span>
+                        </div>
                     @endif
                 </a>
             </li>
@@ -205,9 +234,9 @@
                 <a href="{{ route('inquiry.index') }}" class="nav-link">
                     <i class="fa fa-users"></i><span>Inquiry</span>
                     @if ($notificationCount)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{ $notificationCount }}
-                        </span>
+                        </div>
                     @endif
                 </a>
             </li>
@@ -223,9 +252,9 @@
                 <a href="{{ route('get-services-requests') }}" class="nav-link"><i
                         class="fa fa-question"></i><span>Services</span>
                         @if ($response_count > 0)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{$response_count}}
-                        </span>
+                        </div>
                         @endif
                     </a>
             </li>
@@ -234,9 +263,9 @@
                 <a href="{{ route('get-services-requests') }}" class="nav-link"><i
                         class="fa fa-question"></i><span>Services</span>
                         @if ($response_count > 0)
-                        <span class="badge badge-danger text-white">
+                        <div class="badge badge-danger text-white rounded-circle">
                             {{$response_count}}
-                        </span>
+                        </div>
                         @endif
                     </a>
             </li>

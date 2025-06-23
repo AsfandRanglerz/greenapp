@@ -28,7 +28,7 @@ class AuthController extends Controller
             /** register the company */
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'phone' => 'required',
+                // 'phone' => 'required',
                 'role' => 'required',
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
                 'password' => 'required',
@@ -52,7 +52,7 @@ class AuthController extends Controller
             /** register the Self Employee */
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'phone' => 'required',
+                // 'phone' => 'required',
                 'role' => 'required',
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => 'required',

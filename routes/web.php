@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\AllProcessHandelController;
 use App\Http\Controllers\Admin\ServicesResponseController;
 use App\Http\Controllers\Admin\DependentDocumentController;
 use App\Http\Controllers\Admin\SendAllNotificationController;
+use App\Http\Controllers\Admin\DeletionRequestHandlerController;
 
 
 
@@ -234,7 +235,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     // Route::post('employee-excel-file-complete/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_complete'])->name('employee-excel-file-complete')/*->middleware('permission:Receipt')*/;
 
-    // Route::post('dependent-excel-file-complete/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_complete'])->name('dependent-excel-file-complete')/*->middleware('permission:Receipt')*/;
+    // Route::post('get-all-delete-requests/{company_id}/{employee_id}', [AllProcessHandelController::class,'view_excel_complete'])->name('dependent-excel-file-complete')/*->middleware('permission:Receipt')*/;
+
+    Route::get('get-all-delete-requests/', [DeletionRequestHandlerController::class,'view'])->name('get-all-delete-requests')->middleware('permission:Receipt');
+
+    Route::get('get-all-delete-requests/action', [DeletionRequestHandlerController::class,'action'])->name('requests-action')->middleware('permission:Receipt');
 
 
 
@@ -380,6 +385,10 @@ Route::group(['prefix' => 'company', 'namespace' => 'App\Http\Controllers\Compan
 
     Route::post('change-password', 'ProfileController@changePassword')->name('changePassword');
 
+    // Account delete request
+    Route::post('delete-request', 'ProfileController@deleteRequest')->name('company-request.delete');
+
+
     // visa process
 
     Route::get('employee-visa-process/{id}', 'EmployeeVisaProcessController@index')->name('employee.visa.process');
@@ -466,6 +475,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'App\Http\Controllers\User', 'm
     Route::post('request-update/{id}','IndividualServicesController@request_update')->name('request-update');
 
     Route::delete('request-delete/{id}','IndividualServicesController@delete_request')->name('request-delete');
+
+
+    // Account delete request
+    Route::post('delete-request', 'ProfileController@deleteRequest')->name('user-request.delete');
 
     // Dependents routes
 

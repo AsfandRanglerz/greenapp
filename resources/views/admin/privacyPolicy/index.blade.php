@@ -23,7 +23,6 @@
                                         @foreach($data as $data)
                                     <tr>
                                         <td scope="row">{{ $loop->iteration }}</td>
-
                                         <td>{!! $data->description !!}</td>
                                         <td><a href="{{route('privacy-policy.edit', $data->id)}}"><i class="fas fa-edit"></i></a></td>
                                     </tr>

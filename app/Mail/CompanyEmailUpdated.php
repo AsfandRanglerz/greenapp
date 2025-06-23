@@ -29,6 +29,6 @@ class CompanyEmailUpdated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.company_email_updated')->with('message',$this->message)->subject('Email Updated');
+        return $this->subject('Company Account Updation')->markdown('emails.company_email_updated')->with('message',$this->message)->subject('Email Updated');
     }
 }

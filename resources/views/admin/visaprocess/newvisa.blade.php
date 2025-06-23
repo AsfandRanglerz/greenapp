@@ -487,7 +487,7 @@
                                                     <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                 @else
-                                                    <img src="{{ asset('' . '/' . $new_visa->file) }}"
+                                                    <img src="{{ asset('' . '/' . $new_visa->job_offer_file) }}"
                                                         style="height: 50px;width:50px">
                                                 @endif
                                             </a>
@@ -568,7 +568,7 @@
                                                     <img src="{{ asset('public/admin/assets/img/pptx-icon.png') }}"
                                                         style="height: 50px;width:50px">
                                                 @else
-                                                    <img src="{{ asset('' . '/' . $new_visa->file) }}"
+                                                    <img src="{{ asset('' . '/' . $new_visa->signed_mb_st_file) }}"
                                                         style="height: 50px;width:50px">
                                                 @endif
                                             </a>
@@ -2165,7 +2165,7 @@
                                                 <option value="Skip" {{$new_visa['tawjeeh_status'] == 'Skip' ? 'selected' : '' }}>Skip</option>
                                                 <option value="Reject" {{$new_visa['tawjeeh_status'] == 'Reject' ? 'selected' : '' }}>Reject</option>
                                             </select>
-                                        </div>  
+                                        </div>
                                         <div class="col-xl-6 col-lg-12 col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="new-visa-59">Date</label>

@@ -28,6 +28,6 @@ class Inquiry extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.inquiry')->with('data',$this->data);
+        return $this->subject('New Inquiry')->markdown('emails.inquiry')->with('data',$this->data);
     }
 }

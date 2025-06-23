@@ -10,6 +10,10 @@
                 @method('put')
 
                 <div class="form-row col-lg-9 mx-auto py-3 rounded light-box-shadow">
+                    <div class="form-group col-12 text-left">
+                        <button class="btn btn-danger show_confirm" type="button" value="{{$company->id}}" id="deleteProfile"><span class="fa fa-trash mr-2"></span>Delete
+                            Profile</button>
+                    </div>
                     <div class="form-group col-12 text-right">
                         <button class="btn btn-success" id="editProfButton"><span class="fa fa-edit mr-2"></span>Edit
                             Profile</button>
@@ -44,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="companyPhone">Phone<span class="required"> *</span></label>
+                        <label for="companyPhone">Phone<span class=""></span></label>
                         <div class="position-relative d-flex align-items-center">
                             <span class="position-absolute fa fa-phone input-field-left-icon"></span>
                             <input id="companyPhone" type="number" name="phone" value="{{ $company->phone }}"
@@ -205,9 +209,66 @@
     </div>
     </div>
     </div>
+    <div class="modal fade" id="deleteUserModel" tabindex="-1" role="dialog"
+            aria-labelledby="deleteReligionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="deleteReligionModalLabel">Delete Request</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete your account?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger delete-user">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
 @section('script')
     <script type="text/javascript">
+            $(document).on('click', '.show_confirm', function() {
+                var id = $(this).val();
+                $('.delete-user').attr('data', id);
+                $('#deleteUserModel').modal('show');
+            });
+
+            $(document).on('click', '.delete-user', function() {
+                let userId = $(this).attr('data');
+                $.ajax({
+                    url: '{{ route('company.company-request.delete') }}',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-Token': '{{ csrf_token() }}'
+                    },
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        userId: userId,
+                    },
+                    success: function(data) {
+                        $('#deleteUserModel').modal('hide');
+                        if(data.flag == false)
+                        {
+                             toastr.warning('This Request Already In-Process');
+                        }
+                        else{
+                            toastr.success('Delete Request Sended Successfully');
+                        }
+                        // dataTable.ajax.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error('Error updating religion:', error);
+                        // You can display an error message or handle errors as needed
+                    }
+                });
+            });
+
         $(function() {
             $(document).on('click', '#editProfButton', function(event) {
                 event.preventDefault();

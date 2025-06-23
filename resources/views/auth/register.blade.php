@@ -59,7 +59,7 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="companyPhone">Phone<span class="required"> *</span></label>
+                    <label for="companyPhone">Phone<span class=""></span></label>
                     <div class="position-relative d-flex align-items-center">
                         <span class="position-absolute fa fa-phone input-field-left-icon"></span>
                         <input id="companyPhone" type="phone" name="phone" value="{{ old('phone') }}"

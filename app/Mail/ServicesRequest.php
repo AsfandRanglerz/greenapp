@@ -28,6 +28,6 @@ class ServicesRequest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.ServiceRequestResponse');
+        return $this->subject('Service Response')->markdown('emails.ServiceRequestResponse');
     }
 }

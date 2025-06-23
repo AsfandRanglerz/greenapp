@@ -599,7 +599,7 @@
 
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
                                             @if(!($new_visa['medical_fitness_status'] == 'Approved' ||
-                                            $new_visa['medical_fitness_status'] == 'Skip'))
+                                            $new_visa['medical_fitness_status'] == 'Skip') && $new_visa->health_insur_status != NULL)
                                             <div class="upload-file">
                                                 <label for='visa-id-27'>Upload Medical</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
@@ -646,7 +646,7 @@
                                             @endif
                                         </div>
                                         @if(!($new_visa['medical_fitness_status'] == 'Approved' ||
-                                        $new_visa['medical_fitness_status'] == 'Skip'))
+                                        $new_visa['medical_fitness_status'] == 'Skip') && $new_visa->health_insur_status != NULL)
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Add</button>
@@ -882,7 +882,7 @@
                                                 @endif
                                             </div>
                                             @else
-                                            @if ($new_visa->emirates_status != NULL && $new_visa->residency_status!= NULL)
+                                            @if ($new_visa->emirates_status != NULL && $new_visa->residency_status!= NULL && ($new_visa['biometric_status'] == 'underProcess' || $new_visa['biometric_status'] == 'Rejected'))
                                             <div class="form-group mb-3">
                                                 <label for="visa-40-id">Biometric</label>
                                                 <select class="form-control biometric-select" id="visa-40-id"

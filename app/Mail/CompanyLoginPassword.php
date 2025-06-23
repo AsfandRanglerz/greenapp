@@ -29,6 +29,6 @@ class CompanyLoginPassword extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.company_login_password')->with('message',$this->message);
+        return $this->subject('Account Password')->markdown('emails.company_login_password')->with('message',$this->message);
     }
 }

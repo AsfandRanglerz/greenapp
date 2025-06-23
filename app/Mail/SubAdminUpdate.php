@@ -29,6 +29,6 @@ class SubAdminUpdate extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.SubAdminUpdate')->with('message',$this->message);
+        return $this->subject('SubAdmin Account Password Updation')->markdown('emails.SubAdminUpdate')->with('message',$this->message);
     }
 }

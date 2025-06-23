@@ -16,6 +16,7 @@ class RespondInquiry extends Mailable
      *
      * @return void
      */
+    protected $data;
     public function __construct($data)
     {
         $this->data = $data;
@@ -28,6 +29,6 @@ class RespondInquiry extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.respond_inquiry')->with('data',$this->data);
+        return $this->subject('Inquiry Response')->markdown('emails.respond_inquiry')->with('data',$this->data);
     }
 }

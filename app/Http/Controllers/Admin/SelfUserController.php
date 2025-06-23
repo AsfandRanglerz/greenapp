@@ -57,7 +57,7 @@ class SelfUserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'gender' => 'required',
             'nationality' => 'required',
@@ -159,7 +159,7 @@ class SelfUserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',

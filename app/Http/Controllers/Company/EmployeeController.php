@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'dob' => 'required',
             'nationality' => 'required',
             'religion' => 'required',
@@ -168,7 +168,7 @@ public function update(Request $request, $id)
     // return $request;
     $request->validate([
         'name' => 'required',
-        'phone' => 'required',
+        // 'phone' => 'required',
         'dob' => 'required',
         'nationality' => 'required',
         'religion' => 'required',

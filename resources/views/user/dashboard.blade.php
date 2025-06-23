@@ -4,7 +4,6 @@
     <div class="admin-main-content-inner">
 
         <div class="dashboard-front-pg">
-
             @if (Auth::guard('web')->user()->emp_type == 'self')
             <h4>Dashboard</h4>
             @else

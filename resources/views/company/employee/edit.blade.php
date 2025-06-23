@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userPhone">Phone Number<span class="required"> *</span></label>
+                        <label for="userPhone">Phone Number<span class=""></span></label>
                         <input id="userPhone" type="number" name="phone" value="{{ $data['phone'] }}"
                             class="form-control" placeholder="Enter Phone Number" disabled>
                         @error('phone')

@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="userPhone">Phone<span class="required"> *</span></label>
+                        <label for="userPhone">Phone<span class=""></span></label>
                         <input id="userPhone" type="number" name="phone" value="{{ old('phone') }}" class="form-control"
                             placeholder="Enter Phone Number">
                         @error('phone')

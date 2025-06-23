@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\DeleteRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,7 +79,7 @@ class ProfileController extends Controller
         // return $request;
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
         ]);
 
         if ($request->hasfile('image')) {
@@ -149,5 +150,31 @@ class ProfileController extends Controller
             $user->save();
             return back()->with('success', 'Updated Successfully');
         }
+    }
+
+    public function deleteRequest(Request $request)
+    {
+        $company = Company::where('id',$request->userId)->first();
+        if($company)
+        {
+            if(DeleteRequest::where('company_id',$company->id)->first())
+            {
+                return response()->json([
+                    'status'=>'failed',
+                    'message'=>'request already sended',
+                    'flag'=>false,
+                ]);
+            }
+            $delete_request = DeleteRequest::create([
+                'company_id'=>$company->id,
+                'delete_request'=>'requested',
+            ]);
+        }
+        return response()->json([
+            'status'=>'success',
+            'message'=>'request sended',
+            'data'=>$delete_request,
+        ]);
+
     }
 }

@@ -53,7 +53,7 @@ class CompanyController extends Controller
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:companies,email|email',
-            'phone' => 'required',
+            // 'phone' => 'required',
 
             // 'password'=>'required|confirmed',
             // 'password_confirmation'=>'required'
@@ -152,7 +152,7 @@ class CompanyController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
+            // 'phone' => 'required',
             'email' => [
                 'required',
                 'email',

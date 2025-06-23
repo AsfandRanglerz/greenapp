@@ -29,6 +29,6 @@ class UserLoginPassword extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.User_login_password')->with('message',$this->message);
+        return $this->subject('Account Creation')->markdown('emails.User_login_password')->with('message',$this->message);
     }
 }

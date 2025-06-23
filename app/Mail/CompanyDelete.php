@@ -29,6 +29,6 @@ class CompanyDelete extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.company_delete')->with('message',$this->message);
+        return $this->subject('Company Deletion Email')->markdown('emails.company_delete')->with('message',$this->message);
     }
 }

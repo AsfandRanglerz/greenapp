@@ -62,7 +62,7 @@ class AdminController extends Controller
             $request->validate([
                 'name' => 'required',
                 'email' => 'required',
-                'phone' => 'required',
+                // 'phone' => 'required',
             ]);
             $data = $request->only(['name', 'email', 'phone']);
             if ($request->hasfile('image')) {

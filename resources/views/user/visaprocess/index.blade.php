@@ -245,7 +245,7 @@
                                         $visa_data['enter_visa_status'] == 'Skip')
                                         <div class="col-xl-6 col-lg-12 col-md-6  ">
                                             <div class="form-group">
-                                                <label for="visa-id-11">Are u inside the country?</label>
+                                                <label for="visa-id-11">Are you inside the country?</label>
                                                 <input type="text" class="form-control" id="visa-id-8" disabled
                                                     value="{{$visa_data->enter_visa_country}}" placeholder="...">
 
@@ -289,7 +289,7 @@
                                         @if ($visa_data->enter_visa_status != Null)
                                         <div class="col-xl-6 col-lg-12 col-md-6 entry-visa-country">
                                             <div class="form-group">
-                                                <label for="visa-id-11">Are u inside the country?</label>
+                                                <label for="visa-id-11">Are you inside the country?</label>
                                                 <select class="form-control entry-visa-select" id="visa-id-11"
                                                     name="enter_visa_country">
                                                     <option selected disabled>select status</option>
@@ -557,7 +557,7 @@
                                             </div>
                                         </div>
                                         <div class=" col-xl-6 col-lg-12 col-md-6 mb-3 align-items-end d-flex">
-                                            @if($visa_data['medical_fitness_status'] == 'Reject' || $visa_data['medical_fitness_status'] == 'underProcess' || $visa_data['medical_fitness_status'] == NULL)
+                                            @if($visa_data->health_insur_status != NULL && (($visa_data['medical_fitness_status'] == 'Reject' || $visa_data['medical_fitness_status'] == 'underProcess' || $visa_data['medical_fitness_status'] == NULL)))
                                             <div class="upload-file">
                                                 <label for='visa-id-27'>Upload Medical</label>
                                                 <div class="input-group mb-xl-0 mb-lg-3 mb-md-0">
@@ -597,7 +597,7 @@
                                             </a>
                                             @endif
                                         </div>
-                                        @if($visa_data['medical_fitness_status'] == 'Reject' || $visa_data['medical_fitness_status'] == 'underProcess' || $visa_data['medical_fitness_status'] == NULL)
+                                        @if($visa_data->health_insur_status != NULL && ($visa_data['medical_fitness_status'] == 'Reject' || $visa_data['medical_fitness_status'] == 'underProcess' || $visa_data['medical_fitness_status'] == NULL))
                                         <div class="col-12">
                                             <button class='btn btn-success d-block mx-auto px-5 py-2'
                                                 type="submit">Add</button>
@@ -787,7 +787,7 @@
                                             </div>
                                         </div>
                                         @else
-                                            @if($visa_data['emirates_status'] != NULL && $visa_data['residency_status'] != NULL)
+                                            @if($visa_data['emirates_status'] != NULL && $visa_data['residency_status'] != NULL && ($visa_data['biometric_status'] == 'Rejected' || $visa_data['biometric_status'] == 'underProcess'))
                                                 <div class="col-xl-6 col-lg-12 biometric-select-parent col-md-6">
                                                     <div class="form-group">
                                                         <label for="visa-40-id">Biometric</label>
@@ -850,8 +850,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        @if(!($visa_data['biometric_status'] =='Approved' ||
-                                        $visa_data['biometric_status'] =='Skip') &&
+                                        @if(($visa_data['biometric_status'] == 'Rejected' || $visa_data['biometric_status'] == 'underProcess') &&
                                         $visa_data['emirates_status'] != NULL && $visa_data['residency_status'] != NULL)
                                         <div class="col-12 text-center">
                                             <button class='btn btn-success px-5 py-2' type="submit">Add</button>
